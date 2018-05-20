@@ -6,7 +6,6 @@ VAR player_name = "none"
 
 - (options)
 
-
 + {player_name != "boy"}[Touch the male statue] You touch the male statue.
     <blockquote><i>The male statue disappears and you now have hands with thick masculine fingers. The missing statue's hands.</i></blockquote>
     {
@@ -15,6 +14,7 @@ VAR player_name = "none"
     }
     ~ player_name = "boy"
     -> options
+    
 + {player_name != "girl"}[Touch the female statue] Female 
     <blockquote><i>The female statue disappears and you now have hands with slender feminine fingers. The missing statue's hands.</i></blockquote>
     {
