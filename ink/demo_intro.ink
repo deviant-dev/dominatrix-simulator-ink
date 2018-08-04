@@ -84,57 +84,69 @@ Are you?#107
 I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. 
 - (ask_spying)
 + [yes]
-   Of course it did.
-   I bet you'd like to see more of that, wouldn't you?
-   ++ [yes]
-    Too bad. You haven't earned that privilege yet.
-    ++ [no]
-    No? Well, that's disappointing. 
-   
-+ [no]
-   No? Well, that's disappointing.
-   I don't think you're going to be much fun at all.
-    
+  Of course it did.
+  I bet you'd like to see more of that, wouldn't you?
+  Perhaps you'd like to be one some day?
+  
+  ++ [yes]
+    Well too bad. You haven't earned that privilege yet.
+    -> ask_spying_complete
+  ++ [no] -> spying_no
+
++ [no] -> spying_no
+
 + [timeout]
-    Spying on me turned you on, didn't it? 
+    Be honest now. Spying on me turned you on, didn't it?
     -> ask_spying
     
 + [distracted!] -> PayAttention -> ask_exceptional
 
+-(spying_no)
+   No? How disappointing.
+   I don't think you're going to be much fun at all.
+
+- (ask_spying_complete)
 /perform bored
 
 /wait
-- (ask_where)
 I bet you have no idea where you are, do you?
  
+- (ask_where)
+
 + [yes]
     /perform laugh
     You think you know where you are?
     You have no clue.
+    -> ask_where_complete
     
 + [no]
     /perform agreement
     Of course you don't.
-    You're just a tiny little mouse stuck in a maze.
-    You may never find your way out again.
+    -> ask_where_complete
     
-+[timeout]
++ [timeout]
+    ->ask_where_again
+    
++ [distracted!] -> PayAttention -> ask_where_again
+
+- (ask_where_again)
     /perform annoyed 
     Well... do you have any idea where you are?
-    ->ask_where
-    
-+[distracted!] -> PayAttention -> ask_where
+-> ask_where
 
 
-- This is no ordinary house.
+- (ask_where_complete)
 
-- / wait    
+You're just a tiny little fly stuck in my web.
+You may never find your way out again.
+This is no ordinary house, mind you.
 
-Even so. You're here now.
-And you won't be going anywhere for a while.
+/wait    
 
-- (give_name)
-That means I'll have to give you your new name.
+Even so. You are here now.
+And you won't be going anywhere for quite a while.
+
+That means I'll have to give you a name.
 Would you like that?
   
 +[yes] 
@@ -145,10 +157,8 @@ Would you like that?
     ++[yes]
     Keep this up and I might just take an interest in you.
     
-    ++[no]
-    /perform annoyed
-    Don't pretend to toy with me.
-    I am not amused.
+    ++[no] -> DemandApology ->
+        Now... as for a name.
     
 + [no]
     /perform amused
@@ -157,49 +167,54 @@ Would you like that?
 
 + [timeout]
     Cat got your tongue? #26
-    That's alright. For now. #27
+    I'll let it go. For now. #27
     
 + [distracted!] -> PayAttention -> ask_where
 
-- 
-I think...{player_name} will do. #28
+- I think... {player_name} will do. #28
 I expect you to respond to {player_name} from now on. #29
 Until you earn a new name, that is. #30
 Do you understand? #31
 
 + [yes] -> GoodJob ->
-    I am pleased you understand. #32
+    Good. I am pleased. #32
 
 + [no]
     Let's try this again. Your name is now {player_name}. #33
     Everyone who meets you will refer to you as {player_name}. #34
-    One day, if you're good enough, you may earn a new name. #35
+    One day, if you are very <i>very</i> good, you may earn a new name. #35
     But for now, your name is {player_name}. #36
 
 + [timeout]
     Well, perhaps you're a little overwhelmed. #37
     That's to be expected. #38
     Just remember your name is {player_name}  #39
-    until I decide to change it. #40
+    until I decide otherwise. #40
 
 - /wait
 
-I'm going to have to send you away soon. #41
+I really must send you away soon. #41
 But first, let me have a good look at you. #42
+-> inspection
 
 - (inspection)
-/perform amused
+- (inspection_tries)
 
-/unlock move-approach
+/perform amused
 
 Come here. #43
 
+/unlock move-approach
+
 + [move] -> GoodJob ->
-+ [timeout] Don't be shy.-> inspection #44
++ { inspection_tries < 3 } [timeout] -> inspection
++ { inspection_tries >= 3 } [timeout] -> CheckIfInterested -> inspection
 + [distracted!] -> PayAttention -> inspection
 
-- I'm always curious about our new guests. #45
-I rarely take the time to inspect them personally #46
+- /lock move-approach
+
+I'm always curious about our new guests. #45
+I so rarely take the time to inspect them personally #46
 when they first arrive. #47
 This is a bit of an unexpected treat. #48
 You don't mind, do you? #49
@@ -210,8 +225,8 @@ You don't mind, do you? #49
 + [timeout] That's alright. It's not like you have a choice anyway. #53
 + [distracted!] -> PayAttention -> stand_straight
 
-// make this more instructive. tell the player to kneel. kiss her feet. give them an out option if they don't pose using timeout or no.
 - (stand_straight)
+- (stand_straight_tries)
 
 {cycle:
     - Stand up straight. #54
@@ -220,7 +235,9 @@ You don't mind, do you? #49
 }
 
 + [pose:raised_chin]
-+ [timeout] -> stand_straight
++ { stand_straight_tries < 3 } [timeout] -> stand_straight
++ { stand_straight_tries >= 3 } [timeout] -> CheckIfInterested -> stand_straight
++ [no] -> CheckIfInterested -> stand_straight
 
 - (circle_player)
 
@@ -230,43 +247,65 @@ You don't mind, do you? #49
 
 That's it. #57
 Push your shoulders back and arch that lovely spine.  #58
-Stick that pretty little bottom out. #59
-/wait
-
+Stick that pretty little ass out where I can see it. #59
 
 /wait for:circle_player
 
+Now then...
+
 /perform points_down
 - (kneel)
+- (kneel_tries)
 
 {cycle:
     - Kneel. #54
     - Get down on your knees. #55
     - You belong on your knees. Down. #56
 }
+
++ [pose:kneel]
++ { kneel_tries < 3 } [timeout] -> kneel
++ { kneel_tries >= 3 } [timeout] -> CheckIfInterested -> kneel
++ [no] -> CheckIfInterested -> kneel
+
+- -> GoodJob ->
+
 Mmmmm... so much delicious flesh to work with. #60
 Strong bones and muscles. #61
 You'll need to be flexible, as well. #62
 Oh yes... there is much here we can work with. #63
 
-+ [pose:kneel]
-+ [timeout] -> kneel
-
--> GoodJob ->
-
 /perform crosses_arms
 
 - (present_self)
-    - Arms behind your head.
-    Thrust your chest out.
-    I want to see you present yourself more fully to me.
+- (present_self_tries)
 
-//timeout needs to be revised. may need cycle of options for present-self or timeout repeats command
+Arms behind your head.
+Thrust your chest out. Knees apart.
+I want to see you present yourself more fully to me.
 
 + [pose:present_yourself]
-+ [timeout] -> present_self
++ { present_self_tries < 3 } [timeout] -> present_self
++ { present_self_tries >= 3 } [timeout] -> CheckIfInterested -> present_self
++ [no] -> CheckIfInterested -> present_self
 
--> GoodJob ->
+- -> GoodJob ->
+
+Look at you. So obedient. So ready.
+You may go. But first, a reward.
+You may show me how much you appreciate my instruction.
+/perform present_foot
+You may bow before me and kiss my feet.
+
+- (kiss_feet)
+
+Bow down, kiss, then back to your pose like a good little {player_name}.
+
++ [pose:kiss_feet] -> GoodJob ->
++ [timeout] -> kiss_feet
++ [no] No?!
+    /perform confused
+    Turning down such a reward. You are a strange one.
 
 - That's enough. #64
 You might just prove useful one day, #65
@@ -302,6 +341,31 @@ Bye for now, {player_name}. #70
 
 ->->
 
+= CheckIfInterested
+
+These are the sorts of tasks demanded of you here.
+Are you willing to simply do as I say like a good {player_name}?
+
++ [yes] -> check_yes
++ [no]
+
+- Really?
+We will need to be rid of you if you can't perform.
+Your willingness to serve is, after all, why you are here.
+Do I'll ask one last time:
+Are you willing to perform for your goddess?
+    
++ [yes] -> check_yes
++ [no]
+
+- Then away with you.
+Perhaps another time when you have learned your place.
+-> END
+    
+- (check_yes) -> GoodJob ->
+Then there is hope for you yet.
+->->
+
 = PayAttention
 
 { cycle:
@@ -328,4 +392,24 @@ Bye for now, {player_name}. #70
     - Now... Let's start over.
 }
 
+->->
+
+= DemandApology
+
+/wait
+
+{ cycle:
+    - I am not amused.
+    - Such behaviour is unacceptable.
+    - You are trying my patience, worm.
+}
+
+You will apologize this instant.
+Tell me: Do you beg for my forgiveness?
+
++ [yes]
++ [no] -> CheckIfInterested ->
+- -> GoodJob ->
+You are forgiven.
+Don't let it happen again.
 ->->
