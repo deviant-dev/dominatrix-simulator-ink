@@ -137,11 +137,11 @@ I bet you have no idea where you are, do you?
 
 - (ask_where_complete)
 
-You're just a tiny little fly stuck in my web.
+You're just a tiny little mouse stuck in a maze.
 You may never find your way out again.
 This is no ordinary house, mind you.
 
-/wait    
+/wait
 
 Even so. You are here now.
 And you won't be going anywhere for quite a while.
@@ -155,7 +155,7 @@ Would you like that?
     I think we are off to a good start.
     Don't you?
     ++[yes]
-    Keep this up and I might just take an interest in you.
+        Keep this up and I might just take an interest in you.
     
     ++[no] -> DemandApology ->
         Now... as for a name.
@@ -167,17 +167,15 @@ Would you like that?
 
 + [timeout]
     Cat got your tongue? #26
-    I'll let it go. For now. #27
-    
-+ [distracted!] -> PayAttention -> ask_where
+    Well... I will ignore that for now. #27
 
-- I think... {player_name} will do. #28
+- I will name you... {player_name}. #28
 I expect you to respond to {player_name} from now on. #29
 Until you earn a new name, that is. #30
 Do you understand? #31
 
 + [yes] -> GoodJob ->
-    Good. I am pleased. #32
+    I am pleased. #32
 
 + [no]
     Let's try this again. Your name is now {player_name}. #33
@@ -195,14 +193,17 @@ Do you understand? #31
 
 I really must send you away soon. #41
 But first, let me have a good look at you. #42
--> inspection
 
 - (inspection)
 - (inspection_tries)
 
 /perform amused
 
-Come here. #43
+{cycle:
+    - Come here. #43
+    - Come here, {player_name}.
+    - I <i>said</i> come here!
+}
 
 /unlock move-approach
 
@@ -341,31 +342,6 @@ Bye for now, {player_name}. #70
 
 ->->
 
-= CheckIfInterested
-
-These are the sorts of tasks demanded of you here.
-Are you willing to simply do as I say like a good {player_name}?
-
-+ [yes] -> check_yes
-+ [no]
-
-- Really?
-We will need to be rid of you if you can't perform.
-Your willingness to serve is, after all, why you are here.
-Do I'll ask one last time:
-Are you willing to perform for your goddess?
-    
-+ [yes] -> check_yes
-+ [no]
-
-- Then away with you.
-Perhaps another time when you have learned your place.
--> END
-    
-- (check_yes) -> GoodJob ->
-Then there is hope for you yet.
-->->
-
 = PayAttention
 
 { cycle:
@@ -399,6 +375,7 @@ Then there is hope for you yet.
 /wait
 
 { cycle:
+    - Don't pretend to toy with me.
     - I am not amused.
     - Such behaviour is unacceptable.
     - You are trying my patience, worm.
@@ -407,9 +384,39 @@ Then there is hope for you yet.
 You will apologize this instant.
 Tell me: Do you beg for my forgiveness?
 
-+ [yes]
++ [yes] -> GoodJob ->
 + [no] -> CheckIfInterested ->
-- -> GoodJob ->
-You are forgiven.
+
+- You are forgiven.
 Don't let it happen again.
+->->
+
+= CheckIfInterested
+
+// {CheckIfInterested} -> check_really
+
+These are the sorts of tasks demanded of you here.
+- (check_again)
+Are you willing to simply do as I say like a good {player_name}?
+
++ [yes] -> check_yes
++ [no]
++ [timeout] -> check_again
+
+- (check_really) Really?
+We will need to be rid of you if you can't perform.
+Your willingness to serve is, after all, why you are here.
+So I'll ask one last time:
+Are you willing to perform for your goddess?
+
++ [yes] -> check_yes
++ [no]
+
+- Then away with you.
+Perhaps another time when you are ready to learn your place.
+-> END
+
+- (check_yes) -> GoodJob ->
+There is hope for you yet.
+
 ->->
