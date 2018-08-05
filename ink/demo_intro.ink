@@ -60,7 +60,7 @@ Well, you can't stay here. #19
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
 { isVideo() :
-    -   -> video_jump
+    -   -> DemoEnd
 }
 
 
@@ -88,7 +88,7 @@ Are you? #22
 
 /wait 
 
-I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets.  #28
+I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 - (ask_spying)
 + [yes]
   Of course it did. #29
@@ -157,7 +157,7 @@ Would you like that? #47
     
 + [no]
     /perform amused
-    Too bad.  #53
+    Too bad. #53
     Whatever name you had before is gone. #54
 
 + [timeout]
@@ -309,7 +309,10 @@ but you'll need much more training first. #110
 Off to Mistress Yuki-Onna with you. #111
 I'm sure she can show you the ropes, so to speak. #112
 
-- (video_jump)
+-> DemoEnd
+// -> demo_tutorial
+
+= DemoEnd
 
 /perform snap_fingers
 /scene void
@@ -324,8 +327,9 @@ Bye for now, {player_name}. #113
 
 /wait 5
 
--> DemoEnd
-// -> demo_tutorial
+/scene LogoRoom.EndScreen
+
+-> END
 
 = GoodJob
 
@@ -333,7 +337,7 @@ Bye for now, {player_name}. #113
     - There's a good {player_name}. #114
     - What a good little {player_name}. #115
     - That's my {player_name}. #116
-    - Aren't you the sweetest little thing.  #117
+    - Aren't you the sweetest little thing. #117
     - Very nice. #118
     - That will do just fine. #119
     - Quite satisfying. #120
@@ -372,12 +376,6 @@ Bye for now, {player_name}. #113
 }
 
 ->->
-
-= DemoEnd
-
-/scene LogoRoom.EndScreen
-
--> END
 
 = DemandApology
 
@@ -423,7 +421,7 @@ Are you willing to perform for your goddess? #154
 
 - Then away with you. #155
 Perhaps another time when you are ready to learn your place. #156
--> END
+-> DemoEnd
 
 - (check_yes) -> GoodJob ->
 There is hope for you yet. #157
