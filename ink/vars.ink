@@ -35,3 +35,7 @@ VAR player_safeword = "red"
 // Fallback for isDebug() external function
 === function isDebug() ===
 ~ return false
+
+// Fallback for isVideo() external function
+=== function isVideo() ===
+~ return false

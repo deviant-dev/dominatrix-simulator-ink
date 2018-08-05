@@ -1,14 +1,19 @@
 === demo_intro ===
+
 /scene bedroom.flash1
-/wait 1
+/prop orgy_audio
+/character goddess
+/perform angry
+/wait 3
 /scene bedroom.flash2
-/wait 1
-/scene bedroombroken.flash3
-/wait 1.5
+/wait 3
+/scene bedroom.flash3
+/wait 4
 
 - (jump)
 
 /scene bedroom.intro
+/prop -orgy_audio
 /lock move-approach
 /character goddess
 
@@ -21,7 +26,6 @@ Ah, well... #102
 /perform amused
 
 How did you get in here? #01
-/wait
 Did Mistress Yuki-Onna let you in? #02
 
 /perform unhappy
@@ -48,12 +52,18 @@ Did Mistress Yuki-Onna let you in? #02
     -> ask_entry
 + [distracted] -> PayAttention -> ask_entry2
 
-
-- /wait
-
 /perform unhappy
 
 Well, you can't stay here. #17
+
+
+// Debug Jump
+// (must be in-editor and have 'Debug' checked in StoryTeller)
+{ isVideo() :
+    -   -> video_jump
+}
+
+
 Only the truly exceptional may stay in my presence. #18
 And you are <i>obviously</i> not exceptional. #106
 Are you?#107
@@ -68,16 +78,13 @@ Are you?#107
     Now, that is a very honest answer.#23
     Perhaps I will give you a chance to prove your worth.
     
-+ [timeout] -> ask_exceptional_again
++ (ask_exceptional_again)[timeout]
+    Do you think you're exceptional?
+    -> ask_exceptional
+    
 + [distracted!] -> PayAttention -> ask_exceptional_again
 
-- -> ask_exceptional_continue
-    
-- (ask_exceptional_again)
-    Do you think you're exceptional?
--> ask_exceptional
-
-- (ask_exceptional_continue) /perform amused
+- /perform amused
 
 /wait 
 
@@ -90,25 +97,21 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets.
   
   ++ [yes]
     Well too bad. You haven't earned that privilege yet.
-    -> ask_spying_complete
+    
   ++ [no] -> spying_no
 
-+ [no] -> spying_no
-
++ (spying_no)[no]
+    No? How disappointing.
+    I don't think you're going to be much fun at all.
+    
 + [timeout]
     Be honest now. Spying on me turned you on, didn't it?
     -> ask_spying
     
 + [distracted!] -> PayAttention -> ask_exceptional
 
--(spying_no)
-   No? How disappointing.
-   I don't think you're going to be much fun at all.
+- /perform bored
 
-- (ask_spying_complete)
-/perform bored
-
-/wait
 I bet you have no idea where you are, do you?
  
 - (ask_where)
@@ -117,27 +120,19 @@ I bet you have no idea where you are, do you?
     /perform laugh
     You think you know where you are?
     You have no clue.
-    -> ask_where_complete
     
 + [no]
     /perform agreement
     Of course you don't.
-    -> ask_where_complete
     
-+ [timeout]
-    ->ask_where_again
++ (ask_where_again)[timeout]
+    /perform annoyed 
+    Well... do you have any idea where you are?
+    -> ask_where
     
 + [distracted!] -> PayAttention -> ask_where_again
 
-- (ask_where_again)
-    /perform annoyed 
-    Well... do you have any idea where you are?
--> ask_where
-
-
-- (ask_where_complete)
-
-You're just a tiny little mouse stuck in a maze.
+- You're just a tiny little mouse stuck in a maze.
 You may never find your way out again.
 This is no ordinary house, mind you.
 
@@ -220,7 +215,7 @@ when they first arrive. #47
 This is a bit of an unexpected treat. #48
 You don't mind, do you? #49
 
-+ [yes] How unfortunate. #50
++ [yes] How unfortunate\. #50
     Honestly, I don't even know why I bother asking. #51
 + [no] Mmm... I think someone might be enjoying this. #52
 + [timeout] That's alright. It's not like you have a choice anyway. #53
@@ -314,15 +309,23 @@ but you'll need much more training first. #66
 Off to Mistress Yuki-Onna with you. #67
 I'm sure she can show you the ropes, so to speak. #68
 
+- (video_jump)
+
 /perform snap_fingers #69
 /scene void
+
+/scene bedroombroken
+
+/wait 1.5
+
 /character domina-echo-voice
 
 Bye for now, {player_name}. #70
 
-/wait 2
+/wait 5
 
--> demo_tutorial
+-> DemoEnd
+// -> demo_tutorial
 
 = GoodJob
 
@@ -354,7 +357,7 @@ Bye for now, {player_name}. #70
     - Pay attention to me when you're in my presence.
     - You're trying my patience. Pay attention.
     - Eyes on me, {player_name}.
-    }
+}
 
 + [pay-attention]
 + [timeout] -> PayAttention
@@ -369,6 +372,12 @@ Bye for now, {player_name}. #70
 }
 
 ->->
+
+= DemoEnd
+
+/scene LogoRoom.EndScreen
+
+-> END
 
 = DemandApology
 
@@ -393,7 +402,7 @@ Don't let it happen again.
 
 = CheckIfInterested
 
-// {CheckIfInterested} -> check_really
+{CheckIfInterested > 1: -> check_terse}
 
 These are the sorts of tasks demanded of you here.
 - (check_again)
@@ -403,7 +412,7 @@ Are you willing to simply do as I say like a good {player_name}?
 + [no]
 + [timeout] -> check_again
 
-- (check_really) Really?
+- (check_terse) Really?
 We will need to be rid of you if you can't perform.
 Your willingness to serve is, after all, why you are here.
 So I'll ask one last time:
