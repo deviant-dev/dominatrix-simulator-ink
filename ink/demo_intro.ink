@@ -57,10 +57,10 @@ Did Mistress Yuki-Onna let you in? #05
 Well, you can't stay here. #19
 
 
-// Debug Jump
-// (must be in-editor and have 'Debug' checked in StoryTeller)
+// The 'isVideo()' Jump lets use record the trailer video bits in isolation.
+// Must have 'IsVideo' checked in the StoryTeller component.
 { isVideo() :
-    -   -> DemoEnd
+    - -> DemoEnd
 }
 
 
@@ -104,11 +104,11 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
     No? How disappointing. #33
     I don't think you're going to be much fun at all. #34
     
-+ [timeout]
++ (ask_spying_again)[timeout]
     Be honest now. Spying on me turned you on, didn't it? #35
     -> ask_spying
     
-+ [distracted!] -> PayAttention -> ask_exceptional
++ [distracted!] -> PayAttention -> ask_spying_again
 
 - /perform bored
 
@@ -189,6 +189,7 @@ Do you understand? #60
 I really must send you away soon. #70
 But first, let me have a good look at you. #71
 
+// The second label here is for tracking how many times we've passed by here.
 - (inspection)
 - (inspection_tries)
 
@@ -202,6 +203,7 @@ But first, let me have a good look at you. #71
 
 /unlock move-approach
 
+// Here we adjust the [timeout] option based on how many times we've been through here.
 + [move] -> GoodJob ->
 + { inspection_tries < 3 } [timeout] -> inspection
 + { inspection_tries >= 3 } [timeout] -> CheckIfInterested -> inspection
@@ -230,6 +232,7 @@ You don't mind, do you? #79
     - Chin up, little one. Let me inspect you. #86
 }
 
+// Here we adjust the [timeout] option based on how many times we've been through here.
 + [pose:raised_chin]
 + { stand_straight_tries < 3 } [timeout] -> stand_straight
 + { stand_straight_tries >= 3 } [timeout] -> CheckIfInterested -> stand_straight
@@ -250,6 +253,8 @@ Stick that pretty little ass out where I can see it. #89
 Now then... #90
 
 /perform points_down
+
+// The second label here is for tracking how many times we've passed by here.
 - (kneel)
 - (kneel_tries)
 
@@ -259,6 +264,7 @@ Now then... #90
     - You belong on your knees. Down. #93
 }
 
+// Here we adjust the [timeout] option based on how many times we've been through here.
 + [pose:kneel]
 + { kneel_tries < 3 } [timeout] -> kneel
 + { kneel_tries >= 3 } [timeout] -> CheckIfInterested -> kneel
@@ -273,6 +279,7 @@ Oh yes... there is much here we can work with. #97
 
 /perform crosses_arms
 
+// The second label here is for tracking how many times we've passed by here.
 - (present_self)
 - (present_self_tries)
 
@@ -280,6 +287,7 @@ Arms behind your head. #98
 Thrust your chest out. Knees apart. #99
 I want to see you present yourself more fully to me. #100
 
+// Here we adjust the [timeout] option based on how many times we've been through here.
 + [pose:present_yourself]
 + { present_self_tries < 3 } [timeout] -> present_self
 + { present_self_tries >= 3 } [timeout] -> CheckIfInterested -> present_self
@@ -377,6 +385,8 @@ Bye for now, {player_name}. #113
 
 ->->
 
+
+// This loop allows the player to test the Dominatrix and get kicked out if she is pushed too far via 'CheckIfInterested'.
 = DemandApology
 
 /wait
@@ -398,8 +408,12 @@ Tell me: Do you beg for my forgiveness? #145
 Don't let it happen again. #147
 ->->
 
+
+// This loop makes sure the player is actually interested in continuing the scene.
 = CheckIfInterested
 
+// This checks to see if we've already been here.
+// If so, we jump down to 'check_test' below.
 {CheckIfInterested > 1: -> check_terse}
 
 These are the sorts of tasks demanded of you here. #148
@@ -421,6 +435,8 @@ Are you willing to perform for your goddess? #154
 
 - Then away with you. #155
 Perhaps another time when you are ready to learn your place. #156
+
+// Leaves the demo early.
 -> DemoEnd
 
 - (check_yes) -> GoodJob ->
