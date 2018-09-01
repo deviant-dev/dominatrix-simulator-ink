@@ -1,16 +1,27 @@
+== debug_setup ===
+
+/scene bedroom.intro
+/lock move-approach
+/character goddess
+
+-> demo_intro.debug_jump
+
 === demo_intro ===
 
 /scene bedroom.flash1
 /prop orgy_audio
 /character goddess
 /perform angry
-/wait 3
-/scene bedroom.flash2
-/wait 3
-/scene bedroom.flash3
-/wait 4
 
-- (jump)
++ [wait 3]
+
+- /scene bedroom.flash2
+
++ [wait 3]
+
+- /scene bedroom.flash3
+
++ [wait 4]
 
 /scene bedroom.intro
 /prop -orgy_audio
@@ -57,10 +68,10 @@ Did Mistress Yuki-Onna let you in? #05
 Well, you can't stay here. #19
 
 
-// The 'isVideo()' Jump lets use record the trailer video bits in isolation.
-// Must have 'IsVideo' checked in the StoryTeller component.
+// Debug Jump
+// (must be in-editor and have 'Debug' checked in StoryTeller)
 { isVideo() :
-    - -> DemoEnd
+    -   -> video_jump
 }
 
 
@@ -99,12 +110,18 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
     Well too bad. You haven't earned that privilege yet. #32
     
   ++ [no] -> spying_no
+    
+  ++ (ask_spying_again) [timeout]
+        Be honest now. Spying on me turned you on, didn't it? #35
+        -> ask_spying
+    
+  ++ [distracted!] -> PayAttention -> ask_spying_again
 
 + (spying_no)[no]
     No? How disappointing. #33
     I don't think you're going to be much fun at all. #34
     
-+ (ask_spying_again)[timeout]
++ [timeout]
     Be honest now. Spying on me turned you on, didn't it? #35
     -> ask_spying
     
@@ -189,7 +206,8 @@ Do you understand? #60
 I really must send you away soon. #70
 But first, let me have a good look at you. #71
 
-// The second label here is for tracking how many times we've passed by here.
++ [continue]
+
 - (inspection)
 - (inspection_tries)
 
@@ -203,10 +221,9 @@ But first, let me have a good look at you. #71
 
 /unlock move-approach
 
-// Here we adjust the [timeout] option based on how many times we've been through here.
 + [move] -> GoodJob ->
-+ { inspection_tries < 3 } [timeout] -> inspection
-+ { inspection_tries >= 3 } [timeout] -> CheckIfInterested -> inspection
++ { inspection_tries < 2 } [timeout] -> inspection
++ { inspection_tries >= 2 } [timeout] -> CheckIfInterested -> inspection
 + [distracted!] -> PayAttention -> inspection
 
 - /lock move-approach
@@ -232,15 +249,15 @@ You don't mind, do you? #79
     - Chin up, little one. Let me inspect you. #86
 }
 
-// Here we adjust the [timeout] option based on how many times we've been through here.
 + [pose:raised_chin]
-+ { stand_straight_tries < 3 } [timeout] -> stand_straight
-+ { stand_straight_tries >= 3 } [timeout] -> CheckIfInterested -> stand_straight
++ { stand_straight_tries < 2 } [timeout] -> stand_straight
++ { stand_straight_tries >= 2 } [timeout]
+// + { stand_straight_tries >= 2 } [timeout] -> CheckIfInterested -> stand_straight
 + [no] -> CheckIfInterested -> stand_straight
 
-- (circle_player)
+-> GoodJob -> circle_player
 
--> GoodJob ->
+- (circle_player)
 
 /perform circle_player
 
@@ -253,8 +270,6 @@ Stick that pretty little ass out where I can see it. #89
 Now then... #90
 
 /perform points_down
-
-// The second label here is for tracking how many times we've passed by here.
 - (kneel)
 - (kneel_tries)
 
@@ -264,22 +279,21 @@ Now then... #90
     - You belong on your knees. Down. #93
 }
 
-// Here we adjust the [timeout] option based on how many times we've been through here.
 + [pose:kneel]
-+ { kneel_tries < 3 } [timeout] -> kneel
-+ { kneel_tries >= 3 } [timeout] -> CheckIfInterested -> kneel
++ { kneel_tries < 2 } [timeout] -> kneel
++ { kneel_tries >= 2 } [timeout]
+//+ { kneel_tries >= 2 } [timeout] -> CheckIfInterested -> kneel
 + [no] -> CheckIfInterested -> kneel
 
-- -> GoodJob ->
+- -> GoodJob -> start_kneel
 
-Mmmmm... so much delicious flesh to work with. #94
+- (start_kneel) Mmmmm... so much delicious flesh to work with. #94
 Strong bones and muscles. #95
 You'll need to be flexible, as well. #96
 Oh yes... there is much here we can work with. #97
 
 /perform crosses_arms
 
-// The second label here is for tracking how many times we've passed by here.
 - (present_self)
 - (present_self_tries)
 
@@ -287,25 +301,28 @@ Arms behind your head. #98
 Thrust your chest out. Knees apart. #99
 I want to see you present yourself more fully to me. #100
 
-// Here we adjust the [timeout] option based on how many times we've been through here.
 + [pose:present_yourself]
-+ { present_self_tries < 3 } [timeout] -> present_self
-+ { present_self_tries >= 3 } [timeout] -> CheckIfInterested -> present_self
++ { present_self_tries < 2 } [timeout] -> present_self
++ { present_self_tries >= 2 } [timeout]
+//+ { present_self_tries >= 2 } [timeout] -> CheckIfInterested -> present_self
 + [no] -> CheckIfInterested -> present_self
 
-- -> GoodJob ->
+- -> GoodJob -> start_kiss_feet
 
-Look at you. So obedient. So ready. #101
+- (start_kiss_feet) Look at you. So obedient. So ready. #101
 You may go. But first, a reward. #102
 You may show me how much you appreciate my instruction. #103
 /perform present_foot
 You may bow before me and kiss my feet. #104
 
 - (kiss_feet)
+- (kiss_feet_tries)
 
 Bow down, kiss, then back to your pose like a good little {player_name}. #105
 
 + [pose:kiss_feet] -> GoodJob ->
++ { kiss_feet_tries < 2 } [timeout] -> kiss_feet
++ { kiss_feet_tries >= 2 } [timeout]
 + [timeout] -> kiss_feet
 + [no] No?! #106
     /perform confused
@@ -317,10 +334,9 @@ but you'll need much more training first. #110
 Off to Mistress Yuki-Onna with you. #111
 I'm sure she can show you the ropes, so to speak. #112
 
--> DemoEnd
-// -> demo_tutorial
+- (video_jump)
+- (debug_jump)
 
-= DemoEnd
 
 /perform snap_fingers
 /scene void
@@ -329,15 +345,22 @@ I'm sure she can show you the ropes, so to speak. #112
 
 /wait 1.5
 
-/character domina-echo-voice
+/character goddess-huge
 
 Bye for now, {player_name}. #113
 
 /wait 5
 
-/scene LogoRoom.EndScreen
+{ isDebug() :
+    -> debug_again
+}
 
--> END
+-> DemoEnd
+// -> demo_tutorial
+
+- (debug_again)
+    + [yes] -> debug_jump
+    + [no] -> DemoEnd
 
 = GoodJob
 
@@ -385,8 +408,12 @@ Bye for now, {player_name}. #113
 
 ->->
 
+= DemoEnd
 
-// This loop allows the player to test the Dominatrix and get kicked out if she is pushed too far via 'CheckIfInterested'.
+/scene LogoRoom.EndScreen
+
+-> END
+
 = DemandApology
 
 /wait
@@ -408,12 +435,8 @@ Tell me: Do you beg for my forgiveness? #145
 Don't let it happen again. #147
 ->->
 
-
-// This loop makes sure the player is actually interested in continuing the scene.
 = CheckIfInterested
 
-// This checks to see if we've already been here.
-// If so, we jump down to 'check_test' below.
 {CheckIfInterested > 1: -> check_terse}
 
 These are the sorts of tasks demanded of you here. #148
@@ -435,8 +458,6 @@ Are you willing to perform for your goddess? #154
 
 - Then away with you. #155
 Perhaps another time when you are ready to learn your place. #156
-
-// Leaves the demo early.
 -> DemoEnd
 
 - (check_yes) -> GoodJob ->
