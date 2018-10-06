@@ -5,6 +5,16 @@ INCLUDE playtime_yuki.ink
 
 VAR web = true
 
+-> table_of_contents
+
+=== table_of_contents ===
+
++ Test Intro -> start_intro
++ Test Yuki -> demo_tutorial
+
+
+=== start_intro ===
+
 <blockquote><i>NOTE: This is a quick test for the script that runs the game's introduction.</i></blockquote>
 
 <blockquote><i>Two nude statues kneel before you with outstretched hands, one male and one female. Which would you choose?</i></blockquote>
