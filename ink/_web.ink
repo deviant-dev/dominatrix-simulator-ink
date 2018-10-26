@@ -10,7 +10,7 @@ VAR web = true
 === table_of_contents ===
 
 + Test Intro -> start_intro
-+ Test Yuki -> demo_tutorial
++ Test Yuki 2.0 -> demo_tutorial
 
 
 === start_intro ===
