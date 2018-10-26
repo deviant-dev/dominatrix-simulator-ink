@@ -11,7 +11,7 @@ VAR kinks_no = ()
 // Accepts specific activity names as well as "tag:<activity_tag>"
 VAR load_activity = ""
 
-VAR player_name = "none"
+VAR player_name = "boy"
 VAR player_safeword = "red"
 
 // function to set a kink's preference

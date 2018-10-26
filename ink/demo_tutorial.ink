@@ -18,10 +18,10 @@
 
 /perform bounces
 
-I’ve been waiting for you to get here.
-My name is Mistress Yuki-Onna.
+I’ve been waiting for you.
+I'm  Mistress Yuki-Onna.
 
-/perform giggles
+/perform serious
 
 It’s my job to make sure all new arrivals are processed 
 and taught the basics of how to behave 
@@ -38,17 +38,17 @@ Do you know why you're here?
     
     /perform sighs
     
-    Well, let's go through the basics at least, 
+    Well, let's go through the basics anyways, 
     to make sure you have the right information. 
     
     /wait
     
 + [no]
     Well, duh!
-    You're not supposed to know anything.
+    You're not supposed to know.
     That's the fun part!
     
-    /perform claps_hands
+    /perform clasp_hands
     
 + [timeout]
     Hello-o
@@ -62,7 +62,7 @@ Do you know why you're here?
 You are a guest of Threshold House.
 Well, we call it a house, but it's not really one...
 
-/perform muses 
+/perform thoughtful
 /perform serious
 
 All guests must follow the rules
@@ -72,20 +72,25 @@ or they will not be allowed to stay.
 Would you like to know what the rules are?
 
 + [yes]
+/perform excited
 Oh goody! I love telling people the house rules!
 
 + [no]
+/perform disappointed
 Don't be a pouty baby.
 You have to learn the rules or you can't be a good {player_name}!
 
 + [timeout]
-Did you forget the question?
+/perform confused
+You aren't listening very well.
     -> learn_rules
     
 + [distracted] -> PayAttention -> learn_rules
     
 /wait
+- (two_rules)
 
+/perform bounces
 The rules are simple!
 And there are only two of them!
 
@@ -118,244 +123,235 @@ Are you still listening?
     -> easy_rules
     
 + [distracted] -> PayAttention -> easy_rules
+
+- /perform squirm
+
+You are a cute one! I really hope you do well here!
+I'm only allowed to play with with the good ones!
+
+/character nega
+/perform saunter
+
+- (nega_interruption)
+Oh please! You're always such a good girl,
+never having any fun.
+Don't you want to live a little?
+Bend the rules once in a while and really let loose?
+
+/perform approach_yuki
+//use whisper voice
+I know you do. 
+I know you're deepest, darkest secrets.
+Remember?
+
+/character Yuki
+You just stop that right now, Nega-Yuki!
+I want my own room someday. 
+There's no way I'm breaking the rules!
+I really want the Goddess to be pleased with me.
+
+/character nega
+/perform scoffs
+Ugh.. You're such a goody two-shoes.
+It's so much more fun when you bend the rules once in a while.
+
+-(new_one)
+So. You're the new one, hrm?
+
++ [yes]
+/perform inspect
+Not too bad. You have potential.
+Though, I'm not too picky.
+
++[no]
+/perform laugh
+Not new, huh?
+This one is more confused than most.
+
++ [timeout]
+/perform confused
+Are you stupid, or something?
+I asked you if you're new here.
+    -> new_one
     
-/wait
-Let's practice answering questions!
-/perform waves_feather_duster
++ [distracted] -> PayAttention -> new_one
+
+
+/perform sneer
+- Have you figured out what's going on here yet?
+-(going_on)
++[yes]
+Hrm. You might be smarter than you look, {player_name}.
+We'll find out soon enough.
+Although, honestly, the dumb ones make better fuck toys.
+
++ [no]
+/perform rolls_eyes
+Typical. She always wants them to learn the hard way.
     
-- (answering_name)
-    Is your name {player_name}?
+    /perform amused
+    I think I should tell [pronoun].
+    /character Yuki
+    Don't you dare!
+    The Goddess will be so angry with you!
+    /character nega
+    Oh fine, party pooper!
+    I guess I'll just make [pronoun] my fuck toy instead.
+    -> genitals
     
-    + [yes]
-        You've got it! You answered my question.
-        /perform bounces
++ [timeout]
+/perform confused
+Are you stupid, or something?
+I asked you if you're new here?
+    -> going_on
     
-    + [no]
-        Yes, it is, silly! But good job <i>trying</i> to answer my question!
-        /perform wags_feather_duster
+
+- /perform breast_squeeze
+I bet that [insert way to reference genitals by gender selection] of yours works just fine.
+Let's find out. Shall we?
+-(genitals)    
++[yes]
+/perform amused
+Ooo. I'm going to like this one. [Pronoun] likes to be naughty.
+
++[no]
+/perform bored
+Oh great. Another spoil-sport, just like you Yuki.
+
++[timeout]
+Should we find out how well your [genitals] works?
+    -> genitals
     
-    + [timeout]
-        Come on. You can do it.
-        /perform smile
-        -> answering_name
++[distracted] -> PayAttention -> genitals
+-
+/character Yuki
+/perform flustered
+Behave, Nega! 
+
+/character nega
+/perform caress_genitals
+
+That's it...Let me feel your [insert gender reference: cock swell, pussy dampen].
+Mmmm. Just as I thought.
+You want to be a little fuck toy, don't you?
+
+-(caress_genitals)
++[yes]
+/perform chuckle
+What a naughty {player_name}.
+I feel how [hard, wet] you are.
+Do you want to be my fuck toy?
+    ++[yes]
+    Too bad. I only use fuck toys that have something to give me first.
+    And you have nothing I want.
+    /perform straighten_up
     
-    + [distracted] -> PayAttention -> answering_name
+    ++[no]
+    No? You don't like me?
+    Awww. But I'm way more fun that that uptight bitch.
+    /perform head_toss
     
-- (answering_good)
-    Are you a good {player_name}?
+    ++[timeout]
+    I must be boring you.
     
-    + [yes]
-       You did it! You answered my question.
-       That makes you a good {player_name}
-        /perform twirls
++[no] 
+/perform head_toss
+What a prude. You'll change your mind soon enough.
+They always do.
+
++[timeout]
+Well, do you want to be used and abused?
+-> caress_genitals
+
+- The Mistresses here are going to have fun 
+tearing that little ass of yours up.
+
+/perform approach
+//nega whispers
+Tick tock little mouse.
+You might want to run.
+You're trapped in this house.
+And we own your cum.
+/perform laugh
+
++ [wait 5]
+-
+/character Yuki
+/perform foot_stomp
+That's enough, Nega!
+No more fun and games for you.
+I'll be reporting you to the Headmistress straight away.
+
+/character nega
+I'll see you again soon, little mouse.
+/perform nega_exit
+
++ [wait 5]
+-
+/character Yuki
+/perform blush
+I just hate her.
+
+/perform thoughtful
+Now... where was I?
+Right! The house!
+
+/perform happy
+Don't listen to her, by the way.
+This is a great house. 
+And you're going to learn a lot!
+Goddess has invited lots of Mistresses and Dominas to live here.
+
++ [wait 5]
+-
+/perform serious
+If you work real hard and be the best {player_name} you can be,
+you might be lucky enough to earn a reward from your favorite Mistress!
     
-    + [no]
-        No? Well, that's okay.
-        We have Mistresses who can help you be a good {player_name}.
-        /perform wags_feather_duster
-    
-    + [timeout]
-        Practice makes perfect!
-        /perform smile
-        -> answering_good
-    
-    + [distracted] -> PayAttention -> answering_good
+If you misbehave or struggle too much with instructions,
+you might earn a punishment.
 
-- Now. Let's try obeying.
+The worst part is you can't collect any rewards 
+until you've paid off all your punishment marks.
 
-/wait
+/perform check_clipboard
+And I see you already have one of each mark on your record.
 
-- (obeying)
-    Kneel on the floor, {player_name}.
-    /perform point_at_floor
-    
-    + [pose:kneel]
-        You did it! I'm so proud of you!
-        /perform bounces
-    + [timeout]
-        Come on. You can do it.
-        /perform smile
-        Kneel, {player_name}!
-        /perform point_at_floor
-        -> obeying
+One punishment for sneaking into the Goddes' room.
+Naughty {player_name}
 
- - (house_description)  
-    Oh yes. I guess I better explain how it all works. 
-    Goddess has invited lots of Mistresses and Dominas to live here.
-    This house is just filled with so many hot and sexy boss ladies!
-    If you work real hard and be the best {player_name} you can be,
-    you might be lucky enough to serve each one!
-    /wait
-    Before you meet them,
-    I have to make sure you know your own limits and desires, though,
-    so you are properly prepared for what they offer.
+One reward for catching the Goddess' interest.
+Well done!
 
-- (know_preferences)
-    Do you know what your limits and desires are?
-        
-    +[yes]
-        Oh good! Then it should be easy to answer my questions.
-        
-    +[no]
-        That's okay! I ask good questions, so we can learn together!
-        
-    +[timeout]
-        You're not going to start breaking the rules are you?
-        You have to answer questions when you're asked.
-        -> know_preferences
++ [wait 5]
+-
+/perform approach
+Watch out for that awful Nega-Yuki. She's a bad seed!
+All the naughty parts of me I tossed aside.
 
-- (preferences)
+/perform serious
+She'll try to tempt you to give her your rewards for her own use
+in exchange for a good time.
 
-    Make sure you answer honestly. If you don't, you might encounter unpleasant surprises in the house.
-    
-    /perform pouts
-    
-    Anything you tell me NO is off the table.
-    Goddess doesn't want her guests damaged... too much.
-    Whatever you say YES to may become an opportunity for you
-    with our Mistresses and Dominas.
+/perform annoyed
+But it's just a trick!
+She won't always reward you and if you get caught,
+you'll be punished!
 
-- (ready)
++ [wait 5]
+- 
+/perform check_clipboard
 
-    Are you ready?
-    
-    +[yes]
-        Okay! I bet you have a dirty mind. At least I hope so!
-        Those are the yummiest. Let's find out!
-        /change yuki yuki_with_clipboard
-        /perform ready_clipboard
-    
-    +[no]
-        Oh too bad. We can't keep playing if you aren't ready.
-        -> ready
-            
-    +[timeout]
-        Let's try this again.
-        I'm going to ask you to admit your sexual desires to me.
-        These are things you might get to explore in the house, if your Mistress or Domina offers it.
-        -> ready
-    
-    +[distracted!] -> PayAttention ->
-        -> ready
+Great! That's everything I have to cover in my notes!
+Time for for you to go see Headmistress Sonia.
+She will teach you how to properly take a punishment.
 
-- (ask_bondage)
+/perform bounces
+Hurry up now!
+She doesn't like to be kept waiting.
 
-    Do you like the idea of being tied up and used?
-
-    +[yes]
-        Mmmm. One of my favorite things to do.
-        ~set_kink(bondage, yes)
-        ~set_kink(sextoy,  yes)
-
-    +[no]
-        How disappointing. Oh well.
-        ~set_kink(bondage, no)
-        ~set_kink(sextoy,  no)
-
-    +[timeout]
-        I'm waiting. -> ask_bondage
-
-- (ask_discipline) Are you a naughty little {player_name} who needs to be punished now and then?
-
-    +[yes]
-        I do so love a good spanking. {set_kink(discipline, yes)}
-    
-    +[no]
-        Hrmmm. There are lots of other things to play instead. {set_kink(discipline, no)}
-    
-    +[timeout]
-        Making me wait won't earn you a spanking.
-        -> ask_discipline
-
-- Oh, I know! You're a worthless slut who isn't worthy of attention. Is that it?
-- (ask_humiliation)
-
-    +[yes]
-        Of course you're a dirty little slut. Yum!
-        Don't worry. You can grovel for a Mistress or Domina soon.
-        ~set_kink(humiliation, yes)
-
-    +[no]
-        Sigh. Oh well. There are other ways to play with you. {set_kink(humiliation, no)}
-  
-    +[timeout]
-        I'm waiting.
-        Are you a worthless slut unworthy of attention?
-        -> ask_humiliation
-
-- (ask_worship) Do you dream of worshipping your Goddess' form?
-
-    +[yes]
-        Ooo, you will get lots of chances to worship. {set_kink(worship, yes)}
-    
-    +[no]
-        A shame. Worshipping is nice. {set_kink(worship, no)}
-   
-    +[timeout]
-        You're not paying attention. -> ask_worship
-
-- (ask_training) Do you strive for perfection in service?
-
-    +[yes] It will be so much fun to mold you and shape you into a perfect slave. {set_kink(training, yes)} 
-    
-    +[no] That's fine. I have plenty of other things to work with. {set_kink(training, no)} 
-    
-    +[timeout] I don't like waiting. -> ask_training
-    
-    - -> set_safeword
-
-
-= set_safeword
-    
-    You've been such a good {player_name} so far!
-    
-    /perform twirls
-    
-    I have lots of delicious ideas to work with and share with all the other Mistresses and Dominas.
-
-    Just a little longer...
-    We have one more thing to discuss before I can truly make you mine.
-    Do you know what a safeword is?
-
-    +[yes]
-        Good. You will need to have a safeword for us to play together.
-        It's important we stop when you've had enough
-        and I will never be upset with you for using it.
-
-    +[no]
-        When we play, sometimes it can be very rough, sometimes to your limits.
-        When you've reached your limits, I want you to use a 'safeword'
-        that will tell me it is time to stop and take care of you.
-        Having and using a 'safeword' is how we keep you safe.
-
-- (ask_safeword) We can use 'red', 'stop', 'pineapple', or 'safe word'. Which do you prefer?
-    + [button:'Red']
-        ~player_safeword="Red"
-    + [button:'Stop']
-        ~player_safeword="Stop"
-    + [button:'Pineapple']
-        ~player_safeword="Pineapple"
-    + [button:'Safe Word']
-        ~player_safeword="Safe Word"
-    + [timeout]
-        Speak up and let's stick to the script, shall we? 
-        -> ask_safeword
-
-    - (listen) {So|Do} you want your safe word to be "{player_safeword}"?
-    + [yes]
-    + [no] -> ask_safeword
-    + [timeout] Let's try that again. -> listen
-
-- Great! Says here in my notes, you are ready to serve!
-
-/change yuki_with_clipboard yuki
-
-And you know what?
-After all this hard work, I think <i>I</i> deserve a little reward.
-Don't you?
-Before you run off and go get yourself in trouble again,
-you have to practice with me!
--> playtime_yuki
+//need to know how player gets to next room
+-> END
 
 = PayAttention
 
