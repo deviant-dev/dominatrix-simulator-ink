@@ -3,9 +3,30 @@ INCLUDE goddess_intro.ink
 INCLUDE yuki_intro.ink
 INCLUDE yuki_reward_bathe.ink
 
+
+
+EXTERNAL isDebug()
+
 VAR web = true
 
--> table_of_contents
+// Debug Jump
+// (must be in-editor and have 'Debug' checked in StoryTeller)
+{ isDebug() :
+    - ~ player_name = "boy" 
+        -> debug_setup
+}
+
+// Debug Jump
+// (must be in-editor and have 'Video' checked in StoryTeller)
+{ isVideo() :
+    - ~ player_name = "boy" 
+        -> demo_intro.video_jump
+}
+
+{ web :
+    - -> table_of_contents
+	- else : -> demo_intro
+}
 
 === table_of_contents ===
 
