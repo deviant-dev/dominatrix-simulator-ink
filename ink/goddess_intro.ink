@@ -6,7 +6,7 @@
 /lock move-approach
 /character goddess
 
--> demo_intro.stand_straight
+// -> demo_intro.stand_straight
 -> demo_intro.inspection
 -> demo_intro.debug_jump
 
