@@ -128,7 +128,23 @@ Are you still listening?
 
 You are a cute one! I really hope you do well here!
 I'm only allowed to play with with the good ones!
+- (good_yuki)
+Do you want to be a good {player_name}?
 
++[yes]
+/perform bounces
+Yay! We'll have so much fun together!
+
++[no]
+/perform pouty
+Oh darn. I really hope you'll change your mind.
+
++[timeout]
+Hello? Anybody home?
+-> good_yuki
+
++[distracted] -> PayAttention -> good_yuki
+-
 /character nega
 /perform saunter
 
@@ -138,12 +154,19 @@ never having any fun.
 Don't you want to live a little?
 Bend the rules once in a while and really let loose?
 
+/character Yuki
+/perform scoff
+Ugh.
+
+/character nega
 /perform approach_yuki
 //use whisper voice
 I know you do. 
 I know you're deepest, darkest secrets.
 Remember?
-
+ -
+ +[wait 5]
+ 
 /character Yuki
 You just stop that right now, Nega-Yuki!
 I want my own room someday. 
