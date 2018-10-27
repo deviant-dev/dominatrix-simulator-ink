@@ -1,7 +1,7 @@
 INCLUDE vars.ink
-INCLUDE demo_intro.ink
-INCLUDE demo_tutorial.ink
-INCLUDE playtime_yuki.ink
+INCLUDE goddess_intro.ink
+INCLUDE yuki_intro.ink
+INCLUDE yuki_reward_bathe.ink
 
 VAR web = true
 
