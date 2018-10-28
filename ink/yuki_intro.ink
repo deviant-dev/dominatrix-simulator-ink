@@ -179,7 +179,7 @@ Ugh.. You're such a goody two-shoes.
 It's so much more fun when you bend the rules once in a while.
 
 -(new_one)
-So. You're the new one, huh?
+So. You're the new one, hrm?
 
 + [yes]
 /perform inspect
@@ -201,33 +201,11 @@ I asked you if you're new here.
 
 
 /perform sneer
-- I bet she's been having so much fun
-explaining the rules to you 
-and telling you how to be a good {player_name},
-hasn't she?
-
-+[yes]
-/perform bored
-Boring.
-
-+[no]
-/perform pleased
-A little liar. 
-We're going to get along just fine.
-
-+[timeout]
-
--/perform scoff
-Don't let her fool you. 
-She's not as sweet and innocent as she lets on.
-
 - Have you figured out what's going on here yet?
 -(going_on)
 +[yes]
-/perform curious
-Hmmm. You might just be smarter than you look, {player_name}.
+Hrm. You might be smarter than you look, {player_name}.
 We'll find out soon enough.
-/perform sassy
 Although, honestly, the dumb ones make better fuck toys.
 
 + [no]
@@ -237,13 +215,12 @@ Typical. She always wants them to learn the hard way.
     /perform amused
     I think I should tell [pronoun].
     /character Yuki
-    /perform frustrated
     Don't you dare!
     The Goddess will be so angry with you!
     /character nega
-    /perform interested
     Oh fine, party pooper!
     I guess I'll just make [pronoun] my fuck toy instead.
+    -> genitals
     
 + [timeout]
 /perform confused
@@ -255,7 +232,6 @@ I asked you if you're new here?
 - /perform breast_squeeze
 I bet that [insert way to reference genitals by gender selection] of yours works just fine.
 Let's find out. Shall we?
-
 -(genitals)    
 +[yes]
 /perform amused
@@ -330,19 +306,16 @@ No more fun and games for you.
 I'll be reporting you to the Headmistress straight away.
 
 /character nega
-/perform laugh
 I'll see you again soon, little mouse.
 /perform nega_exit
 
 + [wait 5]
 -
 /character Yuki
-/perform angry
+/perform blush
 I just hate her.
 
-+[wait 3]
-
-- /perform thoughtful
+/perform thoughtful
 Now... where was I?
 Right! The house!
 
@@ -352,20 +325,7 @@ This is a great house.
 And you're going to learn a lot!
 Goddess has invited lots of Mistresses and Dominas to live here.
 
-/perform serious
-Would you like me to tell you more about the House?
-
-+[yes]
-Good. I'm glad Nega-Yuki didn't distract you too much.
-Your poor [genitals] must be aching after that.
-
-+[no]
-/perform frown
-Don't let that Nega-Yuki make you naughty.
-You have to know how the House works.
-
-+[timeout]
-
++ [wait 5]
 -
 /perform serious
 If you work real hard and be the best {player_name} you can be,
@@ -374,41 +334,20 @@ you might be lucky enough to earn a reward from your favorite Mistress!
 If you misbehave or struggle too much with instructions,
 you might earn a punishment.
 
-/perform sad
 The worst part is you can't collect any rewards 
 until you've paid off all your punishment marks.
-
-/perform idle
-Do you understand that you will earn both
-rewards and punishments for your service here?
-
-+[yes]
-/perform nod 
-Good listening!
-
-+[no]
-Tsk tsk. It's not good to make a Mistress repeat herself.
-Ahem. When you visit a Mistress and are required to serve,
-you will be evaluated for your performance.
-You will earn a mark for good behavior or bad behavior.
-All bad marks earn you punishments.
-You will have to serve all your punishments before
-you can receive your reward.
-
--
-+[wait 5]
 
 /perform check_clipboard
 And I see you already have one of each mark on your record.
 
 One punishment for sneaking into the Goddes' room.
-Naughty {player_name}.
+Naughty {player_name}
 
-Amd one reward for catching the Goddess' interest.
+One reward for catching the Goddess' interest.
 Well done!
 
--
 + [wait 5]
+-
 /perform approach
 Watch out for that awful Nega-Yuki. She's a bad seed!
 All the naughty parts of me I tossed aside.
@@ -422,8 +361,8 @@ But it's just a trick!
 She won't always reward you and if you get caught,
 you'll be punished!
 
--
 + [wait 5]
+- 
 /perform check_clipboard
 
 Great! That's everything I have to cover in my notes!
