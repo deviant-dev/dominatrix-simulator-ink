@@ -2,6 +2,12 @@ INCLUDE vars.ink
 INCLUDE goddess_intro.ink
 INCLUDE yuki_intro.ink
 INCLUDE yuki_reward_bathe.ink
+INCLUDE Yuki_Review
+INCLUDE Nega_Temptation
+INCLUDE Headmistress_Intro
+
+
+
 
 
 // EXTERNAL isDebug()
@@ -31,6 +37,7 @@ VAR web = true
 
 + Test Intro -> start_intro
 + Test Yuki 2.1 -> demo_tutorial
++ Test Nega 1.0 -> nega_temptation
 
 
 === start_intro ===

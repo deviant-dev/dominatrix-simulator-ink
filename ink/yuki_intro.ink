@@ -332,6 +332,7 @@ I'll be reporting you to the Headmistress straight away.
 /character nega
 /perform laugh
 I'll see you again soon, little mouse.
+Come find me when you've earned a reward.
 /perform nega_exit
 
 + [wait 5]
