@@ -15,9 +15,6 @@ VAR isBoy = true
 VAR player_name = "boy"
 VAR player_he = "he"
 VAR player_him = "him"
-VAR player_cock = "cock"
-VAR player_dick = "dick"
-VAR player_penis = "penis"
 VAR player_safeword = "red"
 
 // function to set a kink's preference
@@ -53,17 +50,11 @@ VAR player_safeword = "red"
         ~ player_name = "boy"
         ~ player_he = "he"
         ~ player_him = "him"
-        ~ player_cock = "cock"
-        ~ player_dick = "dick"
-        ~ player_penis = "penis"
     - gender == "f":
         ~ isBoy = false
         ~ player_name = "girl"
         ~ player_he = "she"
         ~ player_him = "her"
-        ~ player_cock = "cunt"
-        ~ player_dick = "pussy"
-        ~ player_penis = "vagina"
 }
 
 ~ return

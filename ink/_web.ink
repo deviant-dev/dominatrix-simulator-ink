@@ -3,9 +3,9 @@ INCLUDE game_intro.ink
 INCLUDE goddess_intro.ink
 INCLUDE yuki_intro.ink
 INCLUDE yuki_reward_bathe.ink
-INCLUDE Yuki_Review
-INCLUDE Nega_Temptation
-INCLUDE Headmistress_Intro
+INCLUDE yuki_review.ink
+INCLUDE nega_temptation.ink
+INCLUDE headmistress_intro.ink
 
 
 
@@ -39,9 +39,9 @@ VAR web = true
 
 + Test Intro
     -> game_intro_web
-+ Test Yuki 2.1
++ Test Yuki 2.2
     -> yuki_intro
-+ Test Nega 1.0
++ Test Nega 0.1
     -> nega_temptation
 
 

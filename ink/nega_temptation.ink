@@ -1,4 +1,5 @@
 === nega_temptation ===
+{ web: -> select_gender -> }
 
 /scene burned_room
 /character nega
@@ -11,9 +12,10 @@
 
     + [Continue]
 - else:
-    -> start_temptation
+    -> start
 }
-- (start_temptation)
+
+- (start)
 /perform bored
 Don't worry, pretty {player_name}.
 Expect that to happen once in a while.
@@ -27,33 +29,35 @@ You get used to it.
 
 +[wait]
 
+- (give_reward)
+
 You have something I want.
 /perform lean_forward
 And you're going to give it to me.
 Aren't you?
 
-- (give_reward)
-+[yes]
-That's right.
-You're going to give me that reward marker
-and I might give you something in return.
++ [yes]
+    That's right.
+    You're going to give me that reward marker
+    and I might give you something in return.
 
-+[no]
-I would think twice about that if I were you.
-Are you sure you don't want to give me your reward marker?
++ [no]
+    I would think twice about that if I were you.
+    Are you sure you don't want to give me your reward marker?
+    
     ++[yes]
-    Stop wasting my time!
-    Get out of here.
+        Stop wasting my time!
+        Get out of here.
     
     ++[no]
-    Very good. 
-    I can be a lot of fun with the right guest.
+        Very good. 
+        I can be a lot of fun with the right guest.
     
-+[timeout]
-Well, do you want to be used and abused?
--> give_reward
++ [timeout]
+    Well, do you want to be used and abused?
+    -> give_reward
 
-+[distracted]
++[distracted] -> PayAttention -> give_reward
 
 -
 -> END
@@ -63,7 +67,7 @@ Well, do you want to be used and abused?
 { cycle:
     - You're not very good at this yet, are you?
     You're supposed to look at me when I'm talking.
-    - Bad {player_name}! You should look at me when I speak to you.
+    - Bad {isBoy:prick|cunt}! You should look at me when I speak to you.
     - Oh gee. You need a lot of training. Look at me.
     - Didn't anyone ever teach you to look at people 
     when they're speaking to you?

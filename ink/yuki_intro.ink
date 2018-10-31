@@ -1,12 +1,11 @@
 === yuki_intro ===
+{ web: -> select_gender -> }
 
 /scene foyer
 /character yuki
 /equip feather_duster
 
 { web:
-    -> select_gender ->
-    
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
 
     <blockquote><i>You stand inside a large Victorian foyer with a sweeping staircase and several sets of doors leading off of it. The room is fairly well lit, but all of the doors are shrouded in shadows. Before you stands a lithe, young woman dressed in a maid's uniform. Beaming a bright smile, she greets you...</i></blockquote>
@@ -249,7 +248,7 @@ Have you figured out what's going on here yet?
     
 
 - /perform breast_squeeze
-I bet that {player_cock} of yours works just fine.
+I bet that {isBoy:cock|cunt} of yours works just fine.
 Let's find out. Shall we?
 
 -(genitals)
@@ -263,7 +262,7 @@ Let's find out. Shall we?
     Oh great. Another spoil-sport, just like you Yuki.
 
 + [timeout]
-    Should we find out how well your {player_dick} works?
+    Should we find out how well your {isBoy:dick|pussy} works?
     -> genitals
     
 + [distracted] -> PayAttention -> genitals
@@ -353,7 +352,7 @@ Would you like me to tell you more about the House?
 
 +[yes]
 Good. I'm glad Nega-Yuki didn't distract you too much.
-Your poor {player_dick} must be aching after that.
+Your poor {isBoy:penis|pussy} must be aching after that.
 
 +[no]
 /perform frown
