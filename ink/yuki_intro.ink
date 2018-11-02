@@ -13,6 +13,8 @@
     + [Start]
 }
 
+VAR obedience = 0
+
 - (start) Oh! There you are!
 
 /perform bounces
@@ -32,9 +34,10 @@ while you’re a guest in Goddess’s home.
 Do you know why you're here?
 
  + [yes]
+  ~ obedience++
     I don't see how you'd know that already.
     Someone must have told you.
-    
+   
     /perform sighs
     
     Well, let's go through the basics anyways, 
@@ -43,6 +46,7 @@ Do you know why you're here?
     /wait
     
 + [no]
+~ obedience--
     Well, duh!
     You're not supposed to know.
     That's the fun part!
@@ -71,10 +75,12 @@ or they will not be allowed to stay.
 Would you like to know what the rules are?
 
 + [yes]
+~ obedience++
     /perform excited
     Oh goody! I love telling people the house rules!
 
 + [no]
+~ obedience--
     /perform disappointed
     Don't be a pouty baby.
     You have to learn the rules or you can't be a good {player_name}!
@@ -113,9 +119,11 @@ Obey and be rewarded.
 Easy, right?
 
 + [yes]
+~ obedience++
     I know! Our Goddess is so kind!
 
 + [no]
+~ obedience--
     Oh! Don't worry. You'll learn fast!
 
 + [timeout]
@@ -126,16 +134,18 @@ Easy, right?
 
 - /perform squirm
 You are a cute one! I really hope you do well here!
-I'm only allowed to play with with the good ones!
+I'm only allowed to enjoy the good ones!
 
 - (good_yuki)
 Do you want to be a good {player_name}?
 
 + [yes]
+~ obedience++
     /perform bounces
     Yay! We'll have so much fun together!
 
 + [no]
+~ obedience--
     /perform pouty
     Oh darn. I really hope you'll change your mind.
 
@@ -148,7 +158,7 @@ Do you want to be a good {player_name}?
 - (nega_interruption)
 
 /character nega saunter
-Oh please! You're always such a good girl,
+Oh please! You're always such a good girl, Yuki,
 never having any fun.
 Don't you want to live a little?
 Bend the rules once in a while and really let loose?
@@ -175,15 +185,17 @@ Ugh.. You're such a goody two-shoes.
 It's so much more fun when you bend the rules once in a while.
 
 -(new_one)
-
+/perform curious
 So. You're the new one, huh?
 
 + [yes]
+~ obedience++
     /perform inspect
     Not too bad. You have potential.
     Though, I'm not too picky.
 
 + [no]
+~ obedience--
     /perform laugh
     Not new, huh?
     This one is more confused than most.
@@ -197,16 +209,18 @@ So. You're the new one, huh?
 + [distracted] -> PayAttention -> new_one
 
 - /perform sneer
-I bet she's been having so much fun
+I bet Yuki's been having so much fun
 explaining the rules to you 
 and telling you how to be a good {player_name},
 hasn't she?
 
 + [yes]
+~ obedience++
     /perform bored
     Boring.
 
 + [no]
+~ obedience--
     /perform pleased
     A little liar. 
     We're going to get along just fine.
@@ -221,6 +235,7 @@ Have you figured out what's going on here yet?
 - (going_on)
 
 + [yes]
+~ obedience--
     /perform curious
     Hmmm. You might just be smarter than you look, {player_name}.
     We'll find out soon enough.
@@ -228,8 +243,9 @@ Have you figured out what's going on here yet?
     Although, honestly, the dumb ones make better fuck toys.
 
 + [no]
+~ obedience++
     /perform rolls_eyes
-    Typical. Yuki always wants them to learn the hard way.
+    Typical. <I>She</I> always wants them to learn the hard way.
     
     /perform amused
     I think I should tell {player_him}.
@@ -254,10 +270,12 @@ Let's find out. Shall we?
 -(genitals)
 
 + [yes]
+~ obedience--
     /perform amused
     Ooo. I'm going to like this one. {player_he} likes to be naughty.
 
 + [no]
+~ obedience++
     /perform bored
     Oh great. Another spoil-sport, just like you Yuki.
 
@@ -280,17 +298,20 @@ You want to be a little fuck toy, don't you?
 
 - (caress_genitals)
 + [yes]
+~ obedience--
     /perform chuckle
     What a naughty {player_name}.
     I feel how {isBoy:hard|wet} you are.
     Do you want to be my fuck toy?
     
     ++ [yes]
+   ~ obedience--
         Too bad. I only use fuck toys that have something to give me first.
         And you have nothing I want.
         /perform straighten_up
     
     ++ [no]
+    ~ obedience++
         No? You don't like me?
         Awww. But I'm way more fun that that uptight bitch.
         /perform head_toss
@@ -299,6 +320,7 @@ You want to be a little fuck toy, don't you?
         I must be boring you.
     
 + [no] 
+~ obedience++
     /perform head_toss
     What a prude. You'll change your mind soon enough.
     They always do.
@@ -312,14 +334,19 @@ tearing up that little ass of yours.
 
 /perform approach
 //nega whispers
-Tick tock little mouse.
-You might want to run.
-You're trapped in this house.
-And we own your cum.
+<I>Tick tock little mouse.
+<I>You might want to run.
+<I>You're trapped in this house.
+<I>And we own your cum.</I>
 /perform laugh
 
 + [wait 5]
--
+
+{obedience > 0:
+    - -> Yuki_finish
+    - else: -> Nega_finish
+}
+= Yuki_finish
 /character Yuki foot_stomp
 That's enough, Nega!
 No more fun and games for you.
@@ -331,7 +358,7 @@ Come find me when you've earned a reward.
 /perform nega_exit
 
 + [wait 5]
--
+
 /character Yuki angry
 I just hate her.
 
@@ -431,6 +458,85 @@ She doesn't like to be kept waiting.
 //need to know how player gets to next room
 -> END
 
+= Nega_finish
+/character Yuki foot_stomp
+That's enough, Nega!
+You are interfering with my role too much!
+I'm reporting you to the Headmistress straight away.
+/perform yuki_exit
+
+/character nega laugh
+You go run off, little Yuki, 
+and tell the Headmistress all about 
+how naughty I've been.
+
+/perform sassy
+Now we can really have some fun!
+
+/perform Nega_skirt_lift
+Though I suppose I should at least
+tell you about rewards and punishments.
+I do want you to give me your rewards, after all.
+-
+/perform thoughtful
+Shall I rub your poor aching {isBoy: cock|cunt} again
+while I do?
+
++[yes]
+/perform caress_genitals
+Mmmm. That's it. 
+We're going to find out just how naughty 
+you like to be.
+
++[no]
+/perform frown
+Don't tell me I've made a mistake in 
+paying attention to you.
+
+- 
+/perform dance_tease
+Be a good {player_name}, do what you're told, and 
+that little {isBoy: cock|cunt} of yours is going to
+throb with the excitement of earning a reward.
+    
+But, if you decide to be a little {isBoy: prick|bitch},
+or take too much time following directions, 
+you'll be a sad little slut when you get a punishment.
+
+/perform laugh
+The best part is you can't collect any rewards 
+until you've paid off all your punishment marks.
+
+/perform idle
+Get it, bitch? You're going to earn both punishments
+and rewards during your time here.
+
++ [yes]
+    /perform nod 
+    That's a good slut.
+
++ [no]
+    You're wasting my fucking time.
+    You're going to be used 
+    by a lot of bitches better than you.
+    Behave and earn a reward.
+    Fuck up and earn a punishment.
+    And all punishments are going to be extracted
+    from you before you ever get a chance
+    to see a reward.
+
+- + [wait 5]
+- /perform inspection
+
+I'm bored with you. 
+Time to get a taste of your first punishment.
+Better get your ass to the Headmistress.
+She doesn't like to be kept waiting.
+
+//need to know how player gets to next room
+-> END
+
+
 = PayAttention
 
 { cycle:
@@ -453,8 +559,5 @@ She doesn't like to be kept waiting.
     ->->
 
 + [timeout] -> PayAttention
-
-    
-
 
 
