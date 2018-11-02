@@ -359,7 +359,7 @@ Come find me when you've earned a reward.
 
 + [wait 5]
 
-/character Yuki angry
+-/character Yuki angry
 I just hate her.
 
 +[wait 3]
@@ -368,7 +368,7 @@ I just hate her.
 Now... where was I?
 Right! The house!
 
-/perform happy
+/perform bounces
 Don't listen to her, by the way.
 This is a great house. 
 And you're going to learn a lot!
@@ -418,14 +418,14 @@ rewards and punishments for your service here?
     you can receive your reward.
 
 - + [wait 5]
-
+//somehow make clipboard appear or other visual aid for feeding back to player how they are doing
 - /perform check_clipboard
 And I see you already have one of each mark on your record.
 
-One punishment for sneaking into the Goddes' room.
+One punishment for sneaking into the Goddess's room.
 Naughty {player_name}.
 
-Amd one reward for catching the Goddess' interest.
+And one reward for catching the Goddess's interest.
 Well done!
 
 + [wait 5]
@@ -525,7 +525,44 @@ and rewards during your time here.
     from you before you ever get a chance
     to see a reward.
 
+//somehow make clipboard appear or other visual aid for feeding back to player how they are doing
+- /perform check_clipboard
+//sarcastic voice
+Oh. Goody. Time to tell you how you're doing.
+
+//mocking Yuki
+You've earned one punishment and one reward.
+
+/perform sassy
+You've been a very bad {isBoy: dog|bitch}.
+You snuck into the Goddess's room
+and now you're going to get punished!
+Nicely done.
+
+Looks like that tight little ass of yours
+is already getting you out of trouble.
+You're being rewarded for getting her attention.
+
++ [wait 5]
+
+- /perform approach
+I suggest you ignore that annoying little Yuki 
+when she tells you to behave.
+She thought she could shove down all her dirty thoughts 
+by casting me aside...
+But here I am!
+
+/perform sassy
+I want something from you.
+When you've groveled your way to a reward,
+come find me.
+
+/perform breast_squeeze
+I might make it worth your while.
+Either way... 
+one of us will have a good time.
 - + [wait 5]
+
 - /perform inspection
 
 I'm bored with you. 
