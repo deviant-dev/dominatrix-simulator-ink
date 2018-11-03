@@ -43,6 +43,8 @@ VAR web = true
     -> yuki_intro
 + Test Nega 0.1
     -> nega_temptation
++ Test Headmistress Intro
+    -> headmistress_intro
 
 
 == debug_setup ===

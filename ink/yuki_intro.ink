@@ -1,8 +1,8 @@
 === yuki_intro ===
 { web: -> select_gender -> }
 
-/scene foyer
-/character yuki
+/scene foyer.yuki_intro
+/character yuki  
 /equip feather_duster
 
 { web:
@@ -13,7 +13,7 @@
     + [Start]
 }
 
-VAR obedience = 0
+~obey = 0
 
 - (start) Oh! There you are!
 
@@ -34,7 +34,7 @@ while you’re a guest in Goddess’s home.
 Do you know why you're here?
 
  + [yes]
-  ~ obedience++
+  ~ obey++
     I don't see how you'd know that already.
     Someone must have told you.
    
@@ -46,7 +46,7 @@ Do you know why you're here?
     /wait
     
 + [no]
-~ obedience--
+~ obey--
     Well, duh!
     You're not supposed to know.
     That's the fun part!
@@ -75,12 +75,12 @@ or they will not be allowed to stay.
 Would you like to know what the rules are?
 
 + [yes]
-~ obedience++
+~ obey++
     /perform excited
     Oh goody! I love telling people the house rules!
 
 + [no]
-~ obedience--
+~ obey--
     /perform disappointed
     Don't be a pouty baby.
     You have to learn the rules or you can't be a good {player_name}!
@@ -119,11 +119,11 @@ Obey and be rewarded.
 Easy, right?
 
 + [yes]
-~ obedience++
+~ obey++
     I know! Our Goddess is so kind!
 
 + [no]
-~ obedience--
+~ obey--
     Oh! Don't worry. You'll learn fast!
 
 + [timeout]
@@ -140,12 +140,12 @@ I'm only allowed to enjoy the good ones!
 Do you want to be a good {player_name}?
 
 + [yes]
-~ obedience++
+~ obey++
     /perform bounces
     Yay! We'll have so much fun together!
 
 + [no]
-~ obedience--
+~ obey--
     /perform pouty
     Oh darn. I really hope you'll change your mind.
 
@@ -189,13 +189,13 @@ It's so much more fun when you bend the rules once in a while.
 So. You're the new one, huh?
 
 + [yes]
-~ obedience++
+~ obey++
     /perform inspect
     Not too bad. You have potential.
     Though, I'm not too picky.
 
 + [no]
-~ obedience--
+~ obey--
     /perform laugh
     Not new, huh?
     This one is more confused than most.
@@ -215,12 +215,12 @@ and telling you how to be a good {player_name},
 hasn't she?
 
 + [yes]
-~ obedience++
+~ obey++
     /perform bored
     Boring.
 
 + [no]
-~ obedience--
+~ obey--
     /perform pleased
     A little liar. 
     We're going to get along just fine.
@@ -235,7 +235,7 @@ Have you figured out what's going on here yet?
 - (going_on)
 
 + [yes]
-~ obedience--
+~ obey--
     /perform curious
     Hmmm. You might just be smarter than you look, {player_name}.
     We'll find out soon enough.
@@ -243,7 +243,7 @@ Have you figured out what's going on here yet?
     Although, honestly, the dumb ones make better fuck toys.
 
 + [no]
-~ obedience++
+~ obey++
     /perform rolls_eyes
     Typical. <I>She</I> always wants them to learn the hard way.
     
@@ -270,12 +270,12 @@ Let's find out. Shall we?
 -(genitals)
 
 + [yes]
-~ obedience--
+~ obey--
     /perform amused
     Ooo. I'm going to like this one. {player_he} likes to be naughty.
 
 + [no]
-~ obedience++
+~ obey++
     /perform bored
     Oh great. Another spoil-sport, just like you Yuki.
 
@@ -298,20 +298,20 @@ You want to be a little fuck toy, don't you?
 
 - (caress_genitals)
 + [yes]
-~ obedience--
+~ obey--
     /perform chuckle
     What a naughty {player_name}.
     I feel how {isBoy:hard|wet} you are.
     Do you want to be my fuck toy?
     
     ++ [yes]
-   ~ obedience--
+   ~ obey--
         Too bad. I only use fuck toys that have something to give me first.
         And you have nothing I want.
         /perform straighten_up
     
     ++ [no]
-    ~ obedience++
+    ~ obey++
         No? You don't like me?
         Awww. But I'm way more fun that that uptight bitch.
         /perform head_toss
@@ -320,7 +320,7 @@ You want to be a little fuck toy, don't you?
         I must be boring you.
     
 + [no] 
-~ obedience++
+~ obey++
     /perform head_toss
     What a prude. You'll change your mind soon enough.
     They always do.
@@ -342,7 +342,7 @@ tearing up that little ass of yours.
 
 + [wait 5]
 
-{obedience > 0:
+{obey > 0:
     - -> Yuki_finish
     - else: -> Nega_finish
 }

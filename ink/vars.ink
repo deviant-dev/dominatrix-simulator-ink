@@ -16,6 +16,7 @@ VAR player_name = "boy"
 VAR player_he = "he"
 VAR player_him = "him"
 VAR player_safeword = "red"
+VAR obey = 0
 
 // function to set a kink's preference
 
