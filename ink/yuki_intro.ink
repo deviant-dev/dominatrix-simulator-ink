@@ -272,7 +272,7 @@ Let's find out. Shall we?
 + [yes]
 ~ obey--
     /perform amused
-    Ooo. I'm going to like this one. {player_he} likes to be naughty.
+    Ooo. I'm going to like this one. {isBoy: He|She} likes to be naughty.
 
 + [no]
 ~ obey++
