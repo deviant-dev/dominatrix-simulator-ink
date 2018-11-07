@@ -6,6 +6,8 @@ INCLUDE yuki_reward_bathe.ink
 INCLUDE yuki_review.ink
 INCLUDE nega_temptation.ink
 INCLUDE headmistress_intro.ink
+INCLUDE yuki_punishment_edging.ink
+
 
 
 
@@ -45,6 +47,9 @@ VAR web = true
     -> nega_temptation
 + Test Headmistress Intro
     -> headmistress_intro
++ Test Yuki Punishment 2.0
+    -> YukiPunishmentEdging
+    
 
 
 == debug_setup ===
