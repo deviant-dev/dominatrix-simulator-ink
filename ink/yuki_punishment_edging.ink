@@ -1,5 +1,5 @@
 VAR obedience = 0
--> YukiPunishmentEdging
+
 === YukiPunishmentEdging ===
 
 /scene ?
