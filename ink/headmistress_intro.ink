@@ -9,7 +9,7 @@
 { web:
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
 
-    <blockquote><i>You stand inside a spacious Victorian office with a large wooden desk and walls of bookshelves lining the room. Before you stands a lean and lengthy woman with an ample bosom. Her face is stern and her eyes cold as she looks you up and down...</i></blockquote>
+    <blockquote><i>You stand inside a spacious Victorian office with a large wooden desk and several sets of bookshelves lining the room. Before you stands a lean and lengthy woman with dark skin and an ample bosom. Her face is stern and her eyes placid as she looks you up and down...</i></blockquote>
 
     + [Start]
 }
@@ -19,36 +19,45 @@
 /character headmistress
 /perform spank slave 
 
-- Stand right there until I'm ready for you, {player_name}
 +[wait 3]
 
 - /perform spank slave
-You <I>will</I> learn to behave, slave.
+You are an unruly, undisciplined, low-born miscreant.
 +[wait 3]
 
 - /perform spank slave
-Or  you will not sit for a week.
+I will not abide by your disobedience.
++[wait 3]
+
+- /perform spank slave
+You *will* behave according to your station or 
+find yourself unable to rest on your backside for a week.
 /character slave pleading
 I'm sorry, Headmistress.
 I'll be good. I promise!
+Oh, please Headmistress!
 +[wait 3]
 
 - /character headmistress
 /perform spank slave
-We're finished here.
+That will be sufficient for today.
 +[wait 3]
 
 - /perform smooth_skirt
-Out of my office. Now.
+Compose yourself immediately.
+Depart with grace and pride,
+as befits a slave in this house.
 /character slave stands
 Yes, Headmistress. 
-Thank you, Headmistress.
-/perform runs_away
+Thank you for guiding me, Headmistress.
+/perform walks_away
 +[wait 3]
 
 
 -/character headmistress sit_on_desk
-Now. Your turn.
+Foolish slaves require immediate rectification.
+As you now require.
+
 -(meet_headmistress)
 Do you know who I am?
 
@@ -80,8 +89,9 @@ Speak up.
 
 - You are newly arrived and already
 you are in trouble.
-Entering the Goddess's room without permission
-is forbidden.
+/perform tap_paddle
+Entering the Goddess's chambers unbidden.
+This is a serious infraction.
 /perform tap_paddle
 +[wait 2]
 
@@ -94,28 +104,30 @@ Just like I do with all the new slaves.
 
 -First, you will learn how to present yourself
 for punishment.
-Come here and bend over this desk.
-/perform idle
-//player needs to move to the desk and bend forward
+/perform point_paddle_at_desk
+Climb onto this desk and 
+get onto your hands and knees.
+//player needs to teleport onto the desk
 
-- (bend_over_desk)
-- (bend_over_desk_tries)
+- (get_on_desk)
+- (get_on_desk_tries)
 
 /perform amused
 
-Arms behind your head. #98
-Thrust your chest out. Knees apart. #99
+Hands shoulder width apart.
+Arch your back and present your ass.
 /perform unhappy
-I want to see you present yourself more fully to me. #100
+Spread those knees wider.
   
 /perform idle
 
-- (bend_over_fail)
-+ [pose:bend_over] -> HoldPose(-> bend_over_fail, -> bend_over_desk) -> GoodJob
-+ { bend_over_desk_tries < 2 } [timeout] -> bend_over_desk
-//+ { bend_over_desk_tries >= 2 } [timeout]
-+ { bend_over_desk_tries >= 2 } [timeout] -> CheckIfInterested -> bend_over_desk
-// + [no] -> CheckIfInterested -> bend_over_desk
+- (get_on_desk_fail)
++ [pose:get_on_desk] -> HoldPose(-> get_on_desk_fail, -> get_on_desk) -> GoodJob
++ {get_on_desk_tries < 2 } [timeout] -> get_on_desk
+//+ {get_on_desk_tries >= 2 } [timeout]
++ {get_on_desk_tries >= 2 } [timeout] -> CheckIfInterested -> get_on_desk
+// + [no] -> CheckIfInterested -> get_on_desk
+
 
 -> END
 
