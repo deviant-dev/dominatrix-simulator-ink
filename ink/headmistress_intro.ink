@@ -105,8 +105,10 @@ Just like I do with all the new slaves.
 -First, you will learn how to present yourself
 for punishment.
 /perform point_paddle_at_desk
-Climb onto this desk and 
-get onto your hands and knees.
+Alight onto my desk 
+and assume a position upon 
+your hands and knees.
+
 //player needs to teleport onto the desk
 
 - (get_on_desk)
@@ -114,10 +116,19 @@ get onto your hands and knees.
 
 /perform amused
 
-Hands shoulder width apart.
-Arch your back and present your ass.
+Hands should be at least shoulder width
+apart with fingers splayed.
+The back must be delicately arched, 
+presenting the most ideal access 
+to the object of discipline -
+the ass.
+In this way, the ass is presented 
+for punishment.
+
 /perform unhappy
-Spread those knees wider.
+Knees should be sufficiently apart 
+to allow for robust gazing upon
+the nether regions.
   
 /perform idle
 
