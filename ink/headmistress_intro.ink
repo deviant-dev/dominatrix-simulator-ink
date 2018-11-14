@@ -50,7 +50,7 @@ as befits a slave in this house.
 /character slave stands
 Yes, Headmistress. 
 Thank you for guiding me, Headmistress.
-/perform walks_away
+/perform slave walks_away
 +[wait 3]
 
 
@@ -66,6 +66,7 @@ Do you know who I am?
 Very good. 
 Then you know why you're here.
 Yes?
+
     ++[yes]
     ~obey++
     Excellent.
@@ -87,8 +88,7 @@ You just heard that slave say it.
 Speak up.
 -> meet_headmistress
 
-- You are newly arrived and already
-you are in trouble.
+- You are newly arrived and already in trouble.
 /perform tap_paddle
 Entering the Goddess's chambers unbidden.
 This is a serious infraction.
@@ -114,31 +114,146 @@ your hands and knees.
 - (get_on_desk)
 - (get_on_desk_tries)
 
-/perform amused
-
-Hands should be at least shoulder width
-apart with fingers splayed.
-The back must be delicately arched, 
-presenting the most ideal access 
-to the object of discipline -
-the ass.
-In this way, the ass is presented 
-for punishment.
-
-/perform unhappy
-Knees should be sufficiently apart 
-to allow for robust gazing upon
-the nether regions.
-  
 /perform idle
 
 - (get_on_desk_fail)
-+ [pose:get_on_desk] -> HoldPose(-> get_on_desk_fail, -> get_on_desk) -> GoodJob
++ [pose:get_on_desk] -> HoldPose(-> get_on_desk_fail, -> get_on_desk) ->
 + {get_on_desk_tries < 2 } [timeout] -> get_on_desk
 //+ {get_on_desk_tries >= 2 } [timeout]
 + {get_on_desk_tries >= 2 } [timeout] -> CheckIfInterested -> get_on_desk
 // + [no] -> CheckIfInterested -> get_on_desk
 
+- 
+/perform amused
+Hands should be at least shoulder width apart 
+with fingers splayed.
++[wait 2]
+
+/perform amused
+- The back must be delicately arched, 
+presenting the most ideal access 
+to the object of discipline -
+the ass.
+/perform paddle_desk
++[wait 2]
+
+-In this way, the ass is presented for punishment.
++[wait 2]
+
+-/perform satisfied
+Knees should be sufficiently apart 
+to allow for robust gazing upon
+the nether regions.
+
+//she should walk around from the side of the desk to the front of the player when she asks if they accept their punishment
+
+/perform walk_to_front_of_desk
+Do you accept that you must be punished?
+-(ask_punish_ready)
++[yes]
+~ obey++
+/perform arm_raise
+Then we shall begin.
+
+//curtains raise and sounds of crowd fill the room
+
++[no]
+~ obey--
+/perform suspicious
+You will be unable to remain here 
+if you do not submit to your punishment.
+It will be over quickly and your compliance will
+please the Goddess.
+Shall we continue with your punishment?
+
+    ++[yes]
+    ~ obey++
+    Excellent choice. Let us begin.
+    /perform arm_raise
+    //curtains raise and sounds of crowd fill the room
+    
+    ++[no]
+    ~ obey--
+    //should this add another punishment marker?
+    Make haste from my sight!
+    I will not tolerate fools.
+    /perform point_to_door
+    // force player to leave scene - exit game??
+    
++[timeout] 
+You have had enough time to think.
+Your punishment must begin.
+Do you agree?
+-> ask_punish_ready
+
+
+- +[wait 2]
+/perform walk_to_back_of_desk
+All care must be taken to assure the errant slave 
+is well-presented for punishment.
+//murmurs of appreciation from audience
+
+As previously noted, the back must be arched,
+the fingers splayed, and the knees spread wide enough
+to provide access to all areas of possible punishment.
+
+- +[wait 2]
+
+- Do you feel you are well-presented, {player_name}?
+
++[yes]
+~ obey++
+Not quite, but you demonstrate adequate effort. 
+
++[no]
+~ obey--
+Then rectify yourself at once.
+//provide more instructions?
+
+-(punish_instruct)
+/perform circle_desk
+Disobedient behavior must be corrected immediately
+upon infraction.
+
+It must be firm, swift, and 
+leave an indelible mark upon the body and soul.
+/Perform tap_paddle
+//comments from audience
++[wait 2]
+
+-To receive a punishment with the utmost grace and decorum,
+the subject of discpline must hold their head high and
+breath smoothly and calmly through the nose.
+
+/perform tap_paddle
++[wait 2]
+
+-The muscles of the ass must remain relaxed between swats
+to provide an exceptionally pleasing display when they clench
+in response to being struck.
+/perform tap_paddle
++[wait 2]
+
+-Feet must remain flat upon with no obscene curling of the toes.
+/perform tap_paddle
+//audience remarks
++[wait 2]
+
+-
+/perform walk_to_front_of_desk
+Are you prepared to demonstrate your display of grace 
+during punishment for the assesment of our observers today?
+//audience sounds of appreciation
+
++[yes]
+~ obey++
+A fitting response.
+
+
++[no]
+~ obey--
+Think twice before you continue on this course of disobedience.
+You earn no rewards until this act of suffering has been completed.
 
 -> END
 
