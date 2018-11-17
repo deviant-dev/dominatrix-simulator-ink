@@ -1,0 +1,7 @@
+=== yuki_task_fanning ===
+<i>Insert fanning task here.</i>
+<i>Let's pretend you've been bad and good.</i>
+~ punishments++
+~ rewards++
+
+->->

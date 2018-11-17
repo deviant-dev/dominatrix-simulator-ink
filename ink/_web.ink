@@ -1,16 +1,22 @@
 INCLUDE vars.ink
 INCLUDE game_intro.ink
+INCLUDE main_hub.ink
+INCLUDE goddess_hub.ink
 INCLUDE goddess_intro.ink
+INCLUDE goddess_reward_huge.ink
+INCLUDE headmistress_hub.ink
+INCLUDE headmistress_intro.ink
+INCLUDE headmistress_punishment_flogging.ink
+INCLUDE headmistress_reward_cunnilingus.ink
+INCLUDE headmistress_task_flogging.ink
+INCLUDE nega_hub.ink
+INCLUDE nega_temptation.ink
 INCLUDE yuki_intro.ink
+INCLUDE yuki_hub.ink
+INCLUDE yuki_punishment_edging.ink
 INCLUDE yuki_reward_bathe.ink
 INCLUDE yuki_review.ink
-INCLUDE nega_temptation.ink
-INCLUDE headmistress_intro.ink
-INCLUDE yuki_punishment_edging.ink
-
-
-
-
+INCLUDE yuki_task_fanning.ink
 
 
 // EXTERNAL isDebug()
@@ -41,6 +47,8 @@ VAR web = true
 
 + Test Intro
     -> game_intro_web
++ Test Main Entry hub
+    -> main_hub
 + Test Yuki 2.2
     -> yuki_intro
 + Test Nega 0.1
@@ -48,8 +56,7 @@ VAR web = true
 + Test Headmistress Intro
     -> headmistress_intro
 + Test Yuki Punishment 2.0
-    -> YukiPunishmentEdging
-    
+    -> yuki_punishment_edging
 
 
 == debug_setup ===

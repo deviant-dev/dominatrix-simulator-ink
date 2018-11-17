@@ -17,6 +17,8 @@ VAR player_he = "he"
 VAR player_him = "him"
 VAR player_safeword = "red"
 VAR obey = 0
+VAR rewards = 0
+VAR punishments = 0
 
 // function to set a kink's preference
 
@@ -66,3 +68,10 @@ VAR obey = 0
     + [Female]
         ~ setGender("f")
 - ->->
+
+
+=== summary(times) ===
+{web:<i>P:{punishments} / R:{rewards} / You've been here {times} times.</i>}
+->->
+
+

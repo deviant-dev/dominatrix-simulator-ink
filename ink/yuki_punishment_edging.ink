@@ -1,6 +1,6 @@
 VAR obedience = 0
 
-=== YukiPunishmentEdging ===
+=== yuki_punishment_edging ===
 
 /scene ?
 /character yuki
