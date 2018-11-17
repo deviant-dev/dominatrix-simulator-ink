@@ -1,0 +1,69 @@
+=== headmistress_punishment_spanking ===
+Insert spanking scene here.
+~ punishments--
+->->
+
+/scene office_raised_curtains
+/character headmistress
+/equip wood_paddle
+
+~ obey = 0 
+
+- For your transgressions, a spanking is in order.
+//check to see if they have been through the intro. If they have, give additional instructions on which position to get into
+
+With each swat, you will lift your head high,
+bringing it back to a proud and upright position.
+
+//check if player has been here before
+
+//- Would you like to practice how to move your head first?
+
+//+[yes] 
+//~obey++
+//When you hear the sound of the paddle striking your flesh,
+//you will jerk your head upright to show you are ready 
+//for the next strke.
+
+//Let us practice.
+///character headmistress paddle_ass
+//check to see if player lifts head
+//give positive feedback if player does it right, then continue to perform spanking
+//give corrective feedback and a chance to try again
+//if fail a second time, "That will do for now. We will work on that in the future" - change pose radius to be more accomodating
+
+-
+
+/character crowd cheers
+
+Welcome esteemed friends!
+As always, purrs, moans, and words of encouragement
+are permitted during the punishment lesson.
+
+Our subject today has earned a spanking.
+
+I will use a paddle made of mahogany.
+An excellent, hard wood ideal for leaving
+bright red welts on the flesh of disobedient slaves.
+Would you not agree?
+/character crowd coos 
+
+Listen to the excitement {player_name}.
+Your ass will provide a fine demonstration today.
+
+Are they not fortunate to have one such as you to observe?
++[yes]
+~obey++
+Perform well and your punishment marker will be removed.
+
++[no]
+~obey--
+It is a shame you do not value the learning of others.
+
+- Prepare yourself, {player_name}.
+/character headmistress paddle_ass
+//check to see if they respond and give positive or negative feedback
+
+//(random nuetral for each swat) A fine welt is forming.; Music to my ears.; Perhaps I should be counting.; A red bottom is a pleasing bottom.; I do so love instructing slaves in proper behavior.; I never tire of this.; I suspect that one hurt.
+
+//random sexual: Notice how the {isBoy:shaft bounces|nether lips clench}.; The light is catching the dewy sheen on the skin most magnificently.; Observe the {isBoy: tip|slit} begin to glisten.

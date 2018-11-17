@@ -17,6 +17,8 @@ INCLUDE yuki_punishment_edging.ink
 INCLUDE yuki_reward_bathe.ink
 INCLUDE yuki_review.ink
 INCLUDE yuki_task_fanning.ink
+INCLUDE headmistress_punishment_spanking
+
 
 
 // EXTERNAL isDebug()

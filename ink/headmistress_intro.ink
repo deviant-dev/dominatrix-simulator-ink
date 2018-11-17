@@ -59,7 +59,13 @@ Foolish slaves require immediate rectification.
 As you now require.
 
 -(meet_headmistress)
-Do you know who I am?
+
+{
+    - headmistress_intro == 1:
+        Do you know who I am?
+    - else:
+        Welcome back.
+}
 
 +[yes]
 ~obey++
@@ -254,6 +260,7 @@ A fitting response.
 ~ obey--
 Think twice before you continue on this course of disobedience.
 You earn no rewards until this act of suffering has been completed.
+
 
 -> END
 
