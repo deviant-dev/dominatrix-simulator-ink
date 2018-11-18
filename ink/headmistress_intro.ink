@@ -262,7 +262,7 @@ Think twice before you continue on this course of disobedience.
 You earn no rewards until this act of suffering has been completed.
 
 
--> END
+- -> END
 
 = GoodJob
 

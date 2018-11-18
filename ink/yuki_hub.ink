@@ -31,7 +31,7 @@
 -> yuki_punishment_edging -> main_hub
 
 = choose_reward
--> yuki_reward_bathe -> main_hub
+{~ -> yuki_reward_bathe | -> yuki_reward_massage } -> main_hub
 
 = choose_task
 -> yuki_task_fanning -> main_hub

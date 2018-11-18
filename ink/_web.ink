@@ -18,6 +18,8 @@ INCLUDE yuki_reward_bathe.ink
 INCLUDE yuki_review.ink
 INCLUDE yuki_task_fanning.ink
 INCLUDE headmistress_punishment_spanking
+INCLUDE yuki_reward_massage.ink
+
 
 
 
@@ -59,6 +61,8 @@ VAR web = true
     -> headmistress_intro
 + Test Yuki Punishment 2.0
     -> yuki_punishment_edging
++ Test Yuki Massage
+    -> yuki_reward_massage
 
 
 == debug_setup ===
