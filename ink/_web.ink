@@ -1,6 +1,6 @@
 
 # title: Dominatrix Simulator Scripts
-# author: Devilish Domina
+# author: deviant.tech
 # theme: dark
 
 
