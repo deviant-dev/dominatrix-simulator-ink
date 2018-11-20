@@ -7,11 +7,11 @@
 { 
     - punishments > 0 :
         You require correction. Go get your punishments and perhaps we'll talk.
-        -> main_hub
+        -> exit
     - rewards >= 10 :
         My, you have been good. Here for your reward?
         + [yes] -> choose_reward
-        + [no] No? Then out of my sight. -> main_hub
+        + [no] No? Then out of my sight. -> exit
     - else:
         You are not yet worthy.
         Raise your standing with my Mistresses
@@ -19,11 +19,11 @@
         and perhaps I'll entertain your presence.
         Ten should suffice.
         Now leave.
-        + [yes] -> main_hub
+        + [yes] -> exit
         + [no]
             No? Then take a punishment and leave anyway.
             ~ punishments++
-            -> main_hub
+            -> exit
 }
 
 = choose_reward

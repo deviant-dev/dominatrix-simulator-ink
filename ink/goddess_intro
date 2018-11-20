@@ -628,11 +628,5 @@ There is hope for you yet. #157
 
 ->->
 
-=== HoldPose(-> onFail, -> onTimeout)
-+ [timeout] -> onTimeout
-+ [pose-cancel] -> onFail
-+ [pose-success] ->->
-
-
 
 

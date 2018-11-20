@@ -1,9 +1,8 @@
-=== headmistress_hub ===
+=== yuki_hub ===
 - (hub)
 
-{web: <b>Headmistress Hub</b>}
+{web: <b>Yuki Hub</b>}
 -> summary(hub) -> 
-
 
 { hub > 1: Hi again! | Hi! }
 
@@ -17,26 +16,22 @@
         + [yes] -> choose_reward
         + [no] No? -> check_task
     - else:
+        No punishments or rewards, huh?
         -> check_task
-}
-
-- { punishments == 0 && rewards == 0:
-    You must be here to serve me!
 }
 
 - (check_task) Looking to serve me, then?
 
 + [yes] -> choose_task
-+ [no] -> main_hub
++ [no] Okay. *pouts*
+    Maybe some other time then.
+    -> exit
 
 = choose_punishment
-// Eventually we'll have the game randomly pick here.
--> headmistress_punishment_flogging -> main_hub
+-> yuki_punishment_edging -> exit
 
 = choose_reward
-// Eventually we'll have the game randomly pick here.
--> headmistress_reward_cunnilingus -> main_hub
+{~ -> yuki_reward_bathe | -> yuki_reward_massage } -> exit
 
 = choose_task
-// Eventually we'll have the game randomly pick here.
--> headmistress_task_flogging -> main_hub
+-> yuki_task_fanning -> exit
