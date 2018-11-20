@@ -1,3 +1,9 @@
+
+# title: Dominatrix Simulator Scripts
+# author: Devilish Domina
+# theme: dark
+
+
 INCLUDE vars.ink
 INCLUDE game_intro.ink
 INCLUDE main_hub.ink
@@ -19,8 +25,6 @@ INCLUDE yuki_review.ink
 INCLUDE yuki_task_fanning.ink
 INCLUDE headmistress_punishment_spanking
 INCLUDE yuki_reward_massage.ink
-
-
 
 
 // EXTERNAL isDebug()

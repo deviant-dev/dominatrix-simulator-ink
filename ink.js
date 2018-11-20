@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define('inkjs', ['exports'], factory) :
-  (factory((global.inkjs = global.inkjs || {})));
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.inkjs = {})));
 }(this, (function (exports) { 'use strict';
 
   var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
@@ -9,16 +9,6 @@
   } : function (obj) {
     return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   };
-
-
-
-
-
-
-
-
-
-
 
   var classCallCheck = function (instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -44,12 +34,6 @@
     };
   }();
 
-
-
-
-
-
-
   var _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -63,8 +47,6 @@
 
     return target;
   };
-
-
 
   var inherits = function (subClass, superClass) {
     if (typeof superClass !== "function" && superClass !== null) {
@@ -82,16 +64,6 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   };
 
-
-
-
-
-
-
-
-
-
-
   var possibleConstructorReturn = function (self, call) {
     if (!self) {
       throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -106,12 +78,13 @@
 
   		this._isRelative;
   		this._components = [];
+  		this._componentsString = null;
 
   		if (typeof arguments[0] == 'string') {
   			this.componentsString = arguments[0];
   		} else if (arguments[0] instanceof Component && arguments[1] instanceof Path) {
   			this._components.push(arguments[0]);
-  			this._components = this._components.concat(arguments[1]);
+  			this._components = this._components.concat(arguments[1]._components);
   		} else if (arguments[0] instanceof Array) {
   			this._components = this._components.concat(arguments[0]);
   			this._isRelative = !!arguments[1];
@@ -119,25 +92,30 @@
   	}
 
   	createClass(Path, [{
+  		key: "GetComponent",
+  		value: function GetComponent(index) {
+  			return this._components[index];
+  		}
+  	}, {
   		key: "PathByAppendingPath",
   		value: function PathByAppendingPath(pathToAppend) {
   			var p = new Path();
 
   			var upwardMoves = 0;
-  			for (var i = 0; i < pathToAppend.components.length; ++i) {
-  				if (pathToAppend.components[i].isParent) {
+  			for (var i = 0; i < pathToAppend._components.length; ++i) {
+  				if (pathToAppend._components[i].isParent) {
   					upwardMoves++;
   				} else {
   					break;
   				}
   			}
 
-  			for (var i = 0; i < this.components.length - upwardMoves; ++i) {
-  				p.components.push(this.components[i]);
+  			for (var i = 0; i < this._components.length - upwardMoves; ++i) {
+  				p._components.push(this._components[i]);
   			}
 
-  			for (var i = upwardMoves; i < pathToAppend.components.length; ++i) {
-  				p.components.push(pathToAppend.components[i]);
+  			for (var i = upwardMoves; i < pathToAppend._components.length; ++i) {
+  				p._components.push(pathToAppend._components[i]);
   			}
 
   			return p;
@@ -152,17 +130,25 @@
   		value: function Equals(otherPath) {
   			if (otherPath == null) return false;
 
-  			if (otherPath.components.length != this.components.length) return false;
+  			if (otherPath._components.length != this._components.length) return false;
 
   			if (otherPath.isRelative != this.isRelative) return false;
 
   			//the original code uses SequenceEqual here, so we need to iterate over the components manually.
-  			for (var i = 0, l = otherPath.components.length; i < l; i++) {
+  			for (var i = 0, l = otherPath._components.length; i < l; i++) {
   				//it's not quite clear whether this test should use Equals or a simple == operator, see https://github.com/y-lohse/inkjs/issues/22
-  				if (!otherPath.components[i].Equals(this.components[i])) return false;
+  				if (!otherPath._components[i].Equals(this._components[i])) return false;
   			}
 
   			return true;
+  		}
+  	}, {
+  		key: "PathByAppendingComponent",
+  		value: function PathByAppendingComponent(c) {
+  			var p = new Path();
+  			p._components.push.apply(p._components, this._components);
+  			p._components.push(c);
+  			return p;
   		}
   	}, {
   		key: "isRelative",
@@ -170,15 +156,15 @@
   			return this._isRelative;
   		}
   	}, {
-  		key: "components",
+  		key: "componentCount",
   		get: function get$$1() {
-  			return this._components;
+  			return this._components.length;
   		}
   	}, {
   		key: "head",
   		get: function get$$1() {
-  			if (this.components.length > 0) {
-  				return this.components[0];
+  			if (this._components.length > 0) {
+  				return this._components[0];
   			} else {
   				return null;
   			}
@@ -186,8 +172,8 @@
   	}, {
   		key: "tail",
   		get: function get$$1() {
-  			if (this.components.length >= 2) {
-  				var tailComps = this.components.slice(1, this.components.length); //careful, the original code uses length-1 here. This is because the second argument of List.GetRange is a number of elements to extract, wherease Array.slice uses an index
+  			if (this._components.length >= 2) {
+  				var tailComps = this._components.slice(1, this._components.length); //careful, the original code uses length-1 here. This is because the second argument of List.GetRange is a number of elements to extract, wherease Array.slice uses an index
   				return new Path(tailComps);
   			} else {
   				return Path.self;
@@ -196,13 +182,14 @@
   	}, {
   		key: "length",
   		get: function get$$1() {
-  			return this.components.length;
+  			return this._components.length;
   		}
   	}, {
   		key: "lastComponent",
   		get: function get$$1() {
-  			if (this.components.length > 0) {
-  				return this.components[this.components.length - 1];
+  			var lastComponentIdx = this._components.length - 1;
+  			if (lastComponentIdx >= 0) {
+  				return this._components[lastComponentIdx];
   			} else {
   				return null;
   			}
@@ -220,36 +207,40 @@
   	}, {
   		key: "componentsString",
   		get: function get$$1() {
-  			var compsStr = this.components.join(".");
-  			if (this.isRelative) return "." + compsStr;else return compsStr;
+  			if (this._componentsString == null) {
+  				this._componentsString = this._components.join(".");
+  				if (this.isRelative) this._componentsString = "." + this._componentsString;
+  			}
+
+  			return this._componentsString;
   		},
   		set: function set$$1(value) {
   			var _this = this;
 
-  			this.components.length = 0;
+  			this._components.length = 0;
 
-  			var componentsStr = value;
+  			this._componentsString = value;
 
-  			if (componentsStr == null || componentsStr == '') return;
+  			if (this._componentsString == null || this._componentsString == '') return;
 
   			// When components start with ".", it indicates a relative path, e.g.
   			//   .^.^.hello.5
   			// is equivalent to file system style path:
   			//  ../../hello/5
-  			if (componentsStr[0] == '.') {
+  			if (this._componentsString[0] == '.') {
   				this._isRelative = true;
-  				componentsStr = componentsStr.substring(1);
+  				this._componentsString = this._componentsString.substring(1);
   			}
 
-  			var componentStrings = componentsStr.split('.');
+  			var componentStrings = this._componentsString.split('.');
   			componentStrings.forEach(function (str) {
   				//we need to distinguish between named components that start with a number, eg "42somewhere", and indexed components
   				//the normal parseInt won't do for the detection because it's too relaxed.
   				//see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
   				if (/^(\-|\+)?([0-9]+|Infinity)$/.test(str)) {
-  					_this.components.push(new Component(parseInt(str)));
+  					_this._components.push(new Component(parseInt(str)));
   				} else {
-  					_this.components.push(new Component(str));
+  					_this._components.push(new Component(str));
   				}
   			});
   		}
@@ -351,7 +342,7 @@
   					nearestContainer = this.parent;
   					if (nearestContainer.constructor.name !== 'Container') console.warn("Expected parent to be a container");
 
-  					//Debug.Assert (path.components [0].isParent);
+  					//Debug.Assert (path.GetComponent(0).isParent);
   					path = path.tail;
   				}
 
@@ -365,12 +356,12 @@
   		value: function ConvertPathToRelative(globalPath) {
   			var ownPath = this.path;
 
-  			var minPathLength = Math.min(globalPath.components.length, ownPath.components.length);
+  			var minPathLength = Math.min(globalPath.componentCount, ownPath.componentCount);
   			var lastSharedPathCompIndex = -1;
 
   			for (var i = 0; i < minPathLength; ++i) {
-  				var ownComp = ownPath.components[i];
-  				var otherComp = globalPath.components[i];
+  				var ownComp = ownPath.GetComponent(i);
+  				var otherComp = globalPath.GetComponent(i);
 
   				if (ownComp.Equals(otherComp)) {
   					lastSharedPathCompIndex = i;
@@ -382,14 +373,14 @@
   			// No shared path components, so just use global path
   			if (lastSharedPathCompIndex == -1) return globalPath;
 
-  			var numUpwardsMoves = ownPath.components.length - 1 - lastSharedPathCompIndex;
+  			var numUpwardsMoves = ownPath.componentCount - 1 - lastSharedPathCompIndex;
 
   			var newPathComps = [];
 
   			for (var up = 0; up < numUpwardsMoves; ++up) {
   				newPathComps.push(Path$1.Component.ToParent());
-  			}for (var down = lastSharedPathCompIndex + 1; down < globalPath.components.length; ++down) {
-  				newPathComps.push(globalPath.components[down]);
+  			}for (var down = lastSharedPathCompIndex + 1; down < globalPath.componentCount; ++down) {
+  				newPathComps.push(globalPath.GetComponent(down));
   			}var relativePath = new Path$1(newPathComps, true);
   			return relativePath;
   		}
@@ -408,7 +399,7 @@
   				globalPathStr = otherPath.componentsString;
   			}
 
-  			if (relativePathStr.Length < globalPathStr.Length) return relativePathStr;else return globalPathStr;
+  			if (relativePathStr.length < globalPathStr.length) return relativePathStr;else return globalPathStr;
   		}
   	}, {
   		key: 'Copy',
@@ -500,7 +491,7 @@
   		value: function AppendFormat(format) {
   			//taken from http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
   			var args = Array.prototype.slice.call(arguments, 1);
-  			return format.replace(/{(\d+)}/g, function (match, number) {
+  			this._string += format.replace(/{(\d+)}/g, function (match, number) {
   				return typeof args[number] != 'undefined' ? args[number] : match;
   			});
   		}
@@ -563,7 +554,7 @@
   			var itemCode = this.itemName ? this.itemName.toString() : 'null';
   			if (this.originName != null) originCode = this.originName.toString();
 
-  			return originCode + itemCode;
+  			return originCode + "." + itemCode;
   		}
   	}, {
   		key: 'fullName',
@@ -606,7 +597,7 @@
   				this.SetInitialOriginName(polymorphicArgument);
 
   				var def = null;
-  				if (def = originStory.listDefinitions.TryGetDefinition(polymorphicArgument, def)) {
+  				if (def = originStory.listDefinitions.TryGetListDefinition(polymorphicArgument, def)) {
   					this.origins = [def];
   				} else {
   					throw new Error("InkList origin could not be found in story when constructing new list: " + singleOriginListName);
@@ -933,6 +924,23 @@
   	return InkList;
   }();
 
+  var StoryException = function (_Error) {
+  	inherits(StoryException, _Error);
+
+  	function StoryException(message) {
+  		classCallCheck(this, StoryException);
+
+  		var _this = possibleConstructorReturn(this, (StoryException.__proto__ || Object.getPrototypeOf(StoryException)).call(this, message));
+
+  		_this.useEndLineNumber = false;
+  		_this.message = message;
+  		_this.name = 'StoryException';
+  		return _this;
+  	}
+
+  	return StoryException;
+  }(Error);
+
   var ValueType = {
   	// Used in coersion
   	Int: 0,
@@ -968,6 +976,11 @@
   		key: 'Copy',
   		value: function Copy(val) {
   			return AbstractValue.Create(val);
+  		}
+  	}, {
+  		key: 'BadCastException',
+  		value: function BadCastException(targetType) {
+  			return new StoryException("Can't cast " + this.valueObject + " from " + this.valueType + " to " + targetType);
   		}
   	}, {
   		key: 'valueType',
@@ -1072,7 +1085,7 @@
   				return new StringValue("" + this.value);
   			}
 
-  			throw "Unexpected type cast of Value to new ValueType";
+  			throw this.BadCastException(newType);
   		}
   	}, {
   		key: 'isTruthy',
@@ -1115,7 +1128,7 @@
   				return new StringValue("" + this.value);
   			}
 
-  			throw "Unexpected type cast of Value to new ValueType";
+  			throw this.BadCastException(newType);
   		}
   	}, {
   		key: 'isTruthy',
@@ -1181,7 +1194,7 @@
   				}
   			}
 
-  			throw "Unexpected type cast of Value to new ValueType";
+  			throw this.BadCastException(newType);
   		}
   	}, {
   		key: 'valueType',
@@ -1229,7 +1242,7 @@
   		value: function Cast(newType) {
   			if (newType == this.valueType) return this;
 
-  			throw "Unexpected type cast of Value to new ValueType";
+  			throw this.BadCastException(newType);
   		}
   	}, {
   		key: 'toString',
@@ -1271,7 +1284,7 @@
   		value: function Cast(newType) {
   			if (newType == this.valueType) return this;
 
-  			throw "Unexpected type cast of Value to new ValueType";
+  			throw this.BadCastException(newType);
   		}
   	}, {
   		key: 'toString',
@@ -1320,7 +1333,7 @@
 
   			if (newType == this.valueType) return this;
 
-  			throw "Unexpected type cast of Value to new ValueType";
+  			throw this.BadCastException(newType);
   		}
   	}, {
   		key: 'valueType',
@@ -1374,21 +1387,36 @@
   	return ListValue;
   }(Value);
 
-  var StoryException = function (_Error) {
-  	inherits(StoryException, _Error);
+  var SearchResult = function () {
+  	function SearchResult() {
+  		classCallCheck(this, SearchResult);
 
-  	function StoryException(message) {
-  		classCallCheck(this, StoryException);
-
-  		var _this = possibleConstructorReturn(this, (StoryException.__proto__ || Object.getPrototypeOf(StoryException)).call(this, message));
-
-  		_this.message = message;
-  		_this.name = 'StoryException';
-  		return _this;
+  		this.obj;
+  		this.approximate;
   	}
 
-  	return StoryException;
-  }(Error);
+  	createClass(SearchResult, [{
+  		key: "copy",
+  		value: function copy() {
+  			var searchResult = new SearchResult();
+  			searchResult.obj = this.obj;
+  			searchResult.approximate = this.approximate;
+
+  			return searchResult;
+  		}
+  	}, {
+  		key: "correctObj",
+  		get: function get$$1() {
+  			return this.approximate ? null : this.obj;
+  		}
+  	}, {
+  		key: "container",
+  		get: function get$$1() {
+  			return this.obj instanceof Container ? this.obj : null;
+  		}
+  	}]);
+  	return SearchResult;
+  }();
 
   var Container = function (_InkObject) {
   	inherits(Container, _InkObject);
@@ -1458,22 +1486,37 @@
   		}
   	}, {
   		key: 'ContentAtPath',
-  		value: function ContentAtPath(path, partialPathLength) {
-  			partialPathLength = typeof partialPathLength !== 'undefined' ? partialPathLength : path.components.length;
+  		value: function ContentAtPath(path, partialPathStart, partialPathLength) {
+  			partialPathStart = typeof partialPathStart !== 'undefined' ? partialPathStart : 0;
+  			partialPathLength = typeof partialPathLength !== 'undefined' ? partialPathLength : path.length;
+
+  			var result = new SearchResult();
+  			result.approximate = false;
 
   			var currentContainer = this;
   			var currentObj = this;
 
-  			for (var i = 0; i < partialPathLength; ++i) {
-  				var comp = path.components[i];
-  				if (!(currentContainer instanceof Container)) throw "Path continued, but previous object wasn't a container: " + currentObj;
+  			for (var i = partialPathStart; i < partialPathLength; ++i) {
+  				var comp = path.GetComponent(i);
+  				if (currentContainer == null) {
+  					result.approximate = true;
+  					break;
+  				}
 
-  				currentObj = currentContainer.ContentWithPathComponent(comp);
-  				//			currentContainer = currentObj as Container;
-  				currentContainer = currentObj;
+  				var foundObj = currentContainer.ContentWithPathComponent(comp);
+
+  				if (foundObj == null) {
+  					result.approximate = true;
+  					break;
+  				}
+
+  				currentObj = foundObj;
+  				currentContainer = foundObj instanceof Container ? foundObj : null;
   			}
 
-  			return currentObj;
+  			result.obj = currentObj;
+
+  			return result;
   		}
   	}, {
   		key: 'InsertContent',
@@ -1521,7 +1564,7 @@
   				if (foundContent = this.namedContent[component.name]) {
   					return foundContent;
   				} else {
-  					throw new StoryException("Content '" + component.name + "' not found at path: '" + this.path + "'");
+  					return null;
   				}
   			}
   		}
@@ -1700,16 +1743,16 @@
   	}, {
   		key: 'internalPathToFirstLeafContent',
   		get: function get$$1() {
-  			var path = new Path();
+  			var components = [];
   			var container = this;
   			while (container instanceof Container) {
   				if (container.content.length > 0) {
-  					path.components.push(new Path.Component(0));
+  					components.push(new Path.Component(0));
   					//				container = container.content [0] as Container;
   					container = container.content[0];
   				}
   			}
-  			return path;
+  			return new Path(components);
   		}
   	}]);
   	return Container;
@@ -1718,53 +1761,19 @@
   var Glue = function (_InkObject) {
   	inherits(Glue, _InkObject);
 
-  	function Glue(type) {
+  	function Glue() {
   		classCallCheck(this, Glue);
-
-  		var _this = possibleConstructorReturn(this, (Glue.__proto__ || Object.getPrototypeOf(Glue)).call(this));
-
-  		_this.glueType = type;
-  		return _this;
+  		return possibleConstructorReturn(this, (Glue.__proto__ || Object.getPrototypeOf(Glue)).apply(this, arguments));
   	}
 
   	createClass(Glue, [{
   		key: "toString",
   		value: function toString() {
-  			switch (this.glueType) {
-  				case GlueType.Bidirectional:
-  					return "BidirGlue";
-  				case GlueType.Left:
-  					return "LeftGlue";
-  				case GlueType.Right:
-  					return "RightGlue";
-  			}
-
-  			return "UnexpectedGlueType";
-  		}
-  	}, {
-  		key: "isLeft",
-  		get: function get$$1() {
-  			return this.glueType == GlueType.Left;
-  		}
-  	}, {
-  		key: "isBi",
-  		get: function get$$1() {
-  			return this.glueType == GlueType.Bidirectional;
-  		}
-  	}, {
-  		key: "isRight",
-  		get: function get$$1() {
-  			return this.glueType == GlueType.Right;
+  			return "Glue";
   		}
   	}]);
   	return Glue;
   }(Object$1);
-
-  var GlueType = {
-  	Bidirectional: 0,
-  	Left: 1,
-  	Right: 2
-  };
 
   var ControlCommand = function (_InkObject) {
   	inherits(ControlCommand, _InkObject);
@@ -1937,8 +1946,69 @@
 
   var PushPopType = {
   	Tunnel: 0,
-  	Function: 1
+  	Function: 1,
+  	FunctionEvaluationFromGame: 2
   };
+
+  var Pointer = function () {
+  	function Pointer(container, index) {
+  		classCallCheck(this, Pointer);
+
+  		this.container = container;
+  		this.index = index;
+  	}
+
+  	createClass(Pointer, [{
+  		key: "Resolve",
+  		value: function Resolve() {
+  			if (this.index < 0) return this.container;
+  			if (this.container == null) return null;
+  			if (this.container.content.length == 0) return this.container;
+  			if (this.index >= this.container.content.length) return null;
+
+  			return this.container.content[this.index];
+  		}
+  	}, {
+  		key: "toString",
+  		value: function toString() {
+  			if (!this.container) return "Ink Pointer (null)";
+
+  			return "Ink Pointer -> " + this.container.path.toString() + " -- index " + this.index;
+  		}
+
+  		// This method does not exist in the original C# code, but is here to maintain the
+  		// value semantics of Pointer.
+
+  	}, {
+  		key: "copy",
+  		value: function copy() {
+  			return new Pointer(this.container, this.index);
+  		}
+  	}, {
+  		key: "isNull",
+  		get: function get$$1() {
+  			return this.container == null;
+  		}
+  	}, {
+  		key: "path",
+  		get: function get$$1() {
+  			if (this.isNull) return null;
+
+  			if (this.index >= 0) return this.container.path.PathByAppendingComponent(new Path$1.Component(this.index));else return this.container.path;
+  		}
+  	}], [{
+  		key: "StartOf",
+  		value: function StartOf(container) {
+  			return new Pointer(container, 0);
+  		}
+  	}, {
+  		key: "Null",
+  		get: function get$$1() {
+  			return new Pointer(null, -1);
+  		}
+  	}]);
+  	return Pointer;
+  }();
 
   var Divert = function (_InkObject) {
   	inherits(Divert, _InkObject);
@@ -1949,7 +2019,7 @@
   		var _this = possibleConstructorReturn(this, (Divert.__proto__ || Object.getPrototypeOf(Divert)).call(this));
 
   		_this._targetPath;
-  		_this._targetContent;
+  		_this._targetPointer;
 
   		_this.variableDivertName;
   		_this.pushesToStack;
@@ -1996,13 +2066,13 @@
   				var sb = new StringBuilder();
 
   				var targetStr = this.targetPath.toString();
-  				//			int? targetLineNum = DebugLineNumberOfPath (targetPath);
-  				var targetLineNum = null;
-  				if (targetLineNum != null) {
-  					targetStr = "line " + targetLineNum;
-  				}
 
   				sb.Append("Divert");
+
+  				if (this.isConditional) {
+  					sb.Append("?");
+  				}
+
   				if (this.pushesToStack) {
   					if (this.stackPushType == PushPopType.Function) {
   						sb.Append(" function");
@@ -2010,6 +2080,9 @@
   						sb.Append(" tunnel");
   					}
   				}
+
+  				sb.Append(" -> ");
+  				sb.Append(this.targetPathString);
 
   				sb.Append(" (");
   				sb.Append(targetStr);
@@ -2023,7 +2096,7 @@
   		get: function get$$1() {
   			// Resolve any relative paths to global ones as we come across them
   			if (this._targetPath != null && this._targetPath.isRelative) {
-  				var targetObj = this.targetContent;
+  				var targetObj = this.targetPointer.Resolve();
   				if (targetObj) {
   					this._targetPath = targetObj.path;
   				}
@@ -2033,16 +2106,23 @@
   		},
   		set: function set$$1(value) {
   			this._targetPath = value;
-  			this._targetContent = null;
+  			this._targetPointer = Pointer.Null;
   		}
   	}, {
-  		key: 'targetContent',
+  		key: 'targetPointer',
   		get: function get$$1() {
-  			if (this._targetContent == null) {
-  				this._targetContent = this.ResolvePath(this._targetPath);
+  			if (this._targetPointer.isNull) {
+  				var targetObj = this.ResolvePath(this._targetPath).obj;
+
+  				if (this._targetPath.lastComponent.isIndex) {
+  					this._targetPointer.container = targetObj.parent instanceof Container ? targetObj.parent : null;
+  					this._targetPointer.index = this._targetPath.lastComponent.index;
+  				} else {
+  					this._targetPointer = Pointer.StartOf(targetObj instanceof Container ? targetObj : null);
+  				}
   			}
 
-  			return this._targetContent;
+  			return this._targetPointer.copy();
   		}
   	}, {
   		key: 'targetPathString',
@@ -2089,13 +2169,7 @@
   	createClass(ChoicePoint, [{
   		key: 'toString',
   		value: function toString() {
-  			//		int? targetLineNum = DebugLineNumberOfPath (pathOnChoice);
-  			var targetLineNum = null;
   			var targetString = this.pathOnChoice.toString();
-
-  			if (targetLineNum != null) {
-  				targetString = " line " + targetLineNum;
-  			}
 
   			return "Choice: -> " + targetString;
   		}
@@ -2116,8 +2190,7 @@
   	}, {
   		key: 'choiceTarget',
   		get: function get$$1() {
-  			//return this.ResolvePath (_pathOnChoice) as Container;
-  			return this.ResolvePath(this._pathOnChoice);
+  			return this.ResolvePath(this._pathOnChoice).container;
   		}
   	}, {
   		key: 'pathStringOnChoice',
@@ -2175,7 +2248,7 @@
   	}, {
   		key: 'containerForCount',
   		get: function get$$1() {
-  			return this.ResolvePath(this.pathForCount);
+  			return this.ResolvePath(this.pathForCount).container;
   		}
   	}, {
   		key: 'pathStringForCount',
@@ -2208,8 +2281,7 @@
   	createClass(VariableAssignment, [{
   		key: "toString",
   		value: function toString() {
-  			return "VarAssign to " + this.variableName;
-  		}
+  			return "VarAssign to " + this.variableName;		}
   	}, {
   		key: "variableName",
   		get: function get$$1() {
@@ -2236,6 +2308,7 @@
   }(Object$1);
 
   //misses delegates, probably the returns from function calls
+
   var NativeFunctionCall = function (_InkObject) {
   	inherits(NativeFunctionCall, _InkObject);
 
@@ -2633,6 +2706,12 @@
   				this.AddStringBinaryOp(this.NotEquals, function (x, y) {
   					return !(x === y) ? 1 : 0;
   				});
+  				this.AddStringBinaryOp(this.Has, function (x, y) {
+  					return x.includes(y) ? 1 : 0;
+  				});
+  				this.AddStringBinaryOp(this.Hasnt, function (x, y) {
+  					return x.includes(y) ? 0 : 1;
+  				});
 
   				this.AddListBinaryOp(this.Add, function (x, y) {
   					return x.Union(y);
@@ -2817,29 +2896,27 @@
   }(Object$1);
 
   var Choice = function () {
-  	function Choice(choice) {
+  	function Choice() {
   		classCallCheck(this, Choice);
 
   		this.text;
   		this.index;
   		this.choicePoint;
   		this.threadAtGeneration;
+  		this.sourcePath;
+  		this.targetPath;
+  		this.isInvisibleDefault = false;
 
   		this._originalThreadIndex;
-  		this._originalChoicePath;
-
-  		if (choice) this.choicePoint = choice;
   	}
 
   	createClass(Choice, [{
-  		key: "pathStringOnChoice",
+  		key: 'pathStringOnChoice',
   		get: function get$$1() {
-  			return this.choicePoint.pathStringOnChoice;
-  		}
-  	}, {
-  		key: "sourcePath",
-  		get: function get$$1() {
-  			return this.choicePoint.path.componentsString;
+  			return this.targetPath.toString();
+  		},
+  		set: function set$$1(value) {
+  			this.targetPath = new Path$1(value);
   		}
   	}]);
   	return Choice;
@@ -2955,45 +3032,34 @@
   		classCallCheck(this, ListDefinitionsOrigin);
 
   		this._lists = {};
+  		this._allUnambiguousListValueCache = {};
 
   		lists.forEach(function (list) {
   			_this._lists[list.name] = list;
+
+  			list.items.forEach(function (itemWithValue) {
+  				var item = itemWithValue.Key;
+  				var val = itemWithValue.Value;
+  				var listValue = new ListValue(item, val);
+
+  				_this._allUnambiguousListValueCache[item.itemName] = listValue;
+  				_this._allUnambiguousListValueCache[item.fullName] = listValue;
+  			});
   		});
   	}
 
   	createClass(ListDefinitionsOrigin, [{
-  		key: 'TryGetDefinition',
-  		value: function TryGetDefinition(name, def) {
+  		key: 'TryListGetDefinition',
+  		value: function TryListGetDefinition(name, def) {
   			//initially, this function returns a boolean and the second parameter is an out.
   			return name in this._lists ? this._lists[name] : def;
   		}
   	}, {
   		key: 'FindSingleItemListWithName',
   		value: function FindSingleItemListWithName(name) {
-  			var item = InkListItem.Null;
-  			var list = null;
-
-  			var nameParts = name.split('.');
-  			if (nameParts.length == 2) {
-  				item = new InkListItem(nameParts[0], nameParts[1]);
-  				list = this.TryGetDefinition(item.originName, list);
-  			} else {
-  				for (var key in this._lists) {
-  					var listWithItem = this._lists[key];
-  					item = new InkListItem(key, name);
-  					if (listWithItem.ContainsItem(item)) {
-  						list = listWithItem;
-  						break;
-  					}
-  				}
-  			}
-
-  			if (list != null) {
-  				var itemValue = list.ValueForItem(item);
-  				return new ListValue(item, itemValue);
-  			}
-
-  			return null;
+  			var val = null;
+  			if (typeof this._allUnambiguousListValueCache[name] !== 'undefined') val = this._allUnambiguousListValueCache[name];
+  			return val;
   		}
   	}, {
   		key: 'lists',
@@ -3100,7 +3166,7 @@
   				if (firstChar == '^') return new StringValue(str.substring(1));else if (firstChar == "\n" && str.length == 1) return new StringValue("\n");
 
   				// Glue
-  				if (str == "<>") return new Glue(GlueType.Bidirectional);else if (str == "G<") return new Glue(GlueType.Left);else if (str == "G>") return new Glue(GlueType.Right);
+  				if (str == "<>") return new Glue();
 
   				// Control commands (would looking up in a hash set be faster?)
   				for (var i = 0; i < _controlCommandNames.length; ++i) {
@@ -3135,7 +3201,7 @@
   				if (obj["^var"]) {
   					propValue = obj["^var"];
   					var varPtr = new VariablePointerValue(propValue.toString());
-  					if (obj["ci"]) {
+  					if ('ci' in obj) {
   						propValue = obj["ci"];
   						varPtr.contextIndex = parseInt(propValue);
   					}
@@ -3333,9 +3399,7 @@
 
   			//		var glue = obj as Runtime.Glue;
   			var glue = obj;
-  			if (glue instanceof Glue) {
-  				if (glue.isBi) return "<>";else if (glue.isLeft) return "G<";else return "G>";
-  			}
+  			if (glue instanceof Glue) return "<>";
 
   			//		var controlCmd = obj as ControlCommand;
   			var controlCmd = obj;
@@ -3489,8 +3553,9 @@
   			var choice = new Choice();
   			choice.text = jObj["text"].toString();
   			choice.index = parseInt(jObj["index"]);
-  			choice.originalChoicePath = jObj["originalChoicePath"].toString();
+  			choice.sourcePath = jObj["originalChoicePath"].toString();
   			choice.originalThreadIndex = parseInt(jObj["originalThreadIndex"]);
+  			choice.pathStringOnChoice = jObj["targetPath"].toString();
   			return choice;
   		}
   	}, {
@@ -3499,8 +3564,9 @@
   			var jObj = {};
   			jObj["text"] = choice.text;
   			jObj["index"] = choice.index;
-  			jObj["originalChoicePath"] = choice.originalChoicePath;
+  			jObj["originalChoicePath"] = choice.sourcePath;
   			jObj["originalThreadIndex"] = choice.originalThreadIndex;
+  			jObj["targetPath"] = choice.pathStringOnChoice;
   			return jObj;
   		}
   	}, {
@@ -3606,52 +3672,27 @@
   }
 
   var Element = function () {
-  	function Element(type, container, contentIndex, inExpressionEvaluation) {
+  	function Element(type, pointer, inExpressionEvaluation) {
   		classCallCheck(this, Element);
 
-  		this.currentContainer = container;
-  		this.currentContentIndex = contentIndex;
+  		this.currentPointer = pointer.copy();
+
   		this.inExpressionEvaluation = inExpressionEvaluation || false;
   		this.temporaryVariables = {};
   		this.type = type;
+
+  		this.evaluationStackHeightWhenPushed = 0;
+  		this.functionStartInOutputStream = 0;
   	}
 
   	createClass(Element, [{
   		key: 'Copy',
   		value: function Copy() {
-  			var copy = new Element(this.type, this.currentContainer, this.currentContentIndex, this.inExpressionEvaluation);
+  			var copy = new Element(this.type, this.currentPointer, this.inExpressionEvaluation);
   			_extends(copy.temporaryVariables, this.temporaryVariables);
+  			copy.evaluationStackHeightWhenPushed = this.evaluationStackHeightWhenPushed;
+  			copy.functionStartInOutputStream = this.functionStartInOutputStream;
   			return copy;
-  		}
-  	}, {
-  		key: 'currentObject',
-  		get: function get$$1() {
-  			if (this.currentContainer && this.currentContentIndex < this.currentContainer.content.length) {
-  				return this.currentContainer.content[this.currentContentIndex];
-  			}
-
-  			return null;
-  		},
-  		set: function set$$1(value) {
-  			var currentObj = value;
-  			if (currentObj == null) {
-  				this.currentContainer = null;
-  				this.currentContentIndex = 0;
-  				return;
-  			}
-
-  			//		currentContainer = currentObj.parent as Container;
-  			this.currentContainer = currentObj.parent;
-  			if (this.currentContainer instanceof Container) this.currentContentIndex = this.currentContainer.content.indexOf(currentObj);
-
-  			// Two reasons why the above operation might not work:
-  			//  - currentObj is already the root container
-  			//  - currentObj is a named container rather than being an object at an index
-  			if (this.currentContainer instanceof Container === false || this.currentContentIndex == -1) {
-  				//			currentContainer = currentObj as Container;
-  				this.currentContainer = currentObj;
-  				this.currentContentIndex = 0;
-  			}
   		}
   	}]);
   	return Element;
@@ -3665,7 +3706,7 @@
 
   		this.callstack = [];
   		this.threadIndex = 0;
-  		this.previousContentObject = null;
+  		this.previousPointer = Pointer.Null;
 
   		if (jsonToken && storyContext) {
   			var jThreadObj = jsonToken;
@@ -3678,21 +3719,23 @@
 
   				var pushPopType = parseInt(jElementObj["type"]);
 
-  				var currentContainer = null;
-  				var contentIndex = 0;
+  				var pointer = Pointer.Null;
 
   				var currentContainerPathStr = null;
   				var currentContainerPathStrToken = jElementObj["cPath"];
   				if (typeof currentContainerPathStrToken !== 'undefined') {
   					currentContainerPathStr = currentContainerPathStrToken.toString();
-  					//					currentContainer = storyContext.ContentAtPath (new Path(currentContainerPathStr)) as Container;
-  					currentContainer = storyContext.ContentAtPath(new Path$1(currentContainerPathStr));
-  					contentIndex = parseInt(jElementObj["idx"]);
+
+  					var threadPointerResult = storyContext.ContentAtPath(new Path$1(currentContainerPathStr));
+  					pointer.container = threadPointerResult.container;
+  					pointer.index = parseInt(jElementObj["idx"]);
+
+  					if (threadPointerResult.obj == null) throw "When loading state, internal story location couldn't be found: " + currentContainerPathStr + ". Has the story changed since this save data was created?";else if (threadPointerResult.approximate) storyContext.Warning("When loading state, exact internal story location couldn't be found: '" + currentContainerPathStr + "', so it was approximated to '" + pointer.container.path.toString() + "' to recover. Has the story changed since this save data was created?");
   				}
 
   				var inExpressionEvaluation = !!jElementObj["exp"];
 
-  				var el = new Element(pushPopType, currentContainer, contentIndex, inExpressionEvaluation);
+  				var el = new Element(pushPopType, pointer, inExpressionEvaluation);
 
   				var jObjTemps = jElementObj["temp"];
   				el.temporaryVariables = JsonSerialisation.JObjectToDictionaryRuntimeObjs(jObjTemps);
@@ -3703,7 +3746,7 @@
   			var prevContentObjPath = jThreadObj["previousContentObject"];
   			if (typeof prevContentObjPath !== 'undefined') {
   				var prevPath = new Path$1(prevContentObjPath.toString());
-  				this.previousContentObject = storyContext.ContentAtPath(prevPath);
+  				this.previousPointer = storyContext.PointerAtPath(prevPath);
   			}
   		}
   	}
@@ -3716,7 +3759,7 @@
   			this.callstack.forEach(function (e) {
   				copy.callstack.push(e.Copy());
   			});
-  			copy.previousContentObject = this.previousContentObject;
+  			copy.previousPointer = this.previousPointer.copy();
   			return copy;
   		}
   	}, {
@@ -3727,9 +3770,9 @@
   			var jThreadCallstack = [];
   			this.callstack.forEach(function (el) {
   				var jObj = {};
-  				if (el.currentContainer) {
-  					jObj["cPath"] = el.currentContainer.path.componentsString;
-  					jObj["idx"] = el.currentContentIndex;
+  				if (!el.currentPointer.isNull) {
+  					jObj["cPath"] = el.currentPointer.container.path.componentsString;
+  					jObj["idx"] = el.currentPointer.index;
   				}
   				jObj["exp"] = el.inExpressionEvaluation;
   				jObj["type"] = parseInt(el.type);
@@ -3740,7 +3783,7 @@
   			threadJObj["callstack"] = jThreadCallstack;
   			threadJObj["threadIndex"] = this.threadIndex;
 
-  			if (this.previousContentObject != null) threadJObj["previousContentObject"] = this.previousContentObject.path.toString();
+  			if (!this.previousPointer.isNull) threadJObj["previousContentObject"] = this.previousPointer.Resolve().path.toString();
 
   			return threadJObj;
   		}
@@ -3765,7 +3808,7 @@
   				_this2._threads.push(otherThread.Copy());
   			});
   		} else {
-  			this._threads[0].callstack.push(new Element(PushPopType.Tunnel, copyOrrootContentContainer, 0));
+  			this._threads[0].callstack.push(new Element(PushPopType.Tunnel, Pointer.StartOf(copyOrrootContentContainer)));
   		}
   	}
 
@@ -3790,9 +3833,16 @@
   		}
   	}, {
   		key: 'Push',
-  		value: function Push(type) {
-  			// When pushing to callstack, maintain the current content path, but jump out of expressions by default
-  			this.callStack.push(new Element(type, this.currentElement.currentContainer, this.currentElement.currentContentIndex, false));
+  		value: function Push(type, externalEvaluationStackHeight, outputStreamLengthWithPushed) {
+  			externalEvaluationStackHeight = typeof externalEvaluationStackHeight !== 'undefined' ? externalEvaluationStackHeight : 0;
+  			outputStreamLengthWithPushed = typeof outputStreamLengthWithPushed !== 'undefined' ? outputStreamLengthWithPushed : 0;
+
+  			var element = new Element(type, this.currentElement.currentPointer, false);
+
+  			element.evaluationStackHeightWhenPushed = externalEvaluationStackHeight;
+  			element.functionStartInOutputStream = outputStreamLengthWithPushed;
+
+  			this.callStack.push(element);
   		}
   	}, {
   		key: 'PushThread',
@@ -3919,6 +3969,31 @@
   			return this.currentThread.callstack;
   		}
   	}, {
+  		key: 'callStackTrace',
+  		get: function get$$1() {
+  			var sb = new StringBuilder();
+
+  			for (var t = 0; t < this._threads.length; t++) {
+  				var thread = this._threads[t];
+  				var isCurrent = t == this._threads.length - 1;
+  				sb.AppendFormat("=== THREAD {0}/{1} {2}===\n", t + 1, this._threads.length, isCurrent ? "(current) " : "");
+
+  				for (var i = 0; i < thread.callstack.length; i++) {
+
+  					if (thread.callstack[i].type == PushPopType.Function) sb.Append("  [FUNCTION] ");else sb.Append("  [TUNNEL] ");
+
+  					var pointer = thread.callstack[i].currentPointer;
+  					if (!pointer.isNull) {
+  						sb.Append("<SOMEWHERE IN ");
+  						sb.Append(pointer.container.path.toString());
+  						sb.AppendLine(">");
+  					}
+  				}
+  			}
+
+  			return sb.toString();
+  		}
+  	}, {
   		key: 'elements',
   		get: function get$$1() {
   			return this.callStack;
@@ -3931,7 +4006,9 @@
   	}, {
   		key: 'currentElement',
   		get: function get$$1() {
-  			return this.callStack[this.callStack.length - 1];
+  			var thread = this._threads[this._threads.length - 1];
+  			var cs = thread.callstack;
+  			return cs[cs.length - 1];
   		}
   	}, {
   		key: 'currentElementIndex',
@@ -3946,20 +4023,25 @@
   	}, {
   		key: 'canPopThread',
   		get: function get$$1() {
-  			return this._threads.length > 1;
+  			return this._threads.length > 1 && !this.elementIsEvaluateFromGame;
+  		}
+  	}, {
+  		key: 'elementIsEvaluateFromGame',
+  		get: function get$$1() {
+  			return this.currentElement.type == PushPopType.FunctionEvaluationFromGame;
   		}
   	}]);
   	return CallStack;
   }();
 
-  //still needs: 
-  // - varchanged events
-  // - see if the internal getenumarators are needed
+  //still needs:
+
   var VariablesState = function () {
   	function VariablesState(callStack, listDefsOrigin) {
   		classCallCheck(this, VariablesState);
 
   		this._globalVariables = {};
+  		this._defaultGlobalVariables = {};
   		this._callStack = callStack;
   		this._listDefsOrigin = listDefsOrigin;
 
@@ -3997,7 +4079,7 @@
 
   		/**
      * This function is specific to the js version of ink. It allows to register a callback that will be called when a variable changes. The original code uses `state.variableChangedEvent += callback` instead.
-     * @param {function} callback 
+     * @param {function} callback
      */
   		value: function ObserveVariableChange(callback) {
   			var _this = this;
@@ -4016,6 +4098,7 @@
   		key: 'CopyFrom',
   		value: function CopyFrom(toCopy) {
   			this._globalVariables = _extends({}, toCopy._globalVariables);
+  			this._defaultGlobalVariables = _extends({}, toCopy._defaultGlobalVariables);
 
   			this.variableChangedEvent = toCopy.variableChangedEvent;
 
@@ -4029,6 +4112,11 @@
   					this._changedVariables = null;
   				}
   			}
+  		}
+  	}, {
+  		key: 'GlobalVariableExistsWithName',
+  		value: function GlobalVariableExistsWithName(name) {
+  			return typeof this._globalVariables[name] !== 'undefined';
   		}
   	}, {
   		key: 'GetVariableWithName',
@@ -4047,6 +4135,13 @@
   			return varValue;
   		}
   	}, {
+  		key: 'TryGetDefaultVariableValue',
+  		value: function TryGetDefaultVariableValue(name) {
+  			var val = _defaultGlobalVariables[name];
+  			if (typeof val === 'undefined') val = null;
+  			return val;
+  		}
+  	}, {
   		key: 'GetRawVariableWithName',
   		value: function GetRawVariableWithName(name, contextIndex) {
   			var varValue = null;
@@ -4061,8 +4156,6 @@
 
   			// Temporary
   			varValue = this._callStack.GetTemporaryVariableWithName(name, contextIndex);
-
-  			if (varValue == null) throw "RUNTIME ERROR: Variable '" + name + "' could not be found in context '" + contextIndex + "'. This shouldn't be possible so is a bug in the ink engine. Please try to construct a minimal story that reproduces the problem and report to inkle, thank you!";
 
   			return varValue;
   		}
@@ -4119,6 +4212,11 @@
   			}
   		}
   	}, {
+  		key: 'SnapshotDefaultGlobals',
+  		value: function SnapshotDefaultGlobals() {
+  			this._defaultGlobalVariables = _extends({}, this._globalVariables);
+  		}
+  	}, {
   		key: 'RetainListOriginsForAssignment',
   		value: function RetainListOriginsForAssignment(oldValue, newValue) {
   			//		var oldList = oldValue as ListValue;
@@ -4157,7 +4255,7 @@
   			var valueOfVariablePointedTo = this.GetRawVariableWithName(varPointer.variableName, contextIndex);
 
   			// Extra layer of indirection:
-  			// When accessing a pointer to a pointer (e.g. when calling nested or 
+  			// When accessing a pointer to a pointer (e.g. when calling nested or
   			// recursive functions that take a variable references, ensure we don't create
   			// a chain of indirection by just returning the final target.
   			//		var doubleRedirectionPointer = valueOfVariablePointedTo as VariablePointerValue;
@@ -4186,13 +4284,16 @@
   		value: function $(variableName, value) {
   			if (typeof value === 'undefined') {
   				var varContents = this._globalVariables[variableName];
+
+  				if (typeof varContents === 'undefined') {
+  					varContents = this._defaultGlobalVariables[variableName];
+  				}
+
   				if (typeof varContents !== 'undefined')
   					//			return (varContents as Runtime.Value).valueObject;
   					return varContents.valueObject;else return null;
   			} else {
-  				if (typeof this._globalVariables[variableName] === 'undefined') {
-  					throw new StoryException("Variable '" + variableName + "' doesn't exist, so can't be set.");
-  				}
+  				if (typeof this._defaultGlobalVariables[variableName] === 'undefined') throw new StoryException("Cannot assign to a variable that hasn't been declared in the story");
 
   				var val = Value.Create(value);
   				if (val == null) {
@@ -4228,7 +4329,7 @@
   				this._changedVariables = [];
   			}
 
-  			// Finished observing variables in a batch - now send 
+  			// Finished observing variables in a batch - now send
   			// notifications for changed variables all in one go.
   			else {
   					if (this._changedVariables != null) {
@@ -4298,7 +4399,7 @@
   		this._turnIndices = {};
   		this._currentTurnIndex = -1;
 
-  		this.divertedTargetObject = null;
+  		this.divertedPointer = Pointer.Null;
 
   		var timeSeed = new Date().getTime();
   		this.storySeed = new PRNG(timeSeed).next() % 100;
@@ -4308,48 +4409,56 @@
   		this._currentText = null;
   		this._currentTags = null;
   		this._currentErrors = null;
+  		this._currentWarnings = null;
 
   		this.didSafeExit = false;
-
-  		this._isExternalFunctionEvaluation = false;
-  		this._originalCallstack = null;
-  		this._originalEvaluationStackHeight = 0;
 
   		this.GoToStart();
   	}
 
   	createClass(StoryState, [{
-  		key: 'MatchRightGlueForLeftGlue',
-  		value: function MatchRightGlueForLeftGlue(leftGlue) {
-  			if (!leftGlue.isLeft) return null;
+  		key: 'CleanOutputWhitespace',
+  		value: function CleanOutputWhitespace(str) {
+  			var sb = new StringBuilder();
 
-  			for (var i = this._outputStream.length - 1; i >= 0; i--) {
-  				var c = this._outputStream[i];
-  				//			var g = c as Glue;
-  				var g = c;
-  				if (g instanceof Glue && g.isRight && g.parent == leftGlue.parent) {
-  					return g;
-  				} else if (c instanceof ControlCommand) // e.g. BeginString
-  					break;
+  			var currentWhitespaceStart = -1;
+
+  			for (var i = 0; i < str.length; i++) {
+  				var c = str.charAt(i);
+
+  				var isInlineWhitespace = c == ' ' || c == '\t';
+
+  				if (isInlineWhitespace && currentWhitespaceStart == -1) currentWhitespaceStart = i;
+
+  				if (!isInlineWhitespace) {
+  					if (c != '\n' && currentWhitespaceStart > 0) {
+  						sb.Append(str.substr(currentWhitespaceStart, i - currentWhitespaceStart));
+  					}
+  					currentWhitespaceStart = -1;
+  				}
+
+  				if (!isInlineWhitespace) sb.Append(c);
   			}
 
-  			return null;
+  			return sb.toString();
   		}
   	}, {
   		key: 'GoToStart',
   		value: function GoToStart() {
-  			this.callStack.currentElement.currentContainer = this.story.mainContentContainer;
-  			this.callStack.currentElement.currentContentIndex = 0;
+  			this.callStack.currentElement.currentPointer = Pointer.StartOf(this.story.mainContentContainer);
   		}
   	}, {
   		key: 'ResetErrors',
   		value: function ResetErrors() {
   			this._currentErrors = null;
+  			this._currentWarnings = null;
   		}
   	}, {
   		key: 'ResetOutput',
-  		value: function ResetOutput() {
+  		value: function ResetOutput(objs) {
+  			objs = typeof objs !== 'undefined' ? objs : null;
   			this._outputStream.length = 0;
+  			if (objs != null) this._outputStream.push.apply(this._outputStream, objs);
   			this.OutputStreamDirty();
   		}
   	}, {
@@ -4363,17 +4472,16 @@
 
   				// Update origin when list is has something to indicate the list origin
   				var rawList = listValue.value;
-  				var names = rawList.originNames;
-  				if (names != null) {
-  					var origins = [];
 
-  					names.forEach(function (n) {
+  				if (rawList.originNames != null) {
+  					if (!rawList.origins) rawList.origins = [];
+  					rawList.origins.length = 0;
+
+  					rawList.originNames.forEach(function (n) {
   						var def = null;
-  						def = _this.story.listDefinitions.TryGetDefinition(n, def);
-  						if (origins.indexOf(def) < 0) origins.push(def);
+  						def = _this.story.listDefinitions.TryListGetDefinition(n, def);
+  						if (rawList.origins.indexOf(def) < 0) rawList.origins.push(def);
   					});
-
-  					rawList.origins = origins;
   				}
   			}
 
@@ -4412,11 +4520,18 @@
   					listText.forEach(function (textObj) {
   						_this2.PushToOutputStreamIndividual(textObj);
   					});
+  					this.OutputStreamDirty();
   					return;
   				}
   			}
 
   			this.PushToOutputStreamIndividual(obj);
+  			this.OutputStreamDirty();
+  		}
+  	}, {
+  		key: 'PopFromOutputStream',
+  		value: function PopFromOutputStream(count) {
+  			this.outputStream.splice(this.outputStream.length - count, count);
   			this.OutputStreamDirty();
   		}
   	}, {
@@ -4472,7 +4587,7 @@
   			if (tailLastNewlineIdx != -1 && tailFirstNewlineIdx > headLastNewlineIdx) {
   				listTexts.push(new StringValue("\n"));
   				if (tailLastNewlineIdx < str.length - 1) {
-  					var numSpaces = str.Length - tailLastNewlineIdx - 1;
+  					var numSpaces = str.length - tailLastNewlineIdx - 1;
   					var trailingSpaces = new StringValue(str.substring(tailLastNewlineIdx + 1, numSpaces));
   					listTexts.push(trailingSpaces);
   				}
@@ -4489,37 +4604,56 @@
   			var includeInOutput = true;
 
   			if (glue instanceof Glue) {
-  				// Found matching left-glue for right-glue? Close it.
-  				var existingRightGlue = this.currentRightGlue;
-  				var foundMatchingLeftGlue = !!(glue.isLeft && existingRightGlue && glue.parent == existingRightGlue.parent);
-  				var matchingRightGlue = null;
-
-  				if (glue.isLeft) matchingRightGlue = this.MatchRightGlueForLeftGlue(glue);
-
-  				// Left/Right glue is auto-generated for inline expressions 
-  				// where we want to absorb newlines but only in a certain direction.
-  				// "Bi" glue is written by the user in their ink with <>
-  				if (glue.isLeft || glue.isBi) {
-  					this.TrimNewlinesFromOutputStream(matchingRightGlue);
-  				}
-
-  				includeInOutput = glue.isBi || glue.isRight;
+  				this.TrimNewlinesFromOutputStream();
+  				includeInOutput = true;
   			} else if (text instanceof StringValue) {
 
-  				if (this.currentGlueIndex != -1) {
+  				var functionTrimIndex = -1;
+  				var currEl = this.callStack.currentElement;
+  				if (currEl.type == PushPopType.Function) {
+  					functionTrimIndex = currEl.functionStartInOutputStream;
+  				}
 
-  					// Absorb any new newlines if there's existing glue
-  					// in the output stream.
-  					// Also trim any extra whitespace (spaces/tabs) if so.
-  					if (text.isNewline) {
-  						this.TrimFromExistingGlue();
-  						includeInOutput = false;
-  					}
+  				var glueTrimIndex = -1;
+  				for (var i = this._outputStream.length - 1; i >= 0; i--) {
+  					var o = this._outputStream[i];
+  					var c = o instanceof ControlCommand ? o : null;
+  					var g = o instanceof Glue ? o : null;
 
-  					// Able to completely reset when 
-  					else if (text.isNonWhitespace) {
-  							this.RemoveExistingGlue();
+  					if (g != null) {
+  						glueTrimIndex = i;
+  						break;
+  					} else if (c != null && c.commandType == ControlCommand.CommandType.BeginString) {
+  						if (i >= functionTrimIndex) {
+  							functionTrimIndex = -1;
   						}
+  						break;
+  					}
+  				}
+
+  				var trimIndex = -1;
+  				if (glueTrimIndex != -1 && functionTrimIndex != -1) trimIndex = Math.min(functionTrimIndex, glueTrimIndex);else if (glueTrimIndex != -1) trimIndex = glueTrimIndex;else trimIndex = functionTrimIndex;
+
+  				if (trimIndex != -1) {
+
+  					if (text.isNewline) {
+  						includeInOutput = false;
+  					} else if (text.isNonWhitespace) {
+
+  						if (glueTrimIndex > -1) this.RemoveExistingGlue();
+
+  						if (functionTrimIndex > -1) {
+  							var callStackElements = this.callStack.elements;
+  							for (var i = callStackElements.length - 1; i >= 0; i--) {
+  								var el = callStackElements[i];
+  								if (el.type == PushPopType.Function) {
+  									el.functionStartInOutputStream = -1;
+  								} else {
+  									break;
+  								}
+  							}
+  						}
+  					}
   				} else if (text.isNewline) {
   					if (this.outputStreamEndsInNewline || !this.outputStreamContainsContent) includeInOutput = false;
   				}
@@ -4534,30 +4668,16 @@
   		key: 'TrimNewlinesFromOutputStream',
   		value: function TrimNewlinesFromOutputStream(rightGlueToStopAt) {
   			var removeWhitespaceFrom = -1;
-  			var rightGluePos = -1;
-  			var foundNonWhitespace = false;
 
-  			// Work back from the end, and try to find the point where
-  			// we need to start removing content. There are two ways:
-  			//  - Start from the matching right-glue (because we just saw a left-glue)
-  			//  - Simply work backwards to find the first newline in a string of whitespace
   			var i = this._outputStream.length - 1;
   			while (i >= 0) {
   				var obj = this._outputStream[i];
-  				//			var cmd = obj as ControlCommand;
-  				var cmd = obj;
-  				//			var txt = obj as StringValue;
-  				var txt = obj;
-  				//			var glue = obj as Glue;
-  				var glue = obj;
+  				var cmd = obj instanceof ControlCommand ? obj : null;
+  				var txt = obj instanceof StringValue ? obj : null;
 
-  				if (cmd instanceof ControlCommand || txt instanceof StringValue && txt.isNonWhitespace) {
-  					foundNonWhitespace = true;
-  					if (rightGlueToStopAt == null) break;
-  				} else if (rightGlueToStopAt && glue instanceof Glue && glue == rightGlueToStopAt) {
-  					rightGluePos = i;
+  				if (cmd != null || txt != null && txt.isNonWhitespace) {
   					break;
-  				} else if (txt instanceof StringValue && txt.isNewline && !foundNonWhitespace) {
+  				} else if (txt != null && txt.isNewline) {
   					removeWhitespaceFrom = i;
   				}
   				i--;
@@ -4575,29 +4695,6 @@
   						i++;
   					}
   				}
-  			}
-
-  			if (rightGlueToStopAt && rightGluePos > -1) {
-  				i = rightGluePos;
-  				while (i < this._outputStream.length) {
-  					if (this._outputStream[i] instanceof Glue && this._outputStream[i].isRight) {
-  						this.outputStream.splice(i, 1);
-  					} else {
-  						i++;
-  					}
-  				}
-  			}
-
-  			this.OutputStreamDirty();
-  		}
-  	}, {
-  		key: 'TrimFromExistingGlue',
-  		value: function TrimFromExistingGlue() {
-  			var i = this.currentGlueIndex;
-  			while (i < this._outputStream.length) {
-  				//			var txt = _outputStream [i] as StringValue;
-  				var txt = this._outputStream[i];
-  				if (txt instanceof StringValue && !txt.isNonWhitespace) this._outputStream.splice(i, 1);else i++;
   			}
 
   			this.OutputStreamDirty();
@@ -4623,13 +4720,48 @@
   			while (this.callStack.canPopThread) {
   				this.callStack.PopThread();
   			}while (this.callStack.canPop) {
-  				this.callStack.Pop();
+  				this.PopCallStack();
   			}this._currentChoices.length = 0;
 
-  			this.currentContentObject = null;
-  			this.previousContentObject = null;
+  			this.currentPointer = Pointer.Null;
+  			this.previousPointer = Pointer.Null;
 
   			this.didSafeExit = true;
+  		}
+  	}, {
+  		key: 'TrimWhitespaceFromFunctionEnd',
+  		value: function TrimWhitespaceFromFunctionEnd() {
+  			// Debug.Assert (callStack.currentElement.type == PushPopType.Function);
+  			var functionStartPoint = this.callStack.currentElement.functionStartInOutputStream;
+
+  			if (functionStartPoint == -1) {
+  				functionStartPoint = 0;
+  			}
+
+  			for (var i = this._outputStream.length - 1; i >= functionStartPoint; i--) {
+  				var obj = this._outputStream[i];
+  				var txt = obj instanceof StringValue ? obj : null;
+  				var cmd = obj instanceof ControlCommand ? obj : null;
+
+  				if (txt == null) continue;
+  				if (cmd) break;
+
+  				if (txt.isNewline || txt.isInlineWhitespace) {
+  					this._outputStream.splice(i, 1);
+  					this.OutputStreamDirty();
+  				} else {
+  					break;
+  				}
+  			}
+  		}
+  	}, {
+  		key: 'PopCallStack',
+  		value: function PopCallStack(popType) {
+  			popType = typeof popType !== 'undefined' ? popType : null;
+
+  			if (this.callStack.currentElement.type == PushPopType.Function) this.TrimWhitespaceFromFunctionEnd();
+
+  			this.callStack.Pop(popType);
   		}
   	}, {
   		key: 'SetChosenPath',
@@ -4637,29 +4769,18 @@
   			// Changing direction, assume we need to clear current set of choices
   			this._currentChoices.length = 0;
 
-  			this.currentPath = path;
+  			var newPointer = this.story.PointerAtPath(path);
+  			if (!newPointer.isNull && newPointer.index == -1) newPointer.index = 0;
+
+  			this.currentPointer = newPointer;
 
   			this._currentTurnIndex++;
   		}
   	}, {
-  		key: 'StartExternalFunctionEvaluation',
-  		value: function StartExternalFunctionEvaluation(funcContainer, args) {
-  			// We'll start a new callstack, so keep hold of the original,
-  			// as well as the evaluation stack so we know if the function 
-  			// returned something
-  			this._originalCallstack = this.callStack;
-  			this._originalEvaluationStackHeight = this.evaluationStack.length;
-
-  			// Create a new base call stack element.
-  			this.callStack = new CallStack(funcContainer);
-  			this.callStack.currentElement.type = PushPopType.Function;
-
-  			this._variablesState.callStack = this.callStack;
-
-  			// By setting ourselves in external function evaluation mode,
-  			// we're saying it's okay to end the flow without a Done or End,
-  			// but with a ~ return instead.
-  			this._isExternalFunctionEvaluation = true;
+  		key: 'StartFunctionEvaluationFromGame',
+  		value: function StartFunctionEvaluationFromGame(funcContainer, args) {
+  			this.callStack.Push(PushPopType.FunctionEvaluationFromGame, this.evaluationStack.length);
+  			this.callStack.currentElement.currentPointer = Pointer.StartOf(funcContainer);
 
   			this.PassArgumentsToEvaluationStack(args);
   		}
@@ -4678,10 +4799,10 @@
   			}
   		}
   	}, {
-  		key: 'TryExitExternalFunctionEvaluation',
-  		value: function TryExitExternalFunctionEvaluation() {
-  			if (this._isExternalFunctionEvaluation && this.callStack.elements.length == 1 && this.callStack.currentElement.type == PushPopType.Function) {
-  				this.currentContentObject = null;
+  		key: 'TryExitFunctionEvaluationFromGame',
+  		value: function TryExitFunctionEvaluationFromGame() {
+  			if (this.callStack.currentElement.type == PushPopType.FunctionEvaluationFromGame) {
+  				this.currentPointer = Pointer.Null;
   				this.didSafeExit = true;
   				return true;
   			}
@@ -4689,24 +4810,24 @@
   			return false;
   		}
   	}, {
-  		key: 'CompleteExternalFunctionEvaluation',
-  		value: function CompleteExternalFunctionEvaluation() {
+  		key: 'CompleteFunctionEvaluationFromGame',
+  		value: function CompleteFunctionEvaluationFromGame() {
+  			if (this.callStack.currentElement.type != PushPopType.FunctionEvaluationFromGame) {
+  				throw new StoryException("Expected external function evaluation to be complete. Stack trace: " + callStack.callStackTrace);
+  			}
+
+  			var originalEvaluationStackHeight = this.callStack.currentElement.evaluationStackHeightWhenPushed;
   			// Do we have a returned value?
   			// Potentially pop multiple values off the stack, in case we need
-  			// to clean up after ourselves (e.g. caller of EvaluateFunction may 
+  			// to clean up after ourselves (e.g. caller of EvaluateFunction may
   			// have passed too many arguments, and we currently have no way to check for that)
   			var returnedObj = null;
-  			while (this.evaluationStack.length > this._originalEvaluationStackHeight) {
+  			while (this.evaluationStack.length > originalEvaluationStackHeight) {
   				var poppedObj = this.PopEvaluationStack();
   				if (returnedObj == null) returnedObj = poppedObj;
   			}
 
-  			// Restore our own state
-  			this.callStack = this._originalCallstack;
-  			this._originalCallstack = null;
-  			this._originalEvaluationStackHeight = 0;
-
-  			this._variablesState.callStack = this.callStack;
+  			this.PopCallStack(PushPopType.FunctionEvaluationFromGame);
 
   			if (returnedObj) {
   				if (returnedObj instanceof Void) return null;
@@ -4730,12 +4851,14 @@
   		}
   	}, {
   		key: 'AddError',
-  		value: function AddError(message) {
-  			if (this._currentErrors == null) {
-  				this._currentErrors = [];
+  		value: function AddError(message, isWarning) {
+  			if (!isWarning) {
+  				if (this._currentErrors == null) this._currentErrors = [];
+  				this._currentErrors.push(message);
+  			} else {
+  				if (this._currentWarnings == null) this._currentWarnings = [];
+  				this._currentWarnings.push(message);
   			}
-
-  			this._currentErrors.push(message);
   		}
   	}, {
   		key: 'OutputStreamDirty',
@@ -4762,24 +4885,25 @@
   			copy._currentChoices.push.apply(copy._currentChoices, this._currentChoices);
 
   			if (this.hasError) {
-  				copy.currentErrors = [];
-  				copy.currentErrors.push.apply(copy.currentErrors, this.currentErrors);
+  				copy._currentErrors = [];
+  				copy._currentErrors.push.apply(copy._currentErrors, this.currentErrors);
+  			}
+
+  			if (this.hasWarning) {
+  				copy._currentWarnings = [];
+  				copy._currentWarnings.push.apply(copy._currentWarnings, this.currentWarnings);
   			}
 
   			copy.callStack = new CallStack(this.callStack);
-  			if (this._originalCallstack) copy._originalCallstack = new CallStack(this._originalCallstack);
 
   			copy._variablesState = new VariablesState(copy.callStack, this.story.listDefinitions);
   			copy.variablesState.CopyFrom(this.variablesState);
 
   			copy.evaluationStack.push.apply(copy.evaluationStack, this.evaluationStack);
-  			copy._originalEvaluationStackHeight = this._originalEvaluationStackHeight;
 
-  			if (this.divertedTargetObject != null) copy.divertedTargetObject = this.divertedTargetObject;
+  			if (!this.divertedPointer.isNull) copy.divertedPointer = this.divertedPointer.copy();
 
-  			copy.previousContentObject = this.previousContentObject;
-
-  			copy._isExternalFunctionEvaluation = this._isExternalFunctionEvaluation;
+  			copy.previousPointer = this.previousPointer.copy();
 
   			copy._visitCounts = {};
   			for (var keyValue in this._visitCounts) {
@@ -4799,9 +4923,14 @@
   			return copy;
   		}
   	}, {
+  		key: 'ToJson',
+  		value: function ToJson(indented) {
+  			return JSON.stringify(this.jsonToken, null, indented ? 2 : 0);
+  		}
+  	}, {
   		key: 'toJson',
   		value: function toJson(indented) {
-  			return JSON.stringify(this.jsonToken, null, indented ? 2 : 0);
+  			return this.ToJson(indented);
   		}
   	}, {
   		key: 'LoadJson',
@@ -4826,6 +4955,11 @@
   		key: 'currentErrors',
   		get: function get$$1() {
   			return this._currentErrors;
+  		}
+  	}, {
+  		key: 'currentWarnings',
+  		get: function get$$1() {
+  			return this._currentWarnings;
   		}
   	}, {
   		key: 'visitCounts',
@@ -4858,12 +4992,17 @@
   	}, {
   		key: 'canContinue',
   		get: function get$$1() {
-  			return this.currentContentObject != null && !this.hasError;
+  			return !this.currentPointer.isNull && !this.hasError;
   		}
   	}, {
   		key: 'hasError',
   		get: function get$$1() {
   			return this.currentErrors != null && this.currentErrors.length > 0;
+  		}
+  	}, {
+  		key: 'hasWarning',
+  		get: function get$$1() {
+  			return this.currentWarnings != null && this.currentWarnings.length > 0;
   		}
   	}, {
   		key: 'inExpressionEvaluation',
@@ -4905,30 +5044,6 @@
   			return false;
   		}
   	}, {
-  		key: 'currentGlueIndex',
-  		get: function get$$1() {
-  			for (var i = this._outputStream.length - 1; i >= 0; i--) {
-  				var c = this._outputStream[i];
-  				//			var glue = c as Glue;
-  				var glue = c;
-  				if (glue instanceof Glue) return i;else if (c instanceof ControlCommand) // e.g. BeginString
-  					break;
-  			}
-  			return -1;
-  		}
-  	}, {
-  		key: 'currentRightGlue',
-  		get: function get$$1() {
-  			for (var i = this._outputStream.length - 1; i >= 0; i--) {
-  				var c = this._outputStream[i];
-  				//			var glue = c as Glue;
-  				var glue = c;
-  				if (glue instanceof Glue && glue.isRight) return glue;else if (c instanceof ControlCommand) // e.g. BeginString
-  					break;
-  			}
-  			return null;
-  		}
-  	}, {
   		key: 'inStringEvaluation',
   		get: function get$$1() {
   			for (var i = this._outputStream.length - 1; i >= 0; i--) {
@@ -4955,7 +5070,7 @@
   					}
   				});
 
-  				this._currentText = sb.toString();
+  				this._currentText = this.CleanOutputWhitespace(sb.toString());
   				this._outputStreamTextDirty = false;
   			}
 
@@ -4988,27 +5103,26 @@
   			return this._outputStream;
   		}
   	}, {
-  		key: 'currentPath',
+  		key: 'currentPathString',
   		get: function get$$1() {
-  			if (this.currentContentObject == null) return null;
-
-  			return this.currentContentObject.path;
-  		},
-  		set: function set$$1(value) {
-  			if (value != null) this.currentContentObject = this.story.ContentAtPath(value);else this.currentContentObject = null;
+  			var pointer = this.currentPointer;
+  			if (pointer.isNull) return null;else return pointer.path.toString();
   		}
   	}, {
-  		key: 'currentContainer',
+  		key: 'currentPointer',
   		get: function get$$1() {
-  			return this.callStack.currentElement.currentContainer;
-  		}
-  	}, {
-  		key: 'previousContentObject',
-  		get: function get$$1() {
-  			return this.callStack.currentThread.previousContentObject;
+  			return this.callStack.currentElement.currentPointer.copy();
   		},
   		set: function set$$1(value) {
-  			this.callStack.currentThread.previousContentObject = value;
+  			this.callStack.currentElement.currentPointer = value.copy();
+  		}
+  	}, {
+  		key: 'previousPointer',
+  		get: function get$$1() {
+  			return this.callStack.currentThread.previousPointer.copy();
+  		},
+  		set: function set$$1(value) {
+  			this.callStack.currentThread.previousPointer = value.copy();
   		}
   	}, {
   		key: 'callstackDepth',
@@ -5024,7 +5138,6 @@
 
   			var choiceThreads = null;
   			this._currentChoices.forEach(function (c) {
-  				c.originalChoicePath = c.choicePoint.path.componentsString;
   				c.originalThreadIndex = c.threadAtGeneration.threadIndex;
 
   				if (_this4.callStack.ThreadWithIndex(c.originalThreadIndex) == null) {
@@ -5045,7 +5158,7 @@
 
   			obj["currentChoices"] = JsonSerialisation.ListToJArray(this._currentChoices);
 
-  			if (this.divertedTargetObject != null) obj["currentDivertTarget"] = this.divertedTargetObject.path.componentsString;
+  			if (!this.divertedPointer.isNull) obj["currentDivertTarget"] = this.divertedPointer.path.componentsString;
 
   			obj["visitCounts"] = JsonSerialisation.IntDictionaryToJObject(this.visitCounts);
   			obj["turnIndices"] = JsonSerialisation.IntDictionaryToJObject(this.turnIndices);
@@ -5085,7 +5198,7 @@
   			var currentDivertTargetPath = jObject["currentDivertTarget"];
   			if (currentDivertTargetPath != null) {
   				var divertPath = new Path$1(currentDivertTargetPath.toString());
-  				this.divertedTargetObject = this.story.ContentAtPath(divertPath);
+  				this.divertedPointer = this.story.PointerAtPath(divertPath);
   			}
 
   			this._visitCounts = JsonSerialisation.JObjectToIntDictionary(jObject["visitCounts"]);
@@ -5097,8 +5210,6 @@
   			var jChoiceThreads = jObject["choiceThreads"];
 
   			this._currentChoices.forEach(function (c) {
-  				c.choicePoint = _this5.story.ContentAtPath(new Path$1(c.originalChoicePath));
-
   				var foundActiveThread = _this5.callStack.ThreadWithIndex(c.originalThreadIndex);
   				if (foundActiveThread != null) {
   					c.threadAtGeneration = foundActiveThread;
@@ -5112,8 +5223,38 @@
   	return StoryState;
   }();
 
-  StoryState.kInkSaveStateVersion = 7;
-  StoryState.kMinCompatibleLoadVersion = 6;
+  StoryState.kInkSaveStateVersion = 8;
+  StoryState.kMinCompatibleLoadVersion = 8;
+
+  // This is simple replacement of the Stopwatch class from the .NET Framework.
+  // The original class can count time with much more accuracy than the Javascript version.
+  // It might be worth considering using `window.performance` in the browser
+  // or `process.hrtime()` in node.
+  var Stopwatch = function () {
+  	function Stopwatch() {
+  		classCallCheck(this, Stopwatch);
+
+  		this.startTime;
+  	}
+
+  	createClass(Stopwatch, [{
+  		key: "Start",
+  		value: function Start() {
+  			this.startTime = new Date().getTime();
+  		}
+  	}, {
+  		key: "Stop",
+  		value: function Stop() {
+  			this.startTime = undefined;
+  		}
+  	}, {
+  		key: "ElapsedMilliseconds",
+  		get: function get$$1() {
+  			return new Date().getTime() - this.startTime;
+  		}
+  	}]);
+  	return Stopwatch;
+  }();
 
   if (!Number.isInteger) {
   	Number.isInteger = function isInteger(nVal) {
@@ -5131,13 +5272,20 @@
 
   		lists = lists || null;
 
-  		_this.inkVersionCurrent = 17;
-  		_this.inkVersionMinimumCompatible = 16;
+  		_this.inkVersionCurrent = 18;
+  		_this.inkVersionMinimumCompatible = 18;
 
   		_this._variableObservers = null;
   		_this._externals = {};
-  		_this._prevContainerSet = null;
+  		_this._prevContainers = [];
   		_this._listDefinitions = null;
+
+  		_this._asyncContinueActive;
+  		_this._stateAtLastNewline = null;
+  		_this._recursiveContinueCount = 0;
+  		_this._temporaryEvaluationContainer = null;
+
+  		_this._profiler = null;
 
   		if (jsonString instanceof Container) {
   			_this._mainContentContainer = jsonString;
@@ -5152,9 +5300,9 @@
 
   			var formatFromFile = parseInt(versionObj);
   			if (formatFromFile > _this.inkVersionCurrent) {
-  				throw "Version of ink used to build story was newer than the current verison of the engine";
+  				throw "Version of ink used to build story was newer than the current version of the engine";
   			} else if (formatFromFile < _this.inkVersionMinimumCompatible) {
-  				throw "Version of ink used to build story is too old to be loaded by this verison of the engine";
+  				throw "Version of ink used to build story is too old to be loaded by this version of the engine";
   			} else if (formatFromFile != _this.inkVersionCurrent) {
   				console.warn("WARNING: Version of ink used to build story doesn't match current version of engine. Non-critical, but recommend synchronising.");
   			}
@@ -5178,6 +5326,15 @@
   	}
 
   	createClass(Story, [{
+  		key: 'StartProfiling',
+
+
+  		// TODO: Implement Profiler
+  		value: function StartProfiling() {}
+  	}, {
+  		key: 'EndProfiling',
+  		value: function EndProfiling() {}
+  	}, {
   		key: 'ToJsonString',
   		value: function ToJsonString() {
   			var rootContainerJsonList = JsonSerialisation.RuntimeObjectToJToken(this._mainContentContainer);
@@ -5193,6 +5350,8 @@
   	}, {
   		key: 'ResetState',
   		value: function ResetState() {
+  			this.IfAsyncWeCant("ResetState");
+
   			this._state = new StoryState(this);
   			this._state.variablesState.ObserveVariableChange(this.VariableStateDidChangeEvent.bind(this));
 
@@ -5206,164 +5365,180 @@
   	}, {
   		key: 'ResetCallstack',
   		value: function ResetCallstack() {
+  			this.IfAsyncWeCant("ResetCallstack");
   			this._state.ForceEnd();
   		}
   	}, {
   		key: 'ResetGlobals',
   		value: function ResetGlobals() {
   			if (this._mainContentContainer.namedContent["global decl"]) {
-  				var originalPath = this.state.currentPath;
+  				var originalPointer = this.state.currentPointer.copy();
 
-  				this.ChoosePathString("global decl");
+  				this.ChoosePathString("global decl", false);
 
   				// Continue, but without validating external bindings,
   				// since we may be doing this reset at initialisation time.
   				this.ContinueInternal();
 
-  				this.state.currentPath = originalPath;
+  				this.state.currentPointer = originalPointer;
   			}
+
+  			this.state.variablesState.SnapshotDefaultGlobals();
   		}
   	}, {
   		key: 'Continue',
   		value: function Continue() {
+  			this.ContinueAsync(0);
+  			return this.currentText;
+  		}
+  	}, {
+  		key: 'ContinueAsync',
+  		value: function ContinueAsync(millisecsLimitAsync) {
   			if (!this._hasValidatedExternals) this.ValidateExternalBindings();
 
-  			return this.ContinueInternal();
+  			this.ContinueInternal(millisecsLimitAsync);
   		}
   	}, {
   		key: 'ContinueInternal',
-  		value: function ContinueInternal() {
-  			if (!this.canContinue) {
-  				throw new StoryException("Can't continue - should check canContinue before calling Continue");
-  			}
+  		value: function ContinueInternal(millisecsLimitAsync) {
+  			millisecsLimitAsync = typeof millisecsLimitAsync !== 'undefined' ? millisecsLimitAsync : 0;
 
-  			this._state.ResetOutput();
+  			if (this._profiler != null) this._profiler.PreContinue();
 
-  			this._state.didSafeExit = false;
+  			var isAsyncTimeLimited = millisecsLimitAsync > 0;
+  			this._recursiveContinueCount++;
 
-  			this._state.variablesState.batchObservingVariableChanges = true;
+  			if (!this._asyncContinueActive) {
+  				this._asyncContinueActive = isAsyncTimeLimited;
 
-  			try {
-
-  				var stateAtLastNewline = null;
-
-  				// The basic algorithm here is:
-  				//
-  				//     do { Step() } while( canContinue && !outputStreamEndsInNewline );
-  				//
-  				// But the complexity comes from:
-  				//  - Stepping beyond the newline in case it'll be absorbed by glue later
-  				//  - Ensuring that non-text content beyond newlines are generated - i.e. choices,
-  				//    which are actually built out of text content.
-  				// So we have to take a snapshot of the state, continue prospectively,
-  				// and rewind if necessary.
-  				// This code is slightly fragile :-/ 
-  				//
-
-  				do {
-
-  					// Run main step function (walks through content)
-  					this.Step();
-
-  					// Run out of content and we have a default invisible choice that we can follow?
-  					if (!this.canContinue) {
-  						this.TryFollowDefaultInvisibleChoice();
-  					}
-
-  					// Don't save/rewind during string evaluation, which is e.g. used for choices
-  					if (!this.state.inStringEvaluation) {
-
-  						// We previously found a newline, but were we just double checking that
-  						// it wouldn't immediately be removed by glue?
-  						if (stateAtLastNewline != null) {
-
-  							// Cover cases that non-text generated content was evaluated last step
-  							var currText = this.currentText;
-  							var prevTextLength = stateAtLastNewline.currentText.length;
-  							var prevTagCount = stateAtLastNewline.currentTags.length;
-
-  							// Output has been extended?
-  							if (currText !== stateAtLastNewline.currentText || prevTagCount != this.currentTags.length) {
-
-  								// Original newline still exists?
-  								if (currText.length >= prevTextLength && currText[prevTextLength - 1] == '\n') {
-
-  									this.RestoreStateSnapshot(stateAtLastNewline);
-  									break;
-  								}
-
-  								// Newline that previously existed is no longer valid - e.g.
-  								// glue was encounted that caused it to be removed.
-  								else {
-  										stateAtLastNewline = null;
-  									}
-  							}
-  						}
-
-  						// Current content ends in a newline - approaching end of our evaluation
-  						if (this.state.outputStreamEndsInNewline) {
-
-  							// If we can continue evaluation for a bit:
-  							// Create a snapshot in case we need to rewind.
-  							// We're going to continue stepping in case we see glue or some
-  							// non-text content such as choices.
-  							if (this.canContinue) {
-  								// Don't bother to record the state beyond the current newline.
-  								// e.g.:
-  								// Hello world\n			// record state at the end of here
-  								// ~ complexCalculation()   // don't actually need this unless it generates text
-  								if (stateAtLastNewline == null) {
-  									stateAtLastNewline = this.StateSnapshot();
-  								}
-  							}
-
-  							// Can't continue, so we're about to exit - make sure we
-  							// don't have an old state hanging around.
-  							else {
-  									stateAtLastNewline = null;
-  								}
-  						}
-  					}
-  				} while (this.canContinue);
-
-  				// Need to rewind, due to evaluating further than we should?
-  				if (stateAtLastNewline != null) {
-  					this.RestoreStateSnapshot(stateAtLastNewline);
+  				if (!this.canContinue) {
+  					throw new StoryException("Can't continue - should check canContinue before calling Continue");
   				}
 
-  				// Finished a section of content / reached a choice point?
-  				if (!this.canContinue) {
+  				this._state.didSafeExit = false;
+  				this._state.ResetOutput();
 
-  					if (this.state.callStack.canPopThread) {
-  						this.Error("Thread available to pop, threads should always be flat by the end of evaluation?");
-  					}
+  				if (this._recursiveContinueCount == 1) this._state.variablesState.batchObservingVariableChanges = true;
+  			}
+
+  			var durationStopwatch = new Stopwatch();
+  			durationStopwatch.Start();
+
+  			var outputStreamEndsInNewline = false;
+  			do {
+  				try {
+  					outputStreamEndsInNewline = this.ContinueSingleStep();
+  				} catch (e) {
+  					if (!(e instanceof StoryException)) throw e;
+
+  					this.AddError(e.Message, undefined, e.useEndLineNumber);
+  					break;
+  				}
+
+  				if (outputStreamEndsInNewline) break;
+
+  				if (this._asyncContinueActive && durationStopwatch.ElapsedMilliseconds > millisecsLimitAsync) {
+  					break;
+  				}
+  			} while (this.canContinue);
+
+  			durationStopwatch.Stop();
+
+  			if (outputStreamEndsInNewline || !this.canContinue) {
+  				if (this._stateAtLastNewline != null) {
+  					this.RestoreStateSnapshot(this._stateAtLastNewline);
+  					this._stateAtLastNewline = null;
+  				}
+
+  				if (!this.canContinue) {
+  					if (this.state.callStack.canPopThread) this.AddError("Thread available to pop, threads should always be flat by the end of evaluation?");
 
   					if (this.state.generatedChoices.length == 0 && !this.state.didSafeExit && this._temporaryEvaluationContainer == null) {
-  						if (this.state.callStack.CanPop(PushPopType.Tunnel)) {
-  							this.Error("unexpectedly reached end of content. Do you need a '->->' to return from a tunnel?");
-  						} else if (this.state.callStack.CanPop(PushPopType.Function)) {
-  							this.Error("unexpectedly reached end of content. Do you need a '~ return'?");
-  						} else if (!this.state.callStack.canPop) {
-  							this.Error("ran out of content. Do you need a '-> DONE' or '-> END'?");
-  						} else {
-  							this.Error("unexpectedly reached end of content for unknown reason. Please debug compiler!");
-  						}
+  						if (this.state.callStack.CanPop(PushPopType.Tunnel)) this.AddError("unexpectedly reached end of content. Do you need a '->->' to return from a tunnel?");else if (this.state.callStack.CanPop(PushPopType.Function)) this.AddError("unexpectedly reached end of content. Do you need a '~ return'?");else if (!this.state.callStack.canPop) this.AddError("ran out of content. Do you need a '-> DONE' or '-> END'?");else this.AddError("unexpectedly reached end of content for unknown reason. Please debug compiler!");
   					}
   				}
-  			} catch (e) {
-  				throw e;
-  				this.AddError(e.Message, e.useEndLineNumber);
-  			} finally {
+
   				this.state.didSafeExit = false;
 
-  				this._state.variablesState.batchObservingVariableChanges = false;
+  				if (this._recursiveContinueCount == 1) this._state.variablesState.batchObservingVariableChanges = false;
+
+  				this._asyncContinueActive = false;
   			}
 
-  			return this.currentText;
+  			this._recursiveContinueCount--;
+
+  			if (this._profiler != null) this._profiler.PostContinue();
+  		}
+  	}, {
+  		key: 'ContinueSingleStep',
+  		value: function ContinueSingleStep() {
+  			if (this._profiler != null) this._profiler.PreStep();
+
+  			this.Step();
+
+  			if (this._profiler != null) this._profiler.PostStep();
+
+  			if (!this.canContinue && !this.state.callStack.elementIsEvaluateFromGame) {
+  				this.TryFollowDefaultInvisibleChoice();
+  			}
+
+  			if (this._profiler != null) this._profiler.PreSnapshot();
+
+  			if (!this.state.inStringEvaluation) {
+
+  				if (this._stateAtLastNewline != null) {
+
+  					var change = this.CalculateNewlineOutputStateChange(this._stateAtLastNewline.currentText, this.state.currentText, this._stateAtLastNewline.currentTags.length, this.state.currentTags.length);
+
+  					if (change == OutputStateChange.ExtendedBeyondNewline) {
+
+  						this.RestoreStateSnapshot(this._stateAtLastNewline);
+
+  						return true;
+  					} else if (change == OutputStateChange.NewlineRemoved) {
+  						this._stateAtLastNewline = null;
+  					}
+  				}
+
+  				if (this.state.outputStreamEndsInNewline) {
+  					if (this.canContinue) {
+  						if (this._stateAtLastNewline == null) this._stateAtLastNewline = this.StateSnapshot();
+  					} else {
+  						this._stateAtLastNewline = null;
+  					}
+  				}
+  			}
+
+  			if (this._profiler != null) this._profiler.PostSnapshot();
+
+  			return false;
+  		}
+  	}, {
+  		key: 'CalculateNewlineOutputStateChange',
+  		value: function CalculateNewlineOutputStateChange(prevText, currText, prevTagCount, currTagCount) {
+  			var newlineStillExists = currText.length >= prevText.length && currText.charAt(prevText.length - 1) == '\n';
+  			if (prevTagCount == currTagCount && prevText.length == currText.length && newlineStillExists) return OutputStateChange.NoChange;
+
+  			if (!newlineStillExists) {
+  				return OutputStateChange.NewlineRemoved;
+  			}
+
+  			if (currTagCount > prevTagCount) return OutputStateChange.ExtendedBeyondNewline;
+
+  			for (var i = prevText.length; i < currText.length; i++) {
+  				var c = currText.charAt(i);
+  				if (c != ' ' && c != '\t') {
+  					return OutputStateChange.ExtendedBeyondNewline;
+  				}
+  			}
+
+  			return OutputStateChange.NoChange;
   		}
   	}, {
   		key: 'ContinueMaximally',
   		value: function ContinueMaximally() {
+  			this.IfAsyncWeCant("ContinueMaximally");
+
   			var sb = new StringBuilder();
 
   			while (this.canContinue) {
@@ -5378,6 +5553,37 @@
   			return this.mainContentContainer.ContentAtPath(path);
   		}
   	}, {
+  		key: 'KnotContainerWithName',
+  		value: function KnotContainerWithName(name) {
+  			var namedContainer = this.mainContentContainer.namedContent[name];
+  			if (namedContainer instanceof Container) return namedContainer;else return null;
+  		}
+  	}, {
+  		key: 'PointerAtPath',
+  		value: function PointerAtPath(path) {
+  			if (path.length == 0) return Pointer.Null;
+
+  			var p = new Pointer();
+
+  			var pathLengthToUse = path.length;
+
+  			var result = null;
+  			if (path.lastComponent.isIndex) {
+  				pathLengthToUse = path.length - 1;
+  				result = this.mainContentContainer.ContentAtPath(path, undefined, pathLengthToUse);
+  				p.container = result.container;
+  				p.index = path.lastComponent.index;
+  			} else {
+  				result = this.mainContentContainer.ContentAtPath(path);
+  				p.container = result.container;
+  				p.index = -1;
+  			}
+
+  			if (result.obj == null || result.obj == this.mainContentContainer && pathLengthToUse > 0) this.Error("Failed to find content at path '" + path + "', and no approximation of it was possible.");else if (result.approximate) this.Warning("Failed to find content at path '" + path + "', so it was approximated to: '" + result.obj.path + "'.");
+
+  			return p;
+  		}
+  	}, {
   		key: 'StateSnapshot',
   		value: function StateSnapshot() {
   			return this.state.Copy();
@@ -5390,42 +5596,47 @@
   	}, {
   		key: 'Step',
   		value: function Step() {
+
   			var shouldAddToStream = true;
 
   			// Get current content
-  			var currentContentObj = this.state.currentContentObject;
-  			if (currentContentObj == null) {
+  			var pointer = this.state.currentPointer.copy();
+  			if (pointer.isNull) {
   				return;
   			}
   			// Step directly to the first element of content in a container (if necessary)
-  			//		Container currentContainer = currentContentObj as Container;
-  			var currentContainer = currentContentObj;
-  			while (currentContainer instanceof Container) {
+  			//		Container containerToEnter = pointer.Resolve () as Container;
+  			var containerToEnter = pointer.Resolve();
+
+  			while (containerToEnter instanceof Container) {
 
   				// Mark container as being entered
-  				this.VisitContainer(currentContainer, true);
+  				this.VisitContainer(containerToEnter, true);
 
   				// No content? the most we can do is step past it
-  				if (currentContainer.content.length == 0) break;
+  				if (containerToEnter.content.length == 0) {
+  					break;
+  				}
 
-  				currentContentObj = currentContainer.content[0];
-  				this.state.callStack.currentElement.currentContentIndex = 0;
-  				this.state.callStack.currentElement.currentContainer = currentContainer;
-
-  				//			currentContainer = currentContentObj as Container;
-  				currentContainer = currentContentObj;
+  				pointer = Pointer.StartOf(containerToEnter);
+  				//			containerToEnter = pointer.Resolve() as Container;
+  				containerToEnter = pointer.Resolve();
   			}
-  			currentContainer = this.state.callStack.currentElement.currentContainer;
+
+  			this.state.currentPointer = pointer.copy();
+
+  			if (this._profiler != null) this._profiler.Step(state.callStack);
 
   			// Is the current content object:
   			//  - Normal content
   			//  - Or a logic/flow statement - if so, do it
   			// Stop flow if we hit a stack pop when we're unable to pop (e.g. return/done statement in knot
   			// that was diverted to rather than called as a function)
+  			var currentContentObj = pointer.Resolve();
   			var isLogicOrFlowControl = this.PerformLogicAndFlowControl(currentContentObj);
 
   			// Has flow been forced to end by flow control above?
-  			if (this.state.currentContentObject == null) {
+  			if (this.state.currentPointer.isNull) {
   				return;
   			}
 
@@ -5500,18 +5711,19 @@
   	}, {
   		key: 'VisitChangedContainersDueToDivert',
   		value: function VisitChangedContainersDueToDivert() {
-  			var previousContentObject = this.state.previousContentObject;
-  			var newContentObject = this.state.currentContentObject;
+  			var previousPointer = this.state.previousPointer.copy();
+  			var pointer = this.state.currentPointer.copy();
 
-  			if (!newContentObject) return;
+  			if (pointer.isNull || pointer.index == -1) return;
 
   			// First, find the previously open set of containers
-  			this._prevContainerSet = [];
-  			if (previousContentObject) {
-  				//			Container prevAncestor = previousContentObject as Container ?? previousContentObject.parent as Container;
-  				var prevAncestor = previousContentObject instanceof Container ? previousContentObject : previousContentObject.parent;
+  			this._prevContainers.length = 0;
+  			if (!previousPointer.isNull) {
+  				//			Container prevAncestor = previousPointer.Resolve() as Container ?? previousPointer.container as Container;
+  				var resolvedPreviousAncestor = previousPointer.Resolve();
+  				var prevAncestor = resolvedPreviousAncestor instanceof Container ? resolvedPreviousAncestor : previousPointer.container;
   				while (prevAncestor instanceof Container) {
-  					this._prevContainerSet.push(prevAncestor);
+  					this._prevContainers.push(prevAncestor);
   					//				prevAncestor = prevAncestor.parent as Container;
   					prevAncestor = prevAncestor.parent;
   				}
@@ -5519,10 +5731,13 @@
 
   			// If the new object is a container itself, it will be visited automatically at the next actual
   			// content step. However, we need to walk up the new ancestry to see if there are more new containers
-  			var currentChildOfContainer = newContentObject;
+  			var currentChildOfContainer = pointer.Resolve();
+
+  			if (currentChildOfContainer == null) return;
+
   			//		Container currentContainerAncestor = currentChildOfContainer.parent as Container;
   			var currentContainerAncestor = currentChildOfContainer.parent;
-  			while (currentContainerAncestor instanceof Container && this._prevContainerSet.indexOf(currentContainerAncestor) < 0) {
+  			while (currentContainerAncestor instanceof Container && this._prevContainers.indexOf(currentContainerAncestor) < 0) {
 
   				// Check whether this ancestor container is being entered at the start,
   				// by checking whether the child object is the first.
@@ -5572,9 +5787,6 @@
   				}
   			}
 
-  			var choice = new Choice(choicePoint);
-  			choice.threadAtGeneration = this.state.callStack.currentThread.Copy();
-
   			// We go through the full process of creating the choice above so
   			// that we consume the content for it, since otherwise it'll
   			// be shown on the output stream.
@@ -5582,8 +5794,13 @@
   				return null;
   			}
 
-  			// Set final text for the choice
-  			choice.text = startText + choiceOnlyText;
+  			var choice = new Choice();
+  			choice.targetPath = choicePoint.pathOnChoice;
+  			choice.sourcePath = choicePoint.path.toString();
+  			choice.isInvisibleDefault = choicePoint.isInvisibleDefault;
+  			choice.threadAtGeneration = this.state.callStack.currentThread.Copy();
+
+  			choice.text = (startText + choiceOnlyText).replace(/^[ \t]+|[ \t]+$/g, '');
 
   			return choice;
   		}
@@ -5627,7 +5844,9 @@
 
   					var varContents = this.state.variablesState.GetVariableWithName(varName);
 
-  					if (!(varContents instanceof DivertTargetValue)) {
+  					if (varContents == null) {
+  						this.Error("Tried to divert using a target from a variable that could not be found (" + varName + ")");
+  					} else if (!(varContents instanceof DivertTargetValue)) {
 
   						//					var intContent = varContents as IntValue;
   						var intContent = varContents;
@@ -5643,19 +5862,19 @@
   					}
 
   					var target = varContents;
-  					this.state.divertedTargetObject = this.ContentAtPath(target.targetPath);
+  					this.state.divertedPointer = this.PointerAtPath(target.targetPath);
   				} else if (currentDivert.isExternal) {
   					this.CallExternalFunction(currentDivert.targetPathString, currentDivert.externalArgs);
   					return true;
   				} else {
-  					this.state.divertedTargetObject = currentDivert.targetContent;
+  					this.state.divertedPointer = currentDivert.targetPointer.copy();
   				}
 
   				if (currentDivert.pushesToStack) {
-  					this.state.callStack.Push(currentDivert.stackPushType);
+  					this.state.callStack.Push(currentDivert.stackPushType, undefined, this.state.outputStream.length);
   				}
 
-  				if (this.state.divertedTargetObject == null && !currentDivert.isExternal) {
+  				if (this.state.divertedPointer.isNull && !currentDivert.isExternal) {
 
   					// Human readable name available - runtime divert is part of a hard-written divert that to missing content
   					if (currentDivert && currentDivert.debugMetadata.sourceName != null) {
@@ -5692,7 +5911,7 @@
   								var output = this.state.PopEvaluationStack();
 
   								// Functions may evaluate to Void, in which case we skip output
-  								if (output != null && !(output instanceof Void)) {
+  								if (!(output instanceof Void)) {
   									// TODO: Should we really always blanket convert to string?
   									// It would be okay to have numbers in the output stream the
   									// only problem is when exporting text for viewing, it skips over numbers etc.
@@ -5733,7 +5952,7 @@
   								}
   							}
 
-  							if (this.state.TryExitExternalFunctionEvaluation()) {
+  							if (this.state.TryExitFunctionEvaluationFromGame()) {
   								break;
   							} else if (this.state.callStack.currentElement.type != popType || !this.state.callStack.canPop) {
 
@@ -5742,15 +5961,17 @@
   								names[PushPopType.Tunnel] = "tunnel onwards statement (->->)";
 
   								var expected = names[this.state.callStack.currentElement.type];
-  								if (!this.state.callStack.canPop) expected = "end of flow (-> END or choice)";
+  								if (!this.state.callStack.canPop) {
+  									expected = "end of flow (-> END or choice)";
+  								}
 
   								var errorMsg = "Found " + names[popType] + ", when expected " + expected;
 
   								this.Error(errorMsg);
   							} else {
-  								this.state.callStack.Pop();
+  								this.state.PopCallStack();
 
-  								if (overrideTunnelReturnTarget) this.state.divertedTargetObject = this.ContentAtPath(overrideTunnelReturnTarget.targetPath);
+  								if (overrideTunnelReturnTarget) this.state.divertedPointer = this.PointerAtPath(overrideTunnelReturnTarget.targetPath);
   							}
   							break;
 
@@ -5777,11 +5998,13 @@
   									break;
   								}
 
-  								if (obj instanceof StringValue) contentStackForString.push(obj);
+  								if (obj instanceof StringValue) {
+  									contentStackForString.push(obj);
+  								}
   							}
 
   							// Consume the content that was produced for this string
-  							this.state.outputStream.splice(this.state.outputStream.length - outputCountConsumed, outputCountConsumed);
+  							this.state.PopFromOutputStream(outputCountConsumed);
 
   							//the C# version uses a Stack for contentStackForString, but we're using a simple array, so we need to reverse it before using it
   							contentStackForString = contentStackForString.reverse();
@@ -5814,11 +6037,18 @@
 
   							//				var divertTarget = target as DivertTargetValue;
   							var divertTarget = target;
-  							//				var container = ContentAtPath (divertTarget.targetPath) as Container;
-  							var container = this.ContentAtPath(divertTarget.targetPath);
+  							//				var container = ContentAtPath (divertTarget.targetPath).correctObj as Container;
+  							var correctObj = this.ContentAtPath(divertTarget.targetPath).correctObj;
+  							var container = correctObj instanceof Container ? correctObj : null;
 
   							var eitherCount;
-  							if (evalCommand.commandType == ControlCommand.CommandType.TurnsSince) eitherCount = this.TurnsSinceForContainer(container);else eitherCount = this.VisitCountForContainer(container);
+  							if (container != null) {
+  								if (evalCommand.commandType == ControlCommand.CommandType.TurnsSince) eitherCount = this.TurnsSinceForContainer(container);else eitherCount = this.VisitCountForContainer(container);
+  							} else {
+  								if (evalCommand.commandType == ControlCommand.CommandType.TurnsSince) eitherCount = -1;else eitherCount = 0;
+
+  								this.Warning("Failed to find container for " + evalCommand.toString() + " lookup at " + divertTarget.targetPath.toString());
+  							}
 
   							this.state.PushEvaluationStack(new IntValue(eitherCount));
   							break;
@@ -5859,7 +6089,7 @@
   							break;
 
   						case ControlCommand.CommandType.VisitIndex:
-  							var count = this.VisitCountForContainer(this.state.currentContainer) - 1; // index not count
+  							var count = this.VisitCountForContainer(this.state.currentPointer.container) - 1; // index not count
   							this.state.PushEvaluationStack(new IntValue(count));
   							break;
 
@@ -5873,7 +6103,6 @@
   							break;
 
   						case ControlCommand.CommandType.Done:
-
   							// We may exist in the context of the initial
   							// act of creating the thread, or in the context of
   							// evaluating the content.
@@ -5886,7 +6115,7 @@
   									this.state.didSafeExit = true;
 
   									// Stop flow in current thread
-  									this.state.currentContentObject = null;
+  									this.state.currentPointer = Pointer.Null;
   								}
 
   							break;
@@ -5902,13 +6131,17 @@
   							//				var listNameVal = state.PopEvaluationStack () as StringValue;
   							var listNameVal = this.state.PopEvaluationStack().toString();
 
+  							if (intVal == null) {
+  								throw new StoryException("Passed non-integer when creating a list element from a numerical value.");
+  							}
+
   							var generatedListValue = null;
 
   							var foundListDef;
-  							if (foundListDef = this.listDefinitions.TryGetDefinition(listNameVal, foundListDef)) {
-  								var foundItem = foundListDef.TryGetItemWithValue(intVal.value);
+  							if (foundListDef = this.listDefinitions.TryListGetDefinition(listNameVal, foundListDef)) {
+  								var foundItem = foundListDef.TryGetItemWithValue(intVal);
   								if (foundItem.exists) {
-  									generatedListValue = new ListValue(foundItem.item, intVal.value);
+  									generatedListValue = new ListValue(foundItem.item, intVal);
   								}
   							} else {
   								throw new StoryException("Failed to find LIST called " + listNameVal.value);
@@ -6009,8 +6242,18 @@
   									foundValue = this.state.variablesState.GetVariableWithName(varRef.name);
 
   									if (foundValue == null) {
-  										this.Error("Uninitialised variable: " + varRef.name);
-  										foundValue = new IntValue(0);
+  										var defaultVal = this.state.variablesState.TryGetDefaultVariableValue(varRef.name);
+  										if (defaultVal != null) {
+  											this.Warning("Variable not found in save state: '" + varRef.name + "', but seems to have been newly created. Assigning value from latest ink's declaration: " + defaultVal);
+  											foundValue = defaultVal;
+
+  											// Save for future usage, preventing future errors
+  											// Only do this for variables that are known to be globals, not those that may be missing temps.
+  											state.variablesState.SetGlobal(varRef.name, foundValue);
+  										} else {
+  											this.Warning("Variable not found: '" + varRef.name + "'. Using default value of 0 (false). This can happen with temporary variables if the declaration hasn't yet been hit.");
+  											foundValue = new IntValue(0);
+  										}
   									}
   								}
 
@@ -6033,10 +6276,32 @@
   		}
   	}, {
   		key: 'ChoosePathString',
-  		value: function ChoosePathString(path, args) {
+  		value: function ChoosePathString(path, resetCallstack, args) {
+  			resetCallstack = typeof resetCallstack !== 'undefined' ? resetCallstack : true;
   			args = args || [];
+
+  			this.IfAsyncWeCant("call ChoosePathString right now");
+
+  			if (resetCallstack) {
+  				this.ResetCallstack();
+  			} else {
+  				if (this.state.callStack.currentElement.type == PushPopType.Function) {
+  					var funcDetail = "";
+  					var container = this.state.callStack.currentElement.currentPointer.container;
+  					if (container != null) {
+  						funcDetail = "(" + container.path.toString() + ") ";
+  					}
+  					throw "Story was running a function " + funcDetail + "when you called ChoosePathString(" + path + ") - this is almost certainly not not what you want! Full stack trace: \n" + this.state.callStack.callStackTrace;
+  				}
+  			}
+
   			this.state.PassArgumentsToEvaluationStack(args);
   			this.ChoosePath(new Path$1(path));
+  		}
+  	}, {
+  		key: 'IfAsyncWeCant',
+  		value: function IfAsyncWeCant(activityStr) {
+  			if (this._asyncContinueActive) throw "Can't " + activityStr + ". Story is in the middle of a ContinueAsync(). Make more ContinueAsync() calls or a single Continue() call beforehand.";
   		}
   	}, {
   		key: 'ChoosePath',
@@ -6053,7 +6318,7 @@
   			var choices = this.currentChoices;
   			if (choiceIdx < 0 || choiceIdx > choices.length) console.warn("choice out of range");
 
-  			// Replace callstack with the one from the thread at the choosing point, 
+  			// Replace callstack with the one from the thread at the choosing point,
   			// so that we can jump into the right place in the flow.
   			// This is important in case the flow was forked by a new thread, which
   			// can create multiple leading edges for the story, each of
@@ -6061,13 +6326,13 @@
   			var choiceToChoose = choices[choiceIdx];
   			this.state.callStack.currentThread = choiceToChoose.threadAtGeneration;
 
-  			this.ChoosePath(choiceToChoose.choicePoint.choiceTarget.path);
+  			this.ChoosePath(choiceToChoose.targetPath);
   		}
   	}, {
   		key: 'HasFunction',
   		value: function HasFunction(functionName) {
   			try {
-  				return this.ContentAtPath(new Path$1(functionName)) instanceof Container;
+  				return this.KnotContainerWithName(functionName) != null;
   			} catch (e) {
   				return false;
   			}
@@ -6078,20 +6343,24 @@
   			//EvaluateFunction behaves slightly differently than the C# version. In C#, you can pass a (second) parameter `out textOutput` to get the text outputted by the function. This is not possible in js. Instead, we maintain the regular signature (functionName, args), plus an optional third parameter returnTextOutput. If set to true, we will return both the textOutput and the returned value, as an object.
   			returnTextOutput = !!returnTextOutput;
 
+  			this.IfAsyncWeCant("evaluate a function");
+
   			if (functionName == null) {
   				throw "Function is null";
   			} else if (functionName == '' || functionName.trim() == '') {
   				throw "Function is empty or white space.";
   			}
 
-  			var funcContainer = null;
-  			try {
-  				funcContainer = this.ContentAtPath(new Path$1(functionName));
-  			} catch (e) {
-  				if (e.message.indexOf("not found") >= 0) throw "Function doesn't exist: '" + functionName + "'";else throw e;
+  			var funcContainer = this.KnotContainerWithName(functionName);
+  			if (funcContainer == null) {
+  				throw "Function doesn't exist: '" + functionName + "'";
   			}
 
-  			this.state.StartExternalFunctionEvaluation(funcContainer, args);
+  			var outputStreamBefore = [];
+  			outputStreamBefore.push.apply(outputStreamBefore, this.state.outputStream);
+  			this._state.ResetOutput();
+
+  			this.state.StartFunctionEvaluationFromGame(funcContainer, args);
 
   			// Evaluate the function, and collect the string output
   			var stringOutput = new StringBuilder();
@@ -6100,7 +6369,9 @@
   			}
   			var textOutput = stringOutput.toString();
 
-  			var result = this.state.CompleteExternalFunctionEvaluation();
+  			this._state.ResetOutput(outputStreamBefore);
+
+  			var result = this.state.CompleteFunctionEvaluationFromGame();
 
   			return returnTextOutput ? { 'returned': result, 'output': textOutput } : result;
   		}
@@ -6125,7 +6396,7 @@
   			// have auto-popped, but just in case we didn't for some reason,
   			// manually pop to restore the state (including currentPath).
   			if (this.state.callStack.elements.length > startCallStackHeight) {
-  				this.state.callStack.Pop();
+  				this.state.PopCallStack();
   			}
 
   			var endStackHeight = this.state.evaluationStack.length;
@@ -6147,12 +6418,12 @@
   			if (!foundExternal) {
   				if (this.allowExternalFunctionFallbacks) {
   					//				fallbackFunctionContainer = ContentAtPath (new Path (funcName)) as Container;
-  					fallbackFunctionContainer = this.ContentAtPath(new Path$1(funcName));
+  					fallbackFunctionContainer = this.KnotContainerWithName(funcName);
   					if (!(fallbackFunctionContainer instanceof Container)) console.warn("Trying to call EXTERNAL function '" + funcName + "' which has not been bound, and fallback ink function could not be found.");
 
   					// Divert direct into fallback function and we're done
-  					this.state.callStack.Push(PushPopType.Function);
-  					this.state.divertedTargetObject = fallbackFunctionContainer;
+  					this.state.callStack.Push(PushPopType.Function, undefined, this.state.outputStream.length);
+  					this.state.divertedPointer = Pointer.StartOf(fallbackFunctionContainer);
   					return;
   				} else {
   					console.warn("Trying to call EXTERNAL function '" + funcName + "' which has not been bound (and ink fallbacks disabled).");
@@ -6195,6 +6466,7 @@
   	}, {
   		key: 'BindExternalFunctionGeneral',
   		value: function BindExternalFunctionGeneral(funcName, func) {
+  			this.IfAsyncWeCant("bind an external function");
   			if (this._externals[funcName]) console.warn("Function '" + funcName + "' has already been bound.");
   			this._externals[funcName] = func;
   		}
@@ -6218,6 +6490,7 @@
   	}, {
   		key: 'UnbindExternalFunction',
   		value: function UnbindExternalFunction(funcName) {
+  			this.IfAsyncWeCant("unbind an external a function");
   			if (typeof this._externals[funcName] === 'undefined') console.warn("Function '" + funcName + "' has not been bound.");
   			delete this._externals[funcName];
   		}
@@ -6258,14 +6531,15 @@
   				}
   			} else {
   				var o = containerOrObject;
-  				//the following code is already taken care of above in this implementation
-  				//			var container = o as Container;
-  				//            if (container) {
-  				//                ValidateExternalBindings (container, missingExternals);
-  				//                return;
-  				//            }
+  				// the following code is already taken care of above in this implementation
+  				//
+  				// var container = o as Container;
+  				// if (container) {
+  				// 	ValidateExternalBindings (container, missingExternals);
+  				// 	return;
+  				// }
 
-  				//            var divert = o as Divert;
+  				// var divert = o as Divert;
   				var divert = o;
   				if (divert instanceof Divert && divert.isExternal) {
   					var name = divert.targetPathString;
@@ -6286,7 +6560,11 @@
   	}, {
   		key: 'ObserveVariable',
   		value: function ObserveVariable(variableName, observer) {
+  			this.IfAsyncWeCant("observe a new variable");
+
   			if (this._variableObservers == null) this._variableObservers = {};
+
+  			if (!this.state.variablesState.GlobalVariableExistsWithName(variableName)) throw new StoryException("Cannot observe variable '" + variableName + "' because it wasn't declared in the ink story.");
 
   			if (this._variableObservers[variableName]) {
   				this._variableObservers[variableName].push(observer);
@@ -6304,6 +6582,8 @@
   	}, {
   		key: 'RemoveVariableObserver',
   		value: function RemoveVariableObserver(observer, specificVariableName) {
+  			this.IfAsyncWeCant("remove a variable observer");
+
   			if (this._variableObservers == null) return;
 
   			// Remove observer for this specific variable
@@ -6351,7 +6631,7 @@
 
   			// Expected to be global story, knot or stitch
   			//		var flowContainer = ContentAtPath (path) as Container;
-  			var flowContainer = this.ContentAtPath(path);
+  			var flowContainer = this.ContentAtPath(path).container;
   			while (true) {
   				var firstContent = flowContainer.content[0];
   				if (firstContent instanceof Container) flowContainer = firstContent;else break;
@@ -6377,7 +6657,7 @@
   		value: function BuildStringOfHierarchy() {
   			var sb = new StringBuilder();
 
-  			this.mainContentContainer.BuildStringOfHierarchy(sb, 0, this.state.currentContentObject);
+  			this.mainContentContainer.BuildStringOfHierarchy(sb, 0, this.state.currentPointer.Resolve());
 
   			return sb.toString();
   		}
@@ -6385,26 +6665,26 @@
   		key: 'BuildStringOfContainer',
   		value: function BuildStringOfContainer(container) {
   			var sb = new StringBuilder();
-  			container.BuildStringOfHierarchy(sb, 0, this.state.currentContentObject);
+  			container.BuildStringOfHierarchy(sb, 0, this.state.currentPointer.Resolve());
   			return sb.toString();
   		}
   	}, {
   		key: 'NextContent',
   		value: function NextContent() {
   			// Setting previousContentObject is critical for VisitChangedContainersDueToDivert
-  			this.state.previousContentObject = this.state.currentContentObject;
+  			this.state.previousPointer = this.state.currentPointer.copy();
 
   			// Divert step?
-  			if (this.state.divertedTargetObject != null) {
+  			if (!this.state.divertedPointer.isNull) {
 
-  				this.state.currentContentObject = this.state.divertedTargetObject;
-  				this.state.divertedTargetObject = null;
+  				this.state.currentPointer = this.state.divertedPointer.copy();
+  				this.state.divertedPointer = Pointer.Null;
 
   				// Internally uses state.previousContentObject and state.currentContentObject
   				this.VisitChangedContainersDueToDivert();
 
   				// Diverted location has valid content?
-  				if (this.state.currentContentObject != null) {
+  				if (!this.state.currentPointer.isNull) {
   					return;
   				}
 
@@ -6425,7 +6705,7 @@
   				if (this.state.callStack.CanPop(PushPopType.Function)) {
 
   					// Pop from the call stack
-  					this.state.callStack.Pop(PushPopType.Function);
+  					this.state.PopCallStack(PushPopType.Function);
 
   					// This pop was due to dropping off the end of a function that didn't return anything,
   					// so in this case, we make sure that the evaluator has something to chomp on if it needs it
@@ -6439,11 +6719,11 @@
 
   					didPop = true;
   				} else {
-  					this.state.TryExitExternalFunctionEvaluation();
+  					this.state.TryExitFunctionEvaluationFromGame();
   				}
 
   				// Step past the point where we last called out
-  				if (didPop && this.state.currentContentObject != null) {
+  				if (didPop && !this.state.currentPointer.isNull) {
   					this.NextContent();
   				}
   			}
@@ -6453,33 +6733,36 @@
   		value: function IncrementContentPointer() {
   			var successfulIncrement = true;
 
-  			var currEl = this.state.callStack.currentElement;
-  			currEl.currentContentIndex++;
+  			var pointer = this.state.callStack.currentElement.currentPointer.copy();
+  			pointer.index++;
 
   			// Each time we step off the end, we fall out to the next container, all the
   			// while we're in indexed rather than named content
-  			while (currEl.currentContentIndex >= currEl.currentContainer.content.length) {
+  			while (pointer.index >= pointer.container.content.length) {
 
   				successfulIncrement = false;
 
-  				//			Container nextAncestor = currEl.currentContainer.parent as Container;
-  				var nextAncestor = currEl.currentContainer.parent;
+  				//			Container nextAncestor = pointer.container.parent as Container;
+  				var nextAncestor = pointer.container.parent;
   				if (nextAncestor instanceof Container === false) {
   					break;
   				}
 
-  				var indexInAncestor = nextAncestor.content.indexOf(currEl.currentContainer);
+  				var indexInAncestor = nextAncestor.content.indexOf(pointer.container);
   				if (indexInAncestor == -1) {
   					break;
   				}
 
-  				currEl.currentContainer = nextAncestor;
-  				currEl.currentContentIndex = indexInAncestor + 1;
+  				pointer = new Pointer(nextAncestor, indexInAncestor);
+
+  				pointer.index++;
 
   				successfulIncrement = true;
   			}
 
-  			if (!successfulIncrement) currEl.currentContainer = null;
+  			if (!successfulIncrement) pointer = Pointer.Null;
+
+  			this.state.callStack.currentElement.currentPointer = pointer.copy();
 
   			return successfulIncrement;
   		}
@@ -6490,13 +6773,13 @@
 
   			// Is a default invisible choice the ONLY choice?
   			var invisibleChoices = allChoices.filter(function (c) {
-  				return c.choicePoint.isInvisibleDefault;
+  				return c.isInvisibleDefault;
   			});
   			if (invisibleChoices.length == 0 || allChoices.length > invisibleChoices.length) return false;
 
   			var choice = invisibleChoices[0];
 
-  			this.ChoosePath(choice.choicePoint.choiceTarget.path);
+  			this.ChoosePath(choice.targetPath);
 
   			return true;
   		}
@@ -6553,7 +6836,7 @@
   				return 0;
   			}
 
-  			var seqContainer = this.state.currentContainer;
+  			var seqContainer = this.state.currentPointer.container;
 
   			var numElements = numElementsIntVal.value;
 
@@ -6570,7 +6853,7 @@
   			var seqPathStr = seqContainer.path.toString();
   			var sequenceHash = 0;
   			for (var i = 0, l = seqPathStr.length; i < l; i++) {
-  				sequenceHash += seqPathStr.charCodeAt[i] || 0;
+  				sequenceHash += seqPathStr.charCodeAt(i) || 0;
   			}
   			var randomSeed = sequenceHash + loopIndex + this.state.storySeed;
   			var random = new PRNG(parseInt(randomSeed));
@@ -6600,22 +6883,26 @@
   			throw e;
   		}
   	}, {
+  		key: 'Warning',
+  		value: function Warning(message) {
+  			this.AddError(message, true);
+  		}
+  	}, {
   		key: 'AddError',
-  		value: function AddError(message, useEndLineNumber) {
-  			//		var dm = this.currentDebugMetadata;
-  			var dm = null;
+  		value: function AddError(message, isWarning, useEndLineNumber) {
 
-  			if (dm != null) {
-  				var lineNum = useEndLineNumber ? dm.endLineNumber : dm.startLineNumber;
-  				message = "RUNTIME ERROR: '" + dm.fileName + "' line " + lineNum + ": " + message;
+  			var errorTypeStr = isWarning ? "WARNING" : "ERROR";
+
+  			if (!this.state.currentPointer.isNull) {
+  				message = "RUNTIME " + errorTypeStr + ": (" + this.state.currentPath + "): " + message;
   			} else {
-  				message = "RUNTIME ERROR: " + message;
+  				message = "RUNTIME " + errorTypeStr + ": " + message;
   			}
 
-  			this.state.AddError(message);
+  			this.state.AddError(message, isWarning);
 
   			// In a broken state don't need to know about any other errors.
-  			this.state.ForceEnd();
+  			if (!isWarning) this.state.ForceEnd();
   		}
   	}, {
   		key: 'currentChoices',
@@ -6624,7 +6911,7 @@
   			var choices = [];
 
   			this._state.currentChoices.forEach(function (c) {
-  				if (!c.choicePoint.isInvisibleDefault) {
+  				if (!c.isInvisibleDefault) {
   					c.index = choices.length;
   					choices.push(c);
   				}
@@ -6635,11 +6922,13 @@
   	}, {
   		key: 'currentText',
   		get: function get$$1() {
+  			this.IfAsyncWeCant("call currentText since it's a work in progress");
   			return this.state.currentText;
   		}
   	}, {
   		key: 'currentTags',
   		get: function get$$1() {
+  			this.IfAsyncWeCant("call currentTags since it's a work in progress");
   			return this.state.currentTags;
   		}
   	}, {
@@ -6648,9 +6937,19 @@
   			return this.state.currentErrors;
   		}
   	}, {
+  		key: 'currentWarnings',
+  		get: function get$$1() {
+  			return this.state.currentWarnings;
+  		}
+  	}, {
   		key: 'hasError',
   		get: function get$$1() {
   			return this.state.hasError;
+  		}
+  	}, {
+  		key: 'hasWarning',
+  		get: function get$$1() {
+  			return this.state.hasWarning;
   		}
   	}, {
   		key: 'variablesState',
@@ -6682,6 +6981,11 @@
   			return this.state.canContinue;
   		}
   	}, {
+  		key: 'asyncContinueComplete',
+  		get: function get$$1() {
+  			return !this._asyncContinueActive;
+  		}
+  	}, {
   		key: 'globalTags',
   		get: function get$$1() {
   			return this.TagsAtStartOfFlowContainerWithPathString("");
@@ -6690,7 +6994,14 @@
   	return Story;
   }(Object$1);
 
+  var OutputStateChange = {
+  	NoChange: 0,
+  	ExtendedBeyondNewline: 1,
+  	NewlineRemoved: 2
+  };
+
   exports.Story = Story;
+  exports.InkList = InkList;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
