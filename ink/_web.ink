@@ -11,6 +11,7 @@ INCLUDE goddess_reward_huge
 INCLUDE headmistress_hub
 INCLUDE headmistress_intro
 INCLUDE headmistress_punishment_flogging
+INCLUDE headmistress_punishment_spanking
 INCLUDE headmistress_reward_cunnilingus
 INCLUDE headmistress_task_flogging
 INCLUDE nega_hub
@@ -21,7 +22,6 @@ INCLUDE yuki_punishment_edging
 INCLUDE yuki_reward_bathe
 INCLUDE yuki_review
 INCLUDE yuki_task_fanning
-INCLUDE headmistress_punishment_spanking
 INCLUDE yuki_reward_massage
 
 
@@ -55,12 +55,14 @@ VAR web = true
     -> game_intro_web
 + Test Main Entry hub
     -> entry_hub
-+ Test Yuki 2.2
++ Test Yuki Intro 2.2
     -> yuki_intro
 + Test Nega 0.1
     -> nega_temptation
 + Test Headmistress Intro
     -> headmistress_intro
++ Test Headmistress Punishment Spanking
+    -> headmistress_punishment_spanking
 + Test Yuki Punishment 2.0
     -> yuki_punishment_edging
 + Test Yuki Massage

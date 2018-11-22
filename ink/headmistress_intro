@@ -19,9 +19,6 @@
 /character headmistress
 /perform spank slave 
 
-+[wait 3]
-
-- /perform spank slave
 You are an unruly, undisciplined, low-born miscreant.
 +[wait 3]
 
@@ -41,12 +38,13 @@ Oh, please Headmistress!
 - /character headmistress
 /perform spank slave
 That will be sufficient for today.
+Remember this lesson, flawed one.
 +[wait 3]
 
 - /perform smooth_skirt
 Compose yourself immediately.
 Depart with grace and pride,
-as befits a slave in this house.
+as befits a bauble in this house.
 /character slave stands
 Yes, Headmistress. 
 Thank you for guiding me, Headmistress.
@@ -54,18 +52,18 @@ Thank you for guiding me, Headmistress.
 +[wait 3]
 
 
--/character headmistress sit_on_desk
-And just who are you?
-Another new slave?
-Why was I not notified?
-Yuki-Onna is neglecting her obligations once again.
-Always so busy with trying to please the Goddess
-and blaming an imaginary creature for her transgressions.
-I will speak to her later.
+-/character headmistress displeased
+What do we have here?
+Another new procurement, I see.
+And once again, I have not been appropriately notified
+of an addition to her collection.
+/character headmistress look_up_and_down
 
+Another careless oversight in Yuki's fervent attempts to please.
+Our beloved Goddess forgives only so often.
+I shall correct her oversight forthwith.
++[wait 2]
 
-Foolish slaves require immediate rectification.
-As you now require.
 
 -(meet_headmistress)
 
@@ -108,7 +106,25 @@ of all slaves in this house.
 Speak up.
 -> meet_headmistress
 
-- You are newly arrived and already in trouble.
+-Present yourself for consideration, peasant,
+that I may observe your worthiness for myself.
+/character headmistress present_wrists
+//check to see if the player automatically presents their wrists based on the Headmistress's actions. If not, provide instruction.
+
+//If instructions required, "Your wrists, you witless creature. Present them before you that I may confirm your status."
+
+- +[present wrists]
+Ruby. Diligence and commendation.
+You have pleased the Goddess.
+/character Headmistress nod
+Hmmmm. But also obsidian.
+Atonement and adjustment are required.
+This must be immediate.
+/character headmistress tap_paddle
+-
++[wait 2]
+
+-You are newly arrived and already in trouble.
 /perform tap_paddle
 Entering the Goddess's chambers unbidden.
 This is a serious infraction.
@@ -119,7 +135,7 @@ This is a serious infraction.
 And you will do it with grace.
 I will teach you how.
 Just like I do with all the new slaves.
-/perform stand_up
+
 +[wait 2]
 
 

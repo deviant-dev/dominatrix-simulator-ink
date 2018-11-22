@@ -1,7 +1,5 @@
 === headmistress_punishment_spanking ===
-Insert spanking scene here.
 ~ punishments--
-->->
 
 /scene office_raised_curtains
 /character headmistress
@@ -34,10 +32,12 @@ your hands and knees.
 + {get_on_desk_tries >= 2 } [timeout] -> CheckIfInterested -> get_on_desk
 // + [no] -> CheckIfInterested -> get_on_desk
 
+//praise if player succeeeds. Taunting to hurry if player fails.
 - 
 /perform amused
-Hands should be at least shoulder width apart 
-with fingers splayed.
+Splayed fingers must be at least shoulder width apart.
+Observe the eagerness with which our chattel attempts to comply.
+This behaviour is pleasing to our Goddess.
 +[wait 2]
 
 /perform amused
@@ -45,20 +45,91 @@ with fingers splayed.
 presenting the most ideal access 
 to the object of discipline -
 the ass.
+Lift your buttocks high, {isBoy: runt|moppet}.
 /perform paddle_desk
 +[wait 2]
 
--In this way, the ass is presented for punishment.
-+[wait 2]
+-In this way, the ass is presented for abasement.
+Tell me, lump, is that as high as you can lift your tail?
++[yes]
+~obey++
+Higher. 
+You will remain in this position without fail.
+
++[no]
+~obey--
+You serve yourself our Goddess poorly, heathen.
+Raise your ass!
+
++[timeout]
+What are you waiting for?
+Your back must strain with the effort of raising your rump, chattel.
+
 
 -/perform satisfied
-Knees should be sufficiently apart 
-to allow for robust gazing upon
-the nether regions.
+Just so.
+The nether regions must be fully in view.
+Knees must be sufficiently apart to allow for robust gazing.
+The moisture on the {isBoy: tip of the shaft|crown of the folds} 
+can be admired fully in this position.
+
+What say you, {isBoy: toad|strumpet}?
+Will our esteemed guests be enthralled 
+by the glistening of your nether regions?
+//alternatively, this could be more generic into a sexual break to ask the player any number of random sexual questions - are you wet? Do you feel their eyes on you? Are you throbbing? Do you want to touch yourself? Does pain turn you on? etc
++[yes]
+~obey++
+A glutton for exhibition.
+Most pleasing.
+
++[no]
+Your lackluster genitals shall be addressed another time.
+
+
+
+- Do you feel you are well-presented, {player_name}?
+
++[yes]
+~ obey++
+Not quite, but you demonstrate adequate effort. 
+
++[no]
+~ obey--
+Then rectify yourself at once.
+//provide more instructions?
+
+-(punish_instruct)
+/perform circle_desk
+Disobedient behavior must be corrected immediately
+upon infraction.
+
+It must be firm, swift, and 
+leave an indelible mark upon the body and soul.
+/Perform tap_paddle
+//comments from audience
++[wait 2]
+
+-To receive a punishment with the utmost grace and decorum,
+the subject of discpline must hold their head high and
+breath smoothly and calmly through the nose.
+
+/perform tap_paddle
++[wait 2]
+
+-The muscles of the ass must remain relaxed between swats
+to provide an exceptionally pleasing display when they clench
+in response to being struck.
+/perform tap_paddle
++[wait 2]
+
+-Feet must remain flat upon with no obscene curling of the toes.
+/perform tap_paddle
+//audience remarks
++[wait 2]
 
 //she should walk around from the side of the desk to the front of the player when she asks if they accept their punishment
 
-/perform walk_to_front_of_desk
+-/perform walk_to_front_of_desk
 Do you accept that you must be punished?
 -(ask_punish_ready)
 +[yes]
@@ -100,55 +171,12 @@ Do you agree?
 
 - +[wait 2]
 /perform walk_to_back_of_desk
-All care must be taken to assure the errant slave 
-is well-presented for punishment.
+All care must be taken to assure no lasting harm 
+is inflicted...
+Unless permanency is desired.
 //murmurs of appreciation from audience
 
-As previously noted, the back must be arched,
-the fingers splayed, and the knees spread wide enough
-to provide access to all areas of possible punishment.
-
 - +[wait 2]
-
-- Do you feel you are well-presented, {player_name}?
-
-+[yes]
-~ obey++
-Not quite, but you demonstrate adequate effort. 
-
-+[no]
-~ obey--
-Then rectify yourself at once.
-//provide more instructions?
-
--(punish_instruct)
-/perform circle_desk
-Disobedient behavior must be corrected immediately
-upon infraction.
-
-It must be firm, swift, and 
-leave an indelible mark upon the body and soul.
-/Perform tap_paddle
-//comments from audience
-+[wait 2]
-
--To receive a punishment with the utmost grace and decorum,
-the subject of discpline must hold their head high and
-breath smoothly and calmly through the nose.
-
-/perform tap_paddle
-+[wait 2]
-
--The muscles of the ass must remain relaxed between swats
-to provide an exceptionally pleasing display when they clench
-in response to being struck.
-/perform tap_paddle
-+[wait 2]
-
--Feet must remain flat upon with no obscene curling of the toes.
-/perform tap_paddle
-//audience remarks
-+[wait 2]
 
 -
 /perform walk_to_front_of_desk
