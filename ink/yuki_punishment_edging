@@ -1,5 +1,3 @@
-VAR obedience = 0
-
 === yuki_punishment_edging ===
 
 /scene ?
@@ -18,12 +16,12 @@ Wait, you're here for a punishment?! You haven't been a good {player_name} at al
 I explained to you the rules didn't I? 
 
 + [Yes]
-~ obedience = obedience + 1
+~ obey = obey + 1
 /perform confused 
 
 Somebody isn't a very good slave then.
 + [No]
-~ obedience = obedience - 1
+~ obey = obey - 1
 /perform annoyed
 
 Now that's just not true, and you know it. Lying counts as being disobedient too. That'll earn you <I>another</I> punishment mark.
@@ -94,12 +92,12 @@ Hm, we're going to need to get you <I>really</I>
 Are you enjoying your punishment, little slave?
 
 +[Yes]
-~ obedience = obedience + 1
+~ obey = obey + 1
 You're not supposed to enjoy it that much! Buuuut, you always know where to find me when you want more!
 ->teaseloop2
 
 +[No]
-~ obedience = obedience - 1
+~ obey = obey - 1
 Well maybe next time you shouldn't be such a naughty little slave. 
 ->teaseloop2
 
@@ -151,11 +149,11 @@ Now this time, I'll let you touch yourself. Don't get too excited, there's a cat
 - (FeelGoodQ)
 Am I making you feel good, you naughty {player_name}?
 +[Yes]
-~ obedience = obedience + 1
+~ obey = obey + 1
 Heeheehee, I know, I can see it in your eyes! 
 -> teaseloop3
 +[No]
-~ obedience = obedience - 1
+~ obey = obey - 1
 Then next time you better behave yourself for me and the other Mistresses! 
 -> teaseloop3
 +[timeout]
@@ -245,13 +243,13 @@ All the slaves like my feet.
 Do you want me to tease you with them?
 
 + [Yes]
-~ obedience = obedience + 1
+~ obey = obey + 1
 
     Good job for knowing your place! 
     ->LongFoot
     
 + [No]
-~ obedience = obedience - 1
+~ obey = obey - 1
 
     Then this is exactly what you deserve for misbehaving in the mansion! 
     ->ShortFoot
@@ -282,11 +280,11 @@ I'm very proud of the idea. I came up with it all on my own.
 Isn't that so smart of me?
 
 +[Yes]
-~ obedience = obedience + 1
+~ obey = obey + 1
 I know, I'm such a clever Mistress!
 
 +[No]
-~ obedience = obedience - 1
+~ obey = obey - 1
 Well okay smarty-pants, that's not very polite of you.
 +[timeout]
 Hey, I asked you a question!
@@ -295,7 +293,7 @@ Hey, I asked you a question!
 +[distracted]
 -> PayAttention -> EfficientQ
 
--{obedience >= 5:
+-{obey >= 5:
 I don't know how you got a punishment marker. You've been a very good {player_name} this entire session.
 
 The other mistresses must intimidate you pretty bad, huh?
@@ -326,13 +324,13 @@ But I bet you like my punishment. You like my punishments more than the other mi
 - (ComeBackQ) You want to come back again, don't you? // Maybe a hint of desperation in the VO?
 
 + [Yes]
-~ obedience = obedience + 2
+~ obey = obey + 2
 
     Because I make you feel better, right? Even though I can't let you have an orgasm today, the journey there is fun! It's time for some double trouble now! 
     -> TwoFeet 
 
 + [No]
-~ obedience = obedience - 2
+~ obey = obey - 2
 
     Mmph. That’s not very nice to say to the woman who’s pleasing you. Maybe you’ll change your mind after this... 
     
@@ -424,11 +422,11 @@ You should feel bad about breaking the rules.
 -(BadQ) You feel bad of course, don't you {player_name}?
 
 +[Yes]
-~ obedience = obedience + 1
+~ obey = obey + 1
 You better mean that, and not be lying to me like a bad {player_name}!
 
 +[No]
-~ obedience = obedience - 1
+~ obey = obey - 1
 <I>Somebody's</I> enjoying themselves a little too much.
 
 +[timeout]
@@ -495,7 +493,7 @@ You want that more than anything in the world.
 
 I know how silly little slave {player_name}'s minds work.
 
-{obedience > 5:
+{obey > 5:
 Weeeeell...We <I>are</I> alone here...
 Can you keep a secret?
 +[Yes]

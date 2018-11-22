@@ -74,4 +74,12 @@ VAR punishments = 0
 {web:<i>P:{punishments} / R:{rewards} / You've been here {times} times.</i>}
 ->->
 
+=== exit ===
+-> entry_hub
+
+=== HoldPose(-> onFail, -> onTimeout) ===
++ [timeout] -> onTimeout
++ [pose-cancel] -> onFail
++ [pose-success] ->->
+
 

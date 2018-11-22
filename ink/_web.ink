@@ -1,26 +1,28 @@
-INCLUDE vars.ink
-INCLUDE game_intro.ink
-INCLUDE main_hub.ink
-INCLUDE goddess_hub.ink
-INCLUDE goddess_intro.ink
-INCLUDE goddess_reward_huge.ink
-INCLUDE headmistress_hub.ink
-INCLUDE headmistress_intro.ink
-INCLUDE headmistress_punishment_flogging.ink
-INCLUDE headmistress_reward_cunnilingus.ink
-INCLUDE headmistress_task_flogging.ink
-INCLUDE nega_hub.ink
-INCLUDE nega_temptation.ink
-INCLUDE yuki_intro.ink
-INCLUDE yuki_hub.ink
-INCLUDE yuki_punishment_edging.ink
-INCLUDE yuki_reward_bathe.ink
-INCLUDE yuki_review.ink
-INCLUDE yuki_task_fanning.ink
+# title: Dominatrix Simulator Scripts
+# theme: dark
+
+
+INCLUDE vars
+INCLUDE game_intro
+INCLUDE entry_hub
+INCLUDE goddess_hub
+INCLUDE goddess_intro
+INCLUDE goddess_reward_huge
+INCLUDE headmistress_hub
+INCLUDE headmistress_intro
+INCLUDE headmistress_punishment_flogging
+INCLUDE headmistress_reward_cunnilingus
+INCLUDE headmistress_task_flogging
+INCLUDE nega_hub
+INCLUDE nega_temptation
+INCLUDE yuki_intro
+INCLUDE yuki_hub
+INCLUDE yuki_punishment_edging
+INCLUDE yuki_reward_bathe
+INCLUDE yuki_review
+INCLUDE yuki_task_fanning
 INCLUDE headmistress_punishment_spanking
-INCLUDE yuki_reward_massage.ink
-
-
+INCLUDE yuki_reward_massage
 
 
 // EXTERNAL isDebug()
@@ -52,7 +54,7 @@ VAR web = true
 + Test Intro
     -> game_intro_web
 + Test Main Entry hub
-    -> main_hub
+    -> entry_hub
 + Test Yuki 2.2
     -> yuki_intro
 + Test Nega 0.1

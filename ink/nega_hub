@@ -6,8 +6,8 @@
 
 {
     - rewards > 0:
-        -> nega_temptation -> main_hub
+        -> nega_temptation -> exit
     - else:
         No reward treats for me, hmm? Not interested.
-        -> main_hub
+        -> exit
 }
