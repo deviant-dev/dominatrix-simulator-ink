@@ -1,3 +1,5 @@
+VAR nega_favor = 0
+
 === nega_hub ===
 - (hub)
 
@@ -6,7 +8,7 @@
 
 {
     - rewards > 0:
-        -> nega_temptation -> exit
+        -> nega_intro
     - else:
         No reward treats for me, hmm? Not interested.
         -> exit

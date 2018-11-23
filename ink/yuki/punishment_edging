@@ -63,7 +63,7 @@ Don't move! I'm thinking about what to do with you.
 
 /perform inspect_genitals
 
-Hm, we're going to need to get you <I>really</I> 
+Hm, we're going to need to get you <i>really</i> 
 {player_name == "boy": 
 <> hard
 - else: 
@@ -572,7 +572,7 @@ If you've paid all of your punishment markers, now may be a good time to redeem 
 
 Goodbye slave, I'll be seeing you around, I'm sure!
 
--> END
+-> exit
 
 - (Denial)
 
@@ -588,7 +588,7 @@ And I hope it's one of the worst cases of {player_name == "boy": blue balls| a b
 
 Goodbye slave, I'll be seeing you around, I'm sure!
 
--> END
+-> exit
 
 = AboutToCum
 {cycle: 
@@ -606,8 +606,6 @@ Goodbye slave, I'll be seeing you around, I'm sure!
 }
 
 ->->
-
--> END
 
 = PayAttention
 {cycle:
@@ -629,5 +627,3 @@ Goodbye slave, I'll be seeing you around, I'm sure!
     }
 
 ->->
-
--> END

@@ -1,0 +1,25 @@
+=== nega_lore ===
+
+// If we've heard the last lore, then don't say anything else here.
+{lore03: ->->}
+
+Since you've been so good, I'll tell you a little bit about the house.
+{ once:
+    - -> lore01 ->
+    - -> lore02 ->
+    - -> lore03 ->
+}
+
+->->
+
+= lore01
+<< Inster Lore01 Here >>
+->->
+
+= lore02
+<< Inster Lore01 Here >>
+->->
+
+= lore03
+<< Inster Lore01 Here >>
+->->

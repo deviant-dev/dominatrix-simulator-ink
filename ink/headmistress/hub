@@ -1,8 +1,11 @@
-VAR headmistress_spank_difficulty = 1
+VAR headmistress_difficulty = 1
+VAR headmistress_favor = 0
 
 === headmistress_hub ===
 - (hub)
 
+// Reset obey here since sometimes obey is tracked
+// across multiple scenes.
 ~obey = 0
 
 {web: <b>Headmistress Hub</b>}

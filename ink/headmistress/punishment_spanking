@@ -240,7 +240,7 @@ Do you accept that you must be punished?
 
 Before we begin,
 would you like to practice how you must perform first?
-~ headmistress_spank_difficulty = 1
+~ headmistress_difficulty = 1
 
 +[yes]
     -> spank_instructions
@@ -285,7 +285,7 @@ Let us practice.
     - else:
         That will do for now. We will work on that in the future.
     }
-    ~ headmistress_spank_difficulty = 0
+    ~ headmistress_difficulty = 0
 
 - (swat_continue)
 
@@ -361,7 +361,7 @@ Consider one demerit paid in full.
 
 // If the player has never seen nega-yuki,
 // send them off to be tempted by her directly.
-{not nega_temptation: -> nega_temptation | -> exit}
+{not nega_intro: -> nega_intro | -> exit }
 
 = BadSpank
 /character headmistress displeased

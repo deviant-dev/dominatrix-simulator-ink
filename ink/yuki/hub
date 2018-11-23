@@ -1,3 +1,5 @@
+VAR yuki_favor = 0
+
 === yuki_hub ===
 - (hub)
 
@@ -28,10 +30,13 @@
     -> exit
 
 = choose_punishment
--> yuki_punishment_edging -> exit
+-> yuki_punishment_edging
 
 = choose_reward
-{~ -> yuki_reward_bathe | -> yuki_reward_massage } -> exit
+{shuffle:
+    - -> yuki_reward_bathe
+    - -> yuki_reward_massage
+}
 
 = choose_task
--> yuki_task_fanning -> exit
+-> yuki_task_fanning

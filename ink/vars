@@ -63,6 +63,10 @@ VAR punishments = 0
 ~ return
 
 === select_gender ===
+    // If we've already selected a gender
+    // then skip this bit.
+    {setGender: ->->}
+    
     + [Male]
         ~ setGender("m")
     + [Female]
