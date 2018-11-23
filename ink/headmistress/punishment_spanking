@@ -1,5 +1,5 @@
 === headmistress_punishment_spanking ===
-~ temp intro = headmistress_punishment_spanking == 1
+- (intro)
 
 {not intro: /scene office_raised_curtains}
 
@@ -83,7 +83,7 @@ Tell me, lump, is that as high as you can lift your hindquarters?
 
 +[no]
     ~obey--
-    You serve yourself our Goddess poorly, heathen.
+    You serve yourself and our Goddess poorly, heathen.
     Raise your ass!
 
 +[timeout]
@@ -110,7 +110,6 @@ and puckered rosebud can be admired fully in this position.
 /perform circle_desk
 
 {intro: -> punish_instruct | -> punish_continue}
-
 
 
 - (punish_instruct)
@@ -145,9 +144,9 @@ in response to the impact of my admonishments.
 
 +[wait]
 
-- But enough of this pretense
+- But enough of this pretense.
 We aren't here for just you.
-We have our entire class to teach!
+We have our entire class to enlighten!
 
 /character crowd jeers
 
@@ -205,8 +204,9 @@ Do you accept that you must be punished?
     ~ obey--
     /chracter crowd boos
     /character headmistress suspicious
-    You will be unable to remain here 
-    if you do not submit to your punishment.
+    Foolish, little slave.
+    
+    
     It will be over quickly and your compliance will
     please the Goddess.
     Shall we continue with your punishment?
