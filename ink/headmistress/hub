@@ -1,5 +1,9 @@
+VAR headmistress_spank_difficulty = 1
+
 === headmistress_hub ===
 - (hub)
+
+~obey = 0
 
 {web: <b>Headmistress Hub</b>}
 -> summary(hub) -> 

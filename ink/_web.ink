@@ -30,7 +30,7 @@ VAR web = true
 === table_of_contents ===
 
 + Game Intro -> game_intro_web
-+ Entry hub -> entry_hub
++ Entry Hub -> entry_hub
 + Yuki Intro 2.2 -> yuki_intro
 + Nega Temptation 0.1 -> nega_temptation
 + Headmistress Intro -> headmistress_intro

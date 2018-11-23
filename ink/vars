@@ -78,8 +78,8 @@ VAR punishments = 0
 -> entry_hub
 
 === HoldPose(-> onFail, -> onTimeout) ===
-+ [timeout] -> onTimeout
-+ [pose-cancel] -> onFail
 + [pose-success] ->->
++ [pose-cancel] -> onFail
++ [timeout] -> onTimeout
 
 

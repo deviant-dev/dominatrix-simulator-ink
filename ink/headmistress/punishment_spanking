@@ -1,277 +1,417 @@
 === headmistress_punishment_spanking ===
-~ punishments--
+~ temp intro = headmistress_punishment_spanking == 1
 
-/scene office_raised_curtains
+{not intro: /scene office_raised_curtains}
+
 /character headmistress
 /equip wood_paddle
 
-~ obey = 0 
+For your transgressions,
+a spanking is in order.
 
-- For your transgressions, a spanking is in order.
-
-//check to see if player has done this scene before. If so, skip instructions.
--First, you will learn how to present yourself
-for punishment.
+{intro:
+    First, you will learn
+    how to present yourself for punishment.
+}
 
 /perform point_paddle_at_desk
-Alight onto my desk 
-and assume a position upon 
+
+{intro:
+    All right.
+- else:
+    You know the drill.
+}
+
+Onto my desk.
+Take position upon
 your hands and knees.
-
-//player needs to teleport onto the desk
-
-- (get_on_desk)
-- (get_on_desk_tries)
 
 /perform idle
 
-- (get_on_desk_fail)
-+ [pose:get_on_desk] -> HoldPose(-> get_on_desk_fail, -> get_on_desk) ->
-+ {get_on_desk_tries < 2 } [timeout] -> get_on_desk
-//+ {get_on_desk_tries >= 2 } [timeout]
-+ {get_on_desk_tries >= 2 } [timeout] -> CheckIfInterested -> get_on_desk
-// + [no] -> CheckIfInterested -> get_on_desk
+- (get_on_desk)
++ [move:get_on_desk]
+    There we are.
++ [timeout]
+    Do not waste my time.
+    Up you go.
+    -> get_on_desk
+    
+- (hands_and_knees_timeout)
+Now on your hands and knees, bauble.
 
-//praise if player succeeeds. Taunting to hurry if player fails.
-- 
-/perform amused
+- (hands_and_knees_fail)
++ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
+
+- /perform amused
+
 Splayed fingers must be at least shoulder width apart.
-Observe the eagerness with which our chattel attempts to comply.
-This behaviour is pleasing to our Goddess.
-+[wait 2]
 
-/perform amused
-- The back must be delicately arched, 
+{get_on_desk == 1:
+    /perform look_up_and_down
+    Observe the eagerness with which our chattel attempts to comply.
+    This behaviour is pleasing to our Goddess.
+- else:
+    /perform displeased
+    Note the hesitation. A sure sign of poor breeding.
+    Such offends the Goddess and must be striken from the specimen.
+}
+
++[wait]
+
+- /perform amused
+
+Now then.
+The back must be delicately arched, 
 presenting the most ideal access 
-to the object of discipline -
-the ass.
-Lift your buttocks high, {isBoy: runt|moppet}.
+to the object of discipline: the buttocks.
+Lift your backside high, {isBoy: mongrel|moppet}.
+
 /perform paddle_desk
-+[wait 2]
+
++[wait]
 
 -In this way, the ass is presented for abasement.
-Tell me, lump, is that as high as you can lift your tail?
+Tell me, lump, is that as high as you can lift your hindquarters?
+
 +[yes]
-~obey++
-Higher. 
-You will remain in this position without fail.
+    ~obey++
+    I disagree.
+    Arch just a bit more.
+    ++[wait]
+    --Good.
+    You will remain in this position without fail.
 
 +[no]
-~obey--
-You serve yourself our Goddess poorly, heathen.
-Raise your ass!
+    ~obey--
+    You serve yourself our Goddess poorly, heathen.
+    Raise your ass!
 
 +[timeout]
-What are you waiting for?
-Your back must strain with the effort of raising your rump, chattel.
+    What are you waiting for?
+    Your back must strain with the effort of raising your ass, chattel.
 
 
 -/perform satisfied
-Just so.
+-> GoodJob ->
 The nether regions must be fully in view.
-Knees must be sufficiently apart to allow for robust gazing.
-The moisture on the {isBoy: tip of the shaft|crown of the folds} 
-can be admired fully in this position.
-
-What say you, {isBoy: toad|strumpet}?
-Will our esteemed guests be enthralled 
-by the glistening of your nether regions?
-//alternatively, this could be more generic into a sexual break to ask the player any number of random sexual questions - are you wet? Do you feel their eyes on you? Are you throbbing? Do you want to touch yourself? Does pain turn you on? etc
-+[yes]
-~obey++
-A glutton for exhibition.
-Most pleasing.
-
-+[no]
-Your lackluster genitals shall be addressed another time.
-
-
-
-- Do you feel you are well-presented, {player_name}?
+Knees must be sufficiently apart to allow for clear observation.
+Now tell me: Are you {isBoy:hard|wet}?
 
 +[yes]
-~ obey++
-Not quite, but you demonstrate adequate effort. 
+    Good.
 
 +[no]
-~ obey--
-Then rectify yourself at once.
-//provide more instructions?
+    Hmm.. Disappointing.
+    Regardless,
+    
+- The moisture on the {isBoy: tip of the shaft|crown of the folds} 
+and puckered rosebud can be admired fully in this position.
 
--(punish_instruct)
 /perform circle_desk
-Disobedient behavior must be corrected immediately
-upon infraction.
 
-It must be firm, swift, and 
-leave an indelible mark upon the body and soul.
-/Perform tap_paddle
-//comments from audience
-+[wait 2]
+{intro: -> punish_instruct | -> punish_continue}
+
+
+
+- (punish_instruct)
+
+Disobedient behavior must be corrected
+immediately upon infraction.
+
+It must be firm, swift, and leave an indelible mark
+upon the body and soul.
+/perform tap_paddle
+
++[wait]
 
 -To receive a punishment with the utmost grace and decorum,
 the subject of discpline must hold their head high and
 breath smoothly and calmly through the nose.
 
 /perform tap_paddle
-+[wait 2]
+
++[wait]
 
 -The muscles of the ass must remain relaxed between swats
 to provide an exceptionally pleasing display when they clench
-in response to being struck.
+in response to the impact of my admonishments.
 /perform tap_paddle
-+[wait 2]
 
--Feet must remain flat upon with no obscene curling of the toes.
++[wait]
+
+-Feet must remain flat with no obscene curling of the toes.
 /perform tap_paddle
-//audience remarks
-+[wait 2]
+/character crowd murmur
 
-//she should walk around from the side of the desk to the front of the player when she asks if they accept their punishment
++[wait]
 
--/perform walk_to_front_of_desk
+- But enough of this pretense
+We aren't here for just you.
+We have our entire class to teach!
+
+/character crowd jeers
+
++[wait]
+
+- Let us show our audience
+the fine display you have for us.
+
+/character headmistress arm_raise
+/action raise_curtains
+/character crowd cheers
+
+
+- (punish_continue)
+
+/character headmistress
+What say you, {isBoy: toad|strumpet}?
+
+{cycle:
+    - Will our esteemed guests be enthralled by
+        {isBoy:
+            your turgid bouncing cock?
+        -else:
+            the glistening of your cunt?
+        }
+    - Do you feel their eyes on you?
+    - Are you throbbing in anticipation?
+    - Do you want to touch yourself?
+    - Does pain turn you on?
+}
+
++ [yes]
+    ~obey++
+    A glutton for exhibition.
+    Most pleasing.
+
++ [no]
+    Ah, well.
+    Your lackluster genitals shall be addressed another time.
+    We still have our punishment to mete out.
+
+- /perform walk_to_front_of_desk
+And finally, we come to the heart of the matter.
 Do you accept that you must be punished?
--(ask_punish_ready)
-+[yes]
-~ obey++
-/perform arm_raise
-Then we shall begin.
 
-//curtains raise and sounds of crowd fill the room
+- (ask_punish_ready)
+
++[yes]
+    ~ obey++
+    /perform arm_raise
+    Then we shall begin.
+    /character crowd cheers
 
 +[no]
-~ obey--
-/perform suspicious
-You will be unable to remain here 
-if you do not submit to your punishment.
-It will be over quickly and your compliance will
-please the Goddess.
-Shall we continue with your punishment?
+    ~ obey--
+    /chracter crowd boos
+    /character headmistress suspicious
+    You will be unable to remain here 
+    if you do not submit to your punishment.
+    It will be over quickly and your compliance will
+    please the Goddess.
+    Shall we continue with your punishment?
 
     ++[yes]
-    ~ obey++
-    Excellent choice. Let us begin.
-    /perform arm_raise
-    //curtains raise and sounds of crowd fill the room
-    
+        ~ obey++
+        Excellent choice. Let us begin.
+
     ++[no]
-    ~ obey--
-    //should this add another punishment marker?
-    Make haste from my sight!
-    I will not tolerate fools.
-    /perform point_to_door
-    // force player to leave scene - exit game??
-    
+        ~ obey--
+        /character crowd angry
+        Make haste from my sight!
+        You have squandered my time
+        and my attentions.
+        I will not suffer fools.
+        You've just earned yet another punishment.
+        ~ punishments++
+        Now leave.
+        /character headmistress point_to_door
+        -> exit
+
 +[timeout] 
-You have had enough time to think.
-Your punishment must begin.
-Do you agree?
--> ask_punish_ready
+    You have had enough time to think.
+    Your punishment must begin.
+    Do you agree?
+    -> ask_punish_ready
 
+- +[wait]
 
-- +[wait 2]
-/perform walk_to_back_of_desk
-All care must be taken to assure no lasting harm 
-is inflicted...
-Unless permanency is desired.
-//murmurs of appreciation from audience
+- {intro: -> spank_instructions}
 
-- +[wait 2]
-
--
-/perform walk_to_front_of_desk
-Are you prepared to demonstrate your display of grace 
-during punishment for the assesment of our observers today?
-//audience sounds of appreciation
+Before we begin,
+would you like to practice how you must perform first?
+~ headmistress_spank_difficulty = 1
 
 +[yes]
-~ obey++
-A fitting response.
-
-
+    -> spank_instructions
 +[no]
-~ obey--
-Think twice before you continue on this course of disobedience.
-You earn no rewards until this act of suffering has been completed.
+    An expert, are we? We will see about that.
+    -> swat_continue
 
+- (spank_instructions)
+With each swat, you will show me clearly
+just how much you feel it.
+When you hear the slap of my palm
+and feel its sting upon your ass
+I want to see that empty head of yours jerk up and back
+into a proud and upright position.
 
-With each swat, you will lift your head high,
-bringing it back to a proud and upright position.
++[wait]
 
-//check if player has been here before
+- And I am always pleased
+with that exquisite sharp inhale of breath.
+Let us practice.
 
-//- Would you like to practice how to move your head first?
++[wait]
 
-//+[yes] 
-//~obey++
-//When you hear the sound of the paddle striking your flesh,
-//you will jerk your head upright to show you are ready 
-//for the next strke.
+- (try_spank)
+/character headmistress paddle_ass
 
-//Let us practice.
-///character headmistress paddle_ass
-//check to see if player lifts head
-//give positive feedback if player does it right, then continue to perform spanking
-//give corrective feedback and a chance to try again
-//if fail a second time, "That will do for now. We will work on that in the future" - change pose radius to be more accomodating
++ [reaction:spanked]
+    // This lets us count the number of successful attempts.
+    -- (try_spank_count)
+    -> GoodJob ->
+    
+    // Once there have been 3 good spanks, we continue.
+    {try_spank_count < 3:-> try_spank|-> swat_continue}
++ [timeout]
+    // This lets us count the number of failed attempts.
+    -- (try_spank_timeouts)
+    
+    // We will continue if they fail 3 times.
+    { try_spank_timeouts < 3:
+        Not good enough. Try again.
+        -> try_spank
+    - else:
+        That will do for now. We will work on that in the future.
+    }
+    ~ headmistress_spank_difficulty = 0
 
--
+- (swat_continue)
+
+Now then. Let us begin!
 
 /character crowd cheers
 
-Welcome esteemed friends!
++ [wait]
+
+- Welcome esteemed friends!
 As always, purrs, moans, and words of encouragement
 are permitted during the punishment lesson.
 
-Our subject today has earned a spanking.
+/character crowd jeers
 
++ [wait]
+
+/character headmistress walk_to_back_of_desk
+
+- All care must be taken to assure
+no lasting harm is inflicted...
+unless permanency is desired, of course.
+
+/character crowd appreciation
+
++ [wait]
+
+- Our subject today has earned a spanking.
 I will use a paddle made of mahogany.
 An excellent, hard wood ideal for leaving
 bright red welts on the flesh of disobedient slaves.
 Would you not agree?
+
 /character crowd coos 
 
-Listen to the excitement {player_name}.
++ [wait]
+
+- Listen to that excitement, {player_name}.
 Your ass will provide a fine demonstration today.
 
 Are they not fortunate to have one such as you to observe?
+
 +[yes]
-~obey++
-Perform well and your punishment marker will be removed.
+    ~obey++
+    Perform well and your punishment marker will be removed.
 
 +[no]
-~obey--
-It is a shame you do not value the learning of others.
+    ~obey--
+    It is a shame you do not value the learning of others.
 
 - Prepare yourself, {player_name}.
+
+- (spank)
 /character headmistress paddle_ass
-//check to see if they respond and give positive or negative feedback
 
-//(random nuetral for each swat) A fine welt is forming.; Music to my ears.; Perhaps I should be counting.; A red bottom is a pleasing bottom.; I do so love instructing slaves in proper behavior.; I never tire of this.; I suspect that one hurt.
++ [reaction:spanked]
+    -- (spank_count)
+    -> GoodSpank ->
+    {spank_count < 10:-> spank}
++ [timeout] -> BadSpank -> spank
 
-//random sexual: Notice how the {isBoy:shaft bounces|nether lips clench}.; The light is catching the dewy sheen on the skin most magnificently.; Observe the {isBoy: tip|slit} begin to glisten.
+- (finish)
 
+And done.
+You are free to go.
+Consider one demerit paid in full.
+
+~ punishments--
+
+/character crowd claps
+
++ [wait]
+
+// If the player has never seen nega-yuki,
+// send them off to be tempted by her directly.
+{not nega_temptation: -> nega_temptation | -> exit}
+
+= BadSpank
+/character headmistress displeased
+Terrible. We'll have to repeat that one.
+->->
+
+= GoodSpank
+
+{shuffle:
+    - A fine welt is forming.
+    - Music to my ears.
+    - Perhaps I should be counting.
+    - A red bottom is a pleasing bottom.
+    - I do so love instructing slaves in proper behavior.
+    - I never tire of this.
+    - I suspect that one hurt.
+    -
+    -
+    -
+    -
+}
+
+{shuffle:
+    - Notice how the {isBoy:shaft bounces|nether lips clench}.
+    - The light is catching the dewy sheen on the skin most magnificently.
+    - Observe the {isBoy: tip|slit} begin to glisten.
+    -
+    -
+    -
+}
 
 ->->
 
-
 = GoodJob
 
-//rewrite these for Headmistress
-/perform caress_thigh
+// rewrite these for Headmistress
+// /perform caress_thigh
 
 { shuffle:
-    - There's a good {player_name}. #114
-    - What a good little {player_name}. #115
-    - That's my {player_name}. #116
-    - Aren't you the sweetest little thing. #117
-    - Very nice. #118
-    - That will do just fine. #119
-    - Quite satisfying. #120
-    - Mmmm. I like that. #121
-    - Someone is being a good {player_name}. #122
-    - Well done. #123
-    - That's very pleasing. #124
+    - There's a good {player_name}.
+    - What a good little {player_name}.
+    - That's my {player_name}.
+    - Aren't you the sweetest little thing.
+    - Very nice.
+    - That will do just fine.
+    - Quite satisfying.
+    - Mmmm. I like that.
+    - Someone is being a good {player_name}.
+    - Well done.
+    - That's very pleasing.
 }
 
 ->->
@@ -352,7 +492,4 @@ There is hope for you yet. #157
 = out_heathen
 
 /perform paddle_desk
-
-/scene foyer
-
--> END
+-> exit

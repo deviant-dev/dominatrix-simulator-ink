@@ -14,11 +14,10 @@
     + [Start]
 }
 
-- ~ obey = 0 
-
-/character headmistress spank slave
+- /character headmistress spank slave
 
 You are an unruly, undisciplined, low-born miscreant.
+
 +[wait 3]
 
 - /perform spank slave
@@ -27,43 +26,53 @@ I will not abide by your disobedience.
 +[wait 3]
 
 - /perform spank slave
+
 You *will* behave according to your station or 
 find yourself unable to rest on your backside for a week.
+
 /character slave pleading
+
 I'm sorry, Headmistress.
 I'll be good. I promise!
 Oh, please Headmistress!
 
 +[wait 3]
 
-- /character headmistress
-/perform spank slave
+- /character headmistress spank slave
+
 That will be sufficient for today.
 Remember this lesson, flawed one.
 
 +[wait 3]
 
 - /perform smooth_skirt
+
 Compose yourself immediately.
 Depart with grace and pride,
 as befits an adornment of this house.
+
 /character slave stands
+
 Yes, Headmistress. 
 Thank you for guiding me, Headmistress.
-/perform slave walks_away
+
+/perform walks_away
 
 +[wait 3]
 
 -/character headmistress displeased
+
 What do we have here?
 Another new procurement, I see.
 And once again, I have not been appropriately notified
 of an addition to Her collection.
-/character headmistress look_up_and_down
+
+/perform look_up_and_down
 
 Another careless oversight in Yuki's fervent attempts to please, no doubt.
 Our beloved Goddess forgives only so often.
 I shall correct her oversight <i>forthwith</i>.
+
 +[wait 2]
 
 
@@ -72,60 +81,83 @@ I shall correct her oversight <i>forthwith</i>.
 Do you know who I am?
 
 +[yes]
-~obey++
-Very good. 
-Then you know why you're here.
-As the Headmistress, I oversee the training and correction 
-of all slaves in this house.
+    ~obey++
+    Very good. 
+    Then you know why you're here.
+    As the Headmistress, I oversee the training and correction 
+    of all slaves in this house.
+    
++[no]
+    ~obey--
+    /perform tap_paddle
+    I think you do.
+    You just heard that slave say it.
+    What an unobservant little wart you are.
+
++[timeout]
+    Speak up.
+    -> meet_headmistress
+
+- As the Headmistress, I oversee the training
+and correction of all slaves in this house.
 Understood?
 
-    ++[yes]
++[yes]
     ~obey++
     Excellent.
-    No need to waste time.
-    
-    ++[no]
-    ~obey--
+    No need to waste time, then.
+
++[no]
+    -- (not_understood) ~obey--
     Come, come.
     Don't play dumb.
     It is a waste of my time.
-    
-    
-+[no]
-~obey--
-/perform tap_paddle
-I think you do.
-You just heard that slave say it.
-As the Headmistress, I oversee the training and correction 
-of all slaves in this house.
 
-+[timeout]
-Speak up.
--> meet_headmistress
++[timeout] -> not_understood
 
--Present yourself for consideration, peasant,
-that I may observe your worthiness for myself.
-/character headmistress present_wrists
-//check to see if the player automatically presents their wrists based on the Headmistress's actions. If not, provide instruction.
+- (present) Present yourself for consideration, {isBoy: oaf|moppet},
+that I may observe your worth for myself.
 
-//If instructions required, "Your wrists, you witless creature. Present them before you that I may confirm your status."
+/perform displeased
 
-- +[present wrists]
-Bloodstone. Diligence and commendation.
+- (ask_present)
+
++[pose:present_wrists]
+    ~obey++
+
++ [timeout]
+    Your wrists, you witless cur.
+    Present them before you
+    that I may confirm your measure.
+    ~obey--
+    /perform present_wrists
+    Like so, foolish {player_name}.
+    -> ask_present
+
+- /perform look_up_and_down
+
+Ah, Bloodstone. Diligence and commendation.
 You have pleased the Goddess.
-/character Headmistress nod
-Hmmmm. But also obsidian.
+
+/perform nod
+
+Hmmmm. But also Obsidian.
 Atonement and adjustment are required.
 This must be immediate.
-/character headmistress tap_paddle
--
+
+/perform tap_paddle
+
 +[wait 2]
 
--You are newly arrived and already in trouble.
+- You are newly arrived and already in trouble.
 /perform tap_paddle
-Entering the Goddess's chambers unbidden.
+
++[wait 2]
+
+- Entering the Goddess's chambers unbidden.
 This is a serious infraction.
 /perform tap_paddle
+
 +[wait 2]
 
 -You will be punished.
@@ -135,7 +167,4 @@ Just like I do with all the new slaves.
 
 +[wait 2]
 
-
-- -> END
-
-
+- -> headmistress_punishment_spanking

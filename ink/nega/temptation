@@ -29,6 +29,20 @@ You get used to it.
 
 +[wait]
 
+- How's that cute little ass of yours?
+Does your poor tushy sting?
+
++[yes]
+    That's the Headmistress for you.
+    /perform eye_roll
+    What a bitch.
++ [no]
+    Oh, a touch {isBoy:guy|girl}, huh?
+    Nice.
+    
+- As fun as it might be,
+I'm not here about your sore ass.
+
 - (give_reward)
 
 You have something I want.
@@ -38,16 +52,17 @@ Aren't you?
 
 + [yes]
     That's right.
-    You're going to give me that reward marker
+    You're going to give me that pretty little Bloodstone
     and I might give you something in return.
 
 + [no]
     I would think twice about that if I were you.
-    Are you sure you don't want to give me your reward marker?
+    Are you sure you don't want to give me that pretty Bloodstone?
     
     ++[yes]
         Stop wasting my time!
         Get out of here.
+        -> exit
     
     ++[no]
         Very good. 
@@ -59,8 +74,7 @@ Aren't you?
 
 +[distracted] -> PayAttention -> give_reward
 
--
--> END
+- -> exit
 
 = PayAttention
 
