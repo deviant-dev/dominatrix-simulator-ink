@@ -30,11 +30,11 @@ VAR web = true
 === table_of_contents ===
 
 + Game Intro -> game_intro_web
-+ Entry Hub -> entry_hub
 + Yuki Intro 2.2 -> yuki_intro
-+ Nega Temptation 0.1 -> nega_temptation
 + Headmistress Intro -> headmistress_intro
 + Headmistress Punishment Spanking -> headmistress_punishment_spanking
++ Nega Temptation 0.1 -> nega_temptation
++ Entry Hub -> entry_hub
 + Yuki Punishment Edgine 2.0 -> yuki_punishment_edging
 + Yuki Reward Massage -> yuki_reward_massage
 
