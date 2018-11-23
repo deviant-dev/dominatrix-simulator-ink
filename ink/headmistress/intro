@@ -16,8 +16,7 @@
 
 ~ obey = 0 
 -
-/character headmistress
-/perform spank slave 
+/character headmistress spank slave
 
 You are an unruly, undisciplined, low-born miscreant.
 +[wait 3]
@@ -114,7 +113,7 @@ that I may observe your worthiness for myself.
 //If instructions required, "Your wrists, you witless creature. Present them before you that I may confirm your status."
 
 - +[present wrists]
-Bloodstone. Diligence and commendation.
+Ruby. Diligence and commendation.
 You have pleased the Goddess.
 /character Headmistress nod
 Hmmmm. But also obsidian.

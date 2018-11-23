@@ -5,24 +5,24 @@
 INCLUDE vars
 INCLUDE game_intro
 INCLUDE entry_hub
-INCLUDE goddess_hub
-INCLUDE goddess_intro
-INCLUDE goddess_reward_huge
-INCLUDE headmistress_hub
-INCLUDE headmistress_intro
-INCLUDE headmistress_punishment_flogging
-INCLUDE headmistress_punishment_spanking
-INCLUDE headmistress_reward_cunnilingus
-INCLUDE headmistress_task_flogging
-INCLUDE nega_hub
-INCLUDE nega_temptation
-INCLUDE yuki_intro
-INCLUDE yuki_hub
-INCLUDE yuki_punishment_edging
-INCLUDE yuki_reward_bathe
-INCLUDE yuki_review
-INCLUDE yuki_task_fanning
-INCLUDE yuki_reward_massage
+INCLUDE goddess/hub
+INCLUDE goddess/intro
+INCLUDE goddess/reward_huge
+INCLUDE headmistress/hub
+INCLUDE headmistress/intro
+INCLUDE headmistress/punishment_flogging
+INCLUDE headmistress/punishment_spanking
+INCLUDE headmistress/reward_cunnilingus
+INCLUDE headmistress/task_flogging
+INCLUDE nega/hub
+INCLUDE nega/temptation
+INCLUDE yuki/hub
+INCLUDE yuki/intro
+INCLUDE yuki/punishment_edging
+INCLUDE yuki/reward_bathe
+INCLUDE yuki/review
+INCLUDE yuki/task_fanning
+INCLUDE yuki/reward_massage
 
 
 // EXTERNAL isDebug()
