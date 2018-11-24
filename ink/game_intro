@@ -18,7 +18,7 @@
 - /scene LogoRoom.VerifyAge
 
 + [yes]
-+ [no] -> goddess_intro.DemoEnd
++ [no] -> demo_end
 
 - /scene LogoRoom.Notifications
 

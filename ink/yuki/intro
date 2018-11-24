@@ -94,8 +94,6 @@ Would you like to know what the rules are?
     
 - (two_rules)
 
-[wait]
-
 /perform bounces
 The rules are simple!
 And there are only two of them!
@@ -308,6 +306,7 @@ You want to be a little fuck toy, don't you?
    ~ obey--
         Too bad. I only use fuck toys that have something to give me first.
         And you have nothing I want.
+        /perform taps_wrist
         /perform straighten_up
     
     ++ [no]
@@ -346,6 +345,7 @@ tearing up that little ass of yours.
     - -> Yuki_finish
     - else: -> Nega_finish
 }
+
 = Yuki_finish
 /character Yuki foot_stomp
 That's enough, Nega!
@@ -455,10 +455,11 @@ She will teach you how to properly take a punishment.
 Hurry up now!
 She doesn't like to be kept waiting.
 
-//need to know how player gets to next room
--> END
+~ headmistress_unlocked = true
+-> entry_hub.headmistress_only
 
 = Nega_finish
+
 /character Yuki foot_stomp
 That's enough, Nega!
 You are interfering with my role too much!
@@ -466,14 +467,17 @@ I'm reporting you to the Headmistress straight away.
 /perform yuki_exit
 
 /character nega laugh
-You go run off, little Yuki, 
+
++ [wait]
+
+- You go run off, little Yuki, 
 and tell the Headmistress all about 
 how naughty I've been.
 
 /perform sassy
 Now we can really have some fun!
 
-/perform Nega_skirt_lift
+/perform nega_skirt_lift
 Though I suppose I should at least
 tell you about rewards and punishments.
 I do want you to give me your rewards, after all.
@@ -483,18 +487,17 @@ Shall I rub your poor aching {isBoy: cock|cunt} again
 while I do?
 
 +[yes]
-/perform caress_genitals
-Mmmm. That's it. 
-We're going to find out just how naughty 
-you like to be.
+    /perform caress_genitals
+    Mmmm. That's it. 
+    We're going to find out just how naughty 
+    you like to be.
 
 +[no]
-/perform frown
-Don't tell me I've made a mistake in 
-paying attention to you.
+    /perform frown
+    Don't tell me I've made a mistake in 
+    paying attention to you.
 
-- 
-/perform dance_tease
+- /perform dance_tease
 Be a good {player_name}, do what you're told, and 
 that little {isBoy: cock|cunt} of yours is going to
 throb with the excitement of earning a reward.
@@ -504,7 +507,10 @@ or take too much time following directions,
 you'll be a sad little slut when you get a punishment.
 
 /perform laugh
-The best part is you can't collect any rewards 
+
++[wait]
+
+- The best part is you can't collect any rewards 
 until you've paid off all your punishment marks.
 
 /perform idle
@@ -525,8 +531,21 @@ and rewards during your time here.
     from you before you ever get a chance
     to see a reward.
 
-//somehow make clipboard appear or other visual aid for feeding back to player how they are doing
-- /perform check_clipboard
+
+- (present_wrists)
+Now let's see those wrists.
+
+- (present_wrists_cancel)
++ [pose:present_wrists]
+    /perform idle
+    -> HoldPose(-> present_wrists_cancel, -> present_wrists_timeout) ->
++ [timeout] 
+    -- (present_wrists_timeout)
+    /perform present_wrists
+    Hold your fucking wrists out like this, you little shit.
+    -> present_wrists
+
+-
 //sarcastic voice
 Oh. Goody. Time to tell you how you're doing.
 
@@ -548,19 +567,25 @@ You're being rewarded for getting her attention.
 - /perform approach
 I suggest you ignore that annoying little Yuki 
 when she tells you to behave.
-She thought she could shove down all her dirty thoughts 
+She thought she could shove down
+all her dirty thoughts 
 by casting me aside...
 But here I am!
 
 /perform sassy
-I want something from you.
-When you've groveled your way to a reward,
+
++ [continue]
+- I want something from you.
+Whenever you grovel your way to a reward,
 come find me.
 
 /perform breast_squeeze
 I might make it worth your while.
 Either way... 
 one of us will have a good time.
+
+/perform wink
+
 - + [wait 5]
 
 - /perform inspection
@@ -570,8 +595,9 @@ Time to get a taste of your first punishment.
 Better get your ass to the Headmistress.
 She doesn't like to be kept waiting.
 
+~ headmistress_unlocked = true
 //need to know how player gets to next room
--> END
+-> entry_hub.headmistress_only
 
 
 = PayAttention

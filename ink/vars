@@ -86,4 +86,15 @@ VAR punishments = 0
 + [pose-cancel] -> onFail
 + [timeout] -> onTimeout
 
+=== demo_end ===
+/scene LogoRoom.EndScreen
+-> END
+
+=== unlock_all ===
+{~ yuki_unlocked = true}
+{~ headmistress_unlocked = true}
+{~ nega_unlocked = true}
+{~ goddess_unlocked = true}
+->->
+
 

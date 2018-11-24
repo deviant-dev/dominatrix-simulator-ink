@@ -4,7 +4,12 @@
 {web: <b>Main Entry Hub</b>}
 -> summary(hub) ->
 
-+ [move: Goddess] -> goddess_hub
-+ [move: Yuki] -> yuki_hub
-+ [move: Nega] -> nega_hub
+/scene Entry.Hub
+
++ {goddess_unlocked} [move: Goddess] -> goddess_hub
++ {yuki_unlocked} [move: Yuki] -> yuki_hub
++ {nega_unlocked} [move: Nega] -> nega_hub
++ {headmistress_unlocked} [move: Headmistress] -> headmistress_hub
+
+= headmistress_only
 + [move: Headmistress] -> headmistress_hub

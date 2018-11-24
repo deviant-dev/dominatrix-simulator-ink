@@ -1,8 +1,14 @@
 VAR headmistress_difficulty = 1
 VAR headmistress_favor = 0
+VAR headmistress_unlocked = false
 
 === headmistress_hub ===
+
+{headmistress_hub == 1: -> headmistress_intro}
+
 - (hub)
+
+/scene Office.Hub
 
 // Reset obey here since sometimes obey is tracked
 // across multiple scenes.

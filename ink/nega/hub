@@ -1,4 +1,5 @@
 VAR nega_favor = 0
+VAR nega_unlocked = false
 
 === nega_hub ===
 - (hub)
@@ -8,8 +9,13 @@ VAR nega_favor = 0
 
 {
     - rewards > 0:
-        -> nega_intro
+        Mmm, I like the look of those yummy Bloodstones.
+        Are you here to try your luck?
+        + [yes] -> nega_reward_dice
+        + [no]
+            Then get the fuck outta here, you little bitch.
+            -> exit
     - else:
-        No reward treats for me, hmm? Not interested.
+        No Bloodstone treats for me, hmm? Not interested.
         -> exit
 }

@@ -1,6 +1,12 @@
 VAR yuki_favor = 0
+VAR yuki_unlocked = false
 
 === yuki_hub ===
+
+// If the player hasn't done the intro yet,
+// then have them go to the intro.
+{yuki_hub == 1: -> yuki_intro}
+
 - (hub)
 
 {web: <b>Yuki Hub</b>}

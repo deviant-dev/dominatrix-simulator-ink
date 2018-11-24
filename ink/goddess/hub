@@ -1,4 +1,5 @@
 VAR goddess_favor = 0
+VAR goddess_unlocked = false
 
 === goddess_hub ===
 - (hub)

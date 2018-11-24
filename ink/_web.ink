@@ -26,6 +26,8 @@ INCLUDE yuki/review
 INCLUDE yuki/reward_bathe
 INCLUDE yuki/reward_massage
 INCLUDE yuki/task_fanning
+INCLUDE nega/reward_dice
+
 
 
 VAR web = true
@@ -34,20 +36,30 @@ VAR web = true
 
 === table_of_contents ===
 
-+ Game Intro 
++ Full Game
     -> game_intro_web
-+ Yuki Intro 2.2 
+
++ Entry Hub
+    -> unlock_all -> entry_hub
+
++ Yuki Intro 2.2
+    ~ yuki_unlocked = true
     -> yuki_intro
-+ Headmistress Intro 
-    -> headmistress_intro
-+ Headmistress Punishment Spanking 
-    -> headmistress_punishment_spanking
-+ Nega Temptation 0.1 
-    -> nega_intro
-+ Entry Hub 
-    -> entry_hub
+
 + Yuki Punishment Edgine 2.0 
-    -> yuki_punishment_edging
+    -> unlock_all -> yuki_punishment_edging
+
 + Yuki Reward Massage 
-    -> yuki_reward_massage
+    -> unlock_all -> yuki_reward_massage
+
++ Headmistress Intro 
+    ~ yuki_unlocked = true
+    ~ headmistress_unlocked = true
+    -> headmistress_intro
+
++ Headmistress Punishment Spanking 
+    -> unlock_all -> headmistress_punishment_spanking
+
++ Nega Intro
+    -> unlock_all -> nega_intro
 

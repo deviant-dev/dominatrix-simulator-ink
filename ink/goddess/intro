@@ -1,4 +1,5 @@
 == goddess_intro ==
+
 - (flash_scenes)
 
 /scene bedroom.flash1
@@ -350,7 +351,6 @@ You don't mind, do you? #79
 
 + [pose:raised_chin] -> HoldPose(-> raised_chin_fail, -> stand_straight) ->
 + { stand_straight_tries < 2 } [timeout] -> stand_straight
-//+ { stand_straight_tries >= 2 } [timeout]
 + { stand_straight_tries >= 2 } [timeout] -> CheckIfInterested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
@@ -463,6 +463,8 @@ but you'll need much more training first. #110
 Off to Mistress Yuki-Onna with you. #111
 I'm sure she can show you the ropes, so to speak. #112
 
++ [wait]
+
 - (video_jump)
 
 -> ByeForNow
@@ -473,25 +475,19 @@ I'm sure she can show you the ropes, so to speak. #112
 
 /scene bedroombroken
 
-/wait 1.5
++ [wait 1.5]
 
-/character goddess-huge
+- /character goddess-huge
 
 /perform looming
 
 Bye for now, {player_name}. #113
 
-/wait 5
++ [wait 5]
 
-// { isDebug() :
-//    -> debug_again
-// }
--> DemoEnd
-// -> demo_tutorial
+~ yuki_unlocked = true
 
-- (debug_again)
-    + [yes] -> debug_jump
-    + [no] -> DemoEnd
+- -> exit
 
 = GoodJob
 
@@ -544,12 +540,6 @@ Bye for now, {player_name}. #113
 }
 
 ->->
-
-= DemoEnd
-
-/scene LogoRoom.EndScreen
-
--> END
 
 = DemandApology
 
