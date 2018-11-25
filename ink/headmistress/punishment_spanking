@@ -80,12 +80,6 @@ In this position,
 splayed fingers must be at least shoulder width apart.
 
 +[wait]
-- Welcome esteemed friends!
-As always, purrs, moans, and words of encouragement
-are permitted during the punishment lesson.
-
-/character crowd jeers
-+[wait]
 
 - /perform amused
 
@@ -107,7 +101,7 @@ Tell me, lump, is that as high as you can lift your hindquarters?
     I disagree.
     Arch just a bit more.
     ++[wait]
-    --Good.
+    --Just so.
     You will remain in this position without fail.
 
 +[no]
@@ -117,29 +111,38 @@ Tell me, lump, is that as high as you can lift your hindquarters?
 
 +[timeout]
     What are you waiting for?
-    Your back must strain with the effort of raising your ass, chattel.
+    Your back must strain with the effort of raising your derrier, chattel.
 
 
 -/perform satisfied
 -> GoodJob ->
 The nether regions must be fully in view.
 Knees must be sufficiently apart to allow for clear observation.
-Now tell me: Are you {isBoy:hard|wet}?
+
+Our guests would like to know, {player_name}: 
+Are you swollen?
 
 +[yes]
-    Good.
-
-+[no]
-    Hmm.. Disappointing.
-    Regardless,
+    So eager for your debasement.
     
-- The moisture on the {isBoy: tip of the shaft|crown of the folds} 
-and puckered rosebud can be admired fully in this position.
++[no]
+    A disappointing response for our guests.
+    Regardless...
+    
+- This position allows for full admiration of the {isBoy: tip of the shaft|crown of the folds} 
+and puckered rosebud.
 
 /perform circle_desk
 
-{intro: -> punish_intro | -> punish_continue}
++[wait]
 
+- Welcome esteemed friends!
+As always, purrs, moans, and words of encouragement
+are permitted during the punishment lesson.
+
+/character crowd jeers
+
+{intro: -> punish_intro | -> punish_continue}
 
 = punish_intro
 
