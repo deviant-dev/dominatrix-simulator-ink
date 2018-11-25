@@ -27,6 +27,8 @@ INCLUDE yuki/reward_bathe
 INCLUDE yuki/reward_massage
 INCLUDE yuki/task_fanning
 INCLUDE nega/reward_dice
+INCLUDE headmistress/apologize
+
 
 
 

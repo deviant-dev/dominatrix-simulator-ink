@@ -1,0 +1,11 @@
+=== headmistress_apology ===
+
+{not headmistress_apologize: ->->}
+
+Do you apologize?
+
++[yes] 
+    ~headmistress_apologize = true
+    ->->
++[no]
+    -> exit

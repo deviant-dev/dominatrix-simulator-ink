@@ -91,10 +91,10 @@ VAR punishments = 0
 -> END
 
 === unlock_all ===
-{~ yuki_unlocked = true}
-{~ headmistress_unlocked = true}
-{~ nega_unlocked = true}
-{~ goddess_unlocked = true}
+~ yuki_unlocked = true
+~ headmistress_unlocked = true
+~ nega_unlocked = true
+~ goddess_unlocked = true
 ->->
 
 

@@ -1,6 +1,7 @@
 VAR headmistress_difficulty = 1
 VAR headmistress_favor = 0
 VAR headmistress_unlocked = false
+VAR headmistress_apologize = false
 
 === headmistress_hub ===
 
@@ -9,6 +10,8 @@ VAR headmistress_unlocked = false
 - (hub)
 
 /scene Office.Hub
+
+-> headmistress_apology ->
 
 // Reset obey here since sometimes obey is tracked
 // across multiple scenes.

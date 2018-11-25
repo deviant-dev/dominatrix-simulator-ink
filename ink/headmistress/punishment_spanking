@@ -220,6 +220,7 @@ Do you accept that you must be punished?
         I will not suffer fools.
         You've just earned yet another punishment.
         ~ punishments++
+        ~ headmistress_apologize = true
         Now leave.
         /character headmistress point_to_door
         -> exit

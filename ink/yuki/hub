@@ -5,7 +5,16 @@ VAR yuki_unlocked = false
 
 // If the player hasn't done the intro yet,
 // then have them go to the intro.
-{yuki_hub == 1: -> yuki_intro}
+{not yuki_intro: -> yuki_intro}
+
+{not headmistress_punishment_spanking.finish:
+    What are you doing back here!?
+    You still have a punishment!
+    Go back to the headmistress
+    and get your punishment training,
+    silly {player_name}.
+    -> exit
+}
 
 - (hub)
 
