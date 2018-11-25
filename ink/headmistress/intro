@@ -86,7 +86,7 @@ Do you know who I am?
     Then you know why you're here.
     
 +[no]
-    ~obey--
+    ~disobey++
     /perform tap_paddle
     I think you do.
     You just heard that slave say it.
@@ -106,7 +106,8 @@ Understood?
     No need to waste time, then.
 
 +[no]
-    -- (not_understood) ~obey--
+    -- (not_understood)
+    ~disobey++
     Come, come.
     Don't play dumb.
     It is a waste of my time.
@@ -127,7 +128,7 @@ that I may observe your worth for myself.
     Your wrists, you witless cur.
     Present them before you
     that I may confirm your measure.
-    ~obey--
+    ~disobey++
     /perform present_wrists
     Like so, foolish {player_name}.
     -> ask_present

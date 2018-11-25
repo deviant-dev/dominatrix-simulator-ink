@@ -17,8 +17,26 @@ VAR player_he = "he"
 VAR player_him = "him"
 VAR player_safeword = "red"
 VAR obey = 0
+VAR disobey = 0
 VAR rewards = 0
 VAR punishments = 0
+
+// Mistress-Specific Variables
+VAR goddess_favor = 0
+VAR goddess_unlocked = false
+
+VAR headmistress_favor = 0
+VAR headmistress_unlocked = false
+VAR headmistress_difficulty = 1
+VAR headmistress_apologize = false
+
+VAR nega_favor = 0
+VAR nega_unlocked = false
+
+VAR yuki_favor = 0
+VAR yuki_unlocked = false
+
+
 
 // function to set a kink's preference
 

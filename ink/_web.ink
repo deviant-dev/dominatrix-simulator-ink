@@ -8,6 +8,8 @@ INCLUDE goddess/hub
 INCLUDE goddess/intro
 INCLUDE goddess/lore
 INCLUDE goddess/reward_huge
+INCLUDE headmistress/apologize
+INCLUDE headmistress/generic_responses
 INCLUDE headmistress/hub
 INCLUDE headmistress/intro
 INCLUDE headmistress/lore
@@ -27,7 +29,8 @@ INCLUDE yuki/reward_bathe
 INCLUDE yuki/reward_massage
 INCLUDE yuki/task_fanning
 INCLUDE nega/reward_dice
-INCLUDE headmistress/apologize
+
+
 
 
 

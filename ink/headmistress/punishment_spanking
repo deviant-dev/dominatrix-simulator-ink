@@ -48,39 +48,43 @@ a spanking is in order.
 /perform idle
 
 - (get_on_desk)
+
 + [move:get_on_desk]
     Pleasingly executed.
 + [timeout]
+    -- (get_on_desk_timed_out)
     Our guests are waiting.
     Tut. Tut.
     -> get_on_desk
-    
-- (hands_and_knees_timeout)
-Now onto your hands and knees, bauble.
-
-- (hands_and_knees_fail)
-+ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
-
-- /perform amused
-
-- Welcome esteemed friends!
-As always, purrs, moans, and words of encouragement
-are permitted during the punishment lesson.
-
-/character crowd jeers
-
-Splayed fingers must be at least shoulder width apart.
-
-{get_on_desk == 1:
+-
+{not get_on_desk_timed_out:
+    ~obey++
     /perform look_up_and_down
     Observe the eagerness with which our chattel attempts to comply.
     This behaviour pleases Her.
 - else:
+    ~disobey++
     /perform displeased
     Note the hesitation. A sure sign of poor breeding.
     Such offends the Goddess and must be striken from the specimen.
 }
 
+- (hands_and_knees_timeout)
+Now. Onto your hands and knees, bauble.
+
+- (hands_and_knees_fail)
++ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
+
+- /perform amused
+In this position, 
+splayed fingers must be at least shoulder width apart.
+
++[wait]
+- Welcome esteemed friends!
+As always, purrs, moans, and words of encouragement
+are permitted during the punishment lesson.
+
+/character crowd jeers
 +[wait]
 
 - /perform amused
@@ -107,7 +111,7 @@ Tell me, lump, is that as high as you can lift your hindquarters?
     You will remain in this position without fail.
 
 +[no]
-    ~obey--
+    ~disobey++
     You serve yourself and our Goddess poorly, heathen.
     Raise your ass!
 
@@ -224,7 +228,7 @@ Do you accept that you must be punished?
     /character crowd cheers
 
 +[no]
-    ~ obey--
+    ~ disobey++
     /chracter crowd boos
     /character headmistress suspicious
     Foolish, little slave.
@@ -239,7 +243,7 @@ Do you accept that you must be punished?
         Excellent choice. Let us begin.
 
     ++[no]
-        ~ obey--
+        ~ disobey++
         /character crowd angry
         Make haste from my sight!
         You have squandered my time
@@ -369,7 +373,7 @@ Are they not fortunate to have one such as you to observe?
     Perform well and your punishment marker will be removed.
 
 +[no]
-    ~obey--
+    ~disobey++
     It is a shame you do not value the learning of others.
 
 - Prepare yourself for {headmistress_spanking_target_count} swats, {player_name}.
@@ -386,7 +390,7 @@ Are they not fortunate to have one such as you to observe?
 + [reaction:failed] -> BadSpank -> spank
 
 
-- {obey > 0: -> GoodEnding | -> BadEnding}
+- {obey - disobey > 0: -> GoodEnding | -> BadEnding}
 
 
 = GoodEnding
@@ -418,11 +422,11 @@ Consider one demerit paid in full.
 
 
 
-// Threads
+// Tunnels
 
 
 = BadSpank
-~ obey--
+~ disobey++
 /character headmistress displeased
 Terrible. We'll have to repeat that one.
 ->->
@@ -440,7 +444,7 @@ Terrible. We'll have to repeat that one.
     - /character crowd ooos
     - /character crowd gasps
     - /character headmistress mmms
-    -
+    - Brilliant! No doubt my guests are impressed by your display.
     -
     -
     -
@@ -457,107 +461,9 @@ Terrible. We'll have to repeat that one.
 
 ->->
 
-= GoodJob
-
-// rewrite these for Headmistress
-// /perform caress_thigh
-
-{ shuffle:
-    - There's a good {player_name}.
-    - What a good little {player_name}.
-    - That's my {player_name}.
-    - Aren't you the sweetest little thing.
-    - Very nice.
-    - That will do just fine.
-    - Quite satisfying.
-    - Mmmm. I like that.
-    - Someone is being a good {player_name}.
-    - Well done.
-    - That's very pleasing.
-}
-
-->->
 
 = SpankBreak
 ~ headmistress_spanking_break_count = 0
 
 << Insert random break here >>
 ->->
-
-= PayAttention
-
-//rewrite these for Headmistress
-/perform amused
-
-{ cycle:
-    - Look at me when I'm speaking to you, {player_name}. #125
-    - I expect your eyes on me at all times, #126
-    unless I tell you otherwise. #127
-    - Did I give you permission to look elsewhere? #128
-    - Didn't anyone ever teach you to look at people #129
-    when they're speaking to you? #130
-    - Pay attention to me when you're in my presence. #131
-    - You're trying my patience. Pay attention. #132
-    - Eyes on me, {player_name}. #133
-}
-
-+ [pay-attention]
-+ [timeout] -> PayAttention
-
-/perform thoughtful
-
-- { cycle:
-    - Where was I? Oh yes... #134
-    - That's better. Let's continue. #135
-    - Good {player_name}. #136
-    - Let's try that again. #137
-    - As I was saying... #138
-    - Now... Let's start over. #139
-}
-
-->->
-
-= CheckIfInterested
-
-{CheckIfInterested > 1: -> check_terse}
-
-/perform unhappy
-
-Are you too good to take a punishment, {player_name}? 
-Obey instructions.
-- (check_again)
-
-/perform idle
-
-+ [yes] -> check_yes
-+ [no]
-+ [timeout] -> check_again
-
-- (check_terse) Well?
-
-/perform angry
-
-You merely drag out the invetitable with your delay.
-
-/perform annoyed
-
-Are you going to continue to play the reluctant, {player_name}?
-
-+ [yes] -> check_yes
-+ [no]
-
-- /perform bored
-Out of my office, heathen.
-I have no time for your shenanigans.
--> out_heathen
-
-- (check_yes) -> GoodJob ->
-/perform confused
-There is hope for you yet. #157
-
--> out_heathen
-
-= out_heathen
-
-/perform paddle_desk
--> exit

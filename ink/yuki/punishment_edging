@@ -16,12 +16,12 @@ Wait, you're here for a punishment?! You haven't been a good {player_name} at al
 I explained to you the rules didn't I? 
 
 + [Yes]
-~ obey = obey + 1
+~ obey++
 /perform confused 
 
 Somebody isn't a very good slave then.
 + [No]
-~ obey = obey - 1
+~ disobey++
 /perform annoyed
 
 Now that's just not true, and you know it. Lying counts as being disobedient too. That'll earn you <I>another</I> punishment mark.
@@ -92,12 +92,12 @@ Hm, we're going to need to get you <i>really</i>
 Are you enjoying your punishment, little slave?
 
 +[Yes]
-~ obey = obey + 1
+~ obey++
 You're not supposed to enjoy it that much! Buuuut, you always know where to find me when you want more!
 ->teaseloop2
 
 +[No]
-~ obey = obey - 1
+~ disobey++
 Well maybe next time you shouldn't be such a naughty little slave. 
 ->teaseloop2
 
@@ -149,11 +149,11 @@ Now this time, I'll let you touch yourself. Don't get too excited, there's a cat
 - (FeelGoodQ)
 Am I making you feel good, you naughty {player_name}?
 +[Yes]
-~ obey = obey + 1
+~ obey++
 Heeheehee, I know, I can see it in your eyes! 
 -> teaseloop3
 +[No]
-~ obey = obey - 1
+~ disobey++
 Then next time you better behave yourself for me and the other Mistresses! 
 -> teaseloop3
 +[timeout]
@@ -243,13 +243,13 @@ All the slaves like my feet.
 Do you want me to tease you with them?
 
 + [Yes]
-~ obey = obey + 1
+~ obey++
 
     Good job for knowing your place! 
     ->LongFoot
     
 + [No]
-~ obey = obey - 1
+~ disobey++
 
     Then this is exactly what you deserve for misbehaving in the mansion! 
     ->ShortFoot
@@ -280,11 +280,11 @@ I'm very proud of the idea. I came up with it all on my own.
 Isn't that so smart of me?
 
 +[Yes]
-~ obey = obey + 1
+~ obey++
 I know, I'm such a clever Mistress!
 
 +[No]
-~ obey = obey - 1
+~ disobey++
 Well okay smarty-pants, that's not very polite of you.
 +[timeout]
 Hey, I asked you a question!
@@ -422,11 +422,11 @@ You should feel bad about breaking the rules.
 -(BadQ) You feel bad of course, don't you {player_name}?
 
 +[Yes]
-~ obey = obey + 1
+~ obey++
 You better mean that, and not be lying to me like a bad {player_name}!
 
 +[No]
-~ obey = obey - 1
+~ disobey++
 <I>Somebody's</I> enjoying themselves a little too much.
 
 +[timeout]

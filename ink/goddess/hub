@@ -1,8 +1,8 @@
-VAR goddess_favor = 0
-VAR goddess_unlocked = false
-
 === goddess_hub ===
+{ web: -> select_gender -> }
 - (hub)
+~ obey = 0
+~ disobey = 0
 
 {web: <b>Goddess Hub</b>}
 -> summary(hub) -> 

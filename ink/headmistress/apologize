@@ -1,11 +1,11 @@
-=== headmistress_apology ===
+=== headmistress_apology_check(-> accept, -> reject) ===
 
-{not headmistress_apologize: ->->}
+{not headmistress_apologize: -> accept}
 
 Do you apologize?
 
 +[yes] 
     ~headmistress_apologize = true
-    ->->
+    -> accept
 +[no]
-    -> exit
+    -> reject

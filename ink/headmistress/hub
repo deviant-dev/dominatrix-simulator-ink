@@ -1,21 +1,18 @@
-VAR headmistress_difficulty = 1
-VAR headmistress_favor = 0
-VAR headmistress_unlocked = false
-VAR headmistress_apologize = false
-
 === headmistress_hub ===
+{ web: -> select_gender -> }
+~ obey = 0
+~ disobey = 0
 
 {headmistress_hub == 1: -> headmistress_intro}
 
-- (hub)
-
 /scene Office.Hub
 
--> headmistress_apology ->
+-> headmistress_apology_check(-> hub, -> exit)
+
+- (hub)
 
 // Reset obey here since sometimes obey is tracked
 // across multiple scenes.
-~obey = 0
 
 {web: <b>Headmistress Hub</b>}
 -> summary(hub) -> 

@@ -1,7 +1,12 @@
-VAR nega_favor = 0
-VAR nega_unlocked = false
-
 === nega_hub ===
+{ web: -> select_gender -> }
+~ obey = 0
+~ disobey = 0
+
+// If the player hasn't done the intro yet,
+// then have them go to the intro.
+{not nega_intro: -> nega_intro}
+
 - (hub)
 
 {web: <b>Nega Hub</b>}

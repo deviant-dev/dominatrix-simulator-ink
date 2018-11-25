@@ -1,7 +1,7 @@
-VAR yuki_favor = 0
-VAR yuki_unlocked = false
-
 === yuki_hub ===
+{ web: -> select_gender -> }
+~ obey = 0
+~ disobey = 0
 
 // If the player hasn't done the intro yet,
 // then have them go to the intro.
