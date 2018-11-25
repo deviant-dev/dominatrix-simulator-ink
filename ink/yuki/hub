@@ -7,7 +7,7 @@ VAR yuki_unlocked = false
 // then have them go to the intro.
 {not yuki_intro: -> yuki_intro}
 
-{not headmistress_punishment_spanking.finish:
+{not headmistress_punishment_spanking.FinalEnding:
     What are you doing back here!?
     You still have a punishment!
     Go back to the headmistress

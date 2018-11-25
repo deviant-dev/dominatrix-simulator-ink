@@ -1,10 +1,30 @@
+VAR headmistress_spanking_target_count = 10
+VAR headmistress_spanking_implement = "paddle"
+VAR headmistress_spanking_count = 0
+VAR headmistress_spanking_break_count = 0
+
 === headmistress_punishment_spanking ===
 - (intro)
+
+{shuffle:
+- ~ headmistress_spanking_target_count = 10
+- ~ headmistress_spanking_target_count = 15
+- ~ headmistress_spanking_target_count = 20
+}
+
+{shuffle:
+- ~headmistress_spanking_implement = "paddle"
+- ~headmistress_spanking_implement = "hand"
+- ~headmistress_spanking_implement = "crop"
+}
+
+~ headmistress_spanking_break_count = 0
+~ headmistress_spanking_count = 0
 
 {not intro: /scene office_raised_curtains}
 
 /character headmistress
-/equip wood_paddle
+/equip {headmistress_spanking_implement}
 
 For your transgressions,
 a spanking is in order.
@@ -17,39 +37,44 @@ a spanking is in order.
 /perform point_paddle_at_desk
 
 {intro:
-    All right.
+    Punishments are administered with the slave perched upon my desk.
+    Mount with nimble haste. 
+   
 - else:
-    You know the drill.
+    You know what is expected.
+    Alight forthwith!
 }
-
-Onto my desk.
-Take position upon
-your hands and knees.
 
 /perform idle
 
 - (get_on_desk)
 + [move:get_on_desk]
-    There we are.
+    Pleasingly executed.
 + [timeout]
-    Do not waste my time.
-    Up you go.
+    Our guests are waiting.
+    Tut. Tut.
     -> get_on_desk
     
 - (hands_and_knees_timeout)
-Now on your hands and knees, bauble.
+Now onto your hands and knees, bauble.
 
 - (hands_and_knees_fail)
 + [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
 
 - /perform amused
 
+- Welcome esteemed friends!
+As always, purrs, moans, and words of encouragement
+are permitted during the punishment lesson.
+
+/character crowd jeers
+
 Splayed fingers must be at least shoulder width apart.
 
 {get_on_desk == 1:
     /perform look_up_and_down
     Observe the eagerness with which our chattel attempts to comply.
-    This behaviour is pleasing to our Goddess.
+    This behaviour pleases Her.
 - else:
     /perform displeased
     Note the hesitation. A sure sign of poor breeding.
@@ -109,10 +134,10 @@ and puckered rosebud can be admired fully in this position.
 
 /perform circle_desk
 
-{intro: -> punish_instruct | -> punish_continue}
+{intro: -> punish_intro | -> punish_continue}
 
 
-- (punish_instruct)
+= punish_intro
 
 Disobedient behavior must be corrected
 immediately upon infraction.
@@ -159,8 +184,10 @@ the fine display you have for us.
 /action raise_curtains
 /character crowd cheers
 
+-> punish_continue
 
-- (punish_continue)
+
+= punish_continue
 
 /character headmistress
 What say you, {isBoy: toad|strumpet}?
@@ -243,12 +270,14 @@ would you like to practice how you must perform first?
     -> spank_instructions
 +[no]
     An expert, are we? We will see about that.
-    -> swat_continue
+    -> spank_continue
 
-- (spank_instructions)
+
+= spank_instructions
+
 With each swat, you will show me clearly
 just how much you feel it.
-When you hear the slap of my paddle
+When you hear the slap of my {headmistress_spanking_implement}
 and feel its sting upon your ass
 I want to see that empty head of yours jerk up and back
 into a proud and upright position.
@@ -276,7 +305,7 @@ Let us practice.
         -> try_spank
     - else:
         Just so.
-        -> swat_continue
+        -> spank_continue
     }
 + [reaction:failed]
     // This lets us count the number of failed attempts.
@@ -292,7 +321,10 @@ Let us practice.
     
     ~ headmistress_difficulty = 0
 
-- (swat_continue)
+- -> spank_continue
+
+
+= spank_continue
 
 Now then. Let us begin!
 
@@ -300,11 +332,7 @@ Now then. Let us begin!
 
 + [wait]
 
-- Welcome esteemed friends!
-As always, purrs, moans, and words of encouragement
-are permitted during the punishment lesson.
 
-/character crowd jeers
 
 + [wait]
 
@@ -319,9 +347,12 @@ unless permanency is desired, of course.
 + [wait]
 
 - Our subject today has earned a spanking.
-I will use a paddle made of mahogany.
-An excellent, hard wood ideal for leaving
-bright red welts on the flesh of disobedient slaves.
+
+{headmistress_spanking_implement == "paddle":
+    I will use a paddle made of mahogany.
+    An excellent, hard wood ideal for leaving
+    bright red welts on the flesh of disobedient slaves.
+}
 Would you not agree?
 
 /character crowd coos 
@@ -341,24 +372,41 @@ Are they not fortunate to have one such as you to observe?
     ~obey--
     It is a shame you do not value the learning of others.
 
-- Prepare yourself, {player_name}.
+- Prepare yourself for {headmistress_spanking_target_count} swats, {player_name}.
 
 - (spank)
 /character headmistress paddle_ass
 
 + [reaction:spanked]
-    -- (spank_count)
+    ~ headmistress_spanking_count++
+    ~ headmistress_spanking_break_count++
     -> GoodSpank ->
-    {spank_count < 10:-> spank}
+    {headmistress_spanking_break_count >= 5: -> SpankBreak -> }
+    {headmistress_spanking_count < headmistress_spanking_target_count:-> spank}
 + [reaction:failed] -> BadSpank -> spank
 
-- (finish)
+
+- {obey > 0: -> GoodEnding | -> BadEnding}
+
+
+= GoodEnding
+
+-> FinalEnding
+
+
+= BadEnding
+
+-> FinalEnding
+
+
+= FinalEnding
 
 And done.
 You are free to go.
 Consider one demerit paid in full.
 
 ~ punishments--
+
 
 /character crowd claps
 
@@ -368,13 +416,19 @@ Consider one demerit paid in full.
 // send them off to be tempted by her directly.
 {not nega_intro: -> nega_intro | -> exit }
 
+
+
+// Threads
+
+
 = BadSpank
+~ obey--
 /character headmistress displeased
 Terrible. We'll have to repeat that one.
 ->->
 
 = GoodSpank
-
+~ obey++
 {shuffle:
     - A fine welt is forming.
     - Music to my ears.
@@ -383,6 +437,9 @@ Terrible. We'll have to repeat that one.
     - I do so love instructing slaves in proper behavior.
     - I never tire of this.
     - I suspect that one hurt.
+    - /character crowd ooos
+    - /character crowd gasps
+    - /character headmistress mmms
     -
     -
     -
@@ -419,6 +476,12 @@ Terrible. We'll have to repeat that one.
     - That's very pleasing.
 }
 
+->->
+
+= SpankBreak
+~ headmistress_spanking_break_count = 0
+
+<< Insert random break here >>
 ->->
 
 = PayAttention
