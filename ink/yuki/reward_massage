@@ -1,27 +1,132 @@
 === yuki_reward_massage ===
 
-Hello! So excited to give you your reward!
+/scene ?
 
-Hmm... where to start...
-{~ -> neck | -> feet | -> back }
+/character yuki
 
-= neck
-Let's start with my neck!
-+ [massage:neck]
-- -> done
+/equip feather_duster
 
-= feet
-Let's start with my feet!
-+ [massage:feet]
-- -> done
+//Putting poses in after
 
-= back
-Let's start with my back!
-+ [massage:back]
-- -> done
+Mmm, well I do have a task for you.
 
-= done
-Thanks!
-~ rewards--
+But don't worry, it's not that kind of task!
 
-- -> exit
+I didn't already forget why you're here!
+
+It'll be fun, trust me!
+
+Help me get out of this thing first. I've been dying for a massage.
+
+//Fade out screen?
+
+/character yuki.nude
+//?
+
+Aren't I adorable?
+
++ [Yes]
+Aw, right? So much better without clothes.
++ [No]
+Aw, you'll change your mind.
++ [timeout]
+
++ [distracted]
+
+- Now follow me to that table.
+
+Now get that oil right there, and I want you to use it to massage me where I tell you.
+//Differentiate between multiple visits. Above is only for first. Below is for revists.
+Get the oil, you know what to do.
+
+But only touching what I tell you! Or then you'll really be in big trouble!
+
+Follow directions, and we'll have tons of fun.
+
+-(Director1)
+
+Why don't you massage my {~ neck? -> massage_neck| back? ->massage_back| legs? ->massage_legs1}
+
+= massage_neck
+
+Just around my shoulders and below my head.
+
+-(massage_neck_repeat)
+
++[pose:massage_neck]
+    --(massage_neck_count)
+    ->massage_appraisals->
+    {massage_neck_count < 3: -> massage_neck_repeat}
++[pose:massage_butt] -> terminated_massage_ending
++[pose:massage_failed] -> massage_neck
+
+-->Cont
+
+= massage_back
+
+Below my shoulders, but stay above my butt.
+
+-(massage_back_repeat)
+
++[pose:massage_back]
+    --(massage_back_count)
+    ->massage_appraisals->
+    {massage_back_count < 3: ->massage_back_repeat}
++[pose:massage_butt] -> terminated_massage_ending
++[pose:massage_failed] -> massage_back
+
+-->Cont
+
+= massage_legs1
+
+Below my shoulders, but stay above my butt.
+
+-(massage_legs1_repeat)
+
++[pose:massage_legs1]
+    --(massage_legs1_count)
+    ->massage_appraisals->
+    {massage_legs1_count < 3: ->massage_legs1_repeat}
++[pose:massage_butt] -> terminated_massage_ending
++[pose:massage_failed] -> massage_legs1
+
+-->Cont
+
+= Cont
+-(Cont_Count)
+{Cont_Count > 2: 
+->TestEnding
+-else:
+->Director1
+}
+
+-(TestEnding)
+
+TEST ENDING
+
+-> DONE
+
+= massage_appraisals
+
+{shuffle:
+
+- Oh that feels good.
+- Your hands feel great.
+- Keep going just like that.
+- Oh I like that a lot.
+- Don't stop.
+- This was just what I needed.
+- You're so obedient
+- I knew you'd be useful.
+- I'm going to need to keep you around.
+- Right there, yes, stay right there.
+- Just stay here for hours please.
+- You're doing so well.
+- This is fantastic.
+}
+->->
+
+= terminated_massage_ending
+
+//The player will be sent away here.
+-> DONE
