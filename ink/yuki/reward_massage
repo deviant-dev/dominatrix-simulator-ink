@@ -7,6 +7,7 @@
 /equip feather_duster
 
 //Putting poses in after
+{FirstTimeCheck: -> Undress}
 
 Mmm, well I do have a task for you.
 
@@ -16,16 +17,22 @@ I didn't already forget why you're here!
 
 It'll be fun, trust me!
 
+-(Undress)
+
+{FirstTimeCheck: For your reward this time, I want a massage, and you'll have some fun too!}
+
 Help me get out of this thing first. I've been dying for a massage.
+
+--(FirstTimeCheck)
 
 //Fade out screen?
 
 /character yuki.nude
 //?
 
-Aren't I adorable?
+{~Aren't I adorable?|Don't you think I'm the cutest?}
 
-+ [Yes]
+-+ [Yes]
 Aw, right? So much better without clothes.
 + [No]
 Aw, you'll change your mind.
@@ -33,7 +40,7 @@ Aw, you'll change your mind.
 
 + [distracted]
 
-- Now follow me to that table.
+Now follow me to that table.
 
 Now get that oil right there, and I want you to use it to massage me where I tell you.
 //Differentiate between multiple visits. Above is only for first. Below is for revists.
@@ -94,17 +101,100 @@ Below my shoulders, but stay above my butt.
 
 = Cont
 -(Cont_Count)
-{Cont_Count > 2: 
-->TestEnding
+{Cont_Count > 1: 
+->LikeMassages
 -else:
 ->Director1
 }
 
--(TestEnding)
+-(LikeMassages)
+{Cont2: -> Cont3}
+--(Cont2)
+I just love massages. 
 
-TEST ENDING
+I love the cool feeling of oil running over me and fingers being rubbed into my skin. 
 
--> DONE
+Oh it’s so relaxing.
+
+Of course you love giving me massages, don't you?
+
++[Yes]
+I can feel the enthusiasm in your fingers.
++[No]
+Good things come to those who wait {player_name}.
++[timeout]
+
++[distracted]
+
+-(Cont3)
+
+{~-> stomach_break1->|->stomach_break2->}
+
+-(BreakReturn)
+
+
+->DONE
+= stomach_break1
+
+Have you ever been massaged?
+
++[Yes]
+Then you know exactly what I'm talking about.
+
+Were you naked like me?
+
+    ++[Yes]
+    Oooh, did they do any playing with you? You have to tell me.
+    
+        +++[Yes]
+        Oh you dirty player! Then you already know what it’s like. But come stand in front of me anyways.
+
+        +++[No]
+        Well that’s a boring massage! Only the good ones are naked. Why don’t you come stand in front of me and see if you like it?
+        
+        +++[timeout]
+        
+        +++[distracted]
+    ++[No]
+    No? Why don't you come stand in front of me and see if you like it?
+    
+    ++[timeout]
+    
+    ++[distracted]
++[No]
+Hm, that’s a shame. Why don’t you come stand in front of me and see if you like it?
+
++[timeout]
+
++[distracted]
+
+/perform caress_genitals_laying_down
+
+It's not really the same, but you like it anyways, don't you?
+
++[Yes]
+I know the kind of dirty {player_name} you are.
++[No]
+Well...Fine. ->BreakReturn
++[timeout]
+
++[distracted]
+
+
+
+->->
+
+= stomach_break2
+
+->->
+
+= back_break1
+
+->DONE
+
+= back_break2
+
+->DONE
 
 = massage_appraisals
 
