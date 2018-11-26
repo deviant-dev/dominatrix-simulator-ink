@@ -14,8 +14,7 @@
 // Reset obey here since sometimes obey is tracked
 // across multiple scenes.
 
-{web: <b>Headmistress Hub</b>}
--> summary(hub) -> 
+-> summary("Headmistress Hub", hub) -> 
 
 
 { hub > 1: Hi again! | Hi! }

@@ -3,8 +3,7 @@
 
 -(hub)
 
-{web: <b>Main Entry Hub</b>}
--> summary(hub) ->
+-> summary("Main Entry Hub", hub) ->
 
 {not yuki_intro:
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>

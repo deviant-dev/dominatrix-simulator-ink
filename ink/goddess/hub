@@ -4,8 +4,7 @@
 ~ obey = 0
 ~ disobey = 0
 
-{web: <b>Goddess Hub</b>}
--> summary(hub) -> 
+-> summary("Goddess Hub", hub) -> 
 
 { 
     - punishments > 0 :

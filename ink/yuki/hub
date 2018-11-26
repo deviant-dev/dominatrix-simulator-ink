@@ -18,8 +18,7 @@
 
 - (hub)
 
-{web: <b>Yuki Hub</b>}
--> summary(hub) -> 
+-> summary("Yuki Hub", hub) -> 
 
 { hub > 1: Hi again! | Hi! }
 

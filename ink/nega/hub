@@ -9,8 +9,7 @@
 
 - (hub)
 
-{web: <b>Nega Hub</b>}
--> summary(hub) ->
+-> summary("Nega Hub", hub) ->
 
 {
     - rewards > 0:

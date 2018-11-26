@@ -95,8 +95,13 @@ VAR yuki_unlocked = false
 - ->->
 
 
-=== summary(times) ===
-{web:<i>P:{punishments} / R:{rewards} / You've been here {times} times.</i>}
+=== summary(place, times) ===
+
+{web:
+	<b>{place}</b>
+	<i>P:{punishments} / R:{rewards} / You've been here {times} time{times>1:s}.</i>
+}
+
 ->->
 
 === exit ===
