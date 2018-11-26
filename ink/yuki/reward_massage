@@ -8,6 +8,8 @@
 
 //Putting poses in after
 
+{FirstVisit: -> Undress}
+
 Mmm, well I do have a task for you.
 
 But don't worry, it's not that kind of task!
@@ -16,6 +18,8 @@ I didn't already forget why you're here!
 
 It'll be fun, trust me!
 
+- (Undress)
+
 Help me get out of this thing first. I've been dying for a massage.
 
 //Fade out screen?
@@ -23,7 +27,7 @@ Help me get out of this thing first. I've been dying for a massage.
 /character yuki.nude
 //?
 
-Aren't I adorable?
+{~Aren't I adorable?|Don't you think I'm the cutest?}
 
 + [Yes]
 Aw, right? So much better without clothes.
@@ -33,11 +37,19 @@ Aw, you'll change your mind.
 
 + [distracted]
 
-- Now follow me to that table.
+-Now follow me to that table.
+
+{FirstVisit:
+
+Get the oil, you know what to do.
+
+-else:
 
 Now get that oil right there, and I want you to use it to massage me where I tell you.
-//Differentiate between multiple visits. Above is only for first. Below is for revists.
-Get the oil, you know what to do.
+
+Massage me in small circles, and apply lube when I tell you.
+
+}
 
 But only touching what I tell you! Or then you'll really be in big trouble!
 
@@ -45,7 +57,11 @@ Follow directions, and we'll have tons of fun.
 
 -(Director1)
 
-Why don't you massage my {~ neck? -> massage_neck| back? ->massage_back| legs? ->massage_legs1}
+Why don't you massage my {shuffle:
+-<>neck? -> massage_neck 
+-<>back? ->massage_back 
+-<>legs? ->massage_legs1
+}
 
 = massage_neck
 
@@ -79,7 +95,7 @@ Below my shoulders, but stay above my butt.
 
 = massage_legs1
 
-Below my shoulders, but stay above my butt.
+Anywhere on my legs, but don't touch my butt!
 
 -(massage_legs1_repeat)
 
@@ -94,17 +110,273 @@ Below my shoulders, but stay above my butt.
 
 = Cont
 -(Cont_Count)
-{Cont_Count > 2: 
-->TestEnding
+{Cont_Count > 1: 
+->LikeMassages
 -else:
 ->Director1
 }
 
--(TestEnding)
+-(LikeMassages)
+{Cont2: -> Cont3}
+--(Cont2)
+I just love massages. 
 
-TEST ENDING
+I love the cool feeling of oil running over me and fingers being rubbed into my skin. 
 
--> DONE
+Oh it’s so relaxing.
+
+Of course you love giving me massages, don't you?
+
+-+[Yes]
+I can feel the enthusiasm in your fingers.
+
++[No]
+Good things come to those who wait {player_name}.
+
++[timeout]
+
++[distracted]
+
+-(Cont3)
+{Break1Check: ->Cont4}
+{Break2Check: ->Cont4}
+{~-> stomach_break1->|->stomach_break2->}
+
+-(BreakReturn1)
+
+->Director1
+
+-(Cont4)
+
+I think it's time my front gets some attention.
+
+/perform yuki_lays_down_back
+
+But don't get any funny ideas, you're still only allowed to massage what I tell you!
+
+-(Director2)
+
+Why don't you massage my {~ shoulders? -> massage_shoulders| belly? ->massage_belly| legs? ->massage_legs2}
+
+= massage_shoulders
+
+Just around my shoulders and below my head.
+
+-(massage_shoulders_repeat)
+
++[pose:massage_shoulders]
+    --(massage_shoulders_count)
+    ->massage_appraisals->
+    {massage_shoulders_count < 3: -> massage_shoulders_repeat}
++[pose:massage_breasts] -> terminated_massage_ending
++[pose:massage_failed] -> massage_shoulders
+
+-->Cont5
+
+= massage_belly
+
+Just around my belly and above my thighs. But don't touch my breasts!
+
+-(massage_belly_repeat)
+
++[pose:massage_belly]
+    --(massage_belly_count)
+    ->massage_appraisals->
+    {massage_belly_count < 3: -> massage_belly_repeat}
++[pose:massage_breasts] -> terminated_massage_ending
++[pose:massage_failed] -> massage_belly
+
+-->Cont5
+
+= massage_legs2
+
+Anywhere on my legs, but don't touch my coochie!
+
+-(massage_legs2_repeat)
+
++[pose:massage_legs2]
+    --(massage_legs2_count)
+    ->massage_appraisals->
+    {massage_legs2_count < 3: -> massage_legs2_repeat}
++[pose:massage_breasts] -> terminated_massage_ending
++[pose:massage_failed] -> massage_legs2
+
+-->Cont5
+
+= Cont5
+
+-(Break2)
+
+->DONE
+
+= stomach_break1
+
+-(Break1Check)
+
+Have you ever been massaged?
+
++[Yes]
+Then you know exactly what I'm talking about.
+
+Were you naked like me?
+
+    ++[Yes]
+    Oooh, did they play with you? You have to tell me.
+    
+        +++[Yes]
+        Oh you dirty player! Then you already know what it’s like. But come stand in front of me anyways. 
+        ->Caress
+
+        +++[No]
+        Well that’s a boring massage! Only the good ones are naked. Why don’t you come stand in front of me and see if you like it? 
+        ->Caress
+        
+        +++[timeout]
+        
+        +++[distracted]
+    ++[No]
+    No? Why don't you come stand in front of me and see if you like it? 
+    ->Caress
+    
+    ++[timeout]
+    
+    ++[distracted]
++[No]
+Hm, that’s a shame. Why don’t you come stand in front of me and see if you like it? 
+->Caress
+
++[timeout]
+
++[distracted]
+
+-(Caress)
+
+/perform caress_genitals_laying_down_stomach
+
+It's not really the same, but you like it anyways, don't you?
+
++[Yes]
+I know the kind of dirty {player_name} you are.
+
++[No]
+Well...Fine. 
+->BreakReturn1
+
++[timeout]
+
++[distracted]
+
+- Do you like faster massages?
+
++ [Yes]
+Oh silly me, I should have known that.
+
+/perform caress_genitals_laying_down__stomach_faster
+
++ [No]
+So you like slower massages?
+
+    ++ [Yes]
+    Somebody likes to savor their time.
+    
+    /perform caress_genitlas_laying_down__stomach_slower
+    
+    ++ [No]
+    You're a real workaholic, you know? ->BreakReturn1
+    
+    ++ [timeout]
+
+    ++ [distracted]
++ [timeout]
+
++ [distracted]
+
+-You rub my back, I rub your back.
+
+Er, {isBoy: dick| cunt} in this case.
+
+But that's not really how the saying goes!
+
+This is probably better than rubbing your back anyways.
+
+/perform_laying_down_stomach
+
+Mmm, but not more than you rubbing my back! Chop chop, back to work!
+
+->->
+
+= stomach_break2
+
+-(Break2Check)
+
+I wish this place had some entertainment.
+
+Maybe I could talk to the Goddess about getting satellite.
+
+But in the mean time, that's what you slaves are for!
+
+Come stand in front of me.
+
+Turn around and get on all fours.
+
+Now stick your butt waaaaay up in the air.
+
+Now I want you to sway back and forth, like you're a clock, or one of those music timer thingies!
+
+Tick, tock, tick, tock.
+
+Heehee, it's funny watching your cute little butt swing around.
+
+Now, what if I just reached forward and played with your butt a little, hm?
+
+Would you like that?
+
++ [Yes]
+Oh, you are just so naughty!
+
+Maybe I'll just rub the outside of your asshole a little.
+
+Do you like when I apply pressure like that?
+
+    ++ [Yes]
+    Oh you are so bad! Maybe the Headmistress has been having too much fun with you...
+    
+    Let me go a little faster...
+    
+    Heehee, I can feel you pushing back into me. Somebody's enjoying themselves!
+    
+    ++ [No]
+    Hm, maybe you just need some lube. I guess we could use some of mine...
+    
+    ++ [timeout]
+
+    ++ [distracted]
+    
++ [No]
+Heehee, well you better sway faster then, or I'm gonna getcha!
+
+Tick-tock-tick-tock, you better sway even faster slave, or I'm gonna catch that cute little ass of yours!
+//^^^Yuki says this at a faster rate than before
+
+Watching you squirm to get away is so funny, but I guess it's not much of a reward if you don't like it.
+
++ [timeout]
+
++ [distracted]
+
+-
+
+But I still need more massaging, so you need to get back to that. Play time's over for now!
+
+->->
+
+= back_break1
+
+->DONE
+
+= back_break2
+
+->DONE
 
 = massage_appraisals
 
@@ -127,6 +399,8 @@ TEST ENDING
 ->->
 
 = terminated_massage_ending
+
+-(FirstVisit)
 
 //The player will be sent away here.
 -> DONE
