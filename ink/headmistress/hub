@@ -7,7 +7,7 @@
 
 /scene Office.Hub
 
--> headmistress_apology_check(-> hub, -> exit)
+-> apology_check(-> hub, -> exit)
 
 - (hub)
 

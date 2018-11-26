@@ -21,18 +21,21 @@ VAR disobey = 0
 VAR rewards = 0
 VAR punishments = 0
 
-// Mistress-Specific Variables
+// Goddess Variables
 VAR goddess_favor = 0
 VAR goddess_unlocked = false
 
+// Headmistress Variables
 VAR headmistress_favor = 0
 VAR headmistress_unlocked = false
 VAR headmistress_difficulty = 1
 VAR headmistress_apologize = false
 
+// Nega Variables
 VAR nega_favor = 0
 VAR nega_unlocked = false
 
+// Yuki Variables
 VAR yuki_favor = 0
 VAR yuki_unlocked = false
 

@@ -1,4 +1,4 @@
-=== headmistress_apology_check(-> accept, -> reject) ===
+= apology_check(-> accept, -> reject)
 
 {not headmistress_apologize: -> accept}
 

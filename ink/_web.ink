@@ -7,12 +7,13 @@ INCLUDE entry_hub
 INCLUDE goddess/hub
 INCLUDE goddess/intro
 INCLUDE goddess/lore
+INCLUDE goddess/generic_responses
 INCLUDE goddess/reward_huge
-INCLUDE headmistress/apologize
-INCLUDE headmistress/generic_responses
 INCLUDE headmistress/hub
 INCLUDE headmistress/intro
 INCLUDE headmistress/lore
+INCLUDE headmistress/generic_responses
+INCLUDE headmistress/apologize
 INCLUDE headmistress/punishment_flogging
 INCLUDE headmistress/punishment_spanking
 INCLUDE headmistress/reward_cunnilingus
@@ -20,6 +21,7 @@ INCLUDE headmistress/task_flogging
 INCLUDE nega/hub
 INCLUDE nega/intro
 INCLUDE nega/lore
+INCLUDE nega/reward_dice
 INCLUDE yuki/hub
 INCLUDE yuki/intro
 INCLUDE yuki/lore
@@ -28,7 +30,11 @@ INCLUDE yuki/review
 INCLUDE yuki/reward_bathe
 INCLUDE yuki/reward_massage
 INCLUDE yuki/task_fanning
-INCLUDE nega/reward_dice
+INCLUDE nega/generic_responses
+INCLUDE yuki/generic_responses
+
+
+
 
 
 

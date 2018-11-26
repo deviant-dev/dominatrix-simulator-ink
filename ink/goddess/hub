@@ -1,4 +1,4 @@
-=== goddess_hub ===
+== goddess_hub ==
 { web: -> select_gender -> }
 - (hub)
 ~ obey = 0

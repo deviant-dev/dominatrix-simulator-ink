@@ -68,7 +68,7 @@ Did Mistress Yuki-Onna let you in? #05
         - Yuki-Onna is disobeying me again. She let you in, didn't she? #18
     }
     -> ask_entry
-+ [distracted] -> PayAttention -> ask_entry2
++ [distracted] -> Goddess_PayAttention -> ask_entry2
 
 - /perform bored
 
@@ -108,7 +108,7 @@ Are you? #22
     Do you think you're exceptional? #27
     -> ask_exceptional
     
-+ [distracted] -> PayAttention -> ask_exceptional_again
++ [distracted] -> Goddess_PayAttention -> ask_exceptional_again
 
 - /perform pleased
 
@@ -136,7 +136,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
     Be honest now. Spying on me turned you on, didn't it? #35
     -> ask_spying
     
-+ [distracted] -> PayAttention -> ask_spying_again
++ [distracted] -> Goddess_PayAttention -> ask_spying_again
 
 - (ask_spying2)
 
@@ -151,7 +151,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
     Be honest now. Spying on me turned you on, didn't it? #35
     -> ask_spying2
 
-+ [distracted] -> PayAttention -> ask_spying_again
++ [distracted] -> Goddess_PayAttention -> ask_spying_again
 
 
 - (ask_spying_done) /perform sassy
@@ -178,7 +178,7 @@ I bet you have no idea where you are, do you? #36
     Well... do you have any idea where you are? #40
     -> ask_where
     
-+ [distracted] -> PayAttention -> ask_where_again
++ [distracted] -> Goddess_PayAttention -> ask_where_again
 
 /perform lean_forward
 
@@ -252,7 +252,7 @@ Do you understand? #60
 
 /perform idle
 
-+ [yes] -> GoodJob ->
++ [yes] -> Goddess_GoodJob ->
     /perform sassy
     I am pleased. #61
 
@@ -299,7 +299,7 @@ But first, let me have a good look at you. #71
   
 + [move]
     /lock move-approach
-    -> GoodJob ->
+    -> Goddess_GoodJob ->
 + { inspection_tries < 2 } [timeout]
     /lock move-approach
     -> inspection
@@ -308,7 +308,7 @@ But first, let me have a good look at you. #71
     -> CheckIfInterested -> inspection
 + [distracted]
     /lock move-approach
-    -> PayAttention -> inspection
+    -> Goddess_PayAttention -> inspection
 
 - /lock move-approach
 
@@ -332,7 +332,7 @@ You don't mind, do you? #79
     Mmm... I think someone might be enjoying this. #82
 + [timeout]
     That's alright. It's not like you have a choice anyway. #83
-+ [distracted] -> PayAttention -> stand_straight
++ [distracted] -> Goddess_PayAttention -> stand_straight
 
 - (stand_straight)
 - (stand_straight_tries)
@@ -354,7 +354,7 @@ You don't mind, do you? #79
 + { stand_straight_tries >= 2 } [timeout] -> CheckIfInterested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
-- -> GoodJob ->
+- -> Goddess_GoodJob ->
 
 /perform circle_player
 
@@ -384,7 +384,7 @@ Now then... #90
 + { kneel_tries >= 2 } [timeout] -> CheckIfInterested -> kneel
 // + [no] -> CheckIfInterested -> kneel
 
-- -> GoodJob ->
+- -> Goddess_GoodJob ->
 
 /perform sassy
 
@@ -417,7 +417,7 @@ I want to see you present yourself more fully to me. #100
 + { present_self_tries >= 2 } [timeout] -> CheckIfInterested -> present_self
 // + [no] -> CheckIfInterested -> present_self
 
-- -> GoodJob ->
+- -> Goddess_GoodJob ->
 
 /perform fake_annoyed
 
@@ -442,7 +442,7 @@ Bow down, kiss, then back to your pose like a good little {player_name}. #105
 
 - (kiss_feet_fail)
 
-+ [pose:kiss_feet] -> HoldPose(-> kiss_feet_fail, -> kiss_feet) -> GoodJob ->
++ [pose:kiss_feet] -> HoldPose(-> kiss_feet_fail, -> kiss_feet) -> Goddess_GoodJob ->
 + { kiss_feet_tries < 2 } [timeout] -> kiss_feet
 + { kiss_feet_tries >= 2 } [timeout]
 // + [no] No?! #106
@@ -489,58 +489,6 @@ Bye for now, {player_name}. #113
 
 - -> exit
 
-= GoodJob
-
-/perform fake_annoyed
-
-{ shuffle:
-    - There's a good {player_name}. #114
-    - What a good little {player_name}. #115
-    - That's my {player_name}. #116
-    - Aren't you the sweetest little thing. #117
-    - Very nice. #118
-    - That will do just fine. #119
-    - Quite satisfying. #120
-    - Mmmm. I like that. #121
-    - Someone is being a good {player_name}. #122
-    - Well done. #123
-    - That's very pleasing. #124
-}
-
-->->
-
-= PayAttention
-
-/perform amused
-
-{ cycle:
-    - Look at me when I'm speaking to you, {player_name}. #125
-    - I expect your eyes on me at all times, #126
-    unless I tell you otherwise. #127
-    - Did I give you permission to look elsewhere? #128
-    - Didn't anyone ever teach you to look at people #129
-    when they're speaking to you? #130
-    - Pay attention to me when you're in my presence. #131
-    - You're trying my patience. Pay attention. #132
-    - Eyes on me, {player_name}. #133
-}
-
-+ [pay-attention]
-+ [timeout] -> PayAttention
-
-/perform thoughtful
-
-- { cycle:
-    - Where was I? Oh yes... #134
-    - That's better. Let's continue. #135
-    - Good {player_name}. #136
-    - Let's try that again. #137
-    - As I was saying... #138
-    - Now... Let's start over. #139
-}
-
-->->
-
 = DemandApology
 
 /perform angry
@@ -560,7 +508,7 @@ You will apologize this instant. #144
 
 Tell me: Do you beg for my forgiveness? #145
 
-+ [yes] -> GoodJob ->
++ [yes] -> Goddess_GoodJob ->
 + [no] -> CheckIfInterested ->
 
 - /perform unhappy
@@ -612,7 +560,7 @@ Then away with you. #155
 Perhaps another time when you are ready to learn your place. #156
 -> ByeForNow
 
-- (check_yes) -> GoodJob ->
+- (check_yes) -> Goddess_GoodJob ->
 /perform confused
 There is hope for you yet. #157
 

@@ -1,29 +1,25 @@
+= Goddess_GoodJob
 
-=== Headmistress_GoodJob ===
-
-// rewrite these for Headmistress
-// /perform caress_thigh
+/perform fake_annoyed
 
 { shuffle:
-    - There's a good {player_name}.
-    - What a good little {player_name}.
-    - That's my {player_name}.
-    - Aren't you the sweetest little thing.
-    - Very nice.
-    - That will do just fine.
-    - Quite satisfying.
-    - Mmmm. I like that.
-    - Someone is being a good {player_name}.
-    - Well done.
-    - That's very pleasing.
+    - There's a good {player_name}. #114
+    - What a good little {player_name}. #115
+    - That's my {player_name}. #116
+    - Aren't you the sweetest little thing. #117
+    - Very nice. #118
+    - That will do just fine. #119
+    - Quite satisfying. #120
+    - Mmmm. I like that. #121
+    - Someone is being a good {player_name}. #122
+    - Well done. #123
+    - That's very pleasing. #124
 }
 
 ->->
 
+= Goddess_PayAttention
 
-=== Headmistress_PayAttention ===
-
-//rewrite these for Headmistress
 /perform amused
 
 { cycle:
@@ -39,7 +35,7 @@
 }
 
 + [pay-attention]
-+ [timeout] -> Headmistress_PayAttention
++ [timeout] -> Goddess_PayAttention
 
 /perform thoughtful
 
@@ -53,3 +49,4 @@
 }
 
 ->->
+

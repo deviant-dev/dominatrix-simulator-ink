@@ -115,7 +115,7 @@ Tell me, lump, is that as high as you can lift your hindquarters?
 
 
 -/perform satisfied
--> GoodJob ->
+-> Headmistress_GoodJob ->
 The nether regions must be fully in view.
 Knees must be sufficiently apart to allow for clear observation.
 
@@ -308,7 +308,7 @@ Let us practice.
     ~spanks++
     // Once there have been 3 good spanks, we continue.
     {spanks < 3:
-        -> GoodJob ->
+        -> Headmistress_GoodJob ->
         -> try_spank
     - else:
         Just so.
@@ -470,3 +470,49 @@ Terrible. We'll have to repeat that one.
 
 << Insert random break here >>
 ->->
+
+
+= CheckIfInterested
+
+{CheckIfInterested > 1: -> check_terse}
+
+/perform unhappy
+
+Are you too good to take a punishment, {player_name}? 
+Obey instructions.
+- (check_again)
+
+/perform idle
+
++ [yes] -> check_yes
++ [no]
++ [timeout] -> check_again
+
+- (check_terse) Well?
+
+/perform angry
+
+You merely drag out the invetitable with your delay.
+
+/perform annoyed
+
+Are you going to continue to play the reluctant, {player_name}?
+
++ [yes] -> check_yes
++ [no]
+
+- /perform bored
+Out of my office, heathen.
+I have no time for your shenanigans.
+-> out_heathen
+
+- (check_yes) -> Headmistress_GoodJob ->
+/perform confused
+There is hope for you yet. #157
+
+-> out_heathen
+
+= out_heathen
+
+/perform paddle_desk
+-> exit
