@@ -57,7 +57,7 @@ VAR web = true
     ~ yuki_unlocked = true
     -> yuki_intro
 
-+ Yuki Punishment Edgine 2.0 
++ Yuki Punishment Edging 2.0 
     -> unlock_all -> yuki_punishment_edging
 
 + Yuki Reward Massage 

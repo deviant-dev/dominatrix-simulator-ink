@@ -49,7 +49,7 @@ Do you know why you're here?
     /perform cocks_head_to_left
     -> new_guest
     
-+ [distracted] -> PayAttention -> new_guest
++ [distracted] -> Yuki_PayAttention -> new_guest
 
 - (house_rules)
 You are a guest of Threshold House.
@@ -80,7 +80,7 @@ Would you like to know what the rules are?
     You aren't listening very well.
     -> learn_rules
     
-+ [distracted] -> PayAttention -> learn_rules
++ [distracted] -> Yuki_PayAttention -> learn_rules
     
 - (two_rules)
 
@@ -118,7 +118,7 @@ Easy, right?
     Are you still listening?
     -> easy_rules
     
-+ [distracted] -> PayAttention -> easy_rules
++ [distracted] -> Yuki_PayAttention -> easy_rules
 
 - /perform squirm
 You are a cute one! I really hope you do well here!
@@ -141,7 +141,7 @@ Do you want to be a good {player_name}?
     Hello? Anybody home?
     -> good_yuki
 
-+ [distracted] -> PayAttention -> good_yuki
++ [distracted] -> Yuki_PayAttention -> good_yuki
 
 - (nega_interruption)
 
@@ -194,7 +194,7 @@ So. You're the new one, huh?
     I asked you if you're new here.
     -> new_one
     
-+ [distracted] -> PayAttention -> new_one
++ [distracted] -> Yuki_PayAttention -> new_one
 
 - /perform sneer
 I bet Yuki's been having so much fun
@@ -271,7 +271,7 @@ Let's find out. Shall we?
     Should we find out how well your {isBoy:dick|pussy} works?
     -> genitals
     
-+ [distracted] -> PayAttention -> genitals
++ [distracted] -> Yuki_PayAttention -> genitals
 
 - /character Yuki flustered
 Behave, Nega! 

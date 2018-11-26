@@ -119,29 +119,6 @@ Tell me, lump, is that as high as you can lift your hindquarters?
 The nether regions must be fully in view.
 Knees must be sufficiently apart to allow for clear observation.
 
-Our guests would like to know, {player_name}: 
-Are you swollen?
-
-+[yes]
-    So eager for your debasement.
-    
-+[no]
-    A disappointing response for our guests.
-    Regardless...
-    
-- This position allows for full admiration of the {isBoy: tip of the shaft|crown of the folds} 
-and puckered rosebud.
-
-/perform circle_desk
-
-+[wait]
-
-- Welcome esteemed friends!
-As always, purrs, moans, and words of encouragement
-are permitted during the punishment lesson.
-
-/character crowd jeers
-
 {intro: -> punish_intro | -> punish_continue}
 
 = punish_intro
@@ -193,10 +170,51 @@ the fine display you have for us.
 
 -> punish_continue
 
-
 = punish_continue
 
+/perform circle_desk
+
++[wait]
+
+- Welcome esteemed guests!
+Our subject today has earned a spanking.
+
+{headmistress_spanking_implement == "paddle":
+    I will use a paddle made of mahogany.
+    An excellent, hard wood ideal for leaving
+    bright red welts on the flesh of disobedient slaves.
+}
+Would you not agree?
+
+/character crowd coos 
+
++ [wait]
+
+- Listen to that excitement, {player_name}.
+Your ass will provide a fine demonstration today.
+
+Are they not fortunate to have one such as you to observe?
+
++[yes]
+    ~obey++
+    Perform well and your punishment marker will be removed.
+
++[no]
+    ~disobey++
+    It is a shame you do not value the learning of others.
+    
+-Friends and students!
+As always, purrs, moans, and words of encouragement
+are permitted during the punishment lesson.
+
+/character crowd jeers
 /character headmistress
+    
+Consistently ensure the subject of punishment assumes the 
+most apt position for spanking as it 
+allows for full admiration of the 
+{isBoy: tip of the shaft|crown of the folds} and puckered rosebud.
+
 What say you, {isBoy: toad|strumpet}?
 
 {cycle:
@@ -209,14 +227,15 @@ What say you, {isBoy: toad|strumpet}?
 }
 
 + [yes]
-    ~obey++
-    A glutton for exhibition.
+    ~ obey++
+    So eager for your debasement.
     Most pleasing.
 
 + [no]
-    Ah, well.
+    ~ disobey++
+    A disappointing response for our guests.
     Your lackluster genitals shall be addressed another time.
-    We still have our punishment to mete out.
+    We still have your punishment to mete out.
 
 - /perform walk_to_front_of_desk
 And finally, we come to the heart of the matter.
@@ -227,7 +246,7 @@ Do you accept that you must be punished?
 +[yes]
     ~ obey++
     /perform arm_raise
-    Then we shall begin.
+    Your acceptance is most becoming.
     /character crowd cheers
 
 +[no]
@@ -269,8 +288,9 @@ Do you accept that you must be punished?
 
 - {intro: -> spank_instructions}
 
-Before we begin,
-would you like to practice how you must perform first?
+Because I am generous,
+I will offer you a chance to practice first.
+Would you welcome that, {isBoy: mongrel|moppet}?
 ~ headmistress_difficulty = 1
 
 +[yes]
@@ -285,15 +305,17 @@ would you like to practice how you must perform first?
 With each swat, you will show me clearly
 just how much you feel it.
 When you hear the slap of my {headmistress_spanking_implement}
-and feel its sting upon your ass
+and feel its sting upon your ass,
 I want to see that empty head of yours jerk up and back
 into a proud and upright position.
 
 +[wait]
 
+/character headmistress lean_forward
 - And I am always pleased
-with that exquisite sharp inhale of breath.
-Let us practice.
+with the exquisite sharp inhale of breath 
+that comes from each blow.
+Time to rehearse.
 
 +[wait]
 
@@ -332,14 +354,8 @@ Let us practice.
 
 
 = spank_continue
-
-Now then. Let us begin!
-
+It is time!
 /character crowd cheers
-
-+ [wait]
-
-
 
 + [wait]
 
@@ -350,34 +366,6 @@ no lasting harm is inflicted...
 unless permanency is desired, of course.
 
 /character crowd appreciation
-
-+ [wait]
-
-- Our subject today has earned a spanking.
-
-{headmistress_spanking_implement == "paddle":
-    I will use a paddle made of mahogany.
-    An excellent, hard wood ideal for leaving
-    bright red welts on the flesh of disobedient slaves.
-}
-Would you not agree?
-
-/character crowd coos 
-
-+ [wait]
-
-- Listen to that excitement, {player_name}.
-Your ass will provide a fine demonstration today.
-
-Are they not fortunate to have one such as you to observe?
-
-+[yes]
-    ~obey++
-    Perform well and your punishment marker will be removed.
-
-+[no]
-    ~disobey++
-    It is a shame you do not value the learning of others.
 
 - Prepare yourself for {headmistress_spanking_target_count} swats, {player_name}.
 
@@ -392,12 +380,38 @@ Are they not fortunate to have one such as you to observe?
     {headmistress_spanking_count < headmistress_spanking_target_count:-> spank}
 + [reaction:failed] -> BadSpank -> spank
 
+- Ahhhh. Now, don't you feel better, {player_name}?
+    +[yes]
+    ~ obey++
+    That is because you desire 
+    to be an obedient little toy.
+    
+    +[no]
+    ~disobey--
+    Come now, trinket, you comported yourself
+    quite well.
+    You should be proud of your performance.
+    
+/character headmistress circle_player
+- Your ass has blossomed into an object d'art.
 
 - {obey - disobey > 0: -> GoodEnding | -> BadEnding}
 
-
 = GoodEnding
+In fact, your performance has been so deliciously obedient
+I wonder if you would like to perform further for our audience?
 
+    +[yes]
+    Ahhhh. What a crowd pleaser!
+    /character crowd cheers
+    -> Headmistress_player_masturbate
+    
+    +[no]
+    A shame you do not have more in you, 
+    but you have done well. 
+    You may descend and return to Mistress Yuki-Onna with my compliments.
+    -> FinalEnding
+    
 -> FinalEnding
 
 
@@ -408,9 +422,8 @@ Are they not fortunate to have one such as you to observe?
 
 = FinalEnding
 
-And done.
-You are free to go.
 Consider one demerit paid in full.
+I give you leave to depart.
 
 ~ punishments--
 

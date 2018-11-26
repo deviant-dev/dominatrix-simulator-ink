@@ -18,8 +18,8 @@
     - else:
         You are not yet worthy.
         Raise your standing with my Mistresses
-        and save your high marks
-        and perhaps I'll entertain your presence.
+        and save your high marks,
+        then perhaps I'll entertain your presence.
         Ten should suffice.
         Now leave.
         + [yes] -> exit
