@@ -1,5 +1,6 @@
 
 === Headmistress_GoodJob ===
+TODO: rewrite goodjob
 
 // rewrite these for Headmistress
 // /perform caress_thigh
@@ -22,7 +23,7 @@
 
 
 === Headmistress_PayAttention ===
-
+TODO: Rewrite payattention
 //rewrite these for Headmistress
 /perform amused
 
@@ -56,4 +57,26 @@
 
 === Headmistress_player_masturbate ===
 TODO: Player Masterubate Break
+Player masturbates.
 ->->
+
+
+=== Headmistress_masturbation_comments ===
+{ shuffle:
+    - There's a good {player_name}.
+    - What a good little {player_name}.
+    - That's my {player_name}.
+    - Do you think {isBoy he|she} is enjoying {isBoy: himself|herself}?
+        /character crowd laugh
+    - Very nice.
+    - Exhibit control lest your arm tire.
+    /character headmistress sassy
+    - Cumming without permission is expressly forbidden.
+    - Mmmm. I like that.
+    - Someone is being a good {player_name}.
+    - Well done.
+    - That's very pleasing.
+}
+
+->->
+

@@ -404,7 +404,7 @@ I wonder if you would like to perform further for our audience?
     +[yes]
     Ahhhh. What a crowd pleaser!
     /character crowd cheers
-    -> Headmistress_player_masturbate
+    -> Headmistress_player_masturbate ->
     
     +[no]
     A shame you do not have more in you, 
@@ -412,13 +412,22 @@ I wonder if you would like to perform further for our audience?
     You may descend and return to Mistress Yuki-Onna with my compliments.
     -> FinalEnding
     
--> FinalEnding
+- -> FinalEnding
 
 
 = BadEnding
+You may have finished enduring your punishment, 
+but your overall performance was quite unsatisfactory.
+Perhaps you would rather play with yourself 
+for your new fans?
 
--> FinalEnding
-
+    +[yes]
+    Too bad. Then you should have thought of that sooner.
+    -> FinalEnding
+    
+    +[no] 
+    Too bad. That's exactly what you're going to do.
+    -> Headmistress_player_masturbate
 
 = FinalEnding
 
@@ -437,14 +446,33 @@ I give you leave to depart.
 {not nega_intro: -> nega_intro | -> exit }
 
 
-
 // Tunnels
 
 
 = BadSpank
 ~ disobey++
 /character headmistress displeased
-Terrible. We'll have to repeat that one.
+{shuffle:
+    - Terrible. We'll have to repeat that one.
+    - Tsk. Tsk. You can do better.
+    - Lift that head, cretin.
+    - Head up or the next one will land harder.
+    - Are you even trying?
+    - Your lack of grace is stunning.
+    - Where is your pride? Try harder.
+    - Keep those toes pressed flat on the desk.
+    - Squirming is not allowed.
+    - I expect a better performance.
+    - Your audience is disappointed.
+    - /character crowd hisses 
+    - /character crowd gasps
+    - /character headmistress clucks
+    -
+    -
+    -
+    -
+    
+    }
 ->->
 
 = GoodSpank
@@ -461,6 +489,9 @@ Terrible. We'll have to repeat that one.
     - /character crowd gasps
     - /character headmistress mmms
     - Brilliant! No doubt my guests are impressed by your display.
+    - Have you been keeping track?
+    - Notice the beads of sweat forming on the brow.
+    - Remember to breathe, {isBoy: runt|poppet}.
     -
     -
     -
@@ -470,7 +501,10 @@ Terrible. We'll have to repeat that one.
     - Notice how the {isBoy:shaft bounces|nether lips clench}.
     - The light is catching the dewy sheen on the skin most magnificently.
     - Observe the {isBoy: tip|slit} begin to glisten.
-    -
+    - Oooo. Look at how the anus puckers.
+    - No doubt several of my students are stimulating themselves right now.
+    - Some of you are squirming with remembrance right now.
+    - 
     -
     -
 }
@@ -479,9 +513,55 @@ Terrible. We'll have to repeat that one.
 
 
 = SpankBreak
+TODO: write spank breaks
 ~ headmistress_spanking_break_count = 0
 
-<< Insert random break here >>
+{ shuffle:
+    - -> break01 -> 
+    - -> break02 ->
+    - -> break03 ->
+}
+
+->->
+
+= break01
+Every now and then, the object of correction must 
+be given a moment to compose themself.
+However, this time should not be squandered with mere rest.
+
+Reach down and stroke your {isBoy: shaft|folds}.
+Punishments must be associated with sensual excitation.
+
+Does it feel good to touch yourself, {isBoy: toad|strumpet}?
+
++[yes]
+As it should.
+You may continue for until I instruct you otherwise.
+
++[no]
+What a shame. Do it anyways.
+
+-
++[wait 10]
+-> Headmistress_masturbation_comments->
+
+-
++[wait 10]
+-> Headmistress_masturbation_comments->
+
+-
++[wait 10]
+Enough. We shall resume.
+->->
+
+= break02
+TODO: Break 2 here
+Break 2 happens.
+->->
+
+= break03
+TODO: Break 3 here
+Break 3 happens.
 ->->
 
 
