@@ -4,7 +4,7 @@ VAR headmistress_spanking_count = 0
 VAR headmistress_spanking_break_count = 0
 
 === headmistress_punishment_spanking ===
-- (intro)
+~ intro = headmistress_punishment_spanking == 1
 
 {shuffle:
 - ~ headmistress_spanking_target_count = 10
@@ -184,6 +184,15 @@ Our subject today has earned a spanking.
     An excellent, hard wood ideal for leaving
     bright red welts on the flesh of disobedient slaves.
 }
+
+{headmistress_spanking_implement == "hand":
+    TODO: bare hand description
+}
+
+{headmistress_spanking_implement == "crop":
+    TODO: crop description
+}
+
 Would you not agree?
 
 /character crowd coos 
@@ -251,7 +260,7 @@ Do you accept that you must be punished?
 
 +[no]
     ~ disobey++
-    /chracter crowd boos
+    /character crowd boos
     /character headmistress suspicious
     Foolish, little slave.
     
@@ -395,7 +404,8 @@ unless permanency is desired, of course.
 /character headmistress circle_player
 - Your ass has blossomed into an objet d'art.
 
-- {obey - disobey > 0: -> GoodEnding | -> BadEnding}
+- {obeyed(): -> GoodEnding | -> BadEnding}
+
 
 = GoodEnding
 In fact, your performance has been so deliciously obedient
@@ -567,15 +577,16 @@ skin regularly sends shivers through the subject.
 Would you enjoy that, {player_name}?
 
 +[yes]
-~ obey++
-Then return to me to be spanked as a reward!
+    ~ obey++
+    Sorry, shivers are reserved for reward spankings only.
 
 +[no]
-~ disobey++
-Good. Then you will be pleased to know that 
-such kind treatment is reserved for rewards!
+    ~ disobey++
+    Good. Then you will be pleased to know that 
+    such kind treatment is reserved for reward spankings only!
+
 -
--> Headmistress_punishment_resumes->
+-> Headmistress_punishment_resumes ->
 
 ->->
 
@@ -584,7 +595,7 @@ Perhaps our little foible here needs a carrot
 dangled in front of {isBoy: him|her}.
 Behaving with decorum and obedience does not 
 simply stave off punishment!
-Great rewards are bestoyed upon the most worthy.
+Great rewards are bestowed upon the most worthy.
 /character headmistress circle_player
 
 What do you think, {isBoy: runt|poppet}?
@@ -592,41 +603,45 @@ Shall I show you the kind of treatment
 good boys and girls earn?
 
 +[yes]
-~ disobey++
-/character headmistress caress_breasts
-Do you imagine they are soft, {player_name}?
+    ~ disobey++
+    /character headmistress caress_breasts
+    Do you imagine they are soft, {player_name}?
+    
     ++[yes]
-    ~ obey++
-    Mmmm. Very soft indeed.
+        ~ obey++
+        Mmmm. Very soft indeed.
     
     ++[no]
-    ~ disobey++
-    /character headmistress laugh
-    Do you imagine they are coarse and uneven, 
-    just like your hindquarters?
+        ~ disobey++
+        /character headmistress laugh
+        Do you imagine they are coarse and uneven, 
+        just like your hindquarters?
+
         +++[yes]
-        ~ disobey++
-        A brazen response.
-        Another punishment has been added to your band.
+            ~ disobey++
+            A brazen response.
+            Another punishment has been added to your band.
+            ~ punishments++
+
         //player should either receive another punishment stone or an additional 5 swats
-        
+
         +++[no]
-        ~ disobey++
-        As I surmised. 
-        You are a baffoon who does not 
-        know to think before acting.
-        
+            ~ disobey++
+            As I surmised. 
+            You are a baffoon who does not 
+            know to think before acting.
+
 +[no]
-~ obey++
-/character headmistress pleased
-My my. A surprisingly chaste response
-from one whose {isBoy: shaft|mound} is throbbing
-so fully.
-But a delightful one.
-You have not earned a reward, 
-so why bestow a taste upon you.
--
--> Headmistress_punishment_resumes->
+    ~ obey++
+    /character headmistress pleased
+    My my. A surprisingly chaste response
+    from one whose {isBoy: shaft|mound} is throbbing
+    so fully.
+    But a delightful one.
+    You have not earned a reward, 
+    so why bestow a taste upon you.
+
+- -> Headmistress_punishment_resumes->
 
 ->->
 

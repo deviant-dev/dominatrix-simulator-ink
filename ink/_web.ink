@@ -33,17 +33,12 @@ INCLUDE yuki/task_fanning
 INCLUDE nega/generic_responses
 INCLUDE yuki/generic_responses
 
-
-
-
-
-
-
-
-
 VAR web = true
 
--> table_of_contents
+{ web :
+    - -> table_of_contents
+	- else : -> game_intro
+}
 
 === table_of_contents ===
 
