@@ -47,7 +47,7 @@ Get the oil, you know what to do.
 
 Now get that oil right there, and I want you to use it to massage me where I tell you.
 
-Massage me in small circles, and apply lube when I tell you.
+Do it in small circles, and apply lube when I tell you.
 
 }
 
@@ -80,7 +80,7 @@ Just around my shoulders and below my head.
 
 = massage_back
 
-Below my shoulders, but stay above my butt.
+Anywhere on my back is fine.
 
 -(massage_back_repeat)
 
@@ -95,7 +95,7 @@ Below my shoulders, but stay above my butt.
 
 = massage_legs1
 
-Anywhere on my legs, but don't touch my butt!
+From my thighs to my feet if you please.
 
 -(massage_legs1_repeat)
 
@@ -148,11 +148,11 @@ Good things come to those who wait {player_name}.
 
 -(Cont4)
 
+I'm gonna flip over now.
+
 I think it's time my front gets some attention.
 
 /perform yuki_lays_down_back
-
-But don't get any funny ideas, you're still only allowed to massage what I tell you!
 
 -(Director2)
 
@@ -175,7 +175,7 @@ Just around my shoulders and below my head.
 
 = massage_belly
 
-Just around my belly and above my thighs. But don't touch my breasts!
+Just around my little belly for now.
 
 -(massage_belly_repeat)
 
@@ -190,7 +190,7 @@ Just around my belly and above my thighs. But don't touch my breasts!
 
 = massage_legs2
 
-Anywhere on my legs, but don't touch my coochie!
+Same as before, thighs to feet please.
 
 -(massage_legs2_repeat)
 
@@ -205,7 +205,9 @@ Anywhere on my legs, but don't touch my coochie!
 
 = Cont5
 
--(Break2)
+{~->back_break1|->back_break2}
+
+-(BreakReturn2)
 
 ->DONE
 
@@ -372,9 +374,119 @@ But I still need more massaging, so you need to get back to that. Play time's ov
 
 = back_break1
 
+-(Break3Check)
+
+I know you're just dying to play with my breasts. 
+
+/perform laying_down_caress_breasts
+
+Maybe I'll play with them for you, and you can watch like a good little admirer.
+
+I can see how badly you want to stick your face in them.
+
+Heheh, watch out, or you're gonna drool all over the place! I want you on massassing duty, not custodian duty.
+
+Okay, I can see you really want to touch them. Am I wrong?
+
++[Yes]
+
+Mmm, maybe you don't think you've earned that privledge yet. Are you really sure you don't want to?
+
+    ++[Yes]
+    Mmph. You're such a spoil sport.
+    ->BreakReturn2
+    
+    ++[No]
+    ->BreastKiss
+    ++[timeout]
+    
+    ++[distracted]
+
++[No]
+-(BreastKiss)
+Just a quick kiss then!
+
+/perform laying_down_back
+
+First the left one, and I mean my left, not yours!
+
+Then the right one.
+
++[timeout]
+
++[distracted]
+
+- /perform laying_down_caress_breasts
+
+But it's killing you, have to stand and stare.
+
+You have to be careful with these {isBoy boy|girl}. 
+
+If I smothered you, you wouldn't be able to breath at all!
+
+But I still like teasing you right to the edge.
+
+/perform laying_down_back
+
+Well, back to work slave. I can't have you dying of a heart attack from my tits!
+
+->BreakReturn2
+
 ->DONE
 
 = back_break2
+
+Hmm, why don't you go stand at my feet {isBoy boy|girl}.
+
+/perform laying_down_back_masturbating
+
+Do you want to {isBoy be inside|grind against} my cunt?
+
++[Yes]
+
+Hehehe, well that's too bad. 
+
+Maybe another day.
+
+/perform laying_down_masturbating_faster
+
+Oh my Goddess yes, nothing gets me hotter than good little servant {isBoy boys|girls}.
+
+To have you fuck me while one of the other little slaves sucks on my toes.
+
+Oh that would be just perfect.
++[No]
+
+Somebody likes to be a watch. Maybe you'll make a good cuck!
+
+Would you like that, would you want to be a good little cuck for me?
+
+    ++[Yes]
+    /perform laying_down_masturbating_faster
+    
+    Oh my Goddess yes, nothing gets me hotter than good little servant {isBoy boys|girls}.
+    
+    To have one of the other little slaves fuck me while you suck on my toes.
+    
+    Oh that would be just perfect.
+    
+    ++[No]
+    
+     /perform laying_down_masturbating_faster
+     
+     Well if you don't want to do anything, then being a cuck is the perfect job!
+     
+     You get to stand there and watch all of the other slaves and Mistresses fuck each other
+    
+    ++[timeout]
+    
+    ++[distracted]
+
++[timeout]
+
++[distracted]
+
+
 
 ->DONE
 
