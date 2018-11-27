@@ -2,6 +2,7 @@ VAR headmistress_spanking_target_count = 10
 VAR headmistress_spanking_implement = "paddle"
 VAR headmistress_spanking_count = 0
 VAR headmistress_spanking_break_count = 0
+VAR headmistress_spanking_mistakes = 0
 
 === headmistress_punishment_spanking ===
 ~ intro = headmistress_punishment_spanking == 1
@@ -20,6 +21,7 @@ VAR headmistress_spanking_break_count = 0
 
 ~ headmistress_spanking_break_count = 0
 ~ headmistress_spanking_count = 0
+~ headmistress_spanking_mistakes = 0
 
 {not intro: /scene office_raised_curtains}
 
@@ -329,7 +331,6 @@ Time to rehearse.
 +[wait]
 
 ~temp spanks = 0
-~temp spanks_failed = 0
 
 - (try_spank)
 /character headmistress paddle_ass
@@ -337,6 +338,7 @@ Time to rehearse.
 + [reaction:spanked]
     // This lets us count the number of successful attempts.
     ~spanks++
+    
     // Once there have been 3 good spanks, we continue.
     {spanks < 3:
         -> Headmistress_GoodJob ->
@@ -347,22 +349,35 @@ Time to rehearse.
     }
 + [reaction:failed]
     // This lets us count the number of failed attempts.
-    ~spanks_failed++
-    
+    ~headmistress_spanking_mistakes++
+
     // We will continue if they fail 3 times.
-    { spanks_failed < 3:
+    { headmistress_spanking_mistakes < 3:
         Not good enough. Try again.
         -> try_spank
     - else:
+        ~disobey++
         That will do for now. We will work on that in the future.
     }
     
     ~ headmistress_difficulty = 0
 
-- -> spank_continue
+- 
+
+{ headmistress_spanking_mistakes > 0:
+    ~disobey++
+- else:
+    ~obey++
+}
+
+// Reset spanking mistakes to track them in the next sections.
+~ headmistress_spanking_mistakes = 0
+
+-> spank_continue
 
 
 = spank_continue
+
 It is time!
 /character crowd cheers
 
@@ -385,8 +400,21 @@ unless permanency is desired, of course.
     ~ headmistress_spanking_count++
     ~ headmistress_spanking_break_count++
     -> GoodSpank ->
-    {headmistress_spanking_break_count >= 5: -> SpankBreak -> }
-    {headmistress_spanking_count < headmistress_spanking_target_count:-> spank}
+    {headmistress_spanking_break_count >= 5:
+    
+        // Check mistakes for obey or disobey adjustment
+        {headmistress_spanking_mistakes > 0:
+            ~ disobey++
+        - else:
+            ~ obey++
+        }
+        
+        // Reset the mistake counter.
+        ~headmistress_spanking_mistakes = 0
+        
+        -> SpankBreak ->
+    }
+    {headmistress_spanking_count < headmistress_spanking_target_count: -> spank}
 + [reaction:failed] -> BadSpank -> spank
 
 - Ahhhh. Now, don't you feel better, {player_name}?
@@ -460,7 +488,7 @@ I give you leave to depart.
 
 
 = BadSpank
-~ disobey++
+~ headmistress_spanking_mistakes++
 /character headmistress displeased
 {shuffle:
     - Terrible. We'll have to repeat that one.
@@ -486,7 +514,7 @@ I give you leave to depart.
 ->->
 
 = GoodSpank
-~ obey++
+
 {shuffle:
     - A fine welt is forming.
     - Music to my ears.
