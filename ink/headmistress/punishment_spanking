@@ -393,7 +393,7 @@ unless permanency is desired, of course.
     You should be proud of your performance.
     
 /character headmistress circle_player
-- Your ass has blossomed into an object d'art.
+- Your ass has blossomed into an objet d'art.
 
 - {obey - disobey > 0: -> GoodEnding | -> BadEnding}
 
@@ -513,7 +513,6 @@ I give you leave to depart.
 
 
 = SpankBreak
-TODO: write spank breaks
 ~ headmistress_spanking_break_count = 0
 
 { shuffle:
@@ -535,10 +534,12 @@ Punishments must be associated with sensual excitation.
 Does it feel good to touch yourself, {isBoy: toad|strumpet}?
 
 +[yes]
+~ obey++
 As it should.
-You may continue for until I instruct you otherwise.
+You may continue until I instruct you otherwise.
 
 +[no]
+~ disobey++
 What a shame. Do it anyways.
 
 -
@@ -551,17 +552,82 @@ What a shame. Do it anyways.
 
 -
 +[wait 10]
-Enough. We shall resume.
+-> Headmistress_punishment_resumes->
+
 ->->
 
 = break02
-TODO: Break 2 here
-Break 2 happens.
+Remember to intersperse strikes with caresses.
+The inflamed flesh is delightfully sensitive 
+and should be titillated as much as possible.
+
+The tantalizing drag of fingers on welted
+skin regularly sends shivers through the subject.
+
+Would you enjoy that, {player_name}?
+
++[yes]
+~ obey++
+Then return to me to be spanked as a reward!
+
++[no]
+~ disobey++
+Good. Then you will be pleased to know that 
+such kind treatment is reserved for rewards!
+-
+-> Headmistress_punishment_resumes->
+
 ->->
 
 = break03
-TODO: Break 3 here
-Break 3 happens.
+Perhaps our little foible here needs a carrot
+dangled in front of {isBoy: him|her}.
+Behaving with decorum and obedience does not 
+simply stave off punishment!
+Great rewards are bestoyed upon the most worthy.
+/character headmistress circle_player
+
+What do you think, {isBoy: runt|poppet}?
+Shall I show you the kind of treatment
+good boys and girls earn?
+
++[yes]
+~ disobey++
+/character headmistress caress_breasts
+Do you imagine they are soft, {player_name}?
+    ++[yes]
+    ~ obey++
+    Mmmm. Very soft indeed.
+    
+    ++[no]
+    ~ disobey++
+    /character headmistress laugh
+    Do you imagine they are coarse and uneven, 
+    just like your hindquarters?
+        +++[yes]
+        ~ disobey++
+        A brazen response.
+        Another punishment has been added to your band.
+        //player should either receive another punishment stone or an additional 5 swats
+        
+        +++[no]
+        ~ disobey++
+        As I surmised. 
+        You are a baffoon who does not 
+        know to think before acting.
+        
++[no]
+~ obey++
+/character headmistress pleased
+My my. A surprisingly chaste response
+from one whose {isBoy: shaft|mound} is throbbing
+so fully.
+But a delightful one.
+You have not earned a reward, 
+so why bestow a taste upon you.
+-
+-> Headmistress_punishment_resumes->
+
 ->->
 
 

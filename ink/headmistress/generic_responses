@@ -21,6 +21,19 @@ TODO: rewrite goodjob
 
 ->->
 
+=== Headmistress_punishment_resumes ===
+//generic responses whenever the Headmistress returns from a break or interruption to resume a punishment
+
+{ shuffle:
+    - Enough. We shall resume.
+    - I am eager to return to your admonishment.
+    - Your punishment shall resume.
+    - Let us continue.
+    - Retribution must continue.
+    - We shall recommence the chastisement.
+    }
+    
+->->
 
 === Headmistress_PayAttention ===
 TODO: Rewrite payattention
@@ -57,7 +70,9 @@ TODO: Rewrite payattention
 
 === Headmistress_player_masturbate ===
 TODO: Player Masterubate Break
-Player masturbates.
+Our guests have whipped into a frenzy and demand more.
+{isBoy: Wrap your hand around your rod|slip your fingers between your neterlips} and entertain them.
+
 ->->
 
 
@@ -66,7 +81,7 @@ Player masturbates.
     - There's a good {player_name}.
     - What a good little {player_name}.
     - That's my {player_name}.
-    - Do you think {isBoy he|she} is enjoying {isBoy: himself|herself}?
+    - Do you think {isBoy: he|she} is enjoying {isBoy: himself|herself}?
         /character crowd laugh
     - Very nice.
     - Exhibit control lest your arm tire.
