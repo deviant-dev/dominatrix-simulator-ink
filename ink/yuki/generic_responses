@@ -24,3 +24,19 @@
 + [timeout] -> Yuki_PayAttention
 
 
+=== Yuki_Timeout ===
+
+{cycle:
+
+    - Hellooo? I'm talking to you!
+    - Don't ignore me!
+    - Would you answer me already?
+    - Hey doofus, I'm speaking to you.
+    - Am I talking to a wall right now?
+    - Hey {player_name}, I'm not talking to myself you know!
+    - Answer me {player_name}!
+}
+
+->->
+
++[timeout] -> Yuki_Timeout
