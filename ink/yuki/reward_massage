@@ -1,12 +1,15 @@
 === yuki_reward_massage ===
 
+VAR Break1 = false
+VAR Break2 = false
+VAR Unattractive = false
+VAR massage_count = 0
+
 /scene ?
 
 /character yuki
 
 /equip feather_duster
-
-//Putting poses in after
 
 {FirstVisit: -> Undress}
 
@@ -55,7 +58,7 @@ But only touching what I tell you! Or then you'll really be in big trouble!
 Follow directions, and we'll have tons of fun.
 
 -(Director1)
-
+~massage_count = 0
 Why don't you massage my {shuffle:
 -<>neck? -> massage_neck 
 -<>back? ->massage_back 
@@ -93,8 +96,7 @@ Good things come to those who wait {player_name}.
 ->Yuki_Timeout->
 ->timeout2
 -(Cont3)
-{Break1Check: ->Cont4}
-{Break2Check: ->Cont4}
+{Break1 == true: ->Cont4}
 {~->stomach_break1->|->stomach_break2->}
 
 -(BreakReturn1)
@@ -110,7 +112,7 @@ I think it's time my front gets some attention.
 /perform yuki_lays_down_back
 
 -(Director2)
-
+~massage_count = 0
 Why don't you massage my {shuffle:
 -<>shoulders? -> massage_shoulders
 -<>belly? ->massage_belly
@@ -118,8 +120,7 @@ Why don't you massage my {shuffle:
 }
 
 = Cont5
-{Break3Check: ->Cont6}
-{Break4Check: ->Cont6}
+{Break2 == true: ->Cont6}
 {~->back_break1->|->back_break2->}
 
 -(Cont6)
@@ -147,24 +148,14 @@ I want you to massage my {~breasts. ->breasts|ass. ->ass}
 /perform laying_down_stomach
 
 Go on you good {player_name}, get to groping!
-
-
+~massage_count = 0
+->massage_ass->
 
 Mm, I love the feeling of you kneading my ass.
+~massage_count = 0
+->massage_ass->
 
-->massage_appraisals->
-
-->massage_appraisals->
-
-This is making me horny too.
-
-I want more though.
-
-Massage my asshole slave!
-
-->sexual_appraisals->
-
-->sexual_appraisals->
+This is making me so horny.
 
 Oh my Goddess, I can't stand it anymore!
 
@@ -189,7 +180,9 @@ Do you even find me attractive?
     ++[Yes]
       Mm, you just like being a little serving slut. 
       -> reward_ending
-    ++(Unattractive)[No]
+    ++[No]
+    {Unattractive == true}
+    
     Then I don't really care what you think, you big jerk!
     
     You're going to eat my ass for my own pleasure.
@@ -227,7 +220,7 @@ Why not? My ass is a great conversationalist! Hehehe.
 + [timeout]
 ->Yuki_Timeout->
 ->timeout6
--{Unattractive:
+-{Unattractive == true:
 You were a little rude to me today slave.
 
 I don't appreciate that very much.
@@ -276,7 +269,7 @@ Why not? My ass is a great conversationalist! Hehehe.
 + [timeout]
 ->Yuki_Timeout->
 ->timeout10
--{Unattractive:
+-{Unattractive == true:
 You were a little rude to me today slave.
 
 I don't appreciate that very much.
@@ -327,7 +320,9 @@ Do you even find me attractive?
     Mm, you just like being a little serving slut.
     -> reward_ending
     
-    ++ (Unattractive)[No]
+    ++[No]
+    {Unattractive == true}
+    
     Then I don't really care what you think, you big jerk!
     
     Just hold on a second.
@@ -356,9 +351,9 @@ Just around my shoulders and below my head.
 -(massage_neck_repeat)
 
 +[pose:massage_neck]
-    --(massage_neck_count)
+    ~massage_count++
     ->massage_appraisals->
-    {massage_neck_count < 3: -> massage_neck_repeat}
+    {massage_count < 3: -> massage_neck_repeat}
 +[pose:massage_butt] -> terminated_massage_ending
 +[pose:massage_failed] -> massage_neck
 
@@ -371,9 +366,9 @@ Anywhere on my back is fine.
 -(massage_back_repeat)
 
 +[pose:massage_back]
-    --(massage_back_count)
+    ~massage_count++
     ->massage_appraisals->
-    {massage_back_count < 3: ->massage_back_repeat}
+    {massage_count < 3: ->massage_back_repeat}
 +[pose:massage_butt] -> terminated_massage_ending
 +[pose:massage_failed] -> massage_back
 
@@ -386,9 +381,9 @@ From my thighs to my feet if you please.
 -(massage_legs1_repeat)
 
 +[pose:massage_legs1]
-    --(massage_legs1_count)
+    ~massage_count++
     ->massage_appraisals->
-    {massage_legs1_count < 3: ->massage_legs1_repeat}
+    {massage_count < 3: ->massage_legs1_repeat}
 +[pose:massage_butt] -> terminated_massage_ending
 +[pose:massage_failed] -> massage_legs1
 
@@ -401,9 +396,9 @@ Just around my shoulders and below my head.
 -(massage_shoulders_repeat)
 
 +[pose:massage_shoulders]
-    --(massage_shoulders_count)
+    ~massage_count++
     ->massage_appraisals->
-    {massage_shoulders_count < 3: -> massage_shoulders_repeat}
+    {massage_count < 3: -> massage_shoulders_repeat}
 +[pose:massage_breasts] -> terminated_massage_ending
 +[pose:massage_failed] -> massage_shoulders
 
@@ -416,9 +411,9 @@ Just around my little belly for now.
 -(massage_belly_repeat)
 
 +[pose:massage_belly]
-    --(massage_belly_count)
+    ~massage_count++
     ->massage_appraisals->
-    {massage_belly_count < 3: -> massage_belly_repeat}
+    {massage_count < 3: -> massage_belly_repeat}
 +[pose:massage_breasts] -> terminated_massage_ending
 +[pose:massage_failed] -> massage_belly
 
@@ -431,9 +426,9 @@ Same as before, thighs to feet please.
 -(massage_legs2_repeat)
 
 +[pose:massage_legs2]
-    --(massage_legs2_count)
+    ~massage_count++
     ->massage_appraisals->
-    {massage_legs2_count < 3: -> massage_legs2_repeat}
+    {massage_count < 3: -> massage_legs2_repeat}
 +[pose:massage_breasts] -> terminated_massage_ending
 +[pose:massage_failed] -> massage_legs2
 
@@ -441,7 +436,7 @@ Same as before, thighs to feet please.
 -->Cont5
 = stomach_break1
 
--(Break1Check)
+{Break1 == true}
 
 Have you ever been massaged?
 
@@ -517,7 +512,7 @@ Well...Fine.
 + [Yes]
 Oh silly me, I should have known that.
 
-/perform caress_genitals_laying_down__stomach_faster
+/perform caress_genitals_laying_down_stomach_faster
 
 + [No]
 
@@ -567,7 +562,7 @@ Chop chop, back to work!
 
 = stomach_break2
 
--(Break2Check)
+{Break1 == true}
 
 I wish this place had some entertainment.
 
@@ -602,7 +597,7 @@ And stick your butt waaaaay up in the air.
 ->present_ass_playing
 
 - Now I want you to sway back and forth, like you're a clock, or one of those music timer thingies!
-
+//Can this even be tracked?
 Tick, tock, tick, tock.
 
 Heehee, it's funny watching your cute little butt swing around.
@@ -654,7 +649,7 @@ But I still need more massaging, so you need to get back to that. Play time's ov
 
 = back_break1
 
--(Break3Check)
+{Break2 == true}
 
 I know you're just dying to play with my breasts. 
 
@@ -745,7 +740,7 @@ Then the right one.
 
 = back_break2
 
--(Break4Check)
+{Break2 == true}
 
 Hmm. 
 
@@ -1009,9 +1004,9 @@ Come on, finger fuck me {player_name}.
 
 -(finger_pussy_repeat)
 +[pose:finger_pussy]
-    --(finger_pussy_count)
+    ~massage_count++
     ->sexual_appraisals->
-    {finger_pussy_count < 2: -> finger_pussy_repeat}
+    {massage_count < 2: -> finger_pussy_repeat}
 +[pose:finger_pussy_failed] -> finger_pussy
 
 ->->
@@ -1022,22 +1017,35 @@ Grab those buns, hun.
 
 -(massage_ass_repeat)
 +[pose:massage_ass]
-    --(massage_ass_count)
+    ~massage_count++
     ->massage_appraisals->
-    {massage_ass_count < 3: -> massage_ass_repeat}
+    {massage_count < 3: -> massage_ass_repeat}
 +[pose:massage_failed] -> massage_ass
 
 ->->
 
 = massage_breasts
 
-Grabs those boob, goob.
+Grabs those boobs, goob.
 
--(massage_ass_repeat)
-+[pose:massage_ass]
-    --(massage_ass_count)
+-(massage_breasts_repeat)
++[pose:massage_breasts]
+    ~massage_count++
     ->massage_appraisals->
-    {massage_ass_count < 3: -> massage_ass_repeat}
-+[pose:massage_failed] -> massage_ass
+    {massage_count < 3: -> massage_breasts_repeat}
++[pose:massage_failed] -> massage_breasts
+
+->->
+
+= eat_ass
+
+I should feel your head bobbing up and down while you lick.
+
+-(eat_ass_repeat)
++[pose:eat_ass]
+    ~massage_count++
+    ->sexual_appraisals->
+    {massage_count < 2: -> eat_ass_repeat}
++[pose:eat_ass_failed] -> eat_ass
 
 ->->
