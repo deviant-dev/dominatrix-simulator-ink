@@ -151,7 +151,7 @@ never having any fun.
 Don't you want to live a little?
 Bend the rules once in a while and really let loose?
 
-/character Yuki scoff
+/character yuki scoff
 Ugh.
 
 /character nega approach_yuki
@@ -162,7 +162,7 @@ Remember?
 
 + [wait 5]
  
-- /character Yuki
+- /character yuki
 You just stop that right now, Nega-Yuki!
 I want my own room someday. 
 There's no way I'm breaking the rules!
@@ -237,7 +237,7 @@ Have you figured out what's going on here yet?
     
     /perform amused
     I think I should tell {player_him}.
-    /character Yuki frustrated
+    /character yuki frustrated
     Don't you dare!
     The Goddess will be so angry with you!
     /character nega interested
@@ -273,7 +273,7 @@ Let's find out. Shall we?
     
 + [distracted] -> Yuki_PayAttention -> genitals
 
-- /character Yuki flustered
+- /character yuki flustered
 Behave, Nega! 
 
 /character nega caress_genitals
@@ -337,7 +337,7 @@ tearing up that little ass of yours.
 }
 
 = Yuki_finish
-/character Yuki foot_stomp
+/character yuki foot_stomp
 That's enough, Nega!
 No more fun and games for you.
 I'll be reporting you to the Headmistress straight away.
@@ -349,7 +349,7 @@ Come find me when you've earned a reward.
 
 + [wait 5]
 
--/character Yuki angry
+-/character yuki angry
 I just hate her.
 
 +[wait 3]
@@ -450,7 +450,7 @@ She doesn't like to be kept waiting.
 
 = Nega_finish
 
-/character Yuki foot_stomp
+/character yuki foot_stomp
 That's enough, Nega!
 You are interfering with my role too much!
 I'm reporting you to the Headmistress straight away.
