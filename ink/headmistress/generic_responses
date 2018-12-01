@@ -6,7 +6,10 @@ TODO: rewrite goodjob
 // /perform caress_thigh
 
 { shuffle:
-    - There's a good {player_name}.
+    - Most excellent.
+    - There is hope for you, yet!
+    - Slaves in this House 
+    There's a good {player_name}.
     - What a good little {player_name}.
     - That's my {player_name}.
     - Aren't you the sweetest little thing.
@@ -70,7 +73,7 @@ TODO: Rewrite payattention
 
 === Headmistress_player_masturbate ===
 TODO: Player Masterubate Break
-Our guests have whipped into a frenzy and demand more.
+Our guests are frenzied and demand more.
 {isBoy: Wrap your hand around your rod|slip your fingers between your neterlips} and entertain them.
 
 ->->
@@ -78,19 +81,20 @@ Our guests have whipped into a frenzy and demand more.
 
 === Headmistress_masturbation_comments ===
 { shuffle:
-    - There's a good {player_name}.
-    - What a good little {player_name}.
-    - That's my {player_name}.
+    - A fine demonstration {isBoy: toad|strumpet}.
+    - We have a little whore, guests!
     - Do you think {isBoy: he|she} is enjoying {isBoy: himself|herself}?
-        /character crowd laugh
-    - Very nice.
+      /character crowd laugh
     - Exhibit control lest your arm tire.
-    /character headmistress sassy
+      /character headmistress sassy
     - Cumming without permission is expressly forbidden.
-    - Mmmm. I like that.
-    - Someone is being a good {player_name}.
-    - Well done.
-    - That's very pleasing.
+    - What a fine display.
+    - Look at those deft fingers.
+    - Show restraint.
+    - A {isBoy: hard shaft|wet slit} is a pleasing {isBoy: shaft|slit}.
+    - 
+    -
+    -
 }
 
 ->->
