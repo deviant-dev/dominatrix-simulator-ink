@@ -1,4 +1,4 @@
-== goddess_intro ==
+=== goddess_intro ===
 
 - (flash_scenes)
 
@@ -37,9 +37,10 @@ Ah, well... #03
 
 /perform fake_annoyed
 
+How did you get in here? #04
+
 - (debug_jump)
 
-How did you get in here? #04
 Did Mistress Yuki-Onna let you in? #05
 
 /perform idle
