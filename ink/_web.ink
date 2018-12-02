@@ -22,6 +22,7 @@ INCLUDE nega/hub
 INCLUDE nega/intro
 INCLUDE nega/lore
 INCLUDE nega/reward_dice
+INCLUDE nega/punishment_trampling
 INCLUDE yuki/hub
 INCLUDE yuki/intro
 INCLUDE yuki/lore
@@ -68,4 +69,8 @@ VAR web = true
 
 + Nega Intro
     -> unlock_all -> nega_intro
+
++ Nega Punishment Trampling
+    -> unlock_all -> nega_punishment_trampling
+
 

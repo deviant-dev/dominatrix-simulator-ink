@@ -1,6 +1,7 @@
 === nega_reward_dice ===
 <<< insert random reward/task/punishment scene here >>>
 ~ rewards--
+~ intro = nega_reward_dice == 1
 
 - (give_reward)
 /character nega hand_out
@@ -17,6 +18,17 @@ Go ahead. Roll the dice.
 Let's see what you're going to get for 
 this pretty little gift.
 
-//character rolls dice
+//player rolls dice
+//dice give reward
+
+- Ooo. Looky here.
+Someone just got lucky!
+Oh goody! This is gonna be so much fun!
+
+{intro: 
+    You're gonna love getting rewards from me.
+}
+
+- (
 
 -> exit
