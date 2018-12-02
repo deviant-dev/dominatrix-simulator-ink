@@ -54,10 +54,11 @@ And you're going to give it to me.
 Aren't you?
 
 + [yes]
+
     That's right.
     You're going to give me that pretty little Bloodstone
     and I might give you something in return.
-    -> give_reward
+    -> nega_reward_dice.give_reward
 
 + [no]
     I would think twice about that if I were you.
@@ -65,37 +66,20 @@ Aren't you?
     
     ++[yes]
         Stop wasting my time!
-        Get out of here.
+        Get the fuck out of here.
         -> exit
     
     ++[no]
         Very good. 
         I can be a lot of fun with the right...toy.
-    
+         -> nega_reward_dice.give_reward
+         
 + [timeout]
     Well. Are you going to give me what I want?
     -> check_reward
 
-- (give_reward)
-/character nega hand_out
-Hand it over.
-//player needs to stick their wrist out 
 
-/character nega swipe_hand
-/character nega laugh
-Fuck ya!
-You're my bitch now.
-
-/character nega give_dice
-Go ahead. Roll the dice.
-Let's see what you're going to get for 
-this pretty little gift.
-
-//character rolls dice
-
--
-
-+[distracted] -> Nega_PayAttention -> give_reward
++[distracted] -> Nega_PayAttention -> nega_reward_dice.give_reward
 
 - ~ nega_unlocked = true
 -> exit
