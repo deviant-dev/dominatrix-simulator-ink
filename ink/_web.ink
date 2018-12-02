@@ -37,6 +37,29 @@ INCLUDE yuki/generic_responses
 
 VAR debug = false
 
+// Debug Jump
+// (must be in-editor and have 'Debug' checked in StoryTeller)
+{ isDebug() :
+    - 
+    // -> demo_intro.genderchoice
+    
+    // /scene bedroom.intro
+    // /lock move-approach
+    // /character goddess
+    ~ yuki_hub_status = (early_access, under_construction)
+    -> entry_hub
+    //-> goddess_intro.debug_jump
+    // -> goddess_intro.stand_straight
+    // -> goddess_intro.inspection
+    // -> goddess_intro.ByeForNow
+}
+
+// Debug Jump
+// (must be in-editor and have 'Video' checked in StoryTeller)
+{ isVideo() :
+    - -> goddess_intro.video_jump
+}
+
 { isWeb() :
     - -> table_of_contents
 	- else : -> game_intro
