@@ -18,19 +18,44 @@
 }
 
 - (start)
-/perform bored
+/character nega bored
 Don't worry, pretty {player_name}.
 Expect that to happen once in a while.
 
-/perform behold
+/character nega behold
 Walk out one door, expecting to arrive somewhere,
 and suddenly find yourself somewhere else.
 
-/perform open_arms_shrug
-You get used to it.
+/character nega open_arms_shrug
+You'll get used to it.
 
-+[wait]
+/character nega sassy
+I pulled in a little favor to make sure
+that kiss-ass Yuki wasn't paying attention.
 
+//if the player had the Yuki ending, add this part
+-(yuki_warning)
+
+I bet she told you not talk to me, didn't she?
+
++[yes]
+    Don't waste your time with that simpering brat.
+    Oh sure, she'll be all sweet and attentive,
+    but she'll bore the shit out of you eventually.
+    Stick with me if you really want to have some fun.
+    
++[no]
+    No? I'm sure she would have.
+    You must be some kind of idiot who doesn't listen.
+    Don't pull that shit with me.
+    You can be as dumb as a rock, 
+    but you better do what you're fucking told.
+    
++[timeout]
+    Well?
+    -> yuki_warning
+ 
+//if the player had the nega ending, start here
 - How's that cute little ass of yours?
 Does your poor tushy sting?
 
@@ -42,9 +67,16 @@ Does your poor tushy sting?
     Oh, a tough {isBoy:guy|girl}, huh?
     Nice.
     
-- As fun as it might be,
-I'm not really interested in your sore ass.
-Not yet, anyways.
+- Turn around and bend over.
+Grab those ankles and let me see for myself.
+
+- (present_ass)
+//have player present ass before she gets them to give up their stone 
+- My, my. Your ass turns a nice shade of pink.
+She made a good lesson out of you.
+Wiggle it for me.
+//check to see if the headset wiggles?
+
 
 - (check_reward)
 
@@ -54,7 +86,6 @@ And you're going to give it to me.
 Aren't you?
 
 + [yes]
-
     That's right.
     You're going to give me that pretty little Bloodstone
     and I might give you something in return.

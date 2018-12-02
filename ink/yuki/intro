@@ -427,12 +427,13 @@ Watch out for that awful Nega-Yuki. She's a bad seed!
 All the naughty parts of me I tossed aside.
 
 /perform serious
-She'll try to tempt you to give her your rewards for her own use
+She'll try to tempt you to give her your rewards
 in exchange for a good time.
 
 /perform annoyed
 But it's just a trick!
-She won't always reward you and if you get caught,
+She won't always reward you and 
+if you get caught coming out of her room,
 you'll be punished!
 
 + [wait 5]
@@ -440,7 +441,7 @@ you'll be punished!
 - /perform check_clipboard
 
 Great! That's everything I have to cover in my notes!
-Time for for you to go see Headmistress Sonia.
+Time for for you to go see the Headmistress.
 She will teach you how to properly take a punishment.
 
 /perform bounces
