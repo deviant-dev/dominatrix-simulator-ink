@@ -1,5 +1,5 @@
 === headmistress_intro ===
-{ web: -> select_gender -> }
+-> select_gender ->
 ~ obey = 0
 ~ disobey = 0
 
@@ -8,7 +8,7 @@
 /equip wood_paddle
 /character slave crying
 
-{ web:
+{ isWeb():
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
 
     <blockquote><i>You stand inside a spacious Victorian office with a large wooden desk, several sets of bookshelves, and walls lined with curtains. Before you stands a lean and lengthy woman with dark skin and an ample bosom forcefully spanking a young slave with a paddle. Her face is stern and her eyes placid...</i></blockquote>

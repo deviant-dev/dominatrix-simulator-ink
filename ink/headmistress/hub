@@ -1,5 +1,5 @@
 === headmistress_hub ===
-{ web: -> select_gender -> }
+-> select_gender ->
 ~ obey = 0
 ~ disobey = 0
 

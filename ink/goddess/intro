@@ -486,7 +486,7 @@ Bye for now, {player_name}. #113
 
 + [wait 5]
 
-~ yuki_unlocked = true
+~ yuki_hub_status = unlocked
 
 - -> exit
 

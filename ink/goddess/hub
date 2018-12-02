@@ -1,5 +1,5 @@
 == goddess_hub ==
-{ web: -> select_gender -> }
+-> select_gender ->
 - (hub)
 ~ obey = 0
 ~ disobey = 0

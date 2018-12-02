@@ -1,72 +1,57 @@
-// List of options for kinks and kink levels.
-LIST kink_list = sextoy, bondage, discipline, humiliation, worship, training
-LIST kink_level = no = 0, maybe, yes
-
-// Player kink tracking
-VAR kinks_yes = ()
-VAR kinks_maybe = ()
-VAR kinks_no = ()
-
-// Used by the engine to know what activity to load next.
-// Accepts specific activity names as well as "tag:<activity_tag>"
-VAR load_activity = ""
-
+// Player Variables
 VAR isBoy = true
 VAR player_name = "boy"
 VAR player_he = "he"
 VAR player_him = "him"
-VAR player_safeword = "red"
-VAR obey = 0
-VAR disobey = 0
-VAR intro = false
 VAR rewards = 0
 VAR punishments = 0
 
+// Lists
+LIST move_status = hidden = 0, locked, unlocked, early_access, under_construction
+
+// Temp Variables
+VAR obey = 0
+VAR disobey = 0
+VAR intro = false
+
 // Goddess Variables
 VAR goddess_favor = 0
-VAR goddess_unlocked = false
+VAR goddess_hub_status = hidden
 
 // Headmistress Variables
 VAR headmistress_favor = 0
-VAR headmistress_unlocked = false
+VAR headmistress_hub_status = hidden
 VAR headmistress_difficulty = 1
 VAR headmistress_apologize = false
 
 // Nega Variables
 VAR nega_favor = 0
-VAR nega_unlocked = false
+VAR nega_hub_status = hidden
 
 // Yuki Variables
 VAR yuki_favor = 0
-VAR yuki_unlocked = false
+VAR yuki_hub_status = hidden
+
+VAR entered_code = ""
+VAR entered_phrase = ""
+VAR has_early_access = false
 
 
-
-// function to set a kink's preference
-
-=== function set_kink(kink, state) ===
-{
-    - state == no:
-        ~ kinks_no += kink
-        ~ kinks_maybe -= kink
-        ~ kinks_yes -= kink
-    - state == maybe:
-        ~ kinks_no -= kink
-        ~ kinks_maybe += kink
-        ~ kinks_yes -= kink
-    - state == yes:
-        ~ kinks_no -= kink
-        ~ kinks_maybe -= kink
-        ~ kinks_yes += kink
-}
+// Fallback for isWeb() external function
+=== function isWeb() ===
+~ return true
 
 // Fallback for isDebug() external function
 === function isDebug() ===
-~ return false
+~ return debug
 
 // Fallback for isVideo() external function
 === function isVideo() ===
 ~ return false
+
+// Fallback for getCode() external function
+=== function getCode() ===
+~ return "01234"
 
 === function setGender(gender) ===
 {
@@ -85,9 +70,15 @@ VAR yuki_unlocked = false
 ~ return
 
 === select_gender ===
-    // If we've already selected a gender
+        // If we've already selected a gender
     // then skip this bit.
     {setGender: ->->}
+    
+    {
+        - !isWeb():
+            ~ setGender("m")
+            ->->
+    }
     
     + [Male]
         ~ setGender("m")
@@ -98,7 +89,7 @@ VAR yuki_unlocked = false
 
 === summary(place, times) ===
 
-{web:
+{isWeb():
 	<b>{place}</b>
 	<i>P:{punishments} / R:{rewards} / You've been here {times} time{times>1:s}.</i>
 }
@@ -118,10 +109,10 @@ VAR yuki_unlocked = false
 -> END
 
 === unlock_all ===
-~ yuki_unlocked = true
-~ headmistress_unlocked = true
-~ nega_unlocked = true
-~ goddess_unlocked = true
+~ yuki_hub_status = unlocked
+~ headmistress_hub_status = unlocked
+~ nega_hub_status = unlocked
+~ goddess_hub_status = unlocked
 ->->
 
 === function obeyed() ===

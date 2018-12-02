@@ -1,0 +1,198 @@
+
+=== tryEnter(status, -> success, -> fail) ===
+
+{status ? early_access:
+    -> tryCode(success, fail)
+}
+
+{status ? unlocked:
+    -> success
+}
+
+- -> fail
+
+
+
+=== enter_code ===
+~ entered_code = ""
+~ entered_phrase = ""
+
+/notify title="Early Access Restricted!" text="Enter your Early Access Pass Phrase into your journal."
+
+/wait
+
+/action open_journal
+
+<- code_1(-> enter_code_2)
+<- code_options(-> enter_code, -> exit)
+
+-> DONE
+
+= enter_code_2
+{entered_phrase}
+<- code_2(-> enter_code_3)
+<- code_options(-> enter_code, -> exit)
+
+-> DONE
+
+= enter_code_3
+{entered_phrase}
+<- code_3(-> enter_code_4)
+<- code_options(-> enter_code, -> exit)
+
+-> DONE
+
+= enter_code_4
+{entered_phrase}
+<- code_4(-> enter_code_5)
+<- code_options(-> enter_code, -> exit)
+
+-> DONE
+
+= enter_code_5
+{entered_phrase}
+<- code_5(-> check_code)
+<- code_options(-> enter_code, -> exit)
+
+-> DONE
+
+= check_code
+~ has_early_access = getCode() == entered_code
+
+- {has_early_access:
+    '{entered_phrase}' is the correct!
+    You may enter.
+- else:
+    '{entered_phrase}' is incorrect.
+    That way is locked.
+}
+
+-> exit
+
+= code_1(-> next)
+
++[Sexy]
+    ~ entered_code = "0"
+    ~ entered_phrase = "The sexy"
++[Gorgeous]
+    ~ entered_code = "1"
+    ~ entered_phrase = "The gorgeous"
++[Devastating]
+    ~ entered_code = "2"
+    ~ entered_phrase = "The devastating"
++[Brutal]
+    ~ entered_code = "3"
+    ~ entered_phrase = "The brutal"
++[Unobtainable]
+    ~ entered_code = "4"
+    ~ entered_phrase = "The unobtainable"
+
+
+- -> next
+
+= code_2(-> next)
+
++[Dominatrix]
+    ~ entered_code += "0"
+    ~ entered_phrase += " Dominatrix"
++[Mistress]
+    ~ entered_code += "1"
+    ~ entered_phrase += " Mistress"
++[Hellcat]
+    ~ entered_code += "2"
+    ~ entered_phrase += " Hellcat"
++[Goddess]
+    ~ entered_code += "3"
+    ~ entered_phrase += " Goddess"
++[Vixen]
+    ~ entered_code += "4"
+    ~ entered_phrase += " Vixen"
+
+- -> next
+
+= code_3(-> next)
+
++[uses]
+    ~ entered_code += "0"
+    ~ entered_phrase += " uses"
++[whips]
+    ~ entered_code += "1"
+    ~ entered_phrase += " whips"
++[hypnotizes]
+    ~ entered_code += "2"
+    ~ entered_phrase += " hypnotizes"
++[pegs]
+    ~ entered_code += "3"
+    ~ entered_phrase += " pegs"
++[restrains]
+    ~ entered_code += "4"
+    ~ entered_phrase += " restrains"
+
+- -> next
+
+= code_4(-> next)
+
++[naughty]
+    ~ entered_code += "0"
+    ~ entered_phrase += " her naughty"
++[dirty]
+    ~ entered_code += "1"
+    ~ entered_phrase += " her dirty"
++[worthless]
+    ~ entered_code += "2"
+    ~ entered_phrase += " her worthless"
++[naked]
+    ~ entered_code += "3"
+    ~ entered_phrase += " her naked"
++[unworthy]
+    ~ entered_code += "4"
+    ~ entered_phrase += " her unworthy"
+
+- -> next
+
+= code_5(-> next)
+
++[slave]
+    ~ entered_code += "0"
+    ~ entered_phrase += " slave."
++[disciple]
+    ~ entered_code += "1"
+    ~ entered_phrase += " disciple."
++[player]
+    ~ entered_code += "2"
+    ~ entered_phrase += " player."
++[bitch]
+    ~ entered_code += "3"
+    ~ entered_phrase += " bitch."
++[fucktoy]
+    ~ entered_code += "4"
+    ~ entered_phrase += " fucktoy."
+
+- -> next
+
+= code_options(-> back, -> leave)
++[Help]
+    To get Early Access, use the code from this Patreon post:
+    ++ [Open Post]
+        /open_link www.patreon.com/posts/roadmap-22863619
+        -> back
++[Cancel] -> leave
+
+
+//=== function correctCode() ===
+//~ return getCode() == entered_code
+
+=== tryCode(-> success, -> fail) ===
+    {has_early_access:
+        -> success
+    - else:
+        -> enter_code ->
+    }
+    
+    {has_early_access:
+        -> success
+    - else:
+        -> fail
+    }
+}
+

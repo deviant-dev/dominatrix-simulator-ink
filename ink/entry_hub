@@ -1,11 +1,11 @@
 === entry_hub ===
-{ web: -> select_gender -> }
+-> select_gender ->
 
 -(hub)
 
 -> summary("Main Entry Hub", hub) ->
 
-{web && !headmistress_unlocked && !yuki_intro:
+{isWeb() && !yuki_intro: 
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
 
     <blockquote><i>You stand inside a large Victorian foyer with a sweeping staircase and several sets of doors leading off of it. The room is fairly well lit, but all of the doors are shrouded in shadows. Before you stands a lithe, young woman dressed in a maid's uniform. Beaming a bright smile, she greets you...</i></blockquote>
@@ -13,7 +13,12 @@
 
 /scene entry.hub
 
-+ {goddess_unlocked} [move: Goddess] -> goddess_hub
-+ {yuki_unlocked} [move: Yuki] -> yuki_hub
-+ {nega_unlocked} [move: Nega] -> nega_hub
-+ {headmistress_unlocked} [move: Headmistress] -> headmistress_hub
++ {LIST_VALUE(goddess_hub_status)} [move: Goddess ({goddess_hub_status})]
+    -> tryEnter(goddess_hub_status, -> goddess_hub, -> exit)
++ {LIST_VALUE(yuki_hub_status)} [move: Yuki ({yuki_hub_status})]
+    -> tryEnter(yuki_hub_status, -> yuki_hub, -> exit)
++ {LIST_VALUE(nega_hub_status)} [move: Nega ({nega_hub_status})]
+    -> tryEnter(nega_hub_status, -> nega_hub, -> exit)
++ {LIST_VALUE(headmistress_hub_status)} [move: Headmistress ({headmistress_hub_status})]
+    -> tryEnter(headmistress_hub_status, -> headmistress_hub, -> exit)
+

@@ -2,6 +2,7 @@
 # theme: dark
 
 INCLUDE vars
+INCLUDE access_code
 INCLUDE game_intro
 INCLUDE entry_hub
 INCLUDE goddess/hub
@@ -21,6 +22,7 @@ INCLUDE headmistress/task_flogging
 INCLUDE nega/hub
 INCLUDE nega/intro
 INCLUDE nega/lore
+INCLUDE nega/generic_responses
 INCLUDE nega/reward_dice
 INCLUDE nega/punishment_trampling
 INCLUDE yuki/hub
@@ -31,12 +33,9 @@ INCLUDE yuki/review
 INCLUDE yuki/reward_bathe
 INCLUDE yuki/reward_massage
 INCLUDE yuki/task_fanning
-INCLUDE nega/generic_responses
 INCLUDE yuki/generic_responses
 
-VAR web = true
-
-{ web :
+{ isWeb() :
     - -> table_of_contents
 	- else : -> game_intro
 }
@@ -50,7 +49,7 @@ VAR web = true
     -> unlock_all -> entry_hub
 
 + Yuki Intro 2.2
-    ~ yuki_unlocked = true
+    ~ yuki_hub_status = unlocked
     -> yuki_intro
 
 + Yuki Punishment Edging 2.0 
@@ -60,8 +59,8 @@ VAR web = true
     -> unlock_all -> yuki_reward_massage
 
 + Headmistress Intro 
-    ~ yuki_unlocked = true
-    ~ headmistress_unlocked = true
+    ~ yuki_hub_status = unlocked
+    ~ headmistress_hub_status = unlocked
     -> headmistress_intro
 
 + Headmistress Punishment Spanking 
