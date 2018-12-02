@@ -188,11 +188,17 @@ Our subject today has earned a spanking.
 }
 
 {headmistress_spanking_implement == "hand":
-    TODO: bare hand description
+    My own hand will do today.
+    I want to relish the crisp strike 
+    upon my hand and the quivering sound
+    of flesh meeting flesh.
 }
 
 {headmistress_spanking_implement == "crop":
-    TODO: crop description
+    For today's punishment, I have selected 
+    a slender and rigid crop.
+    The pattern of stinging pain that will burst
+    up from the skin is exotic to behold!
 }
 
 Would you not agree?
@@ -448,6 +454,7 @@ I wonder if you would like to perform further for our audience?
     A shame you do not have more in you, 
     but you have done well. 
     You may descend and return to Mistress Yuki-Onna with my compliments.
+    /character crowd cheers
     -> FinalEnding
     
 - -> FinalEnding
@@ -461,10 +468,12 @@ for your new fans?
 
     +[yes]
     Too bad. Then you should have thought of that sooner.
+    /character crowd boos
     -> FinalEnding
     
     +[no] 
     Too bad. That's exactly what you're going to do.
+    /character crowd cheers
     -> Headmistress_player_masturbate
 
 = FinalEnding
@@ -473,7 +482,6 @@ Consider one demerit paid in full.
 I give you leave to depart.
 
 ~ punishments--
-
 
 /character crowd claps
 

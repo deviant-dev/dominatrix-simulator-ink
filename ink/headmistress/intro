@@ -1,5 +1,7 @@
 === headmistress_intro ===
 { web: -> select_gender -> }
+~ obey = 0
+~ disobey = 0
 
 /scene office.spank_slave
 /character headmistress

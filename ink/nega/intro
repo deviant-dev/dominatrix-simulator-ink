@@ -1,5 +1,7 @@
 === nega_intro ===
 { web: -> select_gender -> }
+~ obey = 0
+~ disobey = 0
 
 /scene burned_room
 /character nega
@@ -37,13 +39,14 @@ Does your poor tushy sting?
     /perform eye_roll
     What a bitch.
 + [no]
-    Oh, a touch {isBoy:guy|girl}, huh?
+    Oh, a tough {isBoy:guy|girl}, huh?
     Nice.
     
 - As fun as it might be,
-I'm not here about your sore ass.
+I'm not really interested in your sore ass.
+Not yet, anyways.
 
-- (give_reward)
+- (check_reward)
 
 You have something I want.
 /perform lean_forward
@@ -54,6 +57,7 @@ Aren't you?
     That's right.
     You're going to give me that pretty little Bloodstone
     and I might give you something in return.
+    -> give_reward
 
 + [no]
     I would think twice about that if I were you.
@@ -66,11 +70,30 @@ Aren't you?
     
     ++[no]
         Very good. 
-        I can be a lot of fun with the right guest.
+        I can be a lot of fun with the right...toy.
     
 + [timeout]
-    Well, do you want to be used and abused?
-    -> give_reward
+    Well. Are you going to give me what I want?
+    -> check_reward
+
+- (give_reward)
+/character nega hand_out
+Hand it over.
+//player needs to stick their wrist out 
+
+/character nega swipe_hand
+/character nega laugh
+Fuck ya!
+You're my bitch now.
+
+/character nega give_dice
+Go ahead. Roll the dice.
+Let's see what you're going to get for 
+this pretty little gift.
+
+//character rolls dice
+
+-
 
 +[distracted] -> Nega_PayAttention -> give_reward
 

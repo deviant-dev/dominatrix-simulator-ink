@@ -1,5 +1,7 @@
 === yuki_intro ===
 { web: -> select_gender -> }
+~ obey = 0
+~ disobey = 0
 
 /scene entry.yuki_intro
 /character yuki  

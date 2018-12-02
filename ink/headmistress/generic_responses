@@ -1,25 +1,27 @@
 
 === Headmistress_GoodJob ===
-TODO: rewrite goodjob
 
-// rewrite these for Headmistress
 // /perform caress_thigh
 
 { shuffle:
     - Most excellent.
     - There is hope for you, yet!
-    - Slaves in this House 
-    There's a good {player_name}.
-    - What a good little {player_name}.
-    - That's my {player_name}.
-    - Aren't you the sweetest little thing.
-    - Very nice.
-    - That will do just fine.
-    - Quite satisfying.
-    - Mmmm. I like that.
-    - Someone is being a good {player_name}.
-    - Well done.
-    - That's very pleasing.
+    - Slaves in this House must be pleasing to Her.
+    - I can mold you.
+    - You are raw, but you have potential.
+    - I shall delight in shaping you to please Her. 
+    - I am pleased. For now.
+    - You may hold your head high.
+    - Splendid.
+    - A rousing performance.
+    - Eloquence becomes you.
+    - You seek to impress.
+    - Continue in this way.
+    - Most pleasing.
+    -
+    -
+    -
+    -
 }
 
 ->->
@@ -72,9 +74,75 @@ TODO: Rewrite payattention
 ->->
 
 === Headmistress_player_masturbate ===
-TODO: Player Masterubate Break
 Our guests are frenzied and demand more.
-{isBoy: Wrap your hand around your rod|slip your fingers between your neterlips} and entertain them.
+{isBoy: Wrap your hand around your rod|slip your fingers between your nether lips} and entertain them.
+
+/character headmistress tap_paddle
+All eyes are on you, slave.
+Are you {isBoy: hard|wet}?
+
++[yes]
+~ obey++
+As you should be.
+You may continue until I instruct you otherwise.
+
++[no]
+~ disobey++
+A shame we must rectify.
+Arouse yourself and continue until I give you leave to stop.
+
+-
++[wait 10]
+-> masturbation_comment->
+
+-
++[wait 10]
+-> masturbation_comment->
+
+-
++[wait 10]
+-> masturbation_comment->
+
+-
++[wait 10]
+-> masturbation_comment->
+
+-
++[wait 10]
+-> masturbation_comment->
+
+-
++[wait 10]
+- -> headmistress_punishment_spanking.FinalEnding
+
+->->
+
+= masturbation_comment
+
+{obeyed():
+    -> Headmistress_masturbation_comments ->
+- else:
+    -> Headmistress_masturbation_punishment ->
+}
+
+->->
+
+=== Headmistress_masturbation_punishment ===
+{ shuffle:
+    - Your suffering is prolonged when you fail to try.
+    - At least you may please us with this performance.
+    - Thy {isBoy: turgid rod|inflamed twat} is our only consolation.
+    - Your training will be thorough.
+    - {isBoy: Bounce your shaft|Spread your nether lips} for us. 
+    - We enjoy your suffering {player_name}.
+    - Harder, that you may suffer more fully.
+    - You disappoint us when you fail to stay {isBoy: erect|swollen}.
+    - Your discomfort is our succor.
+    - Ahhh. Your torment is bewitching.
+    - 
+    -
+    -
+}
 
 ->->
 
@@ -92,8 +160,9 @@ Our guests are frenzied and demand more.
     - Look at those deft fingers.
     - Show restraint.
     - A {isBoy: hard shaft|wet slit} is a pleasing {isBoy: shaft|slit}.
-    - 
-    -
+    - Proper performance for guests is a requirement {isBoy: toad|strumpet}.
+    - One must be proud to display their arousal.
+    - You please our guests with your performance.
     -
 }
 
