@@ -448,7 +448,7 @@ She will teach you how to properly take a punishment.
 Hurry up now!
 She doesn't like to be kept waiting.
 
-~ headmistress_unlocked = true
+~ headmistress_hub_status = unlocked
 -> exit
 
 = Nega_finish
@@ -588,6 +588,6 @@ Time to get a taste of your first punishment.
 Better get your ass to the Headmistress.
 She doesn't like to be kept waiting.
 
-~ headmistress_unlocked = true
+~ headmistress_hub_status = unlocked
 //need to know how player gets to next room
 -> exit

@@ -112,5 +112,5 @@ Aren't you?
 
 +[distracted] -> Nega_PayAttention -> nega_reward_dice.give_reward
 
-- ~ nega_unlocked = true
+- ~ nega_hub_status = unlocked
 -> exit

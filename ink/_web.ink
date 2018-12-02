@@ -35,6 +35,8 @@ INCLUDE yuki/reward_massage
 INCLUDE yuki/task_fanning
 INCLUDE yuki/generic_responses
 
+VAR debug = false
+
 { isWeb() :
     - -> table_of_contents
 	- else : -> game_intro
