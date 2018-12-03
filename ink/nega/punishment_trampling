@@ -88,12 +88,12 @@ Very good, accept your place beneath me. Embrace that which will hurt you!
 I stepped outside earlier and got the bottoms of my boots dirty. 
 
 -   (ask_clean_boot) {Would you be a dear and clean that up for me with your tongue?|Now are you going to clean my boot?}
-    +   Yes 
+    +   [Yes]
     You're such a dirty {degrading_name()}! I love it! Now get busy!
     -> accept_boot_lick
-    +   No
+    +   [No]
     You ungrateful {degrading_name()}! Here's a piece of Obsidian. 
-    - {~ demerits++}
+    - ~ demerits++
     {   ask_clean_boot < 12:
         -> ask_clean_boot
         -   else:
@@ -114,7 +114,8 @@ I stepped outside earlier and got the bottoms of my boots dirty.
     Can you believe how lowly you are, {degrading_name()}? You're less important than the dirt beneath my heels. -> switch_feet
     +   [Unsuccessful]
     You should know how to do this by now, {degrading_name()}! Again! 
-    - {~ demerits++} -> lick_2
+    - ~ demerits++ 
+    -> lick_2
     
 - (switch_feet) /Nega switches feet, so the other boot is now in front of the player.
 
@@ -123,14 +124,16 @@ I stepped outside earlier and got the bottoms of my boots dirty.
     You make a good shoe polisher! Perhaps I'll have you clean out up my shoe closet one of these days. -> lick_4
     +   [Unsuccessful]
     My other boot deserves the same attention as the first, {degrading_name()}! Again! 
-    - {~ demerits++} -> lick_3
+    - ~ demerits++ 
+    -> lick_3
     
 - (lick_4) {Keep licking, {degrading_name()}!|Don't disappoing me now, {degrading_name()}!}
     +   [Successful Lick]
     Very nice! All clean! -> inspect
     +   [Unsuccessful]
     You're worthless! 
-    - {~ demerits++} -> lick_4
+    - ~ demerits++ 
+    -> lick_4
 
 - (inspect) /Nega inspects the bottoms of her boots.
 If your tongue is this thorough, I'll bet it would be useful for other things as well...
@@ -154,7 +157,8 @@ I want to inspect you.
     +   [Success] -> stand_at_attention_success 
     +   [Failure]
     Not good enough! Try again! 
-    - {~ demerits++} -> stand_at_attention
+    - ~ demerits++ 
+    -> stand_at_attention
 
 - (stand_at_attention_success)
 So, what do we have here?
@@ -168,7 +172,8 @@ Ha! Well it's not your lucky day!
     +   [Success] -> present_ass_success
     +   [Failure]
     That's not right! Try again!
-    - {~ demerits++} -> present_ass
+    - ~ demerits++ 
+    -> present_ass
 
 - (present_ass_success)
 /Nega laughs
@@ -191,21 +196,23 @@ Alright, {degrading_name()}! You are allowed to face me again.
     +   [Success] -> kneel_success
     +   [Failure]
     That's not right! Try again!
-    - {~ demerits++} -> kneel
+    - ~ demerits++ 
+    -> kneel
 
 - (kneel_success) Good boy/girl.
 /Nega lifts extended leg slightly
 - Does the sight of my boots turn you on?
-+   Yes
++   [Yes]
     Ha! You're such a bitch, you know that?
-    + +     Yes
+    + +     [Yes]
             That was a rhetorical question, {degrading_name()}!
             /Nega is obviously amused though
-            - {~ demerits--} -> after_observe_boots
-    + +     No
+            ~ demerits--
+            -> after_observe_boots
+    + +     [No]
             I don't think you'll hold onto that self-esteem for very long here, slave. -> after_observe_boots
     + +     [No response] -> after_observe_boots
-+   No
++   [No]
     Not a foot fetishist, huh? That'll only make what I'm about to do to you all the more satisfying.
 
 - (after_observe_boots)
@@ -256,39 +263,39 @@ That should keep you sufficiently horny!
 {~I want to hurt you now, {degrading_name()}!|Time to suffer, {degrading_name()}!|You're in for it now, {degrading_name()}!|I'm going to walk all over you, {degrading_name()}!}
 
 -   Are you ready?
-    +   Yes
+    +   [Yes]
     Ha! That's what you think.
-    +   No
+    +   [No]
     I don't really care, you know.
-    +   [Ignore]
+    +   [timeout]
     Too scared to talk? 
 
 - (lie_on_back) Lie on your back.
     +   [Comply] -> foot_on_chest
     So vulnerable, a befitting position for a little {degrading_name()} like you.
     +   [Don't comply]
-    - {~demerits++}
+    - ~demerits++
     Don't feel like complying, eh? Why don't you try again with this Obsidian? -> lie_on_back
 
 - (foot_on_chest) /Nega puts her foot on the player's chest.
 -   (own_you) I own you, right, {degrading_name()}?
-    +   Yes
+    +   [Yes]
     That's right, {degrading_name()}! -> steps_onto_player
-    +   No
-    - {~demerits++}
+    +   [No]
+    - ~demerits++
     /Nega pounds the player's chest with her boot. Fuck you, {degrading_name()}! Your cheekiness is going to get you in a lot of trouble!
-    +   Ignore
+    +   [timeout]
     Hey, I asked you a question! -> own_you
 
 - (steps_onto_player) /Nega steps up onto the player. 
 How does that feel, {degrading_name()}? 
 -   (disgusting) I'll bet a disgusting {degrading_name()} like you is really enjoying this, right?
-    +   Yes
+    +   [Yes]
     You're so pathetic! But that pleases me, {degrading_name()}. -> nega_walks
-    +   No 
+    +   [No]
     That only makes me enjoy this more, {degrading_name()}. -> nega_walks
-    +   Ignore 
-    - {~demerits++}
+    +   [timeout] 
+    - ~demerits++
     Answer me, {degrading_name()}! -> disgusting
 
 - (nega_walks) /Wait 10 - Nega steps around on the player's stomach and chest
@@ -312,7 +319,7 @@ How does that feel, {degrading_name()}?
     +   [Comply]
     /Wait 10. -> other_one
     +   [Don't comply]
-    - {~demerits++}
+    - ~demerits++
     Not good enough, keep at it! -> keep_going
 
 - (other_one) Now the other one. 
@@ -320,14 +327,14 @@ How does that feel, {degrading_name()}?
     +   [Comply]
     /Wait 10. -> keep_licking
     +   [Don't comply]
-    - {~demerits++}
+    - ~demerits++
     I don't care how you feel about it, lick my boot! -> other_boot_in_face
 
 - (keep_licking) That's it, {degrading_name()}, just like that. Keep licking.
     +   [Comply]
     /Wait 10. -> finish 
     +   [Don't comply]
-    - {~demerits++}
+    - ~demerits++
     You don't get a reprieve until you lick my boot clean, {degrading_name()}! You won't get any mercy from me! -> keep_licking
 
 - (finish) 
