@@ -43,7 +43,7 @@ Aw, you'll change your mind.
 
 {FirstVisit:
 
-Get the oil, you know what to do.
+Get the oil, you know how this goes.
 
 -else:
 
@@ -190,9 +190,9 @@ Do you even find me attractive?
 + [timeout]
 ->Yuki_Timeout->
 ->timeout4
--->sexual_appraisals->
 
-->sexual_appraisals->
+~massage_count = 0
+->eat_ass->
 
 -(timeout5)
 
@@ -208,6 +208,9 @@ I don't care if you don't like it, <i>you're</i> here to please <i>me.</i>
 + [timeout]
 ->Yuki_Timeout->
 ->timeout5
+
+~massage_count = 0
+->eat_ass
 
 -(timeout6)
 
@@ -237,11 +240,21 @@ So you're going to get me off this way.
 //Duplicate scene from above for diversion to dialogue.
 /perform laying_down_raise_ass
 
-In that case, I want you to eat my ass.
+-(timeout24)
 
--->sexual_appraisals->
+Go stand by my feet, I want you to eat my ass.
 
-->sexual_appraisals->
+/unlock move-approach
+
++[move]
+/lock move-approach
+
++[timeout]
+->Yuki_Timeout->
+->timeout24
+
+~massage_count = 0
+->eat_ass
 
 -(timeout11)
 
@@ -257,6 +270,9 @@ I don't care if you don't like it, <i>you're</i> here to please <i>me.</i>
 + [timeout]
 ->Yuki_Timeout->
 ->timeout11
+
+~massage_count = 0
+->eat_ass
 
 -(timeout10)
 
@@ -288,9 +304,7 @@ Go on you good {player_name}, get to groping!
 
 Mm, I love the feeling of you kneading my breasts.
 
-->massage_appraisals->
-
-->massage_appraisals->
+->massage_breasts->
 
 This is making me horny too.
 
@@ -298,9 +312,8 @@ I want more though.
 
 Play with my nipples slave!
 
-->sexual_appraisals->
+->massage_breasts->
 
-->sexual_appraisals->
 Oh my Goddess, I can't stand it anymore!
 
 -(timeout8)
@@ -346,6 +359,8 @@ You're such a good {player_name}, doing exactly what I tell you.
 
 = massage_neck
 
+{~| | |-> apply_oil}
+
 Just around my shoulders and below my head.
 
 -(massage_neck_repeat)
@@ -360,6 +375,8 @@ Just around my shoulders and below my head.
 -->Cont
 
 = massage_back
+
+{~| | |-> apply_oil}
 
 Anywhere on my back is fine.
 
@@ -376,6 +393,8 @@ Anywhere on my back is fine.
 
 = massage_legs1
 
+{~| | |-> apply_oil}
+
 From my thighs to my feet if you please.
 
 -(massage_legs1_repeat)
@@ -390,6 +409,8 @@ From my thighs to my feet if you please.
 -->Cont
 
 = massage_shoulders
+
+{~| | |-> apply_oil}
 
 Just around my shoulders and below my head.
 
@@ -406,6 +427,8 @@ Just around my shoulders and below my head.
 
 = massage_belly
 
+{~| | |-> apply_oil}
+
 Just around my little belly for now.
 
 -(massage_belly_repeat)
@@ -420,6 +443,8 @@ Just around my little belly for now.
 -->Cont5
 
 = massage_legs2
+
+{~| | |-> apply_oil}
 
 Same as before, thighs to feet please.
 
@@ -501,6 +526,10 @@ I know the kind of dirty {player_name} you are.
 
 +[No]
 Well...Fine. 
+/unlock move-approach
+
++[move]
+/lock move-approach
 ->BreakReturn1
 
 +[timeout]
@@ -527,6 +556,10 @@ So you like slower massages?
     
     ++ [No]
     You're a real workaholic, you know? 
+    /unlock move-approach
+
+    +[move]
+    /lock move-approach
     ->BreakReturn1
 
 + [timeout]
@@ -643,9 +676,22 @@ Watching you squirm to get away is so funny, but I guess it's not much of a rewa
 
 - /perform laying_down_stomach
 
-But I still need more massaging, so you need to get back to that. Play time's over for now!
+But I still need more massaging, so you need to get back to that. 
 
-->->
+-(timeout25)
+
+Play time's over for now!
+
+/unlock move-approach
+
++[move]
+/lock move-approach
+
++[timeout]
+->Yuki_Timeout->
+->timeout25
+
+-->->
 
 = back_break1
 
@@ -673,6 +719,11 @@ Mmm, maybe you don't think you've earned that privledge yet. Are you really sure
 
     ++[Yes]
     Mmph. You're such a spoil sport.
+    
+    /unlock move-approach
+
+    +++[move]
+    /lock move-approach
     ->BreakReturn2
     
     ++[No]
@@ -686,7 +737,17 @@ Just a quick kiss then!
 
 First the left one, and I mean my left, not yours!
 
-Then the right one.
+--(kiss_breasts_repeat1)
+++[pose:kiss_breasts]
+
+++[pose:massage_failed] -> kiss_breasts_repeat1
+
+--Then the right one.
+
+--(kiss_breasts_repeat2)
+++[pose:kiss_breasts]
+
+++[pose:massage_failed] -> kiss_breasts_repeat2
 
 +[timeout]
 ->Yuki_Timeout->
@@ -718,7 +779,25 @@ Just a quick kiss then!
 
 First the left one, and I mean my left, not yours!
 
-Good {player_name}.
+Just a quick kiss then!
+
+/perform laying_down_back
+
+First the left one, and I mean my left, not yours!
+
+-(kiss_breasts_repeat3)
++[pose:kiss_breasts]
+
++[pose:massage_failed] -> kiss_breasts_repeat3
+
+-Then the right one.
+
+-(kiss_breasts_repeat4)
++[pose:kiss_breasts]
+
++[pose:massage_failed] -> kiss_breasts_repeat4
+
+-Good {player_name}.
 
 /perform laying_down_caress_breasts
 
@@ -821,7 +900,12 @@ Here.
 
 Lick them clean.
 
-You're so efficient with that mouth of yours.
+-(lick_fingers_repeat)
++[pose:lick_fingers]
+
++[pose:massage_failed] -> lick_fingers_repeat
+
+-You're so efficient with that mouth of yours.
 
 I can hold off for now. 
 
@@ -877,13 +961,25 @@ Back to work!
 
 -(FirstVisit)
 
-Hey! What did I tell you?!
+Hey! 
+
+Back off!
+
+/perform idle
+
+/perform angry
+
+What did I tell you?!
 
 Only massaging what I tell you!
+
+/perform confued
 
 All you had to was follow some simple directions!
 
 Just because you're here for a reward, doesn't mean you get to do whatever you want! 
+
+/perform unhappy
 
 The rules still apply!
 
@@ -955,6 +1051,8 @@ Heheh. That was fun! Be a good {player_name} so you can come back! Literally!
 Come on slave, lick me clean!
 
 Get your dirty tongue in there.
+~massage_count = 0
+->eat_ass->
 
 Do not under any circumstances move your mouth from my ass.
 
@@ -969,7 +1067,8 @@ It's hard to hear you with your mouth being so busy.
 
 -This was supposed to be a reward that we both enjoy, and now you've forced me to be selfish!
 
-->sexual_appraisals->
+~massage_count = 0
+->eat_ass->
 
 Hm, an asshole licking an asshole, how appropriate!
 
@@ -977,7 +1076,8 @@ Oh yes, I can feel it coming.
 
 Faster slave, faster!
 
-->sexual_appraisals->
+~massage_count = 0
+->eat_ass->
 
 Yes, yes, yes! Oh Goddess here it comes!
 
@@ -987,9 +1087,21 @@ Mmm, at least you bad slaves are good for something.
 
 Now clean out my pussy with your tongue!
 
+~massage_count = 0
+->eat_ass->
+//It's close enough, you think?
+
+That's enough.
+
+/perform idle
+
+/perform angry
+
 And you {isBoy: mister|miss} don't get any satisfaction for yourself.
 
 Next time you come for a reward, you should act more grateful!
+
+/perform confused
 
 And on top of that, I'm giving you a punishment marker!
 
@@ -1000,8 +1112,6 @@ You're dismissed slave, come back when your attitutde improves.
 
 = finger_pussy
 
-Come on, finger fuck me {player_name}.
-
 -(finger_pussy_repeat)
 +[pose:finger_pussy]
     ~massage_count++
@@ -1009,11 +1119,11 @@ Come on, finger fuck me {player_name}.
     {massage_count < 2: -> finger_pussy_repeat}
 +[pose:finger_pussy_failed] -> finger_pussy
 
-->->
+-->->
 
 = massage_ass
 
-Grab those buns, hun.
+{~| | |-> apply_oil}
 
 -(massage_ass_repeat)
 +[pose:massage_ass]
@@ -1022,11 +1132,11 @@ Grab those buns, hun.
     {massage_count < 3: -> massage_ass_repeat}
 +[pose:massage_failed] -> massage_ass
 
-->->
+-->->
 
 = massage_breasts
 
-Grabs those boobs, goob.
+{~| | |-> apply_oil}
 
 -(massage_breasts_repeat)
 +[pose:massage_breasts]
@@ -1035,11 +1145,9 @@ Grabs those boobs, goob.
     {massage_count < 3: -> massage_breasts_repeat}
 +[pose:massage_failed] -> massage_breasts
 
-->->
+-->->
 
 = eat_ass
-
-I should feel your head bobbing up and down while you lick.
 
 -(eat_ass_repeat)
 +[pose:eat_ass]
@@ -1048,4 +1156,21 @@ I should feel your head bobbing up and down while you lick.
     {massage_count < 2: -> eat_ass_repeat}
 +[pose:eat_ass_failed] -> eat_ass
 
-->->
+-->->
+
+= apply_oil
+
+{shuffle:
+- Could you put some more oil on me?
+- How about some more oil?
+- Use that oil before you continue.
+- I think I need more oil.
+}
+
+-(apply_oil_repeat)
+
++[pose:apply_oil]
+
++[pose:apply_oil_failed] -> apply_oil_repeat
+
+-->->
