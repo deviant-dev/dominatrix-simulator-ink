@@ -3,15 +3,11 @@
 /scene ?
 /character yuki
 
-/perform bounces
+Don't think just because I'm not as mean as the other mistresses, that I can't be good at punishing you!
 
-Oh, you're here! I'm so excited you've decided to visit me. You're such a good {player_name}.
+But I don't understand why you need to be punished.
 
-/perform serious
-
-Wait, you're here for a punishment?! You haven't been a good {player_name} at all!
-
-- (forget)
+- (timeout1)
 
 I explained to you the rules didn't I? 
 
@@ -27,20 +23,12 @@ Somebody isn't a very good slave then.
 Now that's just not true, and you know it. Lying counts as being disobedient too. That'll earn you <I>another</I> punishment mark.
 
 + [timeout] 
-Heeeey, anyone home?
-I asked you a question.
--> forget
+->Yuki_Timeout->
+-> timeout1
 
 + [distracted]
--> PayAttention -> forget
-
-- /perform pleased
-
-Well, at least you came to me.
-
-/perform lean_forward
-
-But don't think that means I'll be too easy on you!
+->Yuki_PayAttention-> 
+->timeout1
 
 Now be a good {player_name}
 
@@ -48,44 +36,28 @@ Now be a good {player_name}
 
 and come here.
 
-Spread your legs and put your hands behind your back.
-//cycle plays while the game waits for the player to get into the pose*
+-(stand_hands_behind)
+-(stand_hands_behind_tries)
+
 {cycle:
-    - Come here {player_name}, and present yourself.
-    - This is no time for silly games. Show yourself to me.
-    - Do you need to clean your ears? Get into position already!
+    - Spread your legs and put your hands behind your back.
+    - Come on, feet apart, hands behind your back.
 }
 
-// Put Player Pose check here, work on later
+-(stand_hands_behind_fail)
+
++[pose:stand_hands_behind] ->HoldPose(-> stand_hands_behind_fail, ->stand_hands_behind) ->
++{stand_hands_behind_tries < 2} [timeout] -> stand_hands_behind
++{stand_hands_behind_tries >= 2} [timeout] -> Yuki_Interested -> stand_hands_behind
 
 /perform circle_player
-Don't move! I'm thinking about what to do with you.
+I'm thinking about what to do with you.
 
 /perform inspect_genitals
 
-Hm, we're going to need to get you <i>really</i> 
-{player_name == "boy": 
-<> hard
-- else: 
-<> wet
-}
-<> first.
+Hm, we're going to need to get you <i>really</i> {isBoy: hard|wet} first.
 
-// The confusing block below is a semi-randomized tease for the player.
-
-
--> tease_bank1
-
-// This is the first Tease Bank. It's a randomized combination of 7 poses and 6 phrases. Once 6 different combinations have been created, it jumps to the first edging break. Ignore "bank3_loop" at the end for now.
-
-- (tease_bank1)
-
-// Need teasing poses to insert
-
-{~ /perform tease1| /perform tease2| /perform tease3| /perform tease4| /perform tease5| /perform tease6| /perform tease 7}
-{~ Mmm, heehee.| I can tell how much you like this!| This punishment is just what you need!|Like what you see?|What do you like the most? Trick question, silly!| Aw. I'm just too much Mistress for you to handle.| Don't you enjoy yourself too much!}
-{TouchQ: -> bank3_loop}
-{EnjoymentQ: -> teaseloop2}
+-> tease_bank1 ->
 
 {! -> tease_bank1| -> tease_bank1|}
 - (EnjoymentQ)
@@ -102,11 +74,12 @@ Well maybe next time you shouldn't be such a naughty little slave.
 ->teaseloop2
 
 +[timeout]
-Hey, I know you're enjoying the show, but answer me! 
+->Yuki_Timeout->
 -> EnjoymentQ
 
 +[distracted]
--> PayAttention -> EnjoymentQ
+-> Yuki_PayAttention -> 
+->EnjoymentQ
 - (teaseloop2)
 
 {! -> tease_bank1| -> tease_bank1| -> tease_bank1}
@@ -118,66 +91,54 @@ Hey, I know you're enjoying the show, but answer me!
 
 /perform amused
 
-Mmm, oh goodie, your {player_name == "boy":
-<> cock is nice and hard.
-- else:
-pussy is nice and wet.
-}
+Mmm, oh goodie, your {isBoy: cock is nice and hard.|pussy is nice and wet.}
 
 /perform bored
 
-But I don't think that's enough. Your cum isn't as pent up as I want. We're gonna need to have some more fun!
+But I don't think that's enough. 
+
+Your cum isn't as pent up as I want. 
+
+We're gonna need to have some more fun!
 
 /perform serious 
 
 Now this time, I'll let you touch yourself. Don't get too excited, there's a catch! You aren't allowed to cum, no matter how badly you want to!
 
-- (tease_bank2)
-
-// This is the second Tease Bank. It functions identically as the first, except with different lines. Same poses. Again, ignore "bank3_loop". After 6 combinations, it jumps to edgebreak2.
-{~ /perform tease1| /perform tease2| /perform tease3| /perform tease4| /perform tease5| /perform tease6| /perform tease7}
-
-{~ You should see your face {player_name}, you can't keep your eyes off me!| You better keep rubbing that {player_name == "boy":
-<> cock
-- else:
-<> pussy
-} <> silly {player_name}.| Maybe if you had been a good {player_name}, you could have massaged me instead.| Bad {player_name}s only get to watch.| Next time, follow the rules more closely and we can have even more fun!| You better not be disobedient anymore, no matter how much this turns you on! | Why did you have to be a naughty little slave and break the rules?}
-
-{FeelGoodQ: -> teaseloop3}
-
 {! -> tease_bank2| -> tease_bank2| -> tease_bank2}
 - (FeelGoodQ)
 Am I making you feel good, you naughty {player_name}?
+
 +[Yes]
 ~ obey++
 Heeheehee, I know, I can see it in your eyes! 
 -> teaseloop3
+
 +[No]
 ~ disobey++
 Then next time you better behave yourself for me and the other Mistresses! 
 -> teaseloop3
+
 +[timeout]
-I think I know the answer, but do tell. ->FeelGoodQ
+->Yuki_Timeout->
+->FeelGoodQ
+
 +[disracted]
--> PayAttention -> FeelGoodQ
+-> Yuki_PayAttention ->
+-> FeelGoodQ
 
 - (teaseloop3)
+
 {!-> tease_bank2| -> tease_bank2| -> tease_bank2| -> edgebreak2|->bank3_loop}
 
 - (edgebreak2)
-
-// This is where Yuki checks to see if you've had enough teasing. If the player answers yes, Yuki moves on to the foot masturbation. If the player answers no, the game jumps to bank3_loop
 
 {bank3_loop: -> BCumQ}
 /perform cock_head_to_left
 
 I bet you've had enough of my teasing. 
--(TouchQ) Do you want me to touch your {player_name == "boy":
-<> cock
-- else:
-<> cunt
-}
-<> now?
+-(TouchQ) 
+Do you want me to touch your {isBoy: cock|cunt}?
 
 + [Yes]
     
@@ -190,10 +151,11 @@ I bet you've had enough of my teasing.
     -> bank3_loop
 
 + [timeout]
-    Hey! Yoohoo! I'm talking to <I>you</I>! ->TouchQ
+->Yuki_Timeout-> 
+->TouchQ
 
 + [distracted]
--> PayAttention -> TouchQ
+-> Yuki_PayAttention -> TouchQ
 
 -(bank3_loop)
 {! -> tease_bank1| -> tease_bank2| -> tease_bank1| -> tease_bank1}
@@ -215,26 +177,30 @@ I like to hear that. But you better not, we're not done yet!
 Don't worry, I have other plans for you! 
 
 +[timeout]
-Someone's paying a little too much attention. ->CumQ1
+->Yuki_Timeout->
+->CumQ1
 
 +[distracted]
--> PayAttention -> CumQ1
+-> Yuki_PayAttention 
+-> CumQ1
 
 - /perform thoughtful
 
-I want to play with you myself now! Lie down and put your hands over your head. 
+I want to play with you myself now! 
+
+-(lay_down)
+-(lay_down_tries)
+
+Lie down and put your hands over your head. 
 
 ->foot_tease
-
-// This is a combination of Tease Banks 1 and 2 to minimize VO but still have some variety. Each original Test Banks' combination loop is instructed to return to bank3_loop after each combination, so it avoids talking to Yuki again.
-
 - (foot_tease)
+-(lay_down_fail)
++ [pose:lay_down] -> HoldPose(-> lay_down_fail, -> lay_down) ->
++ { lay_down_tries < 2 } [timeout] -> lay_down
++ { lay_down_tries >= 2 } [timeout] -> Yuki_Interested -> lay_down
 
-// The tease loop is now over.
-
-// Put Player Pose check here, work on later
-
-/perform raised_foot_over_genitals
+- /perform raised_foot_over_genitals
 
 //Yuki needs to be standing over the player, with her foot hovering over their genitals
 
@@ -256,11 +222,11 @@ Do you want me to tease you with them?
 
 + [timeout]
 
-    Hey, my balance isn't the greatest okay, so give me an answer please. 
+    ->Yuki_Timeout->
     -> FootQ
 
 + [distracted]
--> PayAttention -> FootQ
+-> Yuki_PayAttention -> FootQ
 
 - (LongFoot)
 
@@ -287,11 +253,11 @@ I know, I'm such a clever Mistress!
 ~ disobey++
 Well okay smarty-pants, that's not very polite of you.
 +[timeout]
-Hey, I asked you a question!
+->Yuki_Timeout->
 -> EfficientQ
 
 +[distracted]
--> PayAttention -> EfficientQ
+-> Yuki_PayAttention -> EfficientQ
 
 -{obey >= 5:
 I don't know how you got a punishment marker. You've been a very good {player_name} this entire session.
@@ -338,11 +304,11 @@ But I bet you like my punishment. You like my punishments more than the other mi
 
 + [timeout]
 
-    Oooh, does my foot feel so good you can't answer me? Well at least try, heehee. 
+  ->Yuki_Timeout->
     -> ComeBackQ
 
 + [distracted]
--> PayAttention -> ComeBackQ
+-> Yuki_PayAttention -> ComeBackQ
 
 - (TwoFeet)
 
@@ -397,11 +363,11 @@ But come on, you can't tell me this doesn't feel good.
     
 + [timeout]
 
-    Did I win you over or something? I don't know until you answer me. 
+    ->Yuki_Timeout->
     ->HateQ
 
 + [distracted]
--> PayAttention -> HateQ
+-> Yuki_PayAttention -> HateQ
 
 - (edgebreak3)
 
@@ -430,10 +396,12 @@ You better mean that, and not be lying to me like a bad {player_name}!
 <I>Somebody's</I> enjoying themselves a little too much.
 
 +[timeout]
-Get your head out of my ass and listen up!
+->Yuki_Timeout->
 -> BadQ
+
 +[distracted]
--> PayAttention -> BadQ
+-> Yuki_PayAttention -> 
+-> BadQ
 
 - I think we need to edge you a wee bit more.
 
@@ -499,15 +467,19 @@ Can you keep a secret?
 +[Yes]
 Oh good. I just feel so bad for you, and you've been so good today. 
 ->RuinedOrgasm
+
 +[No]
 Well, we can't have that now. Then you'd get <I>me</I> in trouble!
 -> Denial
+
 +[timeout]
 Hm, well if cumming matters that little to you.
 -> Denial
+
 +[distracted]
 If you're not going to pay attention to me, then I won't pay any more attention to you.
 -> Denial
+
 -else:
 But you and I both know you can't cum, because that wouldn't be a proper punishment!
 -> Denial
@@ -597,33 +569,26 @@ Goodbye slave, I'll be seeing you around, I'm sure!
 - Is my little slave going to explode soon?
 - Mmm, I'm going to make you cum, right?
 - You're not gonna last much longer, are you?
-- Do you feel like your {player_name == "boy": 
-<> cock
-- else:
-<> cunt
-}
-<> is going to burst?
+- Do you feel like your {isBoy: cock|cunt} is going to burst?
 }
 
 ->->
 
-= PayAttention
-{cycle:
- - You're not very good at this yet, are you?
-    You're supposed to look at me when I'm talking.
-    - Bad {player_name}! You should look at me when I speak to you.
-    - Oh gee. You need a lot of training. Look at me.
-    - Didn't anyone ever teach you to look at people 
-    when they're speaking to you?
-    - It's very rude not to look at me when I'm speaking to you.
-}
+= tease_bank1
 
-+ [paying_attention]
-    { cycle:
-        - Now... what was I saying? Oh right...
-        - Much better. Ahem.
-        - Good {player_name}. You might be teachable after all.
-        - Now back to your instructions.
-    }
+{~ /perform tease1| /perform tease2| /perform tease3| /perform tease4| /perform tease5| /perform tease6| /perform tease 7}
+{~ Mmm, heehee.| I can tell how much you like this!| This punishment is just what you need!|Like what you see?|What do you like the most? Trick question, silly!| Aw. I'm just too much Mistress for you to handle.| Don't you enjoy yourself too much!}
+{TouchQ: -> bank3_loop}
+{EnjoymentQ: -> teaseloop2}
+
+->->
+
+= tease_bank2
+
+{~ /perform tease1| /perform tease2| /perform tease3| /perform tease4| /perform tease5| /perform tease6| /perform tease7}
+
+{~ You should see your face {player_name}, you can't keep your eyes off me!| You better keep rubbing that {isBoy: cock|pussy} {player_name}.| Maybe if you had been a good {player_name}, you could have massaged me instead.| Bad {player_name}s only get to watch.| Next time, follow the rules more closely and we can have even more fun!| You better not be disobedient anymore, no matter how much this turns you on! | Why did you have to be a naughty little slave and break the rules?}
+
+{FeelGoodQ: -> teaseloop3}
 
 ->->

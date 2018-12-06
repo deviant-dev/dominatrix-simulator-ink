@@ -23,7 +23,7 @@
 
 + [timeout] -> Yuki_PayAttention
 
-
+// This is better for verbal commands.
 === Yuki_Timeout ===
 
 {cycle:
@@ -40,3 +40,19 @@
 ->->
 
 +[timeout] -> Yuki_Timeout
+
+// This is better for actions.
+=== Yuki_Interested ===
+
+{cycle:
+
+    - I asked you to do something.
+    - Are you going to follow directions?
+    - It's time to move, slave.
+    - Are you stuck?
+    - Come on, hurry up!
+    - What's taking so long?
+    - Move it, {player_name}!
+}
+
+->->

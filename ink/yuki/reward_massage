@@ -359,7 +359,7 @@ You're such a good {player_name}, doing exactly what I tell you.
 
 = massage_neck
 
-{~| | |-> apply_oil}
+{~| | |-> apply_oil->}
 
 Just around my shoulders and below my head.
 
@@ -376,7 +376,7 @@ Just around my shoulders and below my head.
 
 = massage_back
 
-{~| | |-> apply_oil}
+{~| | |-> apply_oil->}
 
 Anywhere on my back is fine.
 
@@ -393,7 +393,7 @@ Anywhere on my back is fine.
 
 = massage_legs1
 
-{~| | |-> apply_oil}
+{~| | |-> apply_oil->}
 
 From my thighs to my feet if you please.
 
@@ -410,7 +410,7 @@ From my thighs to my feet if you please.
 
 = massage_shoulders
 
-{~| | |-> apply_oil}
+{~| | |-> apply_oil->}
 
 Just around my shoulders and below my head.
 
@@ -427,7 +427,7 @@ Just around my shoulders and below my head.
 
 = massage_belly
 
-{~| | |-> apply_oil}
+{~| | |-> apply_oil->}
 
 Just around my little belly for now.
 
@@ -444,7 +444,7 @@ Just around my little belly for now.
 
 = massage_legs2
 
-{~| | |-> apply_oil}
+{~| | |-> apply_oil->}
 
 Same as before, thighs to feet please.
 
@@ -1123,7 +1123,7 @@ You're dismissed slave, come back when your attitutde improves.
 
 = massage_ass
 
-{~| | |-> apply_oil}
+{~| | |-> apply_oil->}
 
 -(massage_ass_repeat)
 +[pose:massage_ass]
@@ -1136,7 +1136,7 @@ You're dismissed slave, come back when your attitutde improves.
 
 = massage_breasts
 
-{~| | |-> apply_oil}
+{~| | |-> apply_oil->}
 
 -(massage_breasts_repeat)
 +[pose:massage_breasts]
