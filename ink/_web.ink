@@ -96,6 +96,9 @@ VAR debug = false
 + Nega Intro
     -> unlock_all -> nega_intro
 
++ Nega Hub
+    -> unlock_all -> nega_hub.hub
+
 + Nega Punishment Trampling
     -> unlock_all -> nega_punishment_trampling
     

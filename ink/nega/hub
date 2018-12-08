@@ -15,7 +15,7 @@
     - rewards > 0:
         Mmm, I like the look of those yummy Bloodstones.
         Are you here to try your luck?
-        + [yes] -> nega_reward_dice
+        + [yes] -> pre_roll_greeting
         + [no]
             Then get the fuck outta here, you little bitch.
             -> exit
@@ -23,3 +23,187 @@
         No Bloodstone treats for me, hmm? Not interested.
         -> exit
 }
+
+//---------- GREETING: Humiliation before paying a reward -------------------
+
+= pre_roll_greeting
+
+//select and do a random task
+
+{shuffle:
+    - -> greeting_lick_boot ->
+    - -> greeting_edge ->
+    - -> greeting_present_ass ->
+}
+
+-> nega_reward_dice
+
+= greeting_lick_boot
+~ licked_boots = true
+
+/Nega sits if not already sitting.
+Get down on all fours like the dog you are, {degrading_name()}!
+/Player poses on all fours
+Good boy/girl
+/Nega extends one foot out
+Come here and kiss my boot, {degrading_name()}!
+/Player's head must remain in position just above the boot tip.
+Very good, accept your place beneath me. Embrace that which will hurt you!
+I stepped outside earlier and got the bottoms of my boots dirty. 
+
+-   (ask_clean_boot) {Would you be a dear and clean that up for me with your tongue?|Now are you going to clean my boot?}
+    +   [Yes]
+    You're such a dirty {degrading_name()}! I love it! Now get busy!
+    -> accept_boot_lick
+    +   [No]
+    You ungrateful {degrading_name()}! Here's a piece of Obsidian. 
+    ~ nega_favor--
+    -> exit
+   
+
+- (accept_boot_lick)
+//The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. It would be really tool if there was actually dirt on the boot that disappeared/fell off as the player "licked"
+
+- (lick_1) /Player must move head up and down near the bottom of the boot.
+    +   [Successful Lick]
+    Very good, {degrading_name()}! Just like that. -> lick_2
+    +   [Unsuccessful]
+    That's not right, {degrading_name()}! Try again! -> lick_1
+    
+- (lick_2) You're so disgusting. Keep going!
+    +   [Successful Lick]
+    Can you believe how lowly you are, {degrading_name()}? You're less important than the dirt beneath my heels. -> switch_feet
+    +   [Unsuccessful]
+    You should know how to do this by now, {degrading_name()}! Again! 
+    ~ nega_favor-- 
+    -> lick_2
+    
+- (switch_feet) /Nega switches feet, so the other boot is now in front of the player.
+
+- (lick_3) {Now, for the other boot, {degrading_name()}!|Lick it, {degrading_name()}!}
+    +   [Successful Lick]
+    You make a good shoe polisher! Perhaps I'll have you clean out up my shoe closet one of these days. -> lick_4
+    +   [Unsuccessful]
+    My other boot deserves the same attention as the first, {degrading_name()}! Again! 
+    - ~ demerits++ 
+    -> lick_3
+    
+- (lick_4) {Keep licking, {degrading_name()}!|Don't disappoing me now, {degrading_name()}!}
+    +   [Successful Lick]
+    Very nice! All clean! -> inspect
+    +   [Unsuccessful]
+    You're worthless! 
+    - ~ demerits++ 
+    -> lick_4
+
+- (inspect) /Nega inspects the bottoms of her boots.
+If your tongue is this thorough, I'll bet it would be useful for other things as well...
+
+->->
+
+
+= greeting_present_ass
+
+/Nega stands if not already standing
+I want to inspect you. 
+-   (stand_at_attention) Stand at attention, {degrading_name()}! Hands behind your head!
+    +   [Success] -> stand_at_attention_success 
+    +   [Failure]
+    Not good enough! Try again! 
+    - ~ demerits++ 
+    -> stand_at_attention
+
+- (stand_at_attention_success)
+So, what do we have here?
+Were you hoping to get lucky with me?
+/Nega spits on the player's face
+Ha! Well it's not your lucky day!
+/Nega leans in and whispers in the player's ear
+{~I'll bet you're really horny. I'm going to make sure you stay that way! No release for you today!|Today I'm going to hurt you, and I'm going to enjoy it!|You are insignificant. I will use you as I see fit.}
+/Nega backs up
+- (present_ass) Now, turn around, bend over and present your ass to me!
+    +   [Success] -> present_ass_success
+    +   [Failure]
+    That's not right! Try again!
+    - ~ demerits++ 
+    -> present_ass
+
+- (present_ass_success)
+/Nega laughs
+You look ridiculous, {degrading_name()}!
+Hold that pose for a bit.
+/Wait 5
+/Nega pulls out a camera (could be a phone)
+/Camera shutter noise
+There we go! It's always good to have a little blackmail material! Don't cross me, or who knows where that picture might end up!
+Alright, {degrading_name()}! You are allowed to face me again. 
+
+->->
+
+
+= greeting_edge
+
+/Nega sits with one leg crossed over the other
+- (kneel) Kneel in front of me, slave. 
+    +   [Success] -> kneel_success
+    +   [Failure]
+    That's not right! Try again!
+    - ~ demerits++ 
+    -> kneel
+
+- (kneel_success) Good boy/girl.
+/Nega lifts extended leg slightly
+- Does the sight of my boots turn you on?
++   [Yes]
+    Ha! You're such a bitch, you know that?
+    + +     [Yes]
+            That was a rhetorical question, {degrading_name()}!
+            /Nega is obviously amused though
+            ~ demerits--
+            -> after_observe_boots
+    + +     [No]
+            I don't think you'll hold onto that self-esteem for very long here, slave. -> after_observe_boots
+    + +     [No response] -> after_observe_boots
++   [No]
+    Not a foot fetishist, huh? That'll only make what I'm about to do to you all the more satisfying.
+
+- (after_observe_boots)
+Look at my boots and start masturbating.
+/Wait 10
+Get wet/hard for me!
+/Wait 10
+Worship my boots, {degrading_name()}!
+/Wait 10
+It is a privilege just to be allowed to gaze upon them.
+/Wait 10
+Especially for one such as yourself who is worth less than the dirt under my heels!
+
+- (edge_1) {Now, keep masturbating until you are close to exploding. Shake your head "no" when you can't endure any longer.|}
+    +   [Yes]
+    You're a cheeky one, aren't you! Keep going! -> edge_1
+    +   [No]
+    Hands off!
+    
+Rest for a minute, {degrading_name()}.
+/Wait 10
+
+- (edge_2) {Back to masturbating! Again, shake your head "no" when you can't endure any longer.|}
+    +   [Yes]
+    Quit being cheeky! Keep going! -> edge_2
+    +   [No]
+    Hands off!
+    
+Rest again. You don't deserve the pleasure of release.
+/Wait 10
+
+- (edge_3) {Now masturbate, one last time! You know what to do, shake your head "no" when you can't endure any longer.|}
+    +   [Yes]
+    Stop it! Keep going! -> edge_3
+    +   [No]
+    Hands off!
+
+That should keep you sufficiently horny! 
+
+->->
+
+//----------------------------------------------------------------------------------
