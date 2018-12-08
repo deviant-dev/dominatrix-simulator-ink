@@ -98,5 +98,8 @@ VAR debug = false
 
 + Nega Punishment Trampling
     -> unlock_all -> nega_punishment_trampling
+    
++ Test Code
+    -> enter_code -> END
 
 
