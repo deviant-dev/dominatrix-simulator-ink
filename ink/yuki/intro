@@ -3,7 +3,7 @@
 ~ obey = 0
 ~ disobey = 0
 
-/scene entry.yuki_intro
+/scene entry.intro2
 /character yuki  
 /equip feather_duster
 
@@ -146,6 +146,7 @@ Do you want to be a good {player_name}?
 + [distracted] -> Yuki_PayAttention -> good_yuki
 
 - (nega_interruption)
+/scene entry.intro3
 
 /character nega saunter
 Oh please! You're always such a good girl, Yuki,
@@ -339,6 +340,7 @@ tearing up that little ass of yours.
 }
 
 = Yuki_finish
+
 /character yuki foot_stomp
 That's enough, Nega!
 No more fun and games for you.
@@ -347,7 +349,9 @@ I'll be reporting you to the Headmistress straight away.
 /character nega laugh
 I'll see you again soon, little mouse.
 Come find me when you've earned a reward.
+
 /perform nega_exit
+/scene entry.intro4yuki
 
 + [wait 5]
 
@@ -448,7 +452,7 @@ She will teach you how to properly take a punishment.
 Hurry up now!
 She doesn't like to be kept waiting.
 
-~ headmistress_hub_status = unlocked
+~ headmistress_hub_status = early_access
 -> exit
 
 = Nega_finish
@@ -458,6 +462,8 @@ That's enough, Nega!
 You are interfering with my role too much!
 I'm reporting you to the Headmistress straight away.
 /perform yuki_exit
+
+/scene entry.intro4nega
 
 /character nega laugh
 
@@ -588,6 +594,6 @@ Time to get a taste of your first punishment.
 Better get your ass to the Headmistress.
 She doesn't like to be kept waiting.
 
-~ headmistress_hub_status = unlocked
+~ headmistress_hub_status = early_access
 //need to know how player gets to next room
 -> exit

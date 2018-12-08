@@ -32,9 +32,6 @@ VAR nega_hub_status = hidden
 VAR yuki_favor = 0
 VAR yuki_hub_status = hidden
 
-VAR entered_code = ""
-VAR entered_phrase = ""
-VAR has_early_access = false
 
 
 // Fallback for isWeb() external function
@@ -48,10 +45,6 @@ VAR has_early_access = false
 // Fallback for isVideo() external function
 === function isVideo() ===
 ~ return false
-
-// Fallback for getCode() external function
-=== function getCode() ===
-~ return "01234"
 
 === function setGender(gender) ===
 {

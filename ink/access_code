@@ -1,3 +1,12 @@
+VAR entered_code = ""
+VAR entered_phrase = ""
+VAR has_early_access = false
+
+
+// Fallback for getCode() external function
+=== function getCode() ===
+~ return "01234"
+
 
 === tryEnter(status, -> success, -> fail) ===
 
@@ -14,62 +23,55 @@
 
 
 === enter_code ===
+
 ~ entered_code = ""
 ~ entered_phrase = ""
 
-/notify title="Early Access Restricted!" text="Enter your Early Access Pass Phrase into your journal."
+/notify title="<color=red>Early Access Restricted!</color>" text="Enter your Early Access Pass Phrase into your journal."
 
 /wait
 
 /action open_journal
 
-<- code_1(-> enter_code_2)
-<- code_options(-> enter_code, -> exit)
++ [Enter Pass Phrase] -> code_1 ->
++ [Get Pass Phrase]
+    /notify title="Opening Pass Phrase Post" text="Now opening the pass phrase web page. You may need to leave VR to see the page."
+    /open_link www.patreon.com/posts/roadmap-22863619
+    
+    /wait 3
+    
+    -> enter_code
++ [Cancel] ->->
 
--> DONE
+- /notify title="{entered_phrase}"
 
-= enter_code_2
-{entered_phrase}
-<- code_2(-> enter_code_3)
-<- code_options(-> enter_code, -> exit)
+-> code_2 ->
 
--> DONE
+/notify title="{entered_phrase}"
 
-= enter_code_3
-{entered_phrase}
-<- code_3(-> enter_code_4)
-<- code_options(-> enter_code, -> exit)
+-> code_3 ->
 
--> DONE
+/notify title="{entered_phrase}"
 
-= enter_code_4
-{entered_phrase}
-<- code_4(-> enter_code_5)
-<- code_options(-> enter_code, -> exit)
+-> code_4 ->
 
--> DONE
+/notify title="{entered_phrase}"
 
-= enter_code_5
-{entered_phrase}
-<- code_5(-> check_code)
-<- code_options(-> enter_code, -> exit)
+-> code_5 ->
 
--> DONE
-
-= check_code
 ~ has_early_access = getCode() == entered_code
 
 - {has_early_access:
-    '{entered_phrase}' is the correct!
-    You may enter.
+    /notify title="<color=green>Access Granted!</color>" text="You have spoken the sacred words: '{entered_phrase}'.<br/><br/>You may enter."
 - else:
-    '{entered_phrase}' is incorrect.
-    That way is locked.
+    /notify title="<color=red>Access Denied!</color>" text="'{entered_phrase}' is incorrect.<br/><br/>That way is locked."
 }
 
--> exit
+/action close_journal
+->->
 
-= code_1(-> next)
+
+= code_1
 
 +[Sexy]
     ~ entered_code = "0"
@@ -87,10 +89,10 @@
     ~ entered_code = "4"
     ~ entered_phrase = "The unobtainable"
 
+- ->->
 
-- -> next
 
-= code_2(-> next)
+= code_2
 
 +[Dominatrix]
     ~ entered_code += "0"
@@ -108,9 +110,10 @@
     ~ entered_code += "4"
     ~ entered_phrase += " Vixen"
 
-- -> next
+- ->->
 
-= code_3(-> next)
+
+= code_3
 
 +[uses]
     ~ entered_code += "0"
@@ -128,9 +131,10 @@
     ~ entered_code += "4"
     ~ entered_phrase += " restrains"
 
-- -> next
+- ->->
 
-= code_4(-> next)
+
+= code_4
 
 +[naughty]
     ~ entered_code += "0"
@@ -148,9 +152,10 @@
     ~ entered_code += "4"
     ~ entered_phrase += " her unworthy"
 
-- -> next
+- ->->
 
-= code_5(-> next)
+
+= code_5
 
 +[slave]
     ~ entered_code += "0"
@@ -168,19 +173,19 @@
     ~ entered_code += "4"
     ~ entered_phrase += " fucktoy."
 
-- -> next
+- ->->
+
 
 = code_options(-> back, -> leave)
-+[Help]
-    To get Early Access, use the code from this Patreon post:
-    ++ [Open Post]
-        /open_link www.patreon.com/posts/roadmap-22863619
-        -> back
++[Get Pass Phrase]
+    /notify title="Opening Pass Phrase Post" text="Now opening the pass phrase web page. You may need to leave VR to see the page."
+    /open_link www.patreon.com/posts/roadmap-22863619
+    
+    /wait 10
+    
+    -> back
 +[Cancel] -> leave
 
-
-//=== function correctCode() ===
-//~ return getCode() == entered_code
 
 === tryCode(-> success, -> fail) ===
     {has_early_access:

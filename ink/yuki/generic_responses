@@ -12,7 +12,7 @@
     - It's very rude not to look at me when I'm speaking to you.
 }
 
-+ [paying_attention]
++ [pay-attention]
     { cycle:
         - Now... what was I saying? Oh right...
         - Much better. Ahem.

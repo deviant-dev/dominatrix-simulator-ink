@@ -46,8 +46,10 @@ VAR debug = false
     // /scene bedroom.intro
     // /lock move-approach
     // /character goddess
-    ~ yuki_hub_status = (early_access, under_construction)
+    ~ yuki_hub_status = early_access
+    ~ headmistress_hub_status = early_access
     -> entry_hub
+    // -> entry_intro
     //-> goddess_intro.debug_jump
     // -> goddess_intro.stand_straight
     // -> goddess_intro.inspection

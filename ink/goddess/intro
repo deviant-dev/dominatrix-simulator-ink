@@ -486,9 +486,9 @@ Bye for now, {player_name}. #113
 
 + [wait 5]
 
-~ yuki_hub_status = unlocked
+~ yuki_hub_status = early_access
 
-- -> exit
+- -> entry_intro
 
 = DemandApology
 
