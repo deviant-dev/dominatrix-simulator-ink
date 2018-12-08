@@ -3,7 +3,7 @@
 ~ obey = 0
 ~ disobey = 0
 
-/scene office.spank_slave
+/scene LectureHall.spank_slave
 /character headmistress
 /equip wood_paddle
 /character slave crying
@@ -14,6 +14,8 @@
     <blockquote><i>You stand inside a spacious Victorian office with a large wooden desk, several sets of bookshelves, and walls lined with curtains. Before you stands a lean and lengthy woman with dark skin and an ample bosom forcefully spanking a young slave with a paddle. Her face is stern and her eyes placid...</i></blockquote>
 
     + [Start]
+- else:
+    + [continue]
 }
 
 - /character headmistress spank slave

@@ -149,6 +149,7 @@ Do you want to be a good {player_name}?
 /scene entry.intro3
 
 /character nega saunter
+/perform amused
 Oh please! You're always such a good girl, Yuki,
 never having any fun.
 Don't you want to live a little?
