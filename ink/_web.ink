@@ -48,7 +48,7 @@ VAR debug = false
     // /character goddess
     ~ yuki_hub_status = early_access
     ~ headmistress_hub_status = early_access
-    -> entry_hub
+    -> headmistress_hub
     // -> entry_intro
     //-> goddess_intro.debug_jump
     // -> goddess_intro.stand_straight

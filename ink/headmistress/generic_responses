@@ -4,20 +4,20 @@
 // /perform caress_thigh
 
 { shuffle:
-    - Most excellent.
-    - There is hope for you, yet!
-    - Slaves in this House must be pleasing to Her.
-    - I can mold you.
-    - You are raw, but you have potential.
-    - I shall delight in shaping you to please Her. 
-    - I am pleased. For now.
-    - You may hold your head high.
-    - Splendid.
-    - A rousing performance.
-    - Eloquence becomes you.
-    - You seek to impress.
-    - Continue in this way.
-    - Most pleasing.
+    - Most excellent. #01
+    - There is hope for you, yet! #02
+    - Slaves in this House must be pleasing to Her. #03
+    - I can mold you. #04
+    - You are raw, but you have potential. #05
+    - I shall delight in shaping you to please Her. #06
+    - I am pleased. For now. #07
+    - You may hold your head high. #08
+    - Splendid. #09
+    - A rousing performance. #10
+    - Eloquence becomes you. #11
+    - You seek to impress. #12
+    - Continue in this way. #13
+    - Most pleasing. #14
     -
     -
     -
@@ -30,13 +30,13 @@
 //generic responses whenever the Headmistress returns from a break or interruption to resume a punishment
 
 { shuffle:
-    - Enough. We shall resume.
-    - I am eager to return to your admonishment.
-    - Your punishment shall resume.
-    - Let us continue.
-    - Retribution must continue.
-    - We shall recommence the chastisement.
-    }
+    - Enough. We shall resume. #01
+    - I am eager to return to your admonishment. #02
+    - Your punishment shall resume. #03
+    - Let us continue. #04
+    - Retribution must continue. #05
+    - We shall recommence the chastisement. #06
+}
     
 ->->
 
@@ -46,15 +46,15 @@ TODO: Rewrite payattention
 /perform amused
 
 { cycle:
-    - Look at me when I'm speaking to you, {player_name}. #125
-    - I expect your eyes on me at all times, #126
-    unless I tell you otherwise. #127
-    - Did I give you permission to look elsewhere? #128
-    - Didn't anyone ever teach you to look at people #129
-    when they're speaking to you? #130
-    - Pay attention to me when you're in my presence. #131
-    - You're trying my patience. Pay attention. #132
-    - Eyes on me, {player_name}. #133
+    - Look at me when I'm speaking to you, {player_name}. #01
+    - I expect your eyes on me at all times, #02
+    unless I tell you otherwise. #03
+    - Did I give you permission to look elsewhere? #04
+    - Didn't anyone ever teach you to look at people #05
+    when they're speaking to you? #06
+    - Pay attention to me when you're in my presence. #07
+    - You're trying my patience. Pay attention. #08
+    - Eyes on me, {player_name}. #09
 }
 
 + [pay-attention]
@@ -63,33 +63,33 @@ TODO: Rewrite payattention
 /perform thoughtful
 
 - { cycle:
-    - Where was I? Oh yes... #134
-    - That's better. Let's continue. #135
-    - Good {player_name}. #136
-    - Let's try that again. #137
-    - As I was saying... #138
-    - Now... Let's start over. #139
+    - Where was I? Oh yes... #10
+    - That's better. Let's continue. #11
+    - Good {player_name}. #12
+    - Let's try that again. #13
+    - As I was saying... #14
+    - Now... Let's start over. #15
 }
 
 ->->
 
 === Headmistress_player_masturbate ===
-Our guests are frenzied and demand more.
-{isBoy: Wrap your hand around your rod|slip your fingers between your nether lips} and entertain them.
+Our guests are frenzied and demand more. #01
+{isBoy: Wrap your hand around your rod|slip your fingers between your nether lips} and entertain them. #02
 
 /character headmistress tap_paddle
-All eyes are on you, slave.
-Are you {isBoy: hard|wet}?
+All eyes are on you, slave. #03
+Are you {isBoy: hard|wet}? #04
 
 +[yes]
 ~ obey++
-As you should be.
-You may continue until I instruct you otherwise.
+As you should be. #05
+You may continue until I instruct you otherwise. #06
 
 +[no]
 ~ disobey++
-A shame we must rectify.
-Arouse yourself and continue until I give you leave to stop.
+A shame we must rectify. #07
+Arouse yourself and continue until I give you leave to stop. #08
 
 -
 +[wait 10]
@@ -129,16 +129,16 @@ Arouse yourself and continue until I give you leave to stop.
 
 === Headmistress_masturbation_punishment ===
 { shuffle:
-    - Your suffering is prolonged when you fail to try.
-    - At least you may please us with this performance.
-    - Thy {isBoy: turgid rod|inflamed twat} is our only consolation.
-    - Your training will be thorough.
-    - {isBoy: Bounce your shaft|Spread your nether lips} for us. 
-    - We enjoy your suffering {player_name}.
-    - Harder, that you may suffer more fully.
-    - You disappoint us when you fail to stay {isBoy: erect|swollen}.
-    - Your discomfort is our succor.
-    - Ahhh. Your torment is bewitching.
+    - Your suffering is prolonged when you fail to try. #01
+    - At least you may please us with this performance. #02
+    - Thy {isBoy: turgid rod|inflamed twat} is our only consolation. #03
+    - Your training will be thorough. #04
+    - {isBoy: Bounce your shaft|Spread your nether lips} for us. #05
+    - We enjoy your suffering {player_name}. #06
+    - Harder, that you may suffer more fully. #07
+    - You disappoint us when you fail to stay {isBoy: erect|swollen}. #08
+    - Your discomfort is our succor. #09
+    - Ahhh. Your torment is bewitching. #10
     - 
     -
     -
@@ -149,20 +149,20 @@ Arouse yourself and continue until I give you leave to stop.
 
 === Headmistress_masturbation_comments ===
 { shuffle:
-    - A fine demonstration {isBoy: toad|strumpet}.
-    - We have a little whore, guests!
-    - Do you think {isBoy: he|she} is enjoying {isBoy: himself|herself}?
+    - A fine demonstration {isBoy: toad|strumpet}. #01
+    - We have a little whore, guests! #02
+    - Do you think {isBoy: he|she} is enjoying {isBoy: himself|herself}? #03
       /character crowd laugh
-    - Exhibit control lest your arm tire.
+    - Exhibit control lest your arm tire. #04
       /character headmistress sassy
-    - Cumming without permission is expressly forbidden.
-    - What a fine display.
-    - Look at those deft fingers.
-    - Show restraint.
-    - A {isBoy: hard shaft|wet slit} is a pleasing {isBoy: shaft|slit}.
-    - Proper performance for guests is a requirement {isBoy: toad|strumpet}.
-    - One must be proud to display their arousal.
-    - You please our guests with your performance.
+    - Cumming without permission is expressly forbidden. #05
+    - What a fine display. #06
+    - Look at those deft fingers. #07
+    - Show restraint. #08
+    - A {isBoy: hard shaft|wet slit} is a pleasing {isBoy: shaft|slit}. #09
+    - Proper performance for guests is a requirement {isBoy: toad|strumpet}. #10
+    - One must be proud to display their arousal. #11
+    - You please our guests with your performance. #12
     -
 }
 
