@@ -3,8 +3,8 @@
 ~ obey = 0
 ~ disobey = 0
 
-/scene LectureHall.spank_slave
-/character headmistress
+/scene LectureHall.intro1
+/character headmistress idle
 /equip wood_paddle
 /character slave all_fours
 
@@ -17,21 +17,27 @@
 - else:
     + [continue]
 }
+- /character headmistress idle
 
-- /character headmistress spank slave
+/wait
 
-You are an unruly, undisciplined, low-born miscreant. #01
-
-+[wait 3]
-
-- /perform spank slave
-I will not abide by your disobedience. #02
+/perform spank slave
 
 +[wait 3]
 
-- /perform spank slave
+- You are an unruly, undisciplined, low-born miscreant. #01
 
-You <i>will</i> behave according to your station #03
+/perform spank slave
+
++[wait 3]
+
+- I will not abide by your disobedience. #02
+
+/perform spank slave
+
++[wait 3]
+
+- You <i>will</i> behave according to your station #03
 or find yourself unable to rest on your backside for a week. #04
 
 /character slave pleading
@@ -40,22 +46,27 @@ I'm sorry, Headmistress. #05
 I'll be good. I promise! #06
 Oh, please Headmistress! #07
 
-+[wait 3]
+/character headmistress spank slave
 
-- /character headmistress spank slave
++ [wait 3]
 
-That will be sufficient for today. #08
+- That will be sufficient for today. #08
 Remember this lesson, flawed one. #09
 
-+[wait 3]
+/perform smooth_skirt
 
-- /perform smooth_skirt
++ [wait 3]
 
-Compose yourself immediately. #10
-Depart with grace and pride, #11
-as befits an adornment of this house. #12
+- Compose yourself immediately. #10
+
+/scene LectureHall.Intro2
 
 /character slave stands
+
+/wait
+
+Depart with grace and pride #11
+as befits an adornment of this house. #12
 
 Yes, Headmistress. #13
 Thank you for guiding me, Headmistress. #14
@@ -64,7 +75,9 @@ Thank you for guiding me, Headmistress. #14
 
 +[wait 3]
 
--/character headmistress displeased
+- /scene LectureHall.Intro3
+
+/character headmistress displeased
 
 What do we have here? #15
 Another new procurement, I see. #16
