@@ -91,7 +91,7 @@ You may continue until I instruct you otherwise. #06
 A shame we must rectify. #07
 Arouse yourself and continue until I give you leave to stop. #08
 
--
+- (masturbate_for_crowd)
 +[wait 10]
 -> masturbation_comment->
 
@@ -113,6 +113,19 @@ Arouse yourself and continue until I give you leave to stop. #08
 
 -
 +[wait 10]
+    /perform thoughtful
+   {cycle:
+        - Are you having fun performing for our guests?
+        - Would you like to keep going, {isBoy: toad|strumpet}?
+        - Does our little {isBoy: runt|poppet} need more time?
+        - Are you going to ask our guests to continue waiting?
+        - Still working that {isBoy: shaft|slit}?
+        - Our {isBoy: toad|strumpet} needs more time. Yes?
+    } 
+    +[yes]
+        -> masturbate_for_crowd
+    +[no]
+        
 - -> headmistress_punishment_spanking.FinalEnding
 
 ->->
@@ -142,6 +155,8 @@ Arouse yourself and continue until I give you leave to stop. #08
     - 
     -
     -
+    -
+    -
 }
 
 ->->
@@ -163,6 +178,11 @@ Arouse yourself and continue until I give you leave to stop. #08
     - Proper performance for guests is a requirement {isBoy: toad|strumpet}. #10
     - One must be proud to display their arousal. #11
     - You please our guests with your performance. #12
+    -
+    -
+    -
+    -
+    -
     -
 }
 
