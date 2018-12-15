@@ -83,21 +83,21 @@ Our beloved Goddess forgives only so often. #20
 + [move:get_on_desk]
     -> Headmistress_GoodJob
 + [timeout]
-    -- (get_on_desk_timed_out) #10
-    Our guests are waiting. #11
-    Tut. Tut. #12
+    -- (get_on_desk_timed_out) 
+    Our guests are waiting. #111
+    Tut. Tut. #112
     -> get_on_desk
 -
 {not get_on_desk_timed_out:
     ~obey++
     /perform look_up_and_down
-    Observe the eagerness with which our chattel attempts to comply. #13
-    This behaviour pleases Her. #14
+    Observe the eagerness with which our chattel attempts to comply. #113
+    This behaviour pleases Her. #114
 - else:
     ~disobey++
     /perform displeased
-    Note the hesitation. A sure sign of poor breeding. #15
-    Such offends the Goddess and must be striken from the specimen. #16
+    Note the hesitation. A sure sign of poor breeding. #115
+    Such offends the Goddess and must be striken from the specimen. #116
 }
 
 //new line not voice recorded yet
