@@ -17,25 +17,15 @@
 - else:
     + [continue]
 }
-- /character headmistress idle
-
-/wait
-
-/perform spank slave
-
-+[wait 3]
+-/perform spank slave
 
 - You are an unruly, undisciplined, low-born miscreant. #01
 
 /perform spank slave
 
-+[wait 3]
-
 - I will not abide by your disobedience. #02
 
 /perform spank slave
-
-+[wait 3]
 
 - You <i>will</i> behave according to your station #03
 or find yourself unable to rest on your backside for a week. #04
@@ -48,22 +38,16 @@ Oh, please Headmistress! #07
 
 /character headmistress spank slave
 
-+ [wait 3]
-
 - That will be sufficient for today. #08
 Remember this lesson, flawed one. #09
 
 /perform smooth_skirt
 
-+ [wait 3]
-
-- Compose yourself immediately. #10
+//- Compose yourself immediately. #10
 
 /scene LectureHall.Intro2
 
 /character slave stands
-
-/wait
 
 Depart with grace and pride #11
 as befits an adornment of this house. #12
@@ -88,48 +72,48 @@ of an addition to Her collection. #18
 
 Another careless oversight in Yuki's fervent attempts to please, no doubt. #19
 Our beloved Goddess forgives only so often. #20
-I shall correct her oversight <i>forthwith</i>. #21
+//I shall correct her oversight <i>forthwith</i>. #21
 
-+[wait 2]
+/perform point_paddle_at_desk
+ Alight forthwith! #55
 
+/perform idle
+- (get_on_desk)
 
--(meet_headmistress)
-
-Do you know who I am? #22
-
-+[yes]
++ [move:get_on_desk]
+    -> Headmistress_GoodJob
++ [timeout]
+    -- (get_on_desk_timed_out) #10
+    Our guests are waiting. #11
+    Tut. Tut. #12
+    -> get_on_desk
+-
+{not get_on_desk_timed_out:
     ~obey++
-    Very good. #23
-    Then you know why you are here. #24
-    
-+[no]
+    /perform look_up_and_down
+    Observe the eagerness with which our chattel attempts to comply. #13
+    This behaviour pleases Her. #14
+- else:
     ~disobey++
-    /perform tap_paddle
-    I think you do. #25
-    You just heard that slave say it. #26
-    What an unobservant little wart you are. #27
+    /perform displeased
+    Note the hesitation. A sure sign of poor breeding. #15
+    Such offends the Goddess and must be striken from the specimen. #16
+}
 
-+[timeout]
-    Speak up. #28
-    -> meet_headmistress
+//new line not voice recorded yet
+- Now, kneel, slave.
 
-- As the Headmistress, I oversee the training #29
-and correction of all slaves in this house. #30
-Understood? #31
+/perform point_down
+- (kneel)
 
-+[yes]
-    ~obey++
-    Excellent. #32
-    No need to waste time, then. #33
+- (kneel_tries)
+- (kneel_fail)
 
-+[no]
-    -- (not_understood) #34
-    ~disobey++
-    Come, come. #35
-    Don't play dumb. #36
-    It is a waste of my time. #37
++ [pose:kneel] -> HoldPose(-> kneel_fail, -> kneel) ->
++ { kneel_tries < 2 } [timeout] -> kneel
+//+ { kneel_tries >= 2 } [timeout]
 
-+[timeout] -> not_understood
+- -> Headmistress_GoodJob ->
 
 - (present) Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
 
@@ -162,24 +146,53 @@ This must be immediate. #47
 
 /perform tap_paddle
 
-+[wait 2]
+-(meet_headmistress)
 
-- You are newly arrived and already in trouble. #48
+Do you know who I am? #22
+
++[yes]
+    ~obey++
+    Very good. #23
+    Then you know why you are here. #24
+    
++[no]
+    ~disobey++
+    /perform tap_paddle
+    I think you do. #25
+    You just heard that slave say it. #26
+    What an unobservant little wart you are. #27
+
++[timeout]
+    Speak up. #28
+    -> meet_headmistress
+
+//- You are newly arrived and already in trouble. #48
 /perform tap_paddle
-
-+[wait 2]
-
-- Entering the Goddess's chambers unbidden. #49
-This is a serious infraction. #50
-/perform tap_paddle
-
-+[wait 2]
 
 -You will be punished. #51
 And you will do it with grace. #52
 I will teach you how. #53
 Just like I do with all the new slaves. #54
 
-+[wait 2]
+- As the Headmistress, I oversee the training #29
+and correction of all slaves in this house. #30
+Understood? #31
+
++[yes]
+    ~obey++
+    Excellent. #32
+    No need to waste time, then. #33
+
++[no]
+    -- (not_understood) #34
+    ~disobey++
+    Come, come. #35
+    Don't play dumb. #36
+    It is a waste of my time. #37
+
++[timeout] -> not_understood
+
+//- Entering the Goddess's chambers unbidden. #49
+//This is a serious infraction. #50
 
 - -> headmistress_punishment_spanking

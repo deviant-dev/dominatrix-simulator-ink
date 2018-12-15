@@ -34,24 +34,33 @@ VAR headmistress_spanking_mistakes = 0
 For your transgressions, #01
 a spanking is in order. #02
 
-{intro:
-    First, you will learn #03
-    how to present yourself for punishment. #04
-}
+//Disobedient behavior must be corrected #37
+//immediately upon infraction. #38
 
-/perform point_paddle_at_desk
+//It must be firm, swift, and leave an indelible mark #39
+//upon the body and soul. #40
+/perform tap_paddle
 
-{intro:
-    Punishments are administered with the slave perched upon my desk. #05
-    Mount with nimble haste. #06
+//{intro:
+//    First, you will learn #03
+//    how to present yourself for punishment. #04
+//}
+
+///perform point_paddle_at_desk
+
+//{intro:
+//     Punishments are administered with the slave perched upon my desk. #05
+//     Mount with nimble haste. #06
    
-- else:
-    You know what is expected. #07
-    Alight forthwith! #08
-}
+// - else:
+//     You know what is expected. #07
+//     Alight forthwith! #08
+// }
 
 /perform idle
-
+{intro: 
+    -> hands_and_knees_timeout
+}
 - (get_on_desk)
 
 + [move:get_on_desk]
@@ -81,14 +90,10 @@ Now. Onto your hands and knees, bauble. #17
 + [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
 
 - /perform amused
-In this position, #18
-splayed fingers must be at least shoulder width apart. #19
+//In this position, #18
+//splayed fingers must be at least shoulder width apart. #19
 
-+[wait]
-
-- /perform amused
-
-Now then. #20
+//Now then. #20
 The back must be delicately arched, #21
 presenting the most ideal access #22
 to the object of discipline: the buttocks. #23
@@ -96,10 +101,8 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
 
 /perform paddle_desk
 
-+[wait]
-
--In this way, the ass is presented for abasement. #25
-Tell me, lump, is that as high as you can lift your hindquarters? #26
+//-In this way, the ass is presented for abasement. #25
+-Tell me, lump, is that as high as you can lift your hindquarters? #26
 
 +[yes]
     ~obey++
@@ -121,42 +124,25 @@ Tell me, lump, is that as high as you can lift your hindquarters? #26
 
 -/perform satisfied
 -> Headmistress_GoodJob ->
-The nether regions must be fully in view. #35
-Knees must be sufficiently apart to allow for clear observation. #36
+//
+//
 
 {intro: -> punish_intro | -> punish_continue}
 
 = punish_intro
 
-Disobedient behavior must be corrected #37
-immediately upon infraction. #38
+//-To receive a punishment with the utmost grace and decorum, #41
+//the subject of discpline must hold their head high #42
+//and breath smoothly and calmly through the nose. #43
 
-It must be firm, swift, and leave an indelible mark #39
-upon the body and soul. #40
-/perform tap_paddle
-
-+[wait]
-
--To receive a punishment with the utmost grace and decorum, #41
-the subject of discpline must hold their head high #42
-and breath smoothly and calmly through the nose. #43
-
-/perform tap_paddle
-
-+[wait]
+///perform tap_paddle
 
 -The muscles of the ass must remain relaxed between swats. #44
 This provides an exceptionally pleasing display when they clench #45
 in response to the impact of my admonishments. #46
 /perform tap_paddle
 
-+[wait]
-
--Feet must remain flat with no obscene curling of the toes. #47
-/perform tap_paddle
-/character crowd murmur
-
-+[wait]
+///character crowd murmur
 
 - /character headmistress
 But enough of this pretense. #48
@@ -165,11 +151,9 @@ We have our entire class to enlighten! #50
 
 /character crowd jeers
 
-+[wait]
-
 - /character headmistress
-Let us show our audience #51
-the fine display you have for us. #52
+//Let us show our audience #51
+//the fine display you have for us. #52
 
 /perform arm_raise
 /action raise_curtains
@@ -180,8 +164,6 @@ the fine display you have for us. #52
 = punish_continue
 
 /character headmistress circle_desk
-
-+[wait]
 
 - Welcome esteemed guests! #53
 Our subject today has earned a spanking. #54
@@ -206,11 +188,9 @@ Our subject today has earned a spanking. #54
     from the skin is exotic to behold! #65
 }
 
-Would you not agree? #66
+//Would you not agree? #66
 
 /character crowd coos 
-
-+ [wait]
 
 - /character headmistress
 Listen to that excitement, {player_name}. #67
@@ -233,10 +213,10 @@ are permitted during the punishment lesson. #74
 /character crowd jeers
 /character headmistress
     
-Consistently ensure the subject of punishment #75
-assumes the most apt position for spanking. #76
-One that allows for full admiration #77
-of the {isBoy: tip of the shaft|crown of the folds} and puckered rosebud. #78
+//Consistently ensure the subject of punishment #75
+//assumes the most apt position for spanking. #76
+//One that allows for full admiration #77
+//of the {isBoy: tip of the shaft|crown of the folds} and puckered rosebud. #78
 
 What say you, {isBoy: toad|strumpet}? #79
 
@@ -258,10 +238,10 @@ What say you, {isBoy: toad|strumpet}? #79
     ~ disobey++
     A disappointing response for our guests. #88
     Your lackluster genitals shall be addressed another time. #89
-    We still have your punishment to mete out. #90
+    //We still have your punishment to mete out. #90
 
 - /perform walk_to_front_of_desk
-And finally, we come to the heart of the matter. #91
+//And finally, we come to the heart of the matter. #91
 Do you accept that you must be punished? #92
 
 - (ask_punish_ready)
@@ -278,7 +258,6 @@ Do you accept that you must be punished? #92
     /character crowd boos
     /character headmistress suspicious
     Foolish, little slave. #94
-    
     
     It will be over quickly and your compliance will please the Goddess. #95
     Shall we continue with your punishment? #96
@@ -307,8 +286,6 @@ Do you accept that you must be punished? #92
     Do you agree? #105
     -> ask_punish_ready
 
-- +[wait]
-
 - {intro: -> spank_instructions}
 
 Because I am generous, I will offer you a chance to practice first. #106
@@ -324,8 +301,8 @@ Would you welcome that, {isBoy: mongrel|moppet}? #107
 
 = spank_instructions
 
-With each swat, you will show me clearly #109
-just how much you feel it. #110
+//With each swat, you will show me clearly #109
+//just how much you feel it. #110
 When you hear the slap of my {headmistress_spanking_implement} #111
 and feel its sting upon your ass, #112
 I want to see that empty head of yours jerk up and back #113
@@ -334,9 +311,9 @@ into a proud and upright position. #114
 +[wait]
 
 - /character headmistress lean_forward
-And I am always pleased #115
-with the exquisite sharp inhale of breath #116
-that comes from each blow. #117
+//And I am always pleased #115
+//with the exquisite sharp inhale of breath #116
+//that comes from each blow. #117
 Time to rehearse. #118
 
 +[wait]
@@ -396,10 +373,6 @@ It is time! #123
 + [wait]
 
 - /character headmistress walk_to_back_of_desk
-
-All care must be taken to assure #124
-no lasting harm is inflicted... #125
-unless permanency is desired, of course. #126
 
 /character crowd appreciation
 
@@ -561,9 +534,17 @@ I give you leave to depart. #146
     - Oooo. Look at how the anus puckers. #172
     - No doubt several of my students are stimulating themselves right now. #173
     - Some of you are squirming with remembrance right now. #174
-    - 
+    - The nether regions must be fully in view. #35
+    - Knees must be sufficiently apart to allow for clear observation. #36
+    - All care must be taken to assure #124
+    no lasting harm is inflicted... #125
+    unless permanency is desired, of course. #126
+    - Feet must remain flat with no obscene curling of the toes. #47
     -
     -
+    -
+    -
+    
 }
 
 ->->
