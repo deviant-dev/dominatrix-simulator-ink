@@ -26,7 +26,7 @@ VAR headmistress_spanking_mistakes = 0
 ~ headmistress_spanking_count = 0
 ~ headmistress_spanking_mistakes = 0
 
-{not intro: /scene office_raised_curtains}
+{not intro: /action raise_curtains}
 
 /character headmistress
 /equip {headmistress_spanking_implement}
@@ -316,6 +316,7 @@ into a proud and upright position. #114
 //that comes from each blow. #117
 Time to rehearse. #118
 
+/scene LectureHall.Punishment_Spanking_Ready
 +[wait]
 
 ~temp spanks = 0
@@ -323,7 +324,7 @@ Time to rehearse. #118
 - (try_spank)
 /character headmistress paddle_ass
 
-+ [reaction:spanked]
++ [react-success]
     // This lets us count the number of successful attempts.
     ~spanks++
     
@@ -335,7 +336,7 @@ Time to rehearse. #118
         Just so. #119
         -> spank_continue
     }
-+ [reaction:failed]
++ [react-fail]
     // This lets us count the number of failed attempts.
     ~headmistress_spanking_mistakes++
 
@@ -380,9 +381,9 @@ It is time! #123
 Prepare yourself for {headmistress_spanking_target_count} swats, {player_name}. #127
 
 - (spank)
-/perform paddle_ass
+/character headmistress paddle_ass
 
-+ [reaction:spanked]
++ [react-success]
     ~ headmistress_spanking_count++
     ~ headmistress_spanking_break_count++
     -> GoodSpank ->
@@ -401,7 +402,7 @@ Prepare yourself for {headmistress_spanking_target_count} swats, {player_name}. 
         -> SpankBreak ->
     }
     {headmistress_spanking_count < headmistress_spanking_target_count: -> spank}
-+ [reaction:failed] -> BadSpank -> spank
++ [react-fail] -> BadSpank -> spank
 
 - Ahhhh. Now, don't you feel better, {player_name}? #128
     +[yes]

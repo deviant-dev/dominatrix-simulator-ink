@@ -40,18 +40,51 @@ VAR debug = false
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
 { isDebug() :
-    - 
-    // -> demo_intro.genderchoice
     
-    // /scene bedroom.intro
-    // /lock move-approach
-    // /character goddess
-    ~ yuki_hub_status = early_access
-    ~ headmistress_hub_status = early_access
-    -> headmistress_hub
+    // /scene LectureHall
+
+    // - (tests)
+    //     + [add punishment]
+    //         {punishments < 10:
+    //             ~punishments++
+    //         }
+    //     + [remove punishment]
+    //         {punishments > 0:
+    //             ~punishments--
+    //         }
+    //     + [add reward]
+    //         {rewards < 10:
+    //             ~rewards++
+    //         }
+    //     + [remove reward]
+    //         {rewards > 0:
+    //             ~rewards--
+    //         }
+        
+    // - /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
+    // -> tests
+
+    // Headmistress Jumps
+
+    // ~ yuki_hub_status = early_access
+    // ~ headmistress_hub_status = early_access
+    // ~ punishments = 1
+    // ~ rewards = 1
+    
+    // /scene LectureHall.Punishment_Spanking_Ready
+    // /action raise_curtains
+    // -> headmistress_punishment_spanking.spank_instructions
+
+    
+    // Goddess Jumps
+    
+    /scene bedroom.intro
+    /character goddess
+    /move
+    
     // -> entry_intro
     //-> goddess_intro.debug_jump
-    // -> goddess_intro.stand_straight
+     -> goddess_intro.stand_straight
     // -> goddess_intro.inspection
     // -> goddess_intro.ByeForNow
 }

@@ -15,6 +15,10 @@
     /scene LogoRoom.Empty
     -> instructions
 
+- /scene LogoRoom.JournalInfo
+
++ [Use Journal]
+
 - /scene LogoRoom.VerifyAge
 
 + [yes]

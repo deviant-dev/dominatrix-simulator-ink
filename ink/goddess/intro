@@ -446,13 +446,14 @@ Bow down, kiss, then back to your pose like a good little {player_name}. #105
 + [pose:kiss_feet] -> HoldPose(-> kiss_feet_fail, -> kiss_feet) -> Goddess_GoodJob ->
 + { kiss_feet_tries < 2 } [timeout] -> kiss_feet
 + { kiss_feet_tries >= 2 } [timeout]
-// + [no] No?! #106
-//    /perform confused
-//    Turning down such a reward. You are a strange one. #107
+ + [no] No?! #106
+    /perform confused
+    Turning down such a reward. You are a strange one. #107
 
 - /perform angry
 
 That's enough. #108
+
 You might just prove useful one day, #109
 
 /perform bored
@@ -486,9 +487,9 @@ Bye for now, {player_name}. #113
 
 + [wait 5]
 
-~ yuki_hub_status = early_access
+- ~ yuki_hub_status = early_access
 
-- -> entry_intro
+-> entry_intro
 
 = DemandApology
 

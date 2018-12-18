@@ -5,7 +5,7 @@
 
 {headmistress_hub == 1: -> headmistress_intro}
 
-/scene Office.Hub
+/scene LectureHall.Hub
 
 -> apology_check(-> hub, -> exit)
 
