@@ -1,9 +1,9 @@
-
 === game_intro ===
 
 /scene LogoRoom.TitleScreen
 
 + [wait 6]
+
 
 - (instructions)
 
@@ -13,7 +13,8 @@
 + [yes]
 + [no]
     /scene LogoRoom.Empty
-    -> instructions
+    <- instructions
+
 
 - /scene LogoRoom.JournalInfo
 
@@ -24,9 +25,11 @@
 + [yes]
 + [no] -> demo_end
 
-- /scene LogoRoom.Notifications
+- (choices) /scene LogoRoom.Notifications
 
-+ [move]
++ [move: Intro]
++ [move: Yuki (early_access)] -> tryEnter(early_access, -> entry_hub, -> choices)
++ [move: Headmistress (early_access)]-> tryEnter(early_access, -> headmistress_intro, -> choices)
 
 - (genderchoice) /scene hallway.genderchoice
 /lock exit
@@ -35,13 +38,13 @@
 
 + [character-choice:male]
     ~ setGender("m")
-    <i>You now appear masculine.</i> #999
+    /notify <i>You now appear masculine.</i> #999
     /unlock exit
     -> options
 
 + [character-choice:female]
     ~ setGender("f")
-    <i>You now appear feminine.</i> #999
+    /notify <i>You now appear feminine.</i> #999
     /unlock exit
     -> options
 

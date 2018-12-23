@@ -36,6 +36,7 @@ INCLUDE yuki/task_fanning
 INCLUDE yuki/generic_responses
 
 VAR debug = false
+VAR web = false
 
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
@@ -66,25 +67,33 @@ VAR debug = false
 
     // Headmistress Jumps
 
-    // ~ yuki_hub_status = early_access
-    // ~ headmistress_hub_status = early_access
-    // ~ punishments = 1
-    // ~ rewards = 1
+    ~ yuki_hub_status = early_access
+    ~ headmistress_hub_status = early_access
+    ~ punishments = 1
+    ~ rewards = 1
     
-    // /scene LectureHall.Punishment_Spanking_Ready
+    
+    
+    // -> yuki_intro
+    
+    // /scene LectureHall.Intro
+    // -> headmistress_intro
+    -> headmistress_punishment_spanking
+
     // /action raise_curtains
-    // -> headmistress_punishment_spanking.spank_instructions
+    // /scene LectureHall.Punishment_Spanking
+    // -> headmistress_punishment_spanking.FinalEnding
 
     
     // Goddess Jumps
     
-    /scene bedroom.intro
-    /character goddess
-    /move
+    // /scene bedroom.intro
+    // /character goddess
+    // /move
     
     // -> entry_intro
     //-> goddess_intro.debug_jump
-     -> goddess_intro.stand_straight
+    // -> goddess_intro.stand_straight
     // -> goddess_intro.inspection
     // -> goddess_intro.ByeForNow
 }
