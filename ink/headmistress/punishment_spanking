@@ -6,27 +6,40 @@ VAR headmistress_spanking_mistakes = 0
 
 === headmistress_punishment_spanking ===
 
-/scene LectureHall.Punishment_Spanking
-
 ~ intro = headmistress_punishment_spanking == 1
 
-{shuffle:
-- ~ headmistress_spanking_target_count = 10
-- ~ headmistress_spanking_target_count = 15
-- ~ headmistress_spanking_target_count = 20
-}
+TODO: Support suffling swats and equipment
 
-{shuffle:
-- ~headmistress_spanking_implement = "paddle"
-- ~headmistress_spanking_implement = "hand"
-- ~headmistress_spanking_implement = "crop"
-}
+// {shuffle:
+// - ~ headmistress_spanking_target_count = 10
+// - ~ headmistress_spanking_target_count = 15
+// - ~ headmistress_spanking_target_count = 20
+// }
+
+// Just use '10' swats for now.
+~ headmistress_spanking_target_count = 10
+
+// {shuffle:
+// - ~headmistress_spanking_implement = "paddle"
+// - ~headmistress_spanking_implement = "hand"
+// - ~headmistress_spanking_implement = "crop"
+// }
+
+// Just use the hand for now.
+~headmistress_spanking_implement = "hand"
 
 ~ headmistress_spanking_break_count = 0
 ~ headmistress_spanking_count = 0
 ~ headmistress_spanking_mistakes = 0
 
-{not intro: /action raise_curtains}
+
+
+{intro: 
+    /scene LectureHall.Punishment_Spanking_Ready
+    -> hands_and_knees_timeout
+- else:
+    /scene LectureHall.Punishment_Spanking
+}
 
 /character headmistress
 /equip {headmistress_spanking_implement}
@@ -244,6 +257,7 @@ What say you, {isBoy: toad|strumpet}? #79
 //And finally, we come to the heart of the matter. #91
 Do you accept that you must be punished? #92
 
+/notify title="<color=red>Pro Tip!</color>" text="For a more realistic experience, set down one controller and spank yourself hard when you hear the **slap**. Or better yet, have a very close friend to it for you. ;)<br/><br/>(You DID go full monty, right?)"
 - (ask_punish_ready)
 
 +[yes]
@@ -316,7 +330,8 @@ into a proud and upright position. #114
 //that comes from each blow. #117
 Time to rehearse. #118
 
-/scene LectureHall.Punishment_Spanking_Ready
+{not intro: /scene LectureHall.Punishment_Spanking_Ready}
+
 +[wait]
 
 ~temp spanks = 0
@@ -471,6 +486,9 @@ I give you leave to depart. #146
 /character crowd claps
 
 + [wait]
+
+// For now, let's go to the end screen while more content is worked on.
+- -> demo_end
 
 // If the player has never seen nega-yuki,
 // send them off to be tempted by her directly.

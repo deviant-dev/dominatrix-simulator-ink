@@ -36,7 +36,7 @@ VAR yuki_hub_status = early_access
 
 // Fallback for isWeb() external function
 === function isWeb() ===
-~ return true
+~ return web
 
 // Fallback for isDebug() external function
 === function isDebug() ===
@@ -79,6 +79,17 @@ VAR yuki_hub_status = early_access
         ~ setGender("f")
 - ->->
 
+=== jump_menu(-> back) ===
+
++ [Jump to...]
+
+- + [Goddess Poses]
+    /scene Bedroom.Intro
+    /move approach
+    -> goddess_intro.stand_straight
++ [Yuki Intro] -> entry_hub
++ [Headmistress Intro] -> headmistress_hub
++ [Cancel] -> back
 
 === summary(place, times) ===
 

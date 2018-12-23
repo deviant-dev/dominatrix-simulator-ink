@@ -191,8 +191,6 @@ You may never find your way out again. #42
 
 This is no ordinary house, mind you. #43
 
-/wait
-
 /perform annoyed
 
 Even so. You are here now. #44
@@ -357,7 +355,7 @@ You don't mind, do you? #79
 
 - -> Goddess_GoodJob ->
 
-/perform circle_player
+// /perform circle_player
 
 That's it. #87
 Push your shoulders back and arch that lovely spine. #88
