@@ -36,7 +36,7 @@ INCLUDE yuki/task_fanning
 INCLUDE yuki/generic_responses
 
 VAR debug = false
-VAR web = false
+VAR web = true
 
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
