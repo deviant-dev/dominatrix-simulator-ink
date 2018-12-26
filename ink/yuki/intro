@@ -6,7 +6,7 @@
 ~ rewards = 1
 
 /scene entry.intro2
-/character yuki  
+/character yuki idle_yuki
 /equip feather_duster
 
 Oh! There you are! #01
@@ -14,15 +14,19 @@ Oh! There you are! #01
 /perform bounces
 
 I’ve been waiting for you. #02
-I'm Mistress Yuki-Onna. #03
 
-/perform serious
+/perform clasp_hands
+
+I'm Mistress Yuki-Onna. #03
 
 It’s my job to make sure all new arrivals are processed  #04
 and taught the basics of how to behave  #05
 while you’re a guest in Goddess’s home. #06
 
 /wait
+
+/perform serious
+
 First things first. #07
 Always stand up straight with your head high  #08
 when you present yourself to a Mistress. #09
@@ -30,7 +34,7 @@ when you present yourself to a Mistress. #09
 - (stand_straight)
 - (stand_straight_tries)
 
-/perform idle
+/perform idle_yuki
 
 - (raised_chin_fail)
 
@@ -39,13 +43,20 @@ when you present yourself to a Mistress. #09
 + { stand_straight_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
-- You're such a good {player_name}! #10
+- /perform excited
+
+You're such a good {player_name}! #10
 
 - (new_guest)
+
+/perform thoughtful
+
 Do you know why you're here? #11
 
  + [yes]
-  ~ obey++
+    ~ obey++
+    /perform confused
+
     I don't see how you'd know that already. #12
     Someone must have told you. #13
    
@@ -57,7 +68,8 @@ Do you know why you're here? #11
     /wait
     
 + [no]
-~ disobey++
+    ~ disobey++
+    /perform disappointed
     Well, duh! #16
     You're not supposed to know. #17
     That's the fun part! #18
@@ -65,18 +77,20 @@ Do you know why you're here? #11
     /perform clasp_hands
     
 + [timeout]
+    /perform cocks_head_to_left
     Hello-o #19
     Anybody home? #20
-    /perform cocks_head_to_left
     -> new_guest
     
 + [distracted] -> Yuki_PayAttention -> new_guest
 
 - (house_rules)
+/perform idle_yuki
 You are a guest of Threshold House. #21
 Well, we call it a house, but it's not really one... #22
 
 /perform thoughtful
+/wait
 /perform serious
 
 All guests must follow the rules #23
@@ -168,7 +182,7 @@ Do you want to be a good {player_name}? #42
 /scene entry.intro3
 
 /character nega saunter
-/perform amused
+/perform idle_nega
 Oh please! You're always such a good girl, Yuki, #46
 never having any fun. #47
 Don't you want to live a little? #48
@@ -183,7 +197,7 @@ I know you do.  #51
 I know your deepest, darkest secrets. #52
 Remember? #53
 
-+ [wait 5]
++ [continue]
  
 - /character yuki
 You just stop that right now, Nega-Yuki! #54
