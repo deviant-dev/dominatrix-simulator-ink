@@ -84,6 +84,36 @@ Our beloved Goddess forgives only so often. #20
 
 /scene LectureHall.Punishment_Spanking
 
+- (present) Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
+
+/perform displeased
+
+- (ask_present)
+
++[pose:present_wrists]
+    ~obey++
+
++ [timeout]
+    Your wrists, you witless cur. #39
+    Present them before you #40
+    that I may confirm your measure. #41
+    ~disobey++
+    /perform present_wrists
+    Like so, foolish {player_name}. #42
+    -> ask_present
+
+- /perform look_up_and_down
+
+Ah, Bloodstone. Diligence and commendation. #43
+You have pleased the Goddess. #44
+
+/perform nod
+
+Hmmmm. But also Obsidian. #45
+Atonement and adjustment are required. #46
+/perform tap_paddle
+This must be immediate. #47
+
 /perform point_paddle_at_desk
  Alight forthwith! #55
 
@@ -125,36 +155,6 @@ Our beloved Goddess forgives only so often. #20
 
 - -> Headmistress_GoodJob ->
 
-- (present) Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
-
-/perform displeased
-
-- (ask_present)
-
-+[pose:present_wrists]
-    ~obey++
-
-+ [timeout]
-    Your wrists, you witless cur. #39
-    Present them before you #40
-    that I may confirm your measure. #41
-    ~disobey++
-    /perform present_wrists
-    Like so, foolish {player_name}. #42
-    -> ask_present
-
-- /perform look_up_and_down
-
-Ah, Bloodstone. Diligence and commendation. #43
-You have pleased the Goddess. #44
-
-/perform nod
-
-Hmmmm. But also Obsidian. #45
-Atonement and adjustment are required. #46
-This must be immediate. #47
-
-/perform tap_paddle
 
 -(meet_headmistress)
 

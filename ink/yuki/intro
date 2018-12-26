@@ -18,7 +18,7 @@ I’ve been waiting for you. #02
 /perform clasp_hands
 
 I'm Mistress Yuki-Onna. #03
-
+/perform idle_yuki
 It’s my job to make sure all new arrivals are processed  #04
 and taught the basics of how to behave  #05
 while you’re a guest in Goddess’s home. #06
@@ -28,13 +28,13 @@ while you’re a guest in Goddess’s home. #06
 /perform serious
 
 First things first. #07
+
+/perform idle_yuki
 Always stand up straight with your head high  #08
 when you present yourself to a Mistress. #09
 
 - (stand_straight)
 - (stand_straight_tries)
-
-/perform idle_yuki
 
 - (raised_chin_fail)
 
@@ -69,12 +69,11 @@ Do you know why you're here? #11
     
 + [no]
     ~ disobey++
-    /perform disappointed
+    /perform serious
     Well, duh! #16
     You're not supposed to know. #17
+    /perform excited
     That's the fun part! #18
-    
-    /perform clasp_hands
     
 + [timeout]
     /perform cocks_head_to_left
@@ -87,9 +86,9 @@ Do you know why you're here? #11
 - (house_rules)
 /perform idle_yuki
 You are a guest of Threshold House. #21
+/perform thoughtful
 Well, we call it a house, but it's not really one... #22
 
-/perform thoughtful
 /wait
 /perform serious
 
@@ -97,21 +96,23 @@ All guests must follow the rules #23
 or they will not be allowed to stay. #24
 
 - (learn_rules)
+/perform cocks_head_to_left
 Would you like to know what the rules are? #25
 
 + [yes]
-~ obey++
+    ~ obey++
     /perform excited
     Oh goody! I love telling people the house rules! #26
 
 + [no]
-~ disobey++
-    /perform disappointed
+    ~ disobey++
+    /perform pouty
     Don't be a pouty baby. #27
+    /perform angry
     You have to learn the rules or you can't be a good {player_name}! #28
 
 + [timeout]
-    /perform confused
+    /perform sighs
     You aren't listening very well. #29
     -> learn_rules
     
@@ -119,8 +120,10 @@ Would you like to know what the rules are? #25
     
 - (two_rules)
 
-/perform bounces
+/perform nod
 The rules are simple! #30
+
+/perform two_fingers
 And there are only two of them! #31
 
 /perform one_finger
@@ -134,22 +137,26 @@ Follow directions when they're given. #33
 /perform open_arms_shrug
 
 Disobey and be punished. #34
-Obey and be rewarded. #35
 
 /perform clasp_hands
+Obey and be rewarded. #35
 
 - (easy_rules)
+/perform idle_yuki
 Easy, right? #36
 
 + [yes]
-~ obey++
+    /perform bounces
+    ~ obey++
     I know! Our Goddess is so kind! #37
 
 + [no]
-~ disobey++
+    /perform cocks_head_to_left
+    ~ disobey++
     Oh! Don't worry. You'll learn fast! #38
 
 + [timeout]
+    /perform confused
     Are you still listening? #39
     -> easy_rules
     
@@ -157,22 +164,26 @@ Easy, right? #36
 
 - /perform squirm
 You are a cute one! I really hope you do well here! #40
+
+/perform clasp_hands
 Giving rewards is so much more fun than punishing. #41
 
 - (good_yuki)
+/perform idle_yuki
 Do you want to be a good {player_name}? #42
 
 + [yes]
-~ obey++
+    ~ obey++
     /perform bounces
     Yay! We'll have so much fun together! #43
 
 + [no]
-~ disobey++
+    ~ disobey++
     /perform pouty
     Oh darn. I really hope you'll change your mind. #44
 
 + [timeout]
+    /perform lean_forward
     Hello? Anybody home? #45
     -> good_yuki
 
@@ -181,32 +192,47 @@ Do you want to be a good {player_name}? #42
 - (nega_interruption)
 /scene entry.intro3
 
-/character nega saunter
-/perform idle_nega
+/character nega head_toss
+/perform amused_nega
 Oh please! You're always such a good girl, Yuki, #46
 never having any fun. #47
+
+/perform amused
 Don't you want to live a little? #48
+
+/perform behold
 Bend the rules once in a while and really let loose? #49
 
-/character yuki scoff
+/character yuki foot_stomp
 No, thank you! #50
 
-/character nega approach_yuki
+//character nega approach_yuki
+/character nega pleased
 //use whisper voice
 I know you do.  #51
 I know your deepest, darkest secrets. #52
+
+/perform sassy
 Remember? #53
 
 + [continue]
  
-- /character yuki
+- /character yuki foot_stomp
 You just stop that right now, Nega-Yuki! #54
+
+/perform clasp_hands
 I want my own room someday.  #55
+
+/perform angry
 There's no way I'm breaking the rules! #56
+
+/perform excited
 I really want the Goddess to be pleased with me. #57
 
-/character nega scoffs
+/character nega head_toss
 Ugh.. You're such a goody two-shoes. #58
+
+/perform bored_nega
 You'd have so much more fun if you bent the rules now and then. #59
 
 -(new_one)
@@ -214,99 +240,121 @@ You'd have so much more fun if you bent the rules now and then. #59
 So. You're the new one, huh? #60
 
 + [yes]
-~ disobey++
+    ~ disobey++
     /perform inspect
     Not too bad. You have potential. #61
+    
+    /perform amused
     Though, I'm not too picky. #62
 
 + [no]
-~ obey++
+    ~ obey++
     /perform laugh
     Not new, huh? #63
+    
+    /perform curious
     This one is more confused than most. #64
 
 + [timeout]
-    /perform confused
+    /perform confused_nega
     Are you stupid, or something? #65
+    
+    /perform lean_forward
     I asked you if you're new here. #66
     -> new_one
     
 + [distracted] -> Yuki_PayAttention -> new_one
 
-- /perform sneer
+- /perform pleased
 I bet Yuki's been having so much fun #67
 explaining the rules to you  #68
+
+/perform sassy
 and telling you how to be a good {player_name}, #69
 hasn't she? #70
 
 + [yes]
-~ obey++
-    /perform bored
+    ~ obey++
+    /perform bored_nega
     Boring. #71
 
 + [no]
-~ disobey++
+    ~ disobey++
     /perform pleased
     A little liar.  #72
     We're going to get along just fine. #73
 
 + [timeout]
 
-- /perform scoff
+- /perform head_toss
 Don't let her fool you.  #74
+
+/perform fake_annoyed
 She's not as sweet and innocent as she lets on. #75
+
+/perform confused
 Have you figured out what's going on here yet? #76
 
 - (going_on)
 
 + [yes]
-~ disobey++
+    ~ disobey++
     /perform curious
     Hmmm. You might just be smarter than you look, {player_name}. #77
+    
+    /perform bored
     We'll find out soon enough. #78
+    
     /perform sassy
     Although, honestly, the dumb ones make better fuck toys. #79
 
 + [no]
-~ obey++
+    ~ obey++
     /perform rolls_eyes
     Typical. <I>She</I> always wants them to learn the hard way. #80
     
-    /perform amused
+    /perform fake_annoyed
     I think I should tell {player_him}. #81
     
     /character yuki frustrated
     Don't you dare! #82
     The Goddess will be so angry with you! #83
     
-    /character nega interested
+    /character nega bored_nega
     Oh fine, party pooper! #84
+    
+    /perform pleased
     I guess I'll just make {player_him} my fuck toy instead. #85
     
 + [timeout]
     /perform confused
     Are you stupid, or something? #86
+    
+    /perform unhappy
     I asked you if you're new here? #87
     -> going_on
     
 
 - /perform breast_squeeze
 I bet that {isBoy:cock|cunt} of yours works just fine. #88
+
+/perform sassy
 Let's find out. Shall we? #89
 
 -(genitals)
 
 + [yes]
-~ disobey++
-    /perform amused
+    ~ disobey++
+    /perform pleased
     Ooo. I'm going to like this one. {isBoy: He|She} likes to be naughty. #90
 
 + [no]
-~ obey++
-    /perform bored
+    ~ obey++
+    /perform angry
     Oh great. Another spoil-sport, just like you Yuki. #91
 
 + [timeout]
+    /perform fake_annoyed
     Should we find out how well your {isBoy:dick|pussy} works? #92
     -> genitals
     
@@ -325,50 +373,59 @@ You want to be a little fuck toy, don't you? #97
 
 - (caress_genitals)
 + [yes]
-~ disobey++
     /perform chuckle
+    ~ disobey++
     What a naughty {player_name}. #98
+    
+    /perform caress genitals
     I feel how {isBoy:hard|wet} you are. #99
     Do you want to be my fuck toy? #100
     
     ++ [yes]
-   ~ disobey++
+        ~ disobey++
+        /perform head_toss
         Too bad. I only use fuck toys that have something to give me. #101
-        And you can't give me what I want yet. #102
+        
         /perform taps_wrist
-        /perform straighten_up
-    
+        And you can't give me what I want yet. #102
+        
     ++ [no]
-    ~ obey++
+        ~ obey++
+        /perform sassy
         No? You don't like me? #103
         Awww. But I'm way more fun that that uptight bitch. #104
         /perform head_toss
     
     ++ [timeout]
+        /perform unhappy
         I must be boring you. #105
     
 + [no] 
-~ obey++
+    ~ obey++
     /perform head_toss
     What a prude. You'll change your mind soon enough. #106
     They always do. #107
 
 + [timeout]
+    /perform curious
     Well, do you want to be used and abused? #108
     -> caress_genitals
 
-- The Mistresses will have so much fun #109
+- 
+/perform inspect
+The Mistresses will have so much fun #109
 tearing up that ass of yours. #110
 
-/perform approach
+/perform lean_forward
 //nega whispers
 <I>Tick tock little mouse. #111
 <I>You might want to run. #112
+/perform amused_nega
 <I>You're trapped in this house. #113
 <I>And we own your cum.</I> #114
 /perform laugh
 
-+ [wait 5]
++ [wait]
 
 {obey - disobey > 0:
     - -> Yuki_finish
@@ -384,9 +441,10 @@ I'll be reporting you to the Headmistress straight away. #117
 
 /character nega laugh
 I'll see you again soon, little mouse. #118
+
+/perform head_toss
 Come find me when you've earned a reward. #119
 
-/perform nega_exit
 /scene entry.intro4yuki
 
 + [wait 5]
@@ -439,18 +497,24 @@ I'm reporting you to the Headmistress straight away. #141
 
 + [wait]
 
-- Run off, little Yuki,  #142
+- /perform head_toss
+Run off, little Yuki,  #142
+/perform amused_nega
 and tell the Headmistress all about  #143
 how naughty I've been. #144
+
+/perform unhappy
 She thought she could shove down #145
 all her dirty thoughts  #146
 by casting me aside... #147
+
+/perform behold
 But here I am! #148
 
 /perform breast_squeeze
 Now we can really have some fun! #149
 
-/perform sassy
+/perform pleased
 Shall I rub your poor aching {isBoy: cock|cunt} again #150
 while I do? #151
 
@@ -467,25 +531,34 @@ while I do? #151
 
 - /perform dance_tease
 Be a good {player_name}, do what you're told, and  #157
+/perform sassy
 that little {isBoy: cock|cunt} of yours is going to #158
 have so much fun when you come see me. #159
     
+/perform lean_forward
 But, if you decide to be a little {isBoy: prick|bitch}  #160
 and not visit me... #161
+/perform curious
 Well, I won't take kindly to being ignored. #162
 
 /perform laugh
 
 +[wait]
-
+/perform inspect
 - The best part is you can't collect any rewards  #163
 until you've paid off all your punishment. #164
 
-- /perform inspection
+- /perform bored
 
 I'm bored with you.  #165
+
+/perform head_toss
 Time to get a taste of your first punishment. #166
+
+/perform confused
 Better get your ass to the Headmistress. #167
+
+/perform idle_nega
 She doesn't like to be kept waiting. #168
 
 ~ headmistress_hub_status = early_access
