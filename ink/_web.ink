@@ -50,15 +50,13 @@ VAR web = true
 
     ~ yuki_hub_status = early_access
     ~ headmistress_hub_status = early_access
-    // ~ punishments = 1
-    // ~ rewards = 1
-    
-    
+    ~ punishments = 1
+    ~ rewards = 1
     
     // -> yuki_intro
     
     // /scene LectureHall.Intro
-    // -> headmistress_intro
+    -> headmistress_intro
     // -> headmistress_punishment_spanking
 
     // /action raise_curtains
