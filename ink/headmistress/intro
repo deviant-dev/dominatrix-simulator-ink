@@ -5,7 +5,7 @@
 ~ punishments = 1
 ~ rewards = 1
 
-/scene LectureHallIntro.Intro1
+/scene LectureHall.Intro1
 /equip wood_paddle
 /character slave all_fours
 /character headmistress idle
@@ -31,7 +31,7 @@
 
 - You <i>will</i> behave according to your station #03
 or find yourself unable to rest on your backside for a week. #04
-
+/perform displeased
 /character slave crying
 
 I'm sorry, Headmistress. #05
@@ -40,8 +40,8 @@ Oh, please Headmistress! #07
 
 /character headmistress spank slave
 
-+ [wait 6]
-
++ [wait 3]
+/perform displeased
 - That will be sufficient for today. #08
 Remember this lesson, flawed one. #09
 
@@ -49,15 +49,15 @@ Remember this lesson, flawed one. #09
 
 //- Compose yourself immediately. #10
 
-/scene LectureHallIntro.Intro2
+/scene LectureHall.Intro2
 
 /character slave clasp_hands
 
-/character headmistress
+/character headmistress point_to_door
 
 Depart with grace and pride #11
 as befits an adornment of this house. #12
-
+/perform idle
 /character slave
 
 Yes, Headmistress. #13
@@ -65,26 +65,29 @@ Thank you for guiding me, Headmistress. #14
 
 /perform walks_away
 
-+[wait 2]
++[wait 3]
 
-- /scene LectureHallIntro.Intro3
+- /scene LectureHall.Intro3
 
 /character headmistress displeased
 
 What do we have here? #15
 Another new procurement, I see. #16
+
+/perform confused
 And once again, I have not been appropriately notified #17
 of an addition to Her collection. #18
 
 /perform look_up_and_down
 
 Another careless oversight in Yuki's fervent attempts to please, no doubt. #19
+
+/perform serious
 Our beloved Goddess forgives only so often. #20
 //I shall correct her oversight <i>forthwith</i>. #21
 
-- (present) Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
-
 /perform displeased
+- (present) Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
 
 - (ask_present)
 
@@ -92,6 +95,7 @@ Our beloved Goddess forgives only so often. #20
     ~obey++
 
 + [timeout]
+    /perform annoyed
     Your wrists, you witless cur. #39
     Present them before you #40
     that I may confirm your measure. #41
@@ -103,20 +107,22 @@ Our beloved Goddess forgives only so often. #20
 - /perform look_up_and_down
 
 Ah, Bloodstone. Diligence and commendation. #43
+/perform nod
 You have pleased the Goddess. #44
 
-/perform nod
-
+/perform curious
 Hmmmm. But also Obsidian. #45
+
+/perform serious
 Atonement and adjustment are required. #46
-/perform tap_paddle
 This must be immediate. #47
+
+/perform tap_paddle
 
 /scene LectureHall.Punishment_Spanking
 
-/character headmistress point_paddle_at_desk
-
-Alight forthwith! #55
+/perform point_paddle_at_desk
+ Alight forthwith! #55
 
 /perform idle
 - (get_on_desk)
@@ -131,7 +137,7 @@ Alight forthwith! #55
 -
 {not get_on_desk_timed_out:
     ~obey++
-    /perform look_up_and_down
+    /perform inspect
     Observe the eagerness with which our chattel attempts to comply. #113
     This behaviour pleases Her. #114
 - else:
@@ -142,9 +148,9 @@ Alight forthwith! #55
 }
 
 //new line not voice recorded yet
+/perform point_down
 - Now, kneel, slave.
 
-/perform point_down
 - (kneel)
 
 - (kneel_tries)
@@ -156,13 +162,13 @@ Alight forthwith! #55
 
 - -> Headmistress_GoodJob ->
 
-
 -(meet_headmistress)
-
+/perform smooth_skirt
 Do you know who I am? #22
 
 +[yes]
     ~obey++
+    /perform nod
     Very good. #23
     Then you know why you are here. #24
     
@@ -171,9 +177,11 @@ Do you know who I am? #22
     /perform tap_paddle
     I think you do. #25
     You just heard that slave say it. #26
+    /perform lean_forward
     What an unobservant little wart you are. #27
 
 +[timeout]
+    /perform head_toss
     Speak up. #28
     -> meet_headmistress
 
@@ -181,21 +189,28 @@ Do you know who I am? #22
 /perform tap_paddle
 
 -You will be punished. #51
+
+/perform behold
 And you will do it with grace. #52
 I will teach you how. #53
+/perform snaps_fingers
 Just like I do with all the new slaves. #54
 
-- As the Headmistress, I oversee the training #29
+- /perform idle 
+As the Headmistress, I oversee the training #29
 and correction of all slaves in this house. #30
+/perform serious
 Understood? #31
 
 +[yes]
     ~obey++
+    /perform satisfied
     Excellent. #32
     No need to waste time, then. #33
 
 +[no]
     -- (not_understood) #34
+    /perform fake_annoyed
     ~disobey++
     Come, come. #35
     Don't play dumb. #36

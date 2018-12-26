@@ -1,6 +1,6 @@
 === game_intro ===
 
-{ isDebug() : -> choices }
+{ isDebug() : -> genderchoice }
 
 /scene LogoRoom.TitleScreen
 
