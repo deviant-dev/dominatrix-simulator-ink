@@ -169,7 +169,7 @@ You are a cute one! I really hope you do well here! #40
 Giving rewards is so much more fun than punishing. #41
 
 - (good_yuki)
-/perform idle_yuki
+/perform serious
 Do you want to be a good {player_name}? #42
 
 + [yes]
@@ -193,15 +193,16 @@ Do you want to be a good {player_name}? #42
 /scene entry.intro3
 
 /character nega head_toss
-/perform amused_nega
 Oh please! You're always such a good girl, Yuki, #46
+/perform amused_nega
 never having any fun. #47
 
-/perform amused
+/perform bored
 Don't you want to live a little? #48
 
 /perform behold
 Bend the rules once in a while and really let loose? #49
+/perform idle_nega
 
 /character yuki foot_stomp
 No, thank you! #50
@@ -214,7 +215,7 @@ I know your deepest, darkest secrets. #52
 
 /perform sassy
 Remember? #53
-
+/perform idle_nega
 + [continue]
  
 - /character yuki foot_stomp
@@ -228,6 +229,7 @@ There's no way I'm breaking the rules! #56
 
 /perform excited
 I really want the Goddess to be pleased with me. #57
+/perform idle_yuki
 
 /character nega head_toss
 Ugh.. You're such a goody two-shoes. #58
@@ -289,7 +291,7 @@ hasn't she? #70
 - /perform head_toss
 Don't let her fool you.  #74
 
-/perform fake_annoyed
+/perform amused_nega
 She's not as sweet and innocent as she lets on. #75
 
 /perform confused
@@ -315,10 +317,12 @@ Have you figured out what's going on here yet? #76
     
     /perform fake_annoyed
     I think I should tell {player_him}. #81
+    /perform idle_nega
     
     /character yuki frustrated
     Don't you dare! #82
     The Goddess will be so angry with you! #83
+    /perform idle_yuki
     
     /character nega bored_nega
     Oh fine, party pooper! #84
@@ -362,6 +366,7 @@ Let's find out. Shall we? #89
 
 - /character yuki flustered
 Behave, Nega!  #93
+/perform idle_yuki
 
 /character nega caress_genitals
 
@@ -424,7 +429,7 @@ tearing up that ass of yours. #110
 <I>You're trapped in this house. #113
 <I>And we own your cum.</I> #114
 /perform laugh
-
+/perform idle_nega
 + [wait]
 
 {obey - disobey > 0:
@@ -436,10 +441,13 @@ tearing up that ass of yours. #110
 
 /character yuki foot_stomp
 That's enough, Nega! #115
+/perform frustrated
 No more fun and games for you. #116
+/perform one_finger
 I'll be reporting you to the Headmistress straight away. #117
+/perform idle_yuki
 
-/character nega laugh
+/character nega chuckle
 I'll see you again soon, little mouse. #118
 
 /perform head_toss
@@ -452,30 +460,48 @@ Come find me when you've earned a reward. #119
 -/character yuki angry
 She's so awful! #120
 Don't pay any attention to her. #121
+
+/perform flustered
 She's going to get in big trouble one of these days! #122
+
+/perform pouty
 Your poor {isBoy:penis|pussy} must be aching after that. #123
 
 +[wait 3]
 
-- /perform thoughtful
+- /perform curious
 Now... where was I? #124
+/perform one_finger
 Right! The rules! #125
 
+/perform serious
 You already have a punishment for sneaking into the Goddess's room. #126
+/perform unhappy
 Naughty {player_name}. #127
 The Headmistress will take care of that! #128
 
+/perform nod
 Make sure to come back to me when you're finished. #129
+
+/perform excited
 She also gave you a reward. #130
 You're so lucky to catch her interest! #131
+
+/perform clasp_hands
 But I can't reward you if you don't take your punishment first. #132
-    
+
+/perform bounces    
 Okay! That's all I have for now. #133
+
+/perform serious
 Hurry up!  #134
 The Headmistress doesn't like to be kept waiting. #135
-   
+  
+/perform flustered
 And stay away from that Nega-Yuki! #136
 She's a bad seed! #137
+
+/perform idle_yuki
 You'll get a punishment if you get caught coming out of her room. #138
 ~ headmistress_hub_status = early_access
 -> exit
@@ -487,6 +513,7 @@ You'll get a punishment if you get caught coming out of her room. #138
 
 /character yuki foot_stomp
 That's enough, Nega! #139
+/perform unhappy
 You are interfering too much! #140
 I'm reporting you to the Headmistress straight away. #141
 /perform yuki_exit
@@ -503,7 +530,7 @@ Run off, little Yuki,  #142
 and tell the Headmistress all about  #143
 how naughty I've been. #144
 
-/perform unhappy
+/perform angry
 She thought she could shove down #145
 all her dirty thoughts  #146
 by casting me aside... #147
