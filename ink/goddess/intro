@@ -1,5 +1,8 @@
 === goddess_intro ===
 
+~ punishments = 0
+~ rewards = 0
+
 - (flash_scenes)
 
 /scene bedroom.flash1
@@ -29,7 +32,7 @@
 /perform amused
 
 - Oh... How rude. #01
-
+~ punishments++
 /perform bored
 
 And I was having so much fun. #02
@@ -395,7 +398,7 @@ Strong bones and muscles. #95
 You'll need to be flexible, as well. #96
 /perform fake_annoyed
 Oh yes... there is much here we can work with. #97
-
+~ rewards++
 - (present_self)
 - (present_self_tries)
 

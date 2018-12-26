@@ -3,21 +3,21 @@
 === Yuki_PayAttention ===
 
 { cycle:
-    - You're not very good at this yet, are you?
-    You're supposed to look at me when I'm talking.
-    - Bad {player_name}! You should look at me when I speak to you.
-    - Oh gee. You need a lot of training. Look at me.
-    - Didn't anyone ever teach you to look at people 
-    when they're speaking to you?
-    - It's very rude not to look at me when I'm speaking to you.
+    - You're not very good at this yet, are you? #01
+    You're supposed to look at me when I'm talking. #02
+    - Bad {player_name}! You should look at me when I speak to you. #03
+    - Oh gee. You need a lot of training. Look at me. #04
+    - Didn't anyone ever teach you to look at people  #05
+    when they're speaking to you? #06
+    - It's very rude not to look at me when I'm speaking to you. #07
 }
 
 + [pay-attention]
     { cycle:
-        - Now... what was I saying? Oh right...
-        - Much better. Ahem.
-        - Good {player_name}. You might be teachable after all.
-        - Now back to your instructions.
+        - Now... what was I saying? Oh right... #08
+        - Much better. Ahem. #09
+        - Good {player_name}. You might be teachable after all. #10
+        - Now back to your instructions. #11
     }
     ->->
 
@@ -28,13 +28,13 @@
 
 {cycle:
 
-    - Hellooo? I'm talking to you!
-    - Don't ignore me!
-    - Would you answer me already?
-    - Hey doofus, I'm speaking to you.
-    - Am I talking to a wall right now?
-    - Hey {player_name}, I'm not talking to myself you know!
-    - Answer me {player_name}!
+    - Hellooo? I'm talking to you! #01
+    - Don't ignore me! #02
+    - Would you answer me already? #03
+    - Hey doofus, I'm speaking to you. #04
+    - Am I talking to a wall right now? #05
+    - Hey {player_name}, I'm not talking to myself you know! #06
+    - Answer me {player_name}! #07
 }
 
 ->->
@@ -46,13 +46,13 @@
 
 {cycle:
 
-    - I asked you to do something.
-    - Are you going to follow directions?
-    - It's time to move, slave.
-    - Are you stuck?
-    - Come on, hurry up!
-    - What's taking so long?
-    - Move it, {player_name}!
+    - I asked you to do something. #01
+    - Are you going to follow directions? #02
+    - It's time to move, slave. #03
+    - Are you stuck? #04
+    - Come on, hurry up! #05
+    - What's taking so long? #06
+    - Move it, {player_name}! #07
 }
 
 ->->

@@ -44,33 +44,14 @@ VAR web = true
     
     // /scene LectureHall
 
-    // - (tests)
-    //     + [add punishment]
-    //         {punishments < 10:
-    //             ~punishments++
-    //         }
-    //     + [remove punishment]
-    //         {punishments > 0:
-    //             ~punishments--
-    //         }
-    //     + [add reward]
-    //         {rewards < 10:
-    //             ~rewards++
-    //         }
-    //     + [remove reward]
-    //         {rewards > 0:
-    //             ~rewards--
-    //         }
-        
-    // - /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
-    // -> tests
+    // -> test_marks
 
     // Headmistress Jumps
 
     ~ yuki_hub_status = early_access
     ~ headmistress_hub_status = early_access
-    ~ punishments = 1
-    ~ rewards = 1
+    // ~ punishments = 1
+    // ~ rewards = 1
     
     
     
@@ -78,7 +59,7 @@ VAR web = true
     
     // /scene LectureHall.Intro
     // -> headmistress_intro
-    -> headmistress_punishment_spanking
+    // -> headmistress_punishment_spanking
 
     // /action raise_curtains
     // /scene LectureHall.Punishment_Spanking
@@ -108,6 +89,27 @@ VAR web = true
     - -> table_of_contents
 	- else : -> game_intro
 }
+
+=== test_marks ===
+    + [add punishment]
+        {punishments < 10:
+            ~punishments++
+        }
+    + [remove punishment]
+        {punishments > 0:
+            ~punishments--
+        }
+    + [add reward]
+        {rewards < 10:
+            ~rewards++
+        }
+    + [remove reward]
+        {rewards > 0:
+            ~rewards--
+        }
+    
+- /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
+-> test_marks
 
 === table_of_contents ===
 

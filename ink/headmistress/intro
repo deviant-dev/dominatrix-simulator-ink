@@ -2,6 +2,8 @@
 -> select_gender ->
 ~ obey = 0
 ~ disobey = 0
+~ punishments = 1
+~ rewards = 1
 
 /scene LectureHall.Intro1
 /equip wood_paddle

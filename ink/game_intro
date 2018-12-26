@@ -1,5 +1,7 @@
 === game_intro ===
 
+{ isDebug() : -> genderchoice }
+
 /scene LogoRoom.TitleScreen
 
 + [wait 6]
@@ -8,7 +10,6 @@
 - (instructions)
 
 /scene LogoRoom.Instructions
-/wait
 
 + [yes]
 + [no]
@@ -28,29 +29,29 @@
 - (choices) /scene LogoRoom.Notifications
 
 + [move: Intro]
-+ [move: Yuki (early_access)] -> tryEnter(early_access, -> entry_hub, -> choices)
++ [move: Yuki (early_access)] -> tryEnter(early_access, -> yuki_intro, -> choices)
 + [move: Headmistress (early_access)]-> tryEnter(early_access, -> headmistress_intro, -> choices)
 
-- (genderchoice) /scene hallway.genderchoice
-/lock exit
+- (genderchoice)
+/scene hallway.genderchoice
+
+~ temp chosen = false
 
 - (options)
 
 + [character-choice:male]
     ~ setGender("m")
-    /notify <i>You now appear masculine.</i> #999
-    /unlock exit
+    ~ chosen = true
+    /notify text="<i>You now appear masculine.</i>" #999
     -> options
 
 + [character-choice:female]
     ~ setGender("f")
-    /notify <i>You now appear feminine.</i> #999
-    /unlock exit
+    ~ chosen = true
+    /notify text="<i>You now appear feminine.</i>" #999
     -> options
 
-+ [move]
-
-- -> goddess_intro
++ {chosen} [move] -> goddess_intro
 
 
 === game_intro_web ===
