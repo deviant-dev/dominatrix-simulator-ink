@@ -449,7 +449,7 @@ Bow down, kiss, then back to your pose like a good little {player_name}. #105
 + { kiss_feet_tries >= 2 } [timeout]
  + [no] No?! #106
     /perform confused
-    Turning down such a reward. You are a strange one. #107
+    Turning down such a reward?! You are a strange one. #107
 
 - /perform angry
 
