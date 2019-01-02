@@ -30,7 +30,7 @@
 
 + [move: Intro]
 + [move: Yuki (early_access)] -> tryEnter(early_access, -> yuki_intro, -> choices)
-+ [move: Headmistress (early_access)]-> tryEnter(early_access, -> headmistress_intro, -> choices)
++ {yuki_intro} [move: Headmistress (early_access)]-> tryEnter(early_access, -> headmistress_intro, -> choices)
 
 - (genderchoice)
 /scene hallway.genderchoice

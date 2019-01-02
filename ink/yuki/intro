@@ -197,7 +197,7 @@ Oh please! You're always such a good girl, Yuki, #46
 /perform amused_nega
 never having any fun. #47
 
-/perform bored
+/perform confused
 Don't you want to live a little? #48
 
 /perform behold
@@ -208,7 +208,7 @@ Bend the rules once in a while and really let loose? #49
 No, thank you! #50
 
 //character nega approach_yuki
-/character nega pleased
+/character nega lean_forward
 //use whisper voice
 I know you do.  #51
 I know your deepest, darkest secrets. #52
@@ -562,7 +562,7 @@ have so much fun when you come see me. #159
 /perform lean_forward
 But, if you decide to be a little {isBoy: prick|bitch}  #160
 and not visit me... #161
-/perform curious
+/perform serious
 Well, I won't take kindly to being ignored. #162
 
 /perform laugh
@@ -570,7 +570,7 @@ Well, I won't take kindly to being ignored. #162
 +[wait]
 /perform inspect
 - The best part is you can't collect any rewards  #163
-until you've paid off all your punishment. #164
+until you've paid off all your punishments. #164
 
 - /perform bored
 

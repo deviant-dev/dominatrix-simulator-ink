@@ -110,7 +110,8 @@ VAR yuki_hub_status = early_access
 
 === demo_end ===
 /scene LogoRoom.EndScreen
--> END
+
++ [restart] -> game_intro.choices
 
 === unlock_all ===
 ~ yuki_hub_status = unlocked

@@ -3,6 +3,8 @@
 ~ obey = 0
 ~ disobey = 0
 
+/character yuki
+
 // If the player hasn't done the intro yet,
 // then have them go to the intro.
 {not yuki_intro: -> yuki_intro}

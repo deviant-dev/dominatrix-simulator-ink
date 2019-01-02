@@ -1,6 +1,7 @@
 VAR entered_code = ""
 VAR entered_phrase = ""
 VAR has_early_access = false
+VAR code_link = "https:\/\/www.patreon.com/posts/23573299"
 
 
 // Fallback for getCode() external function
@@ -36,7 +37,7 @@ VAR has_early_access = false
 + [Enter Pass Phrase] -> code_1 ->
 + [Get Pass Phrase]
     /notify title="Opening Pass Phrase Post" text="Now opening the pass phrase web page. You may need to leave VR to see the page."
-    /open_link www.patreon.com/posts/roadmap-22863619
+    /open_link {code_link}
     
     /wait 3
     
@@ -63,11 +64,13 @@ VAR has_early_access = false
 
 - {has_early_access:
     /notify title="<color=green>Access Granted!</color>" text="You have spoken the sacred words: '{entered_phrase}'.<br/><br/>You may enter."
+    /action close_journal
+    /wait 4
 - else:
     /notify title="<color=red>Access Denied!</color>" text="'{entered_phrase}' is incorrect.<br/><br/>That way is locked."
+    /action close_journal
 }
 
-/action close_journal
 ->->
 
 
@@ -179,7 +182,7 @@ VAR has_early_access = false
 = code_options(-> back, -> leave)
 +[Get Pass Phrase]
     /notify title="Opening Pass Phrase Post" text="Now opening the pass phrase web page. You may need to leave VR to see the page."
-    /open_link www.patreon.com/posts/roadmap-22863619
+    /open_link {code_link}
     
     /wait 10
     

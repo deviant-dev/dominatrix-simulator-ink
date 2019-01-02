@@ -113,7 +113,7 @@ Arouse yourself and continue until I give you leave to stop. #08
 
 -
 +[wait 10]
-    /perform thoughtful
+   - /perform thoughtful
    {cycle:
         - Are you having fun performing for our guests?
         - Would you like to keep going, {isBoy: toad|strumpet}?
@@ -152,11 +152,6 @@ Arouse yourself and continue until I give you leave to stop. #08
     - You disappoint us when you fail to stay {isBoy: erect|swollen}. #08
     - Your discomfort is our succor. #09
     - Ahhh. Your torment is bewitching. #10
-    - 
-    -
-    -
-    -
-    -
 }
 
 /character headmistress
@@ -180,12 +175,6 @@ Arouse yourself and continue until I give you leave to stop. #08
     - Proper performance for guests is a requirement {isBoy: toad|strumpet}. #10
     - One must be proud to display their arousal. #11
     - You please our guests with your performance. #12
-    -
-    -
-    -
-    -
-    -
-    -
 }
 
 /character headmistress

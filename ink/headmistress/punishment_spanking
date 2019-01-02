@@ -12,8 +12,8 @@ TODO: Support suffling swats and equipment
 
 // {shuffle:
 // - ~ headmistress_spanking_target_count = 10
-// - ~ headmistress_spanking_target_count = 15
-// - ~ headmistress_spanking_target_count = 20
+// - ~ headmistress_spanking_target_count = 25
+// - ~ headmistress_spanking_target_count = 35
 // }
 
 // Just use '10' swats for now.
@@ -36,7 +36,7 @@ TODO: Support suffling swats and equipment
 
 {intro: 
     /scene LectureHall.Punishment_Spanking_Ready
-    -> hands_and_knees_timeout
+    -> punish_intro
 - else:
     /scene LectureHall.Punishment_Spanking
 }
@@ -96,53 +96,6 @@ a spanking is in order. #02
     Such offends the Goddess and must be striken from the specimen. #16
 }
 
-- (hands_and_knees_timeout)
-/perform curious
-Now. Onto your hands and knees, bauble. #17
-
-- (hands_and_knees_fail)
-+ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
-
-- /perform amused
-//In this position, #18
-//splayed fingers must be at least shoulder width apart. #19
-
-//Now then. #20
-The back must be delicately arched, #21
-presenting the most ideal access #22
-to the object of discipline: the buttocks. #23
-/perform serious
-Lift your backside high, {isBoy: mongrel|moppet}. #24
-
-/perform paddle_desk
-
-//-In this way, the ass is presented for abasement. #25
--Tell me, lump, is that as high as you can lift your hindquarters? #26
-
-+[yes]
-    ~obey++
-    /perform lean_forward
-    I disagree. #27
-    Arch just a bit more. #28
-    ++[wait]
-    /perform nod
-    --Just so. #29
-    You will remain in this position without fail. #30
-
-+[no]
-    ~disobey++
-    /perform displeased
-    You serve yourself and our Goddess poorly, heathen. #31
-    Raise your ass! #32
-
-+[timeout]
-    /perform annoyed
-    What are you waiting for? #33
-    Your back must strain with the effort of raising your derrier, chattel. #34
-
-
--/perform satisfied
--> Headmistress_GoodJob ->
 //
 //
 
@@ -344,6 +297,53 @@ into a proud and upright position. #114
 
 +[wait]
 
+- (hands_and_knees_timeout)
+/perform curious
+Now. Onto your hands and knees, bauble. #17
+
+- (hands_and_knees_fail)
++ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
+
+- /perform amused
+//In this position, #18
+//splayed fingers must be at least shoulder width apart. #19
+
+//Now then. #20
+//The back must be delicately arched, #21
+//presenting the most ideal access #22
+//to the object of discipline: the buttocks. #23
+/perform serious
+Lift your backside high, {isBoy: mongrel|moppet}. #24
+
+/perform paddle_desk
+
+//-In this way, the ass is presented for abasement. #25
+-Tell me, lump, is that as high as you can lift your hindquarters? #26
+
++[yes]
+    ~obey++
+    /perform lean_forward
+    I disagree. #27
+    Arch just a bit more. #28
+    //++[wait]
+    //perform nod
+    //--Just so. #29
+    You will remain in this position without fail. #30
+
++[no]
+    ~disobey++
+    /perform displeased
+    You serve yourself and our Goddess poorly, heathen. #31
+    Raise your ass! #32
+
++[timeout]
+    /perform annoyed
+    What are you waiting for? #33
+    Your back must strain with the effort of raising your derrier, chattel. #34
+
+
+-/perform satisfied
+-> Headmistress_GoodJob ->
 - /character headmistress lean_forward
 //And I am always pleased #115
 //with the exquisite sharp inhale of breath #116
@@ -422,8 +422,12 @@ Prepare yourself for {headmistress_spanking_target_count} swats, {player_name}. 
 + [react-success]
     ~ headmistress_spanking_count++
     ~ headmistress_spanking_break_count++
+    
+    {headmistress_spanking_break_count %3 == 0: 
     -> GoodSpank ->
-    {headmistress_spanking_break_count >= 5:
+    }
+    
+    {headmistress_spanking_break_count >= 6:
     
         // Check mistakes for obey or disobey adjustment
         {headmistress_spanking_mistakes > 0:
@@ -478,6 +482,7 @@ I wonder if you would like to perform further for our audience? #135
     but you have done well. #138
     /perform point_down
     You may descend and return to Mistress Yuki-Onna with my compliments. #139
+//need move off desk action
     /character crowd cheers
     /character headmistress
     -> FinalEnding
@@ -573,12 +578,6 @@ I give you leave to depart. #146
     - Have you been keeping track? #166
     - Notice the beads of sweat forming on the brow. #167
     - Remember to breathe, {isBoy: runt|poppet}. #168
-    -
-    -
-    -
-}
-
-{shuffle:
     - Notice how the {isBoy:shaft bounces|nether lips clench}. #169
     - The light is catching the dewy sheen on the skin most magnificently. #170
     - Observe the {isBoy: tip|slit} begin to glisten. #171
@@ -591,11 +590,6 @@ I give you leave to depart. #146
     no lasting harm is inflicted... #125
     unless permanency is desired, of course. #126
     - Feet must remain flat with no obscene curling of the toes. #47
-    -
-    -
-    -
-    -
-    
 }
 
 ->->
@@ -603,13 +597,36 @@ I give you leave to depart. #146
 
 = SpankBreak
 ~ headmistress_spanking_break_count = 0
+- {cycle: 
+    - You may rest back on your heels, slave.
+    - Sit upright for your fans, slave.
+    - Raise yourself up and sit upon your heels, slave.
+    }
+
+- (kneel)
+
+- (kneel_tries)
+- (kneel_fail)
+
++ [pose:kneel] -> HoldPose(-> kneel_fail, -> kneel) ->
++ { kneel_tries < 2 } [timeout] -> kneel
+//+ { kneel_tries >= 2 } [timeout]
+
+- -> Headmistress_GoodJob ->
 
 { shuffle:
     - -> break01 -> 
     - -> break02 ->
     - -> break03 ->
 }
+- {cycle:
+    - Back on your hands and knees, slave. 
+    - Resume your spanking position, slave.
+    - Present your ass, {isBoy: runt|strumpet}.
+    }
 
+- (hands_and_knees_fail)
++ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
 ->->
 
 = break01
@@ -623,7 +640,7 @@ Reach down and stroke your {isBoy: shaft|folds}. #178
 Punishments must be associated with sensual excitation. #179
 
 Does it feel good to touch yourself, {isBoy: toad|strumpet}? #180
-
+//need moans or some other sexual sound during this scene
 +[yes]
     ~ obey++
     /perform nod
@@ -675,12 +692,14 @@ Would you enjoy that, {player_name}? #189
 
 = break03
 /perform sassy
+
+//reload scene with Goddess at front of desk
 Perhaps our little foible here needs a carrot #193
 dangled in front of {isBoy: him|her}. #194
 /perform unhappy
-Behaving with decorum and obedience #195
-does not simply stave off punishment! #196
-/perform serious
+//Behaving with decorum and obedience #195
+//does not simply stave off punishment! #196
+//perform serious
 Great rewards are bestowed upon the most worthy. #197
 
 /perform circle_player
