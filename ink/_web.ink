@@ -36,7 +36,11 @@ INCLUDE yuki/task_fanning
 INCLUDE yuki/generic_responses
 
 VAR debug = false
-VAR web = true
+VAR web = false
+
+EXTERNAL isDebug()
+EXTERNAL isWeb()
+EXTERNAL getCode()
 
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
@@ -53,7 +57,7 @@ VAR web = true
     ~ punishments = 1
     ~ rewards = 1
     
-    // -> yuki_intro
+    // -> yuki_intro.nega_interruption
     
     // /scene LectureHall.Intro
     -> headmistress_intro

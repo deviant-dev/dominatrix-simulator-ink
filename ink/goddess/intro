@@ -68,6 +68,8 @@ Did Mistress Yuki-Onna let you in? #05
     {shuffle:
         - Did my Yuki let you in? #15
         - Did that naughty little maid let you in? #16
+        //re-record new VO line 
+        //Did an overly enthusiastic maid bring you to me?
         - Did a dark-haired maid bring you to me? #17
         - Yuki-Onna is disobeying me again. She let you in, didn't she? #18
     }
@@ -247,7 +249,8 @@ I will name you... {player_name}. #57
 /perform amused
 
 I expect you to respond to {player_name} from now on. #58
-
+//re-reord this VO line
+//Until someone gives you a new name, that is.
 Until you earn a new name, that is. #59
 /perform unhappy
 Do you understand? #60
