@@ -38,7 +38,7 @@ INCLUDE yuki/generic_responses
 
 
 VAR debug = false
-VAR web = false
+VAR web = true
 
 EXTERNAL isDebug()
 EXTERNAL isWeb()

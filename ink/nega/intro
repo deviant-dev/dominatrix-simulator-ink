@@ -10,7 +10,7 @@
 { isWeb():
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
 
-    <blockquote><i>You find yourself in a dim room badly blackened by a recent fire. Charred and broken remnants of furniture litter the room. A sullen and attractive woman in a tattered maid's uniform smiles menacingly at you...</i></blockquote>
+    <blockquote><i>You find yourself in a dim and dusty attic. Old out-of-place furniture, scraps of paper, and trinkets litter the room. A sullen and attractive woman in a tattered maid's uniform smiles menacingly at you...</i></blockquote>
 
     + [Continue]
 - else:
