@@ -46,6 +46,37 @@ VAR yuki_hub_status = early_access
 === function isVideo() ===
 ~ return false
 
+// Fallback for getNegaDie1/2/3() external function
+=== function getNegaDie1() ===
+~ return getNegaDie()
+
+=== function getNegaDie2() ===
+~ return getNegaDie()
+
+=== function getNegaDie3() ===
+~ return getNegaDie()
+
+=== function getNegaDie() ===
+~ temp roll = 0
+
+{shuffle:
+    - ~roll = -1
+    - ~roll = -1
+    - ~roll = -1
+    - ~roll = 0
+    - ~roll = 1
+    - ~roll = 1
+}
+
+~ return roll
+
+=== function rollToText(roll) ===
+{
+    - roll == -1: Skull
+    - roll == 0: Blank
+    - roll == 1: Cup
+}
+
 === function setGender(gender) ===
 {
     - gender == "m":
@@ -63,20 +94,28 @@ VAR yuki_hub_status = early_access
 ~ return
 
 === select_gender ===
-        // If we've already selected a gender
-    // then skip this bit.
-    {setGender: ->->}
-    
-    {
-        - !isWeb():
-            ~ setGender("m")
-            ->->
-    }
-    
-    + [Male]
-        ~ setGender("m")
-    + [Female]
-        ~ setGender("f")
+{setGender: ->->}
+
+/scene hallway.genderchoice
+
+~ temp chosen = false
+
+- (options)
+
++ [character-choice:male]
+    ~ setGender("m")
+    ~ chosen = true
+    /notify text="<i>You now appear masculine.</i>" delay=0 #999
+    -> options
+
++ [character-choice:female]
+    ~ setGender("f")
+    ~ chosen = true
+    /notify text="<i>You now appear feminine.</i>" delay=0 #999
+    -> options
+
++ {chosen} [move]
+
 - ->->
 
 === jump_menu(-> back) ===
@@ -122,4 +161,3 @@ VAR yuki_hub_status = early_access
 
 === function obeyed() ===
 ~ return obey - disobey > 0
-

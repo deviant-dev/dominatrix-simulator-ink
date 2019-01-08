@@ -1,0 +1,345 @@
+ === nega_reward_forcedsex ===
+ 
+/scene attic.reward_forcedsex
+
+/perform eager
+
+I'm so ready for this.
+I've been waiting a long time for some new blood to show up.
+
+
+- (lay_down)
+- (lay_down_tries)
+
+/perform point_down
+Get on the floor, bitch.
+On your back.
+- (lay_down_fail)
+
++ [pose:lay_down] -> HoldPose(-> lay_down_fail, -> lay_down) -> lay_down_done
++ { lay_down_tries < 2 } [timeout]
+    /perform displeased
+    Hey, stupid.
+    I gave you a command.
+    Lay the fuck down!
+    -> lay_down
++ { lay_down_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> lay_down
++ [no] -> Nega_CheckIfInterested -> lay_down
+
+- (lay_down_done)
+
+-> Nega_GoodJob ->
+
+{lay_down_tries == 1:
+    ~obey++
+- else:
+    ~disobey++
+}
+
+- (ask_any_idea)
+Do you have any idea what I'm going to do to you?
+
++ [yes]
+    ~disobey++
+    You're about to find out.
++ [no]
+    ~obey++
+    Damn right you don't.
++ [timeout]
+    Well?
+    -> ask_any_idea
+
+- /perform inspect
+I want to get off on some deep dicking.
+
+// Handle cockification for female players.
+
+{not isBoy:
+    I've got a strap-on right here for you, slut.
+}
+
+/action equip-cock
+
+//build out stroking scene
+- Better start stroking that cock.
+
+- (bound_wrists)
+- (bound_wrists_tries)
+
+/equip rope
+/perform kick_leg
+Put your ankles and wrists together!
+
+- (bound_wrists_fail)
+
++ [pose:spread_eagle] -> HoldPose(-> bound_wrists_fail, -> bound_wrists) ->
++ { bound_wrists_tries < 2 } [timeout] -> bound_wrists
++ { bound_wrists_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> bound_wrists
+// + [no] -> CheckIfInterested -> lay_down
+
+- -> Nega_GoodJob ->
+
+I keep plenty of rope lying around just for this.
+
+/perform licks lips
+Fuck! I'm soaking my panties.
+
+//mutters
+I don't know why I even bother wearing them.
+
+/perform look_up_and_down
+Let's find out how well you can fuck.
+Better make me cum, scum!
+
+- (forced_sex_ready)
+/perform squat
+Is your {isBoy: cock|strap-on} ready, whore?
+
++[yes] 
+    /perform rub_pussy
+    What a fucking slut you are!
+
++[no]
+    Then get it fucking ready!
+    Stroke that shaft.
+    Keep it hard for me.
+
++[timeout]
+    Answer me, bitch!
+    -> forced_sex_ready
+
+- /perform tie_ankles
+
+Don't you fucking move, slut!
+//can she mutter to herself like she's crazy?
+
+/perform tie_wrists
+
+You won't be needing your hands for a while.
+
+/perform looming
+
+Now... time for me to get more comfortable.
+
+//nega yuki strips
+/scene attic.reward_forcedsex2
+
+Look at you. Such a pathetic fleshbag.
+I bet you're just dying to find out 
+how my wet pussy feels against you.
+Aren't you?
+
++[yes]
+    Such a filthy whore. 
+    What a treat!
+
++[no]
+    Too fucking bad!
+
++ [timeout]
+
+- Do you know what I'm about to do, slut?
+
++ [yes]
+    That's right.
+
++ [no]
+    You're so fucking dumb. I swear.
+
+- I'm about to use you like the eager little whore you are.
+I'm going to ride that {isBoy: cock|strap-on} of yours
+until I cum my fucking brains out!
+
+Would you like that, {isBoy: prick|bitch}?
+
++[yes]
+    Fan-fucking-tastic! 
+    I'm getting what I want no matter what.
+    It's just a bonus for you that you want it too.
+
++[no]
+    It doesn't matter what you fucking want!
+    You came to me and now I'm going to have some fun!
+
+//player needs to be told to move their controller to their crotch
+//Need to teach the player how to move their controller like a cock/pussy and how to thrust to a beat/rhythm
+
+- /perform squat_over_player_crotch
+
+Ahhhh! That's it!
+You're hot flesh is just what I fucking needed!
+
+VAR thrusts = 0
+VAR nega_thrust_mistakes = 0
+VAR nega_difficulty = 0
+VAR nega_thrust_count = 0
+VAR nega_thrust_target_count = 20
+VAR nega_thrust_break_count = 6
+
+You better move those goddamn hips while I fuck you, slut.
+Your job is to make me cum, got it?!
+
++[yes]
+    Good. Now fucking show me how you thrust.
+    ~obey++
+
++[no]
+    Do it anyways, bitch.
+    ~disobey++
+
+- (test_thrust)
+Thrust three times. Nice and slow.
+
+- (test_thrust_again)
+
+/minigame rhythm-nega-thrust-tutorial
+
++ [minigame-success]
+    // This lets us count the number of successful attempts.
+    ~thrusts++
+    -> Nega_GoodJob ->
+    // Once there have been 3 good thrusts, we continue.
+    { thrusts < 3:
+        {Again.|Once more.}
+        -> test_thrust_again
+    - else:
+        ~obey++
+        ~ nega_difficulty = 1
+        -> thrust_continue
+    }
+
++ [minigame-fail]
+    // This lets us count the number of failed attempts.
+    ~nega_thrust_mistakes++
+
+    // We will continue if they fail 3 times.
+    { nega_thrust_mistakes < 3:
+        Are you a fucking virgin or something? #120
+        -> test_thrust
+    - else:
+        ~disobey++
+        Ughh. Pathetic.
+        Maybe you'll be more motivated to get it right
+        when I start fucking you!
+        ~ nega_difficulty = 0
+    }
+
++ [minigame-quit] -> Nega_CheckIfInterested -> thrust_more
+
+- (thrust_continue)
+Not bad. Let's pick up the pace, huh?
+
+- (thrust_restart)
+
+Give it to me harder, you worthless fuck.
+
+/minigame rhythm-nega-thrust
+
+- (thrust_more)
+
+~ nega_thrust_mistakes = 0
+
+- (thrust_game_continue)
+
++ [minigame-success] -> outro
++ [minigame-fail] -> Badthrust -> thrust_restart
++ [minigame-quit] -> Nega_CheckIfInterested -> thrust_restart
++ [minigame-break]
+    {nega_thrust_mistakes > 0:
+        ~ disobey++
+    - else:
+        ~ obey++
+    }
+    -> Thrust_break -> thrust_more
++ [minigame-mistake]
+    ~ nega_thrust_mistakes++
+    -> Badthrust -> thrust_game_continue
+
+= thrust_minigame_orgasm
+
+TODO Add in orgasm dialog
+
+->->
+
+= outro
+
+/perform squat_grind_on_crotch
+//this needs to last for a set amount of time with comments interspersed as player thrusts correctly
+//build in variable length of time the rhythm plays (could alternate between music, heart beats, metronome)
+//needs sound or vibration feedback to let the player know they are succeeding
+
+-> exit
+
+= Thrust_break
+~ nega_thrust_break_count = 0
+
+- (stop_thrust)
+- (stop_thrust_tries)
+
+- {cycle: 
+    - Hold still, little bitch.
+    - Stop moving!
+    - Catch your fucking breath. 
+    I can't have you giving out on me.
+}
+
+- (stop_thrust_fail)
+
++ [pose:stop_thrust] -> HoldPose(-> stop_thrust_fail, -> stop_thrust) ->
++ { stop_thrust_tries < 2 } [timeout] -> stop_thrust
+//+ { kneel_tries >= 2 } [timeout]
+
+- -> Nega_GoodJob ->
+{ shuffle:
+    - -> break01 -> 
+    - -> break02 ->
+    - -> break03 ->
+}
+
+- (hands_and_knees)
+- (hands_and_knees_tries)
+
+- {cycle:
+    - Back on your hands and knees, slave. 
+    - Resume your spanking position, slave.
+    - Present your ass, {isBoy: runt|strumpet}.
+    }
+
+- (hands_and_knees_fail)
++ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees) ->
+
+
+- -> exit
+
+= break01
+//choke player during forced sex
+Do you like being used?
+
+->->
+
+= break02
+//Slap player during forced sex
+
+
+->->
+
+= break03
+//tell player to hold breath during forced sex
+
+
+->->
+
+
+//As Nega gets close to cumming, she asks the player if they want her to cum while using them 
+
+//Nega orgasms
+
+//Player is not allowed to orgasm
+
+- {obey - disobey > 3: -> Nega_Give_Reward ->}
+
+-> exit
+
+= Badthrust
+TODO: bad thrust comments go here
+->->

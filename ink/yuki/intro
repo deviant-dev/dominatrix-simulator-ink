@@ -89,7 +89,6 @@ You are a guest of Threshold House. #21
 /perform thoughtful
 Well, we call it a house, but it's not really one... #22
 
-/wait
 /perform serious
 
 All guests must follow the rules #23
@@ -161,6 +160,51 @@ Easy, right? #36
     -> easy_rules
     
 + [distracted] -> Yuki_PayAttention -> easy_rules
+
+//insert puppy pose test
+
+- (puppy_beg)
+Let's practice!
+I really love puppies.
+Petting them. Kissing them. Feeding them. Walking them.
+
+Would you like to be my puppy?
+
++[yes]
+Oh my goodness! I'm just so excited!
+
++[no]
+What? But I'm so nice to my pets.
+You're not doing a good job of following instructions.
+
+Just try it once for me, okay?
+
++[yes]
+I promise this will be worth it!
+
++[no]
+Well, that's really a shame!
+Maybe I'm just too nice for you.
+I hope that's not true!
+//make it to where the yuki ending gives them another chance to be a puppy or sets a variable on them that they don't like puppy play
+
+First, puppy has to beg for my attention.
+
+- (pet_beg)
+- (pet_beg_tries)
+
+/perform point_down
+Down on your knees and raise your hands to beg.
+
+- (pet_beg_fail)
+
++ [pose:pet_beg] -> HoldPose(-> pet_beg_fail, -> pet_beg) ->
++ { stand_straight_tries < 2 } [timeout] -> pet_beg
+
+-> Yuki_GoodJob ->
+That's enough for now! 
+You did so well following instructions and 
+I can't wait until I can play with my puppy!
 
 - /perform squirm
 You are a cute one! I really hope you do well here! #40
@@ -294,6 +338,53 @@ Don't let her fool you.  #74
 /perform amused_nega
 She's not as sweet and innocent as she lets on. #75
 
+//insert teaching player to get slapped
+I bet you like it rough, don't you?
+
++[yes]
+Let's find out how rough.
+
++[no]
+What a pathetic whimp.
+
+I'm going to show you both how slaves are really trained.
+Pain is such an effective tool.
+
+/perform prepare_for_slap
+When I swing my hand, you better fucking jerk your head.
+Ready?
+
++[yes]
+That's right, bitch.
+You'll take this like a good little slave.
+
++[no]
+No?
+Then you're not going to like me very much.
+//change nega ending so if the player says no to this, she reminds them that visiting her means the hard stuff and they have to take a slap
+Obedient pain sluts get special rewards around here.
+
+Do you want to change your mind and take a slap?
+
++[yes]
+Ahhhh. Sweet music to my ears!
+
++[no]
+Pity. You have no idea what you're missing.
+//set variable on player that they don't want pain and didn't get slapped
+
+//need to add slap training
+
+- (try_slap)
+/perform slap_player
+
++ [react-success]
+-> Nega_GoodJob ->
++ [react-fail]
+That was pathetic. Try again.
+-> try_slap
+
+-
 /perform confused
 Have you figured out what's going on here yet? #76
 

@@ -134,7 +134,7 @@ Then next time you better behave yourself for me and the other Mistresses!
 - (edgebreak2)
 
 {bank3_loop: -> BCumQ}
-/perform cock_head_to_left
+/perform cocks_head_to_left
 
 I bet you've had enough of my teasing. 
 -(TouchQ) 
@@ -193,7 +193,6 @@ I want to play with you myself now!
 
 Lie down and put your hands over your head. 
 
-->foot_tease
 - (foot_tease)
 -(lay_down_fail)
 + [pose:lay_down] -> HoldPose(-> lay_down_fail, -> lay_down) ->

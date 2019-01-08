@@ -24,6 +24,7 @@ INCLUDE nega/intro
 INCLUDE nega/lore
 INCLUDE nega/generic_responses
 INCLUDE nega/reward_dice
+INCLUDE nega/reward_forcedsex
 INCLUDE nega/punishment_trampling
 INCLUDE yuki/hub
 INCLUDE yuki/intro
@@ -35,6 +36,7 @@ INCLUDE yuki/reward_massage
 INCLUDE yuki/task_fanning
 INCLUDE yuki/generic_responses
 
+
 VAR debug = false
 VAR web = false
 
@@ -45,8 +47,9 @@ EXTERNAL getCode()
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
 { isDebug() :
-    
     // /scene LectureHall
+    
+    -> nega_intro
 
     // -> test_marks
 
@@ -56,11 +59,11 @@ EXTERNAL getCode()
     ~ headmistress_hub_status = early_access
     ~ punishments = 1
     ~ rewards = 1
-    
+
     // -> yuki_intro.nega_interruption
     
     // /scene LectureHall.Intro
-    -> headmistress_intro
+    // -> headmistress_intro
     // -> headmistress_punishment_spanking
 
     // /action raise_curtains
@@ -70,7 +73,7 @@ EXTERNAL getCode()
     
     // Goddess Jumps
     
-    // /scene bedroom.intro
+    /scene bedroom.intro
     // /character goddess
     // /move
     
@@ -84,12 +87,13 @@ EXTERNAL getCode()
 // Debug Jump
 // (must be in-editor and have 'Video' checked in StoryTeller)
 { isVideo() :
-    - -> goddess_intro.video_jump
+    -> goddess_intro.video_jump
 }
 
 { isWeb() :
-    - -> table_of_contents
-	- else : -> game_intro
+    -> table_of_contents
+- else :
+    -> game_intro
 }
 
 === test_marks ===

@@ -36,7 +36,7 @@
     You must be here to serve me!
 }
 
-- (check_task) Looking to serve me, then?
+- (check_task) Looking to serve me, are you?
 
 + [yes] -> choose_task
 + [no] -> exit

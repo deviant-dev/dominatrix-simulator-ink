@@ -19,4 +19,110 @@
         - Now back to your instructions.
     }
     ->->
+    
 + [timeout] -> Nega_PayAttention
+
+=== Nega_CheckIfInterested ===
+
+/perform unhappy
+What the fuck is wrong with you!?
+
+Are you going to behave and give me what I want?
+
++ [yes] 
+That's right, {isBoy: maggot|whore}.
+    ->->
++ [no]
+    Then fuck off.
+    No refunds, you little bitch.
+    -> exit
+
+=== Nega_GoodJob ===
+
+
+{shuffle:
+    - That's it, little bitch.
+    - Just like that.
+    - Maybe you aren't a waste of time. 
+    - Not bad.
+    - Huh. Maybe I will get to have a little fun afterall.
+    - You're making my pussy wet.
+    - Toying wtih you is so much fun!
+    - Good little {isBoy: meatbag|slit}.
+    - I'm glad you came to see me.
+    - Oh, yah.
+    - Mmmmm.
+}
+    
+->->
+
+=== Nega_BadJob ===
+
+{shuffle:
+    - Stupid {isBoy:  prick|cunt}.
+    - You're fucking up!
+    - You better entertain me, {isBoy: worm|whore}.
+    - Try harder!
+    - You're doing it wrong.
+    - Useless.
+    - Pathetic.
+    - Ugggh.
+    - I'm not happy.
+    - You're boring me. 
+    - How lame.
+    }
+    
+->->
+
+=== Nega_Give_Reward ===
+
+{shuffle:
+    - I'm pleased with you!
+    - You've been good!
+    - I had a lot of fun with you!
+    - You weren't as much of a fuckup as I thought you'd be!
+    - Surprisingly, you satisfied me.
+    - I hope you're feeling good. I am.
+    - I enjoyed myself.
+    }
+    
+{shuffle:
+    - Perhaps you deserve a small reward.
+    - I think I'll  do something nice for you.
+    - I'm going to give you a little treat.
+    - I want to give you a little something, fuck {player_name}.
+    - It amuses me to reward you for a reward. 
+    - Time to show my appreciation.
+    }
+{ shuffle:
+    - -> reward_spit
+    - -> reward_boobs
+    - -> reward_ass
+}
+
+- (reward_spit)
+/perform lean_forward_from_squat
+Open your mouth, slut!
+
+/perform spit_in_mouth_from_squat
+I'm sure you loved that, my disguting little {isBoy: pig|cunt}!
+
+->->
+
+- (reward_boobs)
+/perform lean_forward_from_squat
+Enjoy the view, slut!
+
+/perform lean_forward_from_squat_jiggle_breasts
+//should be a long animation - appx 10 seconds
+Only a lucky few get to see something so wonderful, be grateful!
+
+->->
+
+- (reward_ass)
+/perform reverse_cowgirl_ass_raised_wiggle
+//long animation - appx 10 seconds
+Being so close must be such a turn on for you, whore.
+Don't get used to it!
+
+->->

@@ -7,10 +7,6 @@ VAR demerits = 0
 
 === nega_punishment_trampling ===
 
--> nega_trample
-
-=== nega_trample ===
-
 //----------------------- PART 1: NEGA taunts the player -------------------------
 Thanks for the treat, {degrading_name()}!
 {~I'll see that you get what you deserve.|You're in for it now!|This'll be fun! For me at least!}

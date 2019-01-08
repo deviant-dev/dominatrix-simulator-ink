@@ -3,7 +3,7 @@
 ~ obey = 0
 ~ disobey = 0
 
-/scene burned_room
+/scene attic.negaintro
 /character nega
 /equip dice 
 
@@ -18,99 +18,167 @@
 }
 
 - (start)
-/character nega bored
+/perform bored
 Don't worry, pretty {player_name}.
 Expect that to happen once in a while.
 
-/character nega behold
+/perform behold
 Walk out one door, expecting to arrive somewhere,
 and suddenly find yourself somewhere else.
+You could think of them as ...
+/perform air_quotes
+"interlewds", I suppose.
 
-/character nega open_arms_shrug
+/perform open_arms_shrug
+
 You'll get used to it.
 
-/character nega sassy
++ [wait]
+/perform sassy
 I pulled in a little favor to make sure
 that kiss-ass Yuki wasn't paying attention.
 
-//if the player had the Yuki ending, add this part
--(yuki_warning)
+// If the player had the nega ending, skip the warning
+{yuki_intro.Nega_finish: -> nega_tease }
 
+- (yuki_warning)
+/perform idle
 I bet she told you not talk to me, didn't she?
 
-+[yes]
++ [yes]
+    ~obey++
+    /perform lean_forward
     Don't waste your time with that simpering brat.
     Oh sure, she'll be all sweet and attentive,
     but she'll bore the shit out of you eventually.
     Stick with me if you really want to have some fun.
     
-+[no]
++ [no]
+    ~disobey++
+    /perform unhappy
     No? I'm sure she would have.
     You must be some kind of idiot who doesn't listen.
     Don't pull that shit with me.
-    You can be as dumb as a rock, 
+    Try to play dumb all you want, 
     but you better do what you're fucking told.
     
-+[timeout]
++ [timeout]
+    /perform cocks_head_to_left
     Well?
     -> yuki_warning
- 
-//if the player had the nega ending, start here
-- How's that cute little ass of yours?
-Does your poor tushy sting?
 
-+[yes]
-    That's the Headmistress for you.
-    /perform eye_roll
-    What a bitch.
+- (nega_tease)
+/perform inspect
+How's that cute little ass of yours?
+I enjoyed the show.
+Does your poor tushy sting?
+/perform idle
+
++ [yes]
+    ~obey++
+    Poor wittle baby.
+    /perform amused_nega
+    
 + [no]
+    ~disobey++
+    /perform curious
     Oh, a tough {isBoy:guy|girl}, huh?
     Nice.
     
-- Turn around and bend over.
-Grab those ankles and let me see for myself.
+//have player present ass before she gets them to give up their stone 
+- /perform pleased
+{Headmistress_player_masturbate: 
+    You're such a slut for an audience.
+    - else: 
+    Too bad you didn't want to perform more.
+    }
+
+/perform inspect
+Let's have a look.
 
 - (present_ass)
-//have player present ass before she gets them to give up their stone 
-- My, my. Your ass turns a nice shade of pink.
-She made a good lesson out of you.
+/perform point_down
+Turn around and bend over.
+Hands on your knees and ass in the air!
+
+- (present_ass_fail)
++ [pose:present_ass] -> HoldPose(-> present_ass_fail, -> present_ass) ->
++ [no] -> Nega_CheckIfInterested -> present_ass
+
+- /perform idle
+My, my. Your ass turns a nice shade of pink.
+She does such good work.
+
+- (wiggle)
 Wiggle it for me.
+
 //check to see if the headset wiggles?
 
++ [wiggle-success:5] 
+    -> Nega_GoodJob -> 
+    ++ [wiggle-success:5]
+    That's enough. 
+    Turn back around and present yourself. 
+    ~obey++
++ [wiggle-timeout]
+    -> Nega_BadJob ->
+    ~disobey++
+    Did I tell you to stop?
+    -> wiggle
++ [no] -> Nega_CheckIfInterested -> wiggle
+
+- (stand_straight)
+- (stand_straight_tries)
+
+- (raised_chin_fail)
+
++ [pose:raised_chin] -> HoldPose(-> raised_chin_fail, -> stand_straight) ->
++ { stand_straight_tries < 2 } [timeout] -> stand_straight
++ { stand_straight_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
+// + [no] -> CheckIfInterested -> stand_straight
 
 - (check_reward)
-
-You have something I want.
+/perform behold
+Now. You have something I want.
 /perform lean_forward
 And you're going to give it to me.
 Aren't you?
 
 + [yes]
+    ~obey++
+    /perform pleased
     That's right.
     You're going to give me that pretty little Bloodstone
     and I might give you something in return.
-    -> nega_reward_dice.give_reward
+    -> nega_reward_dice
 
 + [no]
+    ~disobey++
+    /perform thoughtful
     I would think twice about that if I were you.
     Are you sure you don't want to give me that pretty Bloodstone?
     
     ++[yes]
+        ~disobey++
+        /perform unhappy
         Stop wasting my time!
         Get the fuck out of here.
         -> exit
     
     ++[no]
+        ~obey++
+        /perform satisfied
         Very good. 
         I can be a lot of fun with the right...toy.
-         -> nega_reward_dice.give_reward
+         -> nega_reward_dice
          
 + [timeout]
+    /perform idle
     Well. Are you going to give me what I want?
     -> check_reward
 
 
-+[distracted] -> Nega_PayAttention -> nega_reward_dice.give_reward
++[distracted] -> Nega_PayAttention -> nega_reward_dice
 
 - ~ nega_hub_status = unlocked
 -> exit

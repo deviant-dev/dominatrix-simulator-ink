@@ -28,31 +28,9 @@
 
 - (choices) /scene LogoRoom.Notifications
 
-+ [move: Intro]
++ [move: Intro] -> select_gender -> goddess_intro
 + [move: Yuki (early_access)] -> tryEnter(early_access, -> yuki_intro, -> choices)
 + {yuki_intro} [move: Headmistress (early_access)]-> tryEnter(early_access, -> headmistress_intro, -> choices)
-
-- (genderchoice)
-/scene hallway.genderchoice
-
-~ temp chosen = false
-
-- (options)
-
-+ [character-choice:male]
-    ~ setGender("m")
-    ~ chosen = true
-    /notify text="<i>You now appear masculine.</i>" #999
-    -> options
-
-+ [character-choice:female]
-    ~ setGender("f")
-    ~ chosen = true
-    /notify text="<i>You now appear feminine.</i>" #999
-    -> options
-
-+ {chosen} [move] -> goddess_intro
-
 
 === game_intro_web ===
 

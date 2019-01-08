@@ -56,3 +56,12 @@
 }
 
 ->->
+
+=== Yuki_GoodJob ===
+
+{cycle:
+    - I'm so proud of you!
+    - What a good {player_name}!
+    }
+    
+->->

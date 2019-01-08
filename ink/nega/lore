@@ -1,7 +1,7 @@
 === nega_lore ===
 
 // If we've heard the last lore, then don't say anything else here.
-{lore03: ->->}
+{negaLoreEmpty(): ->->}
 
 Since you've been so good, I'll tell you a little bit about the house.
 { once:
@@ -23,3 +23,6 @@ Since you've been so good, I'll tell you a little bit about the house.
 = lore03
 << Inster Lore01 Here >>
 ->->
+
+=== function negaLoreEmpty()
+~ return nega_lore.lore03
