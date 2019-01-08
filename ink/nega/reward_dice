@@ -68,6 +68,8 @@ That does <i>not</i> happen often.
 /perform cock_head_to_left
 I suppose I have to give you something very special, then, don't I?
 
+-> check_consent ->
+
 TODO: Randomly select from Nega's 'hard reward' scenes here.
 {shuffle:
     - -> nega_reward_forcedsex
@@ -80,6 +82,8 @@ TODO: Randomly select from Nega's 'hard reward' scenes here.
 
 /perform thoughtful
 Two cups and a blank, hmm? Not bad.
+
+-> check_consent ->
 
 TODO: Randomly select from Nega's 'light reward' scenes here.
 {shuffle:
@@ -105,6 +109,8 @@ TODO: Randomly select from Nega's 'light reward' scenes here.
 Not bad. But not great.
 I suppose you deserve a little something for that.
 
+-> check_consent ->
+
 TODO: Randomly select from Nega's 'tease reward' scenes here.
 {shuffle:
     - -> nega_reward_forcedsex
@@ -120,6 +126,7 @@ You get nothing, of course, but for a roll like that...
 /perform lean_forward
 { negaLoreEmpty():
     perhaps I'll make an exception.
+    -> check_consent ->
     -> result_punishment_tease_no_intro
 - else:
     perhaps I'll let you in on a little secret.
@@ -154,6 +161,8 @@ I suppose I can't go too hard on you,
 /perform lean_forward
 but I bet I can still make you squirm.
 
+-> check_consent ->
+
 TODO: Randomly select from Nega's 'tease punishment' scenes here.
 
 - (result_punishment_tease_no_intro)
@@ -167,6 +176,7 @@ TODO: Randomly select from Nega's 'tease punishment' scenes here.
 /perform excited
 Ooo, two skulls.
 That means your ass is mine.
+-> check_consent ->
 
 TODO: Randomly select from Nega's 'light punishment' scenes here.
 {shuffle:
@@ -179,6 +189,8 @@ TODO: Randomly select from Nega's 'light punishment' scenes here.
 /perform breast_squeeze
 Mmmm, look at that.
 Three skulls. I'm going to enjoy <i>this</i>.
+
+-> check_consent ->
 
 TODO: Randomly select from Nega's 'hard punishment' scenes here.
 {shuffle:
@@ -209,4 +221,28 @@ Oh goody! This is gonna be so much fun!
 You're gonna love getting rewards from me.
 
 -> nega_reward_forcedsex
+
+= check_consent
+
+{shuffle:
+    - It's not too late to back out, {isBoy: worm|slit}.
+    - I'm going to use you hard.
+    - You can still change your mind.
+    - I wonder if you can handle me. 
+    }
+
+{shuffle:
+    - Are you ready?
+    - Shall I use you?
+    - Ready for what's next?
+    - Are you prepared to continue?
+    }
+
++ [yes]
+    Delish!
+    ->->
+
++ [no]
+    -> exit
+
 

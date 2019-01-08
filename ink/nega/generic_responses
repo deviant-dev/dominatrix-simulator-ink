@@ -126,3 +126,85 @@ Being so close must be such a turn on for you, whore.
 Don't get used to it!
 
 ->->
+
+=== Nega_player_masturbate ===
+/perform lean_forward
+I want you ready for me anytime I want to use you.
+
+/perform stroke_motion
+Grab that dick of yours and start stroking.
+
+- (masturbate_restart)
+/perform inspect
+Keep going until I tell you to stop.
+
+/minigame masturbate
+ 
+- (masturbate_continue)
+/perform idle_nega
+
++ [minigame-success] 
+    Ahhhh. Yesss... I'm so fucking wet.
+    That's enough!
+    ->->
++ [minigame-fail] -> Nega_BadJob -> masturbate_restart
++ [minigame-quit] -> Nega_CheckIfInterested -> masturbate_restart
++ [minigame-break] -> masturbate_break -> masturbate_continue
+
+
+= masturbate_break 
+
+{ shuffle:
+    - -> break01 -> 
+    - -> break02 ->
+    - -> break03 ->
+}
+- {cycle:
+    - Keep going.
+    - You're dick's not hard enough yet.
+    - Harder. Faster.
+    - I bet your arm is getting tired. Too bad!
+    - More. More. More!
+    }
+
+->->
+
+= break01
+/perform sassy
+Do you like the idea of getting ready for me, {isBoy: worm|skank}?
+
++[yes]
+~ obey++
+-> Nega_GoodJob
+Good. Keep going.
+
++[no]
+~ disobey++
+-> Nega_BadJob
+Do it anyways!
+
+->->
+
+= break02
+{shuffle:
+    - I enjoy watching you be a little whore for my attention.
+    - That's it little meatbag.
+    - What a fucking slut getting /my/ cock ready for me to use.
+    - That's all you're good for, cunt, being used.
+    - Wallow in it, {isBoy: worm|cunt}.
+}
+
+->->
+
+= break03
+Do you want to cum for me?
+
++ [yes]
+No fucking way!
+I do the cumming around here!
+
++ [no]
+-> Nega_BadJob
+Well, you'll stroke until you dick falls off if that's what I want!
+
+- ->->

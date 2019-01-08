@@ -140,22 +140,29 @@ Wiggle it for me.
 - (check_reward)
 /perform behold
 Now. You have something I want.
+Once you give it to me, it's gone. No take-backsies!
+You have to give it to me to play.
+Those are the rules.
+
+And I better warn you, I don't always play nice, 
+so you better think hard before you give it to me.
+
 /perform lean_forward
-And you're going to give it to me.
-Aren't you?
+What are you going to do, pretty {player_name}?
+Do you want to try your luck?
 
 + [yes]
     ~obey++
     /perform pleased
     That's right.
-    You're going to give me that pretty little Bloodstone
-    and I might give you something in return.
+    You're going to give me that lovely little Bloodstone.
+    Maybe you'll get lucky and get something nice in return.
     -> nega_reward_dice
 
 + [no]
     ~disobey++
     /perform thoughtful
-    I would think twice about that if I were you.
+    What a fucking pity.
     Are you sure you don't want to give me that pretty Bloodstone?
     
     ++[yes]

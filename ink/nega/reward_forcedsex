@@ -60,8 +60,8 @@ I want to get off on some deep dicking.
 
 /action equip-cock
 
-//build out stroking scene
-- Better start stroking that cock.
+-
+//player has to masturbate to get "hard" for her
 
 - (bound_wrists)
 - (bound_wrists_tries)
@@ -72,7 +72,7 @@ Put your ankles and wrists together!
 
 - (bound_wrists_fail)
 
-+ [pose:spread_eagle] -> HoldPose(-> bound_wrists_fail, -> bound_wrists) ->
++ [pose:bound_wrists] -> HoldPose(-> bound_wrists_fail, -> bound_wrists) ->
 + { bound_wrists_tries < 2 } [timeout] -> bound_wrists
 + { bound_wrists_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> bound_wrists
 // + [no] -> CheckIfInterested -> lay_down
@@ -87,35 +87,16 @@ Fuck! I'm soaking my panties.
 //mutters
 I don't know why I even bother wearing them.
 
-/perform look_up_and_down
-Let's find out how well you can fuck.
-Better make me cum, scum!
-
-- (forced_sex_ready)
-/perform squat
-Is your {isBoy: cock|strap-on} ready, whore?
-
-+[yes] 
-    /perform rub_pussy
-    What a fucking slut you are!
-
-+[no]
-    Then get it fucking ready!
-    Stroke that shaft.
-    Keep it hard for me.
-
-+[timeout]
-    Answer me, bitch!
-    -> forced_sex_ready
-
-- /perform tie_ankles
+/perform tie_ankles
 
 Don't you fucking move, slut!
 //can she mutter to herself like she's crazy?
 
 /perform tie_wrists
 
-You won't be needing your hands for a while.
+This way your hands won't be entirely useless, {isBoy: maggot|cunt}.
+
+-> Nega_player_masturbate
 
 /perform looming
 
@@ -123,10 +104,13 @@ Now... time for me to get more comfortable.
 
 //nega yuki strips
 /scene attic.reward_forcedsex2
+/perform sassy
 
 Look at you. Such a pathetic fleshbag.
 I bet you're just dying to find out 
 how my wet pussy feels against you.
+
+/perform idle
 Aren't you?
 
 +[yes]
@@ -146,7 +130,9 @@ Aren't you?
 + [no]
     You're so fucking dumb. I swear.
 
-- I'm about to use you like the eager little whore you are.
+- /perform loom
+I'm about to use you like the eager little whore you are.
+Let's find out how well you can fuck.
 I'm going to ride that {isBoy: cock|strap-on} of yours
 until I cum my fucking brains out!
 
@@ -167,7 +153,7 @@ Would you like that, {isBoy: prick|bitch}?
 - /perform squat_over_player_crotch
 
 Ahhhh! That's it!
-You're hot flesh is just what I fucking needed!
+You're stiff dick is just what I fucking needed!
 
 VAR thrusts = 0
 VAR nega_thrust_mistakes = 0
@@ -313,8 +299,31 @@ TODO Add in orgasm dialog
 
 = break01
 //choke player during forced sex
+/perform squat_grab_player_throat
+You belong to me right now, bitch.
+My filthy fucktoy.
+A worm I will use and abuse until I'm satisfied.
+
 Do you like being used?
 
++ [yes]
+    That's why you're here, isn't it?
+    Because you like being used.
+    Being nothing but a dirty whore for other people's pleasure.
+    
++ [no]
+    And yet look at you now.
+    Your body is a piece of meat to get me off.
+    
+- Isn't it?
+    
++ [yes]
+    -> Nega_GoodJob
+    
++ [no]
+    Wrong!
+    I will use you and I will cum my brains out while doing it.
+    
 ->->
 
 = break02
@@ -324,11 +333,24 @@ Do you like being used?
 ->->
 
 = break03
-//tell player to hold breath during forced sex
+//holding breath while Nega counts
+Let's play a little game, whore.
+You're going to hold your breath for me.
+Let's see what a good piggy you are.
+When I say 'go', hold your fucking breath.
 
++ [wait 2]
+Go!
+
+{shuffle:
+    - One. Two. Three.
+    - One. Two. Three. Four. Five.
+    - One. Two. Three. Four. Five. Six.
+    Seven. Eight. Nine. Ten. 
+    Impressive!
+    }
 
 ->->
-
 
 //As Nega gets close to cumming, she asks the player if they want her to cum while using them 
 
