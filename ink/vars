@@ -105,13 +105,13 @@ VAR yuki_hub_status = early_access
 + [character-choice:male]
     ~ setGender("m")
     ~ chosen = true
-    /notify text="<i>You now appear masculine.</i>" delay=0 #999
+    /notify text="<i>You now appear masculine.</i>" delay=10 #999
     -> options
 
 + [character-choice:female]
     ~ setGender("f")
     ~ chosen = true
-    /notify text="<i>You now appear feminine.</i>" delay=0 #999
+    /notify text="<i>You now appear feminine.</i>" delay=10 #999
     -> options
 
 + {chosen} [move]
