@@ -40,9 +40,6 @@ INCLUDE yuki/generic_responses
 VAR debug = false
 VAR web = true
 
-EXTERNAL isDebug()
-EXTERNAL isWeb()
-EXTERNAL getCode()
 
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
