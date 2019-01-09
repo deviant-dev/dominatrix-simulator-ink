@@ -117,8 +117,11 @@ VAR web = true
 
 === table_of_contents ===
 
-+ <b>Full Game</b> -> game_intro_web
-+ Goddess Intro -> goddess_intro
++ <b>Full Game</b> 
+    -> game_intro_web
+
++ Goddess Intro 
+    -> goddess_intro
 
 + Entryway Intro (Yuki and Nega)
     ~ yuki_hub_status = unlocked
@@ -129,16 +132,39 @@ VAR web = true
     ~ headmistress_hub_status = unlocked
     -> headmistress_intro
 
-+ Headmistress Punishment Spanking -> unlock_all -> headmistress_punishment_spanking
-+ Nega Intro -> unlock_all -> nega_intro
-+ Nega Reward Dice -> unlock_all -> nega_reward_dice
-+ Nega Forced Sex Reward -> unlock_all -> nega_reward_forcedsex
++ Headmistress Punishment Spanking 
+    -> unlock_all -> headmistress_punishment_spanking
 
-// + <i>Entry Hub (WIP)</i> -> unlock_all -> entry_hub
-// + <i>Goddess Hub (WIP)</i> -> unlock_all -> goddess_hub
-// + <i>Yuki Hub (WIP)</i> -> unlock_all -> yuki_hub
-// + <i>Yuki Reward Massage (WIP)</i> -> unlock_all -> yuki_reward_massage
-// + <i>Yuki Punishment Edging (WIP)</i> -> unlock_all -> yuki_punishment_edging
-// + <i>Headmistress Hub (WIP)</i> -> unlock_all -> headmistress_hub
-// + <i>Nega Hub (WIP)</i> -> unlock_all -> nega_hub.hub
-// + <i>Nega Punishment Trampling (WIP)</i> -> unlock_all -> nega_punishment_trampling
++ Nega Intro 
+    -> unlock_all -> nega_intro
+
++ Nega Reward Dice 
+    -> unlock_all -> nega_reward_dice
+
++ Nega Forced Sex Reward 
+    -> unlock_all -> nega_reward_forcedsex
+
+// + <i>Entry Hub (WIP)</i>
+//     -> unlock_all -> entry_hub
+
+// + <i>Goddess Hub (WIP)</i> 
+//     -> unlock_all -> goddess_hub
+
+// + <i>Yuki Hub (WIP)</i> 
+//     -> unlock_all -> yuki_hub
+
+// + <i>Yuki Reward Massage (WIP)</i> 
+//     -> unlock_all -> yuki_reward_massage
+
+// + <i>Yuki Punishment Edging (WIP)</i> 
+//     -> unlock_all -> yuki_punishment_edging
+
+// + <i>Headmistress Hub (WIP)</i> 
+//     -> unlock_all -> headmistress_hub
+
+// + <i>Nega Hub (WIP)</i> 
+//     -> unlock_all -> nega_hub.hub
+
+// + <i>Nega Punishment Trampling (WIP)</i> 
+//     -> unlock_all -> nega_punishment_trampling
+
