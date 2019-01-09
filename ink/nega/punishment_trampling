@@ -378,6 +378,8 @@ Don't get used to it!
 - (end_trample)
 {~I'm done with you.|Until next time.|Come back to play again sometime!}
 /Nega walks off the player and leaves the room.
+
+
 ->END
 
 //----------------------------------------------------------------------------------
@@ -417,3 +419,6 @@ Don't get used to it!
 }
 
 ~ return chance
+
+
+

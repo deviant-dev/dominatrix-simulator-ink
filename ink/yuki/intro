@@ -164,33 +164,44 @@ Easy, right? #36
 //insert puppy pose test
 
 - (puppy_beg)
+/perform behold
 Let's practice!
+
+/perform idle_yuki
 I really love puppies.
 Petting them. Kissing them. Feeding them. Walking them.
 
 Would you like to be my puppy?
 
 +[yes]
+/perform excited
 Oh my goodness! I'm just so excited!
+-> pet_beg
 
 +[no]
+/perform pouty
 What? But I'm so nice to my pets.
 You're not doing a good job of following instructions.
 
-Just try it once for me, okay?
+- Just try it once for me, okay?
 
 +[yes]
+/perform clasp_hands
 I promise this will be worth it!
 
 +[no]
+/perform cocks_head_to_left
 Well, that's really a shame!
 Maybe I'm just too nice for you.
 I hope that's not true!
+-> good_yuki
+
 //make it to where the yuki ending gives them another chance to be a puppy or sets a variable on them that they don't like puppy play
 
+- (pet_beg)
+/perform serious
 First, puppy has to beg for my attention.
 
-- (pet_beg)
 - (pet_beg_tries)
 
 /perform point_down
@@ -202,19 +213,20 @@ Down on your knees and raise your hands to beg.
 + { stand_straight_tries < 2 } [timeout] -> pet_beg
 
 -> Yuki_GoodJob ->
-That's enough for now! 
-You did so well following instructions and 
-I can't wait until I can play with my puppy!
+-
+/perform bounces
+Perfect! 
+You did so well following instructions.
+/perform excited
+I can't wait until I can play with my new puppy!
 
-- /perform squirm
+- /perform clasp_hands
 You are a cute one! I really hope you do well here! #40
-
-/perform clasp_hands
 Giving rewards is so much more fun than punishing. #41
 
 - (good_yuki)
 /perform serious
-Do you want to be a good {player_name}? #42
+Do you like being a good {player_name}? #42
 
 + [yes]
     ~ obey++
@@ -259,10 +271,10 @@ I know your deepest, darkest secrets. #52
 
 /perform sassy
 Remember? #53
-/perform idle_nega
+
 + [continue]
  
-- /character yuki foot_stomp
+- /character yuki unhappy
 You just stop that right now, Nega-Yuki! #54
 
 /perform clasp_hands
@@ -309,8 +321,6 @@ So. You're the new one, huh? #60
     I asked you if you're new here. #66
     -> new_one
     
-// + [distracted] -> Nega_PayAttention -> new_one
-
 - /perform pleased
 I bet Yuki's been having so much fun #67
 explaining the rules to you  #68
@@ -339,38 +349,51 @@ Don't let her fool you.  #74
 She's not as sweet and innocent as she lets on. #75
 
 //insert teaching player to get slapped
-I bet you like it rough, don't you?
+/perform idle_nega
+- I bet you like it rough, don't you?
 
 +[yes]
+/perform amused
 Let's find out how rough.
 
 +[no]
+/perform head_toss
 What a pathetic whimp.
 
-I'm going to show you both how slaves are really trained.
+- 
+/perform unhappy
+I'm going to show you both how slaves ought to be trained.
 Pain is such an effective tool.
 
-/perform prepare_for_slap
+
 When I swing my hand, you better fucking jerk your head.
 Ready?
 
 +[yes]
 That's right, bitch.
-You'll take this like a good little slave.
+You'll take this like a good little cunt.
+-> try_slap
 
 +[no]
+/perform annoyed
 No?
 Then you're not going to like me very much.
+
 //change nega ending so if the player says no to this, she reminds them that visiting her means the hard stuff and they have to take a slap
+- /perform idle_nega
 Obedient pain sluts get special rewards around here.
 
 Do you want to change your mind and take a slap?
 
 +[yes]
+/perform licks_lips
 Ahhhh. Sweet music to my ears!
 
 +[no]
+/perform head_toss
 Pity. You have no idea what you're missing.
+-> going_on
+
 //set variable on player that they don't want pain and didn't get slapped
 
 //need to add slap training
@@ -384,11 +407,9 @@ Pity. You have no idea what you're missing.
 That was pathetic. Try again.
 -> try_slap
 
--
+- (going_on)
 /perform confused
 Have you figured out what's going on here yet? #76
-
-- (going_on)
 
 + [yes]
     ~ disobey++
@@ -453,7 +474,7 @@ Let's find out. Shall we? #89
     Should we find out how well your {isBoy:dick|pussy} works? #92
     -> genitals
     
-+ [distracted] -> Yuki_PayAttention -> genitals
++ [distracted] -> Nega_PayAttention -> genitals
 
 - /character yuki flustered
 Behave, Nega!  #93
@@ -679,3 +700,5 @@ She doesn't like to be kept waiting. #168
 ~ headmistress_hub_status = early_access
 //need to know how player gets to next room
 -> exit
+
+

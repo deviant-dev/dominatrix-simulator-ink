@@ -46,7 +46,7 @@ VAR web = true
 { isDebug() :
     // /scene LectureHall
     
-    -> nega_intro
+    -> nega_reward_dice
 
     // -> test_marks
 
@@ -60,8 +60,9 @@ VAR web = true
     // -> yuki_intro.nega_interruption
     
     // /scene LectureHall.Intro
-    // -> headmistress_intro
-    // -> headmistress_punishment_spanking
+    -> headmistress_intro
+    
+    // headmistress_punishment_spanking
 
     // /action raise_curtains
     // /scene LectureHall.Punishment_Spanking

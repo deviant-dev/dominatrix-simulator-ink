@@ -18,10 +18,10 @@
     - You seek to impress. #12
     - Continue in this way. #13
     - Most pleasing. #14
-    -
-    -
-    -
-    -
+    - I take such joy in my role.
+    - Such a delight to behold!
+    - I am overwhelmed with satisfication.
+    - You are making progress.
 }
 
 ->->
@@ -111,7 +111,7 @@ Arouse yourself and continue until I give you leave to stop. #08
 +[wait 10]
 -> masturbation_comment->
 
--
+- 
 +[wait 10]
    - /perform thoughtful
    {cycle:
@@ -125,6 +125,7 @@ Arouse yourself and continue until I give you leave to stop. #08
     +[yes]
         -> masturbate_for_crowd
     +[no]
+    A fine performance, slave.
         
 - -> headmistress_punishment_spanking.FinalEnding
 
@@ -152,9 +153,11 @@ Arouse yourself and continue until I give you leave to stop. #08
     - You disappoint us when you fail to stay {isBoy: erect|swollen}. #08
     - Your discomfort is our succor. #09
     - Ahhh. Your torment is bewitching. #10
+    - You may not stop until I give you leave.
+    - /character crowd boos
+    - Tsk. Tsk. Next time you will do better.
+    - Punishments are opportunities to learn.
 }
-
-/character headmistress
 
 ->->
 
@@ -170,14 +173,15 @@ Arouse yourself and continue until I give you leave to stop. #08
     - Cumming without permission is expressly forbidden. #05
     - What a fine display. #06
     - Look at those deft fingers. #07
-    - Show restraint. #08
+    - Show some restraint, you painted Jezebel!#08
     - A {isBoy: hard shaft|wet slit} is a pleasing {isBoy: shaft|slit}. #09
     - Proper performance for guests is a requirement {isBoy: toad|strumpet}. #10
     - One must be proud to display their arousal. #11
     - You please our guests with your performance. #12
+    - You have earned this small pleasure.
+    - /character crowd coos
+    - You are a divine {isBoy: reprobate|harlot}.
 }
-
-/character headmistress
 
 ->->
 

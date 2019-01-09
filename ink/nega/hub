@@ -1,5 +1,6 @@
 === nega_hub ===
 -> select_gender ->
+
 ~ obey = 0
 ~ disobey = 0
 
@@ -28,6 +29,7 @@
 
 = pre_roll_greeting
 
+/scene attic.negahub
 //select and do a random task
 
 {shuffle:

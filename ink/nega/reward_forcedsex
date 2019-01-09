@@ -81,7 +81,7 @@ Put your ankles and wrists together!
 
 I keep plenty of rope lying around just for this.
 
-/perform licks lips
+/perform licks_lips
 Fuck! I'm soaking my panties.
 
 //mutters
@@ -213,7 +213,7 @@ Thrust three times. Nice and slow.
 + [minigame-quit] -> Nega_CheckIfInterested -> thrust_more
 
 - (thrust_continue)
-Not bad. Let's pick up the pace, huh?
+Decent. Let's pick up the pace, huh?
 
 - (thrust_restart)
 
@@ -241,7 +241,32 @@ Give it to me harder, you worthless fuck.
     ~ nega_thrust_mistakes++
     -> Badthrust -> thrust_game_continue
 
+//As Nega gets close to cumming, she asks the player if they want her to cum while using them 
+
+
+//Player is not allowed to orgasm
+
 = thrust_minigame_orgasm
+Uhhhhnnn. I'm so close!
+Keep going, slut, and make me cum!
+
++ [wait]
+
+Fuck yah.
+Do you want to cum with me, {isBoy: maggot|whore?}
+
++ [yes]
+    /perform squat_grind_on_crotch_laugh
+    You fucking wish!
+    There's no orgasm for a pathetic flesh bag like you.
+
++ [no]
+    What a useless dick you have!
+    Can't even cum for your Mistress!
+    /perform squat_grind_on_crotch_laugh
+    
+-
+    
 
 TODO Add in orgasm dialog
 
@@ -271,7 +296,7 @@ TODO Add in orgasm dialog
 
 - (stop_thrust_fail)
 
-+ [pose:stop_thrust] -> HoldPose(-> stop_thrust_fail, -> stop_thrust) ->
++ [pose:lay_down] -> HoldPose(-> stop_thrust_fail, -> stop_thrust) ->
 + { stop_thrust_tries < 2 } [timeout] -> stop_thrust
 //+ { kneel_tries >= 2 } [timeout]
 
@@ -282,27 +307,33 @@ TODO Add in orgasm dialog
     - -> break03 ->
 }
 
-- (hands_and_knees)
-- (hands_and_knees_tries)
+Get back to it, slut!
 
-- {cycle:
-    - Back on your hands and knees, slave. 
-    - Resume your spanking position, slave.
-    - Present your ass, {isBoy: runt|strumpet}.
-    }
-
-- (hands_and_knees_fail)
-+ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees) ->
+->-> 
 
 
-- -> exit
+//Tunnels
 
 = break01
 //choke player during forced sex
 /perform squat_grab_player_throat
+
+~ temp choke_point = 1
+
+{cycle:
+    - ~choke_point = 1
+    - ~choke_point = 2
+    - ~choke_point = 3
+}
+
 You belong to me right now, bitch.
+
+- {choke_point == 1: /perform squat_over_player_crotch }
+
 My filthy fucktoy.
 A worm I will use and abuse until I'm satisfied.
+
+{choke_point == 2: /perform squat_over_player_crotch }
 
 Do you like being used?
 
@@ -314,21 +345,58 @@ Do you like being used?
 + [no]
     And yet look at you now.
     Your body is a piece of meat to get me off.
-    
-- Isn't it?
+
+- {choke_point == 3: /perform squat_over_player_crotch }
+
+Isn't that true?
     
 + [yes]
-    -> Nega_GoodJob
+    Good you learn your place quickly, whore.
     
 + [no]
     Wrong!
     I will use you and I will cum my brains out while doing it.
-    
+ 
+- /perform squat_over_player_crotch
 ->->
 
 = break02
-//Slap player during forced sex
 
+
+- (try_slap)
+
+/perform slap_player
+
++ [react-success]
+-> Nega_GoodJob ->
++ [react-fail]
+You suck at this.
+-> try_slap
+
+I like watching you suffer.
+I'm going to slap you until I'm bored
+and I want to hear you whimper while I do.
+
+~ temp slap_count = 0
+
+{shuffle:
+    - ~slap_count = 3
+    - ~slap_count = 5
+    - ~slap_count = 7
+}
+
+- (slap)
+
+/perform slap_player
+~ slap_count--
+
++ [react-success]
+-> Nega_GoodJob ->
++ [react_fail]
+-> Nega_BadJob ->
+
+- {slap_count: -> slap}
+Time for more fucking!
 
 ->->
 
@@ -350,18 +418,31 @@ Go!
     Impressive!
     }
 
+Now, breathe bitch!
+
 ->->
-
-//As Nega gets close to cumming, she asks the player if they want her to cum while using them 
-
-//Nega orgasms
-
-//Player is not allowed to orgasm
-
-- {obey - disobey > 3: -> Nega_Give_Reward ->}
-
--> exit
 
 = Badthrust
-TODO: bad thrust comments go here
+
+{shuffle:
+    - Your cock is useless!
+    - Haven't you ever fucked before?
+    - What's the matter with you? It's like you're a goddamn virgin!
+    - Your rhythm sucks!
+    - Focus, you cunt!
+    - How hard is it to shove your dick in me at the right time?
+    - You have to use it right to make me cum!
+    - Thrust to the beats, maggot!
+    - You should be good at this, slut. It's what you're made for.
+    - Your thrusting is pathetic.
+    - Listen to the rhyhtm, you twat.
+    - Pound to the sound!
+    - -> Nega_BadJob ->
+    - -> Nega_BadJob ->
+    - -> Nega_BadJob ->
+    - -> Nega_BadJob ->
+    }
+    
 ->->
+
+

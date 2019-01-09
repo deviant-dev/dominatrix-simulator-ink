@@ -1,6 +1,8 @@
 === nega_reward_dice ===
 ~ intro = nega_reward_dice == 1
 
+/scene attic.negahub
+
 - (give_reward)
 
 /character nega hand_out
