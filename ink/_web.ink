@@ -76,7 +76,7 @@ VAR web = true
     // /move
     
     // -> entry_intro
-    //-> goddess_intro.debug_jump
+    // -> goddess_intro.debug_jump
     // -> goddess_intro.stand_straight
     // -> goddess_intro.inspection
     // -> goddess_intro.ByeForNow
@@ -117,40 +117,28 @@ VAR web = true
 
 === table_of_contents ===
 
-+ Full Game
-    -> game_intro_web
++ <b>Full Game</b> -> game_intro_web
++ Goddess Intro -> goddess_intro
 
-+ Entry Hub
-    -> unlock_all -> entry_hub
-
-+ Yuki Intro 2.2
++ Entryway Intro (Yuki and Nega)
     ~ yuki_hub_status = unlocked
     -> yuki_intro
 
-+ Yuki Punishment Edging 2.0 
-    -> unlock_all -> yuki_punishment_edging
-
-+ Yuki Reward Massage 
-    -> unlock_all -> yuki_reward_massage
-
-+ Headmistress Intro 
++ Headmistress Intro
     ~ yuki_hub_status = unlocked
     ~ headmistress_hub_status = unlocked
     -> headmistress_intro
 
-+ Headmistress Punishment Spanking 
-    -> unlock_all -> headmistress_punishment_spanking
++ Headmistress Punishment Spanking -> unlock_all -> headmistress_punishment_spanking
++ Nega Intro -> unlock_all -> nega_intro
++ Nega Reward Dice -> unlock_all -> nega_reward_dice
++ Nega Forced Sex Reward -> unlock_all -> nega_reward_forcedsex
 
-+ Nega Intro
-    -> unlock_all -> nega_intro
-
-+ Nega Hub
-    -> unlock_all -> nega_hub.hub
-
-+ Nega Punishment Trampling
-    -> unlock_all -> nega_punishment_trampling
-    
-+ Test Code
-    -> enter_code -> END
-
-
+// + <i>Entry Hub (WIP)</i> -> unlock_all -> entry_hub
+// + <i>Goddess Hub (WIP)</i> -> unlock_all -> goddess_hub
+// + <i>Yuki Hub (WIP)</i> -> unlock_all -> yuki_hub
+// + <i>Yuki Reward Massage (WIP)</i> -> unlock_all -> yuki_reward_massage
+// + <i>Yuki Punishment Edging (WIP)</i> -> unlock_all -> yuki_punishment_edging
+// + <i>Headmistress Hub (WIP)</i> -> unlock_all -> headmistress_hub
+// + <i>Nega Hub (WIP)</i> -> unlock_all -> nega_hub.hub
+// + <i>Nega Punishment Trampling (WIP)</i> -> unlock_all -> nega_punishment_trampling
