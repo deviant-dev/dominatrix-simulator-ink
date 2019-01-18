@@ -11,7 +11,71 @@ VAR massage_count = 0
 
 /equip feather_duster
 
+{nega_reward_forcedsex: 
+->NormalVisit
+-else: 
+->FirstReward
+}
+
+-(FirstReward)
+
+/perform pleased
+
+You performed so well in there!
+
+/perform amused
+
+I hope the Headmistress didn't leave your little tushie too sore.
+
+Just remember, if you don't want to go through that, just follow the two simple rules I explained earlier!
+
+/perform thoughtful
+
+Unless you're into that sort of thing.
+
+But then you can always go for reward spankings.
+
+/perform idle
+
+Now that you've paid off your punishment marker,
+
+/perform lean_forward
+
+that's the Obsidian piece on your wrist there,
+
+/perform idle
+
+you can turn in your reward marker, the Bloodstone, for...
+
+Can you guess what?
+
++ [Yes]
+/perform pleased
+
+I knew you weren't just a pretty face.
++ [No]
+/perform fake_annoyed
+
+Come on, I know you're smarter than this.
++ [timeout]
+/perform fake_annoyed
+
+Come on, I know you're smarter than this.
+
+-Because the Goddess was at least satisfied with you, you still have a Bloodstone to use.
+
+Do you want to use it now?
+
++ [Yes]
+->NormalVisit
++ [No]
+Oh. Okay. That's fine. I hope I see you again slave!
+->exit
+
+-(NormalVisit)
 {FirstVisit: -> Undress}
+
+/perform thoughtful
 
 Mmm, well I do have a task for you.
 
@@ -986,7 +1050,7 @@ The rules still apply!
 Now help me get dressed!
 
 Now leave me, and remember the rules next time! You just wasted a reward marker.
-
+-> exit
 -> DONE
 
 = reward_ending
@@ -1041,7 +1105,7 @@ Remember that!
 Now help me get dressed.
 
 Heheh. That was fun! Be a good {player_name} so you can come back! Literally!
-
+-> exit
 ->DONE
 
 = cum_from_ass_ending
@@ -1108,6 +1172,7 @@ And on top of that, I'm giving you a punishment marker!
 Now help me get dressed.
 
 You're dismissed slave, come back when your attitutde improves.
+-> exit
 ->DONE
 
 = finger_pussy

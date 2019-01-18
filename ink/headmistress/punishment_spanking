@@ -235,7 +235,7 @@ A little more, I think.
 //And finally, we come to the heart of the matter. #91
 Do you accept that you must be punished? #92
 
-/notify title="<color=red>Pro Tip!</color>" text="For a more realistic experience, set down one controller and spank yourself hard when you hear the **slap**. Or better yet, have a very close friend to it for you. ;)<br/><br/>(You DID go full monty, right?)"
+/notify title="<color=red>Pro Tip!</color>" text="For a more realistic experience, set down one controller and spank yourself hard when you hear the **slap**. Or better yet, have a very close friend do it for you. ;)<br/><br/>(You DID go full monty, right?)"
 
 - (ask_punish_ready)
 
