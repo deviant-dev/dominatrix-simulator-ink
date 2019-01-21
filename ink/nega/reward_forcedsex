@@ -108,7 +108,7 @@ Now... time for me to get more comfortable. #20
 
 Look at you. Such a pathetic fleshbag. #21
 I bet you're just dying to find out  #22
-how my wet pussy feels against you. #23
+how wet my pussy feels against you. #23
 
 /perform idle
 Aren't you? #24
@@ -153,7 +153,7 @@ Would you like that, {isBoy: prick|bitch}? #35
 - /perform squat_over_player_crotch
 
 Ahhhh! That's it! #41
-You're stiff dick is just what I fucking needed! #42
+You're stiff dick is just what I needed! #42
 
 VAR thrusts = 0
 VAR nega_thrust_mistakes = 0
@@ -372,7 +372,7 @@ Do you like being used? #70
 Isn't that true? #76
     
 + [yes]
-    Good you learn your place quickly, whore. #77
+    Good. You learn your place quickly, whore. #77
     
 + [no]
     Wrong! #78
