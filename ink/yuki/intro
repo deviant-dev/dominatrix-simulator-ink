@@ -489,7 +489,7 @@ Have you figured out what's going on here yet? #76
     -> going_on
     
 
-- /character nega breast_squeeze
+- /character nega caress_breasts
 /lookat player
 
 I bet that {isBoy:cock|cunt} of yours works just fine. #88
@@ -689,7 +689,7 @@ But here I am! #148
 
 - {caress_skipped: -> skip_caress2}
 
-/perform breast_squeeze
+/perform caress_breasts
 Now we can really have some fun! #149
 
 /perform pleased

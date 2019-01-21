@@ -775,12 +775,12 @@ good boys and girls earn? #200
 
 +[yes]
     ~ disobey++
-    /character headmistress caress_breasts
+    /character headmistress caress_breasts_large
     Do you imagine they are soft, {player_name}? #201
     
     ++[yes]
         ~ obey++
-        /character headmistress caress_breasts
+        /character headmistress caress_breasts_large
         Mmmm. Very soft indeed. #202
     
     ++[no]
