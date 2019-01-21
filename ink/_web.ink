@@ -166,8 +166,8 @@ VAR web = true
 // + <i>Yuki Hub (WIP)</i> 
 //     -> unlock_all -> yuki_hub
 
-// + <i>Yuki Reward Massage (WIP)</i> 
-//     -> unlock_all -> yuki_reward_massage
+ + <i>Yuki Reward Massage (WIP)</i> 
+     -> unlock_all -> yuki_reward_massage
 
 // + <i>Yuki Punishment Edging (WIP)</i> 
 //     -> unlock_all -> yuki_punishment_edging
