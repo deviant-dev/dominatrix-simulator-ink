@@ -44,9 +44,25 @@ VAR web = true
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
 { isDebug() :
+    // -> test_audio
+    // Goddess Jumps
+    
+    // -> goddess_intro
+    // /scene bedroom.intro
+    // /character goddess
+    // /move
+    
+    // -> entry_intro
+    // -> goddess_intro.debug_jump
+    // -> goddess_intro.stand_straight
+    // -> goddess_intro.inspection
+    // -> goddess_intro.ByeForNow
     // /scene LectureHall
     
-    -> nega_reward_dice
+    // /scene LectureHall.Punishment_Spanking_Ready
+    // /character headmistress
+
+    // -> headmistress_punishment_spanking.accept_punishment
 
     // -> test_marks
 
@@ -57,29 +73,34 @@ VAR web = true
     ~ punishments = 1
     ~ rewards = 1
 
+    // -> yuki_intro
+
+    /scene entry.intro3
+    
+    
     // -> yuki_intro.nega_interruption
+    // -> yuki_intro.nega_slap
+   // -> yuki_intro.pet_beg
+
+    // /character yuki
+    // /lookat nega
+    
+    // /character nega head_toss
+    // /lookat yuki
+    
+    // -> yuki_intro.test_lookat
     
     // /scene LectureHall.Intro
-    -> headmistress_intro
+    // -> headmistress_intro
     
-    // headmistress_punishment_spanking
+    // -> headmistress_punishment_spanking
 
     // /action raise_curtains
     // /scene LectureHall.Punishment_Spanking
     // -> headmistress_punishment_spanking.FinalEnding
 
+    -> nega_intro
     
-    // Goddess Jumps
-    
-    /scene bedroom.intro
-    // /character goddess
-    // /move
-    
-    // -> entry_intro
-    // -> goddess_intro.debug_jump
-    // -> goddess_intro.stand_straight
-    // -> goddess_intro.inspection
-    // -> goddess_intro.ByeForNow
 }
 
 // Debug Jump
@@ -94,26 +115,18 @@ VAR web = true
     -> game_intro
 }
 
-=== test_marks ===
-    + [add punishment]
-        {punishments < 10:
-            ~punishments++
-        }
-    + [remove punishment]
-        {punishments > 0:
-            ~punishments--
-        }
-    + [add reward]
-        {rewards < 10:
-            ~rewards++
-        }
-    + [remove reward]
-        {rewards > 0:
-            ~rewards--
-        }
-    
-- /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
--> test_marks
+// === test_audio ===
+
+// + [Goddess Music] /music Goddess
+// + [Entry Music] /music entry
+// + [Headmistress Music] /music headmistress
+// + [Music Off] /music off
+// + [Orgy Audio] /ambient orgy
+// + [Rain Audio] /ambient rain
+// + [Crowd Audio] /ambient crowd
+// + [Audio Off] /ambient off
+
+// - -> test_audio
 
 === table_of_contents ===
 

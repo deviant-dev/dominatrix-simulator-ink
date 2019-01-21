@@ -4,8 +4,8 @@
 ~ disobey = 0
 
 /scene attic.negaintro
+/music nega2 
 /character nega
-/equip dice 
 
 { isWeb():
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
@@ -17,113 +17,114 @@
     -> start
 }
 
+//play some kind of dischordant sound when the player enters?
 - (start)
 /perform bored
-Don't worry, pretty {player_name}.
-Expect that to happen once in a while.
+Don't worry, pretty {player_name}. #01
+Expect that to happen once in a while. #02
 
 /perform behold
-Walk out one door, expecting to arrive somewhere,
-and suddenly find yourself somewhere else.
-You could think of them as ...
+Walk out one door, expecting to arrive somewhere, #03
+and suddenly find yourself somewhere else. #04
+You could think of them as ... #05
 /perform air_quotes
-"interlewds", I suppose.
+"interlewds", I suppose. #06
 
 /perform open_arms_shrug
 
-You'll get used to it.
+You'll get used to it. #07
 
 + [wait]
 /perform sassy
-I pulled in a little favor to make sure
-that kiss-ass Yuki wasn't paying attention.
+I pulled in a little favor to make sure #08
+that kiss-ass Yuki wasn't paying attention. #09
 
 // If the player had the nega ending, skip the warning
 {yuki_intro.Nega_finish: -> nega_tease }
 
 - (yuki_warning)
 /perform idle
-I bet she told you not talk to me, didn't she?
+I bet she told you not talk to me, didn't she? #10
 
 + [yes]
     ~obey++
     /perform lean_forward
-    Don't waste your time with that simpering brat.
-    Oh sure, she'll be all sweet and attentive,
-    but she'll bore the shit out of you eventually.
-    Stick with me if you really want to have some fun.
+    Don't waste your time with that simpering brat. #11
+    Oh sure, she'll be all sweet and attentive, #12
+    but she'll bore the shit out of you eventually. #13
+    Stick with me if you really want to have some fun. #14
     
 + [no]
     ~disobey++
     /perform unhappy
-    No? I'm sure she would have.
-    You must be some kind of idiot who doesn't listen.
-    Don't pull that shit with me.
-    Try to play dumb all you want, 
-    but you better do what you're fucking told.
+    No? I'm sure she would have. #15
+    You must be some kind of idiot who doesn't listen. #16
+    Don't pull that shit with me. #17
+    Try to play dumb all you want,  #18
+    but you better do what you're fucking told. #19
     
 + [timeout]
     /perform cocks_head_to_left
-    Well?
+    Well? #20
     -> yuki_warning
 
 - (nega_tease)
 /perform inspect
-How's that cute little ass of yours?
-I enjoyed the show.
-Does your poor tushy sting?
+How's that cute little ass of yours? #21
+I enjoyed the show. #22
+Does your poor tushy sting? #23
 /perform idle
 
 + [yes]
     ~obey++
-    Poor wittle baby.
+    Poor wittle baby. #24
     /perform amused_nega
     
 + [no]
     ~disobey++
     /perform curious
-    Oh, a tough {isBoy:guy|girl}, huh?
-    Nice.
+    Oh, a tough {isBoy:guy|girl}, huh? #25
+    Nice. #26
     
 //have player present ass before she gets them to give up their stone 
 - /perform pleased
 {Headmistress_player_masturbate: 
-    You're such a slut for an audience.
+    You're such a slut for an audience. #27
     - else: 
-    Too bad you didn't want to perform more.
+    Too bad you didn't want to perform more. #28
     }
 
 /perform inspect
-Let's have a look.
+Let's have a look. #29
 
 - (present_ass)
 /perform point_down
-Turn around and bend over.
-Hands on your knees and ass in the air!
+Turn around and bend over. #30
+Hands on your knees and ass in the air! #31
 
 - (present_ass_fail)
 + [pose:present_ass] -> HoldPose(-> present_ass_fail, -> present_ass) ->
 + [no] -> Nega_CheckIfInterested -> present_ass
 
 - /perform idle
-My, my. Your ass turns a nice shade of pink.
-She does such good work.
+My, my. Your ass turns a nice shade of pink. #32
+She does such good work. #33
 
 - (wiggle)
-Wiggle it for me.
+Wiggle it for me. #34
 
 //check to see if the headset wiggles?
 
 + [wiggle-success:5] 
     -> Nega_GoodJob -> 
     ++ [wiggle-success:5]
-    That's enough. 
-    Turn back around and present yourself. 
+    That's enough.  #35
+    Turn back around and present yourself.  #36
     ~obey++
 + [wiggle-timeout]
     -> Nega_BadJob ->
     ~disobey++
-    Did I tell you to stop?
+    Did I tell you to stop? #37
     -> wiggle
 + [no] -> Nega_CheckIfInterested -> wiggle
 
@@ -139,49 +140,49 @@ Wiggle it for me.
 
 - (check_reward)
 /perform behold
-Now. You have something I want.
-Once you give it to me, it's gone. No take-backsies!
-You have to give it to me to play.
-Those are the rules.
+Now. You have something I want. #38
+Once you give it to me, it's gone. No take-backsies! #39
+You have to give it to me to play. #40
+Those are the rules. #41
 
-And I better warn you, I don't always play nice, 
-so you better think hard before you give it to me.
+And I better warn you, I don't always play nice,  #42
+so you better think hard before you give it to me. #43
 
 /perform lean_forward
-What are you going to do, pretty {player_name}?
-Do you want to try your luck?
+What are you going to do, pretty {player_name}? #44
+Do you want to try your luck? #45
 
 + [yes]
     ~obey++
     /perform pleased
-    That's right.
-    You're going to give me that lovely little Bloodstone.
-    Maybe you'll get lucky and get something nice in return.
+    That's right. #46
+    You're going to give me that lovely little Bloodstone. #47
+    Maybe you'll get lucky and get something nice in return. #48
     -> nega_reward_dice
 
 + [no]
     ~disobey++
     /perform thoughtful
-    What a fucking pity.
-    Are you sure you don't want to give me that pretty Bloodstone?
+    What a fucking pity. #49
+    Are you sure you don't want to give me that pretty Bloodstone? #50
     
     ++[yes]
         ~disobey++
         /perform unhappy
-        Stop wasting my time!
-        Get the fuck out of here.
+        Stop wasting my time! #51
+        Get the fuck out of here. #52
         -> exit
     
     ++[no]
         ~obey++
         /perform satisfied
-        Very good. 
-        I can be a lot of fun with the right...toy.
+        Very good.  #53
+        I can be a lot of fun with the right...toy. #54
          -> nega_reward_dice
          
 + [timeout]
     /perform idle
-    Well. Are you going to give me what I want?
+    Well. Are you going to give me what I want? #55
     -> check_reward
 
 

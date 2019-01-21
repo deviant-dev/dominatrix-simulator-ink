@@ -6,7 +6,7 @@
 - (give_reward)
 
 /character nega hand_out
-Hand it over.
+Hand it over. #01
 
 - (give_reward_fail)
 
@@ -17,18 +17,18 @@ Hand it over.
 ~ rewards--
 
 /perform chuckle
-Fuck ya!
-You're my bitch now.
+Fuck ya! #02
+You're my bitch now. #03
 
 /perform give_dice
 
 + [hold:dice]
-        Let's see what you're going to get
-    for this pretty little gift.
+        Let's see what you're going to get #04
+    for this pretty little gift. #05
     
 - (roll) 
 /perform lean_forward_from_squat
-Go ahead. Roll them bones.
+Go ahead. Roll them bones. #06
 
 + [roll]
 + [timeout] -> roll
@@ -38,7 +38,7 @@ Go ahead. Roll them bones.
 ~ temp result3 = getNegaDie3()
 ~ temp result = result1 + result2 + result3
 
-Results: <>
+Results: <> 
 ~ rollToText(result1)
 <> + <>
 ~ rollToText(result2)
@@ -46,29 +46,29 @@ Results: <>
 ~ rollToText(result3)
 
 {
-    - intro && result > 0: -> intro_reward
-    - intro: -> intro_change_dice
+    - intro && result > 0: -> intro_reward 
+    - intro: -> intro_change_dice 
     
-    - result == 3: -> result_reward_hard
-    - result == 2: -> result_reward_light
-    - result == 1: -> result_reward_tease
+    - result == 3: -> result_reward_hard 
+    - result == 2: -> result_reward_light 
+    - result == 1: -> result_reward_tease 
     
-    - result1 == 0 && result2 == 0 && result3 == 0: -> result_all_blank
-    - result == 0: -> result_no_reward
+    - result1 == 0 && result2 == 0 && result3 == 0: -> result_all_blank 
+    - result == 0: -> result_no_reward 
 
-    - result == -1: -> result_punishment_tease
-    - result == -2: -> result_punishment_light
-    - result == -3: -> result_punishment_hard
+    - result == -1: -> result_punishment_tease 
+    - result == -2: -> result_punishment_light 
+    - result == -3: -> result_punishment_hard 
 }
 
 
 - (result_reward_hard)
 /perform behold
-Oooo, three cups! You are a lucky little shit.
-That does <i>not</i> happen often.
+Oooo, three cups! You are a lucky little shit. #18
+That does <i>not</i> happen often. #19
 
 /perform cock_head_to_left
-I suppose I have to give you something very special, then, don't I?
+I suppose I have to give you something very special, then, don't I? #20
 
 -> check_consent ->
 
@@ -83,7 +83,7 @@ TODO: Randomly select from Nega's 'hard reward' scenes here.
 // This can only be two cups and a blank.
 
 /perform thoughtful
-Two cups and a blank, hmm? Not bad.
+Two cups and a blank, hmm? Not bad. #21
 
 -> check_consent ->
 
@@ -99,17 +99,17 @@ TODO: Randomly select from Nega's 'light reward' scenes here.
 
 { result1 == -1 || result2 == -1 || result3 == -1:
     /perform curious
-    Two cups and a skull, hmm?
+    Two cups and a skull, hmm? #22
     /perform open_arms_shrug
-    Skulls cancel cups, I'm afraid, so that's one cup for you.
+    Skulls cancel cups, I'm afraid, so that's one cup for you. #23
 - else:
     /perform curious
-    Hmm.. one cup.
+    Hmm.. one cup. #24
 }
 
 /perform open_arms_shrug
-Not bad. But not great.
-I suppose you deserve a little something for that.
+Not bad. But not great. #25
+I suppose you deserve a little something for that. #26
 
 -> check_consent ->
 
@@ -122,16 +122,16 @@ TODO: Randomly select from Nega's 'tease reward' scenes here.
 - (result_all_blank)
 
 /perform serious
-Wow, that is by far the best bad luck I've ever seen.
-You get nothing, of course, but for a roll like that...
+Wow, that is by far the best bad luck I've ever seen. #27
+You get nothing, of course, but for a roll like that... #28
 
 /perform lean_forward
 { negaLoreEmpty():
-    perhaps I'll make an exception.
+    perhaps I'll make an exception. #29
     -> check_consent ->
     -> result_punishment_tease_no_intro
 - else:
-    perhaps I'll let you in on a little secret.
+    perhaps I'll let you in on a little secret. #30
     -> nega_lore
 }
 
@@ -140,8 +140,8 @@ You get nothing, of course, but for a roll like that...
 TODO: Write 'no reward' dialog here.
 
 /perform cocks_head_to_left
-Well look at that. Skull and cup cancel each other out.
-Nothing for you today. Better luck next time, bitch.
+Well look at that. Skull and cup cancel each other out. #31
+Nothing for you today. Better luck next time, bitch. #32
 /perform laughs
 
 -> exit
@@ -151,17 +151,17 @@ Nothing for you today. Better luck next time, bitch.
 
 { result1 == 1 || result2 == 1 || result3 == 1:
     /perform fake_annoyed
-    Two skulls and a cup, hmm?
-    Cups cancel skulls, alas, so only one little skull for you.
+    Two skulls and a cup, hmm? #33
+    Cups cancel skulls, alas, so only one little skull for you. #34
 - else:
     /perform thoughtful
-    Hmm.. one skull.
+    Hmm.. one skull. #35
 }
 
 /perform curious
-I suppose I can't go too hard on you,
+I suppose I can't go too hard on you, #36
 /perform lean_forward
-but I bet I can still make you squirm.
+but I bet I can still make you squirm. #37
 
 -> check_consent ->
 
@@ -176,8 +176,8 @@ TODO: Randomly select from Nega's 'tease punishment' scenes here.
 - (result_punishment_light)
 
 /perform excited
-Ooo, two skulls.
-That means your ass is mine.
+Ooo, two skulls. #38
+That means your ass is mine. #39
 -> check_consent ->
 
 TODO: Randomly select from Nega's 'light punishment' scenes here.
@@ -189,8 +189,8 @@ TODO: Randomly select from Nega's 'light punishment' scenes here.
 - (result_punishment_hard)
 
 /perform breast_squeeze
-Mmmm, look at that.
-Three skulls. I'm going to enjoy <i>this</i>.
+Mmmm, look at that. #40
+Three skulls. I'm going to enjoy <i>this</i>. #41
 
 -> check_consent ->
 
@@ -202,12 +202,12 @@ TODO: Randomly select from Nega's 'hard punishment' scenes here.
 
 - (intro_change_dice)
 /perform chuckle
-Aaaw, look at that. No fun.
+Aaaw, look at that. No fun. #42
 
 /perform amused
-Since it's your first time, 
-perhaps I'll make it rain for you.
-Just this once.
+Since it's your first time,  #43
+perhaps I'll make it rain for you. #44
+Just this once. #45
 
 /perform swipe_hand
 /action force-dice
@@ -215,33 +215,33 @@ Just this once.
 
 - (intro_reward)
 /perform cocks_head_to_left
-Ooo. Looky here.
-Someone just got lucky!
+Ooo. Looky here. #46
+Someone just got lucky! #47
 
 /perform sassy
-Oh goody! This is gonna be so much fun!
-You're gonna love getting rewards from me.
+Oh goody! This is gonna be so much fun! #48
+You're gonna love getting rewards from me. #49
 
 -> nega_reward_forcedsex
 
 = check_consent
 
 {shuffle:
-    - It's not too late to back out, {isBoy: worm|slit}.
-    - I'm going to use you hard.
-    - You can still change your mind.
-    - I wonder if you can handle me. 
+    - It's not too late to back out, {isBoy: worm|slit}. #50
+    - I'm going to use you hard. #51
+    - You can still change your mind. #52
+    - I wonder if you can handle me.  #53
     }
 
 {shuffle:
-    - Are you ready?
-    - Shall I use you?
-    - Ready for what's next?
-    - Are you prepared to continue?
+    - Are you ready? #54
+    - Shall I use you? #55
+    - Ready for what's next? #56
+    - Are you prepared to continue? #57
     }
 
 + [yes]
-    Delish!
+    Delish! #58
     ->->
 
 + [no]

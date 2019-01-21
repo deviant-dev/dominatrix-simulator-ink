@@ -4,24 +4,24 @@
 
 /perform eager
 
-I'm so ready for this.
-I've been waiting a long time for some new blood to show up.
+I'm so ready for this. #01
+I've been waiting a long time for some new blood to show up. #02
 
 
 - (lay_down)
 - (lay_down_tries)
 
 /perform point_down
-Get on the floor, bitch.
-On your back.
+Get on the floor, bitch. #03
+On your back. #04
 - (lay_down_fail)
 
 + [pose:lay_down] -> HoldPose(-> lay_down_fail, -> lay_down) -> lay_down_done
 + { lay_down_tries < 2 } [timeout]
     /perform displeased
-    Hey, stupid.
-    I gave you a command.
-    Lay the fuck down!
+    Hey, stupid. #05
+    I gave you a command. #06
+    Lay the fuck down! #07
     -> lay_down
 + { lay_down_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> lay_down
 + [no] -> Nega_CheckIfInterested -> lay_down
@@ -37,25 +37,25 @@ On your back.
 }
 
 - (ask_any_idea)
-Do you have any idea what I'm going to do to you?
+Do you have any idea what I'm going to do to you? #08
 
 + [yes]
     ~disobey++
-    You're about to find out.
+    You're about to find out. #09
 + [no]
     ~obey++
-    Damn right you don't.
+    Damn right you don't. #10
 + [timeout]
-    Well?
+    Well? #11
     -> ask_any_idea
 
 - /perform inspect
-I want to get off on some deep dicking.
+I want to get off on some deep dicking. #12
 
 // Handle cockification for female players.
 
 {not isBoy:
-    I've got a strap-on right here for you, slut.
+    I've got a strap-on right here for you, slut. #13
 }
 
 /action equip-cock
@@ -68,7 +68,7 @@ I want to get off on some deep dicking.
 
 /equip rope
 /perform kick_leg
-Put your ankles and wrists together!
+Put your ankles and wrists together! #14
 
 - (bound_wrists_fail)
 
@@ -79,81 +79,81 @@ Put your ankles and wrists together!
 
 - -> Nega_GoodJob ->
 
-I keep plenty of rope lying around just for this.
+I keep plenty of rope lying around just for this. #15
 
 /perform licks_lips
-Fuck! I'm soaking my panties.
+Fuck! I'm soaking my panties. #16
 
 //mutters
-I don't know why I even bother wearing them.
+I don't know why I even bother wearing them. #17
 
 /perform tie_ankles
 
-Don't you fucking move, slut!
+Don't you fucking move, slut! #18
 //can she mutter to herself like she's crazy?
 
 /perform tie_wrists
 
-This way your hands won't be entirely useless, {isBoy: maggot|cunt}.
+This way your hands won't be entirely useless, {isBoy: maggot|cunt}. #19
 
 -> Nega_player_masturbate
 
 /perform looming
 
-Now... time for me to get more comfortable.
+Now... time for me to get more comfortable. #20
 
 //nega yuki strips
 /scene attic.reward_forcedsex2
 /perform sassy
 
-Look at you. Such a pathetic fleshbag.
-I bet you're just dying to find out 
-how my wet pussy feels against you.
+Look at you. Such a pathetic fleshbag. #21
+I bet you're just dying to find out  #22
+how my wet pussy feels against you. #23
 
 /perform idle
-Aren't you?
+Aren't you? #24
 
 +[yes]
-    Such a filthy whore. 
-    What a treat!
+    Such a filthy whore.  #25
+    What a treat! #26
 
 +[no]
-    Too fucking bad!
+    Too fucking bad! #27
 
 + [timeout]
 
-- Do you know what I'm about to do, slut?
+- Do you know what I'm about to do, slut? #28
 
 + [yes]
-    That's right.
+    That's right. #29
 
 + [no]
-    You're so fucking dumb. I swear.
+    You're so fucking dumb. I swear. #30
 
 - /perform loom
-I'm about to use you like the eager little whore you are.
-Let's find out how well you can fuck.
-I'm going to ride that {isBoy: cock|strap-on} of yours
-until I cum my fucking brains out!
+I'm about to use you like the eager little whore you are. #31
+Let's find out how well you can fuck. #32
+I'm going to ride that {isBoy: cock|strap-on} of yours #33
+until I cum my fucking brains out! #34
 
-Would you like that, {isBoy: prick|bitch}?
+Would you like that, {isBoy: prick|bitch}? #35
 
 +[yes]
-    Fan-fucking-tastic! 
-    I'm getting what I want no matter what.
-    It's just a bonus for you that you want it too.
+    Fan-fucking-tastic!  #36
+    I'm getting what I want no matter what. #37
+    It's just a bonus for you that you want it too. #38
 
 +[no]
-    It doesn't matter what you fucking want!
-    You came to me and now I'm going to have some fun!
+    It doesn't matter what you fucking want! #39
+    You came to me and now I'm going to have some fun! #40
 
 //player needs to be told to move their controller to their crotch
 //Need to teach the player how to move their controller like a cock/pussy and how to thrust to a beat/rhythm
 
 - /perform squat_over_player_crotch
 
-Ahhhh! That's it!
-You're stiff dick is just what I fucking needed!
+Ahhhh! That's it! #41
+You're stiff dick is just what I fucking needed! #42
 
 VAR thrusts = 0
 VAR nega_thrust_mistakes = 0
@@ -162,19 +162,19 @@ VAR nega_thrust_count = 0
 VAR nega_thrust_target_count = 20
 VAR nega_thrust_break_count = 6
 
-You better move those goddamn hips while I fuck you, slut.
-Your job is to make me cum, got it?!
+You better move those goddamn hips while I fuck you, slut. #43
+Your job is to make me cum, got it?! #44
 
 +[yes]
-    Good. Now fucking show me how you thrust.
+    Good. Now fucking show me how you thrust. #45
     ~obey++
 
 +[no]
-    Do it anyways, bitch.
+    Do it anyways, bitch. #46
     ~disobey++
 
 - (test_thrust)
-Thrust three times. Nice and slow.
+Thrust three times. Nice and slow. #47
 
 - (test_thrust_again)
 
@@ -186,7 +186,10 @@ Thrust three times. Nice and slow.
     -> Nega_GoodJob ->
     // Once there have been 3 good thrusts, we continue.
     { thrusts < 3:
-        {Again.|Once more.}
+        {cycle: 
+        - Again. #108
+        - Once more. #109
+        }
         -> test_thrust_again
     - else:
         ~obey++
@@ -204,20 +207,20 @@ Thrust three times. Nice and slow.
         -> test_thrust
     - else:
         ~disobey++
-        Ughh. Pathetic.
-        Maybe you'll be more motivated to get it right
-        when I start fucking you!
+        Ughh. Pathetic. #48
+        Maybe you'll be more motivated to get it right #49
+        when I start fucking you! #50
         ~ nega_difficulty = 0
     }
 
 + [minigame-quit] -> Nega_CheckIfInterested -> thrust_more
 
 - (thrust_continue)
-Decent. Let's pick up the pace, huh?
+Decent. Let's pick up the pace, huh? #51
 
 - (thrust_restart)
 
-Give it to me harder, you worthless fuck.
+Give it to me harder, you worthless fuck. #52
 
 /minigame rhythm-nega-thrust
 
@@ -247,28 +250,46 @@ Give it to me harder, you worthless fuck.
 //Player is not allowed to orgasm
 
 = thrust_minigame_orgasm
-Uhhhhnnn. I'm so close!
-Keep going, slut, and make me cum!
+Uhhhhnnn. I'm so close! #53
+Keep going, slut, and make me cum! #54
 
 + [wait]
 
-Fuck yah.
-Do you want to cum with me, {isBoy: maggot|whore?}
+Fuck yah. #55
+Do you want to cum with me, {isBoy: maggot|whore?} #56
 
 + [yes]
     /perform squat_grind_on_crotch_laugh
-    You fucking wish!
-    There's no orgasm for a pathetic flesh bag like you.
+    You fucking wish! #57
+    There's no orgasm for a pathetic flesh bag like you. #58
 
 + [no]
-    What a useless dick you have!
-    Can't even cum for your Mistress!
+    What a useless dick you have! #59
+    Can't even cum for your Mistress! #60
     /perform squat_grind_on_crotch_laugh
     
--
+- (nega_orgasm)
+/perform squat_grind_on_crotch_faster
+{shuffle:
+    - Pick up the pace, slut!
+    - Double time!
+    - Faster, cunt.
+    }
     
+{shuffle:
+    - I'm almost there.
+    - Ahhhhh. I've been waiting so long!
+    - That's it. That's it!
+    }
+    
+/perform squat_grind_on_crotch_orgasm
+{shuffle:
+    - Fuck yes!
+    - Sooooo good!
+    - 
+    }
 
-TODO Add in orgasm dialog
+TODO Add in orgasm dialog 
 
 ->->
 
@@ -288,10 +309,10 @@ TODO Add in orgasm dialog
 - (stop_thrust_tries)
 
 - {cycle: 
-    - Hold still, little bitch.
-    - Stop moving!
-    - Catch your fucking breath. 
-    I can't have you giving out on me.
+    - Hold still, little bitch. #62
+    - Stop moving! #63
+    - Catch your fucking breath.  #64
+    I can't have you giving out on me. #65
 }
 
 - (stop_thrust_fail)
@@ -307,7 +328,7 @@ TODO Add in orgasm dialog
     - -> break03 ->
 }
 
-Get back to it, slut!
+Get back to it, slut! #66
 
 ->-> 
 
@@ -326,36 +347,36 @@ Get back to it, slut!
     - ~choke_point = 3
 }
 
-You belong to me right now, bitch.
+You belong to me right now, bitch. #67
 
 - {choke_point == 1: /perform squat_over_player_crotch }
 
-My filthy fucktoy.
-A worm I will use and abuse until I'm satisfied.
+My filthy fucktoy. #68
+A worm I will use and abuse until I'm satisfied. #69
 
 {choke_point == 2: /perform squat_over_player_crotch }
 
-Do you like being used?
+Do you like being used? #70
 
 + [yes]
-    That's why you're here, isn't it?
-    Because you like being used.
-    Being nothing but a dirty whore for other people's pleasure.
+    That's why you're here, isn't it? #71
+    Because you like being used. #72
+    Being nothing but a dirty whore for other people's pleasure. #73
     
 + [no]
-    And yet look at you now.
-    Your body is a piece of meat to get me off.
+    And yet look at you now. #74
+    Your body is a piece of meat to get me off. #75
 
 - {choke_point == 3: /perform squat_over_player_crotch }
 
-Isn't that true?
+Isn't that true? #76
     
 + [yes]
-    Good you learn your place quickly, whore.
+    Good you learn your place quickly, whore. #77
     
 + [no]
-    Wrong!
-    I will use you and I will cum my brains out while doing it.
+    Wrong! #78
+    I will use you and I will cum my brains out while doing it. #79
  
 - /perform squat_over_player_crotch
 ->->
@@ -365,17 +386,17 @@ Isn't that true?
 
 - (try_slap)
 
-/perform slap_player
+/perform squat_over_player_crotch_slap
 
 + [react-success]
 -> Nega_GoodJob ->
 + [react-fail]
-You suck at this.
+You suck at this. #80
 -> try_slap
 
-I like watching you suffer.
-I'm going to slap you until I'm bored
-and I want to hear you whimper while I do.
+I like watching you suffer. #81
+I'm going to slap you until I'm bored #82
+and I want to hear you whimper while I do. #83
 
 ~ temp slap_count = 0
 
@@ -387,56 +408,57 @@ and I want to hear you whimper while I do.
 
 - (slap)
 
-/perform slap_player
+/perform squat_over_player_crotch_slap
 ~ slap_count--
 
 + [react-success]
 -> Nega_GoodJob ->
-+ [react_fail]
++ [react-fail]
 -> Nega_BadJob ->
 
 - {slap_count: -> slap}
-Time for more fucking!
+Time for more fucking! #84
 
 ->->
 
 = break03
 //holding breath while Nega counts
-Let's play a little game, whore.
-You're going to hold your breath for me.
-Let's see what a good piggy you are.
-When I say 'go', hold your fucking breath.
+Let's play a little game, whore. #85
+You're going to hold your breath for me. #86
+Let's see what a good piggy you are. #87
+When I say 'go', hold your fucking breath. #88
 
 + [wait 2]
-Go!
+Go! #89
 
 {shuffle:
-    - One. Two. Three.
-    - One. Two. Three. Four. Five.
-    - One. Two. Three. Four. Five. Six.
-    Seven. Eight. Nine. Ten. 
-    Impressive!
+    - One. Two. Three. #90
+    - One. Two. Three. Four. Five. #91
+    - One. Two. Three. Four. Five. Six. #92
+    - One. Two. Three. Four. Five. Six. #110
+    Seven. Eight. Nine. Ten.  #111
+    Impressive! #94
     }
 
-Now, breathe bitch!
+Now, breathe bitch! #95
 
 ->->
 
 = Badthrust
 
 {shuffle:
-    - Your cock is useless!
-    - Haven't you ever fucked before?
-    - What's the matter with you? It's like you're a goddamn virgin!
-    - Your rhythm sucks!
-    - Focus, you cunt!
-    - How hard is it to shove your dick in me at the right time?
-    - You have to use it right to make me cum!
-    - Thrust to the beats, maggot!
-    - You should be good at this, slut. It's what you're made for.
-    - Your thrusting is pathetic.
-    - Listen to the rhyhtm, you twat.
-    - Pound to the sound!
+    - Your cock is useless! #96
+    - Haven't you ever fucked before? #97
+    - What's the matter with you? It's like you're a goddamn virgin! #98
+    - Your rhythm sucks! #99
+    - Focus, you cunt! #100
+    - How hard is it to shove your dick in me at the right time? #101
+    - You have to use it right to make me cum! #102
+    - Thrust to the beats, maggot! #103
+    - You should be good at this, slut. It's what you're made for. #104
+    - Your thrusting is pathetic. #105
+    - Listen to the rhyhtm, you twat. #106
+    - Pound to the sound! #107
     - -> Nega_BadJob ->
     - -> Nega_BadJob ->
     - -> Nega_BadJob ->

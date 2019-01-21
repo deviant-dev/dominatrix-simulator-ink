@@ -1,22 +1,25 @@
-
+  
 === Nega_PayAttention ===
 
 { cycle:
-    - You're not very good at this yet, are you?
-    You're supposed to look at me when I'm talking.
-    - Bad {isBoy:prick|cunt}! You should look at me when I speak to you.
-    - Oh gee. You need a lot of training. Look at me.
-    - Didn't anyone ever teach you to look at people 
-    when they're speaking to you?
-    - It's very rude not to look at me when I'm speaking to you.
+    - Eyes on me, pretty {player_name}. #01
+    - I'm fucking talking to you! #02
+    - Is your brain goddamn mush? Over here. #03
+    - Look at me, bitch. #04
+    - Were you raised in a fucking barn? Pay attention! #05
+    - Get your head in the goddamn game.  #06
+    - Looking for a place to hide, slut? It won't work. #07
+    Now, pay attention! #08
 }
 
-+ [paying_attention]
++ [pay-attention]
     { cycle:
-        - Now... what was I saying? Oh right...
-        - Much better. Ahem.
-        - Good {player_name}. You might be teachable after all.
-        - Now back to your instructions.
+        - Don't fucking let it happen again. #09
+        - What the fuck was I saying? #10
+        - Goddamn rude little whore. #11
+        - Do it again and I might think you don't like me.  #12
+        - I fucking hate being interrupted. #13
+        - Damn right you'll pay attention. #14
     }
     ->->
     
@@ -25,37 +28,37 @@
 === Nega_CheckIfInterested ===
 
 /perform unhappy
-What the fuck is wrong with you!?
+What the fuck is wrong with you!? #14
 
-Are you going to behave and give me what I want?
+Are you going to behave and give me what I want? #15
 
 + [yes] 
-That's right, {isBoy: maggot|whore}.
+That's right, {isBoy: maggot|whore}. #16
     ->->
 + [no]
-    Then fuck off.
-    No refunds, you little bitch.
+    Then fuck off. #17
+    No refunds, you little bitch. #18
     -> exit
 
 === Nega_GoodJob ===
 
 
 {shuffle:
-    - That's it, little bitch.
-    - Just like that.
-    - Maybe you aren't a waste of time. 
-    - Not bad.
-    - Huh. Maybe I will get to have a little fun afterall.
-    - You're making my pussy wet.
-    - Toying wtih you is so much fun!
-    - Good little {isBoy: meatbag|slit}.
-    - I'm glad you came to see me.
-    - Oh, yah.
-    - Mmmmm.
-    - So hot!
-    - Good fucktoy.
-    - Nice!
-    - What a slut!
+    - That's it, little bitch. #18
+    - Just like that. #19
+    - Maybe you aren't a waste of time.  #20
+    - Not bad. #21
+    - Huh. Maybe I will get to have a little fun afterall. #22
+    - You're making my pussy wet. #23
+    - Toying wtih you is so much fun! #24
+    - Good little {isBoy: meatbag|slit}. #25
+    - I'm glad you came to see me. #26
+    - Oh, yah. #27
+    - Mmmmm. #28
+    - So hot! #29
+    - Good fucktoy. #30
+    - Nice! #31
+    - What a slut! #32
 }
     
 ->->
@@ -63,21 +66,21 @@ That's right, {isBoy: maggot|whore}.
 === Nega_BadJob ===
 
 {shuffle:
-    - Stupid {isBoy:  prick|cunt}.
-    - You're fucking up!
-    - You better entertain me, {isBoy: worm|whore}.
-    - Try harder!
-    - You're doing it wrong.
-    - Useless.
-    - Pathetic.
-    - Ugggh.
-    - I'm not happy.
-    - You're boring me. 
-    - How lame.
-    - Unworthy slut!
-    - Grrrr.
-    - Waste of time.
-    - I don't know why I bother.
+    - Stupid {isBoy:  prick|cunt}. #32
+    - You're fucking up! #33
+    - You better entertain me, {isBoy: worm|whore}. #34
+    - Try harder! #35
+    - You're doing it wrong. #36
+    - Useless. #37
+    - Pathetic. #38
+    - Ugggh. #39
+    - I'm not happy. #40
+    - You're boring me.  #41
+    - How lame. #42
+    - Unworthy slut! #43
+    - Grrrr. #44
+    - Waste of time. #45
+    - I don't know why I bother. #46
 }
     
 ->->
@@ -85,22 +88,22 @@ That's right, {isBoy: maggot|whore}.
 === Nega_Give_Reward ===
 
 {shuffle:
-    - I'm pleased with you!
-    - You've been good!
-    - I had a lot of fun with you!
-    - You weren't as much of a fuckup as I thought you'd be!
-    - Surprisingly, you satisfied me.
-    - I hope you're feeling good. I am.
-    - I enjoyed myself.
+    - I'm pleased with you! #46
+    - You've been good! #47
+    - I had a lot of fun with you! #48
+    - You weren't as much of a fuckup as I thought you'd be! #49
+    - Surprisingly, you satisfied me. #50
+    - I hope you're feeling good. I am. #51
+    - I enjoyed myself. #52
     }
     
 {shuffle:
-    - Perhaps you deserve a small reward.
-    - I think I'll  do something nice for you.
-    - I'm going to give you a little treat.
-    - I want to give you a little something, fuck {player_name}.
-    - It amuses me to reward you for a reward. 
-    - Time to show my appreciation.
+    - Perhaps you deserve a small reward. #53
+    - I think I'll  do something nice for you. #54
+    - I'm going to give you a little treat. #55
+    - I want to give you a little something, fuck {player_name}. #56
+    - It amuses me to reward you for a reward.  #57
+    - Time to show my appreciation. #58
     }
 { shuffle:
     - -> reward_spit
@@ -110,41 +113,41 @@ That's right, {isBoy: maggot|whore}.
 
 - (reward_spit)
 /perform lean_forward_from_squat
-Open your mouth, slut!
+Open your mouth, slut! #59
 
 /perform spit_in_mouth_from_squat
-I'm sure you loved that, my disguting little {isBoy: pig|cunt}!
+I'm sure you loved that, my disguting little {isBoy: pig|cunt}! #60
 
 ->->
 
 - (reward_boobs)
 /perform lean_forward_from_squat
-Enjoy the view, slut!
+Enjoy the view, slut! #61
 
 /perform lean_forward_from_squat_jiggle_breasts
 //should be a long animation - appx 10 seconds
-Only a lucky few get to see something so wonderful, be grateful!
+Only a lucky few get to see something so wonderful, be grateful! #62
 
 ->->
 
 - (reward_ass)
 /perform reverse_cowgirl_ass_raised_wiggle
 //long animation - appx 10 seconds
-Being so close must be such a turn on for you, whore.
-Don't get used to it!
+Being so close must be such a turn on for you, whore. #63
+Don't get used to it! #64
 
 ->->
 
 === Nega_player_masturbate ===
 /perform lean_forward
-I want you ready for me anytime I want to use you.
+I want you ready for me anytime I want to use you. #64
 
 /perform stroke_motion
-Grab that dick of yours and start stroking.
+Grab that dick of yours and start stroking. #65
 
 - (masturbate_restart)
 /perform inspect
-Keep going until I tell you to stop.
+Keep going until I tell you to stop. #66
 
 /minigame masturbate
  
@@ -152,8 +155,8 @@ Keep going until I tell you to stop.
 /perform idle_nega
 
 + [minigame-success] 
-    Ahhhh. Yesss... I'm so fucking wet.
-    That's enough!
+    Ahhhh. Yesss... I'm so fucking wet. #67
+    That's enough! #68
     ->->
 + [minigame-fail] -> Nega_BadJob -> masturbate_restart
 + [minigame-quit] -> Nega_CheckIfInterested -> masturbate_restart
@@ -168,51 +171,51 @@ Keep going until I tell you to stop.
     - -> break03 ->
 }
 - {cycle:
-    - Keep going.
-    - You're dick's not hard enough yet.
-    - Harder. Faster.
-    - I bet your arm is getting tired. Too bad!
-    - More. More. More!
+    - Keep going. #69
+    - You're dick's not hard enough yet. #70
+    - Harder. Faster. #71
+    - I bet your arm is getting tired. Too bad! #72
+    - More. More. More! #73
     }
 
 ->->
 
 = break01
 /perform sassy
-Do you like the idea of getting ready for me, {isBoy: worm|skank}?
+Do you like the idea of getting ready for me, {isBoy: worm|skank}? #74
 
 +[yes]
 ~ obey++
 -> Nega_GoodJob
-Good. Keep going.
+Good. Keep going. #75
 
 +[no]
 ~ disobey++
 -> Nega_BadJob
-Do it anyways!
+Do it anyways! #76
 
 ->->
 
 = break02
 {shuffle:
-    - I enjoy watching you be a little whore for my attention.
-    - That's it little meatbag.
-    - What a fucking slut getting /my/ cock ready for me to use.
-    - That's all you're good for, cunt, being used.
-    - Wallow in it, {isBoy: worm|cunt}.
+    - I enjoy watching you be a little whore for my attention. #77
+    - That's it little meatbag. #78
+    - What a fucking slut getting /my/ cock ready for me to use. #79
+    - That's all you're good for, cunt, being used. #80
+    - Wallow in it, {isBoy: worm|cunt}. #81
 }
 
 ->->
 
 = break03
-Do you want to cum for me?
+Do you want to cum for me? #82
 
 + [yes]
-No fucking way!
-I do the cumming around here!
+No fucking way! #83
+I do the cumming around here! #84
 
 + [no]
 -> Nega_BadJob
-Well, you'll stroke until you dick falls off if that's what I want!
+Well, you'll stroke until your dick falls off if that's what I want! #85
 
 - ->->

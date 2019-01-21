@@ -10,11 +10,12 @@
 - (instructions)
 
 /scene LogoRoom.Instructions
+/music goddess
 
 + [yes]
 + [no]
     /scene LogoRoom.Empty
-    <- instructions
+    -> instructions
 
 
 - /scene LogoRoom.JournalInfo

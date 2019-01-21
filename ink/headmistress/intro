@@ -6,9 +6,12 @@
 ~ rewards = 1
 
 /scene LectureHallIntro.Intro1
-/equip wood_paddle
+/music headmistress
+/ambient off
 /character slave all_fours
+/lookat none
 /character headmistress idle
+/lookat slave
 
 { isWeb():
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
@@ -19,40 +22,52 @@
 - else:
     + [continue]
 }
--/perform spank slave
 
-- You are an unruly, undisciplined, low-born miscreant. #01
+-/perform spank_x3 slave
 
-/perform spank slave
+You are an unruly, undisciplined, low-born miscreant. #01
 
-- I will not abide by your disobedience. #02
+/perform spank_x2 slave
 
-/perform spank slave
+I will not abide by your disobedience. #02
 
-- You <i>will</i> behave according to your station #03
-or find yourself unable to rest on your backside for a week. #04
-/perform displeased
+/perform spank_x2 slave
+/wait 3
+-
 /character slave crying
 
 I'm sorry, Headmistress. #05
+
+/character headmistress spank_x3 slave
+
+You <i>will</i> behave according to your station #03
+or find yourself unable to rest on your backside for a week. #04
+
+/perform displeased
+
+/character slave crying
+
 I'll be good. I promise! #06
 Oh, please Headmistress! #07
 
-/character headmistress spank slave
+/character headmistress spank_x3 slave
 
 + [wait 4]
 
-/perform displeased
-- That will be sufficient for today. #08
+- /perform displeased
+That will be sufficient for today. #08
 Remember this lesson, flawed one. #09
 
 /perform smooth_skirt
 
 /scene LectureHallIntro.Intro2
+/character headmistress
+/lookat slave
 
 /character slave clasp_hands
+/lookat headmistress
 
-/character headmistress point_to_door
+/character headmistress point_to_leave
 
 Depart with grace and pride #11
 as befits an adornment of this house. #12
@@ -62,13 +77,13 @@ as befits an adornment of this house. #12
 Yes, Headmistress. #13
 Thank you for guiding me, Headmistress. #14
 
-/perform walks_away
+// /perform walks_away
 
 +[wait 2]
 
 - /scene LectureHallIntro.Intro3
 
-/character headmistress displeased
+/character headmistress idle
 
 What do we have here? #15
 Another new procurement, I see. #16
@@ -92,11 +107,12 @@ Do you know who I am? #22
 + [yes]
     ~obey++
     /perform nod
-    My reputation precedes me!
+    My reputation precedes me! #55
     
 + [no]
     ~disobey++
-    /perform tap_paddle
+    //perform tap_paddle
+    /perform idle
     I think you do. #25
     You just heard that slave say it. #26
     /perform lean_forward
@@ -121,7 +137,7 @@ Understood? #31
         Excellent. #32
         
     + [no]
-        -- (not_understood) #34
+        -- (not_understood)
         /perform fake_annoyed
         ~disobey++
         Come, come. #35
@@ -142,7 +158,7 @@ Understood? #31
     /perform annoyed
     Your wrists, you witless cur. #39
     Present them before you #40
-    that I may confirm your measure. #41
+    so that I may confirm your measure. #41
     ~disobey++
     /perform present_wrists
     Like so, foolish {player_name}. #42
@@ -156,18 +172,18 @@ You have pleased the Goddess. #44
 
 /perform curious
 Hmmmm. But also Obsidian. #45
-Entering the Goddess's chambers without permission is forbidden! 
+Entering the Goddess's chambers without permission is forbidden!  #49
 This is a serious infraction. #50
-
-/perform serious
-Stand at attention!
 
 - (stand_straight)
 - (stand_straight_tries)
 
-- (raised_chin_fail)
+/perform serious
+Stand at attention! #57
 
-+ [pose:raised_chin] -> HoldPose(-> raised_chin_fail, -> stand_straight) ->
+- (stand_straight_fail)
+
++ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
 + { stand_straight_tries < 2 } [timeout] -> stand_straight
 + { stand_straight_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
@@ -176,19 +192,19 @@ Stand at attention!
 Atonement and adjustment are required. #46
 
 /perform idle
-This must be immediate. #47
+This must be immediate. #47 
 
 /perform inspect
-It must be firm, swift, and leave an indelible mark #39
-upon the body and soul. #40
+It must be firm, swift, and leave an indelible mark  #120
+upon the body and soul.  #121
 
 /perform serious
 You will be punished. #51
 And you will do it with grace. #52
 I will teach you how. #53
-
-/perform snaps_fingers
 Just like I do with all the new slaves. #54
+
+/perform snap_fingers
 No need to waste time, then. #33
 
 - /perform idle 

@@ -6,8 +6,10 @@
 ~ rewards = 1
 
 /scene entry.intro2
+/music entry
+/ambient rain
 /character yuki idle_yuki
-/equip feather_duster
+// /equip feather_duster
 
 Oh! There you are! #01
 
@@ -19,26 +21,24 @@ I’ve been waiting for you. #02
 
 I'm Mistress Yuki-Onna. #03
 /perform idle_yuki
-It’s my job to make sure all new arrivals are processed  #04
-and taught the basics of how to behave  #05
+It’s my job to make sure all new arrivals   #04
+are taught how to behave  #05
 while you’re a guest in Goddess’s home. #06
-
-/wait
 
 /perform serious
 
 First things first. #07
 
+- (stand_straight)
+- (stand_straight_tries)
+
 /perform idle_yuki
 Always stand up straight with your head high  #08
 when you present yourself to a Mistress. #09
 
-- (stand_straight)
-- (stand_straight_tries)
+- (stand_straight_fail)
 
-- (raised_chin_fail)
-
-+ [pose:raised_chin] -> HoldPose(-> raised_chin_fail, -> stand_straight) ->
++ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
 + { stand_straight_tries < 2 } [timeout] -> stand_straight
 + { stand_straight_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
@@ -101,7 +101,7 @@ Would you like to know what the rules are? #25
 + [yes]
     ~ obey++
     /perform excited
-    Oh goody! I love telling people the house rules! #26
+    Oh goody! I love telling people the rules! #26
 
 + [no]
     ~ disobey++
@@ -165,60 +165,72 @@ Easy, right? #36
 
 - (puppy_beg)
 /perform behold
-Let's practice!
+Let's practice! #45
 
 /perform idle_yuki
-I really love puppies.
-Petting them. Kissing them. Feeding them. Walking them.
+I really love puppies. #169
+Petting them. Kissing them. Feeding them. Walking them. #170
 
-Would you like to be my puppy?
+Would you like to be my puppy? #171
 
-+[yes]
-/perform excited
-Oh my goodness! I'm just so excited!
--> pet_beg
++ [yes]
+    /perform excited
+    Oh my goodness! I'm just so excited! #172
+    -> pet_beg
 
-+[no]
-/perform pouty
-What? But I'm so nice to my pets.
-You're not doing a good job of following instructions.
++ [no]
+    /perform pouty
+    What? But I'm so nice to my pets. #173
+    You're not doing a good job of following instructions. #174
 
-- Just try it once for me, okay?
+- Just try it once for me, okay? #175
 
-+[yes]
-/perform clasp_hands
-I promise this will be worth it!
++ [yes]
+    /perform clasp_hands
+    I promise this will be worth it! #176
 
-+[no]
-/perform cocks_head_to_left
-Well, that's really a shame!
-Maybe I'm just too nice for you.
-I hope that's not true!
--> good_yuki
++ [no]
+    /perform cocks_head_to_left
+    Well, that's really a shame! #177
+    Maybe I'm just too nice for you. #178
+    I hope that's not true! #179
+    -> good_yuki
 
 //make it to where the yuki ending gives them another chance to be a puppy or sets a variable on them that they don't like puppy play
 
 - (pet_beg)
 /perform serious
-First, puppy has to beg for my attention.
+First, puppy has to beg for my attention. #180
 
 - (pet_beg_tries)
-
 /perform point_down
-Down on your knees and raise your hands to beg.
+Down on your knees and raise your hands to beg. #181
 
 - (pet_beg_fail)
 
 + [pose:pet_beg] -> HoldPose(-> pet_beg_fail, -> pet_beg) ->
-+ { stand_straight_tries < 2 } [timeout] -> pet_beg
++ { pet_beg_tries < 2 } [timeout] -> pet_beg
++ { pet_beg_tries >= 2 } [timeout] ->
 
--> Yuki_GoodJob ->
--
+- -> Yuki_GoodJob ->
 /perform bounces
-Perfect! 
-You did so well following instructions.
+Oh, that's so perfect!  #182
+You did so well following instructions. #183
+
+/perform idle_yuki
+Stand back up now, {player_name}. #184
+
+- (stand_straight2)
+- (stand_straight2_tries)
+- (stand_straight2_fail)
+
++ [pose:raised_chin] -> HoldPose(-> stand_straight2_fail, -> stand_straight2) ->
++ { stand_straight2_tries < 2 } [timeout] -> stand_straight2
++ { stand_straight2_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight2
+// + [no] -> CheckIfInterested -> stand_straight
+
 /perform excited
-I can't wait until I can play with my new puppy!
+I can't wait until I can play with my new puppy! #185
 
 - /perform clasp_hands
 You are a cute one! I really hope you do well here! #40
@@ -240,7 +252,7 @@ Do you like being a good {player_name}? #42
 
 + [timeout]
     /perform lean_forward
-    Hello? Anybody home? #45
+    Are you still there? #186
     -> good_yuki
 
 + [distracted] -> Yuki_PayAttention -> good_yuki
@@ -248,7 +260,12 @@ Do you like being a good {player_name}? #42
 - (nega_interruption)
 /scene entry.intro3
 
+/character yuki
+/lookat nega
+
 /character nega head_toss
+/lookat yuki
+
 Oh please! You're always such a good girl, Yuki, #46
 /perform amused_nega
 never having any fun. #47
@@ -287,15 +304,27 @@ There's no way I'm breaking the rules! #56
 I really want the Goddess to be pleased with me. #57
 /perform idle_yuki
 
+- (test_lookat)
+
 /character nega head_toss
 Ugh.. You're such a goody two-shoes. #58
 
+/lookat none
 /perform bored_nega
 You'd have so much more fun if you bent the rules now and then. #59
 
--(new_one)
+- (new_one)
+
+/character Yuki
+/lookat player
+
+/character nega
+/lookat player
+
 /perform curious
 So. You're the new one, huh? #60
+
+-(nega_ask_again)
 
 + [yes]
     ~ disobey++
@@ -319,7 +348,7 @@ So. You're the new one, huh? #60
     
     /perform lean_forward
     I asked you if you're new here. #66
-    -> new_one
+    -> nega_ask_again
     
 - /perform pleased
 I bet Yuki's been having so much fun #67
@@ -331,8 +360,10 @@ hasn't she? #70
 
 + [yes]
     ~ obey++
+    /lookat none
     /perform bored_nega
     Boring. #71
+    /lookat player
 
 + [no]
     ~ disobey++
@@ -350,62 +381,62 @@ She's not as sweet and innocent as she lets on. #75
 
 //insert teaching player to get slapped
 /perform idle_nega
-- I bet you like it rough, don't you?
+I bet you like it rough. #187
+Let's find out how rough, shall we? #188
 
-+[yes]
-/perform amused
-Let's find out how rough.
+// + [yes]
 
-+[no]
-/perform head_toss
-What a pathetic whimp.
+// + [no]
+//     /perform head_toss
+//     What a pathetic whimp. #189
 
-- 
-/perform unhappy
-I'm going to show you both how slaves ought to be trained.
-Pain is such an effective tool.
+- (nega_slap)
+/character nega unhappy
+I'm going to show you both how slaves ought to be trained. #190
+Pain is such an effective tool. #191
 
+Time to see how you can take a slap. #192
+When I swing my hand, you better fucking jerk your head. #193
+Ready? #194
 
-When I swing my hand, you better fucking jerk your head.
-Ready?
++ [yes]
+    That's right, bitch. #195
+    You'll take this like a good little cunt. #196
+    -> try_slap
 
-+[yes]
-That's right, bitch.
-You'll take this like a good little cunt.
--> try_slap
-
-+[no]
-/perform annoyed
-No?
-Then you're not going to like me very much.
++ [no]
+    /perform annoyed
+    No? #197
+    Then you're not going to like me very much. #198
 
 //change nega ending so if the player says no to this, she reminds them that visiting her means the hard stuff and they have to take a slap
 - /perform idle_nega
-Obedient pain sluts get special rewards around here.
+Obedient pain sluts get special rewards around here. #199
 
-Do you want to change your mind and take a slap?
+Do you want to change your mind and take a slap? #200
 
-+[yes]
-/perform licks_lips
-Ahhhh. Sweet music to my ears!
++ [yes]
+    /perform licks_lips
+    Ahhhh. Sweet music to my ears! #201
 
-+[no]
-/perform head_toss
-Pity. You have no idea what you're missing.
--> going_on
++ [no]
+    /perform head_toss
+    Pity. You have no idea what you're missing. #202
+    -> going_on
 
 //set variable on player that they don't want pain and didn't get slapped
 
 //need to add slap training
 
 - (try_slap)
-/perform slap_player
+/perform slap
 
 + [react-success]
--> Nega_GoodJob ->
+     Not too bad. You have potential. #61
+    // -> Nega_GoodJob ->
 + [react-fail]
-That was pathetic. Try again.
--> try_slap
+    That was pathetic. Try again. #203
+    -> try_slap
 
 - (going_on)
 /perform confused
@@ -416,8 +447,10 @@ Have you figured out what's going on here yet? #76
     /perform curious
     Hmmm. You might just be smarter than you look, {player_name}. #77
     
+    /lookat none
     /perform bored
     We'll find out soon enough. #78
+    /lookat player
     
     /perform sassy
     Although, honestly, the dumb ones make better fuck toys. #79
@@ -428,16 +461,21 @@ Have you figured out what's going on here yet? #76
     Typical. <I>She</I> always wants them to learn the hard way. #80
     
     /perform fake_annoyed
+    /lookat yuki
     I think I should tell {player_him}. #81
     /perform idle_nega
     
     /character yuki frustrated
+    /lookat nega
     Don't you dare! #82
     The Goddess will be so angry with you! #83
     /perform idle_yuki
     
+    /character nega
+    /lookat none
     /character nega bored_nega
     Oh fine, party pooper! #84
+    /lookat player
     
     /perform pleased
     I guess I'll just make {player_him} my fuck toy instead. #85
@@ -451,23 +489,26 @@ Have you figured out what's going on here yet? #76
     -> going_on
     
 
-- /perform breast_squeeze
+- /character nega breast_squeeze
+/lookat player
+
 I bet that {isBoy:cock|cunt} of yours works just fine. #88
 
 /perform sassy
 Let's find out. Shall we? #89
 
--(genitals)
+- (genitals)
 
 + [yes]
     ~ disobey++
     /perform pleased
     Ooo. I'm going to like this one. {isBoy: He|She} likes to be naughty. #90
 
-+ [no]
++ (caress_skipped) [no]
     ~ obey++
     /perform angry
     Oh great. Another spoil-sport, just like you Yuki. #91
+    -> skip_caress
 
 + [timeout]
     /perform fake_annoyed
@@ -525,7 +566,7 @@ You want to be a little fuck toy, don't you? #97
     Well, do you want to be used and abused? #108
     -> caress_genitals
 
-- 
+- (skip_caress)
 /perform inspect
 The Mistresses will have so much fun #109
 tearing up that ass of yours. #110
@@ -539,22 +580,26 @@ tearing up that ass of yours. #110
 <I>And we own your cum.</I> #114
 /perform laugh
 /perform idle_nega
+
 + [wait]
+
+- /lookat yuki
+/character yuki foot_stomp
+/lookat nega
+That's enough, Nega! #115
+/perform unhappy
+You are interfering too much! #140
+/perform one_finger
+I'll be reporting you to the Headmistress straight away. #117
+/perform idle_yuki
 
 {obey - disobey > 0:
     - -> Yuki_finish
     - else: -> Nega_finish
 }
 
-= Yuki_finish
 
-/character yuki foot_stomp
-That's enough, Nega! #115
-/perform frustrated
-No more fun and games for you. #116
-/perform one_finger
-I'll be reporting you to the Headmistress straight away. #117
-/perform idle_yuki
+= Yuki_finish
 
 /character nega chuckle
 I'll see you again soon, little mouse. #118
@@ -567,8 +612,8 @@ Come find me when you've earned a reward. #119
 + [wait 5]
 
 -/character yuki angry
-She's so awful! #120
-Don't pay any attention to her. #121
+Oh gee. She's so awful! #120
+Don't you pay any attention to her. #121
 
 /perform flustered
 She's going to get in big trouble one of these days! #122
@@ -584,7 +629,9 @@ Now... where was I? #124
 Right! The rules! #125
 
 /perform serious
-You already have a punishment for sneaking into the Goddess's room. #126
+Now, look at your wrists. #204
+See that black mark? #205
+You already have a punishment for sneaking into the Goddess's bed chambers. #126
 /perform unhappy
 Naughty {player_name}. #127
 The Headmistress will take care of that! #128
@@ -593,8 +640,9 @@ The Headmistress will take care of that! #128
 Make sure to come back to me when you're finished. #129
 
 /perform excited
-She also gave you a reward. #130
-You're so lucky to catch her interest! #131
+See that red stone on your other wrist? #206
+It looks like the Goddess also gave you a reward. #130
+You're so lucky to catch Her interest! #131
 
 /perform clasp_hands
 But I can't reward you if you don't take your punishment first. #132
@@ -607,25 +655,17 @@ Hurry up!  #134
 The Headmistress doesn't like to be kept waiting. #135
   
 /perform flustered
-And stay away from that Nega-Yuki! #136
+And stay away from that awful Nega-Yuki! #136
 She's a bad seed! #137
 
 /perform idle_yuki
 You'll get a punishment if you get caught coming out of her room. #138
-~ headmistress_hub_status = early_access
--> exit
 
 ~ headmistress_hub_status = early_access
--> exit
+-> entry_intro2
+
 
 = Nega_finish
-
-/character yuki foot_stomp
-That's enough, Nega! #139
-/perform unhappy
-You are interfering too much! #140
-I'm reporting you to the Headmistress straight away. #141
-/perform yuki_exit
 
 /scene entry.intro4nega
 
@@ -647,6 +687,8 @@ by casting me aside... #147
 /perform behold
 But here I am! #148
 
+- {caress_skipped: -> skip_caress2}
+
 /perform breast_squeeze
 Now we can really have some fun! #149
 
@@ -654,18 +696,19 @@ Now we can really have some fun! #149
 Shall I rub your poor aching {isBoy: cock|cunt} again #150
 while I do? #151
 
-+[yes]
++ [yes]
     /perform caress_genitals
     Mmmm. That's it.  #152
     We're going to find out just how naughty  #153
     you like to be. #154
 
-+[no]
++ [no]
     /perform frown
     Don't tell me I've made a mistake in  #155
     paying attention to you. #156
 
-- /perform dance_tease
+- (skip_caress2)
+/perform dance_tease
 Be a good {player_name}, do what you're told, and  #157
 /perform sassy
 that little {isBoy: cock|cunt} of yours is going to #158
@@ -680,13 +723,16 @@ Well, I won't take kindly to being ignored. #162
 /perform laugh
 
 +[wait]
-/perform inspect
-- The best part is you can't collect any rewards  #163
+
+- /perform inspect
+The best part is you can't collect any rewards  #163
 until you've paid off all your punishments. #164
 
-- /perform bored
+- /lookat none 
+/perform bored
 
 I'm bored with you.  #165
+/lookat player
 
 /perform head_toss
 Time to get a taste of your first punishment. #166
@@ -699,6 +745,6 @@ She doesn't like to be kept waiting. #168
 
 ~ headmistress_hub_status = early_access
 //need to know how player gets to next room
--> exit
+-> entry_intro2
 
 

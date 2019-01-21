@@ -5,8 +5,9 @@
 
 - (flash_scenes)
 
+/music goddess
+/ambient orgy
 /scene bedroom.flash1
-/prop orgy_audio
 /character goddess
 /perform bored
 
@@ -25,7 +26,7 @@
 + [wait 4]
 
 /scene bedroom.intro
-/prop -orgy_audio
+/ambient rain
 /lock move-approach
 /character goddess
 
@@ -68,9 +69,8 @@ Did Mistress Yuki-Onna let you in? #05
     {shuffle:
         - Did my Yuki let you in? #15
         - Did that naughty little maid let you in? #16
-        //re-record new VO line 
-        //Did an overly enthusiastic maid bring you to me?
-        - Did a dark-haired maid bring you to me? #17
+        - Did an overly enthusiastic maid bring you to me? #17
+        - //Did a dark-haired maid bring you to me? #17
         - Yuki-Onna is disobeying me again. She let you in, didn't she? #18
     }
     -> ask_entry
@@ -458,7 +458,17 @@ Bow down, kiss, then back to your pose like a good little {player_name}. #105
 
 That's enough. #108
 
-You might just prove useful one day, #109
+- (stand_up)
+- (stand_up_tries)
+
+//new line with vo 
+Come back up to your feet, {player_name}. #158
+
+- (stand_up_fail)
+
++ [pose:raised_chin] -> HoldPose(-> stand_up_fail, -> stand_up) ->
+
+- You might just prove useful one day, #109
 
 /perform bored
 

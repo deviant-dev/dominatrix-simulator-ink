@@ -5,11 +5,11 @@
 { cycle:
     - You're not very good at this yet, are you? #01
     You're supposed to look at me when I'm talking. #02
-    - Bad {player_name}! You should look at me when I speak to you. #03
+    - Bad {player_name}! You should look at me when I'm speaking to you. #03
     - Oh gee. You need a lot of training. Look at me. #04
-    - Didn't anyone ever teach you to look at people  #05
-    when they're speaking to you? #06
-    - It's very rude not to look at me when I'm speaking to you. #07
+    - Didn't anyone ever teach you to look at people when they're speaking to you? #05
+    - It's very rude to not look at me when I'm speaking to you. #06
+    - Over here, silly.#07
 }
 
 + [pay-attention]
@@ -34,7 +34,8 @@
     - Hey doofus, I'm speaking to you. #04
     - Am I talking to a wall right now? #05
     - Hey {player_name}, I'm not talking to myself you know! #06
-    - Answer me {player_name}! #07
+    - Answer me, {player_name}! #07
+    - Are you even listening? #08
 }
 
 ->->
@@ -60,8 +61,20 @@
 === Yuki_GoodJob ===
 
 {cycle:
-    - I'm so proud of you!
-    - What a good {player_name}!
+    - I'm so proud of you! #01
+    - What a good {player_name}! #02
+    - You're so cute! #03
+    - I like you! #04
+    - Good job. #05
+    - Wow! You're doing so well! #06
+    - I'm so impressed! #07
+    - Who's a good {player_name}? You are! #08
+    - Keep up the good work! #09
+    - You're so much fun! #10
+    - What a fast learner you are! # 
+    - Ooo! That's nice. #12
+    - Keep it up! #13
+    - You're so good. #14
     }
     
 ->->
