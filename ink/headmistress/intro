@@ -92,7 +92,7 @@ Do you know who I am? #22
 + [yes]
     ~obey++
     /perform nod
-    My reputation precedes me!
+    My reputation precedes me! #55
     
 + [no]
     ~disobey++
