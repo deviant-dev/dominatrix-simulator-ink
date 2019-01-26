@@ -11,6 +11,10 @@ VAR code_link = "https:\/\/www.patreon.com/posts/23573299"
 
 === tryEnter(status, -> success, -> fail) ===
 
+{status ? early_access && isWeb:
+    -> success
+}
+
 {status ? early_access:
     -> tryCode(success, fail)
 }
