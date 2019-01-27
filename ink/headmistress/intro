@@ -40,7 +40,7 @@ I'm sorry, Headmistress. #05
 
 /character headmistress spank_x3 slave
 
-You <i>will</i> behave according to your station #03
+You <i>will</i>  behave according to your station #03
 or find yourself unable to rest on your backside for a week. #04
 
 /perform displeased
@@ -147,11 +147,13 @@ Understood? #31
     + [timeout] -> not_understood
     
 - /perform displeased
-- (present) Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
+- (present)
 
-- (ask_present)
+Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
 
-+[pose:present_wrists]
+- (present_fail)
+
++[pose:present_wrists] -> HoldPose(-> present_fail, -> present) ->
     ~obey++
 
 + [timeout]
@@ -162,7 +164,7 @@ Understood? #31
     ~disobey++
     /perform present_wrists
     Like so, foolish {player_name}. #42
-    -> ask_present
+    -> present_fail
 
 - /perform look_up_and_down
 Ah, Bloodstone. Diligence and commendation. #43

@@ -400,11 +400,13 @@ When I swing my hand, you better fucking jerk your head. #193
 Ready? #194
 
 + [yes]
+    ~ obey++
     That's right, bitch. #195
     You'll take this like a good little cunt. #196
     -> try_slap
 
 + [no]
+    ~ disobey++
     /perform annoyed
     No? #197
     Then you're not going to like me very much. #198
@@ -416,10 +418,12 @@ Obedient pain sluts get special rewards around here. #199
 Do you want to change your mind and take a slap? #200
 
 + [yes]
+    ~ obey++
     /perform licks_lips
     Ahhhh. Sweet music to my ears! #201
 
 + [no]
+    ~ disobey++
     /perform head_toss
     Pity. You have no idea what you're missing. #202
     -> going_on
@@ -609,7 +613,6 @@ Come find me when you've earned a reward. #119
 
 /scene entry.intro4yuki
 
-+ [wait 5]
 
 -/character yuki angry
 Oh gee. She's so awful! #120
@@ -618,12 +621,15 @@ Don't you pay any attention to her. #121
 /perform flustered
 She's going to get in big trouble one of these days! #122
 
+- {caress_skipped: -> rules}
+
 /perform pouty
 Your poor {isBoy:penis|pussy} must be aching after that. #123
 
-+[wait 3]
++[wait 2]
 
-- /perform curious
+- (rules)
+/perform curious
 Now... where was I? #124
 /perform one_finger
 Right! The rules! #125
