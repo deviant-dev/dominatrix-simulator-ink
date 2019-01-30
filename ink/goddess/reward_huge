@@ -2,6 +2,6 @@
 
 Insert huge reward here.
 
-~ rewards = rewards - 10
+~ removeBigReward()
 
 ->->

@@ -1,4 +1,5 @@
 === goddess_intro ===
+-> select_gender ->
 
 ~ punishments = 0
 ~ rewards = 0
@@ -15,13 +16,13 @@
 
 - /scene bedroom.flash2
 /character goddess
-/perform squat
+/perform flash_squat
 
 + [wait 3]
 
 - /scene bedroom.flash3
 /character goddess
-/perform step_on
+/perform flash_step_on
 
 + [wait 4]
 
@@ -33,7 +34,7 @@
 /perform amused
 
 - Oh... How rude. #01
-~ punishments++
+~ addPunishment()
 /perform bored
 
 And I was having so much fun. #02
@@ -79,14 +80,6 @@ Did Mistress Yuki-Onna let you in? #05
 - /perform bored
 
 Well, you can't stay here. #19
-
-
-// Debug Jump
-// (must be in-editor and have 'Debug' checked in StoryTeller)
-{ isVideo() :
-    -   -> video_jump
-}
-
 
 /perform fake_annoyed
 
@@ -401,7 +394,7 @@ Strong bones and muscles. #95
 You'll need to be flexible, as well. #96
 /perform fake_annoyed
 Oh yes... there is much here we can work with. #97
-~ rewards++
+~ addReward()
 - (present_self)
 - (present_self_tries)
 
@@ -501,7 +494,7 @@ Bye for now, {player_name}. #113
 
 + [wait 5]
 
-- ~ yuki_hub_status = early_access
+- ~ yuki_hub_status = unlocked
 
 -> entry_intro
 

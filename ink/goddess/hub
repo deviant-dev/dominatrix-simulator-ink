@@ -24,7 +24,7 @@
         + [yes] -> exit
         + [no]
             No? Then take a punishment and leave anyway.
-            ~ punishments++
+            ~ addPunishment()
             -> exit
 }
 

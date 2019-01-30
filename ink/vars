@@ -15,7 +15,7 @@ VAR disobey = 0
 VAR intro = false
 
 // Goddess Variables
-VAR goddess_favor = 0
+VAR goddess_favor = 0 
 VAR goddess_hub_status = hidden
 
 // Headmistress Variables
@@ -30,7 +30,7 @@ VAR nega_hub_status = hidden
 
 // Yuki Variables
 VAR yuki_favor = 0
-VAR yuki_hub_status = early_access
+VAR yuki_hub_status = unlocked
 
 
 
@@ -42,8 +42,49 @@ VAR yuki_hub_status = early_access
 === function isDebug() ===
 ~ return debug
 
-// Fallback for isVideo() external function
-=== function isVideo() ===
+=== function addPunishment() ===
+{punishments < 10:
+    ~ punishments++
+    /action add_punishment
+    ~ return true
+}
+
+~ return false
+
+=== function removePunishment() ===
+{punishments > 0:
+    ~ punishments--
+    /action remove_punishment
+    ~ return true
+}
+
+~ return false
+
+=== function addReward() ===
+{rewards < 10:
+    ~ rewards++
+    /action add_reward
+    ~ return true
+}
+
+~ return false
+
+=== function removeReward() ===
+{rewards > 0:
+    ~ rewards--
+    /action remove_reward
+    ~ return true
+}
+
+~ return false
+
+=== function removeBigReward() ===
+{rewards >= 10:
+    ~ rewards -= 10
+    /action remove_reward_big
+    ~ return true
+}
+
 ~ return false
 
 // Fallback for getNegaDie1/2/3() external function
@@ -97,6 +138,8 @@ VAR yuki_hub_status = early_access
 {setGender: ->->}
 
 /scene hallway.genderchoice
+/ambient rain
+/music Goddess
 
 ~ temp chosen = false
 

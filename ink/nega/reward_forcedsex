@@ -1,12 +1,12 @@
  === nega_reward_forcedsex ===
  
-/scene attic.reward_forcedsex
+/scene attic.reward_forcedsex1
+/music nega-forced-01-ambient
 
 /perform pleased
 
 I'm so ready for this. #01
 I've been waiting a long time for some new blood to show up. #02
-
 
 - (lay_down)
 - (lay_down_tries)
@@ -37,6 +37,7 @@ On your back. #04
 }
 
 - (ask_any_idea)
+/perform looming
 Do you have any idea what I'm going to do to you? #08
 
 + [yes]
@@ -45,6 +46,7 @@ Do you have any idea what I'm going to do to you? #08
 + [no]
     ~obey++
     Damn right you don't. #10
+    
 + [timeout]
     Well? #11
     -> ask_any_idea
@@ -59,16 +61,17 @@ I want to get off on some deep dicking. #12
 }
 
 /action equip-cock
+/perform looming
 
--
 //player has to masturbate to get "hard" for her
 
 - (bound_wrists)
 - (bound_wrists_tries)
+ 
+Put your wrists above your head! #14
+//equip rope
+//Put your ankles and wrists together! #14
 
-/equip rope
-/perform kick_leg
-Put your ankles and wrists together! #14
 
 - (bound_wrists_fail)
 
@@ -79,24 +82,30 @@ Put your ankles and wrists together! #14
 
 - -> Nega_GoodJob ->
 
-I keep plenty of rope lying around just for this. #15
 
-/perform licks_lips
+/action equip-cock
+
+//- Hold your cock with both hands, slut. #112
+- Brace yourself! #127
+ It's going to be a wild ride. #113
+//I keep plenty of rope lying around just for this. #15
+
+/perform pleased
 Fuck! I'm soaking my panties. #16
 
 //mutters
 I don't know why I even bother wearing them. #17
 
-/perform tie_ankles
+//perform tie_ankles
 
-Don't you fucking move, slut! #18
+///Don't you fucking move, slut! #18
 //can she mutter to herself like she's crazy?
 
-/perform tie_wrists
+//perform tie_wrists
 
-This way your hands won't be entirely useless, {isBoy: maggot|cunt}. #19
+//This way your hands won't be entirely useless, {isBoy: maggot|cunt}. #19
 
--> Nega_player_masturbate
+//-> Nega_player_masturbate ->
 
 /perform looming
 
@@ -110,7 +119,7 @@ Look at you. Such a pathetic fleshbag. #21
 I bet you're just dying to find out  #22
 how wet my pussy feels against you. #23
 
-/perform idle
+/perform looming
 Aren't you? #24
 
 +[yes]
@@ -130,7 +139,7 @@ Aren't you? #24
 + [no]
     You're so fucking dumb. I swear. #30
 
-- /perform loom
+- /perform looming
 I'm about to use you like the eager little whore you are. #31
 Let's find out how well you can fuck. #32
 I'm going to ride that {isBoy: cock|strap-on} of yours #33
@@ -150,7 +159,6 @@ Would you like that, {isBoy: prick|bitch}? #35
 //player needs to be told to move their controller to their crotch
 //Need to teach the player how to move their controller like a cock/pussy and how to thrust to a beat/rhythm
 
-- /perform squat_over_player_crotch
 
 Ahhhh! That's it! #41
 You're stiff dick is just what I needed! #42
@@ -162,92 +170,118 @@ VAR nega_thrust_count = 0
 VAR nega_thrust_target_count = 20
 VAR nega_thrust_break_count = 6
 
-You better move those goddamn hips while I fuck you, slut. #43
+
+- Let's find out how well you can work that little dick of yours. #115
 Your job is to make me cum, got it?! #44
 
 +[yes]
     Good. Now fucking show me how you thrust. #45
     ~obey++
+  
 
 +[no]
-    Do it anyways, bitch. #46
+    You'll do it anyways, bitch. #46
     ~disobey++
+  
 
-- (test_thrust)
-Thrust three times. Nice and slow. #47
+// //- (test_thrust)
+// ///perform pleased
+// //Thrust three times. Nice and slow. #47
 
-- (test_thrust_again)
+// //- (test_thrust_again)
 
-/minigame rhythm-nega-thrust-tutorial
+// ///minigame rhythm-nega-thrust-tutorial
 
-+ [minigame-success]
-    // This lets us count the number of successful attempts.
-    ~thrusts++
-    -> Nega_GoodJob ->
-    // Once there have been 3 good thrusts, we continue.
-    { thrusts < 3:
-        {cycle: 
-        - Again. #108
-        - Once more. #109
-        }
-        -> test_thrust_again
-    - else:
-        ~obey++
-        ~ nega_difficulty = 1
-        -> thrust_continue
-    }
+// //+ [minigame-success]
+//     // This lets us count the number of successful attempts.
+//     ~thrusts++
+// //    -> Nega_GoodJob ->
+//     // Once there have been 3 good thrusts, we continue.
+//  //   { thrusts < 3:
+// //        {cycle: 
+// //        - Again. #108
+// //        - Once more. #109
+//  //       }
+// //        -> test_thrust_again
+// //    - else:
+// //        ~obey++
+// //        ~ nega_difficulty = 1
+// //        -> thrust_continue
+// //    }
 
-+ [minigame-fail]
-    // This lets us count the number of failed attempts.
-    ~nega_thrust_mistakes++
+// //+ [minigame-fail]
+//     // This lets us count the number of failed attempts.
+//  //   ~nega_thrust_mistakes++
 
-    // We will continue if they fail 3 times.
-    { nega_thrust_mistakes < 3:
-        Are you a fucking virgin or something? #120
-        -> test_thrust
-    - else:
-        ~disobey++
-        Ughh. Pathetic. #48
-        Maybe you'll be more motivated to get it right #49
-        when I start fucking you! #50
-        ~ nega_difficulty = 0
-    }
+//     // We will continue if they fail 3 times.
+//  //   { nega_thrust_mistakes < 3:
+// //        Are you a fucking virgin or something? #120
+// //        -> test_thrust
+// //    - else:
+//  //       ~disobey++
+// //        Ughh. Pathetic. #48
+// //        Maybe you'll be more motivated to get it right #49
+//  //       when I start fucking you! #50
+// //        ~ nega_difficulty = 0
+//     }
 
-+ [minigame-quit] -> Nega_CheckIfInterested -> thrust_more
+// //+ [minigame-quit] -> Nega_CheckIfInterested -> thrust_more
 
 - (thrust_continue)
-Decent. Let's pick up the pace, huh? #51
+- /perform squat_over_player_crotch_laugh
 
-- (thrust_restart)
+
+Ahhhh! That's it! #41
+You're stiff dick is just what I fucking needed! #42
+
+- /perform squat_over_player_crotch
+You better move those goddamn hips while I fuck you, slut. #43
+Sometimes, I like to fuck to music, so listen to the beat, cunt. #116
+
+/music nega-forced-02-slow
+
+/perform squat_thrust
+
+/wait 30
+
+I just adore cumming as the song peaks, so don't fuck it up! #117
+
+/music nega-forced-03-fast
+/perform squat_thrust_fast
+/wait 30
+
+//Decent. Let's pick up the pace, huh? #51
+
+// - (thrust_restart)
 
 Give it to me harder, you worthless fuck. #52
+-> thrust_minigame_orgasm
 
-/minigame rhythm-nega-thrust
+///minigame rhythm-nega-thrust
 
-- (thrust_more)
+//- (thrust_more)
 
-~ nega_thrust_mistakes = 0
+// ~ nega_thrust_mistakes = 0
 
-- (thrust_game_continue)
+// - (thrust_game_continue)
 
-+ [minigame-success] -> outro
-+ [minigame-fail] -> Badthrust -> thrust_restart
-+ [minigame-quit] -> Nega_CheckIfInterested -> thrust_restart
-+ [minigame-break]
-    {nega_thrust_mistakes > 0:
-        ~ disobey++
-    - else:
-        ~ obey++
-    }
-    -> Thrust_break -> thrust_more
-+ [minigame-mistake]
-    ~ nega_thrust_mistakes++
-    -> Badthrust -> thrust_game_continue
+// + [minigame-success] -> outro
+// + [minigame-fail] -> Badthrust -> thrust_restart
+// + [minigame-quit] -> Nega_CheckIfInterested -> thrust_restart
+// + [minigame-break]
+//     {nega_thrust_mistakes > 0:
+//         ~ disobey++
+//     - else:
+//         ~ obey++
+//     }
+//     -> Thrust_break -> thrust_more
+// + [minigame-mistake]
+//     ~ nega_thrust_mistakes++
+//     -> Badthrust -> thrust_game_continue
 
-//As Nega gets close to cumming, she asks the player if they want her to cum while using them 
+// //As Nega gets close to cumming, she asks the player if they want her to cum while using them 
 
-
-//Player is not allowed to orgasm
+// //Player is not allowed to orgasm
 
 = thrust_minigame_orgasm
 Uhhhhnnn. I'm so close! #53
@@ -269,29 +303,38 @@ Do you want to cum with me, {isBoy: maggot|whore?} #56
     /perform squat_grind_on_crotch_laugh
     
 - (nega_orgasm)
-/perform squat_grind_on_crotch_faster
+/perform squat_thrust_single
+ {shuffle:
+    - Pick up the pace, slut! #118
+    - Double time! #119
+    - Faster, cunt. #120
+     }
+/perform squat_thrust_single    
 {shuffle:
-    - Pick up the pace, slut!
-    - Double time!
-    - Faster, cunt.
+    - I'm almost there. #121
+    - Ahhhhh. I've been waiting so long! #122
+    - That's it. That's it! #123
     }
-    
+/perform squat_thrust_orgasm
 {shuffle:
-    - I'm almost there.
-    - Ahhhhh. I've been waiting so long!
-    - That's it. That's it!
+    - Fuck yes! #124
+    - Sooooo good! #125
+    - I'm... fucking... cumming! #126
     }
-    
-/perform squat_grind_on_crotch_orgasm
-{shuffle:
-    - Fuck yes!
-    - Sooooo good!
-    - 
+/perform idle_nega
+
+//orgasm conclude lines - decent job
+TODO: Orgasm ending dialogue. Three levels of feedback: Barely made her orgasm, decent orgasm, really made her cum her brains out.
+
+- {cycle:
+    - Not fucking bad. #128
+    - At least you made me cum. #129
+    - Decent. For a pathetic fleshbag. #130
     }
 
-TODO Add in orgasm dialog 
+-> nega_reward_dice.come_again
 
-->->
+
 
 = outro
 

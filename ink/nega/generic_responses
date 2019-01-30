@@ -1,4 +1,3 @@
-  
 === Nega_PayAttention ===
 
 { cycle:
@@ -9,7 +8,7 @@
     - Were you raised in a fucking barn? Pay attention! #05
     - Get your head in the goddamn game. #06
     - Looking for a place to hide, slut? It won't work. #07
-    Now, pay attention! #08
+    - Now, pay attention! #08
 }
 
 + [pay-attention]
@@ -99,7 +98,7 @@ That's right, {isBoy: maggot|whore}. #03
     
 {shuffle:
     - Perhaps you deserve a small reward. #08
-    - I think I'll  do something nice for you. #09
+    - I think I'll do something nice for you. #09
     - I'm going to give you a little treat. #10
     - I want to give you a little something, fuck {player_name}. #11
     - It amuses me to reward you for a reward. #12
@@ -112,7 +111,7 @@ That's right, {isBoy: maggot|whore}. #03
 }
 
 - (reward_spit)
-/perform lean_forward_from_squat
+/perform squat_lean_forward
 Open your mouth, slut! #14
 
 /perform spit_in_mouth_from_squat
@@ -121,7 +120,7 @@ I'm sure you loved that, my disguting little {isBoy: pig|cunt}! #15
 ->->
 
 - (reward_boobs)
-/perform lean_forward_from_squat
+/perform squat_lean_forward
 Enjoy the view, slut! #16
 
 /perform lean_forward_from_squat_jiggle_breasts

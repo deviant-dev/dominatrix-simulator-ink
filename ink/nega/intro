@@ -3,7 +3,7 @@
 ~ obey = 0
 ~ disobey = 0
 
-/scene attic.negaintro
+/scene Attic.NegaIntro
 /music nega2 
 /character nega
 
@@ -78,8 +78,8 @@ Does your poor tushy sting? #23
 
 + [yes]
     ~obey++
-    Poor wittle baby. #24
     /perform amused_nega
+    Poor wittle baby. #24
     
 + [no]
     ~disobey++
@@ -104,39 +104,41 @@ Turn around and bend over. #30
 Hands on your knees and ass in the air! #31
 
 - (present_ass_fail)
-+ [pose:present_ass] -> HoldPose(-> present_ass_fail, -> present_ass) ->
++ [pose:present_ass_left] -> HoldPose(-> present_ass_fail, -> present_ass) ->
 + [no] -> Nega_CheckIfInterested -> present_ass
 
 - /perform idle
 My, my. Your ass turns a nice shade of pink. #32
 She does such good work. #33
 
-- (wiggle)
-Wiggle it for me. #34
+TODO: Support 'wiggle' action
 
-//check to see if the headset wiggles?
+// - (wiggle)
+// Wiggle it for me. #34
 
-+ [wiggle-success:5] 
-    -> Nega_GoodJob -> 
-    ++ [wiggle-success:5]
-    That's enough.  #35
-    Turn back around and present yourself.  #36
-    ~obey++
-+ [wiggle-timeout]
-    -> Nega_BadJob ->
-    ~disobey++
-    Did I tell you to stop? #37
-    -> wiggle
-+ [no] -> Nega_CheckIfInterested -> wiggle
+// //check to see if the headset wiggles?
+
+// + [wiggle-success:5] 
+//     -> Nega_GoodJob -> 
+//     ++ [wiggle-success:5]
+//         That's enough.  #35
+        Turn back around and present yourself.  #36
+//         ~obey++
+// + [wiggle-timeout]
+//     -> Nega_BadJob ->
+//     ~disobey++
+//     Did I tell you to stop? #37
+//     -> wiggle
+// // + [no] -> Nega_CheckIfInterested -> wiggle
 
 - (stand_straight)
 - (stand_straight_tries)
 
-- (raised_chin_fail)
+- (stand_straight_fail)
 
-+ [pose:raised_chin] -> HoldPose(-> raised_chin_fail, -> stand_straight) ->
++ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
 + { stand_straight_tries < 2 } [timeout] -> stand_straight
-+ { stand_straight_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
++ { stand_straight_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
 - (check_reward)

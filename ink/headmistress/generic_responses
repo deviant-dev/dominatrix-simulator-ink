@@ -1,4 +1,3 @@
-
 === Headmistress_GoodJob ===
 
 // /perform caress_thigh
@@ -26,6 +25,24 @@
 
 ->->
 
+=== Headmistress_BadJob ===
+TODO: Replace later with new lines - these are borrowed from bad spanking
+// /perform caress_thigh
+
+{ shuffle:
+    - Tsk. Tsk. You can do better. #148
+    - Lift that head, cretin. #149
+    - Are you even trying? #151
+    - Your lack of grace is stunning. #152
+    - Where is your pride? Try harder. #153
+    - Squirming is not allowed. #155
+    - I expect a better performance. #156
+    - Your audience is disappointed. #157
+    - You are putting on a poor display. #248
+    - I can see you will require much instruction. #250
+}
+
+->->
 === Headmistress_punishment_resumes ===
 //generic responses whenever the Headmistress returns from a break or interruption to resume a punishment
 
@@ -76,7 +93,9 @@ Our guests are frenzied and demand more. #01
 {isBoy: Wrap your hand around your rod|slip your fingers between your nether lips} and entertain them. #02
 
 /character headmistress idle
+/wait 2
 All eyes are on you, slave. #03
+/wait 2
 Are you {isBoy: hard|wet}? #04
 
 +[yes]
@@ -90,27 +109,27 @@ A shame we must rectify. #07
 Arouse yourself and continue until I give you leave to stop. #08
 
 - (masturbate_for_crowd)
-+[wait 10]
++[wait 3]
 -> masturbation_comment->
 
 -
-+[wait 10]
++[wait 3]
 -> masturbation_comment->
 
 -
-+[wait 10]
++[wait 3]
 -> masturbation_comment->
 
 -
-+[wait 10]
++[wait 3]
 -> masturbation_comment->
 
 -
-+[wait 10]
++[wait 3]
 -> masturbation_comment->
 
 - 
-+[wait 10]
++[wait 5]
    - /perform thoughtful
    {cycle:
         - Are you having fun performing for our guests? #09
@@ -157,6 +176,10 @@ Arouse yourself and continue until I give you leave to stop. #08
     - /character crowd boos
     - Tsk. Tsk. Next time you will do better. #13
     - Punishments are opportunities to learn. #14
+    - -> Headmistress_BadJob ->
+    - -> Headmistress_BadJob ->
+    - -> Headmistress_BadJob ->
+    - -> Headmistress_BadJob ->
 }
 
 /character headmistress
@@ -182,6 +205,13 @@ Arouse yourself and continue until I give you leave to stop. #08
     - You have earned this small pleasure. #13
     - /character crowd oos
     - You are a divine {isBoy: reprobate|harlot}. #15
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
 }
 
 /character headmistress

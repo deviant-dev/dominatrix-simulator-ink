@@ -363,8 +363,7 @@ hasn't she? #70
     /lookat none
     /perform bored_nega
     Boring. #71
-    /lookat player
-
+    
 + [no]
     ~ disobey++
     /perform pleased
@@ -374,6 +373,7 @@ hasn't she? #70
 + [timeout]
 
 - /perform head_toss
+/lookat player
 Don't let her fool you.  #74
 
 /perform amused_nega
@@ -454,9 +454,9 @@ Have you figured out what's going on here yet? #76
     /lookat none
     /perform bored
     We'll find out soon enough. #78
-    /lookat player
-    
+   
     /perform sassy
+    /lookat player
     Although, honestly, the dumb ones make better fuck toys. #79
 
 + [no]
@@ -479,9 +479,10 @@ Have you figured out what's going on here yet? #76
     /lookat none
     /character nega bored_nega
     Oh fine, party pooper! #84
-    /lookat player
+    
     
     /perform pleased
+    /lookat player
     I guess I'll just make {player_him} my fuck toy instead. #85
     
 + [timeout]
@@ -577,11 +578,11 @@ tearing up that ass of yours. #110
 
 /perform lean_forward
 //nega whispers
-<I>Tick tock little mouse. #111
-<I>You might want to run. #112
+<i>Tick tock little mouse.</i> #111
+<i>You might want to run.</i> #112
 /perform amused_nega
-<I>You're trapped in this house. #113
-<I>And we own your cum.</I> #114
+<i>You're trapped in this house.</i> #113
+<i>And we own your cum.</i> #114
 /perform laugh
 /perform idle_nega
 
@@ -606,6 +607,7 @@ I'll be reporting you to the Headmistress straight away. #117
 = Yuki_finish
 
 /character nega chuckle
+/lookat player
 I'll see you again soon, little mouse. #118
 
 /perform head_toss
@@ -667,7 +669,7 @@ She's a bad seed! #137
 /perform idle_yuki
 You'll get a punishment if you get caught coming out of her room. #138
 
-~ headmistress_hub_status = early_access
+~ headmistress_hub_status = unlocked
 -> entry_intro2
 
 
@@ -723,7 +725,7 @@ have so much fun when you come see me. #159
 /perform lean_forward
 But, if you decide to be a little {isBoy: prick|bitch}  #160
 and not visit me... #161
-/perform serious
+/perform open_arms_shrug
 Well, I won't take kindly to being ignored. #162
 
 /perform laugh
@@ -734,13 +736,14 @@ Well, I won't take kindly to being ignored. #162
 The best part is you can't collect any rewards  #163
 until you've paid off all your punishments. #164
 
-- /lookat none 
+- 
+/lookat none 
 /perform bored
 
 I'm bored with you.  #165
-/lookat player
 
 /perform head_toss
+/lookat player
 Time to get a taste of your first punishment. #166
 
 /perform confused
@@ -749,7 +752,7 @@ Better get your ass to the Headmistress. #167
 /perform idle_nega
 She doesn't like to be kept waiting. #168
 
-~ headmistress_hub_status = early_access
+~ headmistress_hub_status = unlocked
 //need to know how player gets to next room
 -> entry_intro2
 

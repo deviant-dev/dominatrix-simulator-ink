@@ -1,12 +1,19 @@
 === nega_hub ===
 -> select_gender ->
 
+/scene Attic.NegaHub
+
 ~ obey = 0
 ~ disobey = 0
 
 // If the player hasn't done the intro yet,
 // then have them go to the intro.
-{not nega_intro: -> nega_intro}
+{not nega_intro:
+    + [move: Nega ({nega_hub_status})]
+        -> tryEnter(nega_hub_status, -> nega_intro, -> nega_hub)
+- else:
+    -> hub
+}
 
 - (hub)
 

@@ -45,7 +45,10 @@ VAR web = true
 // (must be in-editor and have 'Debug' checked in StoryTeller)
 { isDebug() :
     // -> test_audio
-    // Goddess Jumps
+    // -> test_marks
+    
+    
+    // --- Goddess Jumps ---
     
     // -> goddess_intro
     // /scene bedroom.intro
@@ -57,30 +60,18 @@ VAR web = true
     // -> goddess_intro.stand_straight
     // -> goddess_intro.inspection
     // -> goddess_intro.ByeForNow
-    // /scene LectureHall
     
-    // /scene LectureHall.Punishment_Spanking_Ready
-    // /character headmistress
-
-    // -> headmistress_punishment_spanking.accept_punishment
-
-    // -> test_marks
-
-    // Headmistress Jumps
-
-    ~ yuki_hub_status = early_access
-    ~ headmistress_hub_status = early_access
-    ~ punishments = 1
-    ~ rewards = 1
-
+    
+    // --- Yuki Jumps ---
     // -> yuki_intro
 
-    /scene entry.intro3
+    // /scene entry.intro3
     
     
     // -> yuki_intro.nega_interruption
     // -> yuki_intro.nega_slap
-   // -> yuki_intro.pet_beg
+    // -> yuki_intro.pet_beg
+    // -> yuki_intro.skip_caress2
 
     // /character yuki
     // /lookat nega
@@ -89,31 +80,71 @@ VAR web = true
     // /lookat yuki
     
     // -> yuki_intro.test_lookat
+    // /scene LectureHall
     
-    // /scene LectureHall.Intro
-    // -> headmistress_intro
+    // /scene LectureHall.Punishment_Spanking_Ready
+    // /character headmistress
+
+    -> headmistress_intro
+
+
+
+
+    // --- Headmistress Jumps ---
+
+    // ~ yuki_hub_status = unlocked
+    // ~ headmistress_hub_status = unlocked
+    // ~ punishments = 1
+    // ~ rewards = 1
+
     
-    // -> headmistress_punishment_spanking
+    // /scene LectureHallIntro.Intro3
+    // /character headmistress
+    // -> headmistress_intro.meet_headmistress
+    
+    // /scene LectureHall.Punishment_Spanking_Ready
+    // /character headmistress
+    // /music headmistress
+    //  -> headmistress_punishment_spanking.punish_continue
 
     // /action raise_curtains
     // /scene LectureHall.Punishment_Spanking
     // -> headmistress_punishment_spanking.FinalEnding
 
-    -> nega_intro
+
+
+    // --- Nega Jumps ---
     
+    ~ yuki_hub_status = unlocked
+    ~ headmistress_hub_status = unlocked
+    ~ nega_hub_status = early_access
+    ~ punishments = 0
+    ~ rewards = 1
+    -> nega_hub
+    
+    // -> nega_reward_dice
+    // -> 
 }
 
-// Debug Jump
-// (must be in-editor and have 'Video' checked in StoryTeller)
-{ isVideo() :
-    -> goddess_intro.video_jump
-}
 
 { isWeb() :
     -> table_of_contents
 - else :
     -> game_intro
 }
+
+=== test_marks ===
+    + add punishment
+        ~ addPunishment()
+    + remove punishment
+        ~ removePunishment()
+    + add reward
+        ~ addReward()
+    + remove reward
+        ~ removeReward()
+    
+- /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
+-> test_marks
 
 // === test_audio ===
 

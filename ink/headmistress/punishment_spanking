@@ -34,7 +34,7 @@ TODO: Support shuffling swats and equipment
 
 
 /scene LectureHall.Punishment_Spanking
-
+/music headmistress
 /character headmistress
 // /equip {headmistress_spanking_implement}
 // /perform circle_desk
@@ -167,7 +167,7 @@ Are they not fortunate to have one such as you to observe? #69
 As always, purrs, moans, and words of encouragement #73
 are permitted during the punishment lesson. #74
 
-/character crowd jeers
+/character crowd oos
 /character headmistress idle
 
 What say you, {isBoy: toad|strumpet}? #79
@@ -184,12 +184,16 @@ What say you, {isBoy: toad|strumpet}? #79
 + [yes]
     ~ obey++
     /perform curious
+    /character crowd cheers 
+    /character headmistress idle
     So eager for your debasement. #86
     Most pleasing. #87
 
 + [no]
     ~ disobey++
     /perform thoughtful
+    /character crowd boos
+    /character headmistress idle
     A disappointing response for our guests. #88
     Rectify this immediately, slave. #226
 
@@ -198,11 +202,15 @@ What say you, {isBoy: toad|strumpet}? #79
 + [wait 10]
 
 - -> Headmistress_masturbation_comments->
+
+/wait 0.01
 Pray continue. #228
 
 + [wait 10]
 
 - -> Headmistress_masturbation_comments->
+
+/wait 0.01
 A little more, I think. #229
  
 + [wait 10]
@@ -216,10 +224,6 @@ A little more, I think. #229
   A disappointment. We shall continue anyways. #232
   
 - /perform smooth_skirt
-
-/notify title="<color=red>Pro Tip!</color>" text="For a more realistic experience, set down one controller and spank yourself hard when you hear the **slap**. Or better yet, have a very close friend to it for you. ;)<br/><br/>Understood?"
-
-+ [yes]
 
 //And finally, we come to the heart of the matter. #91
 - Do you accept that you must be punished? #92
@@ -256,10 +260,10 @@ A little more, I think. #229
         You have squandered my time and my attentions. #99
         I will not suffer fools. #100
         You've just earned yet another punishment. #101
-        ~ punishments++
+        ~ addPunishment()
         ~ headmistress_apologize = true
         Now leave. #102
-        /perform point_to_door
+        /perform point_to_leave
         -> exit
 
 +[timeout] 
@@ -269,10 +273,14 @@ A little more, I think. #229
     Do you agree? #105
     -> ask_punish_ready
 
+- /notify title="<color=red>Pro Tip!</color>" text="For a more realistic experience, set down one controller and spank yourself hard when you hear the **slap**. Or better yet, have a very close friend to it for you. ;)<br/><br/>Understood?"
+
++ [yes]
+
 - {intro: -> spank_instructions}
 
 - /perform serious
-Because I am generous, #232
+Because I am generous, #234
 I will offer you a chance to practice first. #106
 /perform amused
 Would you welcome that, {isBoy: mongrel|moppet}? #107
@@ -310,7 +318,7 @@ Now. Onto your hands and knees, bauble. #233
 
 - /perform amused
 
-Now then. The back must be delicately arched, #21
+The back must be delicately arched, #21
 presenting the most ideal access #22
 to the object of discipline: the buttocks. #23
 
@@ -520,8 +528,9 @@ I wonder if you would like to perform further for our audience? #135
 
     +[yes]
     /perform confused
-    Ahhhh. What a crowd pleaser! #136
     /character crowd claps
+    /character headmistress
+    Ahhhh. What a crowd pleaser! #136
     /character headmistress idle
     -> Headmistress_player_masturbate ->
     
@@ -564,17 +573,14 @@ Perhaps you would rather play with yourself for your new fans? #142
 /character headmistress
 /perform nod    
 Consider one demerit paid in full. #145
+/character crowd cheers_loud
+/character headmistress
 /perform idle
 I give you leave to depart. #146
 
-~ punishments--
+~ removePunishment()
 
-/character crowd claps
-
-+ [wait]
-
-// For now, let's go to the end screen while more content is worked on.
-- -> demo_end
++ [wait 2]
 
 // If the player has never seen nega-yuki,
 // send them off to be tempted by her directly.
@@ -611,6 +617,7 @@ I give you leave to depart. #146
     -
     -
     }
+    /character headmistress
 ->->
 
 = GoodSpank
@@ -647,7 +654,7 @@ I give you leave to depart. #146
     -
     -
 }
-
+/character headmistress
 ->->
 
 
@@ -791,11 +798,11 @@ good boys and girls earn? #200
 
         +++[yes]
             ~ disobey++
-            /character headmistress displeased
             /character crowd gasps
+            /character headmistress displeased
             A brazen response. #205
             Another punishment has been added to your band. #206
-            ~ punishments++
+            ~ addPunishment()
 
         //player should either receive another punishment stone or an additional 5 swats
 

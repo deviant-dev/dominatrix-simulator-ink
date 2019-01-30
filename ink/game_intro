@@ -29,9 +29,10 @@
 
 - (choices) /scene LogoRoom.Notifications
 
-+ [move: Intro] -> select_gender -> goddess_intro
-+ [move: Yuki (early_access)] -> tryEnter(early_access, -> yuki_intro, -> choices)
-+ {yuki_intro} [move: Headmistress (early_access)]-> tryEnter(early_access, -> headmistress_intro, -> choices)
++ [move: Intro] -> goddess_intro
++ [move: Yuki (unlocked)] -> yuki_intro
++ [move: Headmistress (unlocked)] -> headmistress_intro
++ [move: Nega (early_access)] -> tryEnter(early_access, -> nega_intro, -> choices)
 
 === game_intro_web ===
 
