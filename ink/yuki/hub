@@ -4,6 +4,7 @@
 ~ disobey = 0
 
 /character yuki
+/music yuki
 
 // If the player hasn't done the intro yet,
 // then have them go to the intro.

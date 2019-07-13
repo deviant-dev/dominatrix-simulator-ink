@@ -1,6 +1,9 @@
 === entry_hub ===
 -> select_gender ->
 
+~ reward_just_removed = false
+~ punishment_just_removed = false
+
 -(hub)
 
 -> summary("Main Entry Hub", hub) ->
@@ -12,6 +15,8 @@
 }
 
 /scene entry.hub
+/music entry
+/ambient rain
 
 + {LIST_VALUE(goddess_hub_status)} [move: Goddess ({goddess_hub_status})]
     -> tryEnter(goddess_hub_status, -> goddess_hub, -> exit)
@@ -23,9 +28,11 @@
     -> tryEnter(headmistress_hub_status, -> headmistress_hub, -> exit)
 
 === entry_intro ===
-
+-> select_gender ->
 /scene Entry.Intro1
-/music entry
+/music yuki
+/ambient rain
+
 
 + {LIST_VALUE(yuki_hub_status)} [move: Yuki ({yuki_hub_status})]
     -> tryEnter(yuki_hub_status, -> yuki_hub, -> entry_intro)
@@ -36,6 +43,7 @@
 
 /scene entry.hub
 /music entry
+/ambient rain
 
 + {LIST_VALUE(headmistress_hub_status)} [move: Headmistress ({headmistress_hub_status})]
     -> tryEnter(headmistress_hub_status, -> headmistress_hub, -> exit)

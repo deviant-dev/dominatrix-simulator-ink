@@ -1,0 +1,527 @@
+/*=== headmistress_task_hand_signals ===
+
+VAR passes = 0
+VAR level = 0
+VAR hand_signal_1 = "neutral"
+VAR hand_signal_2 = "yes"
+VAR hand_signal_3 = "no"
+VAR Practice = false
+VAR Practice_Counts = 0
+VAR Practice_Attempts = 0
+VAR Practice_Goal = 0
+VAR Learning = false
+
+/scene LectureHall.Task_Hand_Signals
+/music headmistress
+/character headmistress
+
+// ====== Begin Debug ======
+
+//~ passes = 4
+//~ level = 4
+//-> revisit_test
+
+// ====== End Debug =====
+
+{passes < 4: 
+    -> SetLearningHM(level) -> ModeSelect
+}
+
+{shuffle:
+    - ~ hand_signal_1 = "wait" 
+    - ~ hand_signal_1 = "expose"
+    - ~ hand_signal_1 = "rear" 
+}
+
+
+{shuffle:
+    - ~ hand_signal_2 = "kneel" 
+    - ~ hand_signal_2 = "endure" 
+    - ~ hand_signal_2 = "punishment" 
+}
+
+
+{shuffle:
+    - ~ hand_signal_3 = "inspect"
+    - ~ hand_signal_3 = "rest"
+    - ~ hand_signal_3 = "humble"
+}
+
+-(ModeSelect)
+{
+    - passes == 0:
+        -> intro_learn
+    - passes < 4:
+        // Only shuffle after we've introduced practice.
+        { stopping:
+            - -> intro_practice
+            - { shuffle:
+                - -> revisit_learn
+                - -> revisit_practice
+            }
+        }
+    - else:
+        // Only shuffle after we've introduced the test
+        { stopping:
+            - -> intro_test
+            - { shuffle:
+                - -> revisit_test
+                - -> revisit_practice
+            }
+        }
+}
+
+
+= Director_Pose1
+
+{ hand_signal_1 == "wait": -> signal_wait ->}
+{ hand_signal_1 == "expose": -> signal_expose ->}
+{ hand_signal_1 == "rear": -> signal_rear ->}
+
+->->
+= Director_Pose2
+
+{ hand_signal_2 == "kneel": -> signal_kneel ->}
+{ hand_signal_2 == "endure": -> signal_endure ->}
+{ hand_signal_2 == "punishment": -> signal_punishment ->}
+
+->->
+= Director_Pose3
+
+{ hand_signal_3 == "inspect": -> signal_inspect ->}
+{ hand_signal_3 == "rest": -> signal_rest ->}
+{ hand_signal_3 == "humble": -> signal_humble ->}
+
+-->->
+
+= intro_learn
+
+-> intro_learn_dialogue ->
+
+~ passes++
+~ level++
+
+-> headmistress_task_hand_signals
+
+->DONE
+
+= revisit_learn
+
+-> revisit_learn_dialogue ->
+
+~ passes++
+~ level++
+
+-> headmistress_task_hand_signals
+
+= intro_practice
+
+{ 
+    - passes == 1:
+        -> SetLearningHM(0) ->
+    - passes == 2:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+        }
+    - passes == 3:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+            - -> SetLearningHM(2) ->
+        }
+    - passes == 4:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+            - -> SetLearningHM(2) ->
+            - -> SetLearningHM(3) ->
+        }
+}
+
+-> Summary_HM ->
+
+-> intro_practice_dialogue ->
+
+~ Practice_Attempts = 0
+~ Practice_Goal = 0
+~ Practice_Counts = 0
+~ level = passes
+
+-> headmistress_task_hand_signals
+
+->DONE
+
+= revisit_practice
+
+{ 
+    - passes == 1:
+        -> SetLearningHM(0) ->
+    - passes == 2:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+        }
+    - passes == 3:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+            - -> SetLearningHM(2) ->
+        }
+    - passes == 4:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+            - -> SetLearningHM(2) ->
+            - -> SetLearningHM(3) ->
+        }
+}
+
+-> Summary_HM ->
+
+-> revisit_practice_dialogue ->
+
+~ Practice_Attempts = 0
+
+~ Practice_Goal = 0
+
+~ Practice_Counts = 0
+
+~ level = passes
+
+-> headmistress_task_hand_signals
+
+= intro_test
+
+{ 
+    - passes == 1:
+        -> SetLearningHM(0) ->
+    - passes == 2:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+        }
+    - passes == 3:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+            - -> SetLearningHM(2) ->
+        }
+    - passes == 4:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+            - -> SetLearningHM(2) ->
+            - -> SetLearningHM(3) ->
+        }
+}
+
+-> Summary_HM ->
+
+-> revisit_practice_dialogue ->
+
+~ Practice_Attempts = 0
+
+~ Practice_Goal = 0
+
+~ Practice_Counts = 0
+
+-> headmistress_task_hand_signals
+
+= revisit_test
+
+{ 
+    - passes == 1:
+        -> SetLearningHM(0) ->
+    - passes == 2:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+        }
+    - passes == 3:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+            - -> SetLearningHM(2) ->
+        }
+    - passes == 4:
+        { shuffle: 
+            - -> SetLearningHM(0) ->
+            - -> SetLearningHM(1) ->
+            - -> SetLearningHM(2) ->
+            - -> SetLearningHM(3) ->
+        }
+}
+
+-> Summary_HM ->
+
+-> revisit_practice_dialogue ->
+
+~ Practice_Attempts = 0
+
+~ Practice_Goal = 0
+
+~ Practice_Counts = 0
+
+-> headmistress_task_hand_signals
+
+= pose_beg
+
+{Practice == true:
+
+{cycle:
+    - 
+    - 
+    - 
+    - 
+    - 
+    }
+
+}
+
+{Learning == true:
+
+- test 
+- test
+
+}
+
+- (beg)
+
+{Practice == true:
+
+-> Attempts ->
+
+}
+
+- (beg_tries)
+- (beg_fail)
+
++ [pose:puppy_beg] -> HoldPose(-> beg_fail, -> beg) ->
++ { beg_tries < 2 } [timeout] -> beg
+//+ { beg_tries >= 2 } [timeout]
+
+-->->
+
+= signal_wait
+- (wait)
+
+
+= signal_expose
+- (expose)
+
+
+=signal_rear
+- (rear)
+
+
+= signal_kneel
+- (kneel)
+
+
+= signal_endure
+- (endure)
+
+
+= signal_punishment
+- (punishment)
+
+
+= signal_inspect
+- (inspect)
+
+
+= signal_rest
+- (rest)
+
+
+= signal_humble
+- (humble)
+
+
+= Attempts
+
+~ Practice_Attempts++
+
+->->
+
+= intro_learn_dialogue
+- test
+= revisit_learn_dialogue
+- test
+= intro_practice_dialogue
+
+~ Practice = true
+
+-(Intro_Practice_Loop)
+
+{~ -> Director_Pose2 ->|-> Director_Pose3 ->}
+
+~ Practice_Counts++
+
+{Practice_Counts < 5: -> Intro_Practice_Loop}
+
+~ Practice = false
+
+{Practice_Attempts == Practice_Goal: 
+    {headmistress_hand_signals_difficulty == 2: 
+        ~ addReward()
+    }
+}
+
+{Practice_Attempts == Practice_Goal:
+    ~ headmistress_hand_signals_difficulty = 2
+}
+
+{Practice_Attempts > Practice_Goal + 1:
+    ~ headmistress_hand_signals_difficulty = 1
+}
+
+{Practice_Attempts > Practice_Goal + 2:
+    ~ headmistress_hand_signals_difficulty = 1
+    ~ addPunishment()
+}
+
+{Practice_Attempts > 6:
+
+    -> Bad_Practice_1 ->
+    
+- else:
+    
+    
+    -> Good_Practice_1 ->
+
+}
+
+->->
+
+= revisit_practice_dialogue
+
+~ Practice = true
+
+{shuffle:
+
+- ~ Practice_Goal = 3
+
+- ~ Practice_Goal = 5
+
+- ~ Practice_Goal = 7
+
+- ~ Practice_Goal = 9
+
+}
+
+{passes == 4:
+
+-> Passed_Loop ->
+
+}
+
+-(Practice_Loop)
+
+{~ -> Director_Pose1 ->| -> Director_Pose2 ->| -> Director_Pose3 ->}
+
+~ Practice_Counts++
+
+{Practice_Counts < Practice_Goal: -> Practice_Loop}
+
+~ Practice = false
+
+{Practice_Attempts == Practice_Goal: 
+    {headmistress_hand_signals_difficulty == 2: 
+        ~ addReward()
+    }
+}
+
+{Practice_Attempts == Practice_Goal:
+    ~ headmistress_hand_signals_difficulty = 2
+}
+
+{Practice_Attempts > Practice_Goal + 1:
+    ~ headmistress_hand_signals_difficulty = 1
+}
+
+{Practice_Attempts > Practice_Goal + 2:
+    ~ headmistress_hand_signals_difficulty = 1
+    ~ addPunishment()
+}
+
+
+{Practice_Attempts > Practice_Goal + 2:
+
+-> Bad_Ending_Director ->
+
+- else:
+
+-> Good_Ending_Director ->
+
+}
+
+->->
+
+= Good_Ending_Director
+
+// Fill in shuffles with extra endings
+
+{~ -> Good_Practice_1 ->| -> Good_Practice_2 ->}
+
+->->
+
+= Bad_Ending_Director
+
+{~ -> Bad_Practice_1 ->| -> Bad_Practice_2 ->}
+
+->->
+
+= Good_Practice_1
+- test
+-> exit
+// = Good_Practice_2
+// - test
+// = Bad_Practice_1
+// - test
+// = Bad_Practice_2
+// - test
+// = Passed_Loop
+// - test
+// -(Passed_Test_Loop)
+
+~ Practice_Counts++
+
+-> Random_Pose_Calculation ->
+
+// {hand_signal_1 == "beg": -> pose_beg ->}
+// {hand_signal_1 == "confused": -> pose_confused ->}
+// {hand_signal_1 == "hungry": -> pose_hungry ->}
+// {hand_signal_1 == "yes": -> pose_yes ->}
+// {hand_signal_1 == "playful": -> pose_playful ->}
+// {hand_signal_1 == "tired": -> pose_tired ->}
+// {hand_signal_1 == "thirsty": -> pose_thirsty ->}
+// {hand_signal_1 == "no": -> pose_no ->}
+// {hand_signal_1 == "sorry": -> pose_sorry ->}
+// {hand_signal_1 == "roll over": -> pose_back ->}
+// {hand_signal_1 == "horny": -> pose_horny ->}
+
+{Practice_Counts < Practice_Goal: -> Passed_Test_Loop}
+
+~ Practice = false
+
+->->
+
+= Random_Pose_Calculation
+
+{shuffle:
+    - ~ hand_signal_1 = "beg"
+    - ~ hand_signal_1 = "confused"
+    - ~ hand_signal_1 = "hungry"
+    - ~ hand_signal_1 = "yes"
+    - ~ hand_signal_1 = "playful"
+    - ~ hand_signal_1 = "tired"
+    - ~ hand_signal_1 = "thirsty"
+    - ~ hand_signal_1 = "no"
+    - ~ hand_signal_1 = "sorry"
+    - ~ hand_signal_1 = "roll over"
+    - ~ hand_signal_1 = "horny"
+}
+
+->->*/

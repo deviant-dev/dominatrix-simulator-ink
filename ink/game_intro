@@ -3,6 +3,7 @@
 { isDebug() : -> choices }
 
 /scene LogoRoom.TitleScreen
+/music entry
 
 + [wait 6]
 
@@ -10,7 +11,7 @@
 - (instructions)
 
 /scene LogoRoom.Instructions
-/music goddess
+
 
 + [yes]
 + [no]

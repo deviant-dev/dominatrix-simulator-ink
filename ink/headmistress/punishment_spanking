@@ -434,6 +434,7 @@ Turn to the left. #241
 - /character crowd oos
 
 - (rotate_right_timeout)
+/character headmistress
 Now turn to the right. #242
 -> Headmistress_GoodJob ->
 
@@ -576,15 +577,25 @@ Consider one demerit paid in full. #145
 /character crowd cheers_loud
 /character headmistress
 /perform idle
-I give you leave to depart. #146
 
 ~ removePunishment()
 
-+ [wait 2]
+
+- (stand_straight)
+- (stand_straight_tries)
+
+I give you leave to depart. #146
+
+- (stand_straight_fail)
+
++ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
+
+
+- + [wait 2]
 
 // If the player has never seen nega-yuki,
 // send them off to be tempted by her directly.
-- {not nega_intro: -> nega_intro | -> exit }
+- {not nega_hub: -> nega_hub | -> exit }
 
 
 // Tunnels
@@ -686,6 +697,9 @@ I give you leave to depart. #146
     - -> break03 ->
     //- -> break04 ->
 }
+
++ [continue]
+
 - {cycle:
     - Back on your hands and knees, slave. #254
     - Resume your spanking position, slave. #255

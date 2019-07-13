@@ -4,7 +4,8 @@
 ~ disobey = 0
 
 /scene Attic.NegaIntro
-/music nega2 
+/music nega
+/ambient off
 /character nega
 
 { isWeb():

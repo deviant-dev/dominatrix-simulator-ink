@@ -6,7 +6,7 @@
 ~ rewards = 1
 
 /scene entry.intro2
-/music entry
+/music yuki
 /ambient rain
 /character yuki idle_yuki
 // /equip feather_duster
@@ -208,7 +208,7 @@ Down on your knees and raise your hands to beg. #181
 
 - (pet_beg_fail)
 
-+ [pose:pet_beg] -> HoldPose(-> pet_beg_fail, -> pet_beg) ->
++ [pose:puppy_beg] -> HoldPose(-> pet_beg_fail, -> pet_beg) ->
 + { pet_beg_tries < 2 } [timeout] -> pet_beg
 + { pet_beg_tries >= 2 } [timeout] ->
 
@@ -494,7 +494,8 @@ Have you figured out what's going on here yet? #76
     -> going_on
     
 
-- /character nega caress_breasts
+- (caress_question)
+/character nega caress_breasts
 /lookat player
 
 I bet that {isBoy:cock|cunt} of yours works just fine. #88
@@ -512,7 +513,7 @@ Let's find out. Shall we? #89
 + (caress_skipped) [no]
     ~ obey++
     /perform angry
-    Oh great. Another spoil-sport, just like you Yuki. #91
+    Oh great. Another spoil-sport, just like Yuki. #91
     -> skip_caress
 
 + [timeout]

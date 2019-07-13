@@ -27,7 +27,6 @@
 === Yuki_Timeout ===
 
 {cycle:
-
     - Hellooo? I'm talking to you! #01
     - Don't ignore me! #02
     - Would you answer me already? #03
@@ -36,17 +35,15 @@
     - Hey {player_name}, I'm not talking to myself you know! #06
     - Answer me, {player_name}! #07
     - Are you even listening? #08
+    - Focus, {player_him}.  #09
 }
 
 ->->
-
-+[timeout] -> Yuki_Timeout
 
 // This is better for actions.
 === Yuki_Interested ===
 
 {cycle:
-
     - I asked you to do something. #01
     - Are you going to follow directions? #02
     - It's time to move, slave. #03
@@ -71,25 +68,41 @@
     - Who's a good {player_name}? You are! #08
     - Keep up the good work! #09
     - You're so much fun! #10
-    - What a fast learner you are! # 
+    - What a fast learner you are! #11
     - Ooo! That's nice. #12
     - Keep it up! #13
     - You're so good. #14
+    - Such a good {player_name}. #15
+    - You're doing so well! #16
     }
     
 ->->
 
-=== Yuki_Badjob
+=== Yuki_AcknowledgeYes ===
 
 {cycle:
-    - I thought you knew better.
-    - Oh geez slave.
-    - I know you know better.
-    - Would you just cooperate with me?
-    - Why do you have to be such a problem?
-    - Can't you just do as I want?
-    - Sometimes I have too much patience.
-    - Please just meet your expectations. For me?
+    - I like that answer. #01
+    - That makes me happy. #02
+    - Yay! #03
+    - Oh, goody!  #04
+    - Okay! #05
+    - Perfect. #06
+    - Mmmmhmmm! #07
+    - Hooray! #08
+    }
+    
+->->
+=== Yuki_Badjob ===
+
+{cycle:
+    - I thought you knew better. #01
+    - Oh geez slave. #02
+    - I know you know better. #03
+    - Would you just behave for me? #04
+    - Why do you have to be such a problem? #05
+    - Can't you just do as I want? #06
+    - Sometimes I have too much patience. #07
+    - Please just meet your expectations. For me? #08
 }
 
 ->->
@@ -97,11 +110,11 @@
 === Yuki_Punishment_Response ===
 
 {cycle:
-    - What? A punishment?!
-    - Didn't I explain to you the rules to avoid a punishment?
-    - You slaves never learn.
-    - After everything I do to make sure you avoid punishments...
-    - Punishment? And I thought you had promise...
+    - What? A punishment?! #01
+    - Didn't I explain to you the rules to avoid a punishment? #02
+    - You slaves never learn. #03
+    - After everything I do to make sure you avoid punishments... #04
+    - Punishment? And I thought you had promise... #05
 }
 
 ->->
@@ -109,13 +122,52 @@
 === YukiPlayerToCum ===
 
 {cycle:
-    - Is my good {player_name} close?
-    - Are you almost there slave?
-    - I can feel you getting close.
-    - Your {isBoy:cock|pussy} is throbbing in my hand.
-    - You're riding the edge.
-    - You're so close to exploding for me slave.
-    - Just a little more.
+    - Is my good {player_name} close? #01
+    - Are you almost there slave? #02
+    - I can feel you getting close. #03
+    - Your {isBoy:cock|pussy} is throbbing in my hand. #04
+    - You're riding the edge. #05
+    - You're so close to exploding for me slave. #06
+    - Just a little more. #07
+    - Are you going to cum? #08
 }
+
+->->
+
+=== Yuki_CheckIfInterested ===
+
+{Yuki_CheckIfInterested > 1: -> check_terse}
+
+/perform impatient
+
+Do you want to perform for me or not? #01
+- (check_again)
+
++ [yes] -> check_yes
++ [no]
++ [timeout] -> check_again
+
+- (check_terse) Really? #02
+
+/perform foot_stomp
+
+You are not following the rules. #03
+
+/perform lean_forward
+
+Do you want to be sent away? #04
+
++ [yes] 
+
++ [no] -> check_yes
+
+- /perform annoyed
+Then get out of here, you bad {player_name}. #05
+Come back when you're ready to follow the rules. #06
+-> exit
+
+- (check_yes) -> Yuki_GoodJob ->
+/perform confused
+It's so much better when you decide to follow the rules and behave. #07
 
 ->->

@@ -6,6 +6,17 @@
 
 -> summary("Goddess Hub", hub) -> 
 
+/scene bedroom
+/music goddess
+/character goddess
+
+{shuffle:
+   - -> goddess_monitoring
+   - -> goddess_monitoring
+   - -> goddess_monitoring
+ }
+ 
+
 { 
     - punishments > 0 :
         You require correction. Go get your punishments and perhaps we'll talk.

@@ -19,6 +19,8 @@ INCLUDE headmistress/punishment_flogging
 INCLUDE headmistress/punishment_spanking
 INCLUDE headmistress/reward_cunnilingus
 INCLUDE headmistress/task_flogging
+INCLUDE headmistress/task_hand_signal_training
+INCLUDE headmistress/code
 INCLUDE nega/hub
 INCLUDE nega/intro
 INCLUDE nega/lore
@@ -27,6 +29,8 @@ INCLUDE nega/reward_dice
 INCLUDE nega/reward_forcedsex
 INCLUDE nega/punishment_trampling
 INCLUDE yuki/hub
+INCLUDE yuki/code
+INCLUDE yuki/generic_responses
 INCLUDE yuki/intro
 INCLUDE yuki/lore
 INCLUDE yuki/punishment_edging
@@ -34,7 +38,8 @@ INCLUDE yuki/review
 INCLUDE yuki/reward_bathe
 INCLUDE yuki/reward_massage
 INCLUDE yuki/task_fanning
-INCLUDE yuki/generic_responses
+INCLUDE yuki/task_puppyplay
+INCLUDE goddess/monitoring
 
 
 VAR debug = false
@@ -60,18 +65,19 @@ VAR web = true
     // -> goddess_intro.stand_straight
     // -> goddess_intro.inspection
     // -> goddess_intro.ByeForNow
+    //-> goddess_monitoring
     
     
     // --- Yuki Jumps ---
     // -> yuki_intro
-
+    // -> select_gender ->
     // /scene entry.intro3
     
     
     // -> yuki_intro.nega_interruption
     // -> yuki_intro.nega_slap
-    // -> yuki_intro.pet_beg
-    // -> yuki_intro.skip_caress2
+     -> yuki_task_puppyplay
+    // -> yuki_intro.caress_question
 
     // /character yuki
     // /lookat nega
@@ -83,14 +89,14 @@ VAR web = true
     // /scene LectureHall
     
     // /scene LectureHall.Punishment_Spanking_Ready
-    // /character headmistress
-
-    -> headmistress_intro
-
 
 
 
     // --- Headmistress Jumps ---
+
+    // /character headmistress
+
+    // -> headmistress_intro
 
     // ~ yuki_hub_status = unlocked
     // ~ headmistress_hub_status = unlocked
@@ -120,10 +126,10 @@ VAR web = true
     ~ nega_hub_status = early_access
     ~ punishments = 0
     ~ rewards = 1
-    -> nega_hub
-    
+    // -> nega_hub
     // -> nega_reward_dice
-    // -> 
+    // -> nega_reward_forcedsex
+    
 }
 
 
@@ -176,7 +182,7 @@ VAR web = true
     ~ headmistress_hub_status = unlocked
     -> headmistress_intro
 
-+ Headmistress Punishment Spanking 
++ Headmistress Punishment - Spanking 
     -> unlock_all -> headmistress_punishment_spanking
 
 + Nega Intro 
@@ -185,8 +191,11 @@ VAR web = true
 + Nega Reward Dice 
     -> unlock_all -> nega_reward_dice
 
-+ Nega Forced Sex Reward 
++ Nega Reward - Forced Sex
     -> unlock_all -> nega_reward_forcedsex
+
++ Yuki Task - Puppy Play
+    -> unlock_all -> yuki_task_puppyplay
 
 // + <i>Entry Hub (WIP)</i>
 //     -> unlock_all -> entry_hub

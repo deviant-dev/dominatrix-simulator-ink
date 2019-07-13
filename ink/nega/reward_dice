@@ -1,7 +1,11 @@
 === nega_reward_dice ===
+-> select_gender ->
+
 ~ intro = nega_reward_dice == 1
 
-/scene attic.negahub
+/scene attic.negaintro
+/music nega
+/ambient off
 
 - (give_reward)
 
@@ -267,7 +271,7 @@ You're gonna love getting rewards from me. #49
     -> exit
 
 = come_again
-/perform headtoss
+/perform head_toss
 - {cycle:
     - Come visit me again, cunt. #59
     - Come back when you have another reward to spend. #60
@@ -275,4 +279,4 @@ You're gonna love getting rewards from me. #49
     - You know where to find me. #62
     }
 
--> exit
+-> demo_end

@@ -1,306 +1,103 @@
-VAR chance = 0
-VAR name = "slut"
-VAR licked_boots = false
-VAR posed = false
-VAR edged = false
-VAR demerits = 0
 
 === nega_punishment_trampling ===
+/scene Attic.NegaIntro
+/music nega2
+/ambient off
+/character nega
 
-//----------------------- PART 1: NEGA taunts the player -------------------------
-Thanks for the treat, {degrading_name()}!
-{~I'll see that you get what you deserve.|You're in for it now!|This'll be fun! For me at least!}
+//slit, maggot, worm, meatbag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cumbucket, skank, pillow biter, tease
 
-/Nega grins menacingly
 
--> pre_trample_activity_select
 
-//--------------------------------------------------------------------------------
 
-//---------- PART 2: NEGA tortures the player before trampling -------------------
-
-= pre_trample_activity_select
-
-//select and do a random task
-
-~ temp num_choices = 3
-
-{licked_boots == true: 
-    ~num_choices--
+{shuffle:
+    - I want to hurt you now, meatbag!
+    - Time to suffer, stain!
+    - You're in for it now, cunt!
+    - I'm going to walk all over you, wretch!
 }
-{posed == true:
-    ~num_choices--
-}
-{edged == true: 
-    ~num_choices--
-}
-
-{ 
-    - num_choices == 3 && random() < 8: -> choose_from_3
-    - num_choices == 2 && random() < 5: -> choose_from_2 
-    - num_choices == 1 && random() < 3: -> choose_from_1 
-    - else: -> trample
-}
-
-- (choose_from_3)
-{ 
-    - random() < 5: -> pre_trample_lick_boot
-    - random() < 6: -> pre_trample_edge
-    - else: -> pre_trample_pose
-}
-
-- (choose_from_2)
-{ 
-    - licked_boots == true && random() < 6: -> pre_trample_edge
-    - licked_boots == true: -> pre_trample_pose
-    - posed == true && random() < 6: -> pre_trample_edge
-    - posed == true: -> pre_trample_lick_boot
-    - edged == true && random() < 6: -> pre_trample_lick_boot
-    - else: -> pre_trample_pose
-}
-
-
-- (choose_from_1)
-
-{
-    - licked_boots == false: -> pre_trample_lick_boot
-    - edged == false: -> pre_trample_edge
-    - else: -> pre_trample_pose
-}
-
--> trample
-
-= pre_trample_lick_boot
-~ licked_boots = true
-
-/Nega sits if not already sitting.
-Get down on all fours like the dog you are, {degrading_name()}!
-/Player poses on all fours
-Good boy/girl
-/Nega extends one foot out
-Come here and kiss my boot, {degrading_name()}!
-/Player's head must remain in position just above the boot tip.
-Very good, accept your place beneath me. Embrace that which will hurt you!
-I stepped outside earlier and got the bottoms of my boots dirty. 
-
--   (ask_clean_boot) {Would you be a dear and clean that up for me with your tongue?|Now are you going to clean my boot?}
-    +   [Yes]
-    You're such a dirty {degrading_name()}! I love it! Now get busy!
-    -> accept_boot_lick
-    +   [No]
-    You ungrateful {degrading_name()}! Here's a piece of Obsidian. 
-    - ~ demerits++
-    {   ask_clean_boot < 12:
-        -> ask_clean_boot
-        -   else:
-        -> deny_boot_lick
-    }
-
-- (accept_boot_lick)
-//The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. It would be really tool if there was actually dirt on the boot that disappeared/fell off as the player "licked"
-
-- (lick_1) /Player must move head up and down near the bottom of the boot.
-    +   [Successful Lick]
-    Very good, {degrading_name()}! Just like that. -> lick_2
-    +   [Unsuccessful]
-    That's not right, {degrading_name()}! Try again! -> lick_1
-    
-- (lick_2) You're so disgusting. Keep going!
-    +   [Successful Lick]
-    Can you believe how lowly you are, {degrading_name()}? You're less important than the dirt beneath my heels. -> switch_feet
-    +   [Unsuccessful]
-    You should know how to do this by now, {degrading_name()}! Again! 
-    - ~ demerits++ 
-    -> lick_2
-    
-- (switch_feet) /Nega switches feet, so the other boot is now in front of the player.
-
-- (lick_3) {Now, for the other boot, {degrading_name()}!|Lick it, {degrading_name()}!}
-    +   [Successful Lick]
-    You make a good shoe polisher! Perhaps I'll have you clean out up my shoe closet one of these days. -> lick_4
-    +   [Unsuccessful]
-    My other boot deserves the same attention as the first, {degrading_name()}! Again! 
-    - ~ demerits++ 
-    -> lick_3
-    
-- (lick_4) {Keep licking, {degrading_name()}!|Don't disappoing me now, {degrading_name()}!}
-    +   [Successful Lick]
-    Very nice! All clean! -> inspect
-    +   [Unsuccessful]
-    You're worthless! 
-    - ~ demerits++ 
-    -> lick_4
-
-- (inspect) /Nega inspects the bottoms of her boots.
-If your tongue is this thorough, I'll bet it would be useful for other things as well...
-
--> pre_trample_activity_select
-
-
-- (deny_boot_lick)
-
-Alright, {degrading_name()}, playtime's over!
-
--> trample
-
-
-= pre_trample_pose
-~ posed = true
-
-/Nega stands if not already standing
-I want to inspect you. 
--   (stand_at_attention) Stand at attention, {degrading_name()}! Hands behind your head!
-    +   [Success] -> stand_at_attention_success 
-    +   [Failure]
-    Not good enough! Try again! 
-    - ~ demerits++ 
-    -> stand_at_attention
-
-- (stand_at_attention_success)
-So, what do we have here?
-Were you hoping to get lucky with me?
-/Nega spits on the player's face
-Ha! Well it's not your lucky day!
-/Nega leans in and whispers in the player's ear
-{~I'll bet you're really horny. I'm going to make sure you stay that way! No release for you today!|Today I'm going to hurt you, and I'm going to enjoy it!|You are insignificant. I will use you as I see fit.}
-/Nega backs up
-- (present_ass) Now, turn around, bend over and present your ass to me!
-    +   [Success] -> present_ass_success
-    +   [Failure]
-    That's not right! Try again!
-    - ~ demerits++ 
-    -> present_ass
-
-- (present_ass_success)
-/Nega laughs
-You look ridiculous, {degrading_name()}!
-Hold that pose for a bit.
-/Wait 5
-/Nega pulls out a camera (could be a phone)
-/Camera shutter noise
-There we go! It's always good to have a little blackmail material! Don't cross me, or who knows where that picture might end up!
-Alright, {degrading_name()}! You are allowed to face me again. 
-
--> pre_trample_activity_select
-
-
-= pre_trample_edge
-~ edged = true
-
-/Nega sits with one leg crossed over the other
-- (kneel) Kneel in front of me, slave. 
-    +   [Success] -> kneel_success
-    +   [Failure]
-    That's not right! Try again!
-    - ~ demerits++ 
-    -> kneel
-
-- (kneel_success) Good boy/girl.
-/Nega lifts extended leg slightly
-- Does the sight of my boots turn you on?
-+   [Yes]
-    Ha! You're such a bitch, you know that?
-    + +     [Yes]
-            That was a rhetorical question, {degrading_name()}!
-            /Nega is obviously amused though
-            ~ demerits--
-            -> after_observe_boots
-    + +     [No]
-            I don't think you'll hold onto that self-esteem for very long here, slave. -> after_observe_boots
-    + +     [No response] -> after_observe_boots
-+   [No]
-    Not a foot fetishist, huh? That'll only make what I'm about to do to you all the more satisfying.
-
-- (after_observe_boots)
-Look at my boots and start masturbating.
-/Wait 10
-Get wet/hard for me!
-/Wait 10
-Worship my boots, {degrading_name()}!
-/Wait 10
-It is a privilege just to be allowed to gaze upon them.
-/Wait 10
-Especially for one such as yourself who is worth less than the dirt under my heels!
-
-- (edge_1) {Now, keep masturbating until you are close to exploding. Shake your head "no" when you can't endure any longer.|}
-    +   [Yes]
-    You're a cheeky one, aren't you! Keep going! -> edge_1
-    +   [No]
-    Hands off!
-    
-Rest for a minute, {degrading_name()}.
-/Wait 10
-
-- (edge_2) {Back to masturbating! Again, shake your head "no" when you can't endure any longer.|}
-    +   [Yes]
-    Quit being cheeky! Keep going! -> edge_2
-    +   [No]
-    Hands off!
-    
-Rest again. You don't deserve the pleasure of release.
-/Wait 10
-
-- (edge_3) {Now masturbate, one last time! You know what to do, shake your head "no" when you can't endure any longer.|}
-    +   [Yes]
-    Stop it! Keep going! -> edge_3
-    +   [No]
-    Hands off!
-
-That should keep you sufficiently horny! 
-
--> pre_trample_activity_select
-
-//----------------------------------------------------------------------------------
-
-
-//----------------------- PART 3: NEGA tramples the player -------------------------
-= trample
-
-{~I want to hurt you now, {degrading_name()}!|Time to suffer, {degrading_name()}!|You're in for it now, {degrading_name()}!|I'm going to walk all over you, {degrading_name()}!}
 
 -   Are you ready?
+
     +   [Yes]
     Ha! That's what you think.
+    
     +   [No]
     I don't really care, you know.
+    
     +   [timeout]
     Too scared to talk? 
 
-- (lie_on_back) Lie on your back.
+- (lie_on_back) 
+Lie on your back.
+
     +   [Comply] -> foot_on_chest
-    So vulnerable, a befitting position for a little {degrading_name()} like you.
+    So vulnerable, a befitting position for a little maggot like you.
+    
     +   [Don't comply]
     - ~demerits++
-    Don't feel like complying, eh? Why don't you try again with this Obsidian? -> lie_on_back
+    Don't feel like complying, eh? Why don't you try again with this Obsidian? 
+    -> lie_on_back
 
-- (foot_on_chest) /Nega puts her foot on the player's chest.
--   (own_you) I own you, right, {degrading_name()}?
+- (foot_on_chest) 
+/Nega puts her foot on the player's chest.
+-   (own_you) I own you, right, cunt?
+
     +   [Yes]
-    That's right, {degrading_name()}! -> steps_onto_player
+    That's right, worm! 
+    -> steps_onto_player
+    
     +   [No]
     - ~demerits++
-    /Nega pounds the player's chest with her boot. Fuck you, {degrading_name()}! Your cheekiness is going to get you in a lot of trouble!
+    /Nega pounds the player's chest with her boot. 
+    - Fuck you, meatbag! 
+    Your cheekiness is going to get you in a lot of trouble!
+    
     +   [timeout]
-    Hey, I asked you a question! -> own_you
+    Hey, I asked you a question! 
+    -> own_you
 
-- (steps_onto_player) /Nega steps up onto the player. 
-How does that feel, {degrading_name()}? 
--   (disgusting) I'll bet a disgusting {degrading_name()} like you is really enjoying this, right?
+- (steps_onto_player) 
+/Nega steps up onto the player. 
+How does that feel, worm? 
+
+-   (disgusting) 
+I'll bet a disgusting whore like you is really enjoying this, right?
+
     +   [Yes]
-    You're so pathetic! But that pleases me, {degrading_name()}. -> nega_walks
+    You're so pathetic! But that pleases me, maggot. 
+    -> nega_walks
+    
     +   [No]
-    That only makes me enjoy this more, {degrading_name()}. -> nega_walks
+    That only makes me enjoy this more, stain. 
+    -> nega_walks
+    
     +   [timeout] 
     - ~demerits++
-    Answer me, {degrading_name()}! -> disgusting
+    Answer me, fuckup! 
+    -> disgusting
 
-- (nega_walks) /Wait 10 - Nega steps around on the player's stomach and chest
+- (nega_walks) 
+/Wait 10 
+/Nega steps around on the player's stomach and chest
 
-{~Feel the weight of my boots dig into your flesh!|I'll bet my heels stabbing into you must be agony! I love it!|Your suffering is my delight, {degrading_name()}!}
+{shuffle:
+    - Feel the weight of my boots dig into your flesh!
+    - I'll bet my heels stabbing into you must be agony! I love it!
+    - Your suffering is my delight, maggot!
+    }
 
-/Wait 10 while Nega continues to step around on the player's stomach and chest
+/Wait 10 
+/Nega continues to step around on the player's stomach and chest
 
-{~I once choked a man out with my heel while I was trampling him. That was a good time!|I love kicking slaves in the genitals. It would be so easy to do from this position, you know?|I have a pair of heels with literal spikes on them, I should remember to grab those next time}
+{shuffle:
+    - I once choked a man out with my heel while I was trampling him. 
+    That was a good time!
+    - I love kicking slaves in the genitals. 
+    It would be so easy to do from this position, you know?
+    - I have a pair of heels with literal spikes on them, 
+    I should remember to grab those next time.
+}
 
 /Wait 10 while Nega continues to step around on the player's stomach and chest
 
@@ -311,7 +108,7 @@ How does that feel, {degrading_name()}?
     +   [Don't comply]
     I said lick it! -> lick_it
 
-- (keep_going) Keep going, {degrading_name()}! I want the bottom of my heels to be spotless!
+- (keep_going) Keep going, dumbfuck! I want the bottom of my heels to be spotless!
     +   [Comply]
     /Wait 10. -> other_one
     +   [Don't comply]
@@ -326,12 +123,12 @@ How does that feel, {degrading_name()}?
     - ~demerits++
     I don't care how you feel about it, lick my boot! -> other_boot_in_face
 
-- (keep_licking) That's it, {degrading_name()}, just like that. Keep licking.
+- (keep_licking) That's it, cunt, just like that. Keep licking.
     +   [Comply]
     /Wait 10. -> finish 
     +   [Don't comply]
     - ~demerits++
-    You don't get a reprieve until you lick my boot clean, {degrading_name()}! You won't get any mercy from me! -> keep_licking
+    You don't get a reprieve until you lick my boot clean, bitch! You won't get any mercy from me! -> keep_licking
 
 - (finish) 
 
@@ -344,23 +141,23 @@ How does that feel, {degrading_name()}?
 - (choose_reward)
 {~I'm pleased with you!|You've been good!|I had a lot of fun with you!|You weren't as much of a fuckup as I thought you'd be!}
 {~Perhaps you deserve a small reward.|Maybe I can do something a little nice for you.|I'll give you a little treat.}
-{ 
-    - random() < 5: -> reward_spit
-    - random() < 6: -> reward_boobs
-    - else: -> reward_ass
+{shuffle:
+    --> reward_spit
+    --> reward_boobs
+    --> reward_ass
 }
 
 - (reward_spit)
 /Still on the player's chest, Nega leans over the player's head and looks at them directly.
-Open your mouth, {degrading_name()}!
+Open your mouth, loser!
 /Nega let's a drop of saliva fall from her lips into the player's mouth.
-I'm sure you loved that, my disguting {degrading_name()}!
+I'm sure you loved that, my disguting slut!
 -> end_trample
 
 
 - (reward_boobs)
 /Still on the player's chest, Nega leans over the player's head and puffs her chest out so her breasts protrude towards the player's face.
-Enjoy the view, {degrading_name()}!
+Enjoy the view, dumbfuck!
 Only a lucky few get to see something so wonderful, be grateful!
 /Wait 10
 -> end_trample
@@ -368,7 +165,7 @@ Only a lucky few get to see something so wonderful, be grateful!
 
 - (reward_ass)
 /Still on the player's chest, Nega turns around and squats, so her ass is in the player's face.
-Being so close must be such a turn on for you, {degrading_name()}!
+Being so close must be such a turn on for you, bitch!
 Don't get used to it!
 /Wait 10
 
@@ -383,42 +180,6 @@ Don't get used to it!
 ->END
 
 //----------------------------------------------------------------------------------
-
-=== function degrading_name ===
-//This function generates a random degrading name.
-
-{shuffle:
-    - ~name = "slut" 
-    - ~name = "bitch" 
-    - ~name = "whore" 
-    - ~name = "slave" 
-    - ~name = "fucktoy" 
-    - ~name = "worm" 
-    - ~name = "maggot" 
-    - ~name = "fuckup" 
-    - ~name = "dumbfuck" 
-    - ~name = "loser" 
-}
-
-~ return name
-
-=== function random ===
-//This function generates a random number between 1 and 10 inclusive. 
-
-{shuffle:
-    - ~chance = 1 
-    - ~chance = 2 
-    - ~chance = 3 
-    - ~chance = 4 
-    - ~chance = 5 
-    - ~chance = 6 
-    - ~chance = 7 
-    - ~chance = 8 
-    - ~chance = 9 
-    - ~chance = 10 
-}
-
-~ return chance
 
 
 

@@ -46,6 +46,9 @@ TODO: Replace later with new lines - these are borrowed from bad spanking
 === Headmistress_punishment_resumes ===
 //generic responses whenever the Headmistress returns from a break or interruption to resume a punishment
 
+// Adding an empty 'continue' here to fix a weird VO line selection bug.
++ [continue]
+- 
 { shuffle:
     - Enough. We shall resume. #01
     - I am eager to return to your admonishment. #02

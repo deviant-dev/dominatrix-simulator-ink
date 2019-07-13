@@ -5,6 +5,7 @@ VAR player_he = "he"
 VAR player_him = "him"
 VAR rewards = 0
 VAR punishments = 0
+VAR tutorial_complete = "no"
 
 // Lists
 LIST move_status = hidden = 0, locked, unlocked, early_access, under_construction
@@ -13,6 +14,9 @@ LIST move_status = hidden = 0, locked, unlocked, early_access, under_constructio
 VAR obey = 0
 VAR disobey = 0
 VAR intro = false
+VAR scene_type = "reward"
+VAR reward_just_removed = false
+VAR punishment_just_removed = false
 
 // Goddess Variables
 VAR goddess_favor = 0 
@@ -31,6 +35,7 @@ VAR nega_hub_status = hidden
 // Yuki Variables
 VAR yuki_favor = 0
 VAR yuki_hub_status = unlocked
+VAR yuki_puppy_difficulty = 1
 
 
 
@@ -49,6 +54,9 @@ VAR yuki_hub_status = unlocked
     ~ return true
 }
 
+~ reward_just_removed = false
+~ punishment_just_removed = false
+
 ~ return false
 
 === function removePunishment() ===
@@ -57,6 +65,9 @@ VAR yuki_hub_status = unlocked
     /action remove_punishment
     ~ return true
 }
+
+~ reward_just_removed = true
+~ punishment_just_removed = false
 
 ~ return false
 
@@ -67,6 +78,9 @@ VAR yuki_hub_status = unlocked
     ~ return true
 }
 
+~ reward_just_removed = false
+~ punishment_just_removed = false
+
 ~ return false
 
 === function removeReward() ===
@@ -75,6 +89,9 @@ VAR yuki_hub_status = unlocked
     /action remove_reward
     ~ return true
 }
+
+~ punishment_just_removed = true
+~ reward_just_removed = false
 
 ~ return false
 
@@ -139,7 +156,7 @@ VAR yuki_hub_status = unlocked
 
 /scene hallway.genderchoice
 /ambient rain
-/music Goddess
+/music entry
 
 ~ temp chosen = false
 
@@ -183,7 +200,18 @@ VAR yuki_hub_status = unlocked
 ->->
 
 === exit ===
+{tutorial_complete == "yes": 
+{shuffle:
+- -> goddess_monitoring
+- -> entry_hub
+- -> entry_hub
+- -> entry_hub
+- -> entry_hub
+- -> entry_hub
+}
+-else:
 -> entry_hub
+}
 
 === HoldPose(-> onFail, -> onTimeout) ===
 + [pose-success] ->->

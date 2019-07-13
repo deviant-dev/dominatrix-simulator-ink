@@ -1,9 +1,10 @@
  === nega_reward_forcedsex ===
+ -> select_gender ->
  
 /scene attic.reward_forcedsex1
-/music nega-forced-01-ambient
-
-/perform pleased
+/music nega-reward
+/ambient off
+/character nega pleased
 
 I'm so ready for this. #01
 I've been waiting a long time for some new blood to show up. #02
@@ -228,13 +229,13 @@ Your job is to make me cum, got it?! #44
 // //+ [minigame-quit] -> Nega_CheckIfInterested -> thrust_more
 
 - (thrust_continue)
-- /perform squat_over_player_crotch_laugh
+- /perform squat //_over_player_crotch_laugh
 
 
 Ahhhh! That's it! #41
 You're stiff dick is just what I fucking needed! #42
 
-- /perform squat_over_player_crotch
+- /perform squat //_over_player_crotch
 You better move those goddamn hips while I fuck you, slut. #43
 Sometimes, I like to fuck to music, so listen to the beat, cunt. #116
 
@@ -293,14 +294,14 @@ Fuck yah. #55
 Do you want to cum with me, {isBoy: maggot|whore?} #56
 
 + [yes]
-    /perform squat_grind_on_crotch_laugh
+    /perform squat //_grind_on_crotch_laugh
     You fucking wish! #57
     There's no orgasm for a pathetic flesh bag like you. #58
 
 + [no]
     What a useless dick you have! #59
     Can't even cum for your Mistress! #60
-    /perform squat_grind_on_crotch_laugh
+    /perform squat //_grind_on_crotch_laugh
     
 - (nega_orgasm)
 /perform squat_thrust_single
@@ -321,6 +322,15 @@ Do you want to cum with me, {isBoy: maggot|whore?} #56
     - Sooooo good! #125
     - I'm... fucking... cumming! #126
     }
+    
+/wait 2
+
+/perform squat_thrust_orgasm
+
+/perform squat
+
+/wait 1
+
 /perform idle_nega
 
 //orgasm conclude lines - decent job
@@ -331,6 +341,13 @@ TODO: Orgasm ending dialogue. Three levels of feedback: Barely made her orgasm, 
     - At least you made me cum. #129
     - Decent. For a pathetic fleshbag. #130
     }
+
+- (stand_straight)
+- (stand_straight_tries)
+
+- (stand_straight_fail)
+
++ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
 
 -> nega_reward_dice.come_again
 
@@ -343,6 +360,8 @@ TODO: Orgasm ending dialogue. Three levels of feedback: Barely made her orgasm, 
 //build in variable length of time the rhythm plays (could alternate between music, heart beats, metronome)
 //needs sound or vibration feedback to let the player know they are succeeding
 
+
+~ tutorial_complete = "yes"
 -> exit
 
 = Thrust_break

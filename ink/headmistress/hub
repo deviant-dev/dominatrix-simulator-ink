@@ -7,6 +7,7 @@
 
 /scene LectureHall.Hub
 
+
 -> apology_check(-> hub, -> exit)
 
 - (hub)
