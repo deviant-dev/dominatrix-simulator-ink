@@ -76,8 +76,11 @@ VAR web = true
     
     // -> yuki_intro.nega_interruption
     // -> yuki_intro.nega_slap
-     -> yuki_task_puppyplay
     // -> yuki_intro.caress_question
+
+    -> yuki_task_puppyplay.start
+    // /scene atrium.hub
+    // -> yuki_task_puppyplay.pose_sit
 
     // /character yuki
     // /lookat nega

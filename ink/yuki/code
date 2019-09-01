@@ -8,20 +8,20 @@
 
 {
     - level == 0:
-        ~ puppy_pose_1 = "<b>neutral</b>"
-        ~ puppy_pose_2 = "<b>yes</b>"
-        ~ puppy_pose_3 = "<b>no</b>"
+        ~ puppy_pose_1 = "neutral"
+        ~ puppy_pose_2 = "yes"
+        ~ puppy_pose_3 = "no"
     - level == 1:
-        ~ puppy_pose_1 = "<b>beg</b>"
-        ~ puppy_pose_2 = "<b>playful</b>"
-        ~ puppy_pose_3 = "<b>sorry</b>"
+        ~ puppy_pose_1 = "beg"
+        ~ puppy_pose_2 = "playful"
+        ~ puppy_pose_3 = "sorry"
     - level == 2:
-        ~ puppy_pose_1 = "<b>confused</b>"
-        ~ puppy_pose_2 = "<b>tired</b>"
-        ~ puppy_pose_3 = "<b>roll over</b>"
+        ~ puppy_pose_1 = "confused"
+        ~ puppy_pose_2 = "tired"
+        ~ puppy_pose_3 = "roll over"
     - level == 3:
-        ~ puppy_pose_1 = "<b>hungry</b>" 
-        ~ puppy_pose_2 = "<b>thirsty</b>" 
-        ~ puppy_pose_3 = "<b>horny</b>"
+        ~ puppy_pose_1 = "hungry" 
+        ~ puppy_pose_2 = "thirsty" 
+        ~ puppy_pose_3 = "horny"
 }
 ->-> 

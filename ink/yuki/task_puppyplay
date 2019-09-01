@@ -1,6 +1,8 @@
 === yuki_task_puppyplay ===
 -> select_gender ->
 
+- (start)
+
 VAR passes = 0
 VAR level = 0
 VAR puppy_pose_1 = "neutral"
@@ -16,7 +18,7 @@ VAR Learning = false
 /music yuki
 /character yuki idle_yuki
 
-{isDebug(): -> ready_revisit  }
+// {isDebug(): -> ready_revisit  }
 
 + [move:Yuki] 
 -
@@ -81,29 +83,25 @@ VAR Learning = false
 
 
 = Director_Pose1
-
 { puppy_pose_1 == "sit": -> pose_sit ->}
 { puppy_pose_1 == "beg": -> pose_beg ->}
 { puppy_pose_1 == "confused": -> pose_confused ->}
 { puppy_pose_1 == "hungry": -> pose_hungry ->}
-
 ->->
-= Director_Pose2
 
+= Director_Pose2
 { puppy_pose_2 == "yes": -> pose_yes ->}
 { puppy_pose_2 == "playful": -> pose_playful ->}
 { puppy_pose_2 == "tired": -> pose_tired ->}
 { puppy_pose_2 == "thirsty": -> pose_thirsty ->}
-
 ->->
-= Director_Pose3
 
+= Director_Pose3
 { puppy_pose_3 == "no": -> pose_no ->}
 { puppy_pose_3 == "sorry": -> pose_sorry ->}
 { puppy_pose_3 == "roll over": -> pose_back ->}
 { puppy_pose_3 == "horny": -> pose_horny ->}
-
-- ->->
+->->
 
 = intro_learn
 
@@ -768,12 +766,8 @@ That should be <i>natural</i> for a puppy! #70
 Ready to learn to <b>"sit"</b>? #71
 /perform idle_yuki
 
-+[Yes]
-   -> Yuki_AcknowledgeYes ->
-
-+[no]
-   -> Yuki_CheckIfInterested -> puppy_ready
-
++ [yes] -> Yuki_AcknowledgeYes ->
++ [no] -> Yuki_CheckIfInterested -> puppy_ready
 + [timeout] -> Yuki_Timeout -> puppy_ready
 + [distracted] -> Yuki_PayAttention -> puppy_ready
 
@@ -815,8 +809,7 @@ Understand? #76
 + [timeout] -> Yuki_Timeout -> understand_sit
 + [distracted] -> Yuki_PayAttention -> understand_sit
 
--
-/perform one_finger
+- /perform one_finger
 Now... #82
 Puppies don't nod and shake their head like <i>people</i> do. #83
 
