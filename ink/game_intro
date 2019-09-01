@@ -32,8 +32,9 @@
 
 + [move: Intro] -> goddess_intro
 + [move: Yuki (unlocked)] -> yuki_intro
++ [move: PuppyPlay (unlocked)] -> yuki_task_puppyplay
 + [move: Headmistress (unlocked)] -> headmistress_intro
-+ [move: Nega (early_access)] -> tryEnter(early_access, -> nega_intro, -> choices)
++ [move: Nega (unlocked)] -> nega_intro //-> tryEnter(early_access, -> nega_intro, -> choices)
 
 === game_intro_web ===
 

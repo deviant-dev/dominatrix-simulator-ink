@@ -134,7 +134,7 @@ Arouse yourself and continue until I give you leave to stop. #08
 - 
 +[wait 5]
    - /perform thoughtful
-   {cycle:
+   { cycle:
         - Are you having fun performing for our guests? #09
         - Would you like to keep going, {isBoy: toad|strumpet}? #10
         - Does our little {isBoy: runt|poppet} need more time? #11
@@ -155,7 +155,7 @@ Arouse yourself and continue until I give you leave to stop. #08
 
 = masturbation_comment
 
-{obeyed():
+{ obeyed():
     -> Headmistress_masturbation_comments ->
 - else:
     -> Headmistress_masturbation_punishment ->

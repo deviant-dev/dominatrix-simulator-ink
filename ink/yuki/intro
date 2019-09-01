@@ -36,9 +36,7 @@ First things first. #07
 Always stand up straight with your head high  #08
 when you present yourself to a Mistress. #09
 
-- (stand_straight_fail)
-
-+ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
++ [pose:raised_chin] ->
 + { stand_straight_tries < 2 } [timeout] -> stand_straight
 + { stand_straight_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
@@ -206,9 +204,7 @@ First, puppy has to beg for my attention. #180
 /perform point_down
 Down on your knees and raise your hands to beg. #181
 
-- (pet_beg_fail)
-
-+ [pose:puppy_beg] -> HoldPose(-> pet_beg_fail, -> pet_beg) ->
++ [pose:puppy_beg]
 + { pet_beg_tries < 2 } [timeout] -> pet_beg
 + { pet_beg_tries >= 2 } [timeout] ->
 
@@ -222,9 +218,8 @@ Stand back up now, {player_name}. #184
 
 - (stand_straight2)
 - (stand_straight2_tries)
-- (stand_straight2_fail)
 
-+ [pose:raised_chin] -> HoldPose(-> stand_straight2_fail, -> stand_straight2) ->
++ [pose:raised_chin]
 + { stand_straight2_tries < 2 } [timeout] -> stand_straight2
 + { stand_straight2_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight2
 // + [no] -> CheckIfInterested -> stand_straight
@@ -617,7 +612,7 @@ Come find me when you've earned a reward. #119
 /scene entry.intro4yuki
 
 
--/character yuki angry
+- /character yuki angry
 Oh gee. She's so awful! #120
 Don't you pay any attention to her. #121
 

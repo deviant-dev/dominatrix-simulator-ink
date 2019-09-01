@@ -12,9 +12,8 @@
 /character nega hand_out
 Hand it over. #01
 
-- (give_reward_fail)
-
-+ [pose:present_wrist_reward] -> HoldPose(-> give_reward_fail, -> give_reward) ->
++ [pose:present_wrist_reward]
++ [timeout] -> give_reward
 + [no] -> Nega_CheckIfInterested -> give_reward
 
 - /perform swipe_hand

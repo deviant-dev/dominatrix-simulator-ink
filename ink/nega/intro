@@ -104,9 +104,9 @@ Let's have a look. #29
 Turn around and bend over. #30
 Hands on your knees and ass in the air! #31
 
-- (present_ass_fail)
-+ [pose:present_ass_left] -> HoldPose(-> present_ass_fail, -> present_ass) ->
++ [pose:present_ass_left]
 + [no] -> Nega_CheckIfInterested -> present_ass
++ [timeout] -> present_ass
 
 - /perform idle
 My, my. Your ass turns a nice shade of pink. #32
@@ -135,9 +135,7 @@ TODO: Support 'wiggle' action
 - (stand_straight)
 - (stand_straight_tries)
 
-- (stand_straight_fail)
-
-+ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
++ [pose:raised_chin]
 + { stand_straight_tries < 2 } [timeout] -> stand_straight
 + { stand_straight_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight

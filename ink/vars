@@ -209,14 +209,9 @@ VAR yuki_puppy_difficulty = 1
 - -> entry_hub
 - -> entry_hub
 }
--else:
+- else:
 -> entry_hub
 }
-
-=== HoldPose(-> onFail, -> onTimeout) ===
-+ [pose-success] ->->
-+ [pose-cancel] -> onFail
-+ [timeout] -> onTimeout
 
 === demo_end ===
 /scene LogoRoom.EndScreen

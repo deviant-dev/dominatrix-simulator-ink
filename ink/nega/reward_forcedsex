@@ -15,9 +15,8 @@ I've been waiting a long time for some new blood to show up. #02
 /perform point_down
 Get on the floor, bitch. #03
 On your back. #04
-- (lay_down_fail)
 
-+ [pose:lay_down] -> HoldPose(-> lay_down_fail, -> lay_down) -> lay_down_done
++ [pose:lay_down] -> lay_down_done
 + { lay_down_tries < 2 } [timeout]
     /perform displeased
     Hey, stupid. #05
@@ -73,10 +72,7 @@ Put your wrists above your head! #14
 //equip rope
 //Put your ankles and wrists together! #14
 
-
-- (bound_wrists_fail)
-
-+ [pose:bound_wrists] -> HoldPose(-> bound_wrists_fail, -> bound_wrists) ->
++ [pose:bound_wrists]
 + { bound_wrists_tries < 2 } [timeout] -> bound_wrists
 + { bound_wrists_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> bound_wrists
 // + [no] -> CheckIfInterested -> lay_down
@@ -340,17 +336,14 @@ TODO: Orgasm ending dialogue. Three levels of feedback: Barely made her orgasm, 
     - Not fucking bad. #128
     - At least you made me cum. #129
     - Decent. For a pathetic fleshbag. #130
-    }
+}
 
 - (stand_straight)
 - (stand_straight_tries)
 
-- (stand_straight_fail)
++ [pose:raised_chin]
 
-+ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
-
--> nega_reward_dice.come_again
-
+- -> nega_reward_dice.come_again
 
 
 = outro
@@ -377,9 +370,7 @@ TODO: Orgasm ending dialogue. Three levels of feedback: Barely made her orgasm, 
     I can't have you giving out on me. #65
 }
 
-- (stop_thrust_fail)
-
-+ [pose:lay_down] -> HoldPose(-> stop_thrust_fail, -> stop_thrust) ->
++ [pose:lay_down]
 + { stop_thrust_tries < 2 } [timeout] -> stop_thrust
 //+ { kneel_tries >= 2 } [timeout]
 

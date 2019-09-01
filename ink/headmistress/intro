@@ -23,7 +23,7 @@
     + [continue]
 }
 
--/perform spank_x3 slave
+- /perform spank_x3 slave
 
 You are an unruly, undisciplined, low-born miscreant. #01
 
@@ -151,9 +151,9 @@ Understood? #31
 
 Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
 
-- (present_fail)
+- (present_retry)
 
-+[pose:present_wrists] -> HoldPose(-> present_fail, -> present) ->
++[pose:present_wrists]
     ~obey++
 
 + [timeout]
@@ -164,7 +164,7 @@ Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your
     ~disobey++
     /perform present_wrists
     Like so, foolish {player_name}. #42
-    -> present_fail
+    -> present_retry
 
 - /perform look_up_and_down
 Ah, Bloodstone. Diligence and commendation. #43
@@ -183,9 +183,7 @@ This is a serious infraction. #50
 /perform serious
 Stand at attention! #57
 
-- (stand_straight_fail)
-
-+ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
++ [pose:raised_chin]
 + { stand_straight_tries < 2 } [timeout] -> stand_straight
 + { stand_straight_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight

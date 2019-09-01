@@ -75,11 +75,9 @@ Alight forthwith! #08
  Now, kneel, slave. #225
 
 - (kneel)
-
 - (kneel_tries)
-- (kneel_fail)
 
-+ [pose:kneel] -> HoldPose(-> kneel_fail, -> kneel) ->
++ [pose:kneel]
 + { kneel_tries < 2 } [timeout] -> kneel
 //+ { kneel_tries >= 2 } [timeout]
 
@@ -90,7 +88,7 @@ Alight forthwith! #08
 
 = punish_intro
 
--/perform one_finger
+- /perform one_finger
 The muscles of the ass must remain relaxed between swats. #44
 /perform behold
 This provides an exceptionally pleasing display when they clench #45
@@ -163,7 +161,7 @@ Are they not fortunate to have one such as you to observe? #69
     /perform displeased
     It is a shame you do not value the learning of others. #71
     
--/perform behold
+- /perform behold
 As always, purrs, moans, and words of encouragement #73
 are permitted during the punishment lesson. #74
 
@@ -313,8 +311,7 @@ into a proud and upright position. #114
 /perform curious
 Now. Onto your hands and knees, bauble. #233
 
-- (hands_and_knees_fail)
-+ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
++ [pose:hands_and_knees]
 
 - /perform amused
 
@@ -327,7 +324,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
 
 /perform paddle_desk
 
--Tell me, lump, is that as high as you can lift your hindquarters? #26
+- Tell me, lump, is that as high as you can lift your hindquarters? #26
 
 +[yes]
     ~obey++
@@ -348,7 +345,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
     What are you waiting for? #33
     Your back must strain with the effort of raising your derrier, chattel. #34
 
--/perform satisfied
+- /perform satisfied
 -> Headmistress_GoodJob ->
 
 - /character headmistress lean_forward
@@ -409,9 +406,7 @@ Time to rehearse. #118
 Stand up and present your ass for our guests. #235 
 Let us inspect how well your skin blooms with color. #236
 
-- (present_ass_fail)
-+ [pose:present_ass] -> HoldPose(-> present_ass_fail, -> present_ass) ->
-
++ [pose:present_ass]
 
 - /perform idle
 How exquisite. #237
@@ -428,8 +423,7 @@ with excitement at my ministrations! #240
 Turn to the left. #241
 -> Headmistress_GoodJob ->
 
-- (rotate_left_fail)
-+ [pose:present_ass_left] -> HoldPose(-> rotate_left_fail, -> rotate_left_timeout) ->
++ [pose:present_ass_left]
 
 - /character crowd oos
 
@@ -438,8 +432,7 @@ Turn to the left. #241
 Now turn to the right. #242
 -> Headmistress_GoodJob ->
 
-- (rotate_right_fail)
-+ [pose:present_ass_right] -> HoldPose(-> rotate_right_fail, -> rotate_right_timeout) ->
++ [pose:present_ass_right]
 
 - /character crowd gasps
 
@@ -450,10 +443,7 @@ Ahhh. I am pleased! #243
 /perform curious
 Back onto your hands and knees, slave. #244
 
-- (hands_and_knees_fail2)
-+ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail2, -> hands_and_knees_timeout2) ->
-
--> spank_continue
++ [pose:hands_and_knees] -> spank_continue
 
 = spank_continue
 
@@ -586,9 +576,7 @@ Consider one demerit paid in full. #145
 
 I give you leave to depart. #146
 
-- (stand_straight_fail)
-
-+ [pose:raised_chin] -> HoldPose(-> stand_straight_fail, -> stand_straight) ->
++ [pose:raised_chin]
 
 
 - + [wait 2]
@@ -681,11 +669,9 @@ I give you leave to depart. #146
     }
 
 - (kneel_break)
-
 - (kneel_break_tries)
-- (kneel_break_fail)
 
-+ [pose:kneel] -> HoldPose(-> kneel_break_fail, -> kneel_break) ->
++ [pose:kneel]
 + { kneel_break_tries < 2 } [timeout] -> kneel_break
 //+ { kneel_break_tries >= 2 } [timeout]
 
@@ -704,10 +690,9 @@ I give you leave to depart. #146
     - Back on your hands and knees, slave. #254
     - Resume your spanking position, slave. #255
     - Present your ass, {isBoy: runt|strumpet}. #256
-    }
+}
 
-- (hands_and_knees_fail)
-+ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
++ [pose:hands_and_knees]
 
 - /scene LectureHall.HeadmistressAtBack
 ->->
@@ -739,7 +724,7 @@ Does it feel good to touch yourself, {isBoy: toad|strumpet}? #180
     ~ disobey++
     What a shame. Do it anyways. #183
 
--/character headmistress idle
+- /character headmistress idle
 +[wait 10]
 - -> Headmistress_masturbation_comments->
 

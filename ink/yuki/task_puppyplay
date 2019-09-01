@@ -1,4 +1,5 @@
 === yuki_task_puppyplay ===
+-> select_gender ->
 
 VAR passes = 0
 VAR level = 0
@@ -14,6 +15,9 @@ VAR Learning = false
 /scene atrium.hub
 /music yuki
 /character yuki idle_yuki
+
+{isDebug(): -> ready_revisit  }
+
 + [move:Yuki] 
 -
 
@@ -99,7 +103,7 @@ VAR Learning = false
 { puppy_pose_3 == "roll over": -> pose_back ->}
 { puppy_pose_3 == "horny": -> pose_horny ->}
 
--->->
+- ->->
 
 = intro_learn
 
@@ -277,66 +281,58 @@ VAR Learning = false
 = pose_sit
 
 - (sit)
-
 - (sit_tries)
-- (sit_fail)
 
-+ [pose:puppy_sit] -> HoldPose(-> sit_fail, -> sit) ->
++ [pose:puppy_sit]
 + { sit_tries < 2 } [timeout] -> sit
 //+ { sit_tries >= 2 } [timeout]
 
--->->
+- ->->
 //= pose_neutral
 
 //- (neutral)
 
 //- (neutral_tries)
-//- (neutral_fail)
 
-//+ [pose:puppy_neutral] -> HoldPose(-> neutral_fail, -> neutral) ->
+//+ [pose:puppy_neutral]
 //+ { neutral_tries < 2 } [timeout] -> neutral
 //+ { neutral_tries >= 2 } [timeout]
 
-//-->->
+//- ->->
 = pose_beg
 
 /perform clasp_hands
 {Practice == true:
-
-{cycle:
-    - Show me you're ready to play, {player_name}. <b>"Beg"</b>! #01
-    - Okay! <b>"Beg"</b> to have some fun. #02
-    - Time to practice your puppy poses. Get into <b>"beg"</b>! #03
-    - Yay! Time for more puppy play. Can you <b>"beg"</b> for me? #04
-    - We can do puppy play... if you <b>"beg"</b> first. #05
+    {cycle:
+        - Show me you're ready to play, {player_name}. <b>"Beg"</b>! #01
+        - Okay! <b>"Beg"</b> to have some fun. #02
+        - Time to practice your puppy poses. Get into <b>"beg"</b>! #03
+        - Yay! Time for more puppy play. Can you <b>"beg"</b> for me? #04
+        - We can do puppy play... if you <b>"beg"</b> first. #05
     }
-
 }
 
 {Learning == true:
-
-To show me you're ready, sit back on your knees and <b>"beg"</b>. #06
-And hold your hands like this. #07
-/perform yuki_ready
-I like it when my puppy <b>"begs"</b> for my attention! #08
+    To show me you're ready, sit back on your knees and <b>"beg"</b>. #06
+    And hold your hands like this. #07
+    /perform yuki_ready
+    I like it when my puppy <b>"begs"</b> for my attention! #08
 }
 
 - (beg)
 /perform idle_yuki
+
 {Practice == true:
-
--> Attempts ->
-
+    -> Attempts ->
 }
 
 - (beg_tries)
-- (beg_fail)
 
-+ [pose:puppy_beg] -> HoldPose(-> beg_fail, -> beg) ->
++ [pose:puppy_beg]
 + { beg_tries < 2 } [timeout] -> beg
 //+ { beg_tries >= 2 } [timeout]
 
--->->
+- ->->
 = pose_confused
 
 /perform confused
@@ -367,13 +363,12 @@ Like this! #12
 }
 
 - (confused_tries)
-- (confused_fail)
 
-+ [pose:puppy_confused] -> HoldPose(-> confused_fail, -> confused) ->
++ [pose:puppy_confused]
 + { confused_tries < 2 } [timeout] -> confused
 //+ { confused_tries >= 2 } [timeout]
 
--->->
+- ->->
 = pose_hungry
 
 /perform thoughtful
@@ -403,13 +398,12 @@ To show that you're <b>"hungry"</b>, sit on your heels and hold your left paw li
 }
 
 - (hungry_tries)
-- (hungry_fail)
 
-+ [pose:puppy_hungry] -> HoldPose(-> hungry_fail, -> hungry) ->
++ [pose:puppy_hungry]
 + { hungry_tries < 2 } [timeout] -> hungry
 //+ { hungry_tries >= 2 } [timeout]
 
--->->
+- ->->
 = pose_yes
 
 /perform nod
@@ -432,13 +426,12 @@ To show that you're <b>"hungry"</b>, sit on your heels and hold your left paw li
 }
 
 - (yes_tries)
-- (yes_fail)
 
-+ [pose:puppy_yes] -> HoldPose(-> yes_fail, -> yes) ->
++ [pose:puppy_yes]
 + { yes_tries < 2 } [timeout] -> yes
 //+ { yes_tries >= 2 } [timeout]
 
--->->
+- ->->
 = pose_playful
 
 /perform one_finger
@@ -468,13 +461,12 @@ When you're feeling <b>"playful"</b>, stick your cute little butt into the air a
 }
 
 - (playful_tries)
-- (playful_fail)
 
-+ [pose:puppy_playful] -> HoldPose(-> playful_fail, -> playful) ->
++ [pose:puppy_playful]
 + { playful_tries < 2 } [timeout] -> playful
 //+ { playful_tries >= 2 } [timeout]
 
--->->
+- ->->
 = pose_tired
 
 /perform inspect_kneeling
@@ -505,13 +497,12 @@ You should be looking at the ground. #24
 }
 
 - (tired_tries)
-- (tired_fail)
 
-+ [pose:puppy_tired] -> HoldPose(-> tired_fail, -> tired) ->
++ [pose:puppy_tired]
 + { tired_tries < 2 } [timeout] -> tired
 //+ { tired_tries >= 2 } [timeout]
 
--->->
+- ->->
 = pose_thirsty
 
 /perform lean_forward
@@ -541,13 +532,12 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 }
 
 - (thirsty_tries)
-- (thirsty_fail)
 
-+ [pose:puppy_thirsty] -> HoldPose(-> thirsty_fail, -> thirsty) ->
++ [pose:puppy_thirsty]
 + { thirsty_tries < 2 } [timeout] -> thirsty
 //+ { thirsty_tries >= 2 } [timeout]
 
--->->
+- ->->
 = pose_no
 
 /perform snap_fingers
@@ -569,13 +559,12 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 }
 
 - (no_tries)
-- (no_fail)
 
-+ [pose:puppy_no] -> HoldPose(-> no_fail, -> no) ->
++ [pose:puppy_no]
 + { no_tries < 2 } [timeout] -> no
 //+ { no_tries >= 2 } [timeout]
 
--->->
+- ->->
 = pose_sorry
 
 /perform pouty
@@ -600,9 +589,8 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 }
 
 - (sorry_tries)
-- (sorry_fail)
 
-+ [pose:puppy_sorry] -> HoldPose(-> sorry_fail, -> sorry) ->
++ [pose:puppy_sorry]
 + { sorry_tries < 2 } [timeout] -> sorry
 //+ { sorry_tries >= 2 } [timeout]
 
@@ -632,13 +620,12 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 }
 
 - (back_tries)
-- (back_fail)
 
-+ [pose:puppy_back] -> HoldPose(-> back_fail, -> back) ->
++ [pose:puppy_back]
 + { back_tries < 2 } [timeout] -> back
 //+ { back_tries >= 2 } [timeout]
 
--->->
+- ->->
 
 = pose_horny
 /perform squirm
@@ -663,13 +650,12 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 }
 
 - (horny_tries)
-- (horny_fail)
 
-+ [pose:puppy_horny] -> HoldPose(-> horny_fail, -> horny) ->
++ [pose:puppy_horny]
 + { horny_tries < 2 } [timeout] -> horny
 //+ { horny_tries >= 2 } [timeout]
 
--->->
+- ->->
 
 = Attempts
 
@@ -1017,7 +1003,7 @@ If you keep doing well, I'll expect you to be able to perform without <I>any</I>
 
 + [yes]
 
--/perform one_finger
+- /perform one_finger
 First. #138
 -(first_practice_sit)
 <b>"Sit"</b> like a good puppy. #139
@@ -1072,7 +1058,7 @@ Do you understand? #143
 + [pose:puppy_no] -> pose_no ->
 
     /perform impatient
-    Silly puppy, I think you meant to raise your <I>other</I> paw for <b>"yes."</b> #149
+    Silly puppy, I think you meant to raise your <I>other</I> paw for <b>"yes."</b> #145
 
 - /perform behold
 Now, if you're good, this won't take long. #150
@@ -1287,21 +1273,21 @@ Just raise your right paw! #171
 +[timeout] -> YukiPlayerToCum -> MasturbationCycle
 
 
--/wait 5
+- /wait 5
 
 -> YukiPlayerToCum ->
 
 +[pose:puppy_back_yes] -> pose_yes ->
 +[timeout] 
 
--/wait 5
+- /wait 5
 
 -> YukiPlayerToCum ->
 
 +[pose:puppy_back_yes] -> pose_yes ->
 +[timeout] 
 
--/wait 5
+- /wait 5
 
 -> YukiPlayerToCum ->
 
@@ -1374,19 +1360,16 @@ Do you want to worship my feet, puppy? #185
 +[timeout] -> Yuki_Timeout ->
 +[distracted] -> Yuki_PayAttention -> 
 
--/perform point_down 
+- /perform point_down 
 Come here puppy! #189
 /perform present_foot
 
 - (lick_feet)
 - (lick_feet_tries)
 
-- (lick_feet_fail)
-
-+ [pose:kiss_feet] -> HoldPose(-> lick_feet_fail, -> lick_feet) -> Foot_Licking_Responses 
++ [pose:kiss_feet] -> Foot_Licking_Responses 
 + { lick_feet_tries < 2 } [timeout] -> lick_feet
 + { lick_feet_tries >= 2 } [timeout]
-
 
 - /perform clasp_hands
 Now I'm even happier with you! #190
@@ -1411,9 +1394,8 @@ Bow your head, puppy, and show me you're sorry. #196
 - (sorry)
 
 - (sorry_tries)
-- (sorry_fail)
 
-+ [pose:puppy_sorry] -> HoldPose(-> sorry_fail, -> sorry) ->
++ [pose:puppy_sorry]
 + { sorry_tries < 2 } [timeout] -> sorry
 //+ { sorry_tries >= 2 } [timeout]
 
@@ -1423,7 +1405,7 @@ Are you sorry for your performance {player_name}? #197
 
 +[Yes]
     /perform shake_finger_stern
-    If you feel that bad about it, you should have paid better attention! #198
+    If you feel bad about it, you should have paid better attention! #198
 
 +[No]
     /perform pouty  
@@ -1461,9 +1443,8 @@ Face down on the ground. #207
 - (present_ass)
 
 - (present_ass_tries)
-- (present_ass_fail)
 
-+ [pose:present_ass] -> HoldPose(-> present_ass_fail, -> present_ass) ->
++ [pose:present_ass]
 + { present_ass_tries < 2 } [timeout] -> present_ass
 //+ { present_ass_tries >= 2 } [timeout]
 

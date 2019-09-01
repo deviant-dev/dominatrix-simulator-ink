@@ -66,9 +66,9 @@ Thanks for the treat, fuckup!
 
 
 {shuffle:
-    --> greeting_lick_boot ->
-    --> greeting_edge ->
-    --> greeting_present_ass ->
+    - -> greeting_lick_boot ->
+    - -> greeting_edge ->
+    - -> greeting_present_ass ->
 }
 
 -> nega_reward_dice
@@ -81,33 +81,33 @@ Thanks for the treat, fuckup!
 /perform curious
 
 Get down on all fours like the dog you are, maggot!
-- (hands_and_knees_fail)
-+ [pose:hands_and_knees] -> HoldPose(-> hands_and_knees_fail, -> hands_and_knees_timeout) ->
++ [pose:hands_and_knees]
 
-/perform present_foot
+- /perform present_foot
 -> Nega_GoodJob
 
 Come here and kiss my boot, worm!
 Very good, accept your place beneath me. 
 Embrace that which will hurt you!
 
--   (ask_clean_boot) 
-I stepped outside earlier and got the bottoms of my boots dirty. 
+- (ask_clean_boot) 
+I stepped outside earlier and got the bottoms of my boots dirty.
+
 {cycle:
     - Would you be a dear and clean that up for me with your tongue?
     - Now are you going to clean my boot?
-    }
+}
     
-    +   [Yes]
++ [Yes]
     You're such a dirty whore! I love it! Now get busy!
     -> accept_boot_lick
     
-    +   [No]
++ [No]
     You ungrateful loser! Here's a piece of Obsidian. 
-    - ~ demerits++
-    {   ask_clean_boot < 12:
+    ~ demerits++
+    { ask_clean_boot < 12:
         -> ask_clean_boot
-        -   else:
+    - else:
         -> deny_boot_lick
     }
 

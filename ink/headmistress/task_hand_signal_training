@@ -92,7 +92,7 @@ VAR Learning = false
 { hand_signal_3 == "rest": -> signal_rest ->}
 { hand_signal_3 == "humble": -> signal_humble ->}
 
--->->
+- ->->
 
 = intro_learn
 
@@ -295,13 +295,12 @@ VAR Learning = false
 }
 
 - (beg_tries)
-- (beg_fail)
 
-+ [pose:puppy_beg] -> HoldPose(-> beg_fail, -> beg) ->
++ [pose:puppy_beg]
 + { beg_tries < 2 } [timeout] -> beg
 //+ { beg_tries >= 2 } [timeout]
 
--->->
+- ->->
 
 = signal_wait
 - (wait)

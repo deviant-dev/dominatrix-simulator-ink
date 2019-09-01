@@ -10,7 +10,7 @@
 /music goddess
 /character goddess
 
-{shuffle:
+{ shuffle:
    - -> goddess_monitoring
    - -> goddess_monitoring
    - -> goddess_monitoring

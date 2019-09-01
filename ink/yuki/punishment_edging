@@ -44,9 +44,7 @@ and come here.
     - Come on, feet apart, hands behind your back.
 }
 
--(stand_hands_behind_fail)
-
-+[pose:stand_hands_behind] ->HoldPose(-> stand_hands_behind_fail, ->stand_hands_behind) ->
++[pose:stand_hands_behind]
 +{stand_hands_behind_tries < 2} [timeout] -> stand_hands_behind
 +{stand_hands_behind_tries >= 2} [timeout] -> Yuki_Interested -> stand_hands_behind
 
@@ -194,8 +192,8 @@ I want to play with you myself now!
 Lie down and put your hands over your head. 
 
 - (foot_tease)
--(lay_down_fail)
-+ [pose:lay_down] -> HoldPose(-> lay_down_fail, -> lay_down) ->
+
++ [pose:lay_down]
 + { lay_down_tries < 2 } [timeout] -> lay_down
 + { lay_down_tries >= 2 } [timeout] -> Yuki_Interested -> lay_down
 
@@ -408,7 +406,7 @@ You better mean that, and not be lying to me like a bad {player_name}!
 
 Start {player_name == "boy":
 <> stroking your cock
--else:
+- else:
 <> rubbing your pussy
 }
 <> for me. And the same rules still apply!
@@ -479,7 +477,7 @@ Hm, well if cumming matters that little to you.
 If you're not going to pay attention to me, then I won't pay any more attention to you.
 -> Denial
 
--else:
+- else:
 But you and I both know you can't cum, because that wouldn't be a proper punishment!
 -> Denial
 }
@@ -533,7 +531,7 @@ But naughty slaves only get ruined orgasms.
 
 Now, clean up your mess! You're not leaving until this floor is spotless of your filth {player_name == "boy": 
 <> mister.
--else:
+- else:
 <> missy.
 }
 

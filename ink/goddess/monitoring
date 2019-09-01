@@ -3,7 +3,7 @@
 
 /music goddess
 
-{shuffle:
+{ shuffle:
     - /scene bedroombroken
     - /scene bedroombroken
     - /scene bedroombroken
@@ -15,14 +15,14 @@
 /music goddess
 
 //acknowledging player
-{shuffle:
+{ shuffle:
     - Hello {player_name}. 
     - Greetings little toy.
     - My, my, {player_name}.
 }
 
 //comment that she's watching them
-{shuffle:
+{ shuffle:
     - I've been watching you.
     - I like to keep an eye on my playthings.
     - There are no secrets in my House.
@@ -37,7 +37,7 @@
 
 //comment on reward
 = reward_monitor
-{shuffle:
+{ shuffle:
 - You are performing quite well.
 - Keep up the good work and I might visit you again.
 - Earn ten of those and I'll give you a special treat.
@@ -47,7 +47,7 @@
 
 //comment on punishment
 = punishment_monitor
-{shuffle:
+{ shuffle:
 - I am so disappointed you're not trying harder.
 - I hope you enjoyed the punishment I arranged for you.
 - I'm starting to wonder if you'll ever be worthy.
@@ -57,14 +57,14 @@
 
 //comment on task
 = task_monitor
-{shuffle:
+{ shuffle:
 - Practice makes perfect, {player_name}.
 - So many tasks. So little time. 
 - I see you were born to serve.
 }
 
 //say Goodbye
-{shuffle:
+{ shuffle:
     - Remember... I'm always watching.
     - Leave me. 
     - You have more to learn.

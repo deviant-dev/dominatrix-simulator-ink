@@ -11,15 +11,15 @@ VAR has_early_access = false
 
 === tryEnter(status, -> success, -> fail) ===
 
-{status ? early_access && isWeb:
+{ status ? early_access && isWeb:
     -> success
 }
 
-{status ? early_access:
+{ status ? early_access:
     -> tryCode(success, fail)
 }
 
-{status ? unlocked:
+{ status ? unlocked:
     -> success
 }
 
@@ -66,7 +66,7 @@ VAR has_early_access = false
 
 ~ has_early_access = getCode() == entered_code
 
-- {has_early_access:
+- { has_early_access:
     /notify title="<color=green>Access Granted!</color>" text="You have spoken the sacred words: '{entered_phrase}'.<br/><br/>You may enter."
     /action close_journal
     /wait 4
@@ -184,13 +184,13 @@ VAR has_early_access = false
 
 
 === tryCode(-> success, -> fail) ===
-    {has_early_access:
+    { has_early_access:
         -> success
     - else:
         -> enter_code ->
     }
     
-    {has_early_access:
+    { has_early_access:
         -> success
     - else:
         -> fail

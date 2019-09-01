@@ -142,9 +142,9 @@ I'll bet a disgusting whore like you is really enjoying this, right?
 {~I'm pleased with you!|You've been good!|I had a lot of fun with you!|You weren't as much of a fuckup as I thought you'd be!}
 {~Perhaps you deserve a small reward.|Maybe I can do something a little nice for you.|I'll give you a little treat.}
 {shuffle:
-    --> reward_spit
-    --> reward_boobs
-    --> reward_ass
+    - -> reward_spit
+    - -> reward_boobs
+    - -> reward_ass
 }
 
 - (reward_spit)

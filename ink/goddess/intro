@@ -28,7 +28,6 @@
 
 /scene bedroom.intro
 /ambient rain
-/lock move-approach
 /character goddess
 
 /perform amused
@@ -59,7 +58,7 @@ Did Mistress Yuki-Onna let you in? #05
     /perform sassy
     No? Another curious guest, then. #08
 + (ask_entry2)[timeout]
-    {cycle:
+    { cycle:
         - It's a simple question. Nod your head for yes. #09
         Shake your head for no. #10
         - I asked you a question. #11
@@ -67,7 +66,7 @@ Did Mistress Yuki-Onna let you in? #05
         - I don't like it when people make me wait. #13
         - What makes you think you can ignore me? Answer me. #14
     }
-    {shuffle:
+    { shuffle:
         - Did my Yuki let you in? #15
         - Did that naughty little maid let you in? #16
         - Did an overly enthusiastic maid bring you to me? #17
@@ -287,30 +286,21 @@ But first, let me have a good look at you. #71
 
 /perform point_down
 
-{cycle:
+{ cycle:
     - Come here. #72
     - Come here, {player_name}. #73
     - I <i>said</i> come here! #74
 }
-
-/unlock move-approach
   
 + [move]
-    /lock move-approach
     -> Goddess_GoodJob ->
 + { inspection_tries < 2 } [timeout]
-    /lock move-approach
     -> inspection
 + { inspection_tries >= 2 } [timeout]
-    /lock move-approach
     -> CheckIfInterested -> inspection
-+ [distracted]
-    /lock move-approach
-    -> Goddess_PayAttention -> inspection
++ [distracted] -> Goddess_PayAttention -> inspection
 
-- /lock move-approach
-
-/perform fake_annoyed
+- /perform fake_annoyed
 
 I'm always curious about our new guests. #75
 /perform sassy
@@ -337,7 +327,7 @@ You don't mind, do you? #79
 
 /perform unhappy
 
-{cycle:
+{ cycle:
     - Stand up straight. #84
     - Come on. Lift that head a bit for me. #85
     - Chin up, little one. Let me inspect you. #86
@@ -345,9 +335,7 @@ You don't mind, do you? #79
   
 /perform idle
 
-- (raised_chin_fail)
-
-+ [pose:raised_chin] -> HoldPose(-> raised_chin_fail, -> stand_straight) ->
++ [pose:raised_chin]
 + { stand_straight_tries < 2 } [timeout] -> stand_straight
 + { stand_straight_tries >= 2 } [timeout] -> CheckIfInterested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
@@ -368,15 +356,13 @@ Now then... #90
 - (kneel)
 - (kneel_tries)
 
-{cycle:
+{ cycle:
     - Kneel. #91
     - Get down on your knees. #92
     - You belong on your knees. Down. #93
 }
 
-- (kneel_fail)
-
-+ [pose:kneel] -> HoldPose(-> kneel_fail, -> kneel) ->
++ [pose:kneel]
 + { kneel_tries < 2 } [timeout] -> kneel
 //+ { kneel_tries >= 2 } [timeout]
 + { kneel_tries >= 2 } [timeout] -> CheckIfInterested -> kneel
@@ -407,9 +393,7 @@ I want to see you present yourself more fully to me. #100
   
 /perform idle
 
-- (present_fail)
-
-+ [pose:present] -> HoldPose(-> present_fail, -> present_self) ->
++ [pose:present]
 + { present_self_tries < 2 } [timeout] -> present_self
 //+ { present_self_tries >= 2 } [timeout]
 + { present_self_tries >= 2 } [timeout] -> CheckIfInterested -> present_self
@@ -438,12 +422,10 @@ You may bow before me and kiss my feet. #104
 
 Bow down, kiss, then back to your pose like a good little {player_name}. #105
 
-- (kiss_feet_fail)
-
-+ [pose:kiss_feet] -> HoldPose(-> kiss_feet_fail, -> kiss_feet) -> Goddess_GoodJob ->
++ [pose:kiss_feet]
 + { kiss_feet_tries < 2 } [timeout] -> kiss_feet
 + { kiss_feet_tries >= 2 } [timeout]
- + [no] No?! #106
++ [no] No?! #106
     /perform confused
     Turning down such a reward. You are a strange one. #107
 
@@ -457,9 +439,7 @@ That's enough. #108
 //new line with vo 
 Come back up to your feet, {player_name}. #158
 
-- (stand_up_fail)
-
-+ [pose:raised_chin] -> HoldPose(-> stand_up_fail, -> stand_up) ->
++ [pose:raised_chin]
 
 - You might just prove useful one day, #109
 
