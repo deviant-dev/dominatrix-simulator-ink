@@ -18,12 +18,12 @@
 
     <blockquote><i>You stand inside a spacious Victorian office with a large wooden desk, several sets of bookshelves, and walls lined with curtains. Before you stands a lean and lengthy woman with dark skin and an ample bosom forcefully spanking a young slave with a paddle. Her face is stern and her eyes placid...</i></blockquote>
 
-    + Start
+    + Start -> start
 - else:
-    + [continue]
+    + [continue] -> start
 }
 
-- /perform spank_x3 slave
+- (start) /perform spank_x3 slave
 
 You are an unruly, undisciplined, low-born miscreant. #01
 

@@ -9,6 +9,7 @@ INCLUDE goddess/hub
 INCLUDE goddess/intro
 INCLUDE goddess/lore
 INCLUDE goddess/generic_responses
+INCLUDE goddess/monitoring
 INCLUDE goddess/reward_huge
 INCLUDE headmistress/hub
 INCLUDE headmistress/intro
@@ -39,7 +40,10 @@ INCLUDE yuki/reward_bathe
 INCLUDE yuki/reward_massage
 INCLUDE yuki/task_fanning
 INCLUDE yuki/task_puppyplay
-INCLUDE goddess/monitoring
+INCLUDE yuki/task_puppyplay_intro
+INCLUDE yuki/task_puppyplay_learn
+INCLUDE yuki/task_puppyplay_practice
+
 
 
 VAR debug = false

@@ -1,0 +1,221 @@
+
+=== yuki_task_puppyplay_intro ===
+
+- (intro_again)
+/perform clasp_hands
+
+Do you remember from before, about how much I like puppies? #45
+
++ [yes]
+    /perform bounces
+    Oh good! I'm glad you remember! #46
+
++ [no]
+    /perform thoughtful
+    It <I>was</I> a little while ago. #47
+    I guess you've been pretty busy. #48
+
++ [timeout] -> Yuki_Timeout -> intro_again
++ [distracted] -> Yuki_PayAttention -> intro_again
+
+- /perform squirm
+One of my favorite things in the <i>whole world</i> is playing with a puppy. #49
+/perform curious
+So, I was wondering... #50
+
+- (be_puppy) 
+/perform cocks_head_to_left
+Is that something you're interested in? #51
+Being my puppy? #52
+/perform idle_yuki
+
++ [yes] -> Yuki_AcknowledgeYes ->
+    
++ [no]
+    -- (check_again_puppy)
+    /perform behold
+    Oh, come on. Please? #54
+    /perform clasp_hands
+    It would make me so happy! #55
+
+    ++ [yes] -> Yuki_AcknowledgeYes ->
+    ++ [no]
+        /perform open_arms_shrug
+        Well, okay. I don't really have anything else for you then. #56
+        -> exit
+    ++ [timeout] -> Yuki_Timeout -> check_again_puppy 
+    ++ [distracted] -> Yuki_PayAttention -> be_puppy
+
++ [timeout] -> Yuki_Timeout -> be_puppy
++ [distracted] -> Yuki_PayAttention -> be_puppy
+
+- /perform bounces
+I love having new puppies to play with. #57
+
+/perform lean_forward
+<i>Good</i> puppies. #58
+
+/perform idle_yuki
+And you can't be a good puppy until you learn how to behave like one. #59
+
+/perform impatient
+So pay attention! #60
+
++ [continue] 
++ [distracted] -> Yuki_PayAttention -> 
+
+- /perform curious
+I'm going to teach you to respond to some basic commands first. #61
+/perform thoughtful
+For now, you're just learning, so I'll ignore any mistakes you make. #62
+/perform lean_forward
+But eventually, you're going to be tested on what I've taught you! #63
+
+-(remember_pose)
+/perform shake_finger
+You really, really need to remember this stuff! #64
+Okay? #65
+/perform idle_yuki
+
++ [Yes]
+    /perform nod
+    We'll find out how well you do later. #66
+
++ [No]
+    /perform shake_finger_stern
+    Then you're going to have a hard time later {isBoy:mister|missy}. #67
+    -> Yuki_CheckIfInterested ->
+
++ [timeout] -> Yuki_Timeout -> remember_pose
++ [distracted] -> Yuki_PayAttention -> remember_pose
+
+- /notify title="<color=red>Pro Tip!</color>" text="Grab a pillow for your knees! You're going to need it! Got it?"
+
++ [yes]
+
+- /perform one_finger
+Alrighty, time for your first lesson! #68
+
+/perform idle_yuki
+When you're not doing anything else, you should <b>"sit"</b> and wait for a command. #69
+That should be <i>natural</i> for a puppy! #70
+
+- (puppy_ready)
+/perform curious
+Ready to learn to <b>"sit"</b>? #71
+/perform idle_yuki
+
++ [yes] -> Yuki_AcknowledgeYes ->
++ [no] -> Yuki_CheckIfInterested -> puppy_ready
++ [timeout] -> Yuki_Timeout -> puppy_ready
++ [distracted] -> Yuki_PayAttention -> puppy_ready
+
+- /perform point_down
+Get down on your knees, sit back on your heels, #72
+and rest your hands on the floor between your thighs. #73
+
+/perform shake_finger_stern
+Look forward, not down! #74
+
++ [pose:puppy_sit]
+
+- (understand_sit)
+/perform idle_yuki
+Puppies always wait in this position until they are given a new command. #75
+Understand? #76
+
++[yes]
+    -> Yuki_AcknowledgeYes ->
+
++[no]
+    /perform impatient
+    Always start in the <b>"sit"</b> position whenever you are a puppy, #77
+    then follow commands from there. #78
+    
+    /perform lean_forward
+    Make sense? #79
+
+    ++[yes]
+        -> Yuki_GoodJob ->
+
+    ++[no]
+        /perform disappointed
+        Maybe we should try this some other time. #80
+        /perform point_to_leave
+        Come back later. #81
+        -> exit
+
++ [timeout] -> Yuki_Timeout -> understand_sit
++ [distracted] -> Yuki_PayAttention -> understand_sit
+
+- /perform one_finger
+Now... #82
+Puppies don't nod and shake their head like <i>people</i> do. #83
+
+/perform lean_forward
+And you're a cute little puppy, aren't you? #84
+
+/perform idle_yuki
+To say <b>"yes"</b>, raise your right hand...Er, <i>paw</i>... #85
+Just an eensy, weensy bit. #86
+
++ [pose:puppy_yes] -> Yuki_GoodJob
+
+- /perform squirm
+You're not a boring, old human anymore, are you? #87
+
+/perform idle_yuki
+Raise your left paw slightly to say <b>"no"</b>. #88
+
++ [pose:puppy_no] -> Yuki_GoodJob
+
+- /perform clasp_hands
+Whenever you visit me as a puppy, #89
+I'll make sure you get lots of practice! #90
+
+/perform idle_yuki
+Eventually, I'm going to test you on all your commands. #91
+
+/perform bounces
+Won't that be so much fun? #92
+
+/perform idle_yuki
+Remember to answer like a proper puppy would. #93
+
++ [pose:puppy_yes]
+    /perform bounces
+    You're learning so fast! #94
+    I can't wait until you're fully trained! #95
+
++ [pose:puppy_no]
+    -- (puppy_reminder)
+    /perform disappointed
+    I thought puppies were supposed to have good hearing... #97
+    First, I teach you new poses. #98
+    Then, you practice those poses. #99
+    Eventually, I test you on those poses. #100
+
++ [timeout] 
+    -> Yuki_Interested -> puppy_reminder 
+    
++ [distracted] -> Yuki_PayAttention -> puppy_reminder
+
+- /perform squirm
+If you do well, I'll reward you for being a good {player_name}. #101
+/perform one_finger
+Otherwise, I'll have to punish you for being a bad dog. #102
+
+/perform sighs
+And puppy punishments are <I>not</I> as fun as puppy rewards. #103
+
+/perform excited
+But I'm sure you'll do super well! #104
+
+/perform idle_yuki
+That's it for today, puppy. #105
+/perform bounces
+Come visit me again soon! #106
+
+->->
+
+

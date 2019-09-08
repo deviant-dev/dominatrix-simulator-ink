@@ -13,7 +13,7 @@
 
     <blockquote><i>You find yourself in a dim and dusty attic. Old out-of-place furniture, scraps of paper, and trinkets litter the room. A sullen and attractive woman in a tattered maid's uniform smiles menacingly at you...</i></blockquote>
 
-    + [Continue]
+    + [Continue] -> start
 - else:
     -> start
 }
