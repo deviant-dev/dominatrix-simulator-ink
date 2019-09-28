@@ -1,33 +1,15 @@
 === yuki_task_puppyplay_practice ===
--> select_gender ->
-
-- /notify title="<color=red>TODO!</color>" text="Add in general puppy practice tasks here.\n\nOkay?"
-
-+ [yes]
-
-->->
 
 - (start)
 
 VAR passes = 0
-VAR level = 0
 VAR puppy_pose_1 = "neutral"
 VAR puppy_pose_2 = "yes"
 VAR puppy_pose_3 = "no"
-VAR Practice = false
 VAR Practice_Counts = 0
 VAR Practice_Attempts = 0
 VAR Practice_Goal = 0
-VAR Learning = false
 
-/scene atrium.hub
-/music yuki
-/character yuki idle_yuki
-
-// {isDebug(): -> ready_revisit  }
-
-+ [move:Yuki] 
--
 
 // ====== Begin Debug ======
 
@@ -37,9 +19,6 @@ VAR Learning = false
 
 // ====== End Debug =====
 
-{passes < 4: 
-    -> SetLearning(level) -> ModeSelect
-}
 
 {shuffle:
     - ~ puppy_pose_1 = "beg" 
@@ -47,234 +26,149 @@ VAR Learning = false
     - ~ puppy_pose_1 = "hungry" 
 }
 
-
 {shuffle:
-    - ~ puppy_pose_2 = "yes" 
     - ~ puppy_pose_2 = "playful" 
     - ~ puppy_pose_2 = "tired" 
     - ~ puppy_pose_2 = "thirsty" 
 }
 
-
 {shuffle:
-    - ~ puppy_pose_3 = "no"
     - ~ puppy_pose_3 = "sorry"
     - ~ puppy_pose_3 = "roll over"
     - ~ puppy_pose_3 = "horny"
 }
 
--(ModeSelect)
-{
-    - passes == 0:
-        -> intro_learn
-    - passes < 4:
-        // Only shuffle after we've introduced practice.
-        { stopping:
-            - -> intro_practice
-            - { shuffle:
-                - -> revisit_learn
-                - -> revisit_practice
-            }
-        }
-    - else:
-        // Only shuffle after we've introduced the test
-        { stopping:
-            - -> intro_test
-            - { shuffle:
-                - -> revisit_test
-                - -> revisit_practice
-            }
-        }
+
+/perform idle_yuki
+I think we should practice your poses some more, puppy. #158
+
+/perform point_down
+<b>Sit</b>, puppy. #159
+
++ [pose:puppy_sit] -> Yuki_GoodJob ->
+
+- /perform one_finger
+Be ready for anything you've already learned! #160
+
+- (ready)
+/perform cocks_head_to_left
+Are you listening, puppy? #161
+
++ [pose:puppy_yes]
+    /perform serious
+    Alrighty then! #162
+    
++ [pose:puppy_no]
+    /perform open_arms_shrug
+    It's okay, puppy. I know you can do it! #163
+
+    /wait 5
+    
+    /perform clasp_hands
+    Time's up! #164
+    
+    -> ready
+
++[timeout] -> Yuki_Timeout -> ready 
+
+- /perform behold
+Pay attention! #165
+
+{cycle:
+    - ~ Practice_Goal = 3
+    - ~ Practice_Goal = 5
+    - ~ Practice_Goal = 7
+    - ~ Practice_Goal = 9
+}
+
+{passes == 4:
+
+-> Passed_Loop ->
+
+}
+
+-(Practice_Loop)
+
+{~ -> Director_Pose1 ->| -> Director_Pose2 ->| -> Director_Pose3 ->}
+
+~ Practice_Counts++
+
+{Practice_Counts < Practice_Goal: -> Practice_Loop}
+
+{Practice_Attempts == Practice_Goal: 
+    {yuki_puppy_difficulty == 2: 
+        ~ addReward()
+    }
+}
+
+{Practice_Attempts == Practice_Goal:
+    ~ yuki_puppy_difficulty = 2
+}
+
+{Practice_Attempts > Practice_Goal + 1:
+    ~ yuki_puppy_difficulty = 1
+}
+
+{Practice_Attempts > Practice_Goal + 2:
+    ~ yuki_puppy_difficulty = 1
+    ~ addPunishment()
 }
 
 
+{Practice_Attempts > Practice_Goal + 2:
+
+-> Bad_Ending_Director ->
+
+- else:
+
+-> Good_Ending_Director ->
+
+}
+
+->->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 = Director_Pose1
-{ puppy_pose_1 == "sit": -> pose_sit ->}
 { puppy_pose_1 == "beg": -> pose_beg ->}
 { puppy_pose_1 == "confused": -> pose_confused ->}
 { puppy_pose_1 == "hungry": -> pose_hungry ->}
 ->->
 
 = Director_Pose2
-{ puppy_pose_2 == "yes": -> pose_yes ->}
 { puppy_pose_2 == "playful": -> pose_playful ->}
 { puppy_pose_2 == "tired": -> pose_tired ->}
 { puppy_pose_2 == "thirsty": -> pose_thirsty ->}
 ->->
 
 = Director_Pose3
-{ puppy_pose_3 == "no": -> pose_no ->}
 { puppy_pose_3 == "sorry": -> pose_sorry ->}
 { puppy_pose_3 == "roll over": -> pose_back ->}
 { puppy_pose_3 == "horny": -> pose_horny ->}
 ->->
 
-= intro_learn
-
--> intro_learn_dialogue ->
-
-~ passes++
-~ level++
-
-->DONE
-
-= revisit_learn
-
--> revisit_learn_dialogue ->
-
-~ passes++
-~ level++
-
--> yuki_task_puppyplay
-
-= intro_practice
-
-{ 
-    - passes == 1:
-        -> SetLearning(0) ->
-    - passes == 2:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-        }
-    - passes == 3:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-            - -> SetLearning(2) ->
-        }
-    - passes == 4:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-            - -> SetLearning(2) ->
-            - -> SetLearning(3) ->
-        }
-}
-
--> Summary ->
-
--> intro_practice_dialogue ->
-
-~ Practice_Attempts = 0
-~ Practice_Goal = 0
-~ Practice_Counts = 0
-~ level = passes
-
-->DONE
-
-= revisit_practice
-
-{ 
-    - passes == 1:
-        -> SetLearning(0) ->
-    - passes == 2:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-        }
-    - passes == 3:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-            - -> SetLearning(2) ->
-        }
-    - passes == 4:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-            - -> SetLearning(2) ->
-            - -> SetLearning(3) ->
-        }
-}
-
--> Summary ->
-
--> revisit_practice_dialogue ->
-
-~ Practice_Attempts = 0
-
-~ Practice_Goal = 0
-
-~ Practice_Counts = 0
-
-~ level = passes
-
--> yuki_task_puppyplay
-
-= intro_test
-
-{ 
-    - passes == 1:
-        -> SetLearning(0) ->
-    - passes == 2:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-        }
-    - passes == 3:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-            - -> SetLearning(2) ->
-        }
-    - passes == 4:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-            - -> SetLearning(2) ->
-            - -> SetLearning(3) ->
-        }
-}
-
--> Summary ->
-
--> revisit_practice_dialogue ->
-
-~ Practice_Attempts = 0
-
-~ Practice_Goal = 0
-
-~ Practice_Counts = 0
-
--> yuki_task_puppyplay
-
-= revisit_test
-
-{ 
-    - passes == 1:
-        -> SetLearning(0) ->
-    - passes == 2:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-        }
-    - passes == 3:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-            - -> SetLearning(2) ->
-        }
-    - passes == 4:
-        { shuffle: 
-            - -> SetLearning(0) ->
-            - -> SetLearning(1) ->
-            - -> SetLearning(2) ->
-            - -> SetLearning(3) ->
-        }
-}
-
--> Summary ->
-
--> revisit_practice_dialogue ->
-
-~ Practice_Attempts = 0
-
-~ Practice_Goal = 0
-
-~ Practice_Counts = 0
-
--> yuki_task_puppyplay
 
 //Below are all of the pose checks for each puppy pose.
 
@@ -288,142 +182,88 @@ VAR Learning = false
 //+ { sit_tries >= 2 } [timeout]
 
 - ->->
-//= pose_neutral
 
-//- (neutral)
+= test_pose(pose)
 
-//- (neutral_tries)
+- (again)
+- (pose_tries)
 
-//+ [pose:puppy_neutral]
-//+ { neutral_tries < 2 } [timeout] -> neutral
-//+ { neutral_tries >= 2 } [timeout]
+ + [pose:{pose}] ->->
+ + {pose_tries < 2 } [timeout] -> again
+ 
 
-//- ->->
 = pose_beg
 
 /perform clasp_hands
-{Practice == true:
-    {cycle:
-        - Show me you're ready to play, {player_name}. <b>"Beg"</b>! #01
-        - Okay! <b>"Beg"</b> to have some fun. #02
-        - Time to practice your puppy poses. Get into <b>"beg"</b>! #03
-        - Yay! Time for more puppy play. Can you <b>"beg"</b> for me? #04
-        - We can do puppy play... if you <b>"beg"</b> first. #05
-    }
-}
 
-{Learning == true:
-    To show me you're ready, sit back on your knees and <b>"beg"</b>. #06
-    And hold your hands like this. #07
-    /perform yuki_ready
-    I like it when my puppy <b>"begs"</b> for my attention! #08
+{cycle:
+    - Show me you're ready to play, {player_name}. <b>"Beg"</b>! #01
+    - Okay! <b>"Beg"</b> to have some fun. #02
+    - Time to practice your puppy poses. Get into <b>"beg"</b>! #03
+    - Yay! Time for more puppy play. Can you <b>"beg"</b> for me? #04
+    - We can do puppy play... if you <b>"beg"</b> first. #05
 }
 
 - (beg)
 /perform idle_yuki
 
-{Practice == true:
-    -> Attempts ->
-}
+-> Attempts ->
 
 - (beg_tries)
 
-+ [pose:puppy_beg]
++ [pose:puppy_beg] ->->
 + { beg_tries < 2 } [timeout] -> beg
-//+ { beg_tries >= 2 } [timeout]
 
-- ->->
+
 = pose_confused
 
 /perform confused
 
-{Practice == true:
-
 {cycle:
     - Show me the <b>"confused"</b> pose. #09
     - Are you <b>"confused"</b>? Show me! #10
-    }
-}
-
-{Learning == true:
-
-To show me you're <b>"confused"</b>, tip your head to the left when you're on your hands and knees. #11
-/perform yuki_confused
-
-Like this! #12
-
 }
 
 - (confused)
 /perform idle_yuki
-{Practice == true:
 
 -> Attempts ->
 
-}
-
 - (confused_tries)
 
-+ [pose:puppy_confused]
++ [pose:puppy_confused] ->->
 + { confused_tries < 2 } [timeout] -> confused
-//+ { confused_tries >= 2 } [timeout]
 
-- ->->
+
 = pose_hungry
 
-/perform thoughtful
+- (hungry)
 
-{Practice == true:
+/perform thoughtful
 
 {cycle:
     - Show me <b>"hungry"</b>. #13
     - Is my cute little puppy, <b>"hungry"</b>? #14
-    }
-
 }
 
-- (hungry)
 /perform idle_yuki
-{Practice == true:
 
 -> Attempts ->
 
-}
-
-{Learning == true:
-
-To show that you're <b>"hungry"</b>, sit on your heels and hold your left paw like this. #15
-/perform yuki_hungry
-
-}
-
 - (hungry_tries)
 
-+ [pose:puppy_hungry]
++ [pose:puppy_hungry] ->->
 + { hungry_tries < 2 } [timeout] -> hungry
-//+ { hungry_tries >= 2 } [timeout]
 
-- ->->
+
 = pose_yes
 
 /perform nod
 
-{Practice == true:
-
-{cycle:
-    - Show me the <b>"yes"</b> pose. #16
-    - Do you know how to tell me <b>"yes"</b>, puppy? Let's see it! #17
-    }
-
-}
-
 - (yes)
 /perform idle_yuki
-{Practice == true:
 
 -> Attempts ->
-
-}
 
 - (yes_tries)
 
@@ -436,29 +276,15 @@ To show that you're <b>"hungry"</b>, sit on your heels and hold your left paw li
 
 /perform one_finger
 
-{Practice == true:
-
 {cycle:
     - Let me see you be <b>"playful"</b>. #18
     - Okay! Be my <b>"playful"</b> little puppy. #19
-    }
-
-}
-
-{Learning == true:
-
-/perform squirm
-When you're feeling <b>"playful"</b>, stick your cute little butt into the air and stretch your arms out in front of you! #20
-
 }
 
 - (playful)
 /perform idle_yuki
-{Practice == true:
 
 -> Attempts ->
-
-}
 
 - (playful_tries)
 
@@ -470,31 +296,17 @@ When you're feeling <b>"playful"</b>, stick your cute little butt into the air a
 = pose_tired
 
 /perform inspect_kneeling
-{Practice == true:
 
 {cycle:
     - Perform <b>"tired"</b>, puppy. #21
     - Are you <b>"tired"</b>, puppy? Let me see. #22
-    }
-
 }
 
-{Learning == true:
-
-/perform point_down
-
-Whenever you're <b>"tired"</b>, sit back on your feet and hang your head, puppy. #23
-You should be looking at the ground. #24
-
-}
 
 - (tired)
 /perform idle_yuki
-{Practice == true:
 
 -> Attempts ->
-
-}
 
 - (tired_tries)
 
@@ -506,30 +318,16 @@ You should be looking at the ground. #24
 = pose_thirsty
 
 /perform lean_forward
-{Practice == true:
 
 {cycle:
     - Can you let me know you're <b>"thisty"</b>, puppy? #25
     - Hrm. Let's see <b>"thirsty"</b>, {player_name}. #26
-    }
-
-}
-
-{Learning == true:
-
-Sometimes, busy little puppies get <b>"thirsty"</b>. #27
-/perform yuki_thirsty
-While on your knees, do this to show me you're <b>"thirsty"</b>. #28
-
 }
 
 - (thirsty)
 /perform idle_yuki
-{Practice == true:
 
 -> Attempts ->
-
-}
 
 - (thirsty_tries)
 
@@ -541,22 +339,16 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 = pose_no
 
 /perform snap_fingers
-{Practice == true:
 
 {cycle:
     - Show me the <b>"no"</b> pose. #29
     - Perform the <b>"no"</b> pose. #30
-    }
-
 }
 
 - (no)
 /perform idle_yuki
-{Practice == true:
 
 -> Attempts ->
-
-}
 
 - (no_tries)
 
@@ -565,59 +357,40 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 //+ { no_tries >= 2 } [timeout]
 
 - ->->
+
+
 = pose_sorry
 
-/perform pouty
-{ Practice == true:
-    {cycle:
-        - Whenever you've been a bad puppy, you need to show me you're <b>"sorry"</b>. #31
-        - Perform the <b>"sorry"</b> pose. #32
-    }
-}
-
-{ Learning == true:
-    The <b>"sorry"</b> pose is going to be a <I>little</I> tricky. #33
-    Put your head down AND look at the ground. #34
-    /perform point_down
-    Stretch your arms out partway. #35
-}
-
 - (sorry)
-/perform idle_yuki
-{ Practice == true:
-    -> Attempts ->
+
+/perform pouty
+{cycle:
+    - Whenever you've been a bad puppy, you need to show me you're <b>"sorry"</b>. #31
+    - Perform the <b>"sorry"</b> pose. #32
 }
+
+/perform idle_yuki
+
+-> Attempts ->
 
 - (sorry_tries)
 
-+ [pose:puppy_sorry]
++ [pose:puppy_sorry] ->->
 + { sorry_tries < 2 } [timeout] -> sorry
-//+ { sorry_tries >= 2 } [timeout]
-
-- ->->
 
 
 = pose_back
 /perform behold
-{ Practice == true:
-    { cycle:
-        - Sometimes, I want my puppy on {isBoy:his|her} <b>"back"</b>. #36
-        - Show me how a good puppy lays on their <b>"back"</b>. #37
-    }
-}
 
-{ Learning == true:
-    This one is going to lead to lots of fun! #38
-    /perform bounces
-    Roll onto your <b>"back"</b>, puppy. #39
-    Hands above your chest. #40
+{ cycle:
+    - Sometimes, I want my puppy on {isBoy:his|her} <b>"back"</b>. #36
+    - Show me how a good puppy lays on their <b>"back"</b>. #37
 }
 
 - (back)
 /perform idle_yuki
-{ Practice == true:
-    -> Attempts ->
-}
+
+-> Attempts ->
 
 - (back_tries)
 
@@ -629,25 +402,16 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 
 = pose_horny
 /perform squirm
-{ Practice == true:
-    { cycle:
-        - I know my naughty little puppy will get <b>"horny"</b> sometimes. You need to be able to tell me! #41
-        - Perform the <b>"horny"</b> pose. #42
-    }
-}
 
-{ Learning == true:
-    To show me you're <b>"horny"</b>, arch your back and look up at me! #43
-    /perform clasp_hands
-    It's easy! #44
-
+{ cycle:
+    - I know my naughty little puppy will get <b>"horny"</b> sometimes. You need to be able to tell me! #41
+    - Perform the <b>"horny"</b> pose. #42
 }
 
 - (horny)
 /perform idle_yuki
-{ Practice == true:
-    -> Attempts ->
-}
+
+-> Attempts ->
 
 - (horny_tries)
 
@@ -663,303 +427,6 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 
 ->->
 
-= intro_learn_dialogue
-
-/perform clasp_hands
-
-Do you remember from before, about how much I like puppies? #45
-
-+ [Yes]
-    /perform bounces
-    Oh good! I'm glad you remember! #46
-
-+ [No]
-    /perform thoughtful
-    It <I>was</I> a little while ago. #47
-    I guess you've been pretty busy. #48
-
-+ [timeout] -> Yuki_Timeout -> intro_learn_dialogue
-+ [distracted] -> Yuki_PayAttention -> intro_learn_dialogue
-
--
-/perform squirm
-One of my favorite things in the <i>whole world</i> is playing with a puppy. #49
-/perform curious
-So, I was wondering... #50
-
-- (be_puppy) 
-/perform cocks_head_to_left
-Is that something you're interested in? #51
-Being my puppy? #52
-/perform idle_yuki
-
-+ [Yes]
-    -> Yuki_AcknowledgeYes ->
-    
-+ [No]
-    -- (check_again_puppy)
-    /perform behold
-    Oh, come on. Please? #54
-    /perform clasp_hands
-    It would make me so happy! #55
-
-    ++ [Yes] -> say_yes
-    ++ [No]
-        /perform open_arms_shrug
-        Well, okay. I don't really have anything else for you then. #56
-        -> exit
-    ++ [timeout] -> Yuki_Timeout -> check_again_puppy 
-    ++ [distracted] -> Yuki_PayAttention -> be_puppy
-
-+ [timeout] -> Yuki_Timeout -> be_puppy
-+ [distracted] -> Yuki_PayAttention -> be_puppy
-
-- (say_yes) 
-/perform bounces
-I love having new puppies to play with. #57
-
-/perform lean_forward
-<i>Good</i> puppies. #58
-
-/perform idle_yuki
-And you can't be a good puppy until you learn how to behave like one. #59
-
-/perform impatient
-So pay attention! #60
-
-+ [continue] 
-+ [distracted] -> Yuki_PayAttention -> 
-
-- /perform curious
-I'm going to teach you to respond to some basic commands first. #61
-/perform thoughtful
-For now, you're just learning, so I'll ignore any mistakes you make. #62
-/perform lean_forward
-But eventually, you're going to be tested on what I've taught you! #63
-
--(remember_pose)
-/perform shake_finger
-You really, really need to remember this stuff! #64
-Okay? #65
-/perform idle_yuki
-
-+ [Yes]
-    /perform nod
-    We'll find out how well you do later. #66
-
-+ [No]
-    /perform shake_finger_stern
-    Then you're going to have a hard time later {isBoy:mister|missy}. #67
-    -> Yuki_CheckIfInterested ->
-
-+ [timeout] -> Yuki_Timeout -> remember_pose
-+ [distracted] -> Yuki_PayAttention -> remember_pose
-
-
-- /perform one_finger
-Alrighty, time for your first lesson! #68
-
-/perform idle_yuki
-When you're not doing anything else, you should <b>"sit"</b> and wait for a command. #69
-That should be <i>natural</i> for a puppy! #70
-
-- (puppy_ready)
-/perform curious
-Ready to learn to <b>"sit"</b>? #71
-/perform idle_yuki
-
-+ [yes] -> Yuki_AcknowledgeYes ->
-+ [no] -> Yuki_CheckIfInterested -> puppy_ready
-+ [timeout] -> Yuki_Timeout -> puppy_ready
-+ [distracted] -> Yuki_PayAttention -> puppy_ready
-
-- /perform point_down
-Get down on your knees, sit back on your heels, #72
-and rest your hands on the floor between your thighs. #73
-
-/perform shake_finger_stern
-Look forward, not down! #74
-
--> pose_sit ->
-
-- (understand_sit)
-/perform idle_yuki
-Puppies always wait in this position until they are given a new command. #75
-Understand? #76
-
-+[yes]
-    -> Yuki_AcknowledgeYes ->
-
-+[no]
-    /perform impatient
-    Always start in the <b>"sit"</b> position whenever you are a puppy, #77
-    then follow commands from there. #78
-    
-    /perform lean_forward
-    Make sense? #79
-
-    ++[yes]
-        -> Yuki_GoodJob ->
-
-    ++[no]
-        /perform disappointed
-        Maybe we should try this some other time. #80
-        /perform point_to_leave
-        Come back later. #81
-        -> exit
-
-+ [timeout] -> Yuki_Timeout -> understand_sit
-+ [distracted] -> Yuki_PayAttention -> understand_sit
-
-- /perform one_finger
-Now... #82
-Puppies don't nod and shake their head like <i>people</i> do. #83
-
-/perform lean_forward
-And you're a cute little puppy, aren't you? #84
-
-/perform idle_yuki
-To say <b>"yes"</b>, raise your right hand...Er, <i>paw</i>... #85
-Just an eensy, weensy bit. #86
-
--> Director_Pose2 -> Yuki_GoodJob ->
-
-/perform squirm
-You're not a boring, old human anymore, are you? #87
-
-/perform idle_yuki
-Raise your left paw slightly to say <b>"no"</b>. #88
-
--> Director_Pose3 -> Yuki_GoodJob ->
-
-/perform clasp_hands
-Whenever you visit me as a puppy, #89
-I'll make sure you get lots of practice! #90
-
-/perform idle_yuki
-Eventually, I'm going to test you on all your commands. #91
-
-/perform bounces
-Won't that be so much fun? #92
-
-/perform idle_yuki
-Remember to answer like a proper puppy would. #93
-
-+ [pose:puppy_yes] -> pose_yes ->
-    /perform bounces
-    You're learning so fast! #94
-    I can't wait until you're fully trained! #95
-
-+ [pose:puppy_no] -> pose_no ->
-    -- (puppy_reminder)
-    /perform disappointed
-    I thought puppies were supposed to have good hearing... #97
-    First, I teach you new poses. #98
-    Then, you practice those poses. #99
-    Eventually, I test you on those poses. #100
-
-+ [timeout] 
-    -> Yuki_Interested -> puppy_reminder 
-    
-+ [distracted] -> Yuki_PayAttention -> puppy_reminder
-
--
-/perform squirm
-If you do well, I'll reward you for being a good {player_name}. #101
-/perform one_finger
-Otherwise, I'll have to punish you for being a bad dog. #102
-
-/perform sighs
-And puppy punishments are <I>not</I> as fun as puppy rewards. #103
-
-/perform excited
-But I'm sure you'll do super well! #104
-
-/perform idle_yuki
-That's it for today, puppy. #105
-/perform bounces
-Come visit me again soon! #106
-
-->->
-
-= revisit_learn_dialogue
-/perform clasp_hands
-Hello, puppy! You have more commands to learn. #107
-
-/perform point_down
-<b>"Sit",</b> {player_name}. #108
-
-+[pose:puppy_sit] -> pose_sit ->
-
-- /perform idle_yuki
-If you learn to follow all my commands, #109
-you'll be one step closer to being my perfect little puppy! #110
-/perform one_finger
-Remember, there's no penalty for messing up when we're learning! #111
-
-/perform arm_raise
-Let's begin! #112
-
-~ Learning = true
-
-{
-    - puppy_pose_1 == "beg":
-        First, the <b>beg</b> pose. #113
-    - puppy_pose_1 == "confused":
-        First, the <b>confused</b> pose. #114
-    - puppy_pose_1 == "hungry":
-        First, the <b>hungry</b> pose. #115
-}
-
--> Director_Pose1 ->
-
--> Yuki_GoodJob ->
-/perform excited
-My puppy is so cute! #116
-
-/perform idle_yuki
-{
-    - puppy_pose_2 == "yes":
-        Second for today, the <b>yes</b> pose! #117
-    - puppy_pose_2 == "playful":
-        Second for today, the <b>playful</b> pose! #118
-    - puppy_pose_2 == "tired":
-        Second for today, the <b>tired</b> pose! #119
-    - puppy_pose_2 == "thirsty":
-        Second for today, the <b>thirsty</b> pose! #120
-}
-
--> Director_Pose2 ->
-
--> Yuki_GoodJob ->
-/perform idle_yuki
-
-{
-    - puppy_pose_3 == "no":
-        Your last lesson for today is the <b>no</b> pose! #121
-    - puppy_pose_3 == "sorry":
-        Your last lesson for today is the <b>sorry</b> pose! #122
-    - puppy_pose_3 == "roll over":
-        Your last lesson for today is to roll over onto your <b>back</b>! #123
-    - puppy_pose_3 == "horny":
-        Your last lesson for today is the <b>horny</b> pose! #124
-}
-
--> Director_Pose3 ->
-
-/perform bounces
-Oh, you're such a good puppy, learning all of those poses. #125
-
-/perform behold
-Don't forget, you need to remember those for future practice sessions! #126
-And also tests! #127
-
-/perform idle_yuki
-I hope you come back soon! #128
-
-~ Learning = false
-
-->->
 
 = intro_practice_dialogue
 
@@ -981,7 +448,6 @@ Do you remember them, puppy? #131
     This is not a good start, dog! #133
 
 + [timeout] -> Yuki_Timeout -> remember_three 
-
 + [distracted] -> Yuki_PayAttention -> remember_three
 
 - /perform idle_yuki
@@ -1003,11 +469,8 @@ First. #138
 -(first_practice_sit)
 <b>"Sit"</b> like a good puppy. #139
 
-+[pose:puppy_sit] -> pose_sit ->
-
-+[timeout] -> Yuki_Interested -> first_practice_sit 
-
-+[distracted] -> Yuki_PayAttention -> first_practice_sit
++ [pose:puppy_sit]
++ [timeout] -> Yuki_Interested -> first_practice_sit 
 
 - /perform bounces
 Good, you actually remembered! #140
@@ -1044,13 +507,13 @@ Do you understand? #143
     /perform impatient
     Silly puppy, I think you meant to raise your <I>other</I> paw for <b>"yes."</b> #145
 
-+ [pose:puppy_yes] -> pose_yes ->
++ [pose:puppy_yes]
 
     /perform excited
     -> Yuki_GoodJob ->
     Maybe you don't need this practice after all! #148
 
-+ [pose:puppy_no] -> pose_no ->
++ [pose:puppy_no]
 
     /perform impatient
     Silly puppy, I think you meant to raise your <I>other</I> paw for <b>"yes."</b> #145
@@ -1067,8 +530,6 @@ But if you do poorly, I'm going to punish you. #152
 /perform impatient
 Time to practice! #153
 
-~ Practice = true
-
 -(Intro_Practice_Loop)
 
 {~ -> Director_Pose2 ->|-> Director_Pose3 ->}
@@ -1076,8 +537,6 @@ Time to practice! #153
 ~ Practice_Counts++
 
 {Practice_Counts < 5: -> Intro_Practice_Loop}
-
-~ Practice = false
 
 {Practice_Attempts == Practice_Goal: 
     {yuki_puppy_difficulty == 2: 
@@ -1124,105 +583,6 @@ Time to practice! #153
 
 ->->
 
-= revisit_practice_dialogue
-
-/perform idle_yuki
-I think we should practice your poses some more, puppy. #158
-
-/perform point_down
-<b>Sit,</b> puppy. #159
-
-+[pose:puppy_sit] -> pose_sit -> Yuki_GoodJob ->
-
-- /perform one_finger
-Be ready for anything you've already learned! #160
-
-- (ready_revisit)
-/perform cocks_head_to_left
-Are you listening, puppy? #161
-
-+[pose:puppy_yes] -> pose_yes ->
-    
-    /perform serious
-    Alrighty then! #162
-    
-+[pose:puppy_no] -> pose_no ->
-    
-    /perform open_arms_shrug
-    It's okay, puppy. I know you can do it! #163
-
-    /wait 5
-    
-    /perform clasp_hands
-    Time's up! #164
-
-+[timeout] -> Yuki_Timeout -> ready_revisit 
-+[distracted] -> Yuki_PayAttention -> ready_revisit
-
-- /perform behold
-Pay attention! #165
-
-~ Practice = true
-
-{shuffle:
-
-- ~ Practice_Goal = 3
-
-- ~ Practice_Goal = 5
-
-- ~ Practice_Goal = 7
-
-- ~ Practice_Goal = 9
-
-}
-
-{passes == 4:
-
--> Passed_Loop ->
-
-}
-
--(Practice_Loop)
-
-{~ -> Director_Pose1 ->| -> Director_Pose2 ->| -> Director_Pose3 ->}
-
-~ Practice_Counts++
-
-{Practice_Counts < Practice_Goal: -> Practice_Loop}
-
-~ Practice = false
-
-{Practice_Attempts == Practice_Goal: 
-    {yuki_puppy_difficulty == 2: 
-        ~ addReward()
-    }
-}
-
-{Practice_Attempts == Practice_Goal:
-    ~ yuki_puppy_difficulty = 2
-}
-
-{Practice_Attempts > Practice_Goal + 1:
-    ~ yuki_puppy_difficulty = 1
-}
-
-{Practice_Attempts > Practice_Goal + 2:
-    ~ yuki_puppy_difficulty = 1
-    ~ addPunishment()
-}
-
-
-{Practice_Attempts > Practice_Goal + 2:
-
--> Bad_Ending_Director ->
-
-- else:
-
--> Good_Ending_Director ->
-
-}
-
-->->
 
 
 
@@ -1250,7 +610,7 @@ Hands and legs in the air, just like a real puppy. #167
 /perform open_arms_shrug
 Now, spread your knees. #168
 
-+[pose:puppy_back] -> pose_back ->
++[pose:puppy_back]
 
 - /perform excited
 Time for my good puppy to be milked dry! #169
@@ -1264,7 +624,7 @@ Just raise your right paw! #171
 
 -(MasturbationCycle)
 
-+[pose:puppy_back_yes] -> pose_yes ->
++[pose:puppy_back_yes]
 +[timeout] -> YukiPlayerToCum -> MasturbationCycle
 
 
@@ -1272,21 +632,21 @@ Just raise your right paw! #171
 
 -> YukiPlayerToCum ->
 
-+[pose:puppy_back_yes] -> pose_yes ->
++[pose:puppy_back_yes]
 +[timeout] 
 
 - /wait 5
 
 -> YukiPlayerToCum ->
 
-+[pose:puppy_back_yes] -> pose_yes ->
++[pose:puppy_back_yes]
 +[timeout] 
 
 - /wait 5
 
 -> YukiPlayerToCum ->
 
-+[pose:puppy_back_yes] -> pose_yes ->
++[pose:puppy_back_yes]
 +[timeout] 
 
 
@@ -1300,25 +660,22 @@ Let your Mistress milk your little {isBoy:prick|cunt}. #174
 Such a good {player_name}. #175
 Sit up again, cutie. #176
 
-+ [pose:puppy_sit] -> pose_sit ->
++ [pose:puppy_sit]
 
 - (puppy_well)
 /perform agreement
 I treat my puppies well, don't I? #177
 
-+ [pose:puppy_yes] -> pose_yes ->
-
++ [pose:puppy_yes]
     /perform serious
     That's right. #178
     I want my puppies to come back and play after all! #179
 
-+ [pose:puppy_no] -> pose_no ->
-
++ [pose:puppy_no]
     /perform fake_annoyed
     Your other head seems to disagree with you. #180
 
 + [timeout] -> Yuki_Timeout -> puppy_well
-+ [distracted] -> Yuki_PayAttention -> puppy_well
 
 - /perform sassy
 That was fun, puppy. #181
@@ -1339,21 +696,17 @@ Mmm, I love watching my puppies perform well! #184
 /perform lean_forward
 Do you want to worship my feet, puppy? #185
 
-+[pose:puppy_yes] -> pose_yes ->
-    
++[pose:puppy_yes]
     /perform bounces    
     Yippy! #186
 
-+[pose:puppy_no] -> pose_no ->
-
++[pose:puppy_no]
     /perform open_arms_shrug
     That's fine. #187
     We can do something else. #188
-
--> Good_Practice_1
+    -> Good_Practice_1
 
 +[timeout] -> Yuki_Timeout ->
-+[distracted] -> Yuki_PayAttention -> 
 
 - /perform point_down 
 Come here puppy! #189
@@ -1383,10 +736,10 @@ Bye bye cutie! #193
 That was a very bad session! #194
 I'm so disappointed. #195
 
+- (sorry)
+
 /perform unhappy    
 Bow your head, puppy, and show me you're sorry. #196
-
-- (sorry)
 
 - (sorry_tries)
 
@@ -1398,17 +751,16 @@ Bow your head, puppy, and show me you're sorry. #196
 /perform idle_upset 
 Are you sorry for your performance {player_name}? #197
 
-+[Yes]
++ [yes]
     /perform shake_finger_stern
     If you feel bad about it, you should have paid better attention! #198
 
-+[No]
++ [no]
     /perform pouty  
     I think somebody <I>wants</I> to be a bad dog. #199
 
-+[timeout] -> Yuki_Timeout -> sorry_ask_again 
-
-+[distracted] -> Yuki_PayAttention -> sorry_ask_again
++ [timeout] -> Yuki_Timeout -> sorry_ask_again
++ [distracted] -> Yuki_PayAttention -> sorry_ask_again
 
 
 - /perform disappointed
@@ -1441,7 +793,6 @@ Face down on the ground. #207
 
 + [pose:present_ass]
 + { present_ass_tries < 2 } [timeout] -> present_ass
-//+ { present_ass_tries >= 2 } [timeout]
 
 - /perform cocks_head_to_left
 Well, at least you can manage that, {player_name}. #208
@@ -1493,8 +844,6 @@ Try and do better next time, puppy! #212
 {puppy_pose_1 == "horny": -> pose_horny ->}
 
 {Practice_Counts < Practice_Goal: -> Passed_Test_Loop}
-
-~ Practice = false
 
 ->->
 

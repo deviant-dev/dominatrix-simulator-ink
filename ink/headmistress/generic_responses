@@ -112,27 +112,27 @@ A shame we must rectify. #07
 Arouse yourself and continue until I give you leave to stop. #08
 
 - (masturbate_for_crowd)
-+[wait 3]
++[wait:3]
 -> masturbation_comment->
 
 -
-+[wait 3]
++[wait:3]
 -> masturbation_comment->
 
 -
-+[wait 3]
++[wait:3]
 -> masturbation_comment->
 
 -
-+[wait 3]
++[wait:3]
 -> masturbation_comment->
 
 -
-+[wait 3]
++[wait:3]
 -> masturbation_comment->
 
 - 
-+[wait 5]
++[wait:5]
    - /perform thoughtful
    { cycle:
         - Are you having fun performing for our guests? #09

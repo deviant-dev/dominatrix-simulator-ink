@@ -1,27 +1,3 @@
 === Summary ===
-{web} >> passes = {passes} / level = {level}
+{web} >> passes = {passes}
 ->->
-
-
-=== SetLearning(value)
-~ level = value
-
-{
-    - level == 0:
-        ~ puppy_pose_1 = "neutral"
-        ~ puppy_pose_2 = "yes"
-        ~ puppy_pose_3 = "no"
-    - level == 1:
-        ~ puppy_pose_1 = "beg"
-        ~ puppy_pose_2 = "playful"
-        ~ puppy_pose_3 = "sorry"
-    - level == 2:
-        ~ puppy_pose_1 = "confused"
-        ~ puppy_pose_2 = "tired"
-        ~ puppy_pose_3 = "roll over"
-    - level == 3:
-        ~ puppy_pose_1 = "hungry" 
-        ~ puppy_pose_2 = "thirsty" 
-        ~ puppy_pose_3 = "horny"
-}
-->-> 

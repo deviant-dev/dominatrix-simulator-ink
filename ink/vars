@@ -50,7 +50,6 @@ VAR yuki_puppy_difficulty = 1
 === function addPunishment() ===
 {punishments < 10:
     ~ punishments++
-    /action add_punishment
     ~ return true
 }
 
@@ -62,7 +61,6 @@ VAR yuki_puppy_difficulty = 1
 === function removePunishment() ===
 {punishments > 0:
     ~ punishments--
-    /action remove_punishment
     ~ return true
 }
 
@@ -71,10 +69,17 @@ VAR yuki_puppy_difficulty = 1
 
 ~ return false
 
+=== function removeBigPunishment() ===
+{punishments >= 10:
+    ~ punishments -= 10
+    ~ return true
+}
+
+~ return false
+
 === function addReward() ===
 {rewards < 10:
     ~ rewards++
-    /action add_reward
     ~ return true
 }
 
@@ -86,7 +91,6 @@ VAR yuki_puppy_difficulty = 1
 === function removeReward() ===
 {rewards > 0:
     ~ rewards--
-    /action remove_reward
     ~ return true
 }
 
@@ -98,7 +102,6 @@ VAR yuki_puppy_difficulty = 1
 === function removeBigReward() ===
 {rewards >= 10:
     ~ rewards -= 10
-    /action remove_reward_big
     ~ return true
 }
 

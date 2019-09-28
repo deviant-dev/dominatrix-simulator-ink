@@ -5,7 +5,7 @@
 /scene LogoRoom.TitleScreen
 /music entry
 
-+ [wait 6]
++ [wait:6]
 
 
 - (instructions)

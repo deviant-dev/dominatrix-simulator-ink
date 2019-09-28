@@ -12,19 +12,19 @@
 /character goddess
 /perform bored
 
-+ [wait 3]
++ [wait:3]
 
 - /scene bedroom.flash2
 /character goddess
 /perform flash_squat
 
-+ [wait 3]
++ [wait:3]
 
 - /scene bedroom.flash3
 /character goddess
 /perform flash_step_on
 
-+ [wait 4]
++ [wait:4]
 
 /scene bedroom.intro
 /ambient rain
@@ -472,7 +472,7 @@ I'm sure she can show you the ropes, so to speak. #112
 
 Bye for now, {player_name}. #113
 
-+ [wait 5]
++ [wait:5]
 
 - ~ yuki_hub_status = unlocked
 

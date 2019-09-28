@@ -60,7 +60,7 @@ I want to get off on some deep dicking. #12
     I've got a strap-on right here for you, slut. #13
 }
 
-/action equip-cock
+/action equip_cock
 /perform looming
 
 //player has to masturbate to get "hard" for her
@@ -80,7 +80,7 @@ Put your wrists above your head! #14
 - -> Nega_GoodJob ->
 
 
-/action equip-cock
+/action equip_cock
 
 //- Hold your cock with both hands, slut. #112
 - Brace yourself! #127
@@ -481,7 +481,7 @@ You're going to hold your breath for me. #86
 Let's see what a good piggy you are. #87
 When I say 'go', hold your fucking breath. #88
 
-+ [wait 2]
++ [wait:2]
 Go! #89
 
 {shuffle:

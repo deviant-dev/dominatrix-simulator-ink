@@ -624,7 +624,7 @@ She's going to get in big trouble one of these days! #122
 /perform pouty
 Your poor {isBoy:penis|pussy} must be aching after that. #123
 
-+[wait 2]
++ [wait:2]
 
 - (rules)
 /perform curious

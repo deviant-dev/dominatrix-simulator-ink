@@ -12,6 +12,7 @@ INCLUDE goddess/generic_responses
 INCLUDE goddess/monitoring
 INCLUDE goddess/reward_huge
 INCLUDE headmistress/hub
+INCLUDE headmistress/code
 INCLUDE headmistress/intro
 INCLUDE headmistress/lore
 INCLUDE headmistress/generic_responses
@@ -21,7 +22,6 @@ INCLUDE headmistress/punishment_spanking
 INCLUDE headmistress/reward_cunnilingus
 INCLUDE headmistress/task_flogging
 INCLUDE headmistress/task_hand_signal_training
-INCLUDE headmistress/code
 INCLUDE nega/hub
 INCLUDE nega/intro
 INCLUDE nega/lore
@@ -43,6 +43,7 @@ INCLUDE yuki/task_puppyplay
 INCLUDE yuki/task_puppyplay_intro
 INCLUDE yuki/task_puppyplay_learn
 INCLUDE yuki/task_puppyplay_practice
+INCLUDE yuki/task_teaservice
 
 
 
@@ -143,6 +144,10 @@ VAR web = true
 { isWeb() :
     -> table_of_contents
 - else :
+    // Puppy Play Module
+    // -> yuki_task_puppyplay
+    
+    // Main Game
     -> game_intro
 }
 

@@ -230,7 +230,7 @@ perhaps I'll make it rain for you. #44
 Just this once. #45
 
 /perform squat_swipe_hand
-/action force-dice
+/action force_dice
 
 
 - (intro_reward)

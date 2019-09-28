@@ -71,17 +71,17 @@ For now, you're just learning, so I'll ignore any mistakes you make. #62
 /perform lean_forward
 But eventually, you're going to be tested on what I've taught you! #63
 
--(remember_pose)
+- (remember_pose)
 /perform shake_finger
 You really, really need to remember this stuff! #64
 Okay? #65
 /perform idle_yuki
 
-+ [Yes]
++ [yes]
     /perform nod
     We'll find out how well you do later. #66
 
-+ [No]
++ [no]
     /perform shake_finger_stern
     Then you're going to have a hard time later {isBoy:mister|missy}. #67
     -> Yuki_CheckIfInterested ->
@@ -124,10 +124,10 @@ Look forward, not down! #74
 Puppies always wait in this position until they are given a new command. #75
 Understand? #76
 
-+[yes]
-    -> Yuki_AcknowledgeYes ->
++ [yes] -> Yuki_AcknowledgeYes ->
 
-+[no]
++ [no]
+    -- (ask_sit_again)
     /perform impatient
     Always start in the <b>"sit"</b> position whenever you are a puppy, #77
     then follow commands from there. #78
@@ -135,15 +135,15 @@ Understand? #76
     /perform lean_forward
     Make sense? #79
 
-    ++[yes]
-        -> Yuki_GoodJob ->
+    ++ [yes] -> Yuki_GoodJob ->
 
-    ++[no]
+    ++ [no]
         /perform disappointed
         Maybe we should try this some other time. #80
         /perform point_to_leave
         Come back later. #81
         -> exit
+    ++ [distracted] -> Yuki_PayAttention -> ask_sit_again
 
 + [timeout] -> Yuki_Timeout -> understand_sit
 + [distracted] -> Yuki_PayAttention -> understand_sit
@@ -195,11 +195,8 @@ Remember to answer like a proper puppy would. #93
     Then, you practice those poses. #99
     Eventually, I test you on those poses. #100
 
-+ [timeout] 
-    -> Yuki_Interested -> puppy_reminder 
++ [timeout] -> Yuki_Interested -> puppy_reminder 
     
-+ [distracted] -> Yuki_PayAttention -> puppy_reminder
-
 - /perform squirm
 If you do well, I'll reward you for being a good {player_name}. #101
 /perform one_finger

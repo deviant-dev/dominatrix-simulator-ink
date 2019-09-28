@@ -197,21 +197,21 @@ What say you, {isBoy: toad|strumpet}? #79
 
  - Rub yourself until your {isBoy: shaft is hard|slit is wet}. #227
  
-+ [wait 10]
++ [wait:10]
 
 - -> Headmistress_masturbation_comments->
 
 /wait 0.01
 Pray continue. #228
 
-+ [wait 10]
++ [wait:10]
 
 - -> Headmistress_masturbation_comments->
 
 /wait 0.01
 A little more, I think. #229
  
-+ [wait 10]
++ [wait:10]
 
 - (accept_punishment) What say you, slave, will your {isBoy: rod|folds} please our guests? #230
 
@@ -579,7 +579,7 @@ I give you leave to depart. #146
 + [pose:raised_chin]
 
 
-- + [wait 2]
+- + [wait:2]
 
 // If the player has never seen nega-yuki,
 // send them off to be tempted by her directly.
@@ -725,13 +725,13 @@ Does it feel good to touch yourself, {isBoy: toad|strumpet}? #180
     What a shame. Do it anyways. #183
 
 - /character headmistress idle
-+[wait 10]
++[wait:10]
 - -> Headmistress_masturbation_comments->
 
-+[wait 10]
++[wait:10]
 - -> Headmistress_masturbation_comments->
 
-+[wait 10]
++[wait:10]
 - -> Headmistress_punishment_resumes->
 
 ->->

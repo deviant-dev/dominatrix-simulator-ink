@@ -14,7 +14,7 @@
 
 // Determine which puppyplay session to run
 { stopping:
-    // - -> yuki_task_puppyplay_intro ->
+    - -> yuki_task_puppyplay_intro ->
     - -> yuki_task_puppyplay_learn.session1 ->
     - -> yuki_task_puppyplay_learn.session2 ->
     - -> yuki_task_puppyplay_learn.session3 ->
@@ -22,6 +22,6 @@
 }
 
 // TEMP: Force scene to repeat for now for testing purposes.
--> yuki_task_puppyplay ->
+-> start ->
 
 -> exit

@@ -52,7 +52,7 @@ Oh, please Headmistress! #07
 
 /character headmistress spank_x3 slave
 
-+ [wait 4]
++ [wait:4]
 
 - /perform displeased
 That will be sufficient for today. #08
@@ -79,7 +79,7 @@ Thank you for guiding me, Headmistress. #14
 
 // /perform walks_away
 
-+[wait 2]
++[wait:2]
 
 - /scene LectureHallIntro.Intro3
 
