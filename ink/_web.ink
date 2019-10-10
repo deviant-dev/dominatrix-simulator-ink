@@ -83,11 +83,11 @@ VAR web = true
     // -> yuki_intro.nega_slap
     // -> yuki_intro.caress_question
 
-    -> yuki_task_puppyplay.start
-    // /scene atrium.hub
-    // -> yuki_task_puppyplay.pose_sit
+    // -> yuki_task_puppyplay.start
+    /scene atrium.close
+    /character yuki
+    -> yuki_task_puppyplay_intro.puppy_yes_intro
 
-    // /character yuki
     // /lookat nega
     
     // /character nega head_toss
@@ -145,7 +145,7 @@ VAR web = true
     -> table_of_contents
 - else :
     // Puppy Play Module
-    // -> yuki_task_puppyplay
+    -> yuki_task_puppyplay
     
     // Main Game
     -> game_intro

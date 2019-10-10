@@ -84,7 +84,7 @@ Get down on all fours like the dog you are, maggot!
 + [pose:hands_and_knees]
 
 - /perform present_foot
--> Nega_GoodJob
+-> Nega_GoodJob ->
 
 Come here and kiss my boot, worm!
 Very good, accept your place beneath me. 
@@ -255,7 +255,7 @@ Alright, wretch! You are allowed to face me again.
     -> kneel
 
 - (kneel_success) 
--> Nega_GoodJob
+-> Nega_GoodJob ->
 
 /Nega lifts extended leg slightly
 - Does the sight of my boots turn you on?

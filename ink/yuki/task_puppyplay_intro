@@ -110,8 +110,8 @@ Ready to learn to <b>"sit"</b>? #71
 + [timeout] -> Yuki_Timeout -> puppy_ready
 + [distracted] -> Yuki_PayAttention -> puppy_ready
 
-- /perform point_down
-Get down on your knees, sit back on your heels, #72
+- (puppy_sit) /perform point_down
+Get down on your knees, sit back on your heels,/ #72
 and rest your hands on the floor between your thighs. #73
 
 /perform shake_finger_stern
@@ -155,11 +155,13 @@ Puppies don't nod and shake their head like <i>people</i> do. #83
 /perform lean_forward
 And you're a cute little puppy, aren't you? #84
 
+- (puppy_yes_intro)
+
 /perform idle_yuki
 To say <b>"yes"</b>, raise your right hand...Er, <i>paw</i>... #85
 Just an eensy, weensy bit. #86
 
-+ [pose:puppy_yes] -> Yuki_GoodJob
++ [pose:puppy_yes] -> Yuki_GoodJob ->
 
 - /perform squirm
 You're not a boring, old human anymore, are you? #87
@@ -167,7 +169,7 @@ You're not a boring, old human anymore, are you? #87
 /perform idle_yuki
 Raise your left paw slightly to say <b>"no"</b>. #88
 
-+ [pose:puppy_no] -> Yuki_GoodJob
++ [pose:puppy_no] -> Yuki_GoodJob ->
 
 - /perform clasp_hands
 Whenever you visit me as a puppy, #89
