@@ -1,6 +1,10 @@
 === entry_hub ===
 -> select_gender ->
 
+{ deviation == puppyplay:
+    -> yuki_task_puppyplay
+}
+
 ~ reward_just_removed = false
 ~ punishment_just_removed = false
 

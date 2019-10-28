@@ -12,7 +12,7 @@ Do you remember from before, about how much I like puppies? #45
 
 + [no]
     /perform thoughtful
-    It <I>was</I> a little while ago. #47
+    It <i>was</i> a little while ago. #47
     I guess you've been pretty busy. #48
 
 + [timeout] -> Yuki_Timeout -> intro_again
@@ -205,7 +205,7 @@ If you do well, I'll reward you for being a good {player_name}. #101
 Otherwise, I'll have to punish you for being a bad dog. #102
 
 /perform sighs
-And puppy punishments are <I>not</I> as fun as puppy rewards. #103
+And puppy punishments are <i>not</i> as fun as puppy rewards. #103
 
 /perform excited
 But I'm sure you'll do super well! #104

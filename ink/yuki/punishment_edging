@@ -20,7 +20,7 @@ Somebody isn't a very good slave then.
 ~ disobey++
 /perform annoyed
 
-Now that's just not true, and you know it. Lying counts as being disobedient too. That'll earn you <I>another</I> punishment mark.
+Now that's just not true, and you know it. Lying counts as being disobedient too. That'll earn you <i>another</i> punishment mark.
 
 + [timeout] 
 ->Yuki_Timeout->
@@ -343,7 +343,7 @@ This is why you can't break the rules!
 
 If I want to tease you with my foot, then that's exactly what I'm going to do.
 
-Buuuut, I guess if you <I>really</I> don't like it, I don't have to.
+Buuuut, I guess if you <i>really</i> don't like it, I don't have to.
 
 But come on, you can't tell me this doesn't feel good.
 - (HateQ) Do you really hate this?
@@ -390,7 +390,7 @@ You better mean that, and not be lying to me like a bad {player_name}!
 
 +[No]
 ~ disobey++
-<I>Somebody's</I> enjoying themselves a little too much.
+<i>Somebody's</i> enjoying themselves a little too much.
 
 +[timeout]
 ->Yuki_Timeout->
@@ -413,7 +413,7 @@ Start {player_name == "boy":
 
 You are not allowed to cum!
 
-I want you to really get close this time, like walking a <I>really</I> long, thin tightrope.
+I want you to really get close this time, like walking a <i>really</i> long, thin tightrope.
 
 But at the end of that tightrope, there's nothing! Surprise!
 
@@ -459,14 +459,14 @@ You want that more than anything in the world.
 I know how silly little slave {player_name}'s minds work.
 
 {obey > 5:
-Weeeeell...We <I>are</I> alone here...
+Weeeeell...We <i>are</i> alone here...
 Can you keep a secret?
 +[Yes]
 Oh good. I just feel so bad for you, and you've been so good today. 
 ->RuinedOrgasm
 
 +[No]
-Well, we can't have that now. Then you'd get <I>me</I> in trouble!
+Well, we can't have that now. Then you'd get <i>me</i> in trouble!
 -> Denial
 
 +[timeout]
@@ -486,7 +486,7 @@ But you and I both know you can't cum, because that wouldn't be a proper punishm
 
 I'm going to keep playing with you until you cum. But there's one condition!
 
-You <I>have</I> to tell me right before you cum, so I can catch it!
+You <i>have</i> to tell me right before you cum, so I can catch it!
 
 A mess will give us away!
 

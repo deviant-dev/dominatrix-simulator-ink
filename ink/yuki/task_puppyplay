@@ -6,6 +6,7 @@
 
 /scene atrium.hub
 /music yuki
+/ambient none
 /character yuki idle_yuki
 
 + [move:Yuki]
@@ -21,7 +22,6 @@
     - -> yuki_task_puppyplay_practice ->
 }
 
-// TEMP: Force scene to repeat for now for testing purposes.
--> start ->
++ [continue]
 
--> exit
+- -> exit

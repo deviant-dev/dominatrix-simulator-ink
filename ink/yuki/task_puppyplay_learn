@@ -44,17 +44,20 @@ Remember, there's no penalty for messing up when we're learning! #111
 /perform arm_raise
 Let's begin! #112
 
+/perform idle_yuki
+
 -> pose1 ->
 
 /perform excited
 My puppy is so cute! #116
+/perform idle_yuki
 
 -> pose2 ->
 
 -> Yuki_GoodJob ->
+
 /perform idle_yuki
 
-Your last lesson for today is the <b>sorry</b> pose! #122
 -> pose3 ->
 
 /perform bounces

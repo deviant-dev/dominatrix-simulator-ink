@@ -457,7 +457,7 @@ Have you figured out what's going on here yet? #76
 + [no]
     ~ obey++
     /perform rolls_eyes
-    Typical. <I>She</I> always wants them to learn the hard way. #80
+    Typical. <i>She</i> always wants them to learn the hard way. #80
     
     /perform fake_annoyed
     /lookat yuki

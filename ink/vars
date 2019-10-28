@@ -203,17 +203,22 @@ VAR yuki_puppy_difficulty = 1
 ->->
 
 === exit ===
-{tutorial_complete == "yes": 
-{shuffle:
-- -> goddess_monitoring
-- -> entry_hub
-- -> entry_hub
-- -> entry_hub
-- -> entry_hub
-- -> entry_hub
+{ deviation == puppyplay:
+    /scene none
+    -> yuki_task_puppyplay
 }
+
+{tutorial_complete == "yes": 
+    {shuffle:
+        - -> goddess_monitoring
+        - -> entry_hub
+        - -> entry_hub
+        - -> entry_hub
+        - -> entry_hub
+        - -> entry_hub
+    }
 - else:
--> entry_hub
+    -> entry_hub
 }
 
 === demo_end ===

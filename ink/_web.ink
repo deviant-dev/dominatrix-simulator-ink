@@ -50,6 +50,16 @@ INCLUDE yuki/task_teaservice
 VAR debug = false
 VAR web = true
 
+// Stand-Alone Deviation Name
+
+// This redirects the flow to focus on a specific kink
+// for stand-along deviation modules.
+
+LIST deviations = dominatrix_simulator, puppyplay
+
+VAR deviation = dominatrix_simulator
+// VAR deviation = puppyplay
+
 
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
@@ -83,7 +93,7 @@ VAR web = true
     // -> yuki_intro.nega_slap
     // -> yuki_intro.caress_question
 
-    // -> yuki_task_puppyplay.start
+    -> yuki_task_puppyplay
     /scene atrium.close
     /character yuki
     -> yuki_task_puppyplay_intro.puppy_yes_intro
@@ -140,14 +150,15 @@ VAR web = true
     
 }
 
+// -> exit has the logic for module starting locations
+{ deviation == puppyplay:
+    -> yuki_task_puppyplay
+}
 
 { isWeb() :
     -> table_of_contents
 - else :
-    // Puppy Play Module
-    -> yuki_task_puppyplay
-    
-    // Main Game
+    // Main Game 
     -> game_intro
 }
 
@@ -207,6 +218,7 @@ VAR web = true
     -> unlock_all -> nega_reward_forcedsex
 
 + Yuki Task - Puppy Play
+    ~ deviation = puppyplay
     -> unlock_all -> yuki_task_puppyplay
 
 // + <i>Entry Hub (WIP)</i>
