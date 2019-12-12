@@ -43,6 +43,26 @@ TODO: Replace later with new lines - these are borrowed from bad spanking
 }
 
 ->->
+
+=== Headmistress_AcknowledgeYes ===
+
+TODO: record VO 
+
+{ cycle:
+    - Excellent.
+    - Indeed.
+    - Good.
+    - /perform nod
+    - Hmm. 
+    - Superb.
+    - Mmmhmm.
+    - Just so. 
+    - I should think so.
+    }
+    
+
+->->
+
 === Headmistress_punishment_resumes ===
 //generic responses whenever the Headmistress returns from a break or interruption to resume a punishment
 
@@ -60,16 +80,34 @@ TODO: Replace later with new lines - these are borrowed from bad spanking
     
 ->->
 
+=== Headmistress_Timeout ===
+
+TODO: Record VO 
+
+{cycle:
+    - Answer me, wretch.
+    - I am waiting, {player_name}.
+    - Perhaps you think I am not worthy of your time.
+    - Where is your head, slave? Respond.
+    
+    - Hey {player_name}, I'm not talking to myself you know! #06
+    - Answer me, {player_name}! #07
+    - Are you even listening? #08
+    - Focus, {player_him}.  #09
+}
+
+->->
+
 === Headmistress_PayAttention ===
 /perform amused
 
 { cycle:
     - The focus of your attention must remain on me. #01
     - Allowing yourself to be distracted #02
-    is a trait we must cure you of, {isBoy: toad|hussy}! #03
+    is a trait we must cure you of, {isBoy:toad|hussy}! #03
     - Eyes on me, immediately, slave! #04
-    - Am I tedious, {isBoy: oaf|strumpet}? #05
-    - A proper slave maintains focus on {isBoy: his|her} instruction. #06
+    - Am I tedious, {isBoy:oaf|strumpet}? #05
+    - A proper slave maintains focus on {isBoy:his|her} instruction. #06
     - I require your unwavering attention. #07
     - I am your focal point, slave. Attend! #08
     - You must find me tedious, heathen. Your attention is slack! #09
@@ -93,13 +131,13 @@ TODO: Replace later with new lines - these are borrowed from bad spanking
 
 === Headmistress_player_masturbate ===
 Our guests are frenzied and demand more. #01
-{isBoy: Wrap your hand around your rod|slip your fingers between your nether lips} and entertain them. #02
+{hasPenis: Wrap your hand around your rod|slip your fingers between your nether lips} and entertain them. #02
 
 /character headmistress idle
 /wait 2
 All eyes are on you, slave. #03
 /wait 2
-Are you {isBoy: hard|wet}? #04
+Are you {hasPenis: hard|wet}? #04
 
 +[yes]
 ~ obey++
@@ -136,11 +174,11 @@ Arouse yourself and continue until I give you leave to stop. #08
    - /perform thoughtful
    { cycle:
         - Are you having fun performing for our guests? #09
-        - Would you like to keep going, {isBoy: toad|strumpet}? #10
-        - Does our little {isBoy: runt|poppet} need more time? #11
+        - Would you like to keep going, {isBoy:toad|strumpet}? #10
+        - Does our little {isBoy:runt|poppet} need more time? #11
         - Are you going to ask our guests to continue waiting? #12
-        - Still working that {isBoy: shaft|slit}? #13
-        - Our {isBoy: toad|strumpet} needs more time. Yes? #14
+        - Still working that {hasPenis:shaft|slit}? #13
+        - Our {isBoy:toad|strumpet} needs more time. Yes? #14
     } 
     +[yes]
     /character headmistress idle
@@ -167,12 +205,12 @@ Arouse yourself and continue until I give you leave to stop. #08
 { shuffle:
     - Your suffering is prolonged when you fail to try. #01
     - At least you may please us with this performance. #02
-    - Thy {isBoy: turgid rod|inflamed twat} is our only consolation. #03
+    - Thy {hasPenis: turgid rod|inflamed twat} is our only consolation. #03
     - Your training will be thorough. #04
-    - {isBoy: Bounce your shaft|Spread your nether lips} for us. #05
+    - {hasPenis:Bounce your shaft|Spread your nether lips} for us. #05
     - We enjoy your suffering {player_name}. #06
     - Harder, that you may suffer more fully. #07
-    - You disappoint us when you fail to stay {isBoy: erect|swollen}. #08
+    - You disappoint us when you fail to stay {hasPenis:erect|swollen}. #08
     - Your discomfort is our succor. #09
     - Ahhh. Your torment is bewitching. #10
     - You may not stop until I give you leave. #11
@@ -191,9 +229,9 @@ Arouse yourself and continue until I give you leave to stop. #08
 
 === Headmistress_masturbation_comments ===
 { shuffle:
-    - A fine demonstration {isBoy: toad|strumpet}. #01
+    - A fine demonstration {isBoy:toad|strumpet}. #01
     - We have a little whore, guests! #02
-    - Do you think {isBoy: he|she} is enjoying {isBoy: himself|herself}? #03
+    - Do you think {isBoy:he|she} is enjoying {isBoy:himself|herself}? #03
       /character crowd cheers
     - Exhibit control lest your arm tire. #04
       /character headmistress sassy
@@ -201,13 +239,13 @@ Arouse yourself and continue until I give you leave to stop. #08
     - What a fine display. #06
     - Look at those deft fingers. #07
     - Show some restraint, you painted Jezebel!#08
-    - A {isBoy: hard shaft|wet slit} is a pleasing {isBoy: shaft|slit}. #09
-    - Proper performance for guests is a requirement {isBoy: toad|strumpet}. #10
+    - A {hasPenis:hard shaft|wet slit} is a pleasing {hasPenis:shaft|slit}. #09
+    - Proper performance for guests is a requirement {isBoy:toad|strumpet}. #10
     - One must be proud to display their arousal. #11
     - You please our guests with your performance. #12
     - You have earned this small pleasure. #13
     - /character crowd oos
-    - You are a divine {isBoy: reprobate|harlot}. #15
+    - You are a divine {isBoy:reprobate|harlot}. #15
     - -> Headmistress_GoodJob ->
     - -> Headmistress_GoodJob ->
     - -> Headmistress_GoodJob ->

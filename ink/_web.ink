@@ -22,28 +22,40 @@ INCLUDE headmistress/punishment_spanking
 INCLUDE headmistress/reward_cunnilingus
 INCLUDE headmistress/task_flogging
 INCLUDE headmistress/task_hand_signal_training
+INCLUDE headmistress/train_spanking
 INCLUDE nega/hub
 INCLUDE nega/intro
 INCLUDE nega/lore
 INCLUDE nega/generic_responses
+INCLUDE nega/punishment_tease
+INCLUDE nega/punishment_trampling
 INCLUDE nega/reward_dice
 INCLUDE nega/reward_forcedsex
-INCLUDE nega/punishment_trampling
+INCLUDE nega/reward_tease
 INCLUDE yuki/hub
 INCLUDE yuki/code
 INCLUDE yuki/generic_responses
 INCLUDE yuki/intro
 INCLUDE yuki/lore
 INCLUDE yuki/punishment_edging
+INCLUDE yuki/punishment_puppyplay_spanking
+INCLUDE yuki/punishment_puppyplay_cage
 INCLUDE yuki/review
 INCLUDE yuki/reward_bathe
 INCLUDE yuki/reward_massage
+INCLUDE yuki/reward_puppyplay_milking
+INCLUDE yuki/reward_puppyplay_lickfeet
 INCLUDE yuki/task_fanning
 INCLUDE yuki/task_puppyplay
 INCLUDE yuki/task_puppyplay_intro
 INCLUDE yuki/task_puppyplay_learn
 INCLUDE yuki/task_puppyplay_practice
 INCLUDE yuki/task_teaservice
+INCLUDE yuki/train_spanking
+INCLUDE headmistress/task_handsignals
+INCLUDE headmistress/task_handsignals_intro
+INCLUDE headmistress/task_handsignals_learn
+INCLUDE headmistress/task_handsignals_practice
 
 
 
@@ -67,6 +79,9 @@ VAR deviation = dominatrix_simulator
     // -> test_audio
     // -> test_marks
     
+    // -> game_intro.choices
+    
+    // -> test_multiple_poses
     
     // --- Goddess Jumps ---
     
@@ -80,7 +95,8 @@ VAR deviation = dominatrix_simulator
     // -> goddess_intro.stand_straight
     // -> goddess_intro.inspection
     // -> goddess_intro.ByeForNow
-    //-> goddess_monitoring
+    // -> goddess_intro.flash_1
+    // -> goddess_monitoring
     
     
     // --- Yuki Jumps ---
@@ -93,10 +109,13 @@ VAR deviation = dominatrix_simulator
     // -> yuki_intro.nega_slap
     // -> yuki_intro.caress_question
 
-    -> yuki_task_puppyplay
-    /scene atrium.close
-    /character yuki
-    -> yuki_task_puppyplay_intro.puppy_yes_intro
+    // -> yuki_task_puppyplay
+
+    // /scene atrium.close
+    // /character yuki
+    // -> yuki_task_puppyplay_intro.puppy_yes_intro -> exit
+    // -> yuki_reward_puppyplay_milking -> exit 
+    // -> yuki_punishment_puppyplay_spanking
 
     // /lookat nega
     
@@ -114,7 +133,7 @@ VAR deviation = dominatrix_simulator
 
     // /character headmistress
 
-    // -> headmistress_intro
+     -> headmistress_intro
 
     // ~ yuki_hub_status = unlocked
     // ~ headmistress_hub_status = unlocked
@@ -148,6 +167,8 @@ VAR deviation = dominatrix_simulator
     // -> nega_reward_dice
     // -> nega_reward_forcedsex
     
+    // -> nega_reward_tease
+    
 }
 
 // -> exit has the logic for module starting locations
@@ -174,6 +195,71 @@ VAR deviation = dominatrix_simulator
     
 - /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
 -> test_marks
+
+
+=== test_multiple_poses ===
+/scene Entry.PoseTest
+
+- (move_0)
+
+/wait 1
++ [continue]
+-
+
++ [move:90] -> move_90
+// + [move:180] -> move_180
+// + [move:-90] -> move_270
++ [pose:puppy_yes]
+    /notify title="You answered 'YES'."
++ [pose:puppy_no]
+    /notify title="You answered 'NO'."
+- -> move_0
+
+- (move_90)
+
+/wait 1
++ [continue]
+-
+
+// + [move:0] -> move_0
++ [move:180] -> move_180
+// + [move:-90] -> move_270
++ [pose:puppy_yes]
+    /notify title="You answered 'YES'."
++ [pose:puppy_no]
+    /notify title="You answered 'NO'."
+- -> move_90
+
+- (move_180)
+
+/wait 1
++ [continue]
+-
+
+// + [move:90] -> move_90
+// + [move:0] -> move_0
++ [move:-90] -> move_270
++ [pose:puppy_yes]
+    /notify title="You answered 'YES'."
++ [pose:puppy_no]
+    /notify title="You answered 'NO'."
+- -> move_180
+
+- (move_270)
+
+/wait 1
++ [continue]
+-
+
+// + [move:90] -> move_90
+// + [move:180] -> move_180
++ [move:0] -> move_0
++ [pose:puppy_yes]
+    /notify title="You answered 'YES'."
++ [pose:puppy_no]
+    /notify title="You answered 'NO'."
+- -> move_270
+
 
 // === test_audio ===
 

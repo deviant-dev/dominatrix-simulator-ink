@@ -1,7 +1,7 @@
 === nega_reward_dice ===
 -> select_gender ->
 
-~ intro = nega_reward_dice == 1
+~ isIntro = nega_reward_dice == 1
 
 /scene attic.negaintro
 /music nega
@@ -49,8 +49,8 @@ Results: <>
 ~ rollToText(result3)
 
 {
-    - intro && result > 0: -> intro_reward 
-    - intro: -> intro_change_dice 
+    - isIntro && result > 0: -> intro_reward 
+    - isIntro: -> intro_change_dice 
     
     - result == 3: -> result_reward_hard 
     - result == 2: -> result_reward_light 

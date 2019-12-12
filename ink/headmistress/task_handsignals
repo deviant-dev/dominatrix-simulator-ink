@@ -1,0 +1,27 @@
+=== headmistress_task_handsignals ===
+
+-> select_gender ->
+
+- (start)
+
+/scene LectureHall.Punishment_Spanking
+/music headmistress
+/ambient crowd
+/action raise_curtains
+
++ [move:Headmistress]
+
+- (session_selection)
+
+// Determine which handsignal session to run
+{ stopping:
+    - -> headmistress_task_handsignals_intro ->
+    - -> headmistress_task_handsignals_learn.session1 ->
+    - -> headmistress_task_handsignals_learn.session2 ->
+    - -> headmistress_task_handsignals_learn.session3 ->
+    - -> headmistress_task_handsignals_practice ->
+}
+
++ [continue]
+
+- -> exit

@@ -56,7 +56,7 @@ I want to get off on some deep dicking. #12
 
 // Handle cockification for female players.
 
-{not isBoy:
+{not hasPenis:
     I've got a strap-on right here for you, slut. #13
 }
 
@@ -139,7 +139,7 @@ Aren't you? #24
 - /perform looming
 I'm about to use you like the eager little whore you are. #31
 Let's find out how well you can fuck. #32
-I'm going to ride that {isBoy: cock|strap-on} of yours #33
+I'm going to ride that {hasPenis: cock|strap-on} of yours #33
 until I cum my fucking brains out! #34
 
 Would you like that, {isBoy: prick|bitch}? #35

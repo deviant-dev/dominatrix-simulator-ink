@@ -1,0 +1,119 @@
+=== nega_punishment_tease ===
+ -> select_gender ->
+ 
+/scene attic.punishment_tease
+/music nega-punishment
+/ambient off
+/character nega annoyed
+
+- (tease_intro)
+
+
+{shuffle:
+    - Fucking dice... spoiling my fun.
+    - It's so hard to resist the urge to crush you.
+    - I'm going to taunt you with what a worse roll gets you.
+    - I'm going to hook you like a fish.
+    - Let's get this over with so I can go find some /real/ fun.
+}
+  
+
+/perform angry
+{shuffle:
+    - You're a disgusting stain.
+    - You're a nasty pile of shit.
+    - You're a vomit inducing waste of time.
+    - You're a boring, simpering drain on my energy.
+    - You’re a ugly, little wretch.
+}
+  //TODO: update script to be meaner and harder on player. Follow same structure    
+Aren't you?
+    +[yes]
+        That's right. 
+        Just a rotten little bitch I should crush under my boot.
+    +[no]
+        Then I guess it's time I teach you your place.
+   
+- (kneel_tease)
+
+{shuffle:
+    - Get down on your goddamn knees.
+    - On your knees, bitch.
+    - Kneel, cunt.
+    - Down! I want you on your knees.
+    }
+
+- (kneel_tries)
+
++ [pose:kneel]
++ { kneel_tries < 2 } [timeout] -> kneel_tease
++ { kneel_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> kneel_tease
+
+- -> Nega_GoodJob ->
+
+/perform angry
+You can’t fucking hide from me.
+I see what you are.
+
+-> Nega_Insult ->
+
+/perform lean_forward
+You just can’t stay away, can you?
+
++ [yes]
+    Then what the fuck are you doing here?
++ [no]
+    Too curious for your own good.
+    That’s perfect. I like abusing stupid little pricks.
+
+- (nega_apologize)
+Apologize for pretending to be anything else.
+Lick the ground!
+
++ [pose:kiss_feet]
++ [timeout] -> Nega_BadJob -> nega_apologize
+
+- Keep going until I tell you to stop.
+
++ [pose:kiss_feet]
+
+- That’s it, little bitch.
+Show me how sorry you are.
+
++ [pose:kiss_feet]
+
+- Don’t fucking lie to me again.
+Now get back up on your knees.
+
++ [pose:kneel]
+
+{shuffle:
+    - -> tease_spitting ->
+    - -> tease_puppy_horny ->
+    - -> tease_kiss_floor ->
+    - -> tease_slapping ->
+}
+
+- -> exit
+
+= tease_spitting
+TODO: Player has to get into a certain position for Nega to spit on them. This scene will focus on taunting the player for how desperate they are to serve her that they will open wide to receive her spit.
+/perform 
+
+->->
+
+= tease_puppy_horny
+TODO: Player must have completed puppy play learning for this scene to be available. Nega tells them to show her how horny they are as a puppy and then mocks them for begging for her attention and being less than human.
+/perform 
+
+->->
+
+= tease_kiss_floor
+TODO: Player kisses the floor for a set amount of time. This scene will focus on humiliating the player by being unworthy to even touch her body and only being able to grovel and worship the ground she walks on.
+
+->->
+
+= tease_slapping
+TODO: Player has to endure slapping while kneeling. This scene will focus on Nega telling the player they don’t get to be touched nicely. They aren’t worthy of it. She will slap them and get them to slap their genitals / nipples.
+
+->->

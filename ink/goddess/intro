@@ -6,25 +6,24 @@
 
 - (flash_scenes)
 
+- (flash_1)
+/scene bedroom.flash1
 /music goddess
 /ambient orgy
-/scene bedroom.flash1
-/character goddess
-/perform bored
 
-+ [wait:3]
++ [wait:{isDebug():30|3}]
 
-- /scene bedroom.flash2
-/character goddess
-/perform flash_squat
+- (flash_2)
+/scene bedroom.flash2
 
-+ [wait:3]
++ [wait:{isDebug():30|3}]
 
-- /scene bedroom.flash3
-/character goddess
-/perform flash_step_on
+- (flash_3)
+/scene bedroom.flash3
 
-+ [wait:4]
++ [wait:{isDebug():30|4}]
+
+- (debug_jump)
 
 /scene bedroom.intro
 /ambient rain
@@ -42,8 +41,6 @@ Ah, well... #03
 /perform fake_annoyed
 
 How did you get in here? #04
-
-- (debug_jump)
 
 Did Mistress Yuki-Onna let you in? #05
 
@@ -101,6 +98,8 @@ Are you? #22
     
     Now, that is a very honest answer. #25
     Perhaps I will give you a chance to prove your worth. #26
+    
+    /wait
     
 + (ask_exceptional_again)[timeout]
     Do you think you're exceptional? #27
@@ -293,6 +292,7 @@ But first, let me have a good look at you. #71
 }
   
 + [move]
+    /wait
     -> Goddess_GoodJob ->
 + { inspection_tries < 2 } [timeout]
     -> inspection
@@ -440,6 +440,8 @@ That's enough. #108
 Come back up to your feet, {player_name}. #158
 
 + [pose:raised_chin]
++ { stand_up_tries < 2} [timeout] -> stand_up
++ { stand_up_tries >= 2} [timeout]
 
 - You might just prove useful one day, #109
 

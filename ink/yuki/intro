@@ -493,7 +493,7 @@ Have you figured out what's going on here yet? #76
 /character nega caress_breasts
 /lookat player
 
-I bet that {isBoy:cock|cunt} of yours works just fine. #88
+I bet that {hasPenis:cock|cunt} of yours works just fine. #88
 
 /perform sassy
 Let's find out. Shall we? #89
@@ -513,7 +513,7 @@ Let's find out. Shall we? #89
 
 + [timeout]
     /perform fake_annoyed
-    Should we find out how well your {isBoy:dick|pussy} works? #92
+    Should we find out how well your {hasPenis:dick|pussy} works? #92
     -> genitals
     
 + [distracted] -> Nega_PayAttention -> genitals
@@ -525,7 +525,7 @@ Behave, Nega!  #93
 /character nega caress_genitals
 
 That's it... #94
-Let me feel your {isBoy:cock swell|pussy drip}. #95
+Let me feel your {hasPenis:cock swell|pussy drip}. #95
 
 Mmmm. Just as I thought. #96
 You want to be a little fuck toy, don't you? #97
@@ -534,7 +534,7 @@ You want to be a little fuck toy, don't you? #97
 + [yes]
     ~ disobey++
     What a naughty {player_name}. #98
-    I feel how {isBoy:hard|wet} you are. #99
+    I feel how {hasPenis:hard|wet} you are. #99
     Do you want to be my fuck toy? #100
     
     ++ [yes]
@@ -622,7 +622,7 @@ She's going to get in big trouble one of these days! #122
 - {caress_skipped: -> rules}
 
 /perform pouty
-Your poor {isBoy:penis|pussy} must be aching after that. #123
+Your poor {hasPenis:penis|pussy} must be aching after that. #123
 
 + [wait:2]
 
@@ -697,7 +697,7 @@ But here I am! #148
 Now we can really have some fun! #149
 
 /perform pleased
-Shall I rub your poor aching {isBoy: cock|cunt} again #150
+Shall I rub your poor aching {hasPenis: cock|cunt} again #150
 while I do? #151
 
 + [yes]
@@ -715,7 +715,7 @@ while I do? #151
 /perform dance_tease
 Be a good {player_name}, do what you're told, and  #157
 /perform sassy
-that little {isBoy: cock|cunt} of yours is going to #158
+that little {hasPenis: cock|cunt} of yours is going to #158
 have so much fun when you come see me. #159
     
 /perform lean_forward

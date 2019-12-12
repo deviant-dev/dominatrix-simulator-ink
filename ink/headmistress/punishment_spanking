@@ -4,9 +4,10 @@ VAR headmistress_spanking_count = 0
 VAR headmistress_spanking_break_count = 0
 VAR headmistress_spanking_mistakes = 0
 
+
 === headmistress_punishment_spanking ===
 
-~ intro = headmistress_punishment_spanking == 1
+~ isIntro = headmistress_punishment_spanking == 1
 
 TODO: Support shuffling swats and equipment
 
@@ -26,7 +27,7 @@ TODO: Support shuffling swats and equipment
 // }
 
 // Just use the hand for now.
-~headmistress_spanking_implement = "hand"
+~ headmistress_spanking_implement = "hand"
 
 ~ headmistress_spanking_break_count = 0
 ~ headmistress_spanking_count = 0
@@ -39,7 +40,14 @@ TODO: Support shuffling swats and equipment
 // /equip {headmistress_spanking_implement}
 // /perform circle_desk
 
-{intro: 
+-> get_on_desk ->
+
+{isIntro: -> punish_intro | -> punish_continue}
+
+
+= get_on_desk
+
+{isIntro: 
     Punishments are administered with the slave perched upon my desk. #05
 - else:
     For your transgressions, #01
@@ -49,7 +57,7 @@ TODO: Support shuffling swats and equipment
 /character headmistress point_paddle_at_desk
 Alight forthwith! #08
 
-- (get_on_desk)
+- (prompt)
 /perform idle
 
 + [move:get_on_desk]
@@ -57,7 +65,7 @@ Alight forthwith! #08
 + [timeout]
     -- (get_on_desk_timed_out)
     Our guests are waiting.<br/>Tut. Tut. #12
-    -> get_on_desk
+    -> prompt
 -
 {not get_on_desk_timed_out:
     ~obey++
@@ -81,10 +89,8 @@ Alight forthwith! #08
 + { kneel_tries < 2 } [timeout] -> kneel
 //+ { kneel_tries >= 2 } [timeout]
 
-- -> Headmistress_GoodJob ->
+- -> Headmistress_GoodJob ->->
 
-
-{intro: -> punish_intro | -> punish_continue}
 
 = punish_intro
 
@@ -172,7 +178,7 @@ What say you, {isBoy: toad|strumpet}? #79
 
 {cycle:
     - Will our esteemed guests be enthralled #80
-     by {isBoy:your turgid bouncing cock?|the glistening of your cunt?} #81
+     by {hasPenis:your turgid bouncing cock?|the glistening of your cunt?} #81
     - Do you feel their eyes on you? #82
     - Are you throbbing in anticipation? #83
     - Do you want to touch yourself? #84
@@ -195,7 +201,7 @@ What say you, {isBoy: toad|strumpet}? #79
     A disappointing response for our guests. #88
     Rectify this immediately, slave. #226
 
- - Rub yourself until your {isBoy: shaft is hard|slit is wet}. #227
+ - Rub yourself until your {hasPenis: shaft is hard|slit is wet}. #227
  
 + [wait:10]
 
@@ -213,7 +219,7 @@ A little more, I think. #229
  
 + [wait:10]
 
-- (accept_punishment) What say you, slave, will your {isBoy: rod|folds} please our guests? #230
+- (accept_punishment) What say you, slave, will your {hasPenis: rod|folds} please our guests? #230
 
 + [yes]
   Excellent. Then let us continue. #231
@@ -224,7 +230,10 @@ A little more, I think. #229
 - /perform smooth_skirt
 
 //And finally, we come to the heart of the matter. #91
-- Do you accept that you must be punished? #92
+
+- (punishment_ready)
+
+Do you accept that you must be punished? #92
 
 - (ask_punish_ready)
 
@@ -271,11 +280,8 @@ A little more, I think. #229
     Do you agree? #105
     -> ask_punish_ready
 
-- /notify title="<color=red>Pro Tip!</color>" text="For a more realistic experience, set down one controller and spank yourself hard when you hear the **slap**. Or better yet, have a very close friend to it for you. ;)<br/><br/>Understood?"
 
-+ [yes]
-
-- {intro: -> spank_instructions}
+- {isIntro: -> headmistress_train_spanking(false) -> spank_continue }
 
 - /perform serious
 Because I am generous, #234
@@ -285,168 +291,17 @@ Would you welcome that, {isBoy: mongrel|moppet}? #107
 ~ headmistress_difficulty = 1
 
 +[yes]
-    -> spank_instructions
+    -> headmistress_train_spanking(false) ->
 +[no]
     /perform nod
     An expert, are we? We will see about that. #108
-    -> spank_continue
 
+- (spank_continue)
 
-= spank_instructions
-
-//With each swat, you will show me clearly #109
-//just how much you feel it. #110
-/perform idle
-
-// hand, crop, paddle
-
-When you hear the slap of my {headmistress_spanking_implement} #111
-and feel its sting upon your ass, #112
-I want to see that empty head of yours jerk up and back #113
-into a proud and upright position. #114
-
-+[wait]
-
-- (hands_and_knees_timeout)
-/perform curious
-Now. Onto your hands and knees, bauble. #233
-
-+ [pose:hands_and_knees]
-
-- /perform amused
-
-The back must be delicately arched, #21
-presenting the most ideal access #22
-to the object of discipline: the buttocks. #23
-
-/perform serious
-Lift your backside high, {isBoy: mongrel|moppet}. #24
-
-/perform paddle_desk
-
-- Tell me, lump, is that as high as you can lift your hindquarters? #26
-
-+[yes]
-    ~obey++
-    /perform lean_forward
-    I disagree. #27
-    Arch just a bit more. #28
-    /perform nod
-    You will remain in this position without fail. #30
-
-+[no]
-    ~disobey++
-    /perform displeased
-    You serve yourself and our Goddess poorly, heathen. #31
-    Raise your ass! #32
-
-+[timeout]
-    /perform annoyed
-    What are you waiting for? #33
-    Your back must strain with the effort of raising your derrier, chattel. #34
-
-- /perform satisfied
--> Headmistress_GoodJob ->
-
-- /character headmistress lean_forward
-
-Time to rehearse. #118
-
-/scene LectureHall.HeadmistressAtBack
-
-+ [wait]
-
-~temp spanks = 0
-
-- (try_spank)
-/character headmistress paddle_ass
-
-+ [react-success]
-    // This lets us count the number of successful attempts.
-    ~spanks++
-    
-    // Once there have been 3 good spanks, we continue.
-    {spanks < 3:
-        -> Headmistress_GoodJob ->
-        -> try_spank
-    - else:
-        Just so. #119
-        -> present_ass
-    }
-+ [react-fail]
-    // This lets us count the number of failed attempts.
-    ~headmistress_spanking_mistakes++
-
-    // We will continue if they fail 3 times.
-    { headmistress_spanking_mistakes < 3:
-        Not good enough. Try again. #120
-        -> try_spank
-    - else:
-        ~disobey++
-        That will do for now. #121
-        We will work on that in the future. #122
-    }
-    
-    ~ headmistress_difficulty = 0
-
-- 
-
-{ headmistress_spanking_mistakes > 0:
-    ~disobey++
-- else:
-    ~obey++
-}
-
-// Reset spanking mistakes to track them in the next sections.
-~ headmistress_spanking_mistakes = 0
-
-- (present_ass)
-
-/perform curious
-Stand up and present your ass for our guests. #235 
-Let us inspect how well your skin blooms with color. #236
-
-+ [pose:present_ass]
-
-- /perform idle
-How exquisite. #237
-
-/lookat crowd
-
-Do you see my students? #238
-Look at how the round orbs go flush #239
-with excitement at my ministrations! #240
-
-/lookat player
-
-- (rotate_left_timeout)
-Turn to the left. #241
--> Headmistress_GoodJob ->
-
-+ [pose:present_ass_left]
-
-- /character crowd oos
-
-- (rotate_right_timeout)
-/character headmistress
-Now turn to the right. #242
--> Headmistress_GoodJob ->
-
-+ [pose:present_ass_right]
-
-- /character crowd gasps
-
-/character headmistress behold
-Ahhh. I am pleased! #243
-
-- (hands_and_knees_timeout2)
 /perform curious
 Back onto your hands and knees, slave. #244
 
-+ [pose:hands_and_knees] -> spank_continue
-
-= spank_continue
-
++ [pose:hands_and_knees]
 /perform idle
 Let us begin in earnest! #245
 /character crowd cheers_loud
@@ -569,7 +424,7 @@ Consider one demerit paid in full. #145
 /perform idle
 
 ~ removePunishment()
-
+~ has_learned_spanking = true
 
 - (stand_straight)
 - (stand_straight_tries)
@@ -636,9 +491,9 @@ I give you leave to depart. #146
     - Have you been keeping track? #166
     - Notice the beads of sweat forming on the brow. #167
     - Remember to breathe, {isBoy: runt|poppet}. #168
-    - Notice how the {isBoy:shaft bounces|nether lips clench}. #169
+    - Notice how the {hasPenis:shaft bounces|nether lips clench}. #169
     - The light is catching the dewy sheen on the skin most magnificently. #170
-    - Observe the {isBoy: tip|slit} begin to glisten. #171
+    - Observe the {hasPenis: tip|slit} begin to glisten. #171
     - Oooo. Look at how the anus puckers. #172
     - No doubt several of my students are stimulating themselves right now. #173
     - Some of you are squirming with remembrance right now. #174
@@ -707,7 +562,7 @@ must be given a moment to compose themself. #176
 However, this time should not be squandered with mere rest. #177
 
 /perform idle
-Reach down and stroke your {isBoy: shaft|folds}. #178
+Reach down and stroke your {hasPenis: shaft|folds}. #178
 /character crowd gasps
 /character headmistress
 Punishments must be associated with sensual excitation. #179
@@ -816,7 +671,7 @@ good boys and girls earn? #200
     ~ obey++
     /character headmistress pleased
     My my. A surprisingly chaste response #210
-    from one whose {isBoy: shaft|mound} is throbbing so fully. #212
+    from one whose {hasPenis: shaft|mound} is throbbing so fully. #212
     
     /perform idle
     But a delightful one. #213

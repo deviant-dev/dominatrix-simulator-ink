@@ -1,3 +1,4 @@
+
 === yuki_punishment_edging ===
 
 /scene ?
@@ -53,7 +54,7 @@ I'm thinking about what to do with you.
 
 /perform inspect_genitals
 
-Hm, we're going to need to get you <i>really</i> {isBoy: hard|wet} first.
+Hm, we're going to need to get you <i>really</i> {hasPenis: hard|wet} first.
 
 -> tease_bank1 ->
 
@@ -89,7 +90,7 @@ Well maybe next time you shouldn't be such a naughty little slave.
 
 /perform amused
 
-Mmm, oh goodie, your {isBoy: cock is nice and hard.|pussy is nice and wet.}
+Mmm, oh goodie, your {hasPenis: cock is nice and hard.|pussy is nice and wet.}
 
 /perform bored
 
@@ -136,7 +137,7 @@ Then next time you better behave yourself for me and the other Mistresses!
 
 I bet you've had enough of my teasing. 
 -(TouchQ) 
-Do you want me to touch your {isBoy: cock|cunt}?
+Do you want me to touch your {hasPenis: cock|cunt}?
 
 + [Yes]
     
@@ -404,12 +405,7 @@ You better mean that, and not be lying to me like a bad {player_name}!
 
 /perform squat_above_face_sway
 
-Start {player_name == "boy":
-<> stroking your cock
-- else:
-<> rubbing your pussy
-}
-<> for me. And the same rules still apply!
+Start {hasPenis:stroking your cock|rubbing your pussy} for me. And the same rules still apply!
 
 You are not allowed to cum!
 
@@ -441,12 +437,7 @@ Legs apart, hands behind your back!
 
 /perform genital_caress
 
-I bet your {player_name == "boy":
-<> cock
-- else:
-<> pussy
-}
-<> is throbbing so much at this point.
+I bet your {hasPenis:cock|pussy} is throbbing so much at this point.
 
 I almost wish I could help.
 
@@ -529,15 +520,11 @@ But naughty slaves only get ruined orgasms.
 
 /perform point_down
 
-Now, clean up your mess! You're not leaving until this floor is spotless of your filth {player_name == "boy": 
-<> mister.
-- else:
-<> missy.
-}
+Now, clean up your mess! You're not leaving until this floor is spotless of your filth {isBoy:mister|missy}.
 
 /perform idle
 
-If you've paid all of your punishment markers, now may be a good time to redeem a reward where you may actually be able to do something about that {player_name == "boy": cock|cunt} of yours.
+If you've paid all of your punishment markers, now may be a good time to redeem a reward where you may actually be able to do something about that {hasPenis: cock|cunt} of yours.
 
 Goodbye slave, I'll be seeing you around, I'm sure!
 
@@ -553,7 +540,7 @@ Congratulations, you made it through one of my punishment sessions!
 
 /perform laugh
 
-And I hope it's one of the worst cases of {player_name == "boy": blue balls| a blue bean} you've ever had.
+And I hope it's one of the worst cases of {hasPenis:blue balls|a blue bean} you've ever had.
 
 Goodbye slave, I'll be seeing you around, I'm sure!
 
@@ -561,20 +548,38 @@ Goodbye slave, I'll be seeing you around, I'm sure!
 
 = AboutToCum
 {cycle: 
-- I bet you're right on the edge, aren't you?
-- How do you feel? Are you close to cumming?
-- Is my little slave going to explode soon?
-- Mmm, I'm going to make you cum, right?
-- You're not gonna last much longer, are you?
-- Do you feel like your {isBoy: cock|cunt} is going to burst?
+    - I bet you're right on the edge, aren't you?
+    - How do you feel? Are you close to cumming?
+    - Is my little slave going to explode soon?
+    - Mmm, I'm going to make you cum, right?
+    - You're not gonna last much longer, are you?
+    - Do you feel like your {hasPenis: cock|cunt} is going to burst?
 }
 
 ->->
 
 = tease_bank1
 
-{~ /perform tease1| /perform tease2| /perform tease3| /perform tease4| /perform tease5| /perform tease6| /perform tease 7}
-{~ Mmm, heehee.| I can tell how much you like this!| This punishment is just what you need!|Like what you see?|What do you like the most? Trick question, silly!| Aw. I'm just too much Mistress for you to handle.| Don't you enjoy yourself too much!}
+{ shuffle:
+    - /perform tease1
+    - /perform tease2
+    - /perform tease3
+    - /perform tease4
+    - /perform tease5
+    - /perform tease6
+    - /perform tease7
+}
+
+{ shuffle:
+    - Mmm, heehee.
+    - I can tell how much you like this!
+    - This punishment is just what you need!
+    - Like what you see?
+    - What do you like the most? Trick question, silly!
+    - Aw. I'm just too much Mistress for you to handle.
+    - Don't you enjoy yourself too much!
+}
+
 {TouchQ: -> bank3_loop}
 {EnjoymentQ: -> teaseloop2}
 
@@ -582,9 +587,25 @@ Goodbye slave, I'll be seeing you around, I'm sure!
 
 = tease_bank2
 
-{~ /perform tease1| /perform tease2| /perform tease3| /perform tease4| /perform tease5| /perform tease6| /perform tease7}
+{ shuffle:
+    - /perform tease1
+    - /perform tease2
+    - /perform tease3
+    - /perform tease4
+    - /perform tease5
+    - /perform tease6
+    - /perform tease7
+}
 
-{~ You should see your face {player_name}, you can't keep your eyes off me!| You better keep rubbing that {isBoy: cock|pussy} {player_name}.| Maybe if you had been a good {player_name}, you could have massaged me instead.| Bad {player_name}s only get to watch.| Next time, follow the rules more closely and we can have even more fun!| You better not be disobedient anymore, no matter how much this turns you on! | Why did you have to be a naughty little slave and break the rules?}
+{ shuffle:
+    - You should see your face {player_name}, you can't keep your eyes off me!
+    - You better keep rubbing that {hasPenis: cock|pussy} {player_name}.
+    - Maybe if you had been a good {player_name}, you could have massaged me instead.
+    - Bad {player_name}s only get to watch.
+    - Next time, follow the rules more closely and we can have even more fun!
+    - You better not be disobedient anymore, no matter how much this turns you on!
+    - Why did you have to be a naughty little slave and break the rules?
+}
 
 {FeelGoodQ: -> teaseloop3}
 

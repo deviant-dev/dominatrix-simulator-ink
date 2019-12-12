@@ -1,0 +1,124 @@
+=== nega_reward_tease ===
+ -> select_gender ->
+ 
+/scene attic.reward_tease
+/music nega-reward
+/ambient off
+/character nega bored
+
+- (tease_intro)
+
+{shuffle:
+    - My time is precious. 
+    - The dice are kinder to you than I want to be.
+    - I'll give you a taste of what a better roll might get you.
+    - Teasing is what I do best.
+    - This won't take long. (wicked laugh)
+}
+  
+  
+/perform sassy
+{shuffle:
+    - You're a worthless cunt.
+    - You're a pathetic worm.
+    - You're a dirty little whore.
+    - You're a slutty fleshbag.
+    - You’re a useless meatbag.
+}
+    
+Aren't you?
+    +[yes]
+        That's right. 
+        Just a rotten little bitch I should crush under my boot.
+    +[no]
+        Then I guess it's time I teach you your place.
+  
+- /perform behold
+{shuffle:
+    - Just a rotten little bitch I should crush under my boot.
+    - A wretched little slut who just wants to be used.
+    - Another horny piece of meat waiting to be devoured.
+    }
+
+- (kneel_tease)
+
+{shuffle:
+    - Get down on your goddamn knees.
+    - On your knees, bitch.
+    - Kneel, cunt.
+    - Down! I want you on your knees.
+    }
+
+- (kneel_tries)
+
++ [pose:kneel]
++ { kneel_tries < 2 } [timeout] -> kneel_tease
++ { kneel_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> kneel_tease
+
+- -> Nega_GoodJob ->
+
+/perform angry
+You can’t fucking hide from me.
+I see what you are.
+
+-> Nega_Insult ->
+
+/perform lean_forward
+You just can’t stay away, can you?
+
++ [yes]
+    Then what the fuck are you doing here?
++ [no]
+    Too curious for your own good.
+    That’s perfect. I like abusing stupid little pricks.
+
+- (nega_apologize)
+Apologize for pretending to be anything else.
+Lick the ground!
+
++ [pose:kiss_feet]
++ [timeout] -> Nega_BadJob -> nega_apologize
+
+- Keep going until I tell you to stop.
+
++ [pose:kiss_feet]
+
+- That’s it, little bitch.
+Show me how sorry you are.
+
++ [pose:kiss_feet]
+
+- Don’t fucking lie to me again.
+Now get back up on your knees.
+
++ [pose:kneel]
+
+{shuffle:
+    - -> tease_sniff_crotch ->
+    - -> tease_worship_ass ->
+    - -> tease_kiss_feet ->
+    - -> tease_edging ->
+}
+
+- -> exit
+
+= tease_sniff_crotch
+TODO: create 'worship_crotch' performance. Mistress sits on ground and spreads legs. Or sits on chair and spreads legs. This scene will focus on making the player feel small, little, useless and only good enough for sniffing her crotch.
+/perform worship_crotch
+
+->->
+
+= tease_worship_ass
+TODO: create 'worship_ass' performance. Mistress turns around and pushes their ass out toward player. This scene will focus on humiliating the player for being an ass slut who's happy just smelling and nuzzling her ass.
+/perform worship_ass
+
+->->
+
+= tease_kiss_feet
+TODO: Player kisses her feet for a set amount of time. Dialogue will focus on mocking them for being so eager to kiss her feet.
+->->
+
+= tease_edging
+TODO: Player has to masturbate and get hard while looking at her feet or hands. Dialogue focuses on mocking them for being turned on by those things.
+
+->->

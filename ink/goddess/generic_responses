@@ -54,9 +54,9 @@
 === Goddess_BadJob ===
 
 { shuffle:
-    - Stupid {isBoy:  prick|cunt}. #01
+    - Stupid {isBoy:prick|cunt}. #01
     - You're fucking up! #02
-    - You better entertain me, {isBoy: worm|whore}. #03
+    - You better entertain me, {isBoy:worm|whore}. #03
     - Try harder! #04
     - You're doing it wrong. #05
     - Useless. #06

@@ -44,17 +44,16 @@ VAR demerits = 0
 Thanks for the treat, fuckup!
 
 {shuffle:
-    -I'll see that you get what you deserve.
+    - I'll see that you get what you deserve.
     - You're in for it now!
-    - This'll be fun! 
-    - For me at least!
+    - This'll be fun! For me at least!
     }
 
 /perform menacing
 
 //---------- GREETING: Humiliation before paying a reward -------------------
 
-
+// These should really be 'tease' modules that can be randomly cycled through.
 === nega_humiliation_greeting ===
 
 /scene Attic.NegaIntro

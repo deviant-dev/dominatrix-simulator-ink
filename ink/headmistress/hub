@@ -44,7 +44,8 @@
 
 = choose_punishment
 // Eventually we'll have the game randomly pick here.
--> headmistress_punishment_flogging -> exit
+-> headmistress_punishment_spanking -> exit
+//-> headmistress_punishment_flogging -> exit
 
 = choose_reward
 // Eventually we'll have the game randomly pick here.

@@ -94,7 +94,8 @@
 ->->
 === Yuki_Badjob ===
 
-{cycle:
+TODO: record new VO
+{shuffle:
     - I thought you knew better. #01
     - Oh geez slave. #02
     - I know you know better. #03
@@ -103,12 +104,22 @@
     - Can't you just do as I want? #06
     - Sometimes I have too much patience. #07
     - Please just meet your expectations. For me? #08
+    - You are so naughty!
+    - That was terrible!
+    - Very bad, {player_name}.
+    - The Goddess won't like that.
+    - Try harder.
+    - Tsk. Tsk. 
+    - What a shame!
+    - Yuck.
+    - That was awful.
 }
 
 ->->
 
 === Yuki_Punishment_Response ===
 
+TODO: record new VO
 {cycle:
     - What? A punishment?! #01
     - Didn't I explain to you the rules to avoid a punishment? #02
@@ -119,13 +130,41 @@
 
 ->->
 
-=== YukiPlayerToCum ===
+=== Yuki_Punishment_Chastise ===
+
+TODO: record new VO
+
+{shuffle:
+    - /perform disappointed
+    - /perform angry
+    - /perform shake_finger_stern
+    - /perform annoyed
+    - /perform pouty
+    }
+    
+{cycle:
+    - That was a very bad session! #194
+    - I'm so disappointed. #195
+    - At this rate, you'll never be properly trained! #200
+    - We'll never have any real fun until you start taking this more seriously! #201
+    - I put in so much effort and you just don't try hard enough.
+    - Oh my goodness. The Goddess will be so cross with me. 
+    - It makes me so sad when I have to punish you.
+    }
+    
+->->
+
+=== Yuki_PlayerToCum ===
+
+// Add a 'continue' in here to fix bug in the Ink path.
++ [continue]
+- 
 
 {cycle:
     - Is my good {player_name} close? #01
     - Are you almost there slave? #02
     - I can feel you getting close. #03
-    - Your {isBoy:cock|pussy} is throbbing in my hand. #04
+    - Your {hasPenis:cock|pussy} is throbbing in my hand. #04
     - You're riding the edge. #05
     - You're so close to exploding for me slave. #06
     - Just a little more. #07
@@ -139,7 +178,6 @@
 {Yuki_CheckIfInterested > 1: -> check_terse}
 
 /perform impatient
-
 Do you want to perform for me or not? #01
 - (check_again)
 
@@ -150,15 +188,12 @@ Do you want to perform for me or not? #01
 - (check_terse) Really? #02
 
 /perform foot_stomp
-
 You are not following the rules. #03
 
 /perform lean_forward
-
 Do you want to be sent away? #04
 
 + [yes] 
-
 + [no] -> check_yes
 
 - /perform annoyed
@@ -171,6 +206,178 @@ Come back when you're ready to follow the rules. #06
 It's so much better when you decide to follow the rules and behave. #07
 
 ->->
+
+=== Yuki_Puppyplay_Reward_Earned ===
+
+{shuffle:
+    - /perform sassy
+    - /perform clasp_hands
+    - /perform bounces
+}
+
+{shuffle:
+    - That was fun, puppy. #181
+    - I hope this helped you remember your poses! #182
+    - Now I'm even happier with you! #190
+}
+
+You've earned a reward!
+~ addReward()
+
+TODO: Add receiving reward dialogue and action
+
+{shuffle:
+    - /perform lean_forward
+    - /perform idle_yuki
+    - /perform happy
+}
+
+{shuffle:
+    - Come back and see me soon! #183
+    - I really hope you come see me again soon. #192
+    - Bye bye cutie! #193
+}
+
+->->
+
+
+=== Yuki_Puppyplay_Reward_Complete ===
+
+{shuffle:
+    - /perform sassy
+    - /perform clasp_hands
+    - /perform bounces
+}
+
+{shuffle:
+    - I love rewarding good puppies. 
+    - You should keep earning these kinds of rewards!
+    - You're the best puppy a girl could ask for. #191
+}
+
+That uses up a reward!
+
+~ removeReward()
+TODO: Add receiving reward dialogue and action
+
+{shuffle:
+    - /perform lean_forward
+    - /perform idle_yuki
+    - /perform happy
+}
+
+{shuffle:
+    - See you soon, puppy!
+    - Keep being a good puppy!
+    - Go earn some more rewards!
+}
+
+->->
+
+=== Yuki_Puppyplay_Punishment_Earned ===
+TODO: record new VO
+TODO: move VO lines from Yuki_puppplay_badwrapup to yuki_puppyplay_punishment_complete
+
+{shuffle:
+    - /perform sighs
+    - /perform bored
+    - /perform open_arms_shrug
+}
+
+{shuffle:
+    - It was kind of sad watching you struggle with your commands. #211
+    - What a bad puppy you are. #204
+    - The Goddess is not going to be pleased with you!
+}
+
+You've earned a punishment, puppy.
+
+~ addPunishment()
+TODO: add receiving punishment dialogue and action
+{shuffle:
+    - /perform lean_forward
+    - /perform idle_yuki
+    - /perform point_to_leave
+}
+
+{shuffle:
+    - Try and do better next time, puppy! #212
+    - I expect much more out of you next time {player_name}. #202
+    - Now shoo! Shoo! #203
+}
+
+->->
+
+=== Yuki_Puppyplay_Punishment_Complete ===
+TODO: record new VO
+TODO: move VO lines from Yuki_puppplay_badwrapup to yuki_puppyplay_punishment_complete
+
+{shuffle:
+    - /perform sighs
+    - /perform bored
+    - /perform open_arms_shrug
+}
+
+{shuffle:
+    - I really hope I don't have to punish you again like that.
+    - I hope you've learned your lesson.
+    - You should really try to avoid punishments in the future, puppy.
+}
+
+You've paid off a punishment, puppy!
+~ removePunishment()
+
+TODO: add receiving punishment dialogue and action
+
+{shuffle:
+    - /perform lean_forward
+    - /perform idle_yuki
+    - /perform point_to_leave
+}
+
+{shuffle:
+    - Go on. I'm done with you now.
+    - Stay out of trouble, puppy!
+    - You better be a good puppy for the other Mistresses!
+}
+
+
+->->
+=== Yuki_Puppyplay_GoodSpank ===
+TODO: record VO lines 
+
+{shuffle:
+    - You poor puppy.
+    - That must really hurt.
+    - It's okay puppy. It will be over soon.
+    - Ooof!
+    - I hope you behave next time!
+    - Your bottom is so pink!
+    - I think I'm getting wet!
+    - 
+    - 
+    - 
+ }
+
+->->
+
+=== Yuki_Puppyplay_BadSpank ===
+TODO: Record VO lines 
+
+{shuffle:
+    - Now you have to start
+    - Pfft. Make the next one better, puppy. 
+    - Head up high, puppy. 
+    - Are you even trying? 
+    - I thought the Headmistress trained you to take a spanking? 
+    - No squirming!
+    - You don't seem very sorry, puppy. 
+    -
+    -
+    -
+    }
+->->
+
 
 // Break Option 1
 

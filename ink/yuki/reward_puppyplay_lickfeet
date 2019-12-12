@@ -1,0 +1,49 @@
+ 
+=== yuki_reward_puppyplay_lickfeet
+
+//Foot licking
+
+/perform excited
+Mmm, I love watching my puppies perform well! #184
+
+/perform lean_forward
+Do you want to worship my feet, puppy? #185
+
++[pose:puppy_yes]
+    /perform bounces    
+    Yippy! #186
+
++[pose:puppy_no]
+    /perform open_arms_shrug
+    That's fine. #187
+    We can do something else. #188
+    -> yuki_reward_puppyplay_milking
+
++[timeout] -> Yuki_Timeout ->
+
+- /perform point_down 
+Come here puppy! #189
+/perform present_foot
+
+- (lick_feet)
+- (lick_feet_tries)
+
++ [pose:kiss_feet] -> Foot_Licking_Responses ->
++ { lick_feet_tries < 2 } [timeout] -> lick_feet
++ { lick_feet_tries >= 2 } [timeout]
+
+- /wait 5
+
+-> Yuki_Puppyplay_Reward_Complete ->->
+
+
+= Foot_Licking_Responses
+
+{cycle:
+    - Gooood puppy! Clean my whole foot. #213
+    - Mmmm, lick me just like that. #214
+    - Yes puppy, yes! Your tongue feels so good on my toes. #215
+    - What a good puppy cleaning my toes with your tongue. #216
+}
+
+->->

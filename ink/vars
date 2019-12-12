@@ -1,5 +1,6 @@
 // Player Variables
 VAR isBoy = true
+VAR hasPenis = true
 VAR player_name = "boy"
 VAR player_he = "he"
 VAR player_him = "him"
@@ -7,16 +8,23 @@ VAR rewards = 0
 VAR punishments = 0
 VAR tutorial_complete = "no"
 
+// Kink Lessons
+VAR has_learned_spanking = false
+
 // Lists
 LIST move_status = hidden = 0, locked, unlocked, early_access, under_construction
 
 // Temp Variables
 VAR obey = 0
 VAR disobey = 0
-VAR intro = false
+VAR isIntro = false
 VAR scene_type = "reward"
 VAR reward_just_removed = false
 VAR punishment_just_removed = false
+VAR tries = 0
+VAR Practice_Counts = 0
+VAR Practice_Attempts = 0
+VAR Practice_Goal = 0
 
 // Goddess Variables
 VAR goddess_favor = 0 
@@ -142,11 +150,13 @@ VAR yuki_puppy_difficulty = 1
 {
     - gender == "m":
         ~ isBoy = true
+        ~ hasPenis = true
         ~ player_name = "boy"
         ~ player_he = "he"
         ~ player_him = "him"
     - gender == "f":
         ~ isBoy = false
+        ~ hasPenis = false
         ~ player_name = "girl"
         ~ player_he = "she"
         ~ player_him = "her"
@@ -157,7 +167,7 @@ VAR yuki_puppy_difficulty = 1
 === select_gender ===
 {setGender: ->->}
 
-/scene hallway.genderchoice
+/scene entrydark.genderchoice
 /ambient rain
 /music entry
 
@@ -222,7 +232,7 @@ VAR yuki_puppy_difficulty = 1
 }
 
 === demo_end ===
-/scene LogoRoom.EndScreen
+/scene EntryDark.EndScreen
 
 + [restart] -> game_intro.choices
 

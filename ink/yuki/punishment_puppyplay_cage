@@ -1,0 +1,119 @@
+ 
+=== yuki_punishment_puppyplay_cage ===
+TODO: rewrite
+
+ -> select_gender ->
+ 
+/scene atrium.punishment
+/music yuki
+/ambient off
+/character yuki idle
+
+-
+Time for you to be punished.
+-> Yuki_Punishment_Chastise ->
+/perform disappointed
+What a bad puppy you are. #204
+You need to make it up to me. #205
+
+/perform point_down
+Turn around and show me your puppy tail. #206
+Face down on the ground. #207
+
+- (present_ass)
+
+- (present_ass_tries)
+
++ [pose:present_ass]
++ { present_ass_tries < 2 } [timeout] -> present_ass
+
+- /perform cocks_head_to_left
+Well, at least you can manage that, {player_name}. #208
+
+// - (wiggle)
+Now, wiggle your little puppy tail for me! #209
+//How do motion tracking - Probably watch for side to side head movements?
+
+// + [wiggle-success:5] 
+//     -> Nega_GoodJob -> 
+//     ++ [wiggle-success:5]
+//         That's enough.  #35
+        Turn back around and present yourself.  #36
+//         ~obey++
+// + [wiggle-timeout]
+//     -> Nega_BadJob ->
+//     ~disobey++
+//     Did I tell you to stop? #37
+//     -> wiggle
+// // + [no] -> Nega_CheckIfInterested -> wiggle
+/perform clasp_hands
+Mmmm! Much better! #210
+
+
+-> Yuki_Puppyplay_Punishment_Complete ->
+->->
+
+
+{shuffle:
+    - Fucking dice... spoiling my fun.
+    - It's so hard to resist the urge to crush you.
+    - I'm going to taunt you with what a worse roll gets you.
+    - I'm going to hook you like a fish.
+    - Let's get this over with so I can go find some /real/ fun.
+}
+  
+
+/perform angry
+{shuffle:
+    - You're a disgusting stain.
+    - You're a nasty pile of shit.
+    - You're a vomit inducing waste of time.
+    - You're a boring, simpering drain on my energy.
+    - You’re a ugly, little wretch.
+}
+//spanking
+//text below is a placeholder to remind me of what code I can use in scene
+/perform excited
+Mmm, I love watching my puppies perform well! #184
+
+/perform lean_forward
+Do you want to worship my feet, puppy? #185
+
++[pose:puppy_yes]
+    /perform bounces    
+    Yippy! #186
+
++[pose:puppy_no]
+    /perform open_arms_shrug
+    That's fine. #187
+    We can do something else. #188
+    -> yuki_reward_puppyplay_milking
+
++[timeout] -> Yuki_Timeout ->
+
+- /perform point_down 
+Come here puppy! #189
+/perform present_foot
+
+- (lick_feet)
+- (lick_feet_tries)
+
++ [pose:kiss_feet] -> Foot_Licking_Responses ->
++ { lick_feet_tries < 2 } [timeout] -> lick_feet
++ { lick_feet_tries >= 2 } [timeout]
+
+- /wait 5
+
+-> Yuki_Puppyplay_Punishment_Complete ->->
+
+
+= Foot_Licking_Responses
+
+{cycle:
+    - Gooood puppy! Clean my whole foot. #213
+    - Mmmm, lick me just like that. #214
+    - Yes puppy, yes! Your tongue feels so good on my toes. #215
+    - What a good puppy cleaning my toes with your tongue. #216
+}
+
+->->

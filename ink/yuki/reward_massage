@@ -619,7 +619,7 @@ So you like slower massages?
 
 - You rub my back, I rub your back.
 
-Er, {isBoy: dick| cunt} in this case.
+Er, {hasPenis: dick| cunt} in this case.
 
 But that's not really how the saying goes!
 
@@ -863,7 +863,7 @@ Why don't you go stand at my feet {player_name}.
 
 - /perform laying_down_back_masturbating
 
-Do you want to {isBoy: be inside|grind against} my cunt?
+Do you want to {hasPenis:be inside|grind against} my cunt?
 
 +[Yes]
 
@@ -873,7 +873,7 @@ Maybe another day.
 
 /perform laying_down_masturbating_faster
 
-Oh my Goddess yes, nothing gets me hotter than good little servant {isBoy: boys|girls}.
+Oh my Goddess yes, nothing gets me hotter than good little servant {isBoy:boys|girls}.
 
 Having you fuck me while one of the other little slaves sucks on my toes.
 
@@ -1115,7 +1115,7 @@ That's enough.
 
 /perform angry
 
-And you {isBoy: mister|miss} don't get any satisfaction for yourself.
+And you {isBoy:mister|miss} don't get any satisfaction for yourself.
 
 Next time you come for a reward, you should act more grateful!
 

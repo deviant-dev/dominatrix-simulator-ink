@@ -1,0 +1,24 @@
+=== yuki_train_spanking ===
+
+//check to see if completed Headmistress punishment_Spanking scene; if not, tell them to go see HM and send them to exit
+
+{ has_learned_spanking == false: 
+    - You really need a spanking for being so naughty,
+    But you haven't learned how to take a spanking yet.
+    Bad {isBoy:boy|girl}!
+    I need you to go to the Headmistress
+    and learn that straight away.
+    Will you do that and come straight back?
+    
+    + [yes]
+        -> Yuki_GoodJob ->
+        I'll see you as soon as you are done.
+        -> headmistress_train_spanking(true) -> yuki_punishment_puppyplay_spanking
+        
+    + [no]
+        No?!
+        Well I can't punish you properly, then.
+        Bad dog!
+        Leave and think about what you've done.
+        -> exit
+}

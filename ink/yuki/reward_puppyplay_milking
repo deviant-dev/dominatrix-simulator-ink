@@ -1,0 +1,59 @@
+ = yuki_reward_puppyplay_milking
+
+//Masturbates player
+/perform point_down
+Roll onto your back like a good little puppy. #166
+/perform inspect_kneeling
+// Hands and legs in the air, just like a real puppy. #167
+// /perform open_arms_shrug
+
++ [pose:puppy_back]
+
+- /perform yuki_kneel
+
+Now, spread your knees. #168
+Time for my good puppy to be milked dry! #169
+
+/perform yuki_milk_puppy_{hasPenis:penis|vagina}
+
+/wait 5
+
+Better tell me when you're ready to cum, puppy. #170
+Just raise your right paw! #171
+
+- (masturbation_cycle)
+
++ [pose:puppy_back_yes]
++ [wait:{~3|5|7}] -> Yuki_PlayerToCum -> masturbation_cycle
+
+- /perform yuki_milk_puppy_{hasPenis:penis|vagina}_fast
+
+Goooood puppy! #172
+Time to cum for me. #173
+Let your Mistress milk your little {hasPenis:prick|cunt}. #174
+
+/wait 5
+
+/perform excited
+Such a good {player_name}. #175
+/perform idle_yuki
+Sit up again, cutie. #176
+
++ [pose:puppy_sit]
+
+- (puppy_well)
+/perform agreement
+I treat my puppies well, don't I? #177
+
++ [pose:puppy_yes]
+    /perform serious
+    That's right. #178
+    I want my puppies to come back and play after all! #179
+
++ [pose:puppy_no]
+    /perform fake_annoyed
+    Your other head seems to disagree with you. #180
+
++ [timeout] -> Yuki_Timeout -> puppy_well
+
+- -> Yuki_Puppyplay_Reward_Complete ->->

@@ -1,0 +1,171 @@
+=== headmistress_train_spanking(sentFromElsewhere) ===
+
+// This is a tunnel to train the player on spanking at any time.
+
+{sentFromElsewhere:
+    /scene LectureHall.Punishment_Spanking
+    /music headmistress
+    /ambient crowd
+    /action raise_curtains
+    /character crowd cheers_loud
+    
+    /character headmistress
+    
+    -> headmistress_punishment_spanking.get_on_desk ->
+}
+
+- /notify title="<color=red>Pro Tip!</color>" text="For a more realistic experience, set down one controller and spank yourself hard when you hear the **slap**. Or better yet, have a very close friend to it for you. ;)<br/><br/>Understood?"
+
++ [yes]
+
+- 
+//With each swat, you will show me clearly #109
+//just how much you feel it. #110
+/character headmistress idle
+
+// hand, crop, paddle
+
+When you hear the slap of my {headmistress_spanking_implement} #111
+and feel its sting upon your ass, #112
+I want to see that empty head of yours jerk up and back #113
+into a proud and upright position. #114
+
++ [wait]
+
+- (hands_and_knees_timeout)
+/perform curious
+Now. Onto your hands and knees, bauble. #233
+
++ [pose:hands_and_knees]
+
+- /perform amused
+
+The back must be delicately arched, #21
+presenting the most ideal access #22
+to the object of discipline: the buttocks. #23
+
+/perform serious
+Lift your backside high, {isBoy: mongrel|moppet}. #24
+
+/perform paddle_desk
+
+- Tell me, lump, is that as high as you can lift your hindquarters? #26
+
++[yes]
+    ~obey++
+    /perform lean_forward
+    I disagree. #27
+    Arch just a bit more. #28
+    /perform nod
+    You will remain in this position without fail. #30
+
++[no]
+    ~disobey++
+    /perform displeased
+    You serve yourself and our Goddess poorly, heathen. #31
+    Raise your ass! #32
+
++[timeout]
+    /perform annoyed
+    What are you waiting for? #33
+    Your back must strain with the effort of raising your derrier, chattel. #34
+
+- /perform satisfied
+-> Headmistress_GoodJob ->
+
+- /character headmistress lean_forward
+
+Time to rehearse. #118
+
+/scene LectureHall.HeadmistressAtBack
+
++ [wait]
+
+~temp spanks = 0
+
+- (try_spank)
+/character headmistress paddle_ass
+
++ [react-success]
+    // This lets us count the number of successful attempts.
+    ~spanks++
+    
+    // Once there have been 3 good spanks, we continue.
+    {spanks < 3:
+        -> Headmistress_GoodJob ->
+        -> try_spank
+    - else:
+        Just so. #119
+        -> present_ass
+    }
++ [react-fail]
+    // This lets us count the number of failed attempts.
+    ~headmistress_spanking_mistakes++
+
+    // We will continue if they fail 3 times.
+    { headmistress_spanking_mistakes < 3:
+        Not good enough. Try again. #120
+        -> try_spank
+    - else:
+        ~disobey++
+        That will do for now. #121
+        We will work on that in the future. #122
+    }
+    
+    ~ headmistress_difficulty = 0
+
+- 
+
+{ headmistress_spanking_mistakes > 0:
+    ~disobey++
+- else:
+    ~obey++
+}
+
+// Reset spanking mistakes to track them in the next sections.
+~ headmistress_spanking_mistakes = 0
+
+- (present_ass)
+
+/perform curious
+Stand up and present your ass for our guests. #235 
+Let us inspect how well your skin blooms with color. #236
+
++ [pose:present_ass]
+
+- /perform idle
+How exquisite. #237
+
+/lookat crowd
+
+Do you see my students? #238
+Look at how the round orbs go flush #239
+with excitement at my ministrations! #240
+
+/lookat player
+
+- (rotate_left_timeout)
+Turn to the left. #241
+-> Headmistress_GoodJob ->
+
++ [pose:present_ass_left]
+
+- /character crowd oos
+
+- (rotate_right_timeout)
+/character headmistress
+Now turn to the right. #242
+-> Headmistress_GoodJob ->
+
++ [pose:present_ass_right]
+
+- /character crowd gasps
+
+/character headmistress behold
+Ahhh. I am pleased! #243
+
+{sentFromElsewhere: 
+You may return from whence you came and report your training success!
+}
+
+->->

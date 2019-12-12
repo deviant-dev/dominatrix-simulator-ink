@@ -2,7 +2,7 @@
 
 { isDebug() : -> choices }
 
-/scene LogoRoom.TitleScreen
+/scene EntryDark.TitleScreen
 /music entry
 
 + [wait:6]
@@ -10,25 +10,34 @@
 
 - (instructions)
 
-/scene LogoRoom.Instructions
+/scene EntryDark.Instructions
 
 
 + [yes]
 + [no]
-    /scene LogoRoom.Empty
+    /scene EntryDark.Empty
     -> instructions
 
 
-- /scene LogoRoom.JournalInfo
+- /scene EntryDark.JournalInfo
 
 + [Use Journal]
 
-- /scene LogoRoom.VerifyAge
+- /scene EntryDark.VerifyAge
 
 + [yes]
 + [no] -> demo_end
 
-- (choices) /scene LogoRoom.Notifications
+- (choices) /scene EntryDark.Notifications
+
++ [yes]
+
+- (ready)
+
++ [move: Intro] -> goddess_intro
++ [wait:5]
+
+- (all_options)
 
 + [move: Intro] -> goddess_intro
 + [move: Yuki (unlocked)] -> yuki_intro

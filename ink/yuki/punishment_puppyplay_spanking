@@ -1,0 +1,181 @@
+VAR yuki_spanking_target_count = 5
+VAR yuki_kneel_spanking_count = 0
+VAR yuki_spanking_break_count = 0
+VAR yuki_spanking_mistakes = 0
+VAR yuki_spanking_count = 0 
+VAR yuki_spanking_fails = 0
+
+=== yuki_punishment_puppyplay_spanking ===
+TODO: rewrite
+
+//this scene has the player crawl over to the couch and lay across it with their butt out. They get a spanking similiar to the Headmistress scene
+
+// {shuffle:
+// - ~ yuki_spanking_target_count = 5
+// - ~ yuki_spanking_target_count = 10
+// }
+
+~ yuki_spanking_count = 0
+~ yuki_spanking_fails = 0
+~ yuki_spanking_mistakes = 0
+
+ -> select_gender ->
+ 
+/scene atrium.punishment_spanking
+/music yuki
+/ambient off
+/character yuki idle
+
+-> yuki_train_spanking ->
+
+//intro contains performances
+Time for you to be punished.
+-> Yuki_Punishment_Chastise ->
+
+- (intro_puppy_spanking)
+My naughty puppy is going to be spanked!
+
+TODO: create new pose 'point_to_left'
+/perform point_to_left
+- (spanking_couch)
+- (spanking_couch_tries)
+Crawl over to that couch and lay across it.
+
+{cycle:
+    - Butt sticking out nice and high.
+    - And stick out your butt!
+    - Present your puppy bottom.
+    }
+
+/perform idle_yuki  
+
++ [move]
+    -> Yuki_GoodJob ->
++ { spanking_couch_tries < 2 } [timeout] -> Yuki_Interested -> spanking_couch
++ { spanking_couch_tries>= 2 } [timeout]
+    -> Yuki_CheckIfInterested -> spanking_couch
++ [distracted] -> Yuki_PayAttention -> spanking_couch
+
+//TODO: insert spanking scene
+
+// 5, 10
+You're going to get {yuki_spanking_target_count}, big swats, puppy!
+
+/perform idle
+This is going to hurt me more than it hurts you, puppy!
+Don't forget to show me your reaction.
+
+- (spank)
+/character yuki spank_puppy
+TODO: create new 'spank_puppy' anim
+
++ [react-success]
+    ~ yuki_spanking_count++
+
+    
+    {yuki_spanking_count %2 == 0: 
+    -> Yuki_Puppyplay_GoodSpank ->
+    }
+    
+    {yuki_spanking_count < yuki_spanking_target_count: -> spank}
+    
+    -> spank_success
+    
++ [react-fail] 
+    ~yuki_spanking_count = 0
+    ~yuki_spanking_fails++
+    {yuki_spanking_fails > 2: -> spank_failout}
+    
+    {shuffle:
+    - Now you have to start over!
+    - Are you even trying? Start back at 1.
+    - I thought the Headmistress trained you to take a spanking? 
+    Time to start again.
+    }
+    
+    Listen puppy. You have to perform every spanking perfectly to finish your punishment.
+    -- (spank_ready)
+    Ready?
+    
+    ++ [yes]
+    -> spank
+    
+    ++ [no]
+    -> Yuki_CheckIfInterested -> spank_ready
+
+
+= spank_failout
+
+/perform disappointed
+-> Yuki_Badjob ->
+
+Leave and don't come back until you're sorry!
+
+-> exit
+
+= spank_success
+
+- /perform satisfied
+All done! Are you proud of yourself, puppy? 
+
+    +[yes]
+    /perform pleased
+   -> Yuki_GoodJob 
+    
+    +[no]
+    /perform amused
+    Well, you should be!
+    
+- (sit)
+
+/perform yuki_idle
+
+{cycle:
+    - Come here. 
+    - Come here, puppy.
+    - I <i>said</i> come here! 
+}
+
++ [pose: puppy_sit]
+    -> Yuki_GoodJob ->
++ [timeout] -> Yuki_Interested -> sit
++ [distracted] -> Yuki_PayAttention -> sit
+
+- (sorry)
+- (sorry_tries)
+/perform unhappy    
+
+{cycle: 
+    - Bow your head, puppy, and show me you're sorry. #196
+    - Show me you're sorry, puppy. 
+    - I want to see you show me you're sorry!
+    }
+
++ [pose:puppy_sorry]
++ { sorry_tries < 2 } [timeout] -> Yuki_Interested -> sorry
++ { sorry_tries >= 2} [timeout] -> Yuki_CheckIfInterested -> sorry
+
+
+- (sorry_ask_again)
+/perform idle_upset 
+Are you sorry for your performance, puppy?
+
++ [yes]
+    /perform shake_finger_stern
+    If you feel bad about it, you should have paid better attention! #198
+    You've paid off a punishment.
+//ending contains performances
+-> Yuki_Puppyplay_Punishment_Complete ->
+
++ [no]
+    /perform pouty  
+    I think somebody <i>wants</i> to be a bad dog. #199
+    You'll have to try again to remove that punishment marker.
+    Now get out of here!
+//punishment marker will not be removed
+
++ [timeout] -> Yuki_Timeout -> sorry_ask_again
++ [distracted] -> Yuki_PayAttention -> sorry_ask_again
+
+-
+-> exit

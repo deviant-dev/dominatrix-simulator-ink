@@ -23,21 +23,48 @@
 
 -> summary("Yuki Hub", hub) -> 
 
-{ hub > 1: Hi again! | Hi! }
++ [move:Yuki]
 
-{ 
-    - punishments > 0 :
+{ hub == 1:
+    Hi!
+- else:
+    Hi again!
+}
+
+// - (check_mega_punishment)
+// { punishments == 10:
+//     Are you here for your mega-punishment?
+//     + [yes] -> TBD
+//     + [no] -> check_punishment
+// }
+
+- (check_punishment)
+{ punishments > 0 :
         Are you here for your punishment?
         + [yes] -> choose_punishment
-        + [no] No? -> check_task
-    - rewards > 0 :
-        Are you here for your reward?
-        + [yes] -> choose_reward
-        + [no] No? -> check_task
-    - else:
-        No punishments or rewards, huh?
-        -> check_task
+        + [no] 
+            No? Don't forget.
+            You can't get any rewards untile you finish all your punishments.
+            -> check_task
 }
+
+// - (check_mega_reward)
+// { rewards == 10 && punishments == 0:
+//         Are you here for your mega-reward?
+//         + [yes] -> TBD
+//         + [no] -> check_reward
+// }
+
+- (check_reward)
+{ punishments == 0 && rewards > 0:
+    Are you here for your reward?
+    + [yes] -> choose_reward
+    + [no] -> check_task
+}
+
+No punishments or rewards, huh?
+-> check_task
+
 
 - (check_task) Looking to serve me, then?
 
@@ -46,14 +73,27 @@
     Maybe some other time then.
     -> exit
 
-= choose_punishment
--> yuki_punishment_edging
-
 = choose_reward
 {shuffle:
-    - -> yuki_reward_bathe
-    - -> yuki_reward_massage
+    //- -> yuki_reward_bathe
+    //- -> yuki_reward_massage
+    - -> yuki_reward_puppyplay_milking ->->
+    - -> yuki_reward_puppyplay_lickfeet ->->
+
+    // Put more reward scenes here.
+}
+
+= choose_punishment
+{ shuffle:
+    // - -> yuki_punishment_edging
+    - -> yuki_punishment_puppyplay_cage ->->
+    - -> yuki_punishment_puppyplay_spanking ->->
+    // Put more punishment scenes here.
 }
 
 = choose_task
--> yuki_task_fanning
+{shuffle:
+    //- -> yuki_task_fanning
+    - -> yuki_task_puppyplay
+    // Put more task scenes here.
+}
