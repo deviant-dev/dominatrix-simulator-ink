@@ -1,6 +1,12 @@
  = yuki_reward_puppyplay_milking
 
 ~ setScene(reward_scene, Yuki)
+-> select_gender ->
+ 
+/scene atrium.intro
+/music yuki
+/ambient off
+/character yuki idle
 
 //Masturbates player
 /perform point_down
@@ -14,12 +20,17 @@ Roll onto your back like a good little puppy. #166
 - /perform yuki_kneel
 
 Now, spread your knees. #168
-Time for my good puppy to be milked dry! #169
+{isBoy: 
+    Time for my good puppy to be milked dry! #169
+    - else:
+    Time for my good puppy to be juiced!
+}
 
 /perform yuki_milk_puppy_{hasPenis:penis|vagina}
 
 /wait 5
 
+Since this is a reward, I'm going to let you finish.
 Better tell me when you're ready to cum, puppy. #170
 Just raise your right paw! #171
 

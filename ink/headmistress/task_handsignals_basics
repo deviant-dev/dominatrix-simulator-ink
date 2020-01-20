@@ -494,7 +494,7 @@ Do you understand, {isBoy: tribute|token}?
 
 // todo: endurance signals practice w/ audience and w/o pose assist
 - We shall begin. 
-/crowd oos
+/character crowd oos
 /character headmistress behold
 Attend!
 
@@ -521,7 +521,8 @@ Attend!
     I shudder with the headiness of such perfection!
     - else:
     You shamefully disappoint your audience.
-    /crowd boos
+    /character crowd boos
+    /character headmistress
     I can see I have put too much faith in your abilities.
     Next time, I will guide you as one would a child.
     ~ headmistress_signal_basics_difficulty = 1
@@ -539,7 +540,7 @@ Rise and face your audience.
 
  = GoodEndingHard
 //earn favor with HM
-/crowd cheers_loud
+/character crowd cheers_loud
 /character headmistress arm_raise
 I am awed to behold such exquisite grace.
 What a delicious feast to devour.
@@ -553,7 +554,7 @@ You have my permission to depart.
 
 = BadEndingHard
 //lose favor with HM
-/crowd angry
+/character crowd angry
 /character headmistress behold
 Your cheeks should be flush with shame, stain.
 Your audience is left ravenous and unsatisfied.

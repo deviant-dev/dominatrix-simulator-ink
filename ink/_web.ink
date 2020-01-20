@@ -33,6 +33,7 @@ INCLUDE nega/hub
 INCLUDE nega/intro
 INCLUDE nega/lore
 INCLUDE nega/generic_responses
+INCLUDE nega/greeting_tease
 INCLUDE nega/punishment_tease
 INCLUDE nega/punishment_trampling
 INCLUDE nega/reward_dice
@@ -86,6 +87,8 @@ VAR web = true
     // Auto-set gender here to skip gender selection step
     // ~setGender("m")
     ~setGender("f")
+    
+    // -> RandomCommentLoop(-> Goddess_GoodJob, 1, 2, 3, 3) ->
 
     // Force a different deviation
 
@@ -130,17 +133,17 @@ VAR web = true
     // -> yuki_intro.nega_interruption
     // -> yuki_intro.nega_slap
     // -> yuki_intro.caress_question
-
-    // -> yuki_task_puppyplay
    
-   //     -> yuki_punishment_edging
-   // -> yuki_punishment_puppyplay_cage
-   -> yuki_punishment_puppyplay_spanking
+   //  -> yuki_punishment_edging
+   // 
         
     // /scene atrium.close
+    //-> yuki_task_puppyplay
     // -> yuki_task_puppyplay_intro.puppy_yes_intro -> exit
-    // -> yuki_reward_puppyplay_milking -> exit 
+    -> yuki_reward_puppyplay_milking
     // -> yuki_punishment_puppyplay_spanking
+   // -> yuki_punishment_puppyplay_cage
+        
 
    
 
@@ -345,6 +348,10 @@ VAR web = true
 
 + Nega Reward - Forced Sex
     -> unlock_all -> nega_reward_forcedsex
+
++ Yuki Punishment - Puppy Play Spanking
+    ~ setDeviation(puppyplay)
+    -> unlock_all -> yuki_punishment_puppyplay_spanking
 
 + Yuki Task - Puppy Play
     ~ setDeviation(puppyplay)

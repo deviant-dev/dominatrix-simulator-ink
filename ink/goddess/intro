@@ -295,7 +295,7 @@ Do you understand? #60
     Well, perhaps you're a little overwhelmed. #66
     That's to be expected. #67
     /perform amused
-    /perform aroused
+    /emotion aroused
     Just remember your name is {player_name} #68
     /perform sassy
     until I decide otherwise. #69

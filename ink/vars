@@ -402,3 +402,16 @@ VAR yuki_puppy_difficulty = 1
 }
 
 
+
+=== RandomCommentLoop(-> commentTunnel, minTimes, maxTimes, minWait, maxWait)
+~ temp count = 0
+~ temp max = RANDOM(minTimes, maxTimes)
+/log Comments looping {max} times.
+- (repeat)
+
+-> commentTunnel ->
++ [wait {RANDOM(minWait, maxWait)}]
+~ count++
+{ count < max: -> repeat | ->-> }
+
+

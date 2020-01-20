@@ -382,6 +382,102 @@ TODO: Record VO lines
     }
 ->->
 
+=== Yuki_Player_Masturbate ===
+
+
+Are you {hasPenis: hard|wet}? #04
+
++ [yes]
+    ~ addObey()
+   Oh goody.
+   That mean's you're excited!
+
++ [no]
+    ~ addDisobey()
+    That's okay.
+    You can warm yourself up first.
+
+- (masturbate)
+
+{hasPenis: Grab your little cock and start strocking|Reach down and start rubbing your pussy.} 
+
+/character yuki idle
+/wait 2
+That's it.
+
+-> RandomCommentLoop(-> masturbation_comment, 2, 5, 3, 4) ->
+
+- ->->
+
+= masturbation_comment
+
+{ obeyed():
+    -> Yuki_masturbation_comments ->
+- else:
+    -> Yuki_masturbation_punishment ->
+}
+
+->->
+
+=== Yuki_masturbation_punishment ===
+TODO: Rewrite for Yuki
+// { shuffle:
+//     - Your suffering is prolonged when you fail to try. #01
+//     - At least you may please us with this performance. #02
+//     - Thy {hasPenis: turgid rod|inflamed twat} is our only consolation. #03
+//     - Your training will be thorough. #04
+//     - {hasPenis:Bounce your shaft|Spread your nether lips} for us. #05
+//     - We enjoy your suffering {player_name}. #06
+//     - Harder, that you may suffer more fully. #07
+//     - You disappoint us when you fail to stay {hasPenis:erect|swollen}. #08
+//     - Your discomfort is our succor. #09
+//     - Ahhh. Your torment is bewitching. #10
+//     - You may not stop until I give you leave. #11
+//     - /character crowd boos
+//     - Tsk. Tsk. Next time you will do better. #13
+//     - Punishments are opportunities to learn. #14
+//     - -> Headmistress_BadJob ->
+//     - -> Headmistress_BadJob ->
+//     - -> Headmistress_BadJob ->
+//     - -> Headmistress_BadJob ->
+// }
+
+/character yuki
+->->
+
+
+=== Yuki_masturbation_comments ===
+
+{ shuffle:
+    - A fine demonstration {isBoy:toad|strumpet}. #01
+    - We have a little whore, guests! #02
+    - Do you think {isBoy:he|she} is enjoying {isBoy:himself|herself}? #03
+      /character crowd cheers
+    - Exhibit control lest your arm tire. #04
+      /character headmistress smooth_skirt
+    - Cumming without permission is expressly forbidden. #05
+    - What a fine display. #06
+    - Look at those deft fingers. #07
+    - Show some restraint, you painted Jezebel!#08
+    - A {hasPenis:hard shaft|wet slit} is a pleasing {hasPenis:shaft|slit}. #09
+    - Proper performance for guests is a requirement {isBoy:toad|strumpet}. #10
+    - One must be proud to display their arousal. #11
+    - You please our guests with your performance. #12
+    - You have earned this small pleasure. #13
+    - /character crowd oos
+    - You are a divine {isBoy:reprobate|harlot}. #15
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+    - -> Headmistress_GoodJob ->
+}
+
+/character Yuki
+->->
+->->
 
 // Break Option 1
 
