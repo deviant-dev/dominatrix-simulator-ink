@@ -1,9 +1,9 @@
 === yuki_intro ===
 -> select_gender ->
-~ obey = 0
-~ disobey = 0
+
 ~ punishments = 1
 ~ rewards = 1
+~ setScene(intro_scene, Yuki)
 
 /scene entry.intro2
 /music yuki
@@ -52,7 +52,7 @@ You're such a good {player_name}! #10
 Do you know why you're here? #11
 
  + [yes]
-    ~ obey++
+    ~ addObey()
     /perform confused
 
     I don't see how you'd know that already. #12
@@ -66,7 +66,7 @@ Do you know why you're here? #11
     /wait
     
 + [no]
-    ~ disobey++
+    ~ addDisobey()
     /perform serious
     Well, duh! #16
     You're not supposed to know. #17
@@ -90,19 +90,19 @@ Well, we call it a house, but it's not really one... #22
 /perform serious
 
 All guests must follow the rules #23
-or they will not be allowed to stay. #24
+or you will not be allowed to stay. #24
 
 - (learn_rules)
 /perform cocks_head_to_left
 Would you like to know what the rules are? #25
 
 + [yes]
-    ~ obey++
+    ~ addObey()
     /perform excited
     Oh goody! I love telling people the rules! #26
 
 + [no]
-    ~ disobey++
+    ~ addDisobey()
     /perform pouty
     Don't be a pouty baby. #27
     /perform angry
@@ -121,7 +121,7 @@ Would you like to know what the rules are? #25
 The rules are simple! #30
 
 /perform two_fingers
-And there are only two of them! #31
+And there's only two of them! #31
 
 /perform one_finger
 
@@ -144,12 +144,12 @@ Easy, right? #36
 
 + [yes]
     /perform bounces
-    ~ obey++
+    ~ addObey()
     I know! Our Goddess is so kind! #37
 
 + [no]
     /perform cocks_head_to_left
-    ~ disobey++
+    ~ addDisobey()
     Oh! Don't worry. You'll learn fast! #38
 
 + [timeout]
@@ -236,12 +236,12 @@ Giving rewards is so much more fun than punishing. #41
 Do you like being a good {player_name}? #42
 
 + [yes]
-    ~ obey++
+    ~ addObey()
     /perform bounces
     Yay! We'll have so much fun together! #43
 
 + [no]
-    ~ disobey++
+    ~ addDisobey()
     /perform pouty
     Oh darn. I really hope you'll change your mind. #44
 
@@ -256,6 +256,7 @@ Do you like being a good {player_name}? #42
 /scene entry.intro3
 
 /character yuki
+/music nega
 /lookat nega
 
 /character nega head_toss
@@ -304,7 +305,6 @@ I really want the Goddess to be pleased with me. #57
 /character nega head_toss
 Ugh.. You're such a goody two-shoes. #58
 
-/lookat none
 /perform bored_nega
 You'd have so much more fun if you bent the rules now and then. #59
 
@@ -322,7 +322,7 @@ So. You're the new one, huh? #60
 -(nega_ask_again)
 
 + [yes]
-    ~ disobey++
+    ~ addDisobey()
     /perform inspect
     Not too bad. You have potential. #61
     
@@ -330,7 +330,7 @@ So. You're the new one, huh? #60
     Though, I'm not too picky. #62
 
 + [no]
-    ~ obey++
+    ~ addObey()
     /perform laugh
     Not new, huh? #63
     
@@ -354,13 +354,12 @@ and telling you how to be a good {player_name}, #69
 hasn't she? #70
 
 + [yes]
-    ~ obey++
-    /lookat none
+    ~ addObey()
     /perform bored_nega
     Boring. #71
     
 + [no]
-    ~ disobey++
+    ~ addDisobey()
     /perform pleased
     A little liar.  #72
     We're going to get along just fine. #73
@@ -395,13 +394,13 @@ When I swing my hand, you better fucking jerk your head. #193
 Ready? #194
 
 + [yes]
-    ~ obey++
+    ~ addObey()
     That's right, bitch. #195
     You'll take this like a good little cunt. #196
     -> try_slap
 
 + [no]
-    ~ disobey++
+    ~ addDisobey()
     /perform annoyed
     No? #197
     Then you're not going to like me very much. #198
@@ -413,12 +412,12 @@ Obedient pain sluts get special rewards around here. #199
 Do you want to change your mind and take a slap? #200
 
 + [yes]
-    ~ obey++
+    ~ addObey()
     /perform licks_lips
     Ahhhh. Sweet music to my ears! #201
 
 + [no]
-    ~ disobey++
+    ~ addDisobey()
     /perform head_toss
     Pity. You have no idea what you're missing. #202
     -> going_on
@@ -442,11 +441,10 @@ Do you want to change your mind and take a slap? #200
 Have you figured out what's going on here yet? #76
 
 + [yes]
-    ~ disobey++
+    ~ addDisobey()
     /perform curious
     Hmmm. You might just be smarter than you look, {player_name}. #77
     
-    /lookat none
     /perform bored
     We'll find out soon enough. #78
    
@@ -455,7 +453,7 @@ Have you figured out what's going on here yet? #76
     Although, honestly, the dumb ones make better fuck toys. #79
 
 + [no]
-    ~ obey++
+    ~ addObey()
     /perform rolls_eyes
     Typical. <i>She</i> always wants them to learn the hard way. #80
     
@@ -470,8 +468,6 @@ Have you figured out what's going on here yet? #76
     The Goddess will be so angry with you! #83
     /perform idle_yuki
     
-    /character nega
-    /lookat none
     /character nega bored_nega
     Oh fine, party pooper! #84
     
@@ -501,12 +497,12 @@ Let's find out. Shall we? #89
 - (genitals)
 
 + [yes]
-    ~ disobey++
+    ~ addDisobey()
     /perform pleased
     Ooo. I'm going to like this one. {isBoy: He|She} likes to be naughty. #90
 
 + (caress_skipped) [no]
-    ~ obey++
+    ~ addObey()
     /perform angry
     Oh great. Another spoil-sport, just like Yuki. #91
     -> skip_caress
@@ -532,13 +528,13 @@ You want to be a little fuck toy, don't you? #97
 
 - (caress_genitals)
 + [yes]
-    ~ disobey++
+    ~ addDisobey()
     What a naughty {player_name}. #98
     I feel how {hasPenis:hard|wet} you are. #99
     Do you want to be my fuck toy? #100
     
     ++ [yes]
-        ~ disobey++
+        ~ addDisobey()
         /perform head_toss
         Too bad. I only use fuck toys that have something to give me. #101
         
@@ -546,7 +542,7 @@ You want to be a little fuck toy, don't you? #97
         And you can't give me what I want yet. #102
         
     ++ [no]
-        ~ obey++
+        ~ addObey()
         /perform sassy
         No? You don't like me? #103
         Awww. But I'm way more fun that that uptight bitch. #104
@@ -557,7 +553,7 @@ You want to be a little fuck toy, don't you? #97
         I must be boring you. #105
     
 + [no] 
-    ~ obey++
+    ~ addObey()
     /perform head_toss
     What a prude. You'll change your mind soon enough. #106
     They always do. #107
@@ -580,11 +576,11 @@ tearing up that ass of yours. #110
 <i>You're trapped in this house.</i> #113
 <i>And we own your cum.</i> #114
 /perform laugh
-/perform idle_nega
+
 
 + [wait]
-
-- /lookat yuki
+-/character nega idle_nega
+/lookat yuki
 /character yuki foot_stomp
 /lookat nega
 That's enough, Nega! #115
@@ -594,7 +590,7 @@ You are interfering too much! #140
 I'll be reporting you to the Headmistress straight away. #117
 /perform idle_yuki
 
-{obey - disobey > 0:
+{obeyed():
     - -> Yuki_finish
     - else: -> Nega_finish
 }
@@ -610,6 +606,7 @@ I'll see you again soon, little mouse. #118
 Come find me when you've earned a reward. #119
 
 /scene entry.intro4yuki
+/music yuki 
 
 
 - /character yuki angry
@@ -665,8 +662,7 @@ She's a bad seed! #137
 /perform idle_yuki
 You'll get a punishment if you get caught coming out of her room. #138
 
-~ headmistress_hub_status = unlocked
--> entry_intro2
+-> exit
 
 
 = Nega_finish
@@ -732,8 +728,6 @@ Well, I won't take kindly to being ignored. #162
 The best part is you can't collect any rewards  #163
 until you've paid off all your punishments. #164
 
-- 
-/lookat none 
 /perform bored
 
 I'm bored with you.  #165
@@ -748,8 +742,6 @@ Better get your ass to the Headmistress. #167
 /perform idle_nega
 She doesn't like to be kept waiting. #168
 
-~ headmistress_hub_status = unlocked
-//need to know how player gets to next room
--> entry_intro2
+-> exit
 
 

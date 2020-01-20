@@ -5,29 +5,28 @@ VAR edged = false
 VAR demerits = 0
 
 === nega_hub ===
+
 -> select_gender ->
+
+// If the player hasn't done the intro yet,
+// then have them go to the intro.
+
+~ setHub(Nega)
+
+{nega_intro == 0:
+    -> nega_intro
+}
 
 /scene Attic.NegaHub
 /music nega
 /ambient off
 
-~ obey = 0
-~ disobey = 0
-~ nega_hub_status = early_access
 
-// If the player hasn't done the intro yet,
-// then have them go to the intro.
-{not nega_intro:
-    + [move: Nega ({nega_hub_status})]
-        -> tryEnter(nega_hub_status, -> nega_intro, -> nega_hub)
-- else:
-    -> hub
-}
++ [move: Nega ({nega_hub_status})]
+    -> tryEnter(nega_hub_status, -> hub, -> nega_hub)
+
 
 - (hub)
-
--> summary("Nega Hub", hub) ->
-
 {
     - rewards > 0:
         Mmm, I like the look of those yummy Bloodstones.

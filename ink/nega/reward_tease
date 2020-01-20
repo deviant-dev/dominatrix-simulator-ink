@@ -1,5 +1,7 @@
 === nega_reward_tease ===
  -> select_gender ->
+
+~ setScene(reward_scene, Nega)
  
 /scene attic.reward_tease
 /music nega-reward

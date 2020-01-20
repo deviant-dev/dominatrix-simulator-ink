@@ -5,6 +5,8 @@ VAR Break2 = false
 VAR Unattractive = false
 VAR massage_count = 0
 
+~ setScene(reward_scene, Yuki)
+
 /scene ?
 
 /character yuki

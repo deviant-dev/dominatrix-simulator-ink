@@ -2,19 +2,25 @@
 -> select_gender ->
 
 ~ isIntro = nega_reward_dice == 1
+~ setScene(reward_scene, Nega)
 
 /scene attic.negaintro
 /music nega
-/ambient off
+/ambient howling-wind
 
 - (give_reward)
 
 /character nega hand_out
-Hand it over. #01
+{shuffle:
+    - Hand it over. #01
+    - Gimme!
+    - Oooo. Give it here. 
+}
 
 + [pose:present_wrist_reward]
-+ [timeout] -> give_reward
++ [timeout] -> Nega_BadJob -> give_reward
 + [no] -> Nega_CheckIfInterested -> give_reward
++ [distracted] -> Nega_PayAttention -> give_reward
 
 - /perform swipe_hand
 ~ removeReward()
@@ -23,18 +29,25 @@ Hand it over. #01
 Fuck ya! #02
 You're my bitch now. #03
 
+Time to play a little game.
+/perform squat
+Get down here.
+
++ [pose:kneel]
+    
+
+- (test_dice)
 /perform squat_give_dice
+Let's see what you're going to get #04
+for this pretty little gift. #05
 
 + [hold:dice]
-    Let's see what you're going to get #04
-    for this pretty little gift. #05
-    /perform squat
 - (roll) 
-
 Go ahead. Roll them bones. #06
 
+-
 + [roll]
-+ [timeout] -> roll
++ [timeout] -> Nega_BadJob -> roll
 
 - ~ temp result1 = getNegaDie1()
 ~ temp result2 = getNegaDie2()
@@ -276,6 +289,6 @@ You're gonna love getting rewards from me. #49
     - Come back when you have another reward to spend. #60
     - I'll let you come see me again. #61
     - You know where to find me. #62
-    }
+}
 
--> demo_end
+-> exit

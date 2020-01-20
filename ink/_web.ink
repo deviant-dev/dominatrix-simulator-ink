@@ -5,11 +5,13 @@ INCLUDE vars
 INCLUDE access_code
 INCLUDE game_intro
 INCLUDE entry_hub
+INCLUDE general/bad_touch
 INCLUDE goddess/hub
 INCLUDE goddess/intro
 INCLUDE goddess/lore
 INCLUDE goddess/generic_responses
 INCLUDE goddess/monitoring
+INCLUDE goddess/monitoring_intro
 INCLUDE goddess/reward_huge
 INCLUDE headmistress/hub
 INCLUDE headmistress/code
@@ -20,8 +22,12 @@ INCLUDE headmistress/apologize
 INCLUDE headmistress/punishment_flogging
 INCLUDE headmistress/punishment_spanking
 INCLUDE headmistress/reward_cunnilingus
+INCLUDE headmistress/reward_spanking
 INCLUDE headmistress/task_flogging
-INCLUDE headmistress/task_hand_signal_training
+INCLUDE headmistress/task_handsignals
+INCLUDE headmistress/task_handsignals_basics
+INCLUDE headmistress/task_handsignals_endurance
+INCLUDE headmistress/task_handsignals_furniture
 INCLUDE headmistress/train_spanking
 INCLUDE nega/hub
 INCLUDE nega/intro
@@ -52,40 +58,54 @@ INCLUDE yuki/task_puppyplay_learn
 INCLUDE yuki/task_puppyplay_practice
 INCLUDE yuki/task_teaservice
 INCLUDE yuki/train_spanking
-INCLUDE headmistress/task_handsignals
-INCLUDE headmistress/task_handsignals_intro
-INCLUDE headmistress/task_handsignals_learn
-INCLUDE headmistress/task_handsignals_practice
+
+
+
 
 
 
 VAR debug = false
 VAR web = true
 
-// Stand-Alone Deviation Name
+// Redirects the story flow to focus on a specific kink or game mode
 
-// This redirects the flow to focus on a specific kink
-// for stand-along deviation modules.
+// ~ setDeviation(full_game)
+~ setDeviation(demo)
 
-LIST deviations = dominatrix_simulator, puppyplay
 
-VAR deviation = dominatrix_simulator
-// VAR deviation = puppyplay
+
+// EXTERNAL isDebug()
+// EXTERNAL isWeb()
+// EXTERNAL getCode()
+// EXTERNAL getCodeUrl()
 
 
 // Debug Jump
 // (must be in-editor and have 'Debug' checked in StoryTeller)
-{ isDebug() :
+{ isDebug():
+    // Auto-set gender here to skip gender selection step
+    // ~setGender("m")
+    ~setGender("f")
+
+    // Force a different deviation
+
+    // ~ setDeviation(full_game)
+    // ~ setDeviation(demo)
+    // ~ setDeviation(puppyplay)
+    // ~ setDeviation(hand_signals)
+
+
+    ///scene Entry.Empty
     // -> test_audio
     // -> test_marks
     
     // -> game_intro.choices
+    // -> demo_end
     
     // -> test_multiple_poses
     
     // --- Goddess Jumps ---
-    
-    // -> goddess_intro
+    // -> goddess_hub
     // /scene bedroom.intro
     // /character goddess
     // /move
@@ -100,9 +120,11 @@ VAR deviation = dominatrix_simulator
     
     
     // --- Yuki Jumps ---
+    // -> yuki_hub
     // -> yuki_intro
     // -> select_gender ->
     // /scene entry.intro3
+    // -> test_look
     
     
     // -> yuki_intro.nega_interruption
@@ -110,61 +132,64 @@ VAR deviation = dominatrix_simulator
     // -> yuki_intro.caress_question
 
     // -> yuki_task_puppyplay
-
+   
+   //     -> yuki_punishment_edging
+   // -> yuki_punishment_puppyplay_cage
+   -> yuki_punishment_puppyplay_spanking
+        
     // /scene atrium.close
-    // /character yuki
     // -> yuki_task_puppyplay_intro.puppy_yes_intro -> exit
     // -> yuki_reward_puppyplay_milking -> exit 
     // -> yuki_punishment_puppyplay_spanking
 
-    // /lookat nega
-    
-    // /character nega head_toss
-    // /lookat yuki
-    
-    // -> yuki_intro.test_lookat
-    // /scene LectureHall
-    
-    // /scene LectureHall.Punishment_Spanking_Ready
+   
 
 
 
     // --- Headmistress Jumps ---
 
-    // /character headmistress
+    // -> headmistress_intro
+    //  /scene LectureHall
+    
+    // /scene LectureHall.Punishment_Spanking_Ready
 
-     -> headmistress_intro
+    // /character headmistress
+    // /scene LectureHall.Punishment_Spanking_Ready
+    //  -> headmistress_punishment_spanking.accept_punishment
 
     // ~ yuki_hub_status = unlocked
     // ~ headmistress_hub_status = unlocked
     // ~ punishments = 1
     // ~ rewards = 1
 
-    
-    // /scene LectureHallIntro.Intro3
-    // /character headmistress
-    // -> headmistress_intro.meet_headmistress
+    // -> headmistress_intro.jump_start
     
     // /scene LectureHall.Punishment_Spanking_Ready
-    // /character headmistress
-    // /music headmistress
-    //  -> headmistress_punishment_spanking.punish_continue
+    //  /character headmistress
+    //  /music headmistress
+    // -> headmistress_punishment_spanking.punish_continue
+
+    // ~ deviation = hand_signals
+    //  -> headmistress_hub
 
     // /action raise_curtains
     // /scene LectureHall.Punishment_Spanking
-    // -> headmistress_punishment_spanking.FinalEnding
+    //  -> headmistress_punishment_spanking.SpankingFinished
 
 
 
     // --- Nega Jumps ---
     
-    ~ yuki_hub_status = unlocked
-    ~ headmistress_hub_status = unlocked
-    ~ nega_hub_status = early_access
-    ~ punishments = 0
-    ~ rewards = 1
     // -> nega_hub
-    // -> nega_reward_dice
+    
+    /scene attic.reward_forcedsex1
+    /music nega
+    /ambient howling-wind
+    ~ setScene(task_scene, Nega)
+    -> nega_reward_forcedsex.like_that
+
+
+   // -> nega_reward_dice.test_dice
     // -> nega_reward_forcedsex
     
     // -> nega_reward_tease
@@ -172,8 +197,12 @@ VAR deviation = dominatrix_simulator
 }
 
 // -> exit has the logic for module starting locations
-{ deviation == puppyplay:
-    -> yuki_task_puppyplay
+
+{ 
+    - deviation == puppyplay:
+        -> yuki_hub
+    - deviation == hand_signals:
+        -> headmistress_hub
 }
 
 { isWeb() :
@@ -182,6 +211,17 @@ VAR deviation = dominatrix_simulator
     // Main Game 
     -> game_intro
 }
+
+=== test_look ===
+    /scene entry.intro3
+
+    /character yuki thoughtful
+    /lookat nega
+
+    /character nega head_toss
+    /lookat yuki
+    
+    + [yes] -> yuki_intro.test_lookat
 
 === test_marks ===
     + add punishment
@@ -276,58 +316,36 @@ VAR deviation = dominatrix_simulator
 
 === table_of_contents ===
 
-+ <b>Full Game</b> 
++ <b>Full Game</b>
+    ~ setDeviation(demo)
     -> game_intro_web
+
+// + Full Game (WIP)
+//     ~ setDeviation(full_game)
+//     -> game_intro_web
 
 + Goddess Intro 
     -> goddess_intro
 
 + Entryway Intro (Yuki and Nega)
-    ~ yuki_hub_status = unlocked
     -> yuki_intro
 
 + Headmistress Intro
-    ~ yuki_hub_status = unlocked
-    ~ headmistress_hub_status = unlocked
     -> headmistress_intro
 
 + Headmistress Punishment - Spanking 
     -> unlock_all -> headmistress_punishment_spanking
 
++ Headmistress Task - Hand Signals
+    ~ setDeviation(hand_signals)
+    -> unlock_all -> headmistress_task_handsignals
+
 + Nega Intro 
     -> unlock_all -> nega_intro
-
-+ Nega Reward Dice 
-    -> unlock_all -> nega_reward_dice
 
 + Nega Reward - Forced Sex
     -> unlock_all -> nega_reward_forcedsex
 
 + Yuki Task - Puppy Play
-    ~ deviation = puppyplay
+    ~ setDeviation(puppyplay)
     -> unlock_all -> yuki_task_puppyplay
-
-// + <i>Entry Hub (WIP)</i>
-//     -> unlock_all -> entry_hub
-
-// + <i>Goddess Hub (WIP)</i> 
-//     -> unlock_all -> goddess_hub
-
-// + <i>Yuki Hub (WIP)</i> 
-//     -> unlock_all -> yuki_hub
-
-// + <i>Yuki Reward Massage (WIP)</i> 
-//     -> unlock_all -> yuki_reward_massage
-
-// + <i>Yuki Punishment Edging (WIP)</i> 
-//     -> unlock_all -> yuki_punishment_edging
-
-// + <i>Headmistress Hub (WIP)</i> 
-//     -> unlock_all -> headmistress_hub
-
-// + <i>Nega Hub (WIP)</i> 
-//     -> unlock_all -> nega_hub.hub
-
-// + <i>Nega Punishment Trampling (WIP)</i> 
-//     -> unlock_all -> nega_punishment_trampling
-

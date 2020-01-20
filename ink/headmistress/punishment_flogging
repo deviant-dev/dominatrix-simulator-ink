@@ -1,4 +1,5 @@
 === headmistress_punishment_flogging ===
+~ setScene(punishment_scene, Headmistress)
 Insert flogging scene here.
 ~ removePunishment()
 ->->

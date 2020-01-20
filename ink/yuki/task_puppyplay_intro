@@ -1,6 +1,8 @@
 
 === yuki_task_puppyplay_intro ===
 
+~ setScene(task_scene, Yuki)
+
 - (intro_again)
 /perform clasp_hands
 

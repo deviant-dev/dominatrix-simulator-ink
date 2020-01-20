@@ -1,0 +1,29 @@
+=== goddess_monitoring_tutorial ===
+-> select_gender ->
+
+~ setScene(intro_scene, Goddess)
+
+/scene BedroomBroken.InHand
+/music goddess
+/character goddess curious
+
+//give the player 10 punishments, which are then instantly spent to put them in chastity
+
+/emotion skeptical
+Well, well.
+You've only just arrived and already you misbehave.
+There are no secrets in my house.
+I know exactly what you've been up to. 
+/emotion neutral
+Every soul here must serve.
+Passion is the price for existence.
+/emotion amused
+For your transgressions, you will suffer.
+//give player 10 punishment markers
+You will serve without reward until I deem you worthy.
+//give chastity device
+Now go and fail me no further.
+~ isTutorial = false
+
+-> exit
+

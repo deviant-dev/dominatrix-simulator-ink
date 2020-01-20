@@ -1,11 +1,22 @@
 === nega_intro ===
 -> select_gender ->
-~ obey = 0
-~ disobey = 0
+
+// Make sure we are set up as expected for Nega' intro.
+~ rewards = 1
+~ punishments = 0
+
+~ setScene(intro_scene, Nega)
+
+/scene Attic.NegaHub
+/music nega
+/ambient howling-wind
+
++ [move: Nega ({nega_hub_status})]
+    -> tryEnter(nega_hub_status, -> intro, -> nega_intro)
+
+- (intro)
 
 /scene Attic.NegaIntro
-/music nega
-/ambient off
 /character nega
 
 { isWeb():
@@ -44,23 +55,27 @@ that kiss-ass Yuki wasn't paying attention. #09
 {yuki_intro.Nega_finish: -> nega_tease }
 
 - (yuki_warning)
-/perform idle
+/perform amused_nega
 I bet she told you not talk to me, didn't she? #10
 
 + [yes]
-    ~obey++
+    ~ addObey()
     /perform lean_forward
     Don't waste your time with that simpering brat. #11
+    /perform head_toss
     Oh sure, she'll be all sweet and attentive, #12
     but she'll bore the shit out of you eventually. #13
+    /perform sassy
     Stick with me if you really want to have some fun. #14
     
 + [no]
-    ~disobey++
+    ~ addDisobey()
     /perform unhappy
     No? I'm sure she would have. #15
     You must be some kind of idiot who doesn't listen. #16
+    /perform lean forward
     Don't pull that shit with me. #17
+    /perform behold
     Try to play dumb all you want,  #18
     but you better do what you're fucking told. #19
     
@@ -78,12 +93,12 @@ Does your poor tushy sting? #23
 /perform idle
 
 + [yes]
-    ~obey++
+    ~ addObey()
     /perform amused_nega
     Poor wittle baby. #24
     
 + [no]
-    ~disobey++
+    ~ addDisobey()
     /perform curious
     Oh, a tough {isBoy:guy|girl}, huh? #25
     Nice. #26
@@ -104,7 +119,7 @@ Let's have a look. #29
 Turn around and bend over. #30
 Hands on your knees and ass in the air! #31
 
-+ [pose:present_ass_left]
++ [pose:present_ass_reverse]
 + [no] -> Nega_CheckIfInterested -> present_ass
 + [timeout] -> present_ass
 
@@ -124,10 +139,10 @@ TODO: Support 'wiggle' action
 //     ++ [wiggle-success:5]
 //         That's enough.  #35
         Turn back around and present yourself.  #36
-//         ~obey++
+//         ~ addObey()
 // + [wiggle-timeout]
 //     -> Nega_BadJob ->
-//     ~disobey++
+//     ~ addDisobey()
 //     Did I tell you to stop? #37
 //     -> wiggle
 // // + [no] -> Nega_CheckIfInterested -> wiggle
@@ -150,12 +165,12 @@ Those are the rules. #41
 And I better warn you, I don't always play nice,  #42
 so you better think hard before you give it to me. #43
 
-/perform lean_forward
+- /perform lean_forward
 What are you going to do, pretty {player_name}? #44
 Do you want to try your luck? #45
 
 + [yes]
-    ~obey++
+    ~ addObey()
     /perform pleased
     That's right. #46
     You're going to give me that lovely little Bloodstone. #47
@@ -163,20 +178,22 @@ Do you want to try your luck? #45
     -> nega_reward_dice
 
 + [no]
-    ~disobey++
+    ~ addDisobey()
     /perform thoughtful
     What a fucking pity. #49
     Are you sure you don't want to give me that pretty Bloodstone? #50
     
     ++[yes]
-        ~disobey++
+        ~ addDisobey()
         /perform unhappy
         Stop wasting my time! #51
         Get the fuck out of here. #52
+    TODO: Record new VO line
+        I'll make sure you pay one way or the other.
         -> exit
     
     ++[no]
-        ~obey++
+        ~ addObey()
         /perform satisfied
         Very good.  #53
         I can be a lot of fun with the right...toy. #54

@@ -2,6 +2,8 @@
 
 { isDebug() : -> choices }
 
+~ setScene(intro_scene, None)
+
 /scene EntryDark.TitleScreen
 /music entry
 
@@ -12,23 +14,24 @@
 
 /scene EntryDark.Instructions
 
-
 + [yes]
 + [no]
     /scene EntryDark.Empty
     -> instructions
 
-
-- /scene EntryDark.JournalInfo
+- (use_journal)
+/scene EntryDark.JournalInfo
 
 + [Use Journal]
 
-- /scene EntryDark.VerifyAge
+- (verify_age)
+/scene EntryDark.VerifyAge
 
 + [yes]
 + [no] -> demo_end
 
-- (choices) /scene EntryDark.Notifications
+- (choices)
+/scene EntryDark.Notifications
 
 + [yes]
 
@@ -41,9 +44,24 @@
 
 + [move: Intro] -> goddess_intro
 + [move: Yuki (unlocked)] -> yuki_intro
-+ [move: PuppyPlay (unlocked)] -> yuki_task_puppyplay
++ {deviation != demo}[move: PuppyPlay (unlocked)] -> yuki_task_puppyplay
 + [move: Headmistress (unlocked)] -> headmistress_intro
 + [move: Nega (unlocked)] -> nega_intro //-> tryEnter(early_access, -> nega_intro, -> choices)
+
+
+=== game_intro_again ====
+
+{isWeb(): -> table_of_contents}
+
+/scene EntryDark.Notifications
+/music entry
+
++ [move: Intro] -> goddess_intro
++ [move: Yuki (unlocked)] -> yuki_intro
++ {deviation != demo}[move: PuppyPlay (unlocked)] -> yuki_task_puppyplay
++ [move: Headmistress (unlocked)] -> headmistress_hub
++ [move: Nega (unlocked)] -> nega_intro //-> tryEnter(early_access, -> nega_intro, -> choices)
+
 
 === game_intro_web ===
 

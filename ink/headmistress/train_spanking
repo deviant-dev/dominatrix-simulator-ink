@@ -1,12 +1,13 @@
 === headmistress_train_spanking(sentFromElsewhere) ===
 
 // This is a tunnel to train the player on spanking at any time.
+~ setScene(task_scene, Headmistress)
 
 {sentFromElsewhere:
     /scene LectureHall.Punishment_Spanking
     /music headmistress
     /ambient crowd
-    /action raise_curtains
+    ~ Headmistress_RaiseCurtains()
     /character crowd cheers_loud
     
     /character headmistress
@@ -52,7 +53,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
 - Tell me, lump, is that as high as you can lift your hindquarters? #26
 
 +[yes]
-    ~obey++
+    ~ addObey()
     /perform lean_forward
     I disagree. #27
     Arch just a bit more. #28
@@ -60,7 +61,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
     You will remain in this position without fail. #30
 
 +[no]
-    ~disobey++
+    ~ addDisobey()
     /perform displeased
     You serve yourself and our Goddess poorly, heathen. #31
     Raise your ass! #32
@@ -107,7 +108,7 @@ Time to rehearse. #118
         Not good enough. Try again. #120
         -> try_spank
     - else:
-        ~disobey++
+        ~ addDisobey()
         That will do for now. #121
         We will work on that in the future. #122
     }
@@ -117,9 +118,9 @@ Time to rehearse. #118
 - 
 
 { headmistress_spanking_mistakes > 0:
-    ~disobey++
+    ~ addDisobey()
 - else:
-    ~obey++
+    ~ addObey()
 }
 
 // Reset spanking mistakes to track them in the next sections.
@@ -146,26 +147,24 @@ with excitement at my ministrations! #240
 
 - (rotate_left_timeout)
 Turn to the left. #241
--> Headmistress_GoodJob ->
+
 
 + [pose:present_ass_left]
-
+-> Headmistress_GoodJob ->
 - /character crowd oos
 
 - (rotate_right_timeout)
 /character headmistress
 Now turn to the right. #242
--> Headmistress_GoodJob ->
+
 
 + [pose:present_ass_right]
+-> Headmistress_GoodJob ->
 
 - /character crowd gasps
 
 /character headmistress behold
 Ahhh. I am pleased! #243
 
-{sentFromElsewhere: 
-You may return from whence you came and report your training success!
-}
 
 ->->

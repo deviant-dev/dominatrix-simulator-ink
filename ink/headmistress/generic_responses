@@ -1,3 +1,6 @@
+TODO: Record missing VO
+
+// For actions
 === Headmistress_GoodJob ===
 
 // /perform caress_thigh
@@ -5,44 +8,137 @@
 { shuffle:
     - Most excellent. #01
     - There is hope for you, yet! #02
-    - Slaves in this House must be pleasing to Her. #03
     - I can mold you. #04
     - You are raw, but you have potential. #05
     - I shall delight in shaping you to please Her. #06
     - I am pleased. For now. #07
-    - You may hold your head high. #08
-    - Splendid. #09
-    - A rousing performance. #10
     - Eloquence becomes you. #11
     - You seek to impress. #12
     - Continue in this way. #13
     - Most pleasing. #14
-    - I take such joy in my role. #15
-    - Such a delight to behold! #16
-    - I am overwhelmed with satisfication. #17
     - You are making progress. #18
+    - Impressive.
+    
+    // GoodJob with audience.
+    - {headmistress_has_audience:
+            Slaves in this House must be pleasing to Her. #03
+        - else:
+            -> Headmistress_GoodJob
+      }
+    - {headmistress_has_audience:
+            You may hold your head high. #08
+        - else:
+            -> Headmistress_GoodJob
+      }
+    - Splendid. #09
+    - {headmistress_has_audience:
+            A rousing performance. #10
+        - else:
+            -> Headmistress_GoodJob
+      }
+    - {headmistress_has_audience: 
+            I take such joy in my role. #15
+        - else:
+            -> Headmistress_GoodJob
+      }
+    - {headmistress_has_audience:
+            Such a delight to behold! #16
+        - else:
+            -> Headmistress_GoodJob
+      }
+    - {headmistress_has_audience:
+            I am overwhelmed with satisfication. #17
+        - else:
+            -> Headmistress_GoodJob
+      }
 }
 
 ->->
 
 === Headmistress_BadJob ===
-TODO: Replace later with new lines - these are borrowed from bad spanking
+
 // /perform caress_thigh
 
 { shuffle:
+    // Copy VO lines from badspanking
     - Tsk. Tsk. You can do better. #148
-    - Lift that head, cretin. #149
     - Are you even trying? #151
-    - Your lack of grace is stunning. #152
     - Where is your pride? Try harder. #153
-    - Squirming is not allowed. #155
-    - I expect a better performance. #156
-    - Your audience is disappointed. #157
-    - You are putting on a poor display. #248
+    - Uggh. #247
+    - You have a long ways to go. #249
     - I can see you will require much instruction. #250
+    - Slatternly.
+    - Decorum, poppet.
+    
+    // BadJob with audience
+    - {headmistress_has_audience:
+            I expect a better performance. #156
+        - else:
+            -> Headmistress_BadJob
+      }
+    - {headmistress_has_audience:
+            Your lack of grace is stunning. #152
+        - else:
+            -> Headmistress_BadJob
+      }
+    - {headmistress_has_audience:
+            You are putting on a poor display. #248
+        - else:
+            -> Headmistress_BadJob
+      }
+    - {headmistress_has_audience:
+            Your audience is disappointed. #157
+        - else:
+            -> Headmistress_BadJob
+      }
+//record new VO
+    - 
+    
 }
 
 ->->
+
+=== Headmistress_Unhappy ===
+TODO: Replace later with new lines - these are borrowed from bad spanking
+
+{ shuffle:
+// Copy VO lines from badspanking
+    - Uggh. #247
+    - I fail Her.
+    - Disappointing.
+    - I grow weary of this, peasant.
+    - I tire of your reticence.
+    - How droll.
+    - You disappoint.
+    - She frowns.
+    - Podsnappery.
+    - Slatternly.
+    - A conundrum.
+    - You waste my time, miscreant.
+    - Your presence disturbs.
+    
+}
+
+->->    
+    
+//copied from Yuki as a response to timeouts that require an action, rather than an answer. This has not been edited or added to the game yet.
+=== Headmistress_Interested ===
+
+TODO: record VO
+{cycle:
+    - Perform, mongrel.
+    - Do you intend to comply, slave?
+    - Make haste, wretch.
+    - Are your feet one with the ground?
+    - A sloppy layabout, I see.
+    - Why the reticence, bauble?
+    - Performance is required, trinket.
+    - Your limbs are as earth. Untether them!
+}
+
+->->
+
+//For positive responses to questions
 
 === Headmistress_AcknowledgeYes ===
 
@@ -50,17 +146,34 @@ TODO: record VO
 
 { cycle:
     - Excellent.
+    - How exquisite. #237
     - Indeed.
     - Good.
-    - /perform nod
+    - Your acceptance is most becoming. #93
     - Hmm. 
     - Superb.
     - Mmmhmm.
     - Just so. 
     - I should think so.
+    - Ahhh. I am pleased! #243
     }
     
 
+->->
+
+=== Headmistress_Resume ===
+//generic responses whenever the Headmistress continues dialogue after a response or action.
+
+
+{ shuffle:
+    - Enough. We shall resume. #01
+    - I am eager to return to your admonishment. #02
+    - Your punishment shall resume. #03
+    - Let us continue. #04
+    - Retribution must continue. #05
+    - We shall recommence the chastisement. #06
+}
+    
 ->->
 
 === Headmistress_punishment_resumes ===
@@ -85,15 +198,16 @@ TODO: record VO
 TODO: Record VO 
 
 {cycle:
-    - Answer me, wretch.
+    - Respond, wretch.
     - I am waiting, {player_name}.
     - Perhaps you think I am not worthy of your time.
     - Where is your head, slave? Respond.
-    
-    - Hey {player_name}, I'm not talking to myself you know! #06
-    - Answer me, {player_name}! #07
-    - Are you even listening? #08
-    - Focus, {player_him}.  #09
+    - Attend to me, heathen. 
+    - I require your attention at all times, baffoon.
+    - You weary me. 
+    - Slave!
+    - You shiftless layabout. Attend!
+    - Stay alert, flawed one.
 }
 
 ->->
@@ -114,7 +228,7 @@ TODO: Record VO
 }
 
 + [pay-attention]
-+ [timeout] -> Headmistress_PayAttention
++ [timeout] -> Headmistress_PayAttention ->->
 
 /perform thoughtful
 
@@ -129,6 +243,73 @@ TODO: Record VO
 
 ->->
 
+=== Headmistress_GoodSpank ===
+
+{shuffle:
+    - A fine welt is forming. #158
+    - Music to my ears. #159
+    - Perhaps I should be counting. #160
+    - A red bottom is a pleasing bottom. #161
+    - I do so love instructing slaves in proper behavior. #162
+    - I never tire of this. #163
+    - I suspect that one hurt. #164
+    - /character crowd oos
+    - /character crowd gasps
+    - /character headmistress mmms
+    - Brilliant! No doubt my guests are impressed by your display. #165
+    - Have you been keeping track? #166
+    - Notice the beads of sweat forming on the brow. #167
+    - Remember to breathe, {isBoy: runt|poppet}. #168
+    - Notice how the {hasPenis:shaft bounces|nether lips clench}. #169
+    - The light is catching the dewy sheen on the skin most magnificently. #170
+    - Observe the {hasPenis: tip|slit} begin to glisten. #171
+    - Oooo. Look at how the anus puckers. #172
+    - No doubt several of my students are stimulating themselves right now. #173
+    - Some of you are squirming with remembrance right now. #174
+    - The nether regions must be fully in view. #35
+    - Knees must be sufficiently apart to allow for clear observation. #36
+    - All care must be taken to assure #124
+    no lasting harm is inflicted... #125
+    unless permanency is desired, of course. #126
+    - Feet must remain flat with no obscene curling of the toes. #47
+    -
+    -
+    -
+    -
+}
+/character headmistress
+->->
+
+=== Headmistress_BadSpank ===
+~ headmistress_spanking_mistakes++
+/character headmistress displeased
+{shuffle:
+    - Terrible. We'll have to repeat that one. #147
+    - Tsk. Tsk. You can do better. #148
+    - Lift that head, cretin. #149
+    - Head up or the next one will land harder. #150
+    - Are you even trying? #151
+    - Your lack of grace is stunning. #152
+    - Where is your pride? Try harder. #153
+    - Keep those toes pressed flat on the desk. #154
+    - Squirming is not allowed. #155
+    - I expect a better performance. #156
+    - Your audience is disappointed. #157
+    - /character crowd boos 
+    - /character crowd gasps
+    - Do not dodge my spank, slave! #246
+    - Uggh. #247
+    - You are putting on a poor display. #248
+    - You have a long ways to go. #249
+    - I can see you will require much instruction. #250
+    -
+    -
+    -
+    -
+}
+/character headmistress
+->->
+
 === Headmistress_player_masturbate ===
 Our guests are frenzied and demand more. #01
 {hasPenis: Wrap your hand around your rod|slip your fingers between your nether lips} and entertain them. #02
@@ -139,57 +320,59 @@ All eyes are on you, slave. #03
 /wait 2
 Are you {hasPenis: hard|wet}? #04
 
-+[yes]
-~ obey++
-As you should be. #05
-You may continue until I instruct you otherwise. #06
++ [yes]
+    ~ addObey()
+    As you should be. #05
+    You may continue until I instruct you otherwise. #06
 
-+[no]
-~ disobey++
-A shame we must rectify. #07
-Arouse yourself and continue until I give you leave to stop. #08
++ [no]
+    ~ addDisobey()
+    A shame we must rectify. #07
+    Arouse yourself and continue until I give you leave to stop. #08
 
 - (masturbate_for_crowd)
-+[wait:3]
--> masturbation_comment->
+
++ [wait:3]
+-> masturbation_comment ->
 
 -
-+[wait:3]
--> masturbation_comment->
++ [wait:3]
+-> masturbation_comment ->
 
 -
-+[wait:3]
--> masturbation_comment->
++ [wait:3]
+-> masturbation_comment ->
 
 -
-+[wait:3]
--> masturbation_comment->
++ [wait:3]
+-> masturbation_comment ->
 
 -
-+[wait:3]
--> masturbation_comment->
++ [wait:3]
+-> masturbation_comment ->
 
 - 
-+[wait:5]
-   - /perform thoughtful
-   { cycle:
-        - Are you having fun performing for our guests? #09
-        - Would you like to keep going, {isBoy:toad|strumpet}? #10
-        - Does our little {isBoy:runt|poppet} need more time? #11
-        - Are you going to ask our guests to continue waiting? #12
-        - Still working that {hasPenis:shaft|slit}? #13
-        - Our {isBoy:toad|strumpet} needs more time. Yes? #14
-    } 
-    +[yes]
++ [wait:5]
+
+- /perform thoughtful
+{ cycle:
+    - Are you having fun performing for our guests? #09
+    - Would you like to keep going, {isBoy:toad|strumpet}? #10
+    - Does our little {isBoy:runt|poppet} need more time? #11
+    - Are you going to ask our guests to continue waiting? #12
+    - Still working that {hasPenis:shaft|slit}? #13
+    - Our {isBoy:toad|strumpet} needs more time. Yes? #14
+} 
+
++ [yes]
     /character headmistress idle
-        -> masturbate_for_crowd
-    +[no]
+    -> masturbate_for_crowd
+
++ [no]
     /character headmistress idle
     A fine performance, slave. #15
         
-- -> headmistress_punishment_spanking.FinalEnding
-
-->->
+- ->->
 
 = masturbation_comment
 
@@ -234,7 +417,7 @@ Arouse yourself and continue until I give you leave to stop. #08
     - Do you think {isBoy:he|she} is enjoying {isBoy:himself|herself}? #03
       /character crowd cheers
     - Exhibit control lest your arm tire. #04
-      /character headmistress sassy
+      /character headmistress smooth_skirt
     - Cumming without permission is expressly forbidden. #05
     - What a fine display. #06
     - Look at those deft fingers. #07
@@ -257,4 +440,104 @@ Arouse yourself and continue until I give you leave to stop. #08
 
 /character headmistress
 ->->
+
+=== Headmistress_CheckIfInterested ===
+
+{checked_if_interested: -> check_terse}
+
+~ checked_if_interested = true
+
+{
+    - scene_type == punishment_scene:
+    /perform unhappy
+    // VO needs to be moved over from HM punishment_spanking
+        {shuffle:
+            - Are you too good to take a punishment, {player_name}? #216
+              Obey instructions. #217
+            - A punishment is owed, baffoon.
+              Will you comply?
+        }
+     
+    - scene_type == reward_scene:
+    /perform behold
+        {shuffle:
+            - You would be remiss to turn away from your reward. 
+              Shall we continue?
+            - Perhaps today is not the day you deserve to be rewarded.
+              Is it?
+        }
+        
+    - else:
+    /perform cocks_head_to_left
+    You will leave with a punishment if you do not finish your task.
+        {shuffle:
+            - Do you desire to continue, {player_name}? 
+            - You came here to perform, moppet.
+              Shall we continue?
+        }
+}
+
+
+
+- (check_again)
+
+/perform idle
+
++ [yes] -> check_yes
++ [no]
++ [timeout] -> check_terse
+
+- (check_terse) 
+
+TODO: Break remaining checks into scene type and/or shuffle options
+{
+    - scene_type == punishment_scene:
+    /perform angry
+        {shuffle:
+            - //copy numbered VO from Headmistress Punishment_Spanking
+              Well? #218
+              You merely drag out the invetitable with your delay. #219
+            - Are you going to continue to play the reluctant {player_name}? #220.
+        }
+     
+    - scene_type == reward_scene:
+    /perform behold
+        {shuffle:
+            - Your passion feeds and time is waisting.
+              Shall we continue?
+            - What a pity you would waist such a gift.
+              Shall we resume?
+        }
+        
+    - else:
+    /perform cocks_head_to_left
+    I have no patience for fools. A punishment will be yours!
+        {shuffle:
+            - Will you finish your task, {player_name}? 
+            - Will you perform, ingrate?
+        }
+}
+
++ [yes] -> check_yes
++ [no] 
+
+- /perform bored
+Out of my office, heathen. #221
+I have no time for your shenanigans. #222
+-> out_heathen
+
+- (check_yes) -> Headmistress_AcknowledgeYes ->
+/perform confused
+{shuffle: 
+    - There is hope for you yet. #223
+    - Do not try my patience again.
+    - No more wasting time.
+}
+
+->->
+
+= out_heathen
+
+/perform point_to_leave
+-> exit
 

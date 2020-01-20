@@ -1,16 +1,18 @@
 === yuki_hub ===
 -> select_gender ->
-~ obey = 0
-~ disobey = 0
+
+~ setHub(Yuki)
 
 /character yuki
 /music yuki
+/scene atrium.hub
 
 // If the player hasn't done the intro yet,
 // then have them go to the intro.
-{not yuki_intro: -> yuki_intro}
 
-{not headmistress_punishment_spanking.FinalEnding:
+{isTutorial:
+    {not yuki_intro: -> yuki_intro}
+
     What are you doing back here!?
     You still have a punishment!
     Go back to the headmistress
@@ -20,8 +22,6 @@
 }
 
 - (hub)
-
--> summary("Yuki Hub", hub) -> 
 
 + [move:Yuki]
 
@@ -40,12 +40,15 @@
 
 - (check_punishment)
 { punishments > 0 :
-        Are you here for your punishment?
-        + [yes] -> choose_punishment
-        + [no] 
-            No? Don't forget.
-            You can't get any rewards untile you finish all your punishments.
-            -> check_task
+    -> Yuki_Punishment_Response ->
+    Are you here to pay that off?
+    + [yes] 
+        Good.
+        -> choose_punishment
+    + [no] 
+        No? Well, don't forget you have one.
+        You can't receive any rewards until you finish all your punishments.
+        -> check_task
 }
 
 // - (check_mega_reward)
@@ -73,27 +76,62 @@ No punishments or rewards, huh?
     Maybe some other time then.
     -> exit
 
-= choose_reward
-{shuffle:
-    //- -> yuki_reward_bathe
-    //- -> yuki_reward_massage
-    - -> yuki_reward_puppyplay_milking ->->
-    - -> yuki_reward_puppyplay_lickfeet ->->
 
-    // Put more reward scenes here.
+= choose_reward
+
+{deviation == puppyplay:
+    {shuffle:
+        - -> yuki_reward_puppyplay_milking
+        - -> yuki_reward_puppyplay_lickfeet
+    }
+
+- else:
+    {shuffle:
+        //- -> yuki_reward_bathe
+        //- -> yuki_reward_massage
+        - -> yuki_reward_puppyplay_milking
+        - -> yuki_reward_puppyplay_lickfeet
+    
+        // Put more reward scenes here.
+    }
 }
+
 
 = choose_punishment
-{ shuffle:
-    // - -> yuki_punishment_edging
-    - -> yuki_punishment_puppyplay_cage ->->
-    - -> yuki_punishment_puppyplay_spanking ->->
-    // Put more punishment scenes here.
+
+{deviation == puppyplay:
+    {shuffle:
+        - -> yuki_punishment_puppyplay_cage
+        - -> yuki_punishment_puppyplay_spanking
+    }
+
+- else:
+    {shuffle:
+        // - -> yuki_punishment_edging
+        - -> yuki_punishment_puppyplay_cage
+        - -> yuki_punishment_puppyplay_spanking
+        // Put more punishment scenes here.
+    }
 }
 
+
 = choose_task
-{shuffle:
-    //- -> yuki_task_fanning
-    - -> yuki_task_puppyplay
-    // Put more task scenes here.
+
+{deviation == puppyplay:
+    {shuffle:
+        - -> yuki_task_puppyplay
+    }
+
+- else:
+    {shuffle:
+        //- -> yuki_task_fanning
+        - -> yuki_task_puppyplay
+        // Put more task scenes here.
+    }
 }
+
+
+
+
+
+

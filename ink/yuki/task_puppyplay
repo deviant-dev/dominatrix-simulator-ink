@@ -2,14 +2,14 @@
 
 -> select_gender ->
 
+~ setScene(task_scene, Yuki)
+
 - (start)
 
-/scene atrium.hub
+/scene atrium.close
 /music yuki
 /ambient none
 /character yuki idle_yuki
-
-+ [move:Yuki]
 
 - (session_selection)
 

@@ -24,6 +24,26 @@
     
 + [timeout] -> Nega_PayAttention
 
+TODO: Record new VO
+// This is better for verbal commands.
+=== Nega_Timeout ===
+
+{cycle:
+    - ...the fuck? I'm talking to you! 
+    - Don't ignore me! 
+    - Fucking pay attention!
+    - Am I talking to a goddamn sack of potatoes?
+    - You little {isBoy: prick|cunt}. You're wasting my time.
+    - Answer me, {isBoy: maggot|slut}. 
+    - Are your ears still attached to your fucking head?
+    - Get your shit together and pay attention, {player_him}.  
+    - Wake the fuck up!
+    - You fucking falling asleep on me?
+    - I'm not a patient Mistress.
+}
+
+->->
+
 === Nega_CheckIfInterested ===
 
 /perform unhappy
@@ -32,15 +52,16 @@ What the fuck is wrong with you!? #01
 Are you going to behave and give me what I want? #02
 
 + [yes] 
-That's right, {isBoy: maggot|whore}. #03
+    That's right, {isBoy: maggot|whore}. #03
     ->->
+
 + [no]
     Then fuck off. #04
     No refunds, you little bitch. #05
     -> exit
 
-=== Nega_GoodJob ===
 
+=== Nega_GoodJob ===
 
 {shuffle:
     - That's it, little bitch. #01
@@ -61,6 +82,7 @@ That's right, {isBoy: maggot|whore}. #03
 }
     
 ->->
+
 
 === Nega_BadJob ===
 
@@ -84,6 +106,7 @@ That's right, {isBoy: maggot|whore}. #03
     
 ->->
 
+
 === Nega_Insult ===
 
 {shuffle:
@@ -92,9 +115,25 @@ That's right, {isBoy: maggot|whore}. #03
     - You're a dirty little whore.
     - You're a slutty fleshbag.
     - You’re a useless meatbag.
-    }
+}
     
 ->->
+
+
+=== Nega_Objectify === 
+
+{shuffle:
+    - Enjoy the view, slut! #16
+    - That's it little meatbag. #17
+    - Being so close must be such a turn on for you, whore. #18
+    - That's all you're good for, cunt, being used. #19
+    - Wallow in it, {isBoy: worm|cunt}. #20
+    - I enjoy watching you be a little whore for my attention. #21
+    - Only a lucky few get to see something so wonderful, be grateful! #22
+}
+    
+->->
+
 
 === Nega_Give_Reward ===
 
@@ -106,7 +145,7 @@ That's right, {isBoy: maggot|whore}. #03
     - Surprisingly, you satisfied me. #05
     - I hope you're feeling good. I am. #06
     - I enjoyed myself. #07
-    }
+}
     
 {shuffle:
     - Perhaps you deserve a small reward. #08
@@ -115,14 +154,15 @@ That's right, {isBoy: maggot|whore}. #03
     - I want to give you a little something, fuck {player_name}. #11
     - It amuses me to reward you for a reward. #12
     - Time to show my appreciation. #13
-    }
+}
+
 { shuffle:
     - -> reward_spit
     - -> reward_boobs
     - -> reward_ass
 }
 
-- (reward_spit)
+= reward_spit
 /perform squat_lean_forward
 Open your mouth, slut! #14
 
@@ -131,7 +171,7 @@ I'm sure you loved that, my disguting little {isBoy: pig|cunt}! #15
 
 ->->
 
-- (reward_boobs)
+= reward_boobs
 /perform squat_lean_forward
 Enjoy the view, slut! #16
 
@@ -141,7 +181,7 @@ Only a lucky few get to see something so wonderful, be grateful! #17
 
 ->->
 
-- (reward_ass)
+= reward_ass
 /perform reverse_cowgirl_ass_raised_wiggle
 //long animation - appx 10 seconds
 Being so close must be such a turn on for you, whore. #18
@@ -181,13 +221,14 @@ Keep going until I tell you to stop. #03
     - -> break02 ->
     - -> break03 ->
 }
-- {cycle:
+
+{cycle:
     - Keep going. #06
     - You're dick's not hard enough yet. #07
     - Harder. Faster. #08
     - I bet your arm is getting tired. Too bad! #09
     - More. More. More! #10
-    }
+}
 
 ->->
 
@@ -196,16 +237,16 @@ Keep going until I tell you to stop. #03
 Do you like the idea of getting ready for me, {isBoy: worm|skank}? #11
 
 +[yes]
-~ obey++
--> Nega_GoodJob
-Good. Keep going. #12
+    ~ addObey()
+    -> Nega_GoodJob ->
+    Good. Keep going. #12
 
 +[no]
-~ disobey++
--> Nega_BadJob
-Do it anyways! #13
+    ~ addDisobey()
+    -> Nega_BadJob ->
+    Do it anyways! #13
 
-->->
+- ->->
 
 = break02
 {shuffle:
@@ -222,11 +263,11 @@ Do it anyways! #13
 Do you want to cum for me? #19
 
 + [yes]
-No fucking way! #20
-I do the cumming around here! #21
+    No fucking way! #20
+    I do the cumming around here! #21
 
 + [no]
--> Nega_BadJob
-Well, you'll stroke until your dick falls off if that's what I want! #22
+    -> Nega_BadJob ->
+    Well, you'll stroke until your dick falls off if that's what I want! #22
 
 - ->->

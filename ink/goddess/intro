@@ -3,6 +3,7 @@
 
 ~ punishments = 0
 ~ rewards = 0
+~ setScene(intro_scene, Goddess)
 
 - (flash_scenes)
 
@@ -11,35 +12,37 @@
 /music goddess
 /ambient orgy
 
-+ [wait:{isDebug():30|3}]
++ [wait:3]
 
 - (flash_2)
 /scene bedroom.flash2
 
-+ [wait:{isDebug():30|3}]
++ [wait:3]
 
 - (flash_3)
 /scene bedroom.flash3
 
-+ [wait:{isDebug():30|4}]
++ [wait:4]
 
 - (debug_jump)
 
 /scene bedroom.intro
 /ambient rain
 /character goddess
-
 /perform amused
+/emotion angry 70
+
 
 - Oh... How rude. #01
 ~ addPunishment()
-/perform bored
 
 And I was having so much fun. #02
+/emotion angry 40
 Ah, well... #03
 
 /perform fake_annoyed
 
+/emotion amused 60
 How did you get in here? #04
 
 Did Mistress Yuki-Onna let you in? #05
@@ -49,12 +52,15 @@ Did Mistress Yuki-Onna let you in? #05
 - (ask_entry)
 + [yes]
     /perform annoyed
+    /emotion angry 50
     I've told that girl not to interrupt me #06
     when I'm playing with my toys. #07
 + [no]
     /perform sassy
+    /emotion amused
     No? Another curious guest, then. #08
 + (ask_entry2)[timeout]
+    /emotion angry 50
     { cycle:
         - It's a simple question. Nod your head for yes. #09
         Shake your head for no. #10
@@ -63,6 +69,7 @@ Did Mistress Yuki-Onna let you in? #05
         - I don't like it when people make me wait. #13
         - What makes you think you can ignore me? Answer me. #14
     }
+    /emotion skeptical
     { shuffle:
         - Did my Yuki let you in? #15
         - Did that naughty little maid let you in? #16
@@ -74,7 +81,7 @@ Did Mistress Yuki-Onna let you in? #05
 + [distracted] -> Goddess_PayAttention -> ask_entry2
 
 - /perform bored
-
+/emotion neutral
 Well, you can't stay here. #19
 
 /perform fake_annoyed
@@ -82,6 +89,7 @@ Well, you can't stay here. #19
 Only the truly exceptional may stay in my presence. #20
 And you are <i>obviously</i> not exceptional. #21
 /perform unhappy
+/emotion skeptical
 Are you? #22
 
 /perform idle
@@ -89,26 +97,27 @@ Are you? #22
 - (ask_exceptional)
 + [yes]
    /perform laugh
+   /emotion skeptical
    Oh how absolutely delusional you are! #23
    /perform sassy
    You are nowhere near worthy. #24
     
 + [no]
     /perform fake_annoyed
-    
+    /emotion happy 50
     Now, that is a very honest answer. #25
     Perhaps I will give you a chance to prove your worth. #26
-    
     /wait
     
 + (ask_exceptional_again)[timeout]
+    /emotion disgusted 50
     Do you think you're exceptional? #27
     -> ask_exceptional
     
 + [distracted] -> Goddess_PayAttention -> ask_exceptional_again
 
 - /perform pleased
-
+/emotion aroused 50
 I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
   
 /perform idle
@@ -116,6 +125,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 - (ask_spying)
 + [yes]
   /perform amused
+  /emotion happy 50
   Of course it did. #29
   I bet you'd like to see more of that, wouldn't you? #30
   /perform sassy
@@ -124,6 +134,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 
 + (spying_no)[no]
     /perform thoughtful
+    /emotion neutral
     No? How disappointing. #33
     I don't think you're going to be much fun at all. #34
     -> ask_spying_done
@@ -139,6 +150,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 
 + [yes]
     /perform fake_annoyed
+    /emotion skeptical 50
     Well too bad. You haven't earned that privilege yet. #32
 
 + [no] -> spying_no
@@ -152,7 +164,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 
 
 - (ask_spying_done) /perform sassy
-
+/emotion amused
 I bet you have no idea where you are, do you? #36
  
 - (ask_where)
@@ -162,28 +174,32 @@ I bet you have no idea where you are, do you? #36
 + [yes]
     // /perform laugh
     /perform amused
+    /emotion skeptical
     You think you know where you are? #37
     You have no clue. #38
     
 + [no]
     // /perform agreement
     /perform amused
+    /emotion amused 50
     Of course you don't. #39
     
 + (ask_where_again)[timeout]
     /perform angry
+    /emotion angry 50
     Well... do you have any idea where you are? #40
     -> ask_where
     
 + [distracted] -> Goddess_PayAttention -> ask_where_again
 
-/perform lean_forward
-
-- You're just a tiny little mouse stuck in a maze. #41
+- /perform lean_forward
+/emotion amused
+You're just a tiny little mouse stuck in a maze. #41
 
 You may never find your way out again. #42
 
 /perform behold
+/emotion neutral
 
 This is no ordinary house, mind you. #43
 
@@ -196,10 +212,12 @@ Even so. You are here now. #44
 And you won't be going anywhere for quite a while. #45
 
 /perform thoughtful
+/emotion skeptical 50
 
 That means I'll have to give you a name. #46
 
 /perform sassy
+/emotion excited 50
 
 Would you like that? #47
   
@@ -207,33 +225,39 @@ Would you like that? #47
 
 +[yes] 
     /perform pleased
+    /emotion happy 50
     Well, well. I must say I'm pleased. #48
     /perform amused
     I think we are off to a good start. #49
     /perform fake_annoyed
+    /emotion happy 50
     Don't you? #50
     
     /perform idle
     
     ++[yes]
         /perform amused
+        /emotion amused
         Keep this up and I might just take an interest in you. #51
     
     ++[no] -> DemandApology ->
         /perform thoughtful
+        /emotion skeptical 50
         Now... as for a name. #52
     
 + [no]
     /perform fake_annoyed
+    /emotion disgusted
     Too bad. #53
     Whatever name you had before is gone. #54
 
 + [timeout]
+    /emotion angry 50
     Cat got your tongue? #55
     Well... I will ignore that for now. #56
 
--
-/perform thoughtful
+- /perform thoughtful
+/emotion amused 50
 
 I will name you... {player_name}. #57
 
@@ -244,28 +268,34 @@ I expect you to respond to {player_name} from now on. #58
 //Until someone gives you a new name, that is.
 Until you earn a new name, that is. #59
 /perform unhappy
+/emotion skeptical
 Do you understand? #60
 
 /perform idle
 
 + [yes] -> Goddess_GoodJob ->
     /perform sassy
+    /emotion happy 50
     I am pleased. #61
 
 + [no]
     /perform annoyed
+    /emotion disgusted
     Let's try this again. Your name is now {player_name}. #62
     /perform unhappy
     Everyone who meets you will refer to you as {player_name}. #63
     One day, if you are very <i>very</i> good, you may earn a new name. #64
     /perform amused
+    /emotion amused
     But for now, your name is {player_name}. #65
 
 + [timeout]
     /perform thoughtful
+    /emotion amused
     Well, perhaps you're a little overwhelmed. #66
     That's to be expected. #67
     /perform amused
+    /perform aroused
     Just remember your name is {player_name} #68
     /perform sassy
     until I decide otherwise. #69
@@ -273,59 +303,71 @@ Do you understand? #60
 - /wait
 
 /perform unhappy
+/emotion neutral
 
 I really must send you away soon. #70
 /perform amused
+/emotion amused
 But first, let me have a good look at you. #71
 
 + [continue]
 
+~ tries = 0
 - (inspection)
-- (inspection_tries)
+~ tries++
 
 /perform point_down
-
+/emotion amused
 { cycle:
     - Come here. #72
     - Come here, {player_name}. #73
-    - I <i>said</i> come here! #74
+    - /emotion angry 
+    I <i>said</i> come here! #74
 }
   
 + [move]
     /wait
     -> Goddess_GoodJob ->
-+ { inspection_tries < 2 } [timeout]
++ { tries < 3 } [timeout]
     -> inspection
-+ { inspection_tries >= 2 } [timeout]
++ { tries >= 3 } [timeout]
     -> CheckIfInterested -> inspection
 + [distracted] -> Goddess_PayAttention -> inspection
 
 - /perform fake_annoyed
+/emotion amused
 
 I'm always curious about our new guests. #75
 /perform sassy
+/emotion neutral
 I so rarely take the time to inspect them personally #76
 when they first arrive. #77
 This is a bit of an unexpected treat. #78
 /perform pleased
+/emotion aroused 50
 You don't mind, do you? #79
 
 /perform idle
 
 + [yes] How unfortunate\. #80
     /perform annoyed
+    /emotion disgusted
     Honestly, I don't even know why I bother asking. #81
 + [no]
     /perform sassy
+    /emotion aroused
     Mmm... I think someone might be enjoying this. #82
 + [timeout]
+    /emotion skeptical
     That's alright. It's not like you have a choice anyway. #83
 + [distracted] -> Goddess_PayAttention -> stand_straight
 
+~ tries = 0
 - (stand_straight)
-- (stand_straight_tries)
+~ tries++
 
 /perform unhappy
+/emotion neutral
 
 { cycle:
     - Stand up straight. #84
@@ -336,13 +378,15 @@ You don't mind, do you? #79
 /perform idle
 
 + [pose:raised_chin]
-+ { stand_straight_tries < 2 } [timeout] -> stand_straight
-+ { stand_straight_tries >= 2 } [timeout] -> CheckIfInterested -> stand_straight
++ { tries < 3 } [timeout] -> stand_straight
++ { tries >= 3 } [timeout] -> CheckIfInterested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
 - -> Goddess_GoodJob ->
 
 // /perform circle_player
+/perform idle
+/emotion aroused 50
 
 That's it. #87
 Push your shoulders back and arch that lovely spine. #88
@@ -352,25 +396,30 @@ Stick that pretty little ass out where I can see it. #89
 
 Now then... #90
 
-/perform point_down
+~tries = 0
 - (kneel)
-- (kneel_tries)
+~tries++
+
+/emotion neutral
+/perform point_down
 
 { cycle:
     - Kneel. #91
-    - Get down on your knees. #92
-    - You belong on your knees. Down. #93
+    - /emotion skeptical
+    Get down on your knees. #92
+    - /emotion angry 50
+    You belong on your knees. Down. #93
 }
 
 + [pose:kneel]
-+ { kneel_tries < 2 } [timeout] -> kneel
-//+ { kneel_tries >= 2 } [timeout]
-+ { kneel_tries >= 2 } [timeout] -> CheckIfInterested -> kneel
++ { tries < 3 } [timeout] -> kneel
++ { tries >= 3 } [timeout] -> CheckIfInterested -> kneel
 // + [no] -> CheckIfInterested -> kneel
 
 - -> Goddess_GoodJob ->
 
 /perform sassy
+/emotion aroused
 
 Mmmmm... so much delicious flesh to work with. #94
 
@@ -385,10 +434,14 @@ Oh yes... there is much here we can work with. #97
 - (present_self_tries)
 
 /perform amused
+/emotion amused
 
 Arms behind your head. #98
 Thrust your chest out. Knees apart. #99
+
 /perform unhappy
+/emotion neutral
+
 I want to see you present yourself more fully to me. #100
   
 /perform idle
@@ -402,50 +455,58 @@ I want to see you present yourself more fully to me. #100
 - -> Goddess_GoodJob ->
 
 /perform fake_annoyed
+/emotion aroused
 
 Look at you. So obedient. So ready. #101
 
 /wait 3
 /perform fake_annoyed
+/emotion neutral
 You may go. But first, a reward. #102
 /perform thoughtful
+/emotion amused
 You may show me how much you appreciate my instruction. #103
 
 /perform present_foot
 
 You may bow before me and kiss my feet. #104
 
+~ tries = 0
 - (kiss_feet)
-- (kiss_feet_tries)
+~ tries++
 
 /perform present_foot
 
 Bow down, kiss, then back to your pose like a good little {player_name}. #105
 
 + [pose:kiss_feet]
-+ { kiss_feet_tries < 2 } [timeout] -> kiss_feet
-+ { kiss_feet_tries >= 2 } [timeout]
++ { tries < 3 } [timeout] -> kiss_feet
++ { tries >= 3 } [timeout]
 + [no] No?! #106
     /perform confused
     Turning down such a reward. You are a strange one. #107
 
 - /perform angry
+/emotion neutral
 
 That's enough. #108
 
+~ tries = 0
 - (stand_up)
-- (stand_up_tries)
+~ tries++
 
 //new line with vo 
 Come back up to your feet, {player_name}. #158
 
 + [pose:raised_chin]
-+ { stand_up_tries < 2} [timeout] -> stand_up
-+ { stand_up_tries >= 2} [timeout]
++ { tries < 3} [timeout] -> stand_up
++ { tries >= 3} [timeout]
 
-- You might just prove useful one day, #109
+- /emotion amused 
+You might just prove useful one day, #109
 
 /perform bored
+/emotion neutral
 
 but you'll need much more training first. #110
 
@@ -460,6 +521,7 @@ I'm sure she can show you the ropes, so to speak. #112
 
 -> ByeForNow
 
+
 = ByeForNow
 
 /perform snap_fingers
@@ -469,8 +531,8 @@ I'm sure she can show you the ropes, so to speak. #112
 + [wait 1.5]
 
 - /character goddess-huge
-
 /perform looming
+/emotion angry 50
 
 Bye for now, {player_name}. #113
 
@@ -478,12 +540,13 @@ Bye for now, {player_name}. #113
 
 - ~ yuki_hub_status = unlocked
 
--> entry_intro
+-> exit
+
 
 = DemandApology
 
 /perform angry
-
+/emotion angry
 /wait
 
 { cycle:
@@ -493,6 +556,7 @@ Bye for now, {player_name}. #113
     - You are trying my patience, worm. #143
 }
 
+/emotion angry 50
 You will apologize this instant. #144
 
 /perform sassy
@@ -503,21 +567,25 @@ Tell me: Do you beg for my forgiveness? #145
 + [no] -> CheckIfInterested ->
 
 - /perform unhappy
+/emotion skeptical
 
 You are forgiven. #146
 Don't let it happen again. #147
 ->->
+
 
 = CheckIfInterested
 
 {CheckIfInterested > 1: -> check_terse}
 
 /perform unhappy
+/emotion disgusted
 
 These are the sorts of tasks demanded of you here. #148
 - (check_again)
 
 /perform behold
+/emotion skeptical
 
 Are you willing to simply do as I say like a good {player_name}? #149
 
@@ -527,32 +595,40 @@ Are you willing to simply do as I say like a good {player_name}? #149
 + [no]
 + [timeout] -> check_again
 
-- (check_terse) Really? #150
+- (check_terse)
 
-/perform angry
+/emotion skeptical
+
+Really? #150
+
+/perform angry 50
 
 We will need to be rid of you if you can't perform. #151
 
 Your willingness to serve is, after all, why you are here. #152
 
 /perform annoyed
+/emotion neutral
 
 So I'll ask one last time: #153
 
 /perform lean_forward
-
+/emotion angry 50
 Are you willing to perform for your goddess? #154
 
 + [yes] -> check_yes
 + [no]
 
 - /perform annoyed
+/emotion disgusted
+
 Then away with you. #155
 Perhaps another time when you are ready to learn your place. #156
 -> ByeForNow
 
 - (check_yes) -> Goddess_GoodJob ->
 /perform confused
+/emotion skeptical
 There is hope for you yet. #157
 
 ->->

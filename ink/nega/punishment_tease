@@ -1,5 +1,7 @@
 === nega_punishment_tease ===
  -> select_gender ->
+
+~ setScene(punishment_scene, Nega)
  
 /scene attic.punishment_tease
 /music nega-punishment

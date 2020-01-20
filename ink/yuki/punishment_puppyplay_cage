@@ -3,6 +3,8 @@
 TODO: rewrite
 
  -> select_gender ->
+
+~ setScene(punishment_scene, Yuki)
  
 /scene atrium.punishment
 /music yuki
@@ -11,7 +13,6 @@ TODO: rewrite
 
 -
 Time for you to be punished.
--> Yuki_Punishment_Chastise ->
 /perform disappointed
 What a bad puppy you are. #204
 You need to make it up to me. #205
@@ -30,28 +31,30 @@ Face down on the ground. #207
 - /perform cocks_head_to_left
 Well, at least you can manage that, {player_name}. #208
 
-// - (wiggle)
+ - (wiggle)
 Now, wiggle your little puppy tail for me! #209
 //How do motion tracking - Probably watch for side to side head movements?
 
-// + [wiggle-success:5] 
-//     -> Nega_GoodJob -> 
-//     ++ [wiggle-success:5]
-//         That's enough.  #35
+ + [wiggle-success:5] 
+    -> Yuki_GoodJob -> 
+    Keep wiggling!
+    ++ [wiggle-success:5]
+        That's enough.  #35
         Turn back around and present yourself.  #36
-//         ~obey++
-// + [wiggle-timeout]
-//     -> Nega_BadJob ->
-//     ~disobey++
-//     Did I tell you to stop? #37
-//     -> wiggle
-// // + [no] -> Nega_CheckIfInterested -> wiggle
-/perform clasp_hands
+         ~ addObey()
+ + [wiggle-timeout]
+   -> Nega_BadJob ->
+    ~ addDisobey()
+    Did I tell you to stop? #37
+    -> wiggle
+ + [no] -> Nega_CheckIfInterested -> wiggle
+
+- /perform clasp_hands
 Mmmm! Much better! #210
 
 
--> Yuki_Puppyplay_Punishment_Complete ->
-->->
+-> exit
+
 
 
 {shuffle:
@@ -73,7 +76,7 @@ Mmmm! Much better! #210
 }
 //spanking
 //text below is a placeholder to remind me of what code I can use in scene
-/perform excited
+- /perform excited
 Mmm, I love watching my puppies perform well! #184
 
 /perform lean_forward

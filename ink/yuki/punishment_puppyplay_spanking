@@ -15,6 +15,7 @@ TODO: rewrite
 // - ~ yuki_spanking_target_count = 10
 // }
 
+~ setScene(punishment_scene, Yuki)
 ~ yuki_spanking_count = 0
 ~ yuki_spanking_fails = 0
 ~ yuki_spanking_mistakes = 0
@@ -26,11 +27,8 @@ TODO: rewrite
 /ambient off
 /character yuki idle
 
--> yuki_train_spanking ->
 
 //intro contains performances
-Time for you to be punished.
--> Yuki_Punishment_Chastise ->
 
 - (intro_puppy_spanking)
 My naughty puppy is going to be spanked!
@@ -50,20 +48,38 @@ Crawl over to that couch and lay across it.
 /perform idle_yuki  
 
 + [move]
-    -> Yuki_GoodJob ->
+    Get comfortable. You're going to be there for a while.
 + { spanking_couch_tries < 2 } [timeout] -> Yuki_Interested -> spanking_couch
 + { spanking_couch_tries>= 2 } [timeout]
     -> Yuki_CheckIfInterested -> spanking_couch
 + [distracted] -> Yuki_PayAttention -> spanking_couch
 
 //TODO: insert spanking scene
+- You have been a naughty puppy.
+You've obviously forgotten the rules.
+<i>Disobey and be punished.</i>
+<i>Obey and be rewarded!</i>
+
+- (remember)
+Don't you remember those rules, puppy?
++ [yes] -
+    Don't you lie to me, puppy.
+    Good {isBoy: boys|girls} don't earn punishments.
+
++ [no]
+    Obviously you don't.
+    Or you wouldn't be here right now.
+    
++ [timeout] -> Yuki_Timeout -> remember
++ [distracted] -> Yuki_PayAttention -> remember
 
 // 5, 10
-You're going to get {yuki_spanking_target_count}, big swats, puppy!
+- You're going to get {yuki_spanking_target_count}, big swats, puppy!
+I want to hear you count them out.
 
 /perform idle
-This is going to hurt me more than it hurts you, puppy!
-Don't forget to show me your reaction.
+This is going to hurt me more than it hurts you!
+And don't forget to show me your reaction.
 
 - (spank)
 /character yuki spank_puppy
@@ -120,7 +136,7 @@ All done! Are you proud of yourself, puppy?
 
     +[yes]
     /perform pleased
-   -> Yuki_GoodJob 
+   -> Yuki_GoodJob ->
     
     +[no]
     /perform amused
@@ -131,7 +147,7 @@ All done! Are you proud of yourself, puppy?
 /perform yuki_idle
 
 {cycle:
-    - Come here. 
+    - Now come here. 
     - Come here, puppy.
     - I <i>said</i> come here! 
 }
@@ -158,24 +174,26 @@ All done! Are you proud of yourself, puppy?
 
 - (sorry_ask_again)
 /perform idle_upset 
-Are you sorry for your performance, puppy?
+Are you sorry for breaking the rules, puppy?
 
 + [yes]
     /perform shake_finger_stern
     If you feel bad about it, you should have paid better attention! #198
-    You've paid off a punishment.
 //ending contains performances
--> Yuki_Puppyplay_Punishment_Complete ->
+    -> Yuki_Puppyplay_Punishment_Complete ->
+    Now go.
 
 + [no]
     /perform pouty  
+    You're not sorry?
     I think somebody <i>wants</i> to be a bad dog. #199
-    You'll have to try again to remove that punishment marker.
+    If you're not sorry, then you haven't paid off your punishment.
+    You'll have to try next time if you want it removed.
     Now get out of here!
 //punishment marker will not be removed
 
 + [timeout] -> Yuki_Timeout -> sorry_ask_again
 + [distracted] -> Yuki_PayAttention -> sorry_ask_again
 
--
+- 
 -> exit

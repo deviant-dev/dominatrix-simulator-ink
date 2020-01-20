@@ -1,0 +1,260 @@
+=== headmistress_task_handsignals_endurance ===
+-> intro -> exit
+
+= intro
+TODO: endurance signals intro
+->->
+
+= practice 
+
+{ headmistress_signal_endurance_difficulty <= 1:
+        -> practice_easy ->
+    - else:
+        -> practice_hard ->
+}
+
+- ->->
+
+= practice_easy
+TODO: endurance signals practice
+->->
+
+= practice_hard
+TODO: endurance signals practice w/ audience and w/o pose assist
+->->
+
+
+
+
+
+
+
+
+- (wait)
+/perform signal_wait
+Cross your arms behind your back.
+Rise up to your toes.
+ 
+- (wait_tries)
+
++ [pose:wait] ->
++ { wait_tries < 2 } [timeout] -> wait
+ 
+- In this position, you will *wait* for further instruction.
+
+-> exit
+
+// = intro_learn_set(-> pose1, -> pose2, -> pose3)
+
+// /perform clasp_hands
+// Hello, puppy! You have more commands to learn. #107
+
+// /perform point_down
+// <b>"Sit",</b> {player_name}. #108
+
+// + [pose:puppy_sit]
+
+// - /perform idle_yuki
+// If you learn to follow all my commands, #109
+// you'll be one step closer to being my perfect little puppy! #110
+// /perform one_finger
+// Remember, there's no penalty for messing up when we're learning! #111
+
+// /perform arm_raise
+// Let's begin! #112
+
+// /perform idle_yuki
+
+// -> pose1 ->
+
+// /perform excited
+// My puppy is so cute! #116
+// /perform idle_yuki
+
+// -> pose2 ->
+
+// -> Yuki_GoodJob ->
+
+// /perform idle_yuki
+
+// -> pose3 ->
+
+// /perform bounces
+// Oh, you're such a good puppy, learning all of those poses. #125
+
+// /perform behold
+// Don't forget, you need to remember those for future practice sessions! #126
+// And also tests! #127
+
+// /perform idle_yuki
+// I hope you come back soon! #128
+
+// ->->
+
+
+// = pose_beg
+
+// First, the <b>beg</b> pose. #113
+
+// /perform yuki_ready
+
+// To show me you're ready, sit back on your knees and <b>"beg"</b>. #06
+// And hold your hands like this. #07
+
+// - (beg)
+// I like it when my puppy <b>"begs"</b> for my attention! #08
+
+// /perform idle_yuki
+
+// - (beg_tries)
+
+// + [pose:puppy_beg] ->->
+// + { beg_tries < 2 } [timeout] -> beg
+
+
+// = pose_confused
+// First, the <b>confused</b> pose. #114
+
+// /perform confused
+
+// - (confused)
+// To show me you're <b>"confused"</b>, tip your head to the left when you're on your hands and knees. #11
+// /perform yuki_confused
+
+// Like this! #12
+
+// /perform idle_yuki
+
+// - (confused_tries)
+
+// + [pose:puppy_confused] ->->
+// + { confused_tries < 2 } [timeout] -> confused
+
+
+// = pose_hungry
+// First, the <b>hungry</b> pose. #115
+
+// - (hungry)
+
+// /perform yuki_hungry
+
+// To show that you're <b>"hungry"</b>, sit on your heels and hold your left paw like this. #15
+
+// - (hungry_tries)
+
+// + [pose:puppy_hungry] ->->
+// + { hungry_tries < 2 } [timeout] -> hungry
+
+
+// = pose_playful
+
+// Second for today, the <b>playful</b> pose! #118
+
+// /perform squirm
+// When you're feeling <b>"playful"</b>, stick your cute little butt into the air and stretch your arms out in front of you! #20
+
+// - (playful)
+// /perform idle_yuki
+
+// - (playful_tries)
+
+// + [pose:puppy_playful] ->->
+// + { playful_tries < 2 } [timeout] -> playful
+
+
+// = pose_tired
+
+// Second for today, the <b>tired</b> pose! #119
+
+// /perform point_down
+
+// - (tired)
+
+// Whenever you're <b>"tired"</b>, sit back on your feet and hang your head, puppy. #23
+// You should be looking at the ground. #24
+
+// /perform idle_yuki
+
+// - (tired_tries)
+
+// + [pose:puppy_tired] ->->
+// + { tired_tries < 2 } [timeout] -> tired
+
+
+// = pose_thirsty
+
+// Second for today, the <b>thirsty</b> pose! #120
+
+// /perform lean_forward
+// Sometimes, busy little puppies get <b>"thirsty"</b>. #27
+// /perform yuki_thirsty
+// While on your knees, do this to show me you're <b>"thirsty"</b>. #28
+
+// - (thirsty)
+// /perform idle_yuki
+
+// - (thirsty_tries)
+
+// + [pose:puppy_thirsty] ->->
+// + { thirsty_tries < 2 } [timeout] -> thirsty
+
+
+// = pose_sorry
+
+// Your last lesson for today is the <b>sorry</b> pose! #122
+
+// /perform pouty
+
+// The <b>"sorry"</b> pose is going to be a <i>little</i> tricky. #33
+
+// - (sorry)
+// Put your head down AND look at the ground. #34
+// /perform point_down
+// Stretch your arms out partway. #35
+// /perform idle_yuki
+
+// - (sorry_tries)
+
+// + [pose:puppy_sorry] ->->
+// + { sorry_tries < 2 } [timeout] -> sorry
+
+
+// = pose_rollover
+
+// Your last lesson for today is to <b>roll over</b> onto your back! #123
+
+// /perform behold
+
+// This one is going to lead to lots of fun! #38
+// /perform bounces
+
+// - (back)
+// Roll onto your <b>"back"</b>, puppy. #39
+// Hands above your chest. #40
+
+// /perform idle_yuki
+
+// - (back_tries)
+
+// + [pose:puppy_back] ->->
+// + { back_tries < 2 } [timeout] -> back
+
+
+// = pose_horny
+
+// Your last lesson for today is the <b>horny</b> pose! #124
+// /perform squirm
+
+// - (horny)
+// To show me you're <b>"horny"</b>, arch your back and look up at me! #43
+// /perform clasp_hands
+// It's easy! #44
+
+// /perform idle_yuki
+// - (horny_tries)
+
+// + [pose:puppy_horny] ->->
+// + { horny_tries < 2 } [timeout] -> horny
+    
+    
+    

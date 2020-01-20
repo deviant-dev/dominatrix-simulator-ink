@@ -1,13 +1,14 @@
 === headmistress_intro ===
 -> select_gender ->
-~ obey = 0
-~ disobey = 0
+
 ~ punishments = 1
 ~ rewards = 1
+~ setScene(intro_scene, Headmistress)
 
-/scene LectureHallIntro.Intro1
+- (jump_start)
+/scene LectureHall.Intro1
 /music headmistress
-/ambient off
+/ambient female-crying
 /character slave all_fours
 /lookat none
 /character headmistress idle
@@ -19,8 +20,6 @@
     <blockquote><i>You stand inside a spacious Victorian office with a large wooden desk, several sets of bookshelves, and walls lined with curtains. Before you stands a lean and lengthy woman with dark skin and an ample bosom forcefully spanking a young slave with a paddle. Her face is stern and her eyes placid...</i></blockquote>
 
     + Start -> start
-- else:
-    + [continue] -> start
 }
 
 - (start) /perform spank_x3 slave
@@ -31,59 +30,43 @@ You are an unruly, undisciplined, low-born miscreant. #01
 
 I will not abide by your disobedience. #02
 
-/perform spank_x2 slave
-/wait 3
--
 /character slave crying
-
 I'm sorry, Headmistress. #05
 
 /character headmistress spank_x3 slave
 
 You <i>will</i>  behave according to your station #03
+/perform spank_x3 slave
 or find yourself unable to rest on your backside for a week. #04
-
-/perform displeased
 
 /character slave crying
 
-I'll be good. I promise! #06
-Oh, please Headmistress! #07
+Please Headmistress! #07
+/character headmistress spank_x2 slave
 
-/character headmistress spank_x3 slave
++ [wait]
 
-+ [wait:4]
-
-- /perform displeased
-That will be sufficient for today. #08
-Remember this lesson, flawed one. #09
+- I'll be good. I promise! #06
 
 /perform smooth_skirt
-
-/scene LectureHallIntro.Intro2
-/character headmistress
-/lookat slave
-
-/character slave clasp_hands
-/lookat headmistress
+That will be sufficient for today. #08
+Remember this lesson, flawed one. #09
 
 /character headmistress point_to_leave
 
 Depart with grace and pride #11
+/perform serious
 as befits an adornment of this house. #12
 /perform idle
 /character slave
 
+/ambient off
 Yes, Headmistress. #13
 Thank you for guiding me, Headmistress. #14
 
-// /perform walks_away
-
-+[wait:2]
-
-- /scene LectureHallIntro.Intro3
-
-/character headmistress idle
+-/scene LectureHall.Intro3
+/music headmistress
+/character headmistress unhappy
 
 What do we have here? #15
 Another new procurement, I see. #16
@@ -100,17 +83,17 @@ Another careless oversight in Yuki's fervent attempts to please, no doubt. #19
 Our beloved Goddess forgives only so often. #20
 //I shall correct her oversight <i>forthwith</i>. #21
 
--(meet_headmistress)
+- (meet_headmistress)
 /perform smooth_skirt
 Do you know who I am? #22
 
 + [yes]
-    ~obey++
+    ~ addObey()
     /perform nod
     My reputation precedes me! #55
     
 + [no]
-    ~disobey++
+    ~ addDisobey()
     //perform tap_paddle
     /perform idle
     I think you do. #25
@@ -126,27 +109,28 @@ Do you know who I am? #22
 //- You are newly arrived and already in trouble. #48
 - /perform idle
 As the Headmistress, I oversee the training #29
+/perform behold
 and correction of all slaves in this house. #30
 
-/perform serious
+/perform cocks_head_to_left
 Understood? #31
 
     + [yes]
-        ~obey++
-        /perform satisfied
+        ~ addObey()
+        /perform agreement
         Excellent. #32
         
     + [no]
         -- (not_understood)
-        /perform fake_annoyed
-        ~disobey++
+        /perform confused
+        ~ addDisobey()
         Come, come. #35
         Don't play dumb. #36
         It is a waste of my time. #37
     
     + [timeout] -> not_understood
     
-- /perform displeased
+- /perform lean_forward
 - (present)
 
 Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
@@ -154,14 +138,14 @@ Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your
 - (present_retry)
 
 +[pose:present_wrists]
-    ~obey++
+    ~ addObey()
 
 + [timeout]
     /perform annoyed
     Your wrists, you witless cur. #39
     Present them before you #40
     so that I may confirm your measure. #41
-    ~disobey++
+    ~ addDisobey()
     /perform present_wrists
     Like so, foolish {player_name}. #42
     -> present_retry
@@ -180,32 +164,33 @@ This is a serious infraction. #50
 - (stand_straight)
 - (stand_straight_tries)
 
-/perform serious
+/perform one_finger
 Stand at attention! #57
 
 + [pose:raised_chin]
 + { stand_straight_tries < 2 } [timeout] -> stand_straight
-+ { stand_straight_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
++ { stand_straight_tries >= 2 } [timeout] -> Headmistress_Timeout -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
 - -> Headmistress_GoodJob -> 
-/perform behold
+/perform thoughtful
 Atonement and adjustment are required. #46
 
-/perform idle
+/perform open_arms_shrug
 This must be immediate. #47 
 
-/perform inspect
+/perform arm_raise
 It must be firm, swift, and leave an indelible mark  #120
 upon the body and soul.  #121
 
-/perform serious
+/perform smooth_skirt
 You will be punished. #51
 And you will do it with grace. #52
+/perform behold
 I will teach you how. #53
 Just like I do with all the new slaves. #54
 
-/perform snap_fingers
+/perform arm_raise
 No need to waste time, then. #33
 
 - /perform idle 

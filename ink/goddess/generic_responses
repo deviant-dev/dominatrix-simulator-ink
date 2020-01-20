@@ -1,6 +1,7 @@
 === Goddess_GoodJob ===
 
 /perform fake_annoyed
+/emotion amused 50
 
 { shuffle:
     - There's a good {player_name}. #114
@@ -21,6 +22,7 @@
 === Goddess_PayAttention ===
 
 /perform amused
+/emotion angry 50
 
 { cycle:
     - Look at me when I'm speaking to you, {player_name}. #125
@@ -38,6 +40,7 @@
 + [timeout] -> Goddess_PayAttention
 
 /perform thoughtful
+/emotion skeptical
 
 - { cycle:
     - Where was I? Oh yes... #134
@@ -52,6 +55,8 @@
 
 
 === Goddess_BadJob ===
+
+/emotion angry 50
 
 { shuffle:
     - Stupid {isBoy:prick|cunt}. #01

@@ -1,46 +1,83 @@
 === headmistress_hub ===
--> select_gender ->
-~ obey = 0
-~ disobey = 0
 
-{headmistress_hub == 1: -> headmistress_intro}
+-> select_gender ->
+
+~ setHub(Headmistress)
+
+{isTutorial && deviation != hand_signals: -> headmistress_intro}
 
 /scene LectureHall.Hub
+/music headmistress
+/character headmistress clasp_hands
 
++ [move]
 
 -> apology_check(-> hub, -> exit)
 
 - (hub)
 
-// Reset obey here since sometimes obey is tracked
-// across multiple scenes.
+{ headmistress_regard >= 10: 
+    I am pleased to see you, bauble.
+}
 
--> summary("Headmistress Hub", hub) -> 
+-> checks
 
-
-{ hub > 1: Hi again! | Hi! }
-
-{ 
-    - punishments > 0 :
-        Are you here for your punishment?
-        + [yes] -> choose_punishment
-        + [no] No? -> check_task
-    - rewards > 0 :
-        Are you here for your reward?
-        + [yes] -> choose_reward
-        + [no] No? -> check_task
+{ hub > 1: 
+    {shuffle:
+        - Greetings, {isBoy: peon|moppet}.
+        - Welcome back, flawed one.
+        - I see you cannot stay away, trinket.
+        - You continue to return.
+    }
     - else:
-        -> check_task
+        {shuffle:
+        - Salutations, flawed one.
+        }
 }
 
-- { punishments == 0 && rewards == 0:
+- (checks)
+{ 
+    - punishments > 0: -> check_punishment
+    - rewards > 0 : -> check_reward
+    - else: -> check_task
+}
+
+
+= check_punishment
+
+Are you here to pay your punishment?
++ [yes] -> choose_punishment
++ [no]
+    No?
+    -> check_task
+        
+
+= check_reward
+
+Are you receive your reward?
+
++ [yes] -> choose_reward
++ [no]
+    No? 
+    Abstaining from pleasure, I see.
+    How restrained.
+    -> check_task
+
+
+= check_task
+
+{ punishments == 0 && rewards == 0:
+    No rewards or punishments, huh?
     You must be here to serve me!
+- else:
+    Shall I give you a task then?
 }
-
-- (check_task) Looking to serve me, are you?
 
 + [yes] -> choose_task
-+ [no] -> exit
++ [no] 
+    Then I have nothing for you.
+    Begone.
+    -> exit
 
 = choose_punishment
 // Eventually we'll have the game randomly pick here.
@@ -52,5 +89,12 @@
 -> headmistress_reward_cunnilingus -> exit
 
 = choose_task
+
+{deviation == hand_signals: -> headmistress_task_handsignals -> exit }
+
 // Eventually we'll have the game randomly pick here.
--> headmistress_task_flogging -> exit
+{ shuffle:
+    - -> headmistress_task_handsignals ->
+}
+
+- -> exit

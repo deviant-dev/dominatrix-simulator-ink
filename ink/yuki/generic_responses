@@ -2,6 +2,8 @@
 
 === Yuki_PayAttention ===
 
+/perform yuki_idle
+
 { cycle:
     - You're not very good at this yet, are you? #01
     You're supposed to look at me when I'm talking. #02
@@ -21,7 +23,7 @@
     }
     ->->
 
-+ [timeout] -> Yuki_PayAttention
++ [timeout] -> Yuki_PayAttention ->->
 
 // This is better for verbal commands.
 === Yuki_Timeout ===
@@ -35,7 +37,7 @@
     - Hey {player_name}, I'm not talking to myself you know! #06
     - Answer me, {player_name}! #07
     - Are you even listening? #08
-    - Focus, {player_him}.  #09
+    - Focus, {player_name}.  #09
 }
 
 ->->
@@ -92,6 +94,7 @@
     }
     
 ->->
+
 === Yuki_Badjob ===
 
 TODO: record new VO
@@ -122,9 +125,9 @@ TODO: record new VO
 TODO: record new VO
 {cycle:
     - What? A punishment?! #01
+      After everything I do to make sure you avoid punishments... #04
     - Didn't I explain to you the rules to avoid a punishment? #02
-    - You slaves never learn. #03
-    - After everything I do to make sure you avoid punishments... #04
+      You slaves never learn. #03
     - Punishment? And I thought you had promise... #05
 }
 
@@ -324,6 +327,7 @@ TODO: move VO lines from Yuki_puppplay_badwrapup to yuki_puppyplay_punishment_co
     - You should really try to avoid punishments in the future, puppy.
 }
 
+I expect you to behave next time!
 You've paid off a punishment, puppy!
 ~ removePunishment()
 
@@ -347,11 +351,11 @@ TODO: add receiving punishment dialogue and action
 TODO: record VO lines 
 
 {shuffle:
+    - Good puppies don't get spanked.
     - You poor puppy.
     - That must really hurt.
     - It's okay puppy. It will be over soon.
     - Ooof!
-    - I hope you behave next time!
     - Your bottom is so pink!
     - I think I'm getting wet!
     - 

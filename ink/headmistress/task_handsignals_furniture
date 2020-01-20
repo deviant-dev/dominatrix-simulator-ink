@@ -1,0 +1,30 @@
+=== headmistress_task_handsignals_furniture ===
+
+-> intro -> exit
+
+= intro
+TODO: endurance signals intro
+->->
+
+= practice 
+
+{ headmistress_signal_furniture_difficulty <= 1:
+    -> practice_easy ->
+- else:
+    -> practice_hard ->
+}
+
+- ->->
+
+= practice_easy
+TODO: endurance signals practice
+->->
+
+= practice_hard
+TODO: endurance signals practice w/ audience and w/o pose assist
+->->
+
+
+
+
+

@@ -1,5 +1,7 @@
 === yuki_reward_bathe ===
 
+~ setScene(reward_scene, Yuki)
+
 <<< TODO: insert activities with Yuki here >>>
 
 -> exit

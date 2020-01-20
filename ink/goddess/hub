@@ -1,10 +1,10 @@
 == goddess_hub ==
 -> select_gender ->
 - (hub)
-~ obey = 0
-~ disobey = 0
 
--> summary("Goddess Hub", hub) -> 
+~ setHub(Goddess)
+
+{isTutorial: -> goddess_intro}
 
 /scene bedroom
 /music goddess

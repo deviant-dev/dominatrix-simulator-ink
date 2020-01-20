@@ -1,7 +1,10 @@
 
 === yuki_punishment_edging ===
 
-/scene ?
+~ setScene(punishment_scene, Yuki)
+
+/scene attrium
+/music yuki
 /character yuki
 
 Don't think just because I'm not as mean as the other mistresses, that I can't be good at punishing you!
@@ -13,12 +16,12 @@ But I don't understand why you need to be punished.
 I explained to you the rules didn't I? 
 
 + [Yes]
-~ obey++
+~ addObey()
 /perform confused 
 
 Somebody isn't a very good slave then.
 + [No]
-~ disobey++
+~ addDisobey()
 /perform annoyed
 
 Now that's just not true, and you know it. Lying counts as being disobedient too. That'll earn you <i>another</i> punishment mark.
@@ -31,7 +34,7 @@ Now that's just not true, and you know it. Lying counts as being disobedient too
 ->Yuki_PayAttention-> 
 ->timeout1
 
-Now be a good {player_name}
+- Now be a good {player_name}
 
 /perform point_down
 
@@ -49,7 +52,7 @@ and come here.
 +{stand_hands_behind_tries < 2} [timeout] -> stand_hands_behind
 +{stand_hands_behind_tries >= 2} [timeout] -> Yuki_Interested -> stand_hands_behind
 
-/perform circle_player
+- /perform circle_player
 I'm thinking about what to do with you.
 
 /perform inspect_genitals
@@ -58,17 +61,17 @@ Hm, we're going to need to get you <i>really</i> {hasPenis: hard|wet} first.
 
 -> tease_bank1 ->
 
-{! -> tease_bank1| -> tease_bank1|}
+
 - (EnjoymentQ)
 Are you enjoying your punishment, little slave?
 
 +[Yes]
-~ obey++
+~ addObey()
 You're not supposed to enjoy it that much! Buuuut, you always know where to find me when you want more!
 ->teaseloop2
 
 +[No]
-~ disobey++
+~ addDisobey()
 Well maybe next time you shouldn't be such a naughty little slave. 
 ->teaseloop2
 
@@ -109,12 +112,12 @@ Now this time, I'll let you touch yourself. Don't get too excited, there's a cat
 Am I making you feel good, you naughty {player_name}?
 
 +[Yes]
-~ obey++
+~ addObey()
 Heeheehee, I know, I can see it in your eyes! 
 -> teaseloop3
 
 +[No]
-~ disobey++
+~ addDisobey()
 Then next time you better behave yourself for me and the other Mistresses! 
 -> teaseloop3
 
@@ -207,13 +210,13 @@ All the slaves like my feet.
 Do you want me to tease you with them?
 
 + [Yes]
-~ obey++
+~ addObey()
 
     Good job for knowing your place! 
     ->LongFoot
     
 + [No]
-~ disobey++
+~ addDisobey()
 
     Then this is exactly what you deserve for misbehaving in the mansion! 
     ->ShortFoot
@@ -244,11 +247,11 @@ I'm very proud of the idea. I came up with it all on my own.
 Isn't that so smart of me?
 
 +[Yes]
-~ obey++
+~ addObey()
 I know, I'm such a clever Mistress!
 
 +[No]
-~ disobey++
+~ addDisobey()
 Well okay smarty-pants, that's not very polite of you.
 +[timeout]
 ->Yuki_Timeout->
@@ -386,11 +389,11 @@ You should feel bad about breaking the rules.
 -(BadQ) You feel bad of course, don't you {player_name}?
 
 +[Yes]
-~ obey++
+~ addObey()
 You better mean that, and not be lying to me like a bad {player_name}!
 
 +[No]
-~ disobey++
+~ addDisobey()
 <i>Somebody's</i> enjoying themselves a little too much.
 
 +[timeout]

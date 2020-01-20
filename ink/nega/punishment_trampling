@@ -1,5 +1,8 @@
 
 === nega_punishment_trampling ===
+
+~ setScene(punishment_scene, Nega)
+
 /scene Attic.NegaIntro
 /music nega2
 /ambient off

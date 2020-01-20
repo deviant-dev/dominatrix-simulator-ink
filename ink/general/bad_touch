@@ -1,0 +1,92 @@
+=== general_bad_touch ===
+
+{not isTutorial:
+    ~ addPunishment()
+}
+
+{
+    - current_mistress == Goddess: -> goddess
+    - current_mistress == Headmistress: -> headmistress
+    - current_mistress == Nega: -> nega
+    - current_mistress == Yuki: -> yuki
+    - else:-> generic
+}
+
+
+= goddess
+
+/scene bedroombroken.bad_touch
+/emotion angry
+Bad behavior will not be tolerated.
+/character goddess stomp_on_player
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait 0.2]
+- ~ addPunishment()
+
++ [wait]
+- /quit
+-> DONE
+
+// /scene entry.hub
+// /notify title="Not Allowed" text="Keep your hands to yourself."
+// /wait 5
+// -> exit
+
+
+= headmistress
+/scene entry.hub
+/sound slap
+/notify title="Not Allowed" text="Keep your hands to yourself."
+/wait 5
+-> exit
+
+
+= nega
+/scene entry.hub
+/sound slap
+/notify title="Not Allowed" text="Keep your hands to yourself."
+/wait 5
+-> exit
+
+
+= yuki
+/scene entry.hub
+/sound slap
+/notify title="Not Allowed" text="Keep your hands to yourself."
+/wait 5
+-> exit
+
+
+= generic
+/scene entry.hub
+/sound slap
+/notify title="Not Allowed" text="Keep your hands to yourself."
+/wait 5
+-> exit
