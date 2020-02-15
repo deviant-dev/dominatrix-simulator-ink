@@ -1,5 +1,5 @@
 === nega_punishment_tease ===
- -> select_gender ->
+ -> select_gender_check ->
 
 ~ setScene(punishment_scene, Nega)
  
@@ -10,6 +10,7 @@
 
 - (tease_intro)
 
+You've earned a little tease for that roll.
 
 {shuffle:
     - Fucking dice... spoiling my fun.
@@ -19,17 +20,18 @@
     - Let's get this over with so I can go find some /real/ fun.
 }
   
-
+- I won't be too hard on you.
+Promise. 
 /perform angry
 {shuffle:
     - You're a disgusting stain.
     - You're a nasty pile of shit.
     - You're a vomit inducing waste of time.
     - You're a boring, simpering drain on my energy.
-    - You’re a ugly, little wretch.
+    - You're a ugly, little wretch.
 }
   //TODO: update script to be meaner and harder on player. Follow same structure    
-Aren't you?
+Isn't that right?
     +[yes]
         That's right. 
         Just a rotten little bitch I should crush under my boot.
@@ -54,19 +56,19 @@ Aren't you?
 - -> Nega_GoodJob ->
 
 /perform angry
-You can’t fucking hide from me.
+You can't fucking hide from me.
 I see what you are.
 
 -> Nega_Insult ->
 
 /perform lean_forward
-You just can’t stay away, can you?
+You just can't stay away, can you?
 
 + [yes]
     Then what the fuck are you doing here?
 + [no]
     Too curious for your own good.
-    That’s perfect. I like abusing stupid little pricks.
+    That's perfect. I like abusing stupid little pricks.
 
 - (nega_apologize)
 Apologize for pretending to be anything else.
@@ -79,12 +81,12 @@ Lick the ground!
 
 + [pose:kiss_feet]
 
-- That’s it, little bitch.
+- That's it, little bitch.
 Show me how sorry you are.
 
 + [pose:kiss_feet]
 
-- Don’t fucking lie to me again.
+- Don't fucking lie to me again.
 Now get back up on your knees.
 
 + [pose:kneel]
@@ -116,6 +118,6 @@ TODO: Player kisses the floor for a set amount of time. This scene will focus on
 ->->
 
 = tease_slapping
-TODO: Player has to endure slapping while kneeling. This scene will focus on Nega telling the player they don’t get to be touched nicely. They aren’t worthy of it. She will slap them and get them to slap their genitals / nipples.
+TODO: Player has to endure slapping while kneeling. This scene will focus on Nega telling the player they don't get to be touched nicely. They aren't worthy of it. She will slap them and get them to slap their genitals / nipples.
 
 ->->

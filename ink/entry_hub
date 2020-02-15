@@ -1,6 +1,6 @@
 === entry_hub ===
 
--> select_gender ->
+-> select_gender_check ->
 
 { deviation == puppyplay:
     -> yuki_task_puppyplay
@@ -11,7 +11,7 @@
 ~ setHub(None)
 
 { not yuki_intro: -> move_yuki }
-{ isTutorial: -> move_headmistress }
+{ inTutorial: -> move_headmistress }
 
 /scene entry.hub
 /music entry
@@ -29,7 +29,7 @@
 
 = move_yuki
 
--> select_gender ->
+-> select_gender_check ->
 
 /scene entry.intro1
 /music yuki

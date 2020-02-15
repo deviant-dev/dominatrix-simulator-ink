@@ -12,7 +12,7 @@ TODO: Record missing VO
     - You are raw, but you have potential. #05
     - I shall delight in shaping you to please Her. #06
     - I am pleased. For now. #07
-    - Eloquence becomes you. #11
+    //removed #11. 
     - You seek to impress. #12
     - Continue in this way. #13
     - Most pleasing. #14
@@ -47,7 +47,7 @@ TODO: Record missing VO
             -> Headmistress_GoodJob
       }
     - {headmistress_has_audience:
-            I am overwhelmed with satisfication. #17
+            I am overwhelmed with satisfaction. #17
         - else:
             -> Headmistress_GoodJob
       }
@@ -163,15 +163,15 @@ TODO: record VO
 
 === Headmistress_Resume ===
 //generic responses whenever the Headmistress continues dialogue after a response or action.
-
+TODO: rewrite resumes
 
 { shuffle:
-    - Enough. We shall resume. #01
-    - I am eager to return to your admonishment. #02
-    - Your punishment shall resume. #03
-    - Let us continue. #04
-    - Retribution must continue. #05
-    - We shall recommence the chastisement. #06
+    - Enough. We shall resume.
+    - I am eager to return to your admonishment.
+    - Your punishment shall resume.
+    - Let us continue.
+    - Retribution must continue.
+    - We shall recommence the chastisement.
 }
     
 ->->
@@ -238,7 +238,7 @@ TODO: Record VO
     - Fine control {player_name}. #12
     - Do not fail to attend to your task. #13
     - My words return to me... #14
-    - Now... We shall resume.. #15
+    - Now... We shall resume. #15
 }
 
 ->->
@@ -272,10 +272,6 @@ TODO: Record VO
     no lasting harm is inflicted... #125
     unless permanency is desired, of course. #126
     - Feet must remain flat with no obscene curling of the toes. #47
-    -
-    -
-    -
-    -
 }
 /character headmistress
 ->->
@@ -302,17 +298,13 @@ TODO: Record VO
     - You are putting on a poor display. #248
     - You have a long ways to go. #249
     - I can see you will require much instruction. #250
-    -
-    -
-    -
-    -
 }
 /character headmistress
 ->->
 
 === Headmistress_player_masturbate ===
-Our guests are frenzied and demand more. #01
-{hasPenis: Wrap your hand around your rod|slip your fingers between your nether lips} and entertain them. #02
+
+{hasPenis: Wrap your hand around your rod|Slip your fingers between your nether lips} and entertain them. #02
 
 /character headmistress idle
 /wait 2
@@ -427,8 +419,9 @@ Are you {hasPenis: hard|wet}? #04
     - One must be proud to display their arousal. #11
     - You please our guests with your performance. #12
     - You have earned this small pleasure. #13
-    - /character crowd oos
+        /character crowd oos
     - You are a divine {isBoy:reprobate|harlot}. #15
+    - Our guests are frenzied and demand more. #16
     - -> Headmistress_GoodJob ->
     - -> Headmistress_GoodJob ->
     - -> Headmistress_GoodJob ->
@@ -443,96 +436,96 @@ Are you {hasPenis: hard|wet}? #04
 
 === Headmistress_CheckIfInterested ===
 
-{checked_if_interested: -> check_terse}
+// {checked_if_interested: -> check_terse}
 
-~ checked_if_interested = true
+// ~ checked_if_interested = true
 
-{
-    - scene_type == punishment_scene:
-    /perform unhappy
-    // VO needs to be moved over from HM punishment_spanking
-        {shuffle:
-            - Are you too good to take a punishment, {player_name}? #216
-              Obey instructions. #217
-            - A punishment is owed, baffoon.
-              Will you comply?
-        }
+// {
+//     - scene_type == punishment_scene:
+//     /perform unhappy
+//     // VO needs to be moved over from HM punishment_spanking
+//         {shuffle:
+//             - Are you too good to take a punishment, {player_name}? #216
+//               Obey instructions. #217
+//             - A punishment is owed, baffoon.
+//               Will you comply?
+//         }
      
-    - scene_type == reward_scene:
-    /perform behold
-        {shuffle:
-            - You would be remiss to turn away from your reward. 
-              Shall we continue?
-            - Perhaps today is not the day you deserve to be rewarded.
-              Is it?
-        }
+//     - scene_type == reward_scene:
+//     /perform behold
+//         {shuffle:
+//             - You would be remiss to turn away from your reward. 
+//               Shall we continue?
+//             - Perhaps today is not the day you deserve to be rewarded.
+//               Is it?
+//         }
         
-    - else:
-    /perform cocks_head_to_left
-    You will leave with a punishment if you do not finish your task.
-        {shuffle:
-            - Do you desire to continue, {player_name}? 
-            - You came here to perform, moppet.
-              Shall we continue?
-        }
-}
+//     - else:
+//     /perform cocks_head_to_left
+//     You will leave with a punishment if you do not finish your task.
+//         {shuffle:
+//             - Do you desire to continue, {player_name}? 
+//             - You came here to perform, moppet.
+//               Shall we continue?
+//         }
+// }
 
 
 
-- (check_again)
+// - (check_again)
 
-/perform idle
+// /perform idle
 
-+ [yes] -> check_yes
-+ [no]
-+ [timeout] -> check_terse
+// + [yes] -> check_yes
+// + [no]
+// + [timeout] -> check_terse
 
-- (check_terse) 
+// - (check_terse) 
 
-TODO: Break remaining checks into scene type and/or shuffle options
-{
-    - scene_type == punishment_scene:
-    /perform angry
-        {shuffle:
-            - //copy numbered VO from Headmistress Punishment_Spanking
-              Well? #218
-              You merely drag out the invetitable with your delay. #219
-            - Are you going to continue to play the reluctant {player_name}? #220.
-        }
+// TODO: Break remaining checks into scene type and/or shuffle options
+// {
+//     - scene_type == punishment_scene:
+//     /perform angry
+//         {shuffle:
+//             - //copy numbered VO from Headmistress Punishment_Spanking
+//               Well? #218
+//               You merely drag out the inevitable with your delay. #219
+//             - Are you going to continue to play the reluctant {player_name}? #220.
+//         }
      
-    - scene_type == reward_scene:
-    /perform behold
-        {shuffle:
-            - Your passion feeds and time is waisting.
-              Shall we continue?
-            - What a pity you would waist such a gift.
-              Shall we resume?
-        }
+//     - scene_type == reward_scene:
+//     /perform behold
+//         {shuffle:
+//             - Your passion feeds and time is waisting.
+//               Shall we continue?
+//             - What a pity you would waist such a gift.
+//               Shall we resume?
+//         }
         
-    - else:
-    /perform cocks_head_to_left
-    I have no patience for fools. A punishment will be yours!
-        {shuffle:
-            - Will you finish your task, {player_name}? 
-            - Will you perform, ingrate?
-        }
-}
+//     - else:
+//     /perform cocks_head_to_left
+//     I have no patience for fools. A punishment will be yours!
+//         {shuffle:
+//             - Will you finish your task, {player_name}? 
+//             - Will you perform, ingrate?
+//         }
+// }
 
-+ [yes] -> check_yes
-+ [no] 
+// + [yes] -> check_yes
+// + [no] 
 
-- /perform bored
-Out of my office, heathen. #221
-I have no time for your shenanigans. #222
--> out_heathen
+// - /perform bored
+// Out of my office, heathen. #221
+// I have no time for your shenanigans. #222
+// -> out_heathen
 
-- (check_yes) -> Headmistress_AcknowledgeYes ->
-/perform confused
-{shuffle: 
-    - There is hope for you yet. #223
-    - Do not try my patience again.
-    - No more wasting time.
-}
+// - (check_yes) -> Headmistress_AcknowledgeYes ->
+// /perform confused
+// {shuffle: 
+//     - There is hope for you yet. #223
+//     - Do not try my patience again.
+//     - No more wasting time.
+// }
 
 ->->
 

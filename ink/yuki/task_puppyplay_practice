@@ -233,7 +233,7 @@ Pay attention! #165
 /perform lean_forward
 
 {cycle:
-    - Can you let me know you're <b>"thisty"</b>, puppy? #25
+    - Can you let me know you're <b>"thirsty"</b>, puppy? #25
     - Hrm. Let's see <b>"thirsty"</b>, {player_name}. #26
 }
 

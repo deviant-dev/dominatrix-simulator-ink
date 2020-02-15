@@ -1,10 +1,10 @@
 === headmistress_hub ===
 
--> select_gender ->
+-> select_gender_check ->
 
 ~ setHub(Headmistress)
 
-{isTutorial && deviation != hand_signals: -> headmistress_intro}
+{inTutorial && deviation != hand_signals: -> headmistress_intro}
 
 /scene LectureHall.Hub
 /music headmistress

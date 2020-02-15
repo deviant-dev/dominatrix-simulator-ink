@@ -6,7 +6,7 @@ VAR demerits = 0
 
 === nega_hub ===
 
--> select_gender ->
+-> select_gender_check ->
 
 // If the player hasn't done the intro yet,
 // then have them go to the intro.

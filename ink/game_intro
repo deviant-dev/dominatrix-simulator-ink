@@ -1,9 +1,10 @@
 === game_intro ===
 
-{ isDebug() : -> choices }
+{hasRestarted: -> game_intro_again}
+
+{cherryPopped && deviation != demo: -> game_intro_again}
 
 ~ setScene(intro_scene, None)
-
 /scene EntryDark.TitleScreen
 /music entry
 
@@ -37,30 +38,21 @@
 
 - (ready)
 
-+ [move: Intro] -> goddess_intro
-+ [wait:5]
-
-- (all_options)
-
-+ [move: Intro] -> goddess_intro
-+ [move: Yuki (unlocked)] -> yuki_intro
-+ {deviation != demo}[move: PuppyPlay (unlocked)] -> yuki_task_puppyplay
-+ [move: Headmistress (unlocked)] -> headmistress_intro
-+ [move: Nega (unlocked)] -> nega_intro //-> tryEnter(early_access, -> nega_intro, -> choices)
++ [move: Intro] -> select_gender -> goddess_intro
 
 
 === game_intro_again ====
 
 {isWeb(): -> table_of_contents}
 
+~ setScene(intro_scene, None)
 /scene EntryDark.Notifications
 /music entry
 
-+ [move: Intro] -> goddess_intro
-+ [move: Yuki (unlocked)] -> yuki_intro
-+ {deviation != demo}[move: PuppyPlay (unlocked)] -> yuki_task_puppyplay
-+ [move: Headmistress (unlocked)] -> headmistress_hub
-+ [move: Nega (unlocked)] -> nega_intro //-> tryEnter(early_access, -> nega_intro, -> choices)
++ [move: Intro] -> select_gender -> goddess_intro
++ {deviation != demo}[move: Yuki (unlocked)] -> yuki_intro
++ {deviation != demo}[move: Headmistress (unlocked)] -> headmistress_hub
++ {deviation != demo}[move: Nega (unlocked)] -> nega_intro //-> tryEnter(early_access, -> nega_intro, -> choices)
 
 
 === game_intro_web ===

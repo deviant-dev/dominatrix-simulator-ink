@@ -1,44 +1,22 @@
 === goddess_monitoring ===
--> select_gender ->
+-> select_gender_check ->
 
 { shuffle:
-    - /scene BedroomBroken.InHand
-    - /scene BedroomBroken.InHand
-    - /scene BedroomBroken.InHand
-    - /scene BedroomBroken.InHand
+    - /scene Huge.InHand
+    - /scene Huge.InHand
+    - /scene Huge.InHand
+    - /scene Huge.InHand
 }
 
 /character goddess
 /perform curious
 /music goddess
 
-{isTutorial:
-//give the player 10 punishments, which are then instantly spent to put them in chastity
-    - /emotion skeptical
-    Well, well.
-    You've only just arrived and already you misbehave.
-    There are no secrets in my house.
-    I know exactly what you've been up to. 
-    /emotion neutral
-    Every soul here must serve.
-    Passion is the price for existence.
-    /emotion amused
-    For your transgressions, you will suffer.
-    //give player 10 punishment markers
-    You will serve without reward until I deem you worthy.
-    //give chastity device
-    Now go and fail me no further.
-    ~ isTutorial = false
-    -> exit
-}
-    
-//demo end  
-
 
 //acknowledging player
 { shuffle:
     - Hello {player_name}. 
-    - Greetings little toy.
+    - Greetings little one.
     - My, my, {player_name}.
 }
 
@@ -48,7 +26,7 @@
 { shuffle:
     - I've been watching you.
     - I like to keep an eye on my playthings.
-    - There are no secrets in my House.
+    - I know what you've been up to.
 }
 
 
@@ -62,9 +40,24 @@
 //comment on reward
 = reward_monitor
 { shuffle:
-- You are performing quite well.
-- Keep up the good work and I might visit you again.
-- Earn ten of those and I'll give you a special treat.
+    - You are performing quite well.
+    - Obedience will earn my favor.
+    - A full wrist of ten will grant you greater time with me.
+}
+
+{ shuffle:
+    - For now, the insatiable hunger is appeased.
+    - A house of order is so intoxicating.
+    - There are so many playthings to keep track of.
+}
+
+//say Goodbye
+{ shuffle:
+    - I am satisfied. 
+      Until next time.
+    - Now go. Please me further.
+    - Goodbye {player_name}. 
+      I know you will not disappoint me.
 }
 
 -> entry_hub
@@ -72,21 +65,42 @@
 //comment on punishment
 = punishment_monitor
 { shuffle:
-- I am so disappointed you're not trying harder.
-- I hope you enjoyed the punishment I arranged for you.
-- I'm starting to wonder if you'll ever be worthy.
+    - I hope you enjoyed the punishment I arranged for you.
+    - I'm starting to wonder if you'll ever be worthy.
+    - Disobedience will not be tolerated.
 }
 
+//say Warning
+{ shuffle:
+    - Passion is the price for existence.
+    - Order must be maintained.
+    - Haven't you noticed the frozen failures?
+}
+
+//say Goodbye
+{ shuffle:
+    - Think on this. Now out of my sight.
+    - Time for you to return.
+    - You have been warned. Begone.
+}
 -> entry_hub
 
 //comment on task
 = task_monitor
 { shuffle:
-- Practice makes perfect, {player_name}.
-- So many tasks. So little time. 
-- I see you were born to serve.
+    - Practice makes perfect, {player_name}.
+    - So many tasks. So little time. 
+    - Service beckons you, I see.
 }
 
+//say encouragement
+{shuffle:
+    - The more you serve, the more valuable you are.
+    - Pain awaits those who disobey.
+    - Put your heart and soul into everything you do. 
+      As if your life depends on it.
+}
+    
 //say Goodbye
 { shuffle:
     - Remember... I'm always watching.

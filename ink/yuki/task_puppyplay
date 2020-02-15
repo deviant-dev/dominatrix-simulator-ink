@@ -1,6 +1,6 @@
 === yuki_task_puppyplay ===
 
--> select_gender ->
+-> select_gender_check ->
 
 ~ setScene(task_scene, Yuki)
 

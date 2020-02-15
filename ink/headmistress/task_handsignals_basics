@@ -645,7 +645,7 @@ Go and contemplate your failure.
 
 { say_full_explanation:
     Turn around, bend forward, 
-    and present your derrier for inspection.
+    and present your derriere for inspection.
 }
 
 + [pose:rear{hide_pose_assist: no_assist}]

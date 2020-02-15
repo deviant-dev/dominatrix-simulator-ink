@@ -1,7 +1,6 @@
 === nega_reward_dice ===
--> select_gender ->
+-> select_gender_check ->
 
-~ isIntro = nega_reward_dice == 1
 ~ setScene(reward_scene, Nega)
 
 /scene attic.negaintro
@@ -13,8 +12,8 @@
 /character nega hand_out
 {shuffle:
     - Hand it over. #01
-    - Gimme!
-    - Oooo. Give it here. 
+    - Gimme! #07
+    - Oooo. Give it here.  #08
 }
 
 + [pose:present_wrist_reward]
@@ -29,41 +28,53 @@
 Fuck ya! #02
 You're my bitch now. #03
 
-Time to play a little game.
+Let's see what you're going to get #04
+for this pretty little gift. #05
+
 /perform squat
-Get down here.
+Get down here. #09
 
 + [pose:kneel]
     
 
 - (test_dice)
-/perform squat_give_dice
-Let's see what you're going to get #04
-for this pretty little gift. #05
+/perform squat_dice_give
+Time to play a little game. #10
+/wait 2
 
-+ [hold:dice]
+- (hold)
+/perform squat_dice_shake
+Take the dice and give them a good shake. #11
+
+
++ [hold:dice!]
++ [timeout:5] -> Nega_BadJob -> hold
+
 - (roll) 
 Go ahead. Roll them bones. #06
 
--
-+ [roll]
++ [roll!] -> rolled
 + [timeout] -> Nega_BadJob -> roll
 
-- ~ temp result1 = getNegaDie1()
+// 'Roll' event will force the script into this thread.
+= rolled
+
+~ temp result1 = getNegaDie1()
 ~ temp result2 = getNegaDie2()
 ~ temp result3 = getNegaDie3()
 ~ temp result = result1 + result2 + result3
 
-Results: <> 
+/notify title="Dice Roll Results" delay=10 text="<> 
 ~ rollToText(result1)
 <> + <>
 ~ rollToText(result2)
 <> + <>
 ~ rollToText(result3)
+<>"
 
 {
-    - isIntro && result > 0: -> intro_reward 
-    - isIntro: -> intro_change_dice 
+    - inTutorial && result > 0: -> intro_reward 
+    - inTutorial: -> intro_change_dice 
     
     - result == 3: -> result_reward_hard 
     - result == 2: -> result_reward_light 
@@ -76,7 +87,6 @@ Results: <>
     - result == -2: -> result_punishment_light 
     - result == -3: -> result_punishment_hard 
 }
-
 
 - (result_reward_hard)
 /lookat dice
@@ -120,16 +130,16 @@ TODO: Randomly select from Nega's 'light reward' scenes here.
     /lookat dice
     /perform squat_lean_forward
     Two cups and a skull, hmm? #22
-    /perform open_arms_shrug
+    /perform squat
     Skulls cancel cups, I'm afraid, so that's one cup for you. #23
 - else:
     /lookat dice
     /perform squat_lean_forward
-    Hmm.. one cup. #24
+    Hmm... one cup. #24
 }
 
 /lookat player
-/perform squat
+/perform 
 Not bad. But not great. #25
 I suppose you deserve a little something for that. #26
 
@@ -183,7 +193,7 @@ Nothing for you today. Better luck next time, bitch. #32
 - else:
     /lookat dice
     /perform squat_lean_forward
-    Hmm.. one skull. #35
+    Hmm... one skull. #35
 }
 
 /lookat player
@@ -231,7 +241,8 @@ TODO: Randomly select from Nega's 'hard punishment' scenes here.
 }
 
 
-- (intro_change_dice)
+= intro_change_dice
+
 /lookat dice
 /perform squat_lean_forward
 Aaaw, look at that. No fun. #42
@@ -245,8 +256,12 @@ Just this once. #45
 /perform squat_swipe_hand
 /action force_dice
 
+TODO: Remove this and actually force the dice in-game.
+-> nega_reward_forcedsex
 
-- (intro_reward)
+
+= intro_reward
+
 /lookat dice
 /perform squat_lean_forward
 Ooo. Looky here. #46
@@ -259,6 +274,7 @@ You're gonna love getting rewards from me. #49
 
 -> nega_reward_forcedsex
 
+
 = check_consent
 
 {shuffle:
@@ -266,14 +282,14 @@ You're gonna love getting rewards from me. #49
     - I'm going to use you hard. #51
     - You can still change your mind. #52
     - I wonder if you can handle me.  #53
-    }
+}
 
 {shuffle:
     - Are you ready? #54
     - Shall I use you? #55
     - Ready for what's next? #56
     - Are you prepared to continue? #57
-    }
+}
 
 + [yes]
     Delish! #58

@@ -7,7 +7,6 @@ VAR headmistress_spanking_mistakes = 0
 
 === headmistress_punishment_spanking ===
 
-~ isIntro = headmistress_punishment_spanking == 1
 ~ setScene(punishment_scene, Headmistress)
 
 TODO: Support shuffling swats and equipment
@@ -43,12 +42,12 @@ TODO: Support shuffling swats and equipment
 
 -> get_on_desk ->
 
-{isIntro: -> punish_intro | -> punish_continue}
+{inTutorial: -> punish_intro | -> punish_continue}
 
 
 = get_on_desk
 
-{isIntro: 
+{inTutorial: 
     Punishments are administered with the slave perched upon my desk. #05
 - else:
     For your transgressions, #01
@@ -89,7 +88,7 @@ Alight forthwith! #08
     ~ addDisobey()
     /perform displeased
     Note the hesitation. A sure sign of poor breeding. #15
-    Such offends the Goddess and must be striken from the specimen. #16
+    Such offends the Goddess and must be stricken from the specimen. #16
 }
 
 ->->
@@ -115,8 +114,8 @@ We aren't here just for you. #49
 We have our entire class to enlighten! #50
 
 - 
-//Let us show our audience #51
-//the fine display you have for us. #52
+Let us show our audience #51
+the fine display you have for us. #52
 /character crowd cheers_loud
 ~ Headmistress_RaiseCurtains()
 
@@ -279,7 +278,7 @@ Do you accept that you must be punished? #92
         ~ addObey()
         /perform serious
         Magnificent. Let us begin. #97
-
+TODO: This leave should not reset the game. It is too early in the tutorial. They should have to go back to Yuki and be told they can't continue until they accept a punishment with the Headmistress.
     ++ [no]
         ~ addDisobey()
         /character crowd angry_crowd
@@ -292,7 +291,14 @@ Do you accept that you must be punished? #92
         ~ headmistress_apologize = true
         Now leave. #102
         /perform point_to_leave
-        -> exit
+        -> entry_hub
+
+    ++ [timeout] 
+        /perform pleased
+        You have had enough time to think. #103
+        Your punishment must begin. #104
+        Do you agree? #105
+        -> ask_punish_ready
 
 + [timeout] 
     /perform pleased
@@ -302,7 +308,7 @@ Do you accept that you must be punished? #92
     -> ask_punish_ready
 
 
-- {isIntro: -> headmistress_train_spanking(false) -> spank_continue }
+- {inTutorial: -> headmistress_train_spanking(false) -> spank_continue }
 
 - /perform serious
 Because I am generous, #234
@@ -340,7 +346,7 @@ Let us begin in earnest! #245
 /character headmistress idle
 
 // 10, 25, 35
-Prepare yourself for {headmistress_spanking_target_count} swats, {player_name}. #127
+Prepare yourself for ten swats, {player_name}. #127
 
 - (spank)
 /character headmistress paddle_ass
@@ -349,7 +355,7 @@ Prepare yourself for {headmistress_spanking_target_count} swats, {player_name}. 
     ~ headmistress_spanking_count++
     ~ headmistress_spanking_break_count++
     
-    {headmistress_spanking_break_count %3 == 0: 
+    {headmistress_spanking_break_count %2 == 0: 
     -> Headmistress_GoodSpank ->
     }
     
@@ -388,38 +394,50 @@ Ahhhh. Now, don't you feel better, {player_name}? #128
     ~ addDisobey()
     Too bad. You should have thought of that sooner. #258
     
-- /perform circle_player
+- /perform behold
 Your ass has blossomed into an objet d'art. #133
+/perform nod    
+Consider one demerit paid in full. #145
+~ removePunishment()
+~ has_learned_spanking = true
+/character crowd cheers_loud
+/character headmistress
 
 - {obeyed(): -> GoodEnding | -> BadEnding}
 
-//remove good ending and bad ending from punishment spanking
+//Story branch: if player obeys and performs well, they are given the chance to collect their reward from the HM and masturbate for the crowd - skips the Nega Yuki reward scene and finishes with praise from the Goddess
 = GoodEnding
-/perform sassy
+/perform arm_raise
 You comported yourself quite well. #131
 What a crowd pleaser! #136
 You should be proud of your performance. #132
 
-//In fact, your performance has been so deliciously obedient #134
-//I wonder if you would like to perform further for our audience? #135
+In fact, your performance has been so deliciously obedient #134
+I wonder if you would like to perform further for our audience? #135
+TODO: record new VO lines
+You may claim your reward now if you do.
 
-// + [yes]
-//     /perform confused
-//     /character crowd claps
-//     /character headmistress
-//     Ahhhh. What a crowd pleaser! #136
-//     /character headmistress idle
-//     -> Headmistress_player_masturbate ->
++ [yes]
+    ~ removeReward()
+    /perform confused
+    /character crowd claps
+    /character headmistress
+    Ahhhh. What a crowd pleaser! #136
+    You shall masturbate for them as your reward.
+    /character headmistress idle
+    -> Headmistress_player_masturbate ->
     
-// + [no]
-//     /perform serious
-//     A shame you do not have more in you, #137
-//     but you have done well. #138
-//     /character crowd cheers
-//     /character headmistress
-    
-- -> FinalEnding
++ [no]
+    /perform serious
+    A shame you do not have more in you, #137
+    but you have done well. #138
+    /character crowd cheers
+    /character headmistress
+     -> FinalEnding
 
+- {inTutorial:
+    -> surprise_interrupt
+}
 
 = BadEnding
 /perform sassy
@@ -437,6 +455,7 @@ You have a long ways to go. #249
 
 // + [no] 
 //     /perform amused
+    
 //     Too bad. That's exactly what you're going to do. #144
 //     /character crowd cheers
 //     /character headmistress
@@ -447,14 +466,8 @@ You have a long ways to go. #249
 = FinalEnding
 
 /character headmistress
-/perform nod    
-Consider one demerit paid in full. #145
-/character crowd cheers_loud
-/character headmistress
 /perform idle
 
-~ removePunishment()
-~ has_learned_spanking = true
 
 - (stand_straight)
 - (stand_straight_tries)
@@ -475,6 +488,7 @@ Stand at attention! #257
 }
 
 - + [move]
+
 
 // If the player has never seen nega-yuki,
 // send them off to be tempted by her directly.
@@ -526,6 +540,41 @@ Stand at attention! #257
 ->->
 
 = break01
+/perform thoughtful
+Have you been keeping count {isBoy: toad|strumpet}?
+
++[yes]
+ ~ addObey()
+    /perform nod
+    Let's see how well.
+    Are we up to seven now?
+    
+        ++[yes]
+        Tsk. Tsk.
+        We are only at six. 
+        Time to start over!
+        I suggest you remember to count this time, foible.
+        ~ headmistress_spanking_count = 0
+        -> spank
+        
+        ++[no]
+        Paying attention, are we?
+        I hope you know we are only at six.
+        Let us finish your puishment.
+        ->->
+        
++[no]
+ ~ addDisobey()
+    Do you hear that, my students?
+    This one has no breeding or experience.
+    It fails to count.
+    We shall start over!
+    This flaw I shall address in the future.
+     ~ headmistress_spanking_count = 0
+    -> Headmistress_punishment_resumes ->
+    -> spank 
+
+= break02
 /perform serious
 Every now and then, the object of correction #175
 must be given a moment to compose themself. #176
@@ -564,11 +613,21 @@ Does it feel good to touch yourself, {isBoy: toad|strumpet}? #180
 
 ->->
 
-= break02
-/perform one_finger
+
+= break03
+/perform smooth_skirt
+Rise and present your ass that my students may inspect your progress thus far.
+
++ [pose:present_ass]
+--> Headmistress_AcknowledgeYes ->
+
+/character crowd gasps
+/character headmistress
+
+- /perform one_finger
 Remember to intersperse strikes with caresses. #184
 
-/perform amused_nega
+/perform behold
 The inflamed flesh is delightfully sensitive #185
 and should be titillated as much as possible. #186
 
@@ -594,7 +653,7 @@ Would you enjoy that, {player_name}? #189
 
 ->->
 
-= break03
+= break04
 Perhaps our little foible here needs a carrot #193
 dangled in front of {isBoy: him|her}. #194
 /character crowd murmur
@@ -638,7 +697,7 @@ good boys and girls earn? #200
             /perform nod
             As I surmised. #207
             /perform confused
-            You are a baffoon who does not know to think before acting. #209
+            You are a buffoon who does not know to think before acting. #209
 
 +[no]
     ~ addObey()
@@ -656,12 +715,7 @@ good boys and girls earn? #200
 
 ->->
 
- = break04
- /perform sassy
 
-- -> Headmistress_punishment_resumes ->
-
-->->
 
 = CheckIfInterested
 
@@ -682,7 +736,7 @@ Obey instructions. #217
 - (check_terse) Well? #218
 
 /perform angry
-You merely drag out the invetitable with your delay. #219
+You merely drag out the inevitable with your delay. #219
 
 /perform annoyed
 Are you going to continue to play the reluctant {player_name}? #220
@@ -705,3 +759,21 @@ There is hope for you yet. #223
 
 /perform paddle_desk
 -> exit
+
+= surprise_interrupt
+
+TODO: Vibrate controllers with rumble?
+/sound goddess_interruption
+/ambient none
+/wait 2
+/perform behold
+
+Ahhh. <i>She comes</i>.
+What a treat you have earned, trinket.
+
+/perform idle
+/music goddess
+/wait 1
+/scene None
+I will see you again, moppet.
+-> goddess_monitoring_intro_headmistress

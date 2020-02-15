@@ -1,5 +1,5 @@
 === nega_intro ===
--> select_gender ->
+-> select_gender_check ->
 
 // Make sure we are set up as expected for Nega' intro.
 ~ rewards = 1
@@ -56,7 +56,7 @@ that kiss-ass Yuki wasn't paying attention. #09
 
 - (yuki_warning)
 /perform amused_nega
-I bet she told you not talk to me, didn't she? #10
+I bet she told you not to talk to me, didn't she? #10
 
 + [yes]
     ~ addObey()
@@ -189,14 +189,14 @@ Do you want to try your luck? #45
         Stop wasting my time! #51
         Get the fuck out of here. #52
     TODO: Record new VO line
-        I'll make sure you pay one way or the other.
-        -> exit
+        I'll make sure you pay one way or another. #56
+        -> spiteful_interrupted
     
     ++[no]
         ~ addObey()
         /perform satisfied
         Very good.  #53
-        I can be a lot of fun with the right...toy. #54
+        I can be a lot of fun with the right... toy. #54
          -> nega_reward_dice
          
 + [timeout]
@@ -207,5 +207,45 @@ Do you want to try your luck? #45
 
 +[distracted] -> Nega_PayAttention -> nega_reward_dice
 
-- ~ nega_hub_status = unlocked
--> exit
+
+// When the Goddess interrupts Nega playing with the player.
+= surprise_interrupt
+
+TODO: Shake attic? Vibrate controllers with rumble?
+/sound goddess_interruption
+/ambient none
+/wait 2
+/perform behold
+
+Damn it! I was just getting started. #132
+
+/perform angry
+/music goddess
+/wait 1
+/scene None
+Don't worry. You'll get yours. #133
+-> goddess_monitoring_intro_nega
+
+
+// When the Goddess interrupts because Nega purposely tells on the player.
+= spiteful_interrupted
+
+TODO: Shake attic? Vibrate controllers with rumble?
+/sound goddess_interruption
+/ambient none
+/wait 2
+/perform behold
+
+Oh yeah. Hear that? You're gonna get yours now. #57
+
+/perform angry
+/music goddess
+/wait 1
+/scene None
+That's what you get for crossing me, you little bitch. #58
+-> goddess_monitoring_intro_nega
+
+
+
+
+

@@ -1,5 +1,5 @@
  === nega_reward_forcedsex ===
- -> select_gender ->
+ -> select_gender_check ->
 
 ~ setScene(reward_scene, Nega)
  
@@ -20,7 +20,7 @@ On your back. #04
     /perform displeased
     Hey, stupid. #05
     I gave you a command. #06
-    -- (lay_down_again)
+    -- (lay_down_again) #15
     Lay the fuck down! #07
     -> lay_down
 + { lay_down_tries >= 3 } [timeout] -> Nega_CheckIfInterested -> lay_down_again
@@ -52,7 +52,7 @@ Do you have any idea what I'm going to do to you? #08
     //You're about to find out. #09
 + [no]
     ~ addObey()
-    Damn right you don't. #10
+    Damn right, you don't. #10
     
 + [timeout] 
     Well? #11
@@ -168,16 +168,8 @@ Would you like that, {isBoy: prick|bitch}? #35
 //player needs to be told to move their controller to their crotch
 //Need to teach the player how to move their controller like a cock/pussy and how to thrust to a beat/rhythm
 
-{isTutorial:
-    TODO: Shake attic? Vibrate controllers with rumble?
-    /action goddess_interruption_start
-    /wait 1
-    /perform angry
-    Damn it! I was just getting started.
-    /scene None
-    Don't worry. You'll get yours.
-    /action goddess_interruption_end
-    -> goddess_monitoring_tutorial
+{inTutorial:
+    -> nega_intro.surprise_interrupt
 }
 
 /perform squat_over_player_crotch
@@ -367,7 +359,7 @@ Keep going, slut, and make me cum! #54
 
 + [wait]
 
-- Fuck yah. #55
+- Fuck yeah. #55
 Do you want to cum with me, {isBoy: maggot|whore}? #56
 
 + [yes]
@@ -592,7 +584,7 @@ Now, breathe bitch! #95
     - Thrust to the beats, maggot! #103
     - You should be good at this, slut. It's what you're made for. #104
     - Your thrusting is pathetic. #105
-    - Listen to the rhyhtm, you twat. #106
+    - Listen to the rhythm, you twat. #106
     - Pound to the sound! #107
     - -> Nega_BadJob ->
     - -> Nega_BadJob ->

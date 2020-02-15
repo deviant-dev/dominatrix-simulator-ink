@@ -1,29 +1,81 @@
-=== goddess_monitoring_tutorial ===
--> select_gender ->
+=== goddess_monitoring_intro_nega ===
+-> select_gender_check ->
 
 ~ setScene(intro_scene, Goddess)
 
-/scene BedroomBroken.InHand
+/scene Huge.InHand
 /music goddess
-/character goddess curious
+/ambient huge-space
+/character goddess
 
-//give the player 10 punishments, which are then instantly spent to put them in chastity
+- /emotion skeptical
+Well, well {player_name}. #01
+You've only just arrived and already you misbehave. #02
+So disappointing. #03
 
-/emotion skeptical
-Well, well.
-You've only just arrived and already you misbehave.
-There are no secrets in my house.
-I know exactly what you've been up to. 
 /emotion neutral
-Every soul here must serve.
-Passion is the price for existence.
+There are no secrets in my house. #04
+Every soul here must serve. #05
+You will be made pleasing #06
+or you will cease to be of use. #07
+
 /emotion amused
-For your transgressions, you will suffer.
+For your transgressions, you will suffer. #08
+Ten Obsidians worth of punishments will do. #09
+
 //give player 10 punishment markers
-You will serve without reward until I deem you worthy.
+
+/emotion angry 20
+You will pay them all now! #10
+//remove 10 punishment markers with flare 
+
+/emotion neutral
+Pleasure will be denied to you until you have proved your worth. #11
+Ten Bloodstones will unlock you from your imprisonment. #12
 //give chastity device
-Now go and fail me no further.
-~ isTutorial = false
 
--> exit
+Now go and fail me no further {player_name}. #13
+~ inTutorial = false
 
+// This wait also clears the subtitle
++ [wait]
+- -> exit
+
+=== goddess_monitoring_intro_headmistress ===
+-> select_gender_check ->
+
+~ setScene(intro_scene, Goddess)
+
+/scene Huge.InHand
+/music goddess
+/ambient huge-space
+/character goddess
+
+- /emotion amused
+Hello there, little {player_name}. 
+You have performed adquately for one so new.
+I am satisfied. For now.
+
+/emotion happy
+As always, the Headmistress out does herself.
+Her dedication to obedience serves me well.
+Restrained passion sustains so much longer 
+than a bright flame that burns out too soon.
+
+/emotion amused
+I must commend Mistress Yuki-Onna, as well.
+It seems her lesson has increased her motivation to focus.
+
+/emotion nuetral
+Continue to serve in my house, {player_name}, 
+and you remain useful.
+
+/emotion amused
+I shall leave you now.
+Go forth and please me, {player_name}.
+
+~ inTutorial = false
+
+// This wait also clears the subtitle
++ [wait]
+- -> exit

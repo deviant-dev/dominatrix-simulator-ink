@@ -2,7 +2,7 @@
 === yuki_punishment_puppyplay_cage ===
 TODO: rewrite
 
- -> select_gender ->
+ -> select_gender_check ->
 
 ~ setScene(punishment_scene, Yuki)
  
@@ -72,7 +72,7 @@ Mmmm! Much better! #210
     - You're a nasty pile of shit.
     - You're a vomit inducing waste of time.
     - You're a boring, simpering drain on my energy.
-    - You’re a ugly, little wretch.
+    - You're a ugly, little wretch.
 }
 //spanking
 //text below is a placeholder to remind me of what code I can use in scene

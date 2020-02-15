@@ -1,7 +1,7 @@
  = yuki_reward_puppyplay_milking
 
 ~ setScene(reward_scene, Yuki)
--> select_gender ->
+-> select_gender_check ->
  
 /scene atrium.intro
 /music yuki

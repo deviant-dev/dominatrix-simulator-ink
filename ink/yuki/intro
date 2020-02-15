@@ -1,5 +1,5 @@
 === yuki_intro ===
--> select_gender ->
+-> select_gender_check ->
 
 ~ punishments = 1
 ~ rewards = 1
@@ -15,15 +15,15 @@ Oh! There you are! #01
 
 /perform bounces
 
-I’ve been waiting for you. #02
+I've been waiting for you. #02
 
 /perform clasp_hands
 
 I'm Mistress Yuki-Onna. #03
 /perform idle_yuki
-It’s my job to make sure all new arrivals   #04
+It's my job to make sure all new arrivals   #04
 are taught how to behave  #05
-while you’re a guest in Goddess’s home. #06
+while you're a guest in Goddess's home. #06
 
 /perform serious
 
@@ -63,7 +63,6 @@ Do you know why you're here? #11
     Well, let's go through the basics anyways,  #14
     to make sure you have the right information.  #15
     
-    /wait
     
 + [no]
     ~ addDisobey()
@@ -255,7 +254,7 @@ Do you like being a good {player_name}? #42
 - (nega_interruption)
 /scene entry.intro3
 
-/character yuki
+/character yuki waiting
 /music nega
 /lookat nega
 
@@ -266,7 +265,7 @@ Oh please! You're always such a good girl, Yuki, #46
 /perform amused_nega
 never having any fun. #47
 
-/perform confused
+/perform agreement
 Don't you want to live a little? #48
 
 /perform behold
@@ -303,14 +302,14 @@ I really want the Goddess to be pleased with me. #57
 - (test_lookat)
 
 /character nega head_toss
-Ugh.. You're such a goody two-shoes. #58
+Ugh. You're such a goody two-shoes. #58
 
-/perform bored_nega
+/perform flash2_female_slave_butt_worship
 You'd have so much more fun if you bent the rules now and then. #59
 
 - (new_one)
 
-/character Yuki
+/character Yuki 
 /lookat player
 
 /character nega
@@ -348,8 +347,8 @@ So. You're the new one, huh? #60
 - /perform pleased
 I bet Yuki's been having so much fun #67
 explaining the rules to you  #68
-
-/perform sassy
+/character yuki unhappy
+/character nega sassy
 and telling you how to be a good {player_name}, #69
 hasn't she? #70
 
@@ -367,6 +366,7 @@ hasn't she? #70
 + [timeout]
 
 - /perform head_toss
+//her eyes bug out here. is lookat player messing her eyes up?
 /lookat player
 Don't let her fool you.  #74
 
@@ -459,7 +459,7 @@ Have you figured out what's going on here yet? #76
     
     /perform fake_annoyed
     /lookat yuki
-    I think I should tell {player_him}. #81
+    I think I should tell {isBoy:him|her}. #81
     /perform idle_nega
     
     /character yuki frustrated
@@ -474,7 +474,7 @@ Have you figured out what's going on here yet? #76
     
     /perform pleased
     /lookat player
-    I guess I'll just make {player_him} my fuck toy instead. #85
+    I guess I'll just make {isBoy:him|her} my fuck toy instead. #85
     
 + [timeout]
     /perform confused
@@ -486,7 +486,7 @@ Have you figured out what's going on here yet? #76
     
 
 - (caress_question)
-/character nega caress_breasts
+/character nega inspect
 /lookat player
 
 I bet that {hasPenis:cock|cunt} of yours works just fine. #88
@@ -545,7 +545,7 @@ You want to be a little fuck toy, don't you? #97
         ~ addObey()
         /perform sassy
         No? You don't like me? #103
-        Awww. But I'm way more fun that that uptight bitch. #104
+        Awww. But I'm way more fun than that uptight bitch. #104
         /perform head_toss
     
     ++ [timeout]
@@ -572,10 +572,11 @@ tearing up that ass of yours. #110
 //nega whispers
 <i>Tick tock little mouse.</i> #111
 <i>You might want to run.</i> #112
-/perform amused_nega
+/perform chuckle
 <i>You're trapped in this house.</i> #113
-<i>And we own your cum.</i> #114
 /perform laugh
+<i>And we own your cum.</i> #114
+
 
 
 + [wait]
@@ -610,7 +611,8 @@ Come find me when you've earned a reward. #119
 
 
 - /character yuki angry
-Oh gee. She's so awful! #120
+Oh, gee. She's so awful! #120
+/perform shake_finger_stern
 Don't you pay any attention to her. #121
 
 /perform flustered
@@ -618,10 +620,10 @@ She's going to get in big trouble one of these days! #122
 
 - {caress_skipped: -> rules}
 
-/perform pouty
+/perform inspect
 Your poor {hasPenis:penis|pussy} must be aching after that. #123
 
-+ [wait:2]
++ [wait:1]
 
 - (rules)
 /perform curious
@@ -645,10 +647,10 @@ See that red stone on your other wrist? #206
 It looks like the Goddess also gave you a reward. #130
 You're so lucky to catch Her interest! #131
 
-/perform clasp_hands
+/perform waiting
 But I can't reward you if you don't take your punishment first. #132
 
-/perform bounces    
+/perform idle   
 Okay! That's all I have for now. #133
 
 /perform serious
@@ -662,7 +664,7 @@ She's a bad seed! #137
 /perform idle_yuki
 You'll get a punishment if you get caught coming out of her room. #138
 
--> exit
+-> entry_hub
 
 
 = Nega_finish
@@ -742,6 +744,5 @@ Better get your ass to the Headmistress. #167
 /perform idle_nega
 She doesn't like to be kept waiting. #168
 
--> exit
-
+-> entry_hub
 

@@ -1,18 +1,28 @@
+
+
+
+
+
 // Player Variables
 VAR isBoy = true
+VAR isGirl = false
 VAR hasPenis = true
-VAR player_name = "boy"
-VAR player_he = "he"
-VAR player_him = "him"
+VAR player_name = "none"
 VAR rewards = 0
 VAR punishments = 0
-VAR isTutorial = true
+VAR inTutorial = true
+
+// Set by StoryTeller when player restarts
+VAR hasRestarted = false
+
+// Tracks whether the player has ever gotten to the end credits
+VAR cherryPopped = false
 
 // Kink Lessons
 VAR has_learned_spanking = false
 
 // Lists
-LIST deviation = full_game, demo, puppyplay, hand_signals
+LIST deviation = full_game, tutorial, demo, puppyplay, hand_signals
 LIST move_status = hidden = 0, locked, unlocked, early_access, under_construction
 LIST scene_type = hub_scene, intro_scene, punishment_scene, reward_scene, task_scene
 LIST current_mistress = (None), Goddess, Headmistress, Yuki, Nega
@@ -21,7 +31,6 @@ LIST current_mistress = (None), Goddess, Headmistress, Yuki, Nega
 VAR checked_if_interested = false
 VAR obey = 0
 VAR disobey = 0
-VAR isIntro = false
 
 // Temp Variables
 VAR reward_just_removed = false
@@ -53,365 +62,4 @@ VAR nega_hub_status = unlocked
 VAR yuki_regard = 0
 VAR yuki_hub_status = unlocked
 VAR yuki_puppy_difficulty = 1
-
-
-
-// Fallback for isWeb() external function
-=== function isWeb() ===
-~ return web
-
-
-// Fallback for isDebug() external function
-=== function isDebug() ===
-~ return debug
-
-
-=== function addPunishment() ===
-{ punishments >= 10:
-    /logError Can't add a punishment. Already at 10.
-    ~ return false
-}
-
-~ punishments++
-~ reward_just_removed = false
-~ punishment_just_removed = false
-~ changeRegard(-1)
-/log Punishment Added: {getSummaryText()}
-~ return true
-
-
-=== function removePunishment() ===
-{ punishments <= 0:
-    /logError Can't remove punishment. Already at 0.
-    ~ return false
-}
-
-~ punishments--
-~ reward_just_removed = true
-~ punishment_just_removed = false
-/log Punishment Removed: {getSummaryText()}
-~ return true
-
-
-=== function removeBigPunishment() ===
-{ punishments < 10:
-    /logError Can't remove 10 punishments. Not at 10.
-    ~ return false
-}
-
-~ punishments -= 10
-~ reward_just_removed = false
-~ punishment_just_removed = false
-/log Punishment x10 Removed: {getSummaryText()}
-~ return true
-
-
-=== function addReward() ===
-{ rewards >= 10:
-    /logError Can't add a reward. Already at 10.
-    ~ return false
-}
-
-~ rewards++
-~ reward_just_removed = false
-~ punishment_just_removed = false
-~ changeRegard(1)
-/log Reward Added: {getSummaryText()}
-~ return
-
-
-=== function removeReward() ===
-{ rewards <= 0:
-    /logError Can't remove a reward. Already at 0.
-    ~ return false
-}
-
-~ rewards--
-~ punishment_just_removed = true
-~ reward_just_removed = false
-/log Reward Removed: {getSummaryText()}
-~ return true
-
-
-=== function removeBigReward() ===
-{ rewards < 10:
-    /logError Can't remove 10 rewards. Not at 10.
-    ~ return false
-}
-
-~ rewards -= 10
-~ punishment_just_removed = true
-~ reward_just_removed = false
-/log Reward x10 Removed: {getSummaryText()}
-~ return true
-
-
-=== function increaseRegard() ===
-~ changeRegard(1)
-
-=== function decreaseRegard() ===
-~ changeRegard(-1)
-
-=== function changeRegard(amount) ===
-~ changeRegardTo(current_mistress, amount)
-
-=== function increaseRegardTo(mistress) ===
-~ changeRegardTo(mistress, 1)
-
-=== function decreaseRegardTo(mistress) ===
-~ changeRegardTo(mistress, -1)
-
-=== function changeRegardTo(mistress, amount) ===
-{
-    - mistress == Goddess:
-        ~ goddess_regard += amount
-    - mistress == Headmistress:
-        ~ headmistress_regard += amount
-    - mistress == Nega:
-        ~ nega_regard += amount
-    - mistress == Yuki:
-        ~ yuki_regard += amount
-    - else:
-        /logError Can't change {mistress}'s regard.
-}
-
-
-// Fallback for getNegaDie1/2/3() external function
-=== function getNegaDie1() ===
-~ return getNegaDie()
-
-
-=== function getNegaDie2() ===
-~ return getNegaDie()
-
-
-=== function getNegaDie3() ===
-~ return getNegaDie()
-
-
-=== function getNegaDie() ===
-~ temp roll = 0
-
-{shuffle:
-    - ~roll = -1
-    - ~roll = -1
-    - ~roll = -1
-    - ~roll = 0
-    - ~roll = 1
-    - ~roll = 1
-}
-
-~ return roll
-
-
-=== function rollToText(roll) ===
-{
-    - roll == -1: Skull
-    - roll == 0: Blank
-    - roll == 1: Cup
-}
-
-
-=== function setGender(gender) ===
-{
-    - gender == "m":
-        ~ isBoy = true
-        ~ hasPenis = true
-        ~ player_name = "boy"
-        ~ player_he = "he"
-        ~ player_him = "him"
-    - gender == "f":
-        ~ isBoy = false
-        ~ hasPenis = false
-        ~ player_name = "girl"
-        ~ player_he = "she"
-        ~ player_him = "her"
-}
-
-~ return
-
-
-=== select_gender ===
-{setGender: ->->}
-
-/scene entrydark.genderchoice
-/ambient rain
-/music entry
-
-~ temp chosen = false
-
-- (options)
-
-+ [character-choice:male]
-    ~ setGender("m")
-    ~ chosen = true
-    /notify text="<i>You now appear masculine.</i>" delay=10 #999
-    -> options
-
-+ [character-choice:female]
-    ~ setGender("f")
-    ~ chosen = true
-    /notify text="<i>You now appear feminine.</i>" delay=10 #999
-    -> options
-
-+ {chosen} [move]
-
-- ->->
-
-
-=== jump_menu(-> back) ===
-
-+ [Jump to...]
-
-- + [Goddess Poses]
-    /scene Bedroom.Intro
-    /move approach
-    -> goddess_intro.stand_straight
-+ [Yuki Intro] -> entry_hub
-+ [Headmistress Intro] -> headmistress_hub
-+ [Cancel] -> back
-
-
-=== function setDeviation(d) ===
-
-// Set the deviation.
-~ deviation = d
-
-// Set isTutorial to true only for demo and full game.
-~ isTutorial = deviation == demo || deviation == full_game
-
-~ return
-
-
-=== function setHub(mistress) ===
-~ setScene(hub_scene, mistress)
-
-
-=== function setScene(type, mistress) ===
-~ current_mistress = mistress
-~ scene_type = type
-~ checked_if_interested = false
-~ resetObeyed()
-
-~ temp mistressName = "{mistress}"
-
-{ mistress == None:
-    - mistressName = "Entry"
-}
-
-{isWeb():
-    <b>{mistressName} {type}</b>
-	<i>{getSummaryText()}</i>
-- else:
-    /log {mistressName} {type} / {getSummaryText()}
-}
-
-=== function getSummaryText() ===
-~ temp regardText = ""
-
-// Set regard text if with a goddess.
-{
-    - current_mistress == Goddess:
-        ~ regardText = "/ {current_mistress} Regard: {goddess_regard}"
-    - current_mistress == Headmistress:
-        ~ regardText = "/ {current_mistress} Regard: {headmistress_regard}"
-    - current_mistress == Nega:
-        ~ regardText = "/ {current_mistress} Regard: {nega_regard}"
-    - current_mistress == Yuki:
-        ~ regardText = "/ {current_mistress} Regard: {yuki_regard}"
-}
-
-~ return  "Punishments: {punishments} / Rewards: {rewards} {regardText}"
-
-
-=== exit ===
-{isWeb(): -> table_of_contents}
-
-{
-    - deviation == hand_signals:
-        /scene none
-        -> headmistress_hub
-    - deviation == puppyplay:
-        /scene none
-        -> yuki_hub
-    - deviation == demo:
-        /wait 3
-        -> demo_end
-}
-
-{isTutorial:
-    -> entry_hub
-- else:
-    {shuffle:
-        - -> goddess_monitoring
-        - -> entry_hub
-        - -> entry_hub
-        - -> entry_hub
-        - -> entry_hub
-        - -> entry_hub
-    }
-}
-
-
-=== demo_end ===
-/scene EntryDark.EndScreen
-/music entry
-/ambient rain
-
-+ [restart] -> game_intro_again
-
-
-=== unlock_all ===
-~ yuki_hub_status = unlocked
-~ headmistress_hub_status = unlocked
-~ nega_hub_status = unlocked
-~ goddess_hub_status = unlocked
-~ isTutorial = false
-->->
-
-
-=== function obeyed() ===
-{isWeb():
-	<i>Checking Obeyed: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}</i>
-- else:
-    /log Checking Obeyed: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}
-}
-
-~ return obey - disobey > 0
-
-=== function resetObeyed() ===
-~ obey = 0
-~ disobey = 0
-
-=== function addObey() ===
-~ obey++
-
-{isWeb():
-	<i>Obey Increased: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}</i>
-- else:
-    /log Obey Increased: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}
-}
-
-=== function addDisobey() ===
-~ disobey++
-
-{isWeb():
-	<i>Disobey Increased: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}</i>
-- else:
-    /log Disobey Increased: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}
-}
-
-
-
-=== RandomCommentLoop(-> commentTunnel, minTimes, maxTimes, minWait, maxWait)
-~ temp count = 0
-~ temp max = RANDOM(minTimes, maxTimes)
-/log Comments looping {max} times.
-- (repeat)
-
--> commentTunnel ->
-+ [wait {RANDOM(minWait, maxWait)}]
-~ count++
-{ count < max: -> repeat | ->-> }
-
 

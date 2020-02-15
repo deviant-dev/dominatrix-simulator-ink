@@ -26,7 +26,7 @@
 
 // hand, crop, paddle
 
-When you hear the slap of my {headmistress_spanking_implement} #111
+When you hear the slap of my hand #111
 and feel its sting upon your ass, #112
 I want to see that empty head of yours jerk up and back #113
 into a proud and upright position. #114
@@ -69,7 +69,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
 +[timeout]
     /perform annoyed
     What are you waiting for? #33
-    Your back must strain with the effort of raising your derrier, chattel. #34
+    Your back must strain with the effort of raising your derriere, chattel. #34
 
 - /perform satisfied
 -> Headmistress_GoodJob ->
@@ -77,6 +77,8 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
 - /character headmistress lean_forward
 
 Time to rehearse. #118
+TODO: Record new VO
+Three perfect swats should be sufficient.
 
 /scene LectureHall.HeadmistressAtBack
 
@@ -149,9 +151,13 @@ with excitement at my ministrations! #240
 Turn to the left. #241
 
 
+
 + [pose:present_ass_left]
 -> Headmistress_GoodJob ->
-- /character crowd oos
+This chattel has potential.
+Do you think we can mold it?
+/crowd cheers
+
 
 - (rotate_right_timeout)
 /character headmistress
@@ -159,12 +165,10 @@ Now turn to the right. #242
 
 
 + [pose:present_ass_right]
--> Headmistress_GoodJob ->
-
 - /character crowd gasps
-
 /character headmistress behold
-Ahhh. I am pleased! #243
+-> Headmistress_AcknowledgeYes ->
+<i>She</i> will enjoy watching this one be broken, I think.
 
 
 ->->

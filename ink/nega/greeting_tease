@@ -15,12 +15,13 @@
 
 {shuffle:
     - -> greeting_lick_boot ->
-    - -> greeting_edge ->
+   
     - -> greeting_present_ass ->
 }
 
 -> nega_reward_dice
 
+//make this a punishment light
 = greeting_lick_boot
 ~ licked_boots = true
 
@@ -130,7 +131,7 @@ Alright, maggot, playtime's over!
 
 
 
-
+//may not keep this - depends on if we can get camera stuff working. Would be light punishment
 = greeting_present_ass
 ~ posed = true
 
@@ -189,90 +190,8 @@ Alright, wretch! You are allowed to face me again.
 
 ->->
 
-= greeting_edge
-~ edged = true
+//make this light punishment
 
-/Nega sits with one leg crossed over the other
-- (kneel) Kneel in front of me, slave. 
-
-    +   [Success] -> kneel_success
-    
-    +   [Failure]
-    That's not right! Try again!
-    - ~ demerits++ 
-    -> kneel
-
-- (kneel_success) 
--> Nega_GoodJob ->
-
-/Nega lifts extended leg slightly
-- Does the sight of my boots turn you on?
-
-+   [Yes]
-    Ha! You're such a bitch, you know that?
-    
-    + +     [Yes]
-            That was a rhetorical question, dumbfuck!
-            /Nega is obviously amused though
-            ~ demerits--
-            -> after_observe_boots
-            
-    + +     [No]
-            I don't think you'll hold onto that self-esteem for very long here, slave. -> after_observe_boots
-    + +     [No response] -> after_observe_boots
-    
-+   [No]
-    Not a foot fetishist, huh? That'll only make what I'm about to do to you all the more satisfying.
-
-- (after_observe_boots)
-Look at my boots and start masturbating.
-/Wait 10
-Get wet/hard for me!
-/Wait 10
-Worship my boots, fuckup!
-/Wait 10
-It is a privilege just to be allowed to gaze upon them.
-/Wait 10
-Especially for one such as yourself who is worth less than the dirt under my heels!
-
-- (edge_1) 
-Now, keep masturbating until you are close to exploding. 
-Shake your head "no" when you can't endure any longer.
-
-    +   [Yes]
-    You're a cheeky one, aren't you! Keep going! 
-    -> edge_1
-    +   [No]
-    Hands off!
-    
-Rest for a minute, worm.
-/Wait 10
-
-- (edge_2) 
-- Back to masturbating! Again, shake your head "no" when you can't endure any longer.
-
-    +   [Yes]
-    Quit being cheeky! Keep going! 
-    -> edge_2
-    
-    +   [No]
-    Hands off!
-    
-Rest again. You don't deserve the pleasure of release.
-/Wait 10
-
-- (edge_3) 
-Now masturbate, one last time! 
-You know what to do, shake your head "no" when you can't endure any longer.
-
-    +   [Yes]
-    Stop it! Keep going! 
-    -> edge_3
-    
-    +   [No]
-    Hands off!
-
-That should keep you sufficiently horny! 
 
 ->->
 

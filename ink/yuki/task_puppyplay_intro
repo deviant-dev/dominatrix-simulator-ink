@@ -113,7 +113,7 @@ Ready to learn to <b>"sit"</b>? #71
 + [distracted] -> Yuki_PayAttention -> puppy_ready
 
 - (puppy_sit) /perform point_down
-Get down on your knees, sit back on your heels,/ #72
+Get down on your knees, sit back on your heels, #72
 and rest your hands on the floor between your thighs. #73
 
 /perform shake_finger_stern
@@ -160,7 +160,7 @@ And you're a cute little puppy, aren't you? #84
 - (puppy_yes_intro)
 
 /perform idle_yuki
-To say <b>"yes"</b>, raise your right hand...Er, <i>paw</i>... #85
+To say <b>"yes"</b>, raise your right hand... Er, <i>paw</i>... #85
 Just an eensy, weensy bit. #86
 
 + [pose:puppy_yes] -> Yuki_GoodJob ->

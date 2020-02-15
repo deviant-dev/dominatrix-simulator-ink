@@ -146,7 +146,7 @@ I just love massages.
 
 I love the cool feeling of oil running over me and fingers being rubbed into my skin. 
 
-Oh it’s so relaxing.
+Oh it's so relaxing.
 
 -(timeout2)
 
@@ -541,11 +541,11 @@ Were you naked like me?
     Did they play with you? You have to tell me.
     
         +++ [Yes]
-        Oh you dirty player! Then you already know what it’s like. But come stand in front of me anyways. 
+        Oh you dirty player! Then you already know what it's like. But come stand in front of me anyways. 
         ->Caress
 
         +++ [No]
-        Well that’s a boring massage! Only the good ones are naked. Why don’t you come stand in front of me and see if you like it? 
+        Well that's a boring massage! Only the good ones are naked. Why don't you come stand in front of me and see if you like it? 
         ->Caress
 
     ++ [No]
@@ -553,7 +553,7 @@ Were you naked like me?
     ->Caress
     
 + [No]
-Hm, that’s a shame. Why don’t you come stand in front of me and see if you like it? 
+Hm, that's a shame. Why don't you come stand in front of me and see if you like it? 
 ->Caress
 
 +[timeout]
@@ -562,7 +562,7 @@ Hm, that’s a shame. Why don’t you come stand in front of me and see if you l
 
 -(timeout21)
 
-Why don’t you come stand in front of me and see if you like it? 
+Why don't you come stand in front of me and see if you like it? 
 -(Caress)
 
 +[move]

@@ -1,16 +1,12 @@
 === yuki_hub ===
--> select_gender ->
+-> select_gender_check ->
 
 ~ setHub(Yuki)
-
-/character yuki
-/music yuki
-/scene atrium.hub
 
 // If the player hasn't done the intro yet,
 // then have them go to the intro.
 
-{isTutorial:
+{inTutorial:
     {not yuki_intro: -> yuki_intro}
 
     What are you doing back here!?
@@ -18,10 +14,17 @@
     Go back to the headmistress
     and get your punishment training,
     silly {player_name}.
-    -> exit
+    
+    /wait 3
+
+    -> entry_hub
 }
 
 - (hub)
+
+/character yuki
+/music yuki
+/scene atrium.hub
 
 + [move:Yuki]
 

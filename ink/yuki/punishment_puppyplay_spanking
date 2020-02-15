@@ -19,7 +19,7 @@ VAR yuki_spanking_fails = 0
 ~ yuki_spanking_fails = 0
 ~ yuki_spanking_mistakes = 0
 
- -> select_gender ->
+ -> select_gender_check ->
  
 /scene atrium.punishment_spanking
 /music yuki
@@ -143,7 +143,7 @@ All done! Are you proud of yourself, puppy?
     
 - (sit)
 
-/perform yuki_idle
+/perform idle_yuki
 
 {cycle:
     - Now come here. 

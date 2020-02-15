@@ -1,12 +1,12 @@
 == goddess_hub ==
--> select_gender ->
+-> select_gender_check ->
 - (hub)
 
 ~ setHub(Goddess)
 
-{isTutorial: -> goddess_intro}
+{inTutorial: -> goddess_intro}
 
-/scene bedroom
+/scene bedroom.hub
 /music goddess
 /character goddess
 

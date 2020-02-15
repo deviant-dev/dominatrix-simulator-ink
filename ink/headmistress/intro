@@ -1,5 +1,5 @@
 === headmistress_intro ===
--> select_gender ->
+-> select_gender_check ->
 
 ~ punishments = 1
 ~ rewards = 1
@@ -19,7 +19,7 @@
 
     <blockquote><i>You stand inside a spacious Victorian office with a large wooden desk, several sets of bookshelves, and walls lined with curtains. Before you stands a lean and lengthy woman with dark skin and an ample bosom forcefully spanking a young slave with a paddle. Her face is stern and her eyes placid...</i></blockquote>
 
-    + Start -> start
+    + Start -> start #10
 }
 
 - (start) /perform spank_x3 slave
@@ -35,13 +35,13 @@ I'm sorry, Headmistress. #05
 
 /character headmistress spank_x3 slave
 
-You <i>will</i>  behave according to your station #03
+You <i>will</i> behave according to your station #03
 /perform spank_x3 slave
 or find yourself unable to rest on your backside for a week. #04
 
 /character slave crying
 
-Please Headmistress! #07
+Please, Headmistress! #07
 /character headmistress spank_x2 slave
 
 + [wait]

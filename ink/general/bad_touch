@@ -1,6 +1,6 @@
 === general_bad_touch ===
 
-{not isTutorial:
+{not inTutorial:
     ~ addPunishment()
 }
 
@@ -14,8 +14,8 @@
 
 
 = goddess
-
-/scene bedroombroken.bad_touch
+/character goddess snap_fingers
+/scene BedroomBroken.BadTouch
 /emotion angry
 Bad behavior will not be tolerated.
 /character goddess stomp_on_player
@@ -61,24 +61,27 @@ Bad behavior will not be tolerated.
 
 
 = headmistress
-/scene entry.hub
+/scene none
 /sound slap
+/scene entry.hub
 /notify title="Not Allowed" text="Keep your hands to yourself."
 /wait 5
 -> exit
 
 
 = nega
-/scene entry.hub
+/scene none
 /sound slap
+/scene entry.hub
 /notify title="Not Allowed" text="Keep your hands to yourself."
 /wait 5
 -> exit
 
 
 = yuki
-/scene entry.hub
+/scene none
 /sound slap
+/scene entry.hub
 /notify title="Not Allowed" text="Keep your hands to yourself."
 /wait 5
 -> exit
