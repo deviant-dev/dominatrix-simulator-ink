@@ -27,12 +27,13 @@ Do you want to worship my feet, puppy? #185
 Come here puppy! #189
 /perform present_foot
 
+~ tries = 0
 - (lick_feet)
-- (lick_feet_tries)
+~ tries++
 
 + [pose:kiss_feet] -> Foot_Licking_Responses ->
-+ { lick_feet_tries < 2 } [timeout] -> lick_feet
-+ { lick_feet_tries >= 2 } [timeout]
++ { tries < 2 } [timeout] -> lick_feet
++ { tries >= 2 } [timeout]
 
 - /wait 5
 

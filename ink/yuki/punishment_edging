@@ -42,8 +42,9 @@ Now that's just not true, and you know it. Lying counts as being disobedient too
 
 and come here.
 
+~ tries = 0
 -(stand_hands_behind)
--(stand_hands_behind_tries)
+~ tries++
 
 {cycle:
     - Spread your legs and put your hands behind your back.
@@ -51,8 +52,8 @@ and come here.
 }
 
 +[pose:stand_hands_behind]
-+{stand_hands_behind_tries < 2} [timeout] -> stand_hands_behind
-+{stand_hands_behind_tries >= 2} [timeout] -> Yuki_Interested -> stand_hands_behind
++{tries < 2} [timeout] -> stand_hands_behind
++{tries >= 2} [timeout] -> Yuki_Interested -> stand_hands_behind
 
 - /perform circle_player
 I'm thinking about what to do with you.
@@ -192,16 +193,17 @@ Don't worry, I have other plans for you!
 
 I want to play with you myself now! 
 
+~ tries = 0
 -(lay_down)
--(lay_down_tries)
+~ tries++
 
 Lie down and put your hands over your head. 
 
 - (foot_tease)
 
 + [pose:lay_down]
-+ { lay_down_tries < 2 } [timeout] -> lay_down
-+ { lay_down_tries >= 2 } [timeout] -> Yuki_Interested -> lay_down
++ { tries < 2 } [timeout] -> lay_down
++ { tries >= 2 } [timeout] -> Yuki_Interested -> lay_down
 
 - /perform raised_foot_over_genitals
 

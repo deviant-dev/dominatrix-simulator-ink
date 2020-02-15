@@ -34,8 +34,11 @@ My naughty puppy is going to be spanked!
 
 TODO: create new pose 'point_to_left'
 /perform point_to_left
+
+~ tries = 0
 - (spanking_couch)
-- (spanking_couch_tries)
+~ tries++
+
 Crawl over to that couch and lay across it.
 
 {cycle:
@@ -48,8 +51,8 @@ Crawl over to that couch and lay across it.
 
 + [move]
     Get comfortable. You're going to be there for a while.
-+ { spanking_couch_tries < 2 } [timeout] -> Yuki_Interested -> spanking_couch
-+ { spanking_couch_tries>= 2 } [timeout]
++ { tries < 2 } [timeout] -> Yuki_Interested -> spanking_couch
++ { tries>= 2 } [timeout]
     -> Yuki_CheckIfInterested -> spanking_couch
 + [distracted] -> Yuki_PayAttention -> spanking_couch
 
@@ -156,8 +159,10 @@ All done! Are you proud of yourself, puppy?
 + [timeout] -> Yuki_Interested -> sit
 + [distracted] -> Yuki_PayAttention -> sit
 
+~ tries = 0
 - (sorry)
-- (sorry_tries)
+~ tries++
+
 /perform unhappy    
 
 {cycle: 
@@ -167,8 +172,8 @@ All done! Are you proud of yourself, puppy?
     }
 
 + [pose:puppy_sorry]
-+ { sorry_tries < 2 } [timeout] -> Yuki_Interested -> sorry
-+ { sorry_tries >= 2} [timeout] -> Yuki_CheckIfInterested -> sorry
++ { tries < 2 } [timeout] -> Yuki_Interested -> sorry
++ { tries >= 2} [timeout] -> Yuki_CheckIfInterested -> sorry
 
 
 - (sorry_ask_again)

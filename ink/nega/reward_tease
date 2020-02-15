@@ -57,7 +57,10 @@ Aren't you?
     - A horny piece of meat waiting to be devoured.
     }
 
+~ tries = 0
 - (kneel_tease)
+~ tries++
+
 /perform point_down
 
 {shuffle:
@@ -67,11 +70,9 @@ Aren't you?
     - Down! I want you on your knees.
     }
 
-- (kneel_tries)
-
 + [pose:kneel]
-+ { kneel_tries < 2 } [timeout] -> kneel_tease
-+ { kneel_tries >= 2 } [timeout] 
++ { tries < 2 } [timeout] -> kneel_tease
++ { tries >= 2 } [timeout] 
      ~ addDisobey()
      -> Nega_CheckIfInterested 
      -> kneel_tease

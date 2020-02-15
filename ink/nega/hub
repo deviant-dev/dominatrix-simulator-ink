@@ -13,7 +13,7 @@ VAR demerits = 0
 
 ~ setHub(Nega)
 
-{nega_intro == 0:
+{inTutorial:
     -> nega_intro
 }
 

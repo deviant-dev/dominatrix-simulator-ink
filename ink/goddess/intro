@@ -440,8 +440,10 @@ You'll need to be flexible, as well. #96
 /perform fake_annoyed
 Oh yes... There is much here we can work with. #97
 ~ addReward()
+~ tries = 0
+
 - (present_self)
-- (present_self_tries)
+~ tries++
 
 /perform unhappy
 /emotion amused
@@ -457,9 +459,9 @@ I want to see you present yourself more fully to me. #100
 /perform idle
 
 + [pose:present]
-+ { present_self_tries < 2 } [timeout] -> present_self
-//+ { present_self_tries >= 2 } [timeout]
-+ { present_self_tries >= 2 } [timeout] -> CheckIfInterested -> present_self
++ { tries < 2 } [timeout] -> present_self
+//+ { tries >= 2 } [timeout]
++ { tries >= 2 } [timeout] -> CheckIfInterested -> present_self
 // + [no] -> CheckIfInterested -> present_self
 
 - -> Goddess_GoodJob ->

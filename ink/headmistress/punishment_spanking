@@ -71,15 +71,16 @@ Alight forthwith! #08
 - /perform point_down
  Now, kneel, slave. #225
 
+~ tries = 0
 - (kneel)
-- (kneel_tries)
+~ tries++
 
 + [pose:kneel]
-+ { kneel_tries < 2 } [timeout] -> kneel
-//+ { kneel_tries >= 2 } [timeout]
++ { tries < 2 } [timeout] -> kneel
+//+ { tries >= 2 } [timeout]
 
 -
-{kneel_tries == 1:
+{tries == 1:
     ~ addObey()
     /perform look_up_and_down
     Observe the eagerness with which our chattel attempts to comply. #13
@@ -468,16 +469,16 @@ You have a long ways to go. #249
 /character headmistress
 /perform idle
 
-
+~ tries = 0
 - (stand_straight)
-- (stand_straight_tries)
+~ tries++
 
 /perform one_finger
 Stand at attention! #257
 
 + [pose:raised_chin]
-+ { stand_straight_tries < 2 } [timeout] -> stand_straight
-+ { stand_straight_tries >= 2 } [timeout] -> Headmistress_Timeout -> stand_straight
++ { tries < 2 } [timeout] -> stand_straight
++ { tries >= 2 } [timeout] -> Headmistress_Timeout -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
 /perform point_down
@@ -510,12 +511,13 @@ Stand at attention! #257
     - Raise yourself up and sit upon your heels, slave. #253
     }
 
+~ tries = 0
 - (kneel_break)
-- (kneel_break_tries)
+~ tries++
 
 + [pose:kneel]
-+ { kneel_break_tries < 2 } [timeout] -> kneel_break
-//+ { kneel_break_tries >= 2 } [timeout]
++ { tries < 2 } [timeout] -> kneel_break
+//+ { tries >= 2 } [timeout]
 
 - 
 
@@ -719,7 +721,9 @@ good boys and girls earn? #200
 
 = CheckIfInterested
 
-{CheckIfInterested > 1: -> check_terse}
+{checked_if_interested: -> check_terse}
+
+~ checked_if_interested = true
 
 /perform unhappy
 

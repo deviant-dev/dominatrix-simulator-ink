@@ -38,7 +38,9 @@ Isn't that right?
     +[no]
         Then I guess it's time I teach you your place.
    
+~ tries = 0
 - (kneel_tease)
+~ tries++
 
 {shuffle:
     - Get down on your goddamn knees.
@@ -47,11 +49,9 @@ Isn't that right?
     - Down! I want you on your knees.
     }
 
-- (kneel_tries)
-
 + [pose:kneel]
-+ { kneel_tries < 2 } [timeout] -> kneel_tease
-+ { kneel_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> kneel_tease
++ { tries < 2 } [timeout] -> kneel_tease
++ { tries >= 2 } [timeout] -> Nega_CheckIfInterested -> kneel_tease
 
 - -> Nega_GoodJob ->
 

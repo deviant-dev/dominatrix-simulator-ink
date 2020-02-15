@@ -29,16 +29,17 @@ while you're a guest in Goddess's home. #06
 
 First things first. #07
 
+~ tries = 0
 - (stand_straight)
-- (stand_straight_tries)
+~ tries++
 
 /perform idle_yuki
 Always stand up straight with your head high  #08
 when you present yourself to a Mistress. #09
 
 + [pose:raised_chin] ->
-+ { stand_straight_tries < 2 } [timeout] -> stand_straight
-+ { stand_straight_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
++ { tries < 2 } [timeout] -> stand_straight
++ { tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
 - /perform excited
@@ -195,17 +196,19 @@ Would you like to be my puppy? #171
 
 //make it to where the yuki ending gives them another chance to be a puppy or sets a variable on them that they don't like puppy play
 
+~ tries = 0
 - (pet_beg)
+~ tries++
+
 /perform serious
 First, puppy has to beg for my attention. #180
 
-- (pet_beg_tries)
 /perform point_down
 Down on your knees and raise your hands to beg. #181
 
 + [pose:puppy_beg]
-+ { pet_beg_tries < 2 } [timeout] -> pet_beg
-+ { pet_beg_tries >= 2 } [timeout] ->
++ { tries < 2 } [timeout] -> pet_beg
++ { tries >= 2 } [timeout] ->
 
 - -> Yuki_GoodJob ->
 /perform bounces
@@ -215,12 +218,13 @@ You did so well following instructions. #183
 /perform idle_yuki
 Stand back up now, {player_name}. #184
 
+~ tries = 0
 - (stand_straight2)
-- (stand_straight2_tries)
+~ tries++
 
 + [pose:raised_chin]
-+ { stand_straight2_tries < 2 } [timeout] -> stand_straight2
-+ { stand_straight2_tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight2
++ { tries < 2 } [timeout] -> stand_straight2
++ { tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight2
 // + [no] -> CheckIfInterested -> stand_straight
 
 /perform excited

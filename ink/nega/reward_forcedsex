@@ -12,28 +12,28 @@
 Get on the floor, bitch. #03
 On your back. #04
 
+~ tries = 0
 - (lay_down)
-- (lay_down_tries)
+~ tries++
 
 + [pose:lay_down] -> lay_down_done
-+ { lay_down_tries < 3 } [timeout]
++ { tries < 3 } [timeout]
     /perform displeased
     Hey, stupid. #05
     I gave you a command. #06
     -- (lay_down_again) #15
     Lay the fuck down! #07
     -> lay_down
-+ { lay_down_tries >= 3 } [timeout] -> Nega_CheckIfInterested -> lay_down_again
++ { tries >= 3 } [timeout] -> Nega_CheckIfInterested -> lay_down_again
 + [distracted] -> Nega_PayAttention -> lay_down_again
 + [no] -> Nega_CheckIfInterested -> lay_down_again
-
 
 
 - (lay_down_done)
 
 -> Nega_GoodJob ->
 
-{lay_down_tries == 1:
+{tries == 1:
     ~ addObey()
 - else:
     ~ addDisobey()
@@ -72,16 +72,17 @@ I want to get off on some deep dicking. #12
 
 //player has to masturbate to get "hard" for her
 
+~ tries = 0
 - (bound_wrists)
-- (bound_wrists_tries)
+~ tries++
  
 Put your wrists above your head! #14
 //equip rope
 //Put your ankles and wrists together! #14
 
 + [pose:bound_wrists]
-+ { bound_wrists_tries < 2 } [timeout] -> Nega_Timeout -> bound_wrists
-+ { bound_wrists_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> bound_wrists
++ { tries < 2 } [timeout] -> Nega_Timeout -> bound_wrists
++ { tries >= 2 } [timeout] -> Nega_CheckIfInterested -> bound_wrists
 // + [no] -> CheckIfInterested -> lay_down
 
 - -> Nega_GoodJob ->
@@ -413,8 +414,10 @@ Do you want to cum with me, {isBoy: maggot|whore}? #56
 TODO: Orgasm ending dialogue. Three levels of feedback: Barely made her orgasm, decent orgasm, really made her cum her brains out.
 
 Present yourself.  #131
+
+~ tries = 0
 - (stand_straight)
-- (stand_straight_tries)
+~ tries++
 
 + [pose:raised_chin]
 
@@ -434,8 +437,9 @@ Present yourself.  #131
 = Thrust_break
 ~ nega_thrust_break_count = 0
 
+~ tries = 0
 - (stop_thrust)
-- (stop_thrust_tries)
+~ tries++
 
 - {cycle: 
     - Hold still, little bitch. #62
@@ -445,8 +449,7 @@ Present yourself.  #131
 }
 
 + [pose:lay_down]
-+ { stop_thrust_tries < 2 } [timeout] -> stop_thrust
-//+ { kneel_tries >= 2 } [timeout]
++ { tries < 2 } [timeout] -> stop_thrust
 
 - -> Nega_GoodJob ->
 { shuffle:

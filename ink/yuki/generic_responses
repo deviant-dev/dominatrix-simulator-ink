@@ -177,7 +177,9 @@ TODO: record new VO
 
 === Yuki_CheckIfInterested ===
 
-{Yuki_CheckIfInterested > 1: -> check_terse}
+{checked_if_interested: -> check_terse}
+
+~ checked_if_interested = true
 
 /perform impatient
 Do you want to perform for me or not? #01

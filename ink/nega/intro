@@ -147,12 +147,13 @@ TODO: Support 'wiggle' action
 //     -> wiggle
 // // + [no] -> Nega_CheckIfInterested -> wiggle
 
+~ tries = 0
 - (stand_straight)
-- (stand_straight_tries)
+~ tries++
 
 + [pose:raised_chin]
-+ { stand_straight_tries < 2 } [timeout] -> stand_straight
-+ { stand_straight_tries >= 2 } [timeout] -> Nega_CheckIfInterested -> stand_straight
++ { tries < 2 } [timeout] -> stand_straight
++ { tries >= 2 } [timeout] -> Nega_CheckIfInterested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
 - (check_reward)
