@@ -4,7 +4,9 @@
 
 {cherryPopped && deviation != demo: -> game_intro_again}
 
+~ tutorial_step = at_game_intro
 ~ setScene(intro_scene, None)
+
 /scene EntryDark.TitleScreen
 /music entry
 
@@ -46,6 +48,7 @@
 {isWeb(): -> table_of_contents}
 
 - (force)
+~ tutorial_step = at_game_intro
 ~ setScene(intro_scene, None)
 /scene EntryDark.TitleScreen
 /music entry
