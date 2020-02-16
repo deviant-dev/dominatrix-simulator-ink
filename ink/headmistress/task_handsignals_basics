@@ -293,7 +293,6 @@ you will excel in pleasing Her.
 You have earned a reward for your performance today.
 ~ addReward()
 Stay attentive to your lessons!
-~ headmistress_hub_status = unlocked
 
 - -> exit
 
@@ -303,7 +302,6 @@ Your performance today lacked enthusiasm and grace.
 To please Her, you must be perfect.
 Perhaps a punishment marker will provide future incentive.
 ~ addPunishment()
-~ headmistress_hub_status = unlocked
 
 Now, leave my sight.
 
@@ -411,7 +409,6 @@ You shall be rewarded!
 ~ addReward()
 Your passion for obedience shall be stoked in future lessons.
 Depart.
-~ headmistress_hub_status = unlocked
 
 - -> exit
 
@@ -421,7 +418,6 @@ The shape of your service is still unmolded.
 I expect more diligence in the future.
 Another punishment has been earned.
 ~ addPunishment()
-~ headmistress_hub_status = unlocked
 Return again to practice further.
 For now, you are excused.
 
@@ -547,7 +543,6 @@ What a delicious feast to devour.
 You were born to serve, little one.
 ~ addReward()
 //what do players earn when they max out learning?
-~ headmistress_hub_status = unlocked
 You have my permission to depart.
 
 - -> exit
@@ -561,7 +556,6 @@ Your audience is left ravenous and unsatisfied.
 We shall resume practice and try this again when you are ready.
 Sadly, I must punish your imperfection.
 ~ addPunishment()
-~ headmistress_hub_status = unlocked
 
 Go and contemplate your failure.
 

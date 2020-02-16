@@ -21,6 +21,8 @@
 // -> game_intro.use_journal
 // -> demo_end
 
+-> unlock_shortcuts -> game_intro_again
+
 // -> test_multiple_poses
 
 // --- Goddess Jumps ---
@@ -77,8 +79,6 @@
 // /scene LectureHall.Punishment_Spanking_Ready
 //  -> headmistress_punishment_spanking.accept_punishment
 
-// ~ yuki_hub_status = unlocked
-// ~ headmistress_hub_status = unlocked
 // ~ punishments = 1
 // ~ rewards = 1
 

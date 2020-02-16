@@ -3,12 +3,7 @@
 
 ~ setHub(Yuki)
 
-// If the player hasn't done the intro yet,
-// then have them go to the intro.
-
 {inTutorial:
-    {not yuki_intro: -> yuki_intro}
-
     What are you doing back here!?
     You still have a punishment!
     Go back to the headmistress

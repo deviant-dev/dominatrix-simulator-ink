@@ -22,9 +22,7 @@ VAR demerits = 0
 /ambient off
 
 
-+ [move: Nega ({nega_hub_status})]
-    -> tryEnter(nega_hub_status, -> hub, -> nega_hub)
-
++ [move: Nega]
 
 - (hub)
 {

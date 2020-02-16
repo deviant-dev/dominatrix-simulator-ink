@@ -1,0 +1,95 @@
+=== headmistress_reward_exhibitionism ===
+
+~ setScene(reward_scene, Headmistress)
+/scene LectureHall.Intro3
+/music headmistress
+/ambient crowd
+/character headmistress idle
+
+
+{shuffle:
+    - For your reward, you shall pleasure yourself for the crowd.
+    - Your reward will be to titillate the crowd with your orgasm.
+    - You will have the reward of masturbating for your audience, {isBoy: runt|moppet}.
+}
+
+
+/perform arm_raise
+{shuffle:
+    - Such hedonistic exhibitionism will please <i> Her </i>.
+    - They shall delight in feasting their eyes upon your body.
+    - Displaying your pleasure for the benefit of others is your duty.
+}
+
+- (display)
+/perform smooth_skirt
+Are you excited to be rewarded in this way, {isBoy: heathen|wretch}?
+
++[yes]
+~ addObey()
+   -> Headmistress_AcknowledgeYes ->
+  
++[no]
+ ~ addDisobey()
+  
+   Your discomfort can enhance the intensity of your reward, foible.
+   Will you resonsider and be rewarded in this way?
+   
+   ++[yes]
+   -> Headmistress_AcknowledgeYes ->
+   
+   ++[no]
+    -> Headmistress_Unhappy ->
+    Perhaps you will change your mind in the future. 
+    Depart with your Bloodstone intact.
+    -> exit
+   
+ + [timeout] -> Nega_Timeout -> display
+ + [distracted] -> Nega_PayAttention -> display
+ 
+- (stand)
+/perform idle
+You have a choice, slave.
+You may perform standing or sitting.
+Would you like to remain standing
+
++[yes]
+   -> Headmistress_AcknowledgeYes ->
+  
++[no]
+    Then kneel, trinket.
+    -> kneel
+   
+ + [timeout] -> Nega_Timeout -> display
+ + [distracted] -> Nega_PayAttention -> display
+ 
+- (kneel_tries)
+ On your knees, {isBoy: miscreant|harlot}.
+ Else you will continue to perform standing upright.
+ 
+-(kneel)
+~ tries = 0
+~ tries++
+
++ [pose:kneel]
++ { tries < 2 } [timeout] -> kneel_tries
+
+-
+{tries == 1:
+    ~ addObey()
+    /perform look_up_and_down
+    This is a delightful position for showing off your performance.
+    
+- else:
+    ~ addDisobey()
+    /perform displeased
+    You said you wanted to kneel {player_name}.
+}
+
+{inTutorial:
+    ~ tutorial_hm_bonus_complete = true
+}
+
+-> exit
+
+

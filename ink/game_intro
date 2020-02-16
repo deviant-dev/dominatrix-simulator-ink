@@ -45,14 +45,22 @@
 
 {isWeb(): -> table_of_contents}
 
+- (force)
 ~ setScene(intro_scene, None)
+/scene EntryDark.TitleScreen
+/music entry
+
++ [wait:6]
+
+- (choices)
 /scene EntryDark.Notifications
 /music entry
 
 + [move: Intro] -> select_gender -> goddess_intro
-+ {deviation != demo}[move: Yuki (unlocked)] -> yuki_intro
-+ {deviation != demo}[move: Headmistress (unlocked)] -> headmistress_hub
-+ {deviation != demo}[move: Nega (unlocked)] -> nega_intro //-> tryEnter(early_access, -> nega_intro, -> choices)
++ {deviation != demo && yuki_shortcut}[move: Yuki] -> yuki_intro
++ {deviation != demo && hm_shortcut}[move: Headmistress] -> headmistress_intro
++ {deviation != demo && nega_shortcut}[move: Nega] -> nega_intro.skip_checks
++ {deviation != demo && hm_bonus_shortcut}[move: Bonus] -> headmistress_hub
 
 
 === game_intro_web ===

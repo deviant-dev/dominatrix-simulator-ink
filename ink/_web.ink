@@ -24,6 +24,7 @@ INCLUDE headmistress/apologize
 INCLUDE headmistress/punishment_flogging
 INCLUDE headmistress/punishment_spanking
 INCLUDE headmistress/reward_cunnilingus
+INCLUDE headmistress/reward_exhibitionism
 INCLUDE headmistress/reward_spanking
 INCLUDE headmistress/task_flogging
 INCLUDE headmistress/task_handsignals
@@ -62,6 +63,7 @@ INCLUDE yuki/task_puppyplay_learn
 INCLUDE yuki/task_puppyplay_practice
 INCLUDE yuki/task_teaservice
 INCLUDE yuki/train_spanking
+
 
 
 // EXTERNAL isDebug()
@@ -119,23 +121,28 @@ VAR web = true
 
 
 === table_of_contents ===
+-> unlock_shortcuts ->
 
 + <b>DomSim: Threshold</b>
     ~ setDeviation(tutorial)
     -> game_intro_web
 
++ <b>DomSim: Threshold Replay</b>
+    ~ setDeviation(tutorial)
+    -> unlock_shortcuts -> game_intro_again.force
+    
 // + Full Game (WIP)
 //     ~ setDeviation(full_game)
 //     -> game_intro_web
 
-+ Goddess Intro 
-    -> goddess_intro
+// + Goddess Intro 
+//     -> goddess_intro
 
-+ Entryway Intro (Yuki and Nega)
-    -> yuki_intro
+// + Entryway Intro (Yuki and Nega)
+//     -> yuki_intro
 
-+ Headmistress Intro
-    -> headmistress_intro
+// + Headmistress Intro
+//     -> headmistress_intro
 
 + Headmistress Punishment - Spanking 
     -> unlock_all -> headmistress_punishment_spanking

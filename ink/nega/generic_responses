@@ -1,9 +1,6 @@
- 
 
 
-
-
-=== Nega_GoodJob ===
+ === Nega_GoodJob ===
 
 {shuffle:
     - That's it, little bitch. #01
@@ -73,19 +70,7 @@
 ->->
 
 
-=== Nega_Objectify === 
 
-{shuffle:
-    - Enjoy the view, slut! #16
-    - That's it little meatbag. #17
-    - Being so close must be such a turn on for you, whore. #18
-    - That's all you're good for, cunt, being used. #19
-    - Wallow in it, {isBoy: worm|cunt}. #20
-    - I enjoy watching you be a little whore for my attention. #21
-    - Only a lucky few get to see something so wonderful, be grateful! #22
-}
-    
-->->
 
 === Nega_Apologize ===
 
@@ -171,8 +156,13 @@ Are you going to behave and give me what I want? #02
 
 + [no]
     Then fuck off. #04
-    No refunds, you little bitch. #05
-    {inTutorial: -> nega_intro.spiteful_interrupted | -> exit }
+
+    {reward_just_removed:
+        No refunds, you little bitch. #05
+        {inTutorial: -> nega_intro.spiteful_interrupted}
+    }
+
+    {inTutorial: -> exit }
     
 === Nega_prepare_masturbate ===
 
@@ -182,6 +172,18 @@ Are you going to behave and give me what I want? #02
     - I want that {hasPenis: tiny little dick| gaping pussy} of yours all worked up.
     - You're going to rub one out for me, pathetic {isBoy: worm|{isGirl: stain|wretch}}.
 }
+->->
+
+=== Nega_Objectify === 
+
+{shuffle:
+    - Enjoy the view, slut! #16
+    - Being so close must be such a turn on for you, whore. #18
+    - That's all you're good for, cunt, being used. #19
+    - I enjoy watching you be a little whore for my attention. #21
+    - Only a lucky few get to see something so wonderful, be grateful! #22
+}
+    
 ->->
 
 === Nega_masturbation_comments ===
@@ -195,7 +197,6 @@ Are you going to behave and give me what I want? #02
     - I enjoy watching you be a little whore for my attention. #14
     - That's it little meatbag. #15
     - {hasPenis: What a fucking slut getting /my/ cock ready for me to use.|Such a slut getting /my/ pussy so wet!}
-    - That's all you're good for, cunt, being used. #17
     - Wallow in it, {isBoy: worm|cunt}. #18
     - Work those fingers.
     --> break01 ->

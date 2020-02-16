@@ -10,8 +10,13 @@
 ~ punishment_just_removed = false
 ~ setHub(None)
 
-{ not yuki_intro: -> move_yuki }
-{ inTutorial: -> move_headmistress }
+{ inTutorial: -> tutorial_entry }
+{ deviation == tutorial || deviation == demo: -> demo_end}
+
+-> normal_entry
+
+
+= normal_entry
 
 /scene entry.hub
 /music entry
@@ -19,12 +24,44 @@
 
 + {LIST_VALUE(goddess_hub_status)} [move: Goddess ({goddess_hub_status})]
     -> tryEnter(goddess_hub_status, -> goddess_hub, -> exit)
-+ {LIST_VALUE(yuki_hub_status)} [move: Yuki ({yuki_hub_status})]
-    -> tryEnter(yuki_hub_status, -> yuki_hub, -> exit)
-+ {LIST_VALUE(nega_hub_status)} [move: Nega ({nega_hub_status})]
-    -> tryEnter(nega_hub_status, -> nega_hub, -> exit)
-+ {LIST_VALUE(headmistress_hub_status)} [move: Headmistress ({headmistress_hub_status})]
-    -> tryEnter(headmistress_hub_status, -> headmistress_hub, -> exit)
++ [move: Yuki] -> yuki_hub
++ [move: Nega] -> nega_hub
++ [move: Headmistress] -> headmistress_hub
+
+
+= tutorial_entry
+
+{ tutorial_step == at_yuki_intro:
+    ~ punishments = 1
+    ~ rewards = 1
+    ~ yuki_shortcut = true
+    -> move_yuki
+}
+
+{ tutorial_step == at_hm_intro:
+    ~ punishments = 1
+    ~ rewards = 1
+    ~ hm_shortcut = true
+    -> move_headmistress_or_yuki
+}
+
+{ tutorial_step == at_nega_intro || tutorial_step == at_hm_bonus:
+    ~ punishments = 0
+    ~ rewards = 1
+    ~ hm_bonus_shortcut = true
+    -> move_headmistress_or_nega
+}
+
+{ tutorial_step == at_goddess_outro:
+    ~ punishments = 0
+    ~ rewards = 0
+    -> demo_end
+}
+
+/logError Shouldn't be in the entry at this point.
+~ punishments = 0
+~ rewards = 0
+-> demo_end
 
 
 = move_yuki
@@ -44,12 +81,23 @@
 + [move: Yuki] -> yuki_hub
 
 
-= move_headmistress
+= move_headmistress_or_yuki
 
 /scene entry.hub
 /music entry
 /ambient rain
 
 + [move: Headmistress] -> headmistress_hub
++ [move: Yuki] -> yuki_hub
+
+= move_headmistress_or_nega
+
+/scene entry.hub_empty
+/music entry
+/ambient rain
+
++ [move: Headmistress] -> headmistress_hub
++ [move: Nega] -> nega_intro
+
 
 

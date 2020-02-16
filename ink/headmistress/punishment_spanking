@@ -287,12 +287,16 @@ TODO: This leave should not reset the game. It is too early in the tutorial. The
         Make haste from my sight! #98
         You have squandered my time and my attentions. #99
         I will not suffer fools. #100
-        You've just earned yet another punishment. #101
-        ~ addPunishment()
-        ~ headmistress_apologize = true
+
+        {not inTutorial:
+            You've just earned yet another punishment. #101
+            ~ addPunishment()
+            ~ headmistress_apologize = true
+        }
+
         Now leave. #102
         /perform point_to_leave
-        -> entry_hub
+        -> exit
 
     ++ [timeout] 
         /perform pleased
@@ -491,16 +495,22 @@ Stand at attention! #257
 - + [move]
 
 
-// If the player has never seen nega-yuki,
-// send them off to be tempted by her directly.
-- {not nega_hub: -> nega_hub | -> exit }
+// If in the tutorial, send player off to be tempted by her directly.
+- {inTutorial: 
+    ~ tutorial_hm_intro_complete = true
+    -> nega_hub
+- else:
+    -> exit
+}
+
+
 
 
 // Tunnels
 
 
-
 = SpankBreak
+
 ~ headmistress_spanking_break_count = 0
 
 - /scene LectureHall.HeadmistressAtFront
@@ -541,7 +551,9 @@ Stand at attention! #257
 - /scene LectureHall.HeadmistressAtBack
 ->->
 
+
 = break01
+
 /perform thoughtful
 Have you been keeping count {isBoy: toad|strumpet}?
 
@@ -576,7 +588,9 @@ Have you been keeping count {isBoy: toad|strumpet}?
     -> Headmistress_punishment_resumes ->
     -> spank 
 
+
 = break02
+
 /perform serious
 Every now and then, the object of correction #175
 must be given a moment to compose themself. #176
@@ -617,6 +631,7 @@ Does it feel good to touch yourself, {isBoy: toad|strumpet}? #180
 
 
 = break03
+
 /perform smooth_skirt
 Rise and present your ass that my students may inspect your progress thus far.
 
@@ -655,7 +670,9 @@ Would you enjoy that, {player_name}? #189
 
 ->->
 
+
 = break04
+
 Perhaps our little foible here needs a carrot #193
 dangled in front of {isBoy: him|her}. #194
 /character crowd murmur
@@ -718,7 +735,6 @@ good boys and girls earn? #200
 ->->
 
 
-
 = CheckIfInterested
 
 {checked_if_interested: -> check_terse}
@@ -759,10 +775,12 @@ There is hope for you yet. #223
 
 -> out_heathen
 
+
 = out_heathen
 
 /perform paddle_desk
 -> exit
+
 
 = surprise_interrupt
 

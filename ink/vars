@@ -27,6 +27,29 @@ LIST move_status = hidden = 0, locked, unlocked, early_access, under_constructio
 LIST scene_type = hub_scene, intro_scene, punishment_scene, reward_scene, task_scene
 LIST current_mistress = (None), Goddess, Headmistress, Yuki, Nega
 
+// Tutorial Progress
+LIST tutorial_step = (at_game_intro), at_goddess_intro, at_yuki_intro, at_hm_intro, at_nega_intro, at_hm_bonus, at_goddess_outro
+
+// Tutorial Progress Unlocks
+VAR yuki_shortcut = false
+VAR nega_shortcut = false
+VAR hm_shortcut = false
+VAR hm_bonus_shortcut = false
+
+// Achievement Tracking
+VAR tutorial_goddess_intro_complete = false
+VAR tutorial_yuki_intro_complete = false
+VAR tutorial_yuki_intro_yuki_ending = false
+VAR tutorial_yuki_intro_nega_ending = false
+VAR tutorial_hm_intro_complete = false
+VAR tutorial_nega_intro_complete = false
+VAR tutorial_nega_intro_spiteful_complete = false
+VAR tutorial_nega_intro_surprise_complete = false
+VAR tutorial_hm_bonus_complete = false
+VAR tutorial_goddess_outro_angry_complete = false
+VAR tutorial_goddess_outro_happy_complete = false
+
+
 // Scene Variables
 VAR checked_if_interested = false
 VAR obey = 0
@@ -46,7 +69,6 @@ VAR goddess_hub_status = hidden
 
 // Headmistress Variables
 VAR headmistress_regard = 0
-VAR headmistress_hub_status = unlocked
 VAR headmistress_difficulty = 1
 VAR headmistress_apologize = false
 VAR headmistress_signal_basics_difficulty = 1
@@ -56,10 +78,8 @@ VAR headmistress_has_audience = false
 
 // Nega Variables
 VAR nega_regard = 0
-VAR nega_hub_status = unlocked
 
 // Yuki Variables
 VAR yuki_regard = 0
-VAR yuki_hub_status = unlocked
 VAR yuki_puppy_difficulty = 1
 

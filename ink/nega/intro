@@ -1,23 +1,44 @@
 === nega_intro ===
+
+-> startScene(false)
+
+
+// Support forcing the scene to restart via 'skip_checks'
+= skip_checks
+
+-> startScene(true)
+
+
+= startScene(skipChecks)
+
 -> select_gender_check ->
 
 // Make sure we are set up as expected for Nega' intro.
 ~ rewards = 1
 ~ punishments = 0
-
+~ reward_just_removed = false
+~ tutorial_step = at_nega_intro
+~ nega_shortcut = true
+~ temp cameFromHub = current_mistress == None
 ~ setScene(intro_scene, Nega)
 
 /scene Attic.NegaHub
 /music nega
 /ambient howling-wind
 
-+ [move: Nega ({nega_hub_status})]
-    -> tryEnter(nega_hub_status, -> intro, -> nega_intro)
++ [move: Nega]
 
-- (intro)
-
-/scene Attic.NegaIntro
+- /scene Attic.NegaIntro
 /character nega
+
+{skipChecks: -> skip}
+
+// Return to previous location if we've been here before.
+{check_reward: -> Nega_CheckIfInterested -> check_reward}
+{stand_straight: -> Nega_CheckIfInterested -> stand_straight}
+{present_ass || cameFromHub: -> Nega_CheckIfInterested -> present_ass}
+
+- (skip)
 
 { isWeb():
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
@@ -107,9 +128,9 @@ Does your poor tushy sting? #23
 - /perform pleased
 {Headmistress_player_masturbate: 
     You're such a slut for an audience. #27
-    - else: 
+- else: 
     Too bad you didn't want to perform more. #28
-    }
+}
 
 /perform inspect
 Let's have a look. #29
@@ -189,9 +210,7 @@ Do you want to try your luck? #45
         /perform unhappy
         Stop wasting my time! #51
         Get the fuck out of here. #52
-    TODO: Record new VO line
-        I'll make sure you pay one way or another. #56
-        -> spiteful_interrupted
+        -> exit
     
     ++[no]
         ~ addObey()
@@ -225,11 +244,19 @@ Damn it! I was just getting started. #132
 /wait 1
 /scene None
 Don't worry. You'll get yours. #133
+
+~ tutorial_nega_intro_surprise_complete = true
+~ tutorial_nega_intro_complete = true
 -> goddess_monitoring_intro_nega
 
 
 // When the Goddess interrupts because Nega purposely tells on the player.
 = spiteful_interrupted
+
+/perform unhappy
+    TODO: Record new VO line
+I'll make sure you pay one way or another. #56
+
 
 TODO: Shake attic? Vibrate controllers with rumble?
 /sound goddess_interruption
@@ -244,6 +271,9 @@ Oh yeah. Hear that? You're gonna get yours now. #57
 /wait 1
 /scene None
 That's what you get for crossing me, you little bitch. #58
+
+~ tutorial_nega_intro_spiteful_complete = true
+~ tutorial_nega_intro_complete = true
 -> goddess_monitoring_intro_nega
 
 

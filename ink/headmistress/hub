@@ -2,9 +2,11 @@
 
 -> select_gender_check ->
 
-~ setHub(Headmistress)
+{inTutorial:
+    ~ tutorial_step = at_hm_bonus
+}
 
-{inTutorial && deviation != hand_signals: -> headmistress_intro}
+~ setHub(Headmistress)
 
 /scene LectureHall.Hub
 /music headmistress
@@ -12,30 +14,22 @@
 
 + [move]
 
--> apology_check(-> hub, -> exit)
+-> apology_check(-> hello, -> exit)
 
-- (hub)
+
+= hello
 
 { headmistress_regard >= 10: 
     I am pleased to see you, bauble.
-}
-
--> checks
-
-{ hub > 1: 
+- else:
     {shuffle:
         - Greetings, {isBoy: peon|moppet}.
         - Welcome back, flawed one.
         - I see you cannot stay away, trinket.
         - You continue to return.
     }
-    - else:
-        {shuffle:
-        - Salutations, flawed one.
-        }
 }
 
-- (checks)
 { 
     - punishments > 0: -> check_punishment
     - rewards > 0 : -> check_reward
@@ -50,11 +44,11 @@ Are you here to pay your punishment?
 + [no]
     No?
     -> check_task
-        
+
 
 = check_reward
 
-Are you receive your reward?
+Are you here to receive your reward?
 
 + [yes] -> choose_reward
 + [no]
@@ -66,6 +60,8 @@ Are you receive your reward?
 
 = check_task
 
+{ inTutorial: -> goodbye }
+
 { punishments == 0 && rewards == 0:
     No rewards or punishments, huh?
     You must be here to serve me!
@@ -74,19 +70,34 @@ Are you receive your reward?
 }
 
 + [yes] -> choose_task
-+ [no] 
-    Then I have nothing for you.
-    Begone.
-    -> exit
++ [no] -> goodbye
+
 
 = choose_punishment
+
 // Eventually we'll have the game randomly pick here.
--> headmistress_punishment_spanking -> exit
+{ shuffle:
+    - -> headmistress_punishment_spanking -> exit
+}
 //-> headmistress_punishment_flogging -> exit
 
+
 = choose_reward
+/perform behold
+
+{shuffle:
+    - Then a reward you shall have.
+    - It is so pleasing when trinkets have earned a reward.
+    - Rewards are preferable to punishments.
+}
+  
+{inTutorial: -> headmistress_reward_exhibitionism }
+
 // Eventually we'll have the game randomly pick here.
--> headmistress_reward_cunnilingus -> exit
+{shuffle:
+    - -> headmistress_reward_cunnilingus
+    - -> headmistress_reward_exhibitionism
+}
 
 = choose_task
 
@@ -98,3 +109,13 @@ Are you receive your reward?
 }
 
 - -> exit
+
+
+= goodbye
+
+Then I have nothing for you.
+Begone.
+
+-> exit
+
+

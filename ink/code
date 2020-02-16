@@ -2,7 +2,6 @@
 
 
 === exit ===
-
 {isWeb(): -> table_of_contents}
 
 {
@@ -14,7 +13,7 @@
         -> yuki_hub
     - deviation == tutorial:
         -> pause(3) ->
-        -> demo_end
+        -> entry_hub
     - deviation == demo:
         -> pause(3) ->
         -> demo_end
@@ -46,17 +45,22 @@
 ~ hasRestarted = true
 
 + [restart]
+    ~ inTutorial = true
+    ~ tutorial_step = at_game_intro
     ~ hasRestarted = true
     -> game_intro
 
-
+=== unlock_shortcuts ===
+~ yuki_shortcut = true
+~ nega_shortcut = true
+~ hm_shortcut = true
+~ hm_bonus_shortcut = true
+->->
 
 === unlock_all ===
-~ yuki_hub_status = unlocked
-~ headmistress_hub_status = unlocked
-~ nega_hub_status = unlocked
 ~ goddess_hub_status = unlocked
 ~ inTutorial = false
+-> unlock_shortcuts ->
 ->->
 
 
@@ -266,20 +270,6 @@
     - roll == 0: Blank
     - roll == 1: Cup
 }
-
-
-
-=== jump_menu(-> back) ===
-
-+ [Jump to...]
-
-- + [Goddess Poses]
-    /scene Bedroom.Intro
-    /move approach
-    -> goddess_intro.stand_straight
-+ [Yuki Intro] -> entry_hub
-+ [Headmistress Intro] -> headmistress_hub
-+ [Cancel] -> back
 
 
 === function setDeviation(d) ===

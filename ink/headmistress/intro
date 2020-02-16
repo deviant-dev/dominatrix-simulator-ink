@@ -3,6 +3,7 @@
 
 ~ punishments = 1
 ~ rewards = 1
+~ tutorial_step = at_hm_intro
 ~ setScene(intro_scene, Headmistress)
 
 - (jump_start)

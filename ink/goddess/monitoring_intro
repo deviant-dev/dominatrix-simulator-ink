@@ -1,6 +1,9 @@
 === goddess_monitoring_intro_nega ===
 -> select_gender_check ->
 
+~ rewards = 0
+~ punishments = 0
+~ tutorial_step = at_goddess_outro
 ~ setScene(intro_scene, Goddess)
 
 /scene Huge.InHand
@@ -36,6 +39,7 @@ Ten Bloodstones will unlock you from your imprisonment. #12
 
 Now go and fail me no further {player_name}. #13
 ~ inTutorial = false
+~ tutorial_goddess_outro_angry_complete = true
 
 // This wait also clears the subtitle
 + [wait]
@@ -44,6 +48,9 @@ Now go and fail me no further {player_name}. #13
 === goddess_monitoring_intro_headmistress ===
 -> select_gender_check ->
 
+~ rewards = 0
+~ punishments = 0
+~ tutorial_step = at_goddess_outro
 ~ setScene(intro_scene, Goddess)
 
 /scene Huge.InHand
@@ -75,6 +82,7 @@ I shall leave you now.
 Go forth and please me, {player_name}.
 
 ~ inTutorial = false
+~ tutorial_goddess_outro_happy_complete = true
 
 // This wait also clears the subtitle
 + [wait]

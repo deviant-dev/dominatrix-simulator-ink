@@ -3,6 +3,7 @@
 
 ~ punishments = 0
 ~ rewards = 0
+~ tutorial_step = at_goddess_intro
 ~ setScene(intro_scene, Goddess)
 
 - (flash_scenes)
@@ -533,33 +534,19 @@ I'm sure she can show you the ropes, so to speak. #112
 
 - (video_jump)
 
--> ByeForNow
+-> ByeForNow ->
 
-
-= ByeForNow
-
-/perform snap_fingers
-
-/scene bedroombroken.pissed
-
-+ [wait 1.5]
-
-- /character goddess
-/perform looming_huge
-/emotion angry 50
-
-Bye for now, {player_name}. #113
-
-+ [wait:5]
-
-- ~ yuki_hub_status = unlocked
+- ~ yuki_shortcut = true
+~ tutorial_goddess_intro_complete = true
 
 // If this is the demo with just the Goddess, end the demo.
 {deviation == demo:
     -> demo_end
 - else:
-    -> entry_hub
+    -> exit
 }
+
+
 
 = DemandApology
 
@@ -609,7 +596,7 @@ Are you willing to simply do as I say like a good {player_name}? #149
 
 /perform idle
 
-+ [yes] -> check_yes
++ [yes] -> IsInterested
 + [no]
 + [timeout] -> check_again
 
@@ -634,22 +621,47 @@ So I'll ask one last time: #153
 /emotion angry 50
 Are you willing to perform for your goddess? #154
 
-+ [yes] -> check_yes
-+ [no]
++ [yes] -> IsInterested
++ [no] -> NotInterested
 
-- /perform annoyed
-/emotion disgusted
 
-Then away with you. #155
-Perhaps another time when you are ready to learn your place. #156
--> ByeForNow
+= IsInterested
 
-- (check_yes) -> Goddess_GoodJob ->
+-> Goddess_GoodJob ->
 /perform confused
 /emotion skeptical
 There is hope for you yet. #157
 
 ->->
+
+
+= NotInterested
+
+/perform annoyed
+/emotion disgusted
+Then away with you. #155
+Perhaps another time when you are ready to learn your place. #156
+
+-> ByeForNow -> demo_end
+
+
+= ByeForNow
+
+/perform snap_fingers
+
+/scene bedroombroken.pissed
+
++ [wait 1.5]
+
+- /character goddess
+/perform looming_huge
+/emotion angry 50
+
+Bye for now, {player_name}. #113
+
++ [wait:5] ->->
+
+
 
 
 

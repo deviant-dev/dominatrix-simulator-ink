@@ -3,6 +3,7 @@
 
 ~ punishments = 1
 ~ rewards = 1
+~ tutorial_step = at_yuki_intro
 ~ setScene(intro_scene, Yuki)
 
 /scene entry.intro2
@@ -668,6 +669,8 @@ She's a bad seed! #137
 /perform idle_yuki
 You'll get a punishment if you get caught coming out of her room. #138
 
+~ tutorial_yuki_intro_complete = true
+~ tutorial_yuki_intro_yuki_ending = true
 -> entry_hub
 
 
@@ -748,5 +751,7 @@ Better get your ass to the Headmistress. #167
 /perform idle_nega
 She doesn't like to be kept waiting. #168
 
+~ tutorial_yuki_intro_complete = true
+~ tutorial_yuki_intro_nega_ending = true
 -> entry_hub
 
