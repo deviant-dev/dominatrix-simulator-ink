@@ -151,14 +151,14 @@ VAR web = true
     ~ setDeviation(hand_signals)
     -> unlock_all -> headmistress_task_handsignals
 
-+ Nega Intro 
-    -> unlock_all -> nega_intro
+// + Nega Intro 
+//     -> unlock_all -> nega_intro
 
 + Nega Reward - Forced Sex
     -> unlock_all -> nega_reward_forcedsex
 
 + Nega Reward - Tease
-    -> nega_reward_tease
+    -> unlock_all -> nega_reward_tease
 
 + Yuki Punishment - Puppy Play Spanking
     ~ setDeviation(puppyplay)

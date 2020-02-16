@@ -2,7 +2,7 @@
 
 
 === exit ===
-{isWeb(): -> table_of_contents}
+// {isWeb(): -> table_of_contents}
 
 {
     - deviation == hand_signals:
