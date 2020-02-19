@@ -35,7 +35,7 @@
     ~ punishments = 1
     ~ rewards = 1
     ~ yuki_shortcut = true
-    -> move_yuki
+    -> move_yuki_intro
 }
 
 { tutorial_step == at_hm_intro:
@@ -48,7 +48,6 @@
 { tutorial_step == at_nega_intro || tutorial_step == at_hm_bonus:
     ~ punishments = 0
     ~ rewards = 1
-    ~ hm_bonus_shortcut = true
     -> move_headmistress_or_nega
 }
 
@@ -64,7 +63,7 @@
 -> demo_end
 
 
-= move_yuki
+= move_yuki_intro
 
 -> select_gender_check ->
 
@@ -78,7 +77,7 @@
     <blockquote><i>You stand inside a large Victorian foyer with a sweeping staircase and several sets of doors leading off of it. The room is fairly well lit, but all of the doors are shrouded in shadows. Before you stands a lithe, young woman dressed in a maid's uniform. Beaming a bright smile, she greets you...</i></blockquote>
 }
 
-+ [move: Yuki] -> yuki_hub
++ [move: Yuki] -> yuki_intro
 
 
 = move_headmistress_or_yuki
@@ -87,8 +86,10 @@
 /music entry
 /ambient rain
 
-+ [move: Headmistress] -> headmistress_hub
-+ [move: Yuki] -> yuki_hub
++ [move: Headmistress]
+    {headmistress_intro: -> headmistress_hub | -> headmistress_intro }
++ [move: Yuki]
+    -> yuki_hub
 
 = move_headmistress_or_nega
 

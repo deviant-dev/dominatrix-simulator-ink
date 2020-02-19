@@ -1,7 +1,7 @@
 === headmistress_train_spanking(sentFromElsewhere) ===
 
 // This is a tunnel to train the player on spanking at any time.
-~ setScene(task_scene, Headmistress)
+// ~ setScene(task_scene, Headmistress)
 
 {sentFromElsewhere:
     /scene LectureHall.Punishment_Spanking

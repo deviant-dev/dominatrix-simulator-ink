@@ -21,7 +21,7 @@
 // -> game_intro.use_journal
 // -> demo_end
 
--> unlock_shortcuts -> game_intro_again
+//-> unlock_shortcuts -> game_intro_again
 
 // -> test_multiple_poses
 
@@ -95,6 +95,7 @@
 // /action raise_curtains
 // /scene LectureHall.Punishment_Spanking
 //  -> headmistress_punishment_spanking.SpankingFinished
+-> headmistress_reward_exhibitionism 
 
 
 

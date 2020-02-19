@@ -148,12 +148,11 @@ Pay attention! #165
 }
 
 
-/**
-* The pose test stitch with pose name and prompt stitch parameters.
-* 
-* @param {string} pose The name of the pose to test. (e.g. 'puppy_beg')
-* @param {divert} prompt The stitch that hase the pose's prompt VO/performances.
-*/
+// The pose test stitch with pose name and prompt stitch parameters.
+
+// @param {string} pose The name of the pose to test. (e.g. 'puppy_beg')
+// @param {divert} prompt The stitch that hase the pose's prompt VO/performances.
+
 = test_pose(pose, -> prompt)
 ~ tries = 0
 - (retry)

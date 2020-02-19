@@ -2,8 +2,9 @@
 
 -> select_gender_check ->
 
-{inTutorial:
+{inTutorial && tutorial_step != at_hm_intro:
     ~ tutorial_step = at_hm_bonus
+    ~ hm_bonus_shortcut = true
 }
 
 ~ setHub(Headmistress)

@@ -40,18 +40,22 @@
 
 - (skip)
 
-{ isWeb():
-    <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
+{isWeb(): -> web_start | start}
 
-    <blockquote><i>You find yourself in a dim and dusty attic. Old out-of-place furniture, scraps of paper, and trinkets litter the room. A sullen and attractive woman in a tattered maid's uniform smiles menacingly at you...</i></blockquote>
 
-    + [Continue] -> start
-- else:
+= web_start
+
+<blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
+
+<blockquote><i>You find yourself in a dim and dusty attic. Old out-of-place furniture, scraps of paper, and trinkets litter the room. A sullen and attractive woman in a tattered maid's uniform smiles menacingly at you...</i></blockquote>
+
++ [Continue]
     -> start
-}
+
 
 //play some kind of dischordant sound when the player enters?
-- (start)
+= start
+
 /perform bored
 Don't worry, pretty {player_name}. #01
 Expect that to happen once in a while. #02
@@ -68,7 +72,7 @@ You could think of them as ... #05
 You'll get used to it. #07
 
 + [wait]
-/perform sassy
+- /perform sassy
 I pulled in a little favor to make sure #08
 that kiss-ass Yuki wasn't paying attention. #09
 
@@ -126,6 +130,7 @@ Does your poor tushy sting? #23
     
 //have player present ass before she gets them to give up their stone 
 - /perform pleased
+
 {Headmistress_player_masturbate: 
     You're such a slut for an audience. #27
 - else: 

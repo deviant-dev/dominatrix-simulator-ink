@@ -308,8 +308,9 @@
 
 === function getSummaryText() ===
 ~ temp regardText = ""
+~ temp deviationText = ""
 
-// Set regard text if with a goddess.
+// Set regard text if with a mistress.
 {
     - current_mistress == Goddess:
         ~ regardText = "/ {current_mistress} Regard: {goddess_regard}"
@@ -321,7 +322,12 @@
         ~ regardText = "/ {current_mistress} Regard: {yuki_regard}"
 }
 
-~ return  "Punishments: {punishments} / Rewards: {rewards} {regardText}"
+// Set optional deviation-specific text
+{deviation == tutorial:
+    ~ deviationText = "/ Threshold Flow: {tutorial_step}"
+}
+
+~ return  "Punishments: {punishments} / Rewards: {rewards} {regardText} {deviationText}"
 
 === function obeyed() ===
 {isWeb():
@@ -376,5 +382,17 @@
 -> commentTunnel ->
 + [wait {RANDOM(minWait, maxWait)}]
 + [no] -> noTunnel
+- ~ count++
+{ count < max: -> repeat | ->-> }
+
+=== RandomCommentLoopWithYes(-> commentTunnel, -> yesTunnel, minTimes, maxTimes, minWait, maxWait)
+~ temp count = 0
+~ temp max = RANDOM(minTimes, maxTimes)
+/log Comments looping {max} times.
+- (repeat)
+
+-> commentTunnel ->
++ [wait {RANDOM(minWait, maxWait)}]
++ [yes] -> yesTunnel
 - ~ count++
 { count < max: -> repeat | ->-> }

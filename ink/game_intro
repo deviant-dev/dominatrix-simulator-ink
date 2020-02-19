@@ -1,6 +1,6 @@
 === game_intro ===
 
-{hasRestarted: -> game_intro_again}
+{hasRestarted: -> game_intro_again.choices}
 
 {cherryPopped && deviation != demo: -> game_intro_again}
 
@@ -45,7 +45,7 @@
 
 === game_intro_again ====
 
-{isWeb(): -> table_of_contents}
+// {isWeb(): -> table_of_contents}
 
 - (force)
 ~ tutorial_step = at_game_intro
@@ -69,8 +69,6 @@
 === game_intro_web ===
 
 ~ player_name = "none"
-
-<blockquote><i>NOTE: This is a quick test for the script that runs the game's introduction.</i></blockquote>
 
 <blockquote><i>Two nude statues kneel before you with outstretched hands, one male and one female. Which would you choose?</i></blockquote>
 

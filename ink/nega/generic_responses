@@ -1,6 +1,5 @@
 
-
- === Nega_GoodJob ===
+=== Nega_GoodJob ===
 
 {shuffle:
     - That's it, little bitch. #01
@@ -97,7 +96,7 @@ Now get back up on your knees.
 
 ->->
 
-// This is better for verbal commands.
+//response to timeouts to questions
 === Nega_Timeout ===
 
 {cycle:
@@ -116,6 +115,8 @@ Now get back up on your knees.
 
 ->->
 
+
+//response to player distraction
 === Nega_PayAttention ===
 
 { cycle:
@@ -190,13 +191,14 @@ Are you going to behave and give me what I want? #02
 
 {shuffle:
     - Keep going. #06
-    - {hasPenis: You're dick's not hard enough yet.|Your pussy's not wet enough yet.}
+    - {hasPenis: Your dick's not hard enough yet.|Your pussy's not wet enough yet.}
     - Harder. Faster. #08
     - I bet your arm is getting tired. Too bad! #09
     - More. More. More! #10
     - I enjoy watching you be a little whore for my attention. #14
-    - That's it little meatbag. #15
+    - That's it, little meatbag. #15
     - {hasPenis: What a fucking slut getting /my/ cock ready for me to use.|Such a slut getting /my/ pussy so wet!}
+    - That's all you're good for, cunt, being used. #17
     - Wallow in it, {isBoy: worm|cunt}. #18
     - Work those fingers.
     --> break01 ->

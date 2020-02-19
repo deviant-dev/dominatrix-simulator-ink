@@ -537,6 +537,7 @@ I'm sure she can show you the ropes, so to speak. #112
 -> ByeForNow ->
 
 - ~ yuki_shortcut = true
+~ tutorial_step = at_yuki_intro
 ~ tutorial_goddess_intro_complete = true
 
 // If this is the demo with just the Goddess, end the demo.

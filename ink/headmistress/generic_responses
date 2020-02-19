@@ -138,6 +138,55 @@ TODO: record VO
 
 ->->
 
+=== Headmistress_Timeout ===
+
+TODO: Record VO 
+
+{cycle:
+    - Respond, wretch.
+    - I am waiting, {player_name}.
+    - Perhaps you think I am not worthy of your time.
+    - Where is your head, slave? Respond.
+    - Attend to me, heathen. 
+    - I require your attention at all times, baffoon.
+    - You weary me. 
+    - Slave!
+    - You shiftless layabout. Attend!
+    - Stay alert, flawed one.
+}
+
+->->
+
+=== Headmistress_PayAttention ===
+/perform amused
+
+{ cycle:
+    - The focus of your attention must remain on me. #01
+    - Allowing yourself to be distracted #02
+    is a trait we must cure you of, {isBoy:toad|hussy}! #03
+    - Eyes on me, immediately, slave! #04
+    - Am I tedious, {isBoy:oaf|strumpet}? #05
+    - A proper slave maintains focus on {isBoy:his|her} instruction. #06
+    - I require your unwavering attention. #07
+    - I am your focal point, slave. Attend! #08
+    - You must find me tedious, heathen. Your attention is slack! #09
+}
+
++ [pay-attention]
++ [timeout] -> Headmistress_PayAttention ->->
+
+/perform thoughtful
+
+- { cycle:
+    - Let us return to our demonstration. #10
+    - Entirely satisfying. Let us continue. #11
+    - Fine control {player_name}. #12
+    - Do not fail to attend to your task. #13
+    - My words return to me... #14
+    - Now... We shall resume. #15
+}
+
+->->
 //For positive responses to questions
 
 === Headmistress_AcknowledgeYes ===
@@ -193,55 +242,7 @@ TODO: rewrite resumes
     
 ->->
 
-=== Headmistress_Timeout ===
 
-TODO: Record VO 
-
-{cycle:
-    - Respond, wretch.
-    - I am waiting, {player_name}.
-    - Perhaps you think I am not worthy of your time.
-    - Where is your head, slave? Respond.
-    - Attend to me, heathen. 
-    - I require your attention at all times, baffoon.
-    - You weary me. 
-    - Slave!
-    - You shiftless layabout. Attend!
-    - Stay alert, flawed one.
-}
-
-->->
-
-=== Headmistress_PayAttention ===
-/perform amused
-
-{ cycle:
-    - The focus of your attention must remain on me. #01
-    - Allowing yourself to be distracted #02
-    is a trait we must cure you of, {isBoy:toad|hussy}! #03
-    - Eyes on me, immediately, slave! #04
-    - Am I tedious, {isBoy:oaf|strumpet}? #05
-    - A proper slave maintains focus on {isBoy:his|her} instruction. #06
-    - I require your unwavering attention. #07
-    - I am your focal point, slave. Attend! #08
-    - You must find me tedious, heathen. Your attention is slack! #09
-}
-
-+ [pay-attention]
-+ [timeout] -> Headmistress_PayAttention ->->
-
-/perform thoughtful
-
-- { cycle:
-    - Let us return to our demonstration. #10
-    - Entirely satisfying. Let us continue. #11
-    - Fine control {player_name}. #12
-    - Do not fail to attend to your task. #13
-    - My words return to me... #14
-    - Now... We shall resume. #15
-}
-
-->->
 
 === Headmistress_GoodSpank ===
 
@@ -302,77 +303,78 @@ TODO: Record VO
 /character headmistress
 ->->
 
+TODO: move lines to reward_exhibitionism, keep lines that are generic masturbation laying_down_caress_breasts
 === Headmistress_player_masturbate ===
 
-{hasPenis: Wrap your hand around your rod|Slip your fingers between your nether lips} and entertain them. #02
+// {hasPenis: Wrap your hand around your rod|Slip your fingers between your nether lips} and entertain them. #02
 
-/character headmistress idle
-/wait 2
-All eyes are on you, slave. #03
-/wait 2
-Are you {hasPenis: hard|wet}? #04
+// /character headmistress idle
+// /wait 2
+// All eyes are on you, slave. #03
+// /wait 2
+// Are you {hasPenis: hard|wet}? #04
 
-+ [yes]
-    ~ addObey()
-    As you should be. #05
-    You may continue until I instruct you otherwise. #06
+// + [yes]
+//     ~ addObey()
+//     As you should be. #05
+//     You may continue until I instruct you otherwise. #06
 
-+ [no]
-    ~ addDisobey()
-    A shame we must rectify. #07
-    Arouse yourself and continue until I give you leave to stop. #08
+// + [no]
+//     ~ addDisobey()
+//     A shame we must rectify. #07
+//     Arouse yourself and continue until I give you leave to stop. #08
 
-- (masturbate_for_crowd)
+// - (masturbate_for_crowd)
 
-+ [wait:3]
--> masturbation_comment ->
+// + [wait:3]
+// -> masturbation_comment ->
 
--
-+ [wait:3]
--> masturbation_comment ->
+// -
+// + [wait:3]
+// -> masturbation_comment ->
 
--
-+ [wait:3]
--> masturbation_comment ->
+// -
+// + [wait:3]
+// -> masturbation_comment ->
 
--
-+ [wait:3]
--> masturbation_comment ->
+// -
+// + [wait:3]
+// -> masturbation_comment ->
 
--
-+ [wait:3]
--> masturbation_comment ->
+// -
+// + [wait:3]
+// -> masturbation_comment ->
 
-- 
-+ [wait:5]
+// - 
+// + [wait:5]
 
-- /perform thoughtful
-{ cycle:
-    - Are you having fun performing for our guests? #09
-    - Would you like to keep going, {isBoy:toad|strumpet}? #10
-    - Does our little {isBoy:runt|poppet} need more time? #11
-    - Are you going to ask our guests to continue waiting? #12
-    - Still working that {hasPenis:shaft|slit}? #13
-    - Our {isBoy:toad|strumpet} needs more time. Yes? #14
-} 
+// - /perform thoughtful
+// { cycle:
+//     - Are you having fun performing for our guests? #09
+//     - Would you like to keep going, {isBoy:toad|strumpet}? #10
+//     - Does our little {isBoy:runt|poppet} need more time? #11
+//     - Are you going to ask our guests to continue waiting? #12
+//     - Still working that {hasPenis:shaft|slit}? #13
+//     - Our {isBoy:toad|strumpet} needs more time. Yes? #14
+// } 
 
-+ [yes]
-    /character headmistress idle
-    -> masturbate_for_crowd
+// + [yes]
+//     /character headmistress idle
+//     -> masturbate_for_crowd
 
-+ [no]
-    /character headmistress idle
-    A fine performance, slave. #15
+// + [no]
+//     /character headmistress idle
+//     A fine performance, slave. #15
         
-- ->->
+// - ->->
 
-= masturbation_comment
+// = masturbation_comment
 
-{ obeyed():
-    -> Headmistress_masturbation_comments ->
-- else:
-    -> Headmistress_masturbation_punishment ->
-}
+// { obeyed():
+//     -> Headmistress_masturbation_comments ->
+// - else:
+//     -> Headmistress_masturbation_punishment ->
+// }
 
 ->->
 
@@ -426,106 +428,104 @@ Are you {hasPenis: hard|wet}? #04
     - -> Headmistress_GoodJob ->
     - -> Headmistress_GoodJob ->
     - -> Headmistress_GoodJob ->
-    - -> Headmistress_GoodJob ->
-    - -> Headmistress_GoodJob ->
-    - -> Headmistress_GoodJob ->
 }
 
 /character headmistress
 ->->
 
 === Headmistress_CheckIfInterested ===
+//this code was disabled, but not sure why. it needs to be used for the reward_exhibitionism scene
 
-// {checked_if_interested: -> check_terse}
+{checked_if_interested: -> check_terse}
 
-// ~ checked_if_interested = true
+~ checked_if_interested = true
 
-// {
-//     - scene_type == punishment_scene:
-//     /perform unhappy
-//     // VO needs to be moved over from HM punishment_spanking
-//         {shuffle:
-//             - Are you too good to take a punishment, {player_name}? #216
-//               Obey instructions. #217
-//             - A punishment is owed, baffoon.
-//               Will you comply?
-//         }
+{
+    - scene_type == punishment_scene:
+    /perform unhappy
+    // VO needs to be moved over from HM punishment_spanking
+        {shuffle:
+            - Are you too good to take a punishment, {player_name}? #216
+              Obey instructions. #217
+            - A punishment is owed, baffoon.
+              Will you comply?
+        }
      
-//     - scene_type == reward_scene:
-//     /perform behold
-//         {shuffle:
-//             - You would be remiss to turn away from your reward. 
-//               Shall we continue?
-//             - Perhaps today is not the day you deserve to be rewarded.
-//               Is it?
-//         }
+    - scene_type == reward_scene:
+    /perform behold
+        {shuffle:
+            - You would be remiss to turn away from your reward. 
+              Shall we continue?
+            - Perhaps today is not the day you deserve to be rewarded.
+              Do you want your reward?
+        }
         
-//     - else:
-//     /perform cocks_head_to_left
-//     You will leave with a punishment if you do not finish your task.
-//         {shuffle:
-//             - Do you desire to continue, {player_name}? 
-//             - You came here to perform, moppet.
-//               Shall we continue?
-//         }
-// }
+    - else:
+    /perform cocks_head_to_left
+    You will leave with a punishment if you do not finish your task.
+        {shuffle:
+            - Do you desire to continue, {player_name}? 
+            - You came here to serve, {isBoy: urchen| moppet}.
+              Shall we continue?
+        }
+}
 
 
 
-// - (check_again)
+- (check_again)
 
-// /perform idle
+/perform idle
 
-// + [yes] -> check_yes
-// + [no]
-// + [timeout] -> check_terse
++ [yes] -> check_yes
++ [no]
++ [timeout] -> check_terse
 
-// - (check_terse) 
+- (check_terse) 
 
-// TODO: Break remaining checks into scene type and/or shuffle options
-// {
-//     - scene_type == punishment_scene:
-//     /perform angry
-//         {shuffle:
-//             - //copy numbered VO from Headmistress Punishment_Spanking
-//               Well? #218
-//               You merely drag out the inevitable with your delay. #219
-//             - Are you going to continue to play the reluctant {player_name}? #220.
-//         }
+TODO: Break remaining checks into scene type and/or shuffle options
+{
+    - scene_type == punishment_scene:
+    /perform angry
+        {shuffle:
+            - //copy numbered VO from Headmistress Punishment_Spanking
+              Well? #218
+              You merely drag out the inevitable with your delay. #219
+            - Are you going to continue to play the reluctant {player_name}? #220.
+        }
      
-//     - scene_type == reward_scene:
-//     /perform behold
-//         {shuffle:
-//             - Your passion feeds and time is waisting.
-//               Shall we continue?
-//             - What a pity you would waist such a gift.
-//               Shall we resume?
-//         }
+    - scene_type == reward_scene:
+    /perform behold
+        {shuffle:
+            - Your passion feeds and time is waisting.
+              Shall we continue?
+            - What a pity you would waist such a gift.
+              Shall we resume?
+        }
         
-//     - else:
-//     /perform cocks_head_to_left
-//     I have no patience for fools. A punishment will be yours!
-//         {shuffle:
-//             - Will you finish your task, {player_name}? 
-//             - Will you perform, ingrate?
-//         }
-// }
+    - else:
+    /perform cocks_head_to_left
+    I have no patience for fools. A punishment will be yours!
+        {shuffle:
+            - Will you finish your task, {player_name}? 
+            - Will you perform, ingrate?
+        }
+}
 
-// + [yes] -> check_yes
-// + [no] 
++ [yes] -> check_yes
++ [no] 
 
-// - /perform bored
-// Out of my office, heathen. #221
-// I have no time for your shenanigans. #222
-// -> out_heathen
+- /perform bored
+Out of my office, heathen. #221
+I have no time for your shenanigans. #222
+-> out_heathen
 
-// - (check_yes) -> Headmistress_AcknowledgeYes ->
-// /perform confused
-// {shuffle: 
-//     - There is hope for you yet. #223
-//     - Do not try my patience again.
-//     - No more wasting time.
-// }
+- (check_yes) -> Headmistress_AcknowledgeYes ->
+/perform confused
+{shuffle: 
+    - There is hope for you yet. #223
+    - Do not try my patience again.
+    - No more wasting time then.
+}
 
 ->->
 

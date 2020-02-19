@@ -1,3 +1,5 @@
+VAR embarassed = false
+
 === headmistress_reward_exhibitionism ===
 
 ~ setScene(reward_scene, Headmistress)
@@ -13,83 +15,354 @@
     - You will have the reward of masturbating for your audience, {isBoy: runt|moppet}.
 }
 
-
-/perform arm_raise
 {shuffle:
-    - Such hedonistic exhibitionism will please <i> Her </i>.
-    - They shall delight in feasting their eyes upon your body.
-    - Displaying your pleasure for the benefit of others is your duty.
+    - We have a full compliment of viewers today.
+    Eager students and connoiseurs of the flesh.
+    - Every opportunity to perform for an audience must be siezed.
+    This is a true test of your willing obedience.
 }
 
 - (display)
 /perform smooth_skirt
-Are you excited to be rewarded in this way, {isBoy: heathen|wretch}?
+Are you excited to be rewarded in this way, {isBoy: heathen|harlot}?
 
 +[yes]
-~ addObey()
+    ~ addObey()
    -> Headmistress_AcknowledgeYes ->
+   /perform arm_raise
+    {shuffle:
+        - Such hedonistic exhibitionism will please <i> Her</i>.
+        - Your audience shall delight in feasting their eyes upon your body.
+        - Displaying your orgasm for the benefit of others is your duty.
+    }
+    -> nervous_tease
   
-+[no]
- ~ addDisobey()
++ [no]
+   -> nervous_consent_check
   
-   Your discomfort can enhance the intensity of your reward, foible.
-   Will you resonsider and be rewarded in this way?
-   
-   ++[yes]
-   -> Headmistress_AcknowledgeYes ->
-   
-   ++[no]
-    -> Headmistress_Unhappy ->
-    Perhaps you will change your mind in the future. 
-    Depart with your Bloodstone intact.
-    -> exit
-   
- + [timeout] -> Nega_Timeout -> display
- + [distracted] -> Nega_PayAttention -> display
++ [timeout] -> Headmistress_Timeout -> display
++ [distracted] -> Headmistress_PayAttention -> display
  
-- (stand)
+ 
+= nervous_consent_check
+
+Do you tremble with nervous embarassment, foible?
+
++ [yes]
+    ~ embarassed = true
+    Ahhh. Such delicate sensibilities.
+    Nevertheless. This is your reward.
+    Do you desire to continue thusly?
+
+    ++ [yes]
+        ~ addObey() 
+        Oh. This will be a treat.
+        Your embrassment will only enhance the succor of your release.
+        -> prepare
+    
+    ++ [no]
+        If your discomfort overwhelms you, 
+        then this reward is not for you.
+        You are dismissed, bauble.
+        Keep your reward and return when you are ready.
+        -> exit
+
++ [no]
+    A true performer, students!
+    Our subject enjoys being on display.
+    -> prepare
+
++ [timeout] -> Headmistress_Timeout -> nervous_consent_check
++ [distracted] -> Headmistress_PayAttention -> nervous_consent_check
+
+
+= nervous_tease
+
+Do you tremble with nervous embarassment, foible?
+ 
++[yes]
+    ~ embarassed = true
+   How utterly delightful!
+   This will quench <i>our</i> refreshment even moreso.
+   -> prepare
+   
+ +[no]
+    A true performer, students!
+    Our subject enjoys being on display.
+    -> prepare
+    
++ [timeout] -> Headmistress_Timeout -> nervous_tease
++ [distracted] -> Headmistress_PayAttention -> nervous_tease
+ 
+
+= prepare
+
 /perform idle
 You have a choice, slave.
-You may perform standing or sitting.
-Would you like to remain standing
+You may perform upright or on your knees.
+Which will you choose?
 
-+[yes]
-   -> Headmistress_AcknowledgeYes ->
-  
-+[no]
-    Then kneel, trinket.
-    -> kneel
-   
- + [timeout] -> Nega_Timeout -> display
- + [distracted] -> Nega_PayAttention -> display
- 
-- (kneel_tries)
- On your knees, {isBoy: miscreant|harlot}.
- Else you will continue to perform standing upright.
- 
--(kneel)
-~ tries = 0
-~ tries++
-
-+ [pose:kneel]
-+ { tries < 2 } [timeout] -> kneel_tries
-
--
-{tries == 1:
-    ~ addObey()
-    /perform look_up_and_down
-    This is a delightful position for showing off your performance.
++ [pose:stand]
+        /perform nod
+        {isBoy: He|{isGirl: She|They}} shall perform for you standing.
+        Such an excellent position for displaying {isBoy: his|{isGirl:her|their}} full physique!
     
-- else:
-    ~ addDisobey()
-    /perform displeased
-    You said you wanted to kneel {player_name}.
++ [pose:kneel]
+        /perform nod 
+        {isBoy: He|{isGirl: She|They}} chooses to perform on {isBoy: his|{isGirl: her|their}} knees.
+        Such a heady position of submission and subservience!
+ 
++ [timeout] -> Headmistress_Timeout -> prepare
++ [distracted] -> Headmistress_PayAttention -> prepare
+ 
+
+- /perform look_up_and_down
+{shuffle:
+    - You purpose is to serve with your pleasure, {player_name}.
+    - Your existence depends on your performance, {player_name}.
+    - Delight and remain pleasing, {player_name}.
 }
 
+- (instructions)
+You will be allowed to cum today, slave,
+but you must seek approval first.
+
+When your orgasm seeks escape, <b>"nod"</b> your head for permission.
+
+Do you understand, {isBoy: simpleton|ninny}?
+
++ [yes]
+    Extraordinary!
+    Then we shall delight in witnessing your {hasPenis: seed|cream} paint the floor!
+    
++ [no]
+    -- (instructions_check)
+    TODO: Rewrite: Won't they have words if they have the slave voice on? -Deviant
+    You will communicate without words when you are ready to cum.
+    <b>"Nod"</b> your head 'yes' to ask permission to orgasm.
+    Cum when I give you leave.
+    
+    Is that clear?
+    
+    ++ [yes]
+        Extraordinary!
+        Then we shall delight in witnessing your {hasPenis: seed|cream} paint the floor!
+        
+    ++ [no] -> Headmistress_CheckIfInterested -> instructions_check
+    ++ [timeout] -> Headmistress_Timeout -> instructions_check
+    ++ [distracted] -> Headmistress_PayAttention -> instructions_check
+    
++ [timeout] -> Headmistress_Timeout -> instructions
++ [distracted] -> Headmistress_PayAttention -> instructions
+
+- (tease)
+//check to see if they are embarassed or not. select tease text for their 'state'
+{embarassed: 
+    -> tease_embarassed
+    - else: -> tease_slut
+}
+
+- (tease_slut)
+{shuffle:
+    - Time to show us just how much of a slut you are.
+    - We expect quite a performance from a self-proclaimed whore.
+    - Show us your finest exhibitionist frigging, {isBoy: muttonmonger|trollop}!
+    
+}
+
+- (tease_embarassed)
+
+{shuffle:
+    - We are about to feast upon your burning visage, {isBoy: duckling|mouse}!
+    - Your shame shall be our succor!
+    - It is time to defile yourself for our pleasure, tribute.
+ }
+
+- (ready)
+/perform behold
+Are you ready, {isBoy: toad|strumpet}?
+
++ [yes]
+    Exquisite.
+    
++ [no]
+    We have a delay!
+    -> Headmistress_CheckIfInterested -> ready
+    
++ [timeout] -> Headmistress_Timeout -> ready
++ [distracted] -> Headmistress_PayAttention -> ready
+
+- 
+
+TODO: This reward removal has been moved up to when the reward starts to prevent getting rewards and quitting before the bloodstone is taken. Might need more dialog to support it. Have player hand it over? - Deviant
+
+~removeReward()
+One Bloodstone has been removed from your wrist.
+
+/perform arm_raise
+You may {hasPenis: wrap your hand around your rod|slip your fingers between your nether lips} and reward yourself.
+
+- (masturbate)
+
+-> RandomCommentLoopWithYes(-> masturbation_comment, -> cum, 3, 5, 2, 5) ->
+
+-> Headmistress_GoodJob ->
+
+--> question 
+
+- (cum)
+
+{shuffle:
+    - Do you tremble with the need to release, {isBoy: heathen|wretch}?
+    - Are you pulsing with the desire to orgasm, slave?
+    - Is it time to {hasPenis: explode|squirt}, foible?
+}   
+
++ [yes]
+    -> orgasm
++ [no]
+    Then continue masturbating yourself for our enjoyment!
+    -> masturbate
+        
++ [timeout] -> Headmistress_Timeout -> cum
++ [distracted] -> Headmistress_PayAttention -> cum
+
+= orgasm
+{shuffle:
+    - You may release your pent up passion, slave.
+    - You may {hasPenis: spew your load|cream the floor}, whore.
+    - I give you leave to cum, {isBoy: manwhore|soiled dove}.
+}
+
+- + [wait 5]
+
+- /perform behold
 {inTutorial:
     ~ tutorial_hm_bonus_complete = true
+}   
+
+TODO: Ask when player is done 'releasing'? - Deviant
+
+Such a bold performance, foible!
+I sense that you are spent with that reward.
+
+- (enjoy)
+Did you enjoy yourself?
+
++ [yes]
+    Pleasure breeds pleasure.
+    This is good.
+
++ [no]
+    A pity.
+    Nevertheless, your performance fed us well, {isBoy:speck|poppet}.
+    
++ [timeout] -> Headmistress_Timeout -> enjoy
++ [distracted] -> Headmistress_PayAttention -> enjoy
+    
+-
+{inTutorial: 
+    I give you leave to...
+    -> surprise_interrupt
 }
+
+I give you leave to depart.
 
 -> exit
 
+TODO: move lines below from generic responses once they are cleaned up
+- (question)
+/perform thoughtful
+{ cycle:
+    - Are you having fun performing for our guests? #09
+    - Would you like to keep going, {isBoy:toad|strumpet}? #10
+    - Does our little {isBoy:runt|poppet} need more time? #11
+    - Are you going to ask our guests to continue waiting? #12
+    - Still working that {hasPenis:shaft|slit}? #13
+    - Our {isBoy:toad|strumpet} needs more time. Yes? #14
+} 
 
++ [yes]
+    /character headmistress idle
+    Then keep going!
+    -> masturbate
+
++ [no]
+    /character headmistress idle
+    Are you ready to cum, then, slave?
+    
+        ++ [yes]
+            -> orgasm
+            
+        ++ [no]
+            Yet you wish to stop.
+            Do you want to continue with your reward, slave?
+            
+            +++ [yes]
+                Then let us resume.
+                -> masturbate
+                
+            +++ [no]
+                Then I give you leave to depart, foible.
+                One reward has been deducted from your wrist.
+                ~removeReward()
+                -> exit
+            
+
+= masturbation_comment
+//need to make it so the code will use either slut or embarassment comments, depending on the variable. 
+
+{ shuffle:
+    - -> Headmistress_masturbation_comments ->
+    - -> embarassment_comment ->
+    - -> slut_comment ->
+}
+
+->->
+
+= embarassment_comment
+
+{shuffle:
+    - Note the cheeks flush with distress, ladies and gentlemen!
+    - Such a blushing harlot.
+    - {isBoy: His|{isGirl:Her|Their}} shame is palpable!
+    - Enjoy how motified {isBoy: he is|{isGirl:she is|they are}}, students.
+    - Let us examine whether {isBoy: he grows|{isGirl:she grows|they grow}} flustered in {isBoy: his|{isGirl:her|their}} performance!
+    - Subjecting <i>Her</i> slaves to such demeaning rewards is so gratifying!
+    - Such self-conscious debasing delivers so much passion!
+}
+
+->->
+
+= slut_comment
+
+{shuffle:
+    - We have the privilege of witnessing a true pervert debase {isBoy:himself|{isGirl:herself|themself}}!
+    - Such a captivating whore for our attention!
+    - Observe how a deviant reprobate thrives before an audience!
+    - What debaucherous perversion we feast upon.
+    - Enjoy how unabashededly our {isBoy: heathen|harlot} {hasPenis: strokes|rubs} {isBoy: his|{isGirl:her|their}} {hasPenis: shaft|slit}.
+    - Unfettering the passions of <i>Her</i> slaves is pure ecstasy!
+    - This {isBoy: muttonmonger|painted hussy} is exactly where {isBoy: he|{isGirl: she|they}} belong.
+}
+
+->->
+
+
+= surprise_interrupt
+
+TODO: Vibrate controllers with rumble?
+/sound goddess_interruption
+/ambient none
+/wait 2
+/perform behold
+
+Ahhh. <i>She comes</i>.
+What a treat you have earned, trinket.
+
+/perform idle
+/music goddess
+/wait 1
+/scene None
+I will see you again, moppet.
+-> goddess_monitoring_intro_headmistress

@@ -24,7 +24,9 @@
     - rewards >= 10 :
         My, you have been good. Here for your reward?
         + [yes] -> choose_reward
-        + [no] No? Then out of my sight. -> exit
+        + [no]
+            No? Then out of my sight.
+            -> exit
     - else:
         You are not yet worthy.
         Raise your standing with my Mistresses

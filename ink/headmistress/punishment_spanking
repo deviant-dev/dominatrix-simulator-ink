@@ -122,6 +122,7 @@ the fine display you have for us. #52
 
 -> punish_continue
 
+
 = punish_continue
 
 /character headmistress arm_raise
@@ -208,6 +209,8 @@ What say you, {isBoy: toad|strumpet}? #79
     /perform serious
     Rectify this immediately, slave. #226
 
+TODO: Add option to say 'no' to masturbation and set 'Headmistress_player_masturbate' accordingly for nega intro
+
 - /perform idle
 Rub yourself until your {hasPenis: shaft is hard|slit is wet}. #227
  
@@ -243,9 +246,11 @@ Rub yourself until your {hasPenis: shaft is hard|slit is wet}. #227
  What say you, slave, will your {hasPenis: rod|folds} please our guests? #230
 
 + [yes]
+    ~ addObey()
     Excellent. Then let us continue. #231
       
 + [no]
+    ~ addDisobey()
     A disappointment. We shall continue anyways. #232
   
 - /perform smooth_skirt
@@ -279,7 +284,6 @@ Do you accept that you must be punished? #92
         ~ addObey()
         /perform serious
         Magnificent. Let us begin. #97
-TODO: This leave should not reset the game. It is too early in the tutorial. They should have to go back to Yuki and be told they can't continue until they accept a punishment with the Headmistress.
     ++ [no]
         ~ addDisobey()
         /character crowd angry_crowd
@@ -298,14 +302,10 @@ TODO: This leave should not reset the game. It is too early in the tutorial. The
         /perform point_to_leave
         -> exit
 
-    ++ [timeout] 
-        /perform pleased
-        You have had enough time to think. #103
-        Your punishment must begin. #104
-        Do you agree? #105
-        -> ask_punish_ready
+    ++ [timeout] -> accept_timeout
 
 + [timeout] 
+    -- (accept_timeout)
     /perform pleased
     You have had enough time to think. #103
     Your punishment must begin. #104
@@ -408,65 +408,32 @@ Consider one demerit paid in full. #145
 /character crowd cheers_loud
 /character headmistress
 
-- {obeyed(): -> GoodEnding | -> BadEnding}
+- {obeyed():
+    -> GoodEnding
+- else:
+    -> BadEnding
+}
 
-//Story branch: if player obeys and performs well, they are given the chance to collect their reward from the HM and masturbate for the crowd - skips the Nega Yuki reward scene and finishes with praise from the Goddess
+
 = GoodEnding
+
 /perform arm_raise
 You comported yourself quite well. #131
 What a crowd pleaser! #136
 You should be proud of your performance. #132
+/character crowd cheers
+/character headmistress
+-> FinalEnding
 
-In fact, your performance has been so deliciously obedient #134
-I wonder if you would like to perform further for our audience? #135
-TODO: record new VO lines
-You may claim your reward now if you do.
-
-+ [yes]
-    ~ removeReward()
-    /perform confused
-    /character crowd claps
-    /character headmistress
-    Ahhhh. What a crowd pleaser! #136
-    You shall masturbate for them as your reward.
-    /character headmistress idle
-    -> Headmistress_player_masturbate ->
-    
-+ [no]
-    /perform serious
-    A shame you do not have more in you, #137
-    but you have done well. #138
-    /character crowd cheers
-    /character headmistress
-     -> FinalEnding
-
-- {inTutorial:
-    -> surprise_interrupt
-}
 
 = BadEnding
+
 /perform sassy
 You may have finished enduring your punishment, #140
 but your overall performance was quite unsatisfactory. #141
 You have a long ways to go. #249
+-> FinalEnding
 
-// Perhaps you would rather play with yourself for your new fans? #142
-
-// + [yes]
-//     /perform confused_nega
-//     Too bad. Then you should have thought of that sooner. #143
-//     /character crowd boos
-//     /character headmistress
-
-// + [no] 
-//     /perform amused
-    
-//     Too bad. That's exactly what you're going to do. #144
-//     /character crowd cheers
-//     /character headmistress
-//     -> Headmistress_player_masturbate -> 
-
-- -> FinalEnding
 
 = FinalEnding
 
@@ -498,7 +465,7 @@ Stand at attention! #257
 // If in the tutorial, send player off to be tempted by her directly.
 - {inTutorial: 
     ~ tutorial_hm_intro_complete = true
-    -> nega_hub
+    -> nega_intro
 - else:
     -> exit
 }
@@ -781,21 +748,3 @@ There is hope for you yet. #223
 /perform paddle_desk
 -> exit
 
-
-= surprise_interrupt
-
-TODO: Vibrate controllers with rumble?
-/sound goddess_interruption
-/ambient none
-/wait 2
-/perform behold
-
-Ahhh. <i>She comes</i>.
-What a treat you have earned, trinket.
-
-/perform idle
-/music goddess
-/wait 1
-/scene None
-I will see you again, moppet.
--> goddess_monitoring_intro_headmistress

@@ -54,7 +54,7 @@ You're such a good {player_name}! #10
 Do you know why you're here? #11
 
  + [yes]
-    ~ addObey()
+    ~ addDisobey()
     /perform confused
 
     I don't see how you'd know that already. #12
@@ -67,7 +67,7 @@ Do you know why you're here? #11
     
     
 + [no]
-    ~ addDisobey()
+    ~ addObey()
     /perform serious
     Well, duh! #16
     You're not supposed to know. #17
@@ -101,6 +101,7 @@ Would you like to know what the rules are? #25
     ~ addObey()
     /perform excited
     Oh goody! I love telling people the rules! #26
+    -> two_rules
 
 + [no]
     ~ addDisobey()
@@ -108,6 +109,7 @@ Would you like to know what the rules are? #25
     Don't be a pouty baby. #27
     /perform angry
     You have to learn the rules or you can't be a good {player_name}! #28
+    -> two_rules
 
 + [timeout]
     /perform sighs
@@ -115,8 +117,9 @@ Would you like to know what the rules are? #25
     -> learn_rules
     
 + [distracted] -> Yuki_PayAttention -> learn_rules
+
     
-- (two_rules)
+= two_rules
 
 /perform nod
 The rules are simple! #30
@@ -162,7 +165,6 @@ Easy, right? #36
 
 //insert puppy pose test
 
-- (puppy_beg)
 /perform behold
 Let's practice! #45
 
@@ -173,11 +175,13 @@ Petting them. Kissing them. Feeding them. Walking them. #170
 Would you like to be my puppy? #171
 
 + [yes]
+    ~ addObey()
     /perform excited
     Oh my goodness! I'm just so excited! #172
-    -> pet_beg
+    -> puppy_beg
 
 + [no]
+    ~ addDisobey()
     /perform pouty
     What? But I'm so nice to my pets. #173
     You're not doing a good job of following instructions. #174
@@ -185,10 +189,13 @@ Would you like to be my puppy? #171
 - Just try it once for me, okay? #175
 
 + [yes]
+    ~ addObey()
     /perform clasp_hands
     I promise this will be worth it! #176
+    -> puppy_beg
 
 + [no]
+    ~ addDisobey()
     /perform cocks_head_to_left
     Well, that's really a shame! #177
     Maybe I'm just too nice for you. #178
@@ -197,8 +204,11 @@ Would you like to be my puppy? #171
 
 //make it to where the yuki ending gives them another chance to be a puppy or sets a variable on them that they don't like puppy play
 
+
+= puppy_beg
+
 ~ tries = 0
-- (pet_beg)
+- (retry)
 ~ tries++
 
 /perform serious
@@ -208,7 +218,7 @@ First, puppy has to beg for my attention. #180
 Down on your knees and raise your hands to beg. #181
 
 + [pose:puppy_beg]
-+ { tries < 2 } [timeout] -> pet_beg
++ { tries < 2 } [timeout] -> retry
 + { tries >= 2 } [timeout] ->
 
 - -> Yuki_GoodJob ->
@@ -234,8 +244,11 @@ I can't wait until I can play with my new puppy! #185
 - /perform clasp_hands
 You are a cute one! I really hope you do well here! #40
 Giving rewards is so much more fun than punishing. #41
+-> good_yuki
 
-- (good_yuki)
+
+= good_yuki
+
 /perform serious
 Do you like being a good {player_name}? #42
 
@@ -326,7 +339,7 @@ So. You're the new one, huh? #60
 -(nega_ask_again)
 
 + [yes]
-    ~ addDisobey()
+    ~ addObey()
     /perform inspect
     Not too bad. You have potential. #61
     
@@ -334,7 +347,7 @@ So. You're the new one, huh? #60
     Though, I'm not too picky. #62
 
 + [no]
-    ~ addObey()
+    ~ addDisobey()
     /perform laugh
     Not new, huh? #63
     
@@ -399,13 +412,13 @@ When I swing my hand, you better fucking jerk your head. #193
 Ready? #194
 
 + [yes]
-    ~ addObey()
+    ~ addDisobey()
     That's right, bitch. #195
     You'll take this like a good little cunt. #196
     -> try_slap
 
 + [no]
-    ~ addDisobey()
+    ~ addObey()
     /perform annoyed
     No? #197
     Then you're not going to like me very much. #198
@@ -417,12 +430,12 @@ Obedient pain sluts get special rewards around here. #199
 Do you want to change your mind and take a slap? #200
 
 + [yes]
-    ~ addObey()
+    ~ addDisobey()
     /perform licks_lips
     Ahhhh. Sweet music to my ears! #201
 
 + [no]
-    ~ addDisobey()
+    ~ addObey()
     /perform head_toss
     Pity. You have no idea what you're missing. #202
     -> going_on

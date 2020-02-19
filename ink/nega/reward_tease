@@ -52,7 +52,7 @@ Aren't you?
  
 - /perform behold
 {shuffle:
-    - Just a rotten little bitch I should crush under my boot.
+    - You're just a rotten little bitch I should crush under my boot.
     - A wretched little slut who just wants to be used.
     - A horny piece of meat waiting to be devoured.
     }
@@ -87,7 +87,8 @@ You just can't stay away, can you?
 
 + [yes]
     ~ addDisobey()
-    Then what the fuck are you doing here?
+   That bloodstone you just added to my pile says different.
+   
 + [no]
     ~ addObey()
     Too curious for your own good.
@@ -223,7 +224,7 @@ does the sight of my boots turn you on?
 - 
 We're going to make sure the sight of my boots
 /perform cross_leg_tease
-make you want to cream your pants.
+makes you want to cream your pants.
 
 {shuffle:
     - You're going to masturbate for me until you want to cum your brains out.
@@ -317,7 +318,7 @@ You should be able to last longer than that.
     -> edge_boots
     
 + [no]
-    I think your lying.
+    I think you're lying.
     I think you want a lot more.
     Don't you?
     

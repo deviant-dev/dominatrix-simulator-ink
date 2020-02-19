@@ -41,8 +41,6 @@ Now go and fail me no further {player_name}. #13
 ~ inTutorial = false
 ~ tutorial_goddess_outro_angry_complete = true
 
-// This wait also clears the subtitle
-+ [wait]
 - -> exit
 
 === goddess_monitoring_intro_headmistress ===
@@ -84,6 +82,4 @@ Go forth and please me, {player_name}.
 ~ inTutorial = false
 ~ tutorial_goddess_outro_happy_complete = true
 
-// This wait also clears the subtitle
-+ [wait]
 - -> exit

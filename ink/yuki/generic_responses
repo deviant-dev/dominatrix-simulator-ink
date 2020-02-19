@@ -1,5 +1,5 @@
 
-
+//response to player distraction
 === Yuki_PayAttention ===
 
 /perform yuki_idle
@@ -25,7 +25,7 @@
 
 + [timeout] -> Yuki_PayAttention ->->
 
-// This is better for verbal commands.
+//Response to timeouts to questions
 === Yuki_Timeout ===
 
 {cycle:
@@ -42,7 +42,7 @@
 
 ->->
 
-// This is better for actions.
+//Response to timeouts to actions
 === Yuki_Interested ===
 
 {cycle:

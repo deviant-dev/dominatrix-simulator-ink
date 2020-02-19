@@ -2,8 +2,8 @@
 
 ~ setScene(task_scene, Yuki)
 
-<i>Insert fanning task here.</i>
-<i>Let's pretend you've been bad and good.</i>
+<<< Insert fanning task here. >>>
+<<< Let's pretend you've been bad and good. >>>
 ~ addPunishment()
 ~ addReward()
 

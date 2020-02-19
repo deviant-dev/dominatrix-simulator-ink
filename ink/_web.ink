@@ -103,6 +103,8 @@ VAR web = true
 
 === game_start ===
 
+{ isWeb(): -> table_of_contents }
+
 // Make sure deviation is set in case the story state was reset
 // via 'RestartStory()' in StoryTeller.
 -> set_deviation ->
@@ -113,15 +115,12 @@ VAR web = true
         -> yuki_hub
     - deviation == hand_signals:
         -> headmistress_hub
-    - isWeb():
-        -> table_of_contents
     - else:
         -> game_intro
 }
 
 
 === table_of_contents ===
--> unlock_shortcuts ->
 
 + <b>DomSim: Threshold</b>
     ~ setDeviation(tutorial)
@@ -130,6 +129,10 @@ VAR web = true
 + <b>DomSim: Threshold Replay</b>
     ~ setDeviation(tutorial)
     -> unlock_shortcuts -> game_intro_again.force
+    
++ <b>DomSim: Threshold Demo</b>
+    ~ setDeviation(demo)
+    -> game_intro_web
     
 // + Full Game (WIP)
 //     ~ setDeviation(full_game)

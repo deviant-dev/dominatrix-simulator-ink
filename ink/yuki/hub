@@ -70,7 +70,9 @@ No punishments or rewards, huh?
 - (check_task) Looking to serve me, then?
 
 + [yes] -> choose_task
-+ [no] Okay. *pouts*
++ [no]
+    /perform pouts
+    Okay.
     Maybe some other time then.
     -> exit
 
