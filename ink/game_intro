@@ -45,8 +45,6 @@
 
 === game_intro_again ====
 
-// {isWeb(): -> table_of_contents}
-
 - (force)
 ~ tutorial_step = at_game_intro
 ~ setScene(intro_scene, None)

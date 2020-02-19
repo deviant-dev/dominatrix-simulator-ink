@@ -136,7 +136,14 @@
 ~ reward_just_removed = false
 ~ punishment_just_removed = false
 ~ changeRegard(-1)
-/log Punishment Added: {getSummaryText()}
+
+{isWeb():
+    <b>Punishment Added</b>
+	<i>{getSummaryText()}</i>
+- else:
+    /log Punishment Added: {getSummaryText()}
+}
+
 ~ return true
 
 
@@ -149,7 +156,14 @@
 ~ punishments--
 ~ reward_just_removed = true
 ~ punishment_just_removed = false
-/log Punishment Removed: {getSummaryText()}
+
+{isWeb():
+    <b>Punishment Removed</b>
+	<i>{getSummaryText()}</i>
+- else:
+    /log Punishment Removed: {getSummaryText()}
+}
+
 ~ return true
 
 
@@ -162,7 +176,14 @@
 ~ punishments -= 10
 ~ reward_just_removed = false
 ~ punishment_just_removed = false
-/log Punishment x10 Removed: {getSummaryText()}
+
+{isWeb():
+    <b>Punishment x10 Removed</b>
+	<i>{getSummaryText()}</i>
+- else:
+    /log Punishment x10 Removed: {getSummaryText()}
+}
+
 ~ return true
 
 
@@ -176,7 +197,14 @@
 ~ reward_just_removed = false
 ~ punishment_just_removed = false
 ~ changeRegard(1)
-/log Reward Added: {getSummaryText()}
+
+{isWeb():
+    <b>Reward Added</b>
+	<i>{getSummaryText()}</i>
+- else:
+    /log Reward Added: {getSummaryText()}
+}
+
 ~ return
 
 
@@ -189,7 +217,14 @@
 ~ rewards--
 ~ punishment_just_removed = true
 ~ reward_just_removed = false
-/log Reward Removed: {getSummaryText()}
+
+{isWeb():
+    <b>Reward Removed</b>
+	<i>{getSummaryText()}</i>
+- else:
+    /log Reward Removed: {getSummaryText()}
+}
+
 ~ return true
 
 
@@ -202,7 +237,14 @@
 ~ rewards -= 10
 ~ punishment_just_removed = true
 ~ reward_just_removed = false
-/log Reward x10 Removed: {getSummaryText()}
+
+{isWeb():
+    <b>Reward x10 Removed</b>
+	<i>{getSummaryText()}</i>
+- else:
+    /log Reward x10 Removed: {getSummaryText()}
+}
+
 ~ return true
 
 
