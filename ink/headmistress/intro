@@ -166,15 +166,16 @@ Hmmmm. But also Obsidian. #45
 Entering the Goddess's chambers unbidden!  #49
 This is a serious infraction. #50
 
+~ tries = 0
 - (stand_straight)
-- (stand_straight_tries)
+~ tries++
 
 /perform one_finger
 Stand at attention! #57
 
 + [pose:raised_chin]
-+ { stand_straight_tries < 2 } [timeout] -> stand_straight
-+ { stand_straight_tries >= 2 } [timeout] -> Headmistress_Timeout -> stand_straight
++ { tries < 2 } [timeout] -> stand_straight
++ { tries >= 2 } [timeout] -> Headmistress_Timeout -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
 - -> Headmistress_GoodJob -> 

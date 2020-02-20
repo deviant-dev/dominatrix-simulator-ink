@@ -437,8 +437,7 @@ You have a long ways to go. #249
 
 = FinalEnding
 
-/character headmistress
-/perform idle
+/character headmistress idle
 
 ~ tries = 0
 - (stand_straight)

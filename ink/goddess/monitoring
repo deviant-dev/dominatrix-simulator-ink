@@ -8,8 +8,7 @@
     - /scene Huge.InHand
 }
 
-/character goddess
-/perform curious
+/character goddess curious
 /music goddess
 
 

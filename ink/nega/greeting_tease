@@ -39,7 +39,10 @@ Come here and kiss my boot, worm!
 Very good, accept your place beneath me. 
 Embrace that which will hurt you!
 
+~ tries = 0
 - (ask_clean_boot) 
+~ tries++
+
 I stepped outside earlier and got the bottoms of my boots dirty.
 
 {cycle:
@@ -54,7 +57,7 @@ I stepped outside earlier and got the bottoms of my boots dirty.
 + [No]
     You ungrateful loser! Here's a piece of Obsidian. 
     ~ demerits++
-    { ask_clean_boot < 12:
+    { tries < 12:
         -> ask_clean_boot
     - else:
         -> deny_boot_lick

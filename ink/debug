@@ -31,7 +31,7 @@
 // /character goddess
 
 // -> entry_intro
-// -> goddess_intro.debug_jump
+-> goddess_intro.debug_jump
 // -> goddess_intro.stand_straight
 // -> goddess_intro.inspection
 // -> goddess_intro.ByeForNow
@@ -43,7 +43,7 @@
 // --- Yuki Jumps ---
 // -> yuki_hub
 // -> yuki_intro
--> yuki_intro.easy_rules
+// -> yuki_intro.easy_rules
 // -> select_gender_check ->
 // /scene entry.intro3
 // -> test_look
