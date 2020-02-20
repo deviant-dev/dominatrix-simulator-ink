@@ -137,8 +137,7 @@ Do you understand, {isBoy: simpleton|ninny}?
     
 + [no]
     -- (instructions_check)
-    TODO: Rewrite: Won't they have words if they have the slave voice on? -Deviant
-    You will communicate without words when you are ready to cum.
+    You will communicate when you are ready to cum.
     <b>"Nod"</b> your head 'yes' to ask permission to orgasm.
     Cum when I give you leave.
     
@@ -192,14 +191,25 @@ Are you ready, {isBoy: toad|strumpet}?
 + [timeout] -> Headmistress_Timeout -> ready
 + [distracted] -> Headmistress_PayAttention -> ready
 
-- 
+- (give_reward)
 
-TODO: This reward removal has been moved up to when the reward starts to prevent getting rewards and quitting before the bloodstone is taken. Might need more dialog to support it. Have player hand it over? - Deviant
+/character Headmistress hand_out
+{shuffle:
+    - Time to turn over your Bloodstone, speck.
+    - Present your wrist that I may remove your Bloodstone.
+    - Thrust your wrist forward to spend one of your Bloodstones.
+}
 
-~removeReward()
-One Bloodstone has been removed from your wrist.
++ [pose:present_wrist_reward]
++ [no] -> Headmistress_CheckIfInterested -> give_reward
++ [timeout] -> Headmistress_BadJob -> give_reward
++ [distracted] -> Headmistress_PayAttention -> give_reward
 
-/perform arm_raise
+- /perform swipe_hand
+~ removeReward()
+
+- /perform arm_raise
+-> Headmistress_AcknowledgeYes ->
 You may {hasPenis: wrap your hand around your rod|slip your fingers between your nether lips} and reward yourself.
 
 - (masturbate)
@@ -241,9 +251,20 @@ You may {hasPenis: wrap your hand around your rod|slip your fingers between your
     ~ tutorial_hm_bonus_complete = true
 }   
 
-TODO: Ask when player is done 'releasing'? - Deviant
+- (finish)
 
-Such a bold performance, foible!
+{stopping:
+    - Are you spent, {player_name}?
+    - Have you finished releasing, {isBoy: toad|strumpet}?
+    - Such a {isBoy: hedonist|harlot}! Are you quite through with your orgasm?
+}
+
++ [yes]
+   -> Headmistress_AcknowledgeYes ->
+
++ [timeout] -> Headmistress_Timeout -> finish
+
+- Such a bold performance, foible!
 I sense that you are spent with that reward.
 
 - (enjoy)
@@ -312,10 +333,16 @@ TODO: move lines below from generic responses once they are cleaned up
 = masturbation_comment
 //need to make it so the code will use either slut or embarassment comments, depending on the variable. 
 
-{ shuffle:
-    - -> Headmistress_masturbation_comments ->
-    - -> embarassment_comment ->
-    - -> slut_comment ->
+{embarassed:
+    { shuffle:
+        - -> Headmistress_masturbation_comments ->
+        - -> embarassment_comment ->
+    }
+    - else:
+    { shuffle:
+        - -> Headmistress_masturbation_comments ->
+        - -> slut_comment ->
+    }
 }
 
 ->->
