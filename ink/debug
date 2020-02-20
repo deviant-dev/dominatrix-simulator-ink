@@ -29,7 +29,6 @@
 // -> goddess_hub
 // /scene bedroom.intro
 // /character goddess
-// /move
 
 // -> entry_intro
 // -> goddess_intro.debug_jump
@@ -44,6 +43,7 @@
 // --- Yuki Jumps ---
 // -> yuki_hub
 // -> yuki_intro
+-> yuki_intro.easy_rules
 // -> select_gender_check ->
 // /scene entry.intro3
 // -> test_look

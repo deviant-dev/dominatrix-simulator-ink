@@ -134,28 +134,12 @@ VAR web = true
     ~ setDeviation(demo)
     -> game_intro_web
     
-// + Full Game (WIP)
-//     ~ setDeviation(full_game)
-//     -> game_intro_web
-
-// + Goddess Intro 
-//     -> goddess_intro
-
-// + Entryway Intro (Yuki and Nega)
-//     -> yuki_intro
-
-// + Headmistress Intro
-//     -> headmistress_intro
-
 + Headmistress Punishment - Spanking 
     -> unlock_all -> headmistress_punishment_spanking
 
 + Headmistress Task - Hand Signals
     ~ setDeviation(hand_signals)
     -> unlock_all -> headmistress_task_handsignals
-
-// + Nega Intro 
-//     -> unlock_all -> nega_intro
 
 + Nega Reward - Forced Sex
     -> unlock_all -> nega_reward_forcedsex

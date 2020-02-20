@@ -5,6 +5,8 @@
 {inTutorial && tutorial_step != at_hm_intro:
     ~ tutorial_step = at_hm_bonus
     ~ hm_bonus_shortcut = true
+    ~ punishments = 0
+    ~ rewards = 1
 }
 
 ~ setHub(Headmistress)
