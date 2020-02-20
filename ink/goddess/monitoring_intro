@@ -4,6 +4,7 @@
 ~ rewards = 0
 ~ punishments = 0
 ~ tutorial_step = at_goddess_outro
+~ goddess_shortcut = true
 ~ setScene(intro_scene, Goddess)
 
 /scene Huge.InHand
@@ -49,6 +50,7 @@ Now go and fail me no further {player_name}. #13
 ~ rewards = 0
 ~ punishments = 0
 ~ tutorial_step = at_goddess_outro
+~ goddess_bonus_shortcut = true
 ~ setScene(intro_scene, Goddess)
 
 /scene Huge.InHand

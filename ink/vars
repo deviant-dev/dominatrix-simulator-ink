@@ -34,7 +34,9 @@ LIST tutorial_step = (at_game_intro), at_goddess_intro, at_yuki_intro, at_hm_int
 VAR yuki_shortcut = false
 VAR nega_shortcut = false
 VAR hm_shortcut = false
+VAR goddess_shortcut = false
 VAR hm_bonus_shortcut = false
+VAR goddess_bonus_shortcut = false
 
 // Achievement Tracking
 VAR tutorial_goddess_intro_complete = false
