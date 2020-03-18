@@ -61,9 +61,9 @@
 + {deviation != demo && yuki_shortcut}[move: Yuki] -> yuki_intro
 + {deviation != demo && hm_shortcut}[move: Headmistress] -> headmistress_intro
 + {deviation != demo && nega_shortcut}[move: Nega] -> nega_intro.skip_checks
-+ {deviation != demo && goddess_shortcut}[move: Goddess] -> goddess_monitoring_intro_nega
++ {deviation != demo && goddess_angry_shortcut}[move: Goddess] -> goddess_monitoring_intro.angry
 + {deviation != demo && hm_bonus_shortcut}[move: Headmistress Bonus] -> headmistress_hub
-+ {deviation != demo && goddess_bonus_shortcut}[move: Goddess Bonus] -> goddess_monitoring_intro_headmistress
++ {deviation != demo && goddess_pleased_shortcut}[move: Goddess Bonus] -> goddess_monitoring_intro.pleased
 
 
 === game_intro_web ===

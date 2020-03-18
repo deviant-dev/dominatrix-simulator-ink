@@ -23,13 +23,13 @@
 = hello
 
 { headmistress_regard >= 10: 
-    I am pleased to see you, bauble.
+    I am pleased to see you, bauble. #01
 - else:
     {shuffle:
-        - Greetings, {isBoy: peon|moppet}.
-        - Welcome back, flawed one.
-        - I see you cannot stay away, trinket.
-        - You continue to return.
+        - Greetings, {isBoy: peon|moppet}. #02
+        - Welcome back, flawed one. #03
+        - I see you cannot stay away, trinket. #04
+        - You continue to return. #05
     }
 }
 
@@ -42,22 +42,22 @@
 
 = check_punishment
 
-Are you here to pay your punishment?
+Are you here to pay your punishment? #06
 + [yes] -> choose_punishment
 + [no]
-    No?
+    No? #07
     -> check_task
 
 
 = check_reward
 
-Are you here to receive your reward?
+Are you here to receive your reward? #08
 
 + [yes] -> choose_reward
 + [no]
-    No? 
-    Abstaining from pleasure, I see.
-    How restrained.
+    No?  #09
+    Abstaining from pleasure, I see. #10
+    How restrained. #11
     -> check_task
 
 
@@ -66,10 +66,10 @@ Are you here to receive your reward?
 { inTutorial: -> goodbye }
 
 { punishments == 0 && rewards == 0:
-    No rewards or punishments, huh?
-    You must be here to serve me!
+    No rewards or punishments, huh? #12
+    You must be here to serve me! #13
 - else:
-    Shall I give you a task then?
+    Shall I give you a task then? #14
 }
 
 + [yes] -> choose_task
@@ -86,12 +86,12 @@ Are you here to receive your reward?
 
 
 = choose_reward
-/perform behold
+/perform open_arms_behold
 
 {shuffle:
-    - Then a reward you shall have.
-    - It is so pleasing when trinkets have earned a reward.
-    - Rewards are preferable to punishments.
+    - Then a reward you shall have. #15
+    - It is so pleasing when trinkets have earned a reward. #16
+    - Rewards are preferable to punishments. #17
 }
   
 {inTutorial: -> headmistress_reward_exhibitionism }
@@ -116,8 +116,8 @@ Are you here to receive your reward?
 
 = goodbye
 
-Then I have nothing for you.
-Begone.
+Then I have nothing for you. #18
+Begone. #19
 
 -> exit
 

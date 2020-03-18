@@ -31,12 +31,13 @@ LIST current_mistress = (None), Goddess, Headmistress, Yuki, Nega
 LIST tutorial_step = (at_game_intro), at_goddess_intro, at_yuki_intro, at_hm_intro, at_nega_intro, at_hm_bonus, at_goddess_outro
 
 // Tutorial Progress Unlocks
+VAR goddess_shortcut = false
 VAR yuki_shortcut = false
 VAR nega_shortcut = false
 VAR hm_shortcut = false
-VAR goddess_shortcut = false
+VAR goddess_angry_shortcut = false
+VAR goddess_pleased_shortcut = false
 VAR hm_bonus_shortcut = false
-VAR goddess_bonus_shortcut = false
 
 // Achievement Tracking
 VAR tutorial_goddess_intro_complete = false
@@ -77,6 +78,7 @@ VAR headmistress_signal_basics_difficulty = 1
 VAR headmistress_signal_endurance_difficulty = 1
 VAR headmistress_signal_furniture_difficulty = 1
 VAR headmistress_has_audience = false
+VAR headmistress_masturbated_for_crowd = false
 
 // Nega Variables
 VAR nega_regard = 0

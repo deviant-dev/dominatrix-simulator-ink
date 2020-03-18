@@ -9,7 +9,7 @@
 Do you remember from before, about how much I like puppies? #45
 
 + [yes]
-    /perform bounces
+    /perform bouncing_big
     Oh good! I'm glad you remember! #46
 
 + [no]
@@ -35,7 +35,7 @@ Being my puppy? #52
     
 + [no]
     -- (check_again_puppy)
-    /perform behold
+    /perform open_arms_behold
     Oh, come on. Please? #54
     /perform clasp_hands
     It would make me so happy! #55
@@ -51,7 +51,7 @@ Being my puppy? #52
 + [timeout] -> Yuki_Timeout -> be_puppy
 + [distracted] -> Yuki_PayAttention -> be_puppy
 
-- /perform bounces
+- /perform bouncing_big
 I love having new puppies to play with. #57
 
 /perform lean_forward
@@ -180,14 +180,14 @@ I'll make sure you get lots of practice! #90
 /perform idle_yuki
 Eventually, I'm going to test you on all your commands. #91
 
-/perform bounces
+/perform bouncing_big
 Won't that be so much fun? #92
 
 /perform idle_yuki
 Remember to answer like a proper puppy would. #93
 
 + [pose:puppy_yes]
-    /perform bounces
+    /perform bouncing_big
     You're learning so fast! #94
     I can't wait until you're fully trained! #95
 
@@ -214,7 +214,7 @@ But I'm sure you'll do super well! #104
 
 /perform idle_yuki
 That's it for today, puppy. #105
-/perform bounces
+/perform bouncing_big
 Come visit me again soon! #106
 
 ->->

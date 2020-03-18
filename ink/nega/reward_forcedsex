@@ -147,7 +147,9 @@ Aren't you? #24
 - /perform looming
 I'm about to use you like the eager little whore you are. #31
 Let's find out how well you can fuck. #32
+/emotion aroused 50
 I'm going to ride that {hasPenis: cock|strap-on} of yours #33
+/emotion excited 70
 until I cum my fucking brains out! #34
 
 - (like_that)
@@ -169,9 +171,7 @@ Would you like that, {isBoy: prick|bitch}? #35
 //player needs to be told to move their controller to their crotch
 //Need to teach the player how to move their controller like a cock/pussy and how to thrust to a beat/rhythm
 
-{inTutorial:
-    -> nega_intro.surprise_interrupt
-}
+
 
 /perform squat_over_player_crotch
 Ahhhh! That's it! #41
@@ -316,6 +316,10 @@ Decent. Let's pick up the pace, huh? #51
 
 +[wait 5]
 
+{inTutorial:
+    -> nega_intro.surprise_interrupt
+}
+
 - -> Nega_Objectify ->
 
 +[wait 5]
@@ -323,6 +327,7 @@ Decent. Let's pick up the pace, huh? #51
 - -> Nega_GoodJob ->
 
 +[wait 5]
+
 
 // - (thrust_restart)
 

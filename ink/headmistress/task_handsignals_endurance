@@ -79,10 +79,10 @@ Rise up to your toes.
 
 // -> pose3 ->
 
-// /perform bounces
+// /perform bouncing_big
 // Oh, you're such a good puppy, learning all of those poses. #125
 
-// /perform behold
+// /perform open_arms_behold
 // Don't forget, you need to remember those for future practice sessions! #126
 // And also tests! #127
 
@@ -228,10 +228,10 @@ Rise up to your toes.
 
 // Your last lesson for today is to <b>roll over</b> onto your back! #123
 
-// /perform behold
+// /perform open_arms_behold
 
 // This one is going to lead to lots of fun! #38
-// /perform bounces
+// /perform bouncing_big
 
 // ~ tries = 0
 // - (back)

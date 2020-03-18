@@ -6,11 +6,11 @@
 /scene attic.punishment_tease
 /music nega-punishment
 /ambient off
-/character nega annoyed
+/character nega shake_head_annoyed
 
 - (tease_intro)
 
-You've earned a little tease for that roll.
+You've only earned a little pain for that roll, {isBoy: worm|{isGirl:cunt|wretch}}.
 
 {shuffle:
     - Fucking dice... spoiling my fun.
@@ -19,10 +19,9 @@ You've earned a little tease for that roll.
     - I'm going to hook you like a fish.
     - Let's get this over with so I can go find some /real/ fun.
 }
-  
-- I won't be too hard on you.
-Promise. 
-/perform angry
+
+- (insult)
+/perform fists_on_hips_stomp
 {shuffle:
     - You're a disgusting stain.
     - You're a nasty pile of shit.
@@ -32,21 +31,26 @@ Promise.
 }
   //TODO: update script to be meaner and harder on player. Follow same structure    
 Isn't that right?
+
     +[yes]
         That's right. 
         Just a rotten little bitch I should crush under my boot.
     +[no]
-        Then I guess it's time I teach you your place.
-   
+        -> Nega_Unhappy ->
+        
+ + [timeout] -> Nega_Timeout -> insult
+ + [distracted] -> Nega_PayAttention -> insult      
+
+-  
 ~ tries = 0
 - (kneel_tease)
 ~ tries++
 
 {shuffle:
-    - Get down on your goddamn knees.
-    - On your knees, bitch.
-    - Kneel, cunt.
-    - Down! I want you on your knees.
+    - On your hands and knees, dog!
+    - Get down on the fucking floor. Hands and knees.
+    - Hands and knees, cunt.
+    - Down! I want you on your hands and knees.
     }
 
 + [pose:kneel]
@@ -55,7 +59,7 @@ Isn't that right?
 
 - -> Nega_GoodJob ->
 
-/perform angry
+/perform fists_on_hips_stomp
 You can't fucking hide from me.
 I see what you are.
 

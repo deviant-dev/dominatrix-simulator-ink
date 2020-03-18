@@ -4,6 +4,7 @@
 ~ punishments = 0
 ~ rewards = 0
 ~ tutorial_step = at_goddess_intro
+~ goddess_shortcut = true
 ~ setScene(intro_scene, Goddess)
 
 - (flash_scenes)
@@ -37,7 +38,7 @@
 
 - Oh... How rude. #01
 ~ addPunishment()
-/perform bored
+/perform inspect_hand_bored
 And I was having so much fun. #02
 /emotion angry 40
 Ah, well... #03
@@ -51,7 +52,7 @@ Did Mistress Yuki-Onna let you in? #05
 
 - (ask_entry)
 + [yes]
-    /perform annoyed angry 50
+    /perform shake_head_annoyed angry 50
     I've told that girl not to interrupt me #06
     when I'm playing with my toys. #07
 + [no]
@@ -77,7 +78,7 @@ Did Mistress Yuki-Onna let you in? #05
     -> ask_entry
 + [distracted] -> Goddess_PayAttention -> ask_entry2
 
-- /perform behold neutral
+- /perform open_arms_behold neutral
 Well, you can't stay here. #19
 
 /perform fake_annoyed
@@ -98,7 +99,7 @@ Are you? #22
    You are nowhere near worthy. #24
     
 + [no]
-    /perform agreement happy 50
+    /perform idle_gesture happy 50
     Now, that is a very honest answer. #25
     /perform idle
     Perhaps I will give you a chance to prove your worth. #26
@@ -111,14 +112,14 @@ Are you? #22
     
 + [distracted] -> Goddess_PayAttention -> ask_exceptional_again
 
-- /perform agreement aroused 50
+- /perform idle_gesture aroused 50
 I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
   
 /perform idle
 
 - (ask_spying)
 + [yes]
-  /perform amused happy 50
+  /perform idle_tease happy 50
   Of course it did. #29
   I bet you'd like to see more of that, wouldn't you? #30
   /perform lean_forward
@@ -128,7 +129,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 + (spying_no)[no]
     /perform thoughtful neutral
     No? How disappointing. #33
-    /perform behold
+    /perform open_arms_behold
     I don't think you're going to be much fun at all. #34
     -> ask_spying_done
     
@@ -164,17 +165,17 @@ I bet you have no idea where you are, do you? #36
 
 + [yes]
     // /perform laugh
-    /perform amused skeptical
+    /perform idle_tease skeptical
     You think you know where you are? #37
     You have no clue. #38
     
 + [no]
-    // /perform agreement
-    /perform amused amused 50
+    // /perform idle_gesture
+    /perform idle_tease amused 50
     Of course you don't. #39
     
 + (ask_where_again)[timeout]
-    /perform angry angry 50
+    /perform fists_on_hips_stomp angry 50
     Well... do you have any idea where you are? #40
     -> ask_where
     
@@ -183,18 +184,18 @@ I bet you have no idea where you are, do you? #36
 - /perform lean_forward amused 50
 You're just a tiny little mouse stuck in a maze. #41
 
-/perform behold
+/perform open_arms_behold
 You may never find your way out again. #42
 
 /perform thoughtful neutral
 
 This is no ordinary house, mind you. #43
 
-/perform annoyed
+/perform shake_head_annoyed
 
 Even so. You are here now. #44
 
-/perform bored
+/perform inspect_hand_bored
 
 And you won't be going anywhere for quite a while. #45
 
@@ -256,12 +257,12 @@ Do you understand? #60
     -> Goddess_GoodJob ->
 
 + [no]
-    /perform annoyed disgusted
+    /perform shake_head_annoyed disgusted
     Let's try this again. Your name is now "{player_name}". #62
     /perform unhappy
     Everyone who meets you will refer to you as "{player_name}". #63
     One day, if you are very <i>very</i> good, you may earn a new name. #64
-    /perform behold amused
+    /perform open_arms_behold amused
     But for now, your name is "{player_name}". #65
 
 + [timeout]
@@ -278,7 +279,7 @@ Do you understand? #60
 /perform idle neutral
 
 I really must send you away soon. #70
-/perform bored neutral
+/perform inspect_hand_bored neutral
 But first, let me have a good look at you. #71
 
 + [continue]
@@ -318,13 +319,13 @@ You don't mind, do you? #79
 /perform idle
 
 + [yes] How unfortunate\. #80
-    /perform annoyed disgusted
+    /perform shake_head_annoyed disgusted
     Honestly, I don't even know why I bother asking. #81
 + [no]
     /perform sassy aroused
     Mmm... I think someone might be enjoying this. #82
 + [timeout]
-    /perform behold skeptical
+    /perform open_arms_behold skeptical
     That's alright. It's not like you have a choice anyway. #83
 + [distracted] -> Goddess_PayAttention -> stand_straight
 
@@ -386,7 +387,7 @@ Now then... #90
 
 Mmmmm... so much delicious flesh to work with. #94
 
-/perform amused
+/perform idle_tease
 
 Strong bones and muscles. #95
 /perform thoughtful
@@ -423,7 +424,7 @@ I want to see you present yourself more fully to me. #100
 Look at you. So obedient. So ready. #101
 
 /wait 2
-/perform behold neutral
+/perform open_arms_behold neutral
 You may go. But first, a reward. #102
 /perform thoughtful amused
 You may show me how much you appreciate my instruction. #103
@@ -447,7 +448,7 @@ Bow down, kiss, then back to your pose like a good little {player_name}. #105
     /perform confused
     Turning down such a reward. You are a strange one. #107
 
-- /perform angry neutral
+- /perform fists_on_hips_stomp neutral
 
 That's enough. #108
 
@@ -466,13 +467,13 @@ Come back up to your feet, {player_name}. #158
 - /emotion amused 
 You might just prove useful one day, #109
 
-/perform bored neutral
+/perform inspect_hand_bored neutral
 
 but you'll need much more training first. #110
 
-/performance agreement
+/perform talking_casual
 Off to Mistress Yuki-Onna with you. #111
-/perform behold
+/perform open_arms_behold
 I'm sure she can show you the ropes, so to speak. #112
 
 
@@ -497,7 +498,7 @@ I'm sure she can show you the ropes, so to speak. #112
 
 = DemandApology
 
-/perform angry angry
+/perform fists_on_hips_stomp angry
 /wait
 
 { cycle:
@@ -533,7 +534,7 @@ Don't let it happen again. #147
 These are the sorts of tasks demanded of you here. #148
 - (check_again)
 
-/perform behold skeptical
+/perform open_arms_behold skeptical
 
 Are you willing to simply do as I say like a good {player_name}? #149
 
@@ -549,13 +550,13 @@ Are you willing to simply do as I say like a good {player_name}? #149
 
 Really? #150
 
-/perform angry 50
+/emotion angry 50
 
 We will need to be rid of you if you can't perform. #151
 
 Your willingness to serve is, after all, why you are here. #152
 
-/perform annoyed neutral
+/perform shake_head_annoyed neutral
 
 So I'll ask one last time: #153
 
@@ -577,7 +578,7 @@ There is hope for you yet. #157
 
 = NotInterested
 
-/perform annoyed disgusted
+/perform shake_head_annoyed disgusted
 Then away with you. #155
 Perhaps another time when you are ready to learn your place. #156
 

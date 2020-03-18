@@ -8,9 +8,9 @@
 - (intro_again)
 /perform smooth_skirt
 
-The time has come to accelerate your performance, heathen.
-To earn your place as cherished possession, you must embody attentiveness!
-Do you desire to be cherished, bauble?
+The time has come to accelerate your performance, heathen. #01
+To earn your place as cherished possession, you must embody attentiveness! #02
+Do you desire to be cherished, bauble? #03
 
 + [yes]
     -> Headmistress_AcknowledgeYes ->
@@ -18,73 +18,73 @@ Do you desire to be cherished, bauble?
 + [no]
     /perform disappointed
    -> Headmistress_Unhappy ->
-   I will ask you again.
+   I will ask you again. #04
     
-    Do you desire to be cherished?
+    Do you desire to be cherished? #05
     
     ++ [Yes]
     -> Headmistress_AcknowledgeYes ->
-    Then let us continue.
+    -> Headmistress_Resume ->
     
     ++ [No]
         /perform open_arms_shrug
         -> Headmistress_Unhappy ->
-        I have misjudged your readiness.
-        Return when you are further molded.
+        I have misjudged your readiness. #06
+        Return when you are further molded. #07
         -> exit
 
 + [timeout] -> Headmistress_Timeout -> intro_again
 + [distracted] -> Headmistress_PayAttention -> intro_again
 
 - /perform idle
-To be cherished, one must be entirely fixated upon one's Mistress.
+To be cherished, one must be entirely fixated upon one's Mistress. #08
 
 ~ tries = 0
 - (come)
 ~ tries++
 
 /perform arm_raise
-Come hither.
+Come hither. #09
 
 + [move]
    
 + { tries < 2 } [timeout]
     -> come
 + { tries >= 2 } [timeout]
-    -> Headmistress_Interested -> come
+    -> Headmistress_NoAction -> come
 + [distracted] -> Headmistress_PayAttention -> come
 
-- The time has come to train you to respond to commands without words.
-Attend to my hand, peasant.
+- The time has come to train you to respond to commands without words. #10
+Attend to my hand, peasant. #11
 
-Through the delicate position of my fingers,
-I signal to you a position your body must obey.
+Through the delicate position of my fingers, #12
+I signal to you a position your body must obey. #13
 
 -> TestKneel(0) ->
 
-- /perform behold
-Such delight to be found in this position.
+- /perform open_arms_behold
+Such delight to be found in this position. #14
 
 - (delight)
-Do you seek to delight your Mistress, {isBoy: speck|foible}?
+Do you seek to delight your Mistress, {isBoy: speck|foible}? #15
 
 
 + [yes] -> Headmistress_AcknowledgeYes ->
      
 + [no]
     -> Headmistress_Unhappy ->
-    Think carefully about your response.
+    Think carefully about your response. #16
     
     ~ addDisobey()
-    Do you seek to delight with your obedience?
+    Do you seek to delight with your obedience? #17
     
     ++ [yes] -> Headmistress_AcknowledgeYes ->
     
     ++ [no]
         /perform open_arms_shrug
         -> Headmistress_Unhappy ->
-        I have misjudged your readiness.
-        Return when you are further molded.
+        I have misjudged your readiness. #18
+        Return when you are further molded. #19
         -> exit
         
     ++ [timeout] -> Headmistress_Timeout ->
@@ -95,28 +95,28 @@ Do you seek to delight your Mistress, {isBoy: speck|foible}?
 + [distracted] -> Headmistress_PayAttention -> delight
 
 - /perform idle
-The bond between a Mistress and her pet must be strong.
-Communication does not always require words, vassal.
-Simplicity. Elegance. Silence.
+The bond between a Mistress and her pet must be strong. #20
+Communication does not always require words, vassal. #21
+Simplicity. Elegance. Silence. #22
 
 - (serve)
-Are you prepared to serve so attentively, flawed one?
+Are you prepared to serve so attentively, flawed one? #23
  
 + [yes] -> Headmistress_AcknowledgeYes ->
     
 + [no]
-    Perhaps this is more than your simple mind can comprehend.
-    You will obey the commands I teach you to follow with my hands.
+    Perhaps this is more than your simple mind can comprehend. #24
+    You will obey the commands I teach you to follow with my hands. #25
    
-    Will you serve in this way, slave?
+    Will you serve in this way, slave? #26
     
     ++ [yes] -> Headmistress_AcknowledgeYes ->
     
     ++ [no]
         /perform open_arms_shrug
         -> Headmistress_Unhappy ->
-        I have misjudged your readiness.
-        Return when you are further molded.
+        I have misjudged your readiness. #27
+        Return when you are further molded. #28
         -> exit
         
     ++ [timeout] -> Headmistress_Timeout ->
@@ -127,32 +127,32 @@ Are you prepared to serve so attentively, flawed one?
 + [distracted] -> Headmistress_PayAttention -> serve
 
 - /perform smooth_skirt
-You will find this next position equally familiar.
-I know my audience found it quite entertaining.
+You will find this next position equally familiar. #29
+I know my audience found it quite entertaining. #30
 
 -> TestRear(0) ->
 
-- Ahhh, the delightful orbs of your ass are in plain view.
-Perfectly placed for a swat of my hand.
+- Ahhh, the delightful orbs of your ass are in plain view. #31
+Perfectly placed for a swat of my hand. #32
 
 - (swat)
 /character headmistress paddle_ass
 
 + [react-success] 
     
-    Such a delightful response!
+    Such a delightful response! #33
         
 + [react-fail]
     
-    Tut. Already you forget how to please.
+    Tut. Already you forget how to please. #34
        
 - /perform idle
-Turn around and stand upright.
-Patience must be offered to those who are learning, but
-expect no mercy should you fail Her once your training is complete.
+Turn around and stand upright. #35
+Patience must be offered to those who are learning, but #36
+expect no mercy should you fail Her once your training is complete. #37
 
 - (strive)
-Will you strive to please Her, chattel?
+Will you strive to please Her, chattel? #38
 
 + [yes] -> Headmistress_AcknowledgeYes ->
      
@@ -165,8 +165,8 @@ Will you strive to please Her, chattel?
     ++ [no]
         /perform open_arms_shrug
         -> Headmistress_Unhappy ->
-        I have misjudged your readiness.
-        Return when you are further molded.
+        I have misjudged your readiness. #39
+        Return when you are further molded. #40
         -> exit
     ++ [timeout] -> Headmistress_Timeout -> 
     ++ [distracted] -> Headmistress_PayAttention -> 
@@ -176,69 +176,68 @@ Will you strive to please Her, chattel?
   
 
 - 
-/perform behold 
-I shall demonstrate the final signal for you to learn today.
+/perform open_arms_behold 
+I shall demonstrate the final signal for you to learn today. #41
 
 -> TestHumble(0) ->
 
-- Trinkets must, at all times, 
-be prepared to receive whatever a Mistress desires. 
-Punishment. Reward. Or otherwise.
+- Trinkets must, at all times,  #42
+be prepared to receive whatever a Mistress desires.  #43
+Punishment. Reward. Or otherwise. #44
 
 - (position)
-This position is perfect for many things.
-Wouldn't you agree, poppet?
+This position is perfect for many things. #45
+Wouldn't you agree, poppet? #46
 
 + [yes] 
-    Your acquisence serves you well, trinket.
+    Your acquisence serves you well, trinket. #47
      
      
 + [no]
-    I shall enlighten you.
+    I shall enlighten you. #48
     
 
 + [timeout] -> Headmistress_Timeout -> position
 + [distracted] -> Headmistress_PayAttention -> position
 
-- In this position, your ass and nether regions are on full display.
-Ripe for punishment and eager for reward.
-It also serves to inform your Mistress that you are sorry.
+- In this position, your ass and nether regions are on full display. #49
+Ripe for punishment and eager for reward. #50
+It also serves to inform your Mistress that you are sorry. #51
 
 + [wait 2]
 
 - (caress)
-Can you feel the cool air caress your {isBoy: sack|slit}?
+Can you feel the cool air caress your {isBoy: sack|slit}? #52
 
 + [yes] 
-    The gentle musk of your arousal wafts toward me.
+    The gentle musk of your arousal wafts toward me. #53
      
      
 + [no]
-    We must work on your sexual excitation {isBoy: philistine|jezebel}.
-    That will wait for another day.
+    We must work on your sexual excitation {isBoy: philistine|jezebel}. #54
+    That will wait for another day. #55
     
 
 + [timeout] -> Headmistress_Timeout -> caress
 + [distracted] -> Headmistress_PayAttention -> caress
 
-- Rise up to your feet, {player_name}.
-Let us see how well you have absorbed this lesson.
+- Rise up to your feet, {player_name}. #56
+Let us see how well you have absorbed this lesson. #57
 
 - (stand_straight)
 
 + [pose:raised_chin]
++ [timeout]-> Headmistress_NoAction -> stand_straight
 
-With merely a signal and a command, 
-I expect you to perform the correct basic response.
+With merely a signal and a command,  #58
+I expect you to perform the correct basic response. #59
 
 - (test_ready)
-Are you ready to demonstrate your ability to follow the signals of my hand?
+Are you ready to demonstrate your ability to follow the signals of my hand? #60
 
 + [yes] -> Headmistress_AcknowledgeYes ->
     
-     
 + [no]
-    
     -> Headmistress_CheckIfInterested -> test_ready
     
 
@@ -250,30 +249,29 @@ Are you ready to demonstrate your ability to follow the signals of my hand?
 
 ~ resetObeyed()
 
-
-We shall see.
-
--> TestRandom(1) ->
-
-Can you recall this one, chattel?
+We shall see. #61
 
 -> TestRandom(1) ->
 
-Now to see if you can recall the final signal.
+Can you recall this one, chattel? #62
 
 -> TestRandom(1) ->
 
-Whenever I feel you need further practice,
-expect to be tested on basic hand signals in this way.
+Now to see if you can recall the final signal. #63
+
+-> TestRandom(1) ->
+
+Whenever I feel you need further practice, #64
+expect to be tested on basic hand signals in this way. #65
 
 
 - (turn_around)
-Face me, foible.
+Face me, foible. #66
 
 + [pose:raised_chin]
 
 - {obeyed(): -> GoodEndingIntro | -> BadEndingIntro}
-
++ [timeout]-> Headmistress_NoAction -> turn_around
 
 = TestRandom(difficulty)
 
@@ -288,22 +286,22 @@ Face me, foible.
 
  = GoodEndingIntro
 /perform arm_raise
-If you continue to perform so gracefully,
-you will excel in pleasing Her.
-You have earned a reward for your performance today.
+If you continue to perform so gracefully, #67
+you will excel in pleasing Her. #68
+You have earned a reward for your performance today. #69
 ~ addReward()
-Stay attentive to your lessons!
+Stay attentive to your lessons! #70
 
 - -> exit
 
 = BadEndingIntro
-/perform behold
-Your performance today lacked enthusiasm and grace.
-To please Her, you must be perfect.
-Perhaps a punishment marker will provide future incentive.
+/perform open_arms_behold
+Your performance today lacked enthusiasm and grace. #71
+To please Her, you must be perfect. #72
+Perhaps a punishment marker will provide future incentive. #73
 ~ addPunishment()
 
-Now, leave my sight.
+Now, leave my sight. #74
 
 - -> exit
 
@@ -320,11 +318,11 @@ Now, leave my sight.
 
 = practice_easy
 
-I think you need more practice with your hand basic signals.
-That will be your task for today.
+I think you need more practice with your hand basic signals. #75
+That will be your task for today. #76
 
 -(begin)
-Shall we begin?
+Shall we begin? #77
 
 + [yes] -> Headmistress_AcknowledgeYes ->
     
@@ -335,7 +333,7 @@ Shall we begin?
     ++ [no]
         /perform open_arms_shrug
         -> Headmistress_Unhappy ->
-        You waist my time.
+        You waist my time. #78
         -> exit
     ++ [timeout] -> Headmistress_Timeout -> 
     ++ [distracted] -> Headmistress_PayAttention -> 
@@ -345,37 +343,37 @@ Shall we begin?
   
 
 // todo: endurance signals practice
-- Attend to my hand, {isBoy: buffoon|dove}.
+- Attend to my hand, {isBoy: buffoon|dove}. #79
 
 -> TestRandom(1) ->
 
 { disobey == 0:
-    Such perfection will make you a star performer. 
-    Keep it up!
+    Such perfection will make you a star performer.  #80
+    Keep it up! #81
 - else:
-    Not bad, but not perfect. 
-    Keep improving and I'll have to show you off to the class one day.
+    Not bad, but not perfect.  #82
+    Keep improving and I'll have to show you off to the class one day. #83
 }
 
-- Turn to me.
+- Turn to me. #84
 + [pose:raised_chin]
 
-- Can you recall this one, chattel?
+- Can you recall this one, chattel? #85
 
 -> TestRandom(1) ->
 
 
 { disobey == 0:
-    Your obedience is impressive, bauble.
+    Your obedience is impressive, bauble. #86
 - else:
-    Not bad, but not perfect. 
-    Keep improving and I'll have to show you off to the class one day.
+    Not bad, but not perfect.  #87
+    Keep improving and I'll have to show you off to the class one day. #88
 }
 
 
-- Now to see if you can recall the final signal.
+- Now to see if you can recall the final signal. #89
 
-Position yourself to attend to my hand.
+Position yourself to attend to my hand. #90
 
 +[pose:raised_chin]
 
@@ -384,92 +382,93 @@ Position yourself to attend to my hand.
 
 { disobey == 0:
     ~ headmistress_signal_basics_difficulty++
-    Flawless. You serve Her well today.
-    So well that I will make it this task harder next time.
+    Flawless. You serve Her well today. #91
+    So well that I will make it this task harder next time. #92
 - else:
-    Not perfect. I think we'll have to practice again.
-    But if you are flawless next time,
-    I just might have to show you off to the class.
+    Not perfect. I think we'll have to practice again. #93
+    But if you are flawless next time, #94
+    I just might have to show you off to the class. #95
 }
 
 - (turn_around)
-Stand at attention before me, miscreant.
+Stand at attention before me, miscreant. #96
 
 + [pose:raised_chin]
 
 - {obeyed(): -> GoodEndingEasy | -> BadEndingEasy}
++ [timeout]-> Headmistress_NoAction -> turn_around
 
 - ->-> 
 
  = GoodEndingEasy
 /perform arm_raise
-The beginning of excellence, bauble.
-You please with your service.
-You shall be rewarded!
+The beginning of excellence, bauble. #97
+You please with your service. #98
+You shall be rewarded! #99
 ~ addReward()
-Your passion for obedience shall be stoked in future lessons.
-Depart.
+Your passion for obedience shall be stoked in future lessons. #100
+Depart. #101
 
 - -> exit
 
 = BadEndingEasy
-/perform behold
-The shape of your service is still unmolded.
-I expect more diligence in the future.
-Another punishment has been earned.
+/perform open_arms_behold
+The shape of your service is still unmolded. #102
+I expect more diligence in the future. #103
+Another punishment has been earned. #104
 ~ addPunishment()
-Return again to practice further.
-For now, you are excused.
+Return again to practice further. #105
+For now, you are excused. #106
 
 - -> exit
 
 = practice_hard
 
-Your response to basic hand signals has been most impressive.
-So impressive, 
-that you will proudly demonstrate them to an audience.
+Your response to basic hand signals has been most impressive. #107
+So impressive,  #108
+that you will proudly demonstrate them to an audience. #109
 
 /perform arm_raise
 /ambient crowd
 ~ Headmistress_RaiseCurtains()
-They do so love an excellent performance.
-Fail not to perform, flawed one.
+They do so love an excellent performance. #110
+Fail not to perform, flawed one. #111
 
 - (eyes)
-Can you feel all eyes upon you?
+Can you feel all eyes upon you? #112
 
 + [yes] -> Headmistress_AcknowledgeYes ->
     
 + [no]
-    Ahh, but indeed they are.
+    Ahh, but indeed they are. #113
 
 + [timeout] -> Headmistress_Timeout -> eyes
 + [distracted] -> Headmistress_PayAttention -> eyes
 
 - (excite)
-Does it excite you to be the focus of so much attention?
+Does it excite you to be the focus of so much attention? #114
 
 + [yes] -> Headmistress_AcknowledgeYes ->
-    Your soul brims with passion.
-    So much delicious sustenance to provide.
+    Your soul brims with passion. #115
+    So much delicious sustenance to provide. #116
     
 + [no]
-    A pity to be so shy.
-    Do not let your nerves get the best of you.
-    A trembling performance of perfection will still feed.
+    A pity to be so shy. #117
+    Do not let your nerves get the best of you. #118
+    A trembling performance of perfection will still feed. #119
 
 + [timeout] -> Headmistress_Timeout -> excite
 + [distracted] -> Headmistress_PayAttention -> excite
 
 
-- For today, you will be challenged on your memory 
-of basic hand signals.
+- For today, you will be challenged on your memory  #120
+of basic hand signals. #121
 
-Without voice, I shall indicate which position for you to take,
-and you will obey without assistance.
+Without voice, I shall indicate which position for you to take, #122
+and you will obey without assistance. #123
 
 - (understand)
-Do you understand, {isBoy: tribute|token}?
+Do you understand, {isBoy: tribute|token}? #124
 
 + [yes] -> Headmistress_AcknowledgeYes ->
     
@@ -480,7 +479,7 @@ Do you understand, {isBoy: tribute|token}?
     ++ [no]
         /perform open_arms_shrug
         -> Headmistress_Unhappy ->
-        You waist my time.
+        You waist my time. #125
         -> exit
     ++ [timeout] -> Headmistress_Timeout -> 
     ++ [distracted] -> Headmistress_PayAttention -> 
@@ -489,48 +488,49 @@ Do you understand, {isBoy: tribute|token}?
 + [distracted] -> Headmistress_PayAttention -> understand
 
 // todo: endurance signals practice w/ audience and w/o pose assist
-- We shall begin. 
+- We shall begin.  #126
 /character crowd oos
-/character headmistress behold
-Attend!
+/character headmistress open_arms_behold
+Attend! #127
 
 -> TestRandom(2) ->
 
 { disobey == 0:
-    I sense an artist within you.
+    I sense an artist within you. #128
 - else:
-    I am disappointed, stain. 
+    I am disappointed, stain.  #129
 }
 
 -> TestRandom(2) ->
 
 { disobey == 0:
-    Dare I witness a moment of perfection?
+    Dare I witness a moment of perfection? #130
 - else:
-    I can barely tolerate such clumsiness.
-    You are close to earning a punishment.
+    I can barely tolerate such clumsiness. #131
+    You are close to earning a punishment. #132
 }
 
 -> TestRandom(2) ->
 
 { disobey == 0:
-    I shudder with the headiness of such perfection!
+    I shudder with the headiness of such perfection! #133
     - else:
-    You shamefully disappoint your audience.
+    You shamefully disappoint your audience. #134
     /character crowd boos
     /character headmistress
-    I can see I have put too much faith in your abilities.
-    Next time, I will guide you as one would a child.
+    I can see I have put too much faith in your abilities. #135
+    Next time, I will guide you as one would a child. #136
     ~ headmistress_signal_basics_difficulty = 1
 }
 
 - (turn_around)
 /character headmistress arm_raise
-Rise and face your audience.
+Rise and face your audience. #137
 
 + [pose:raised_chin]
 
 - {obeyed(): -> GoodEndingHard | -> BadEndingHard}
++ [timeout]-> Headmistress_NoAction -> turn_around
 
 - ->->
 
@@ -538,26 +538,26 @@ Rise and face your audience.
 //earn favor with HM
 /character crowd cheers_loud
 /character headmistress arm_raise
-I am awed to behold such exquisite grace.
-What a delicious feast to devour.
-You were born to serve, little one.
+I am awed to behold such exquisite grace. #138
+What a delicious feast to devour. #139
+You were born to serve, little one. #140
 ~ addReward()
 //what do players earn when they max out learning?
-You have my permission to depart.
+You have my permission to depart. #141
 
 - -> exit
 
 = BadEndingHard
 //lose favor with HM
-/character crowd angry
-/character headmistress behold
-Your cheeks should be flush with shame, stain.
-Your audience is left ravenous and unsatisfied.
-We shall resume practice and try this again when you are ready.
-Sadly, I must punish your imperfection.
+/character crowd angry_crowd
+/character headmistress open_arms_behold
+Your cheeks should be flush with shame, stain. #142
+Your audience is left ravenous and unsatisfied. #143
+We shall resume practice and try this again when you are ready. #144
+Sadly, I must punish your imperfection. #145
 ~ addPunishment()
 
-Go and contemplate your failure.
+Go and contemplate your failure. #146
 
 - -> exit
 
@@ -581,13 +581,13 @@ Go and contemplate your failure.
 /perform signal_kneel
 
 { say_short_explanation:
-    This position is <b>kneel</b>.
+    This position is <b>kneel</b>. #147
 }
 
 { say_full_explanation:
-    You should be quite familiar with it.
-    Down onto your knees, chattel.
-    Hands resting  upon your thighs.
+    You should be quite familiar with it. #148
+    Down onto your knees, chattel. #149
+    Hands resting  upon your thighs. #150
 }
 
 + [pose:kneel{hide_pose_assist: no_assist}]
@@ -596,11 +596,11 @@ Go and contemplate your failure.
         ~ addObey()
         -> Headmistress_GoodJob ->
     - else:
-        Much better.
+        Much better. #151
     }
 + {tries == 1} [timeout] 
     /perform clasp_hands
-    -> Headmistress_BadJob -> 
+    -> Headmistress_Unhappy -> 
  
     ~ perfect = false
     ~ addDisobey()
@@ -612,7 +612,7 @@ Go and contemplate your failure.
     ~ addDisobey()
     ~ say_full_explanation = true
     /perform clasp_hands
-    -> Headmistress_BadJob -> retry
+    -> Headmistress_NoAction -> retry
 + {tries >= 3} [timeout] 
     ~ addDisobey()
     -> Headmistress_CheckIfInterested -> retry
@@ -634,12 +634,12 @@ Go and contemplate your failure.
 
 
 { say_short_explanation:
-    The title is <b>rear<b>.
+    The title is <b>rear<b>. #152
 }
 
 { say_full_explanation:
-    Turn around, bend forward, 
-    and present your derriere for inspection.
+    Turn around, bend forward,  #153
+    and present your derriere for inspection. #154
 }
 
 + [pose:rear{hide_pose_assist: no_assist}]
@@ -648,11 +648,11 @@ Go and contemplate your failure.
         -> Headmistress_GoodJob ->
         ~ addObey()
     - else:
-        I expect more effort.
+        I expect more effort. #155
     }
 + {tries == 1} [timeout] 
     /perform clasp_hands
-    -> Headmistress_BadJob ->
+    -> Headmistress_Unhappy ->
     ~ perfect = false
     ~ addDisobey()
     ~ say_short_explanation = true
@@ -663,7 +663,7 @@ Go and contemplate your failure.
     ~ addDisobey()
     ~ say_full_explanation = true
     /perform clasp_hands
-    -> Headmistress_BadJob -> retry
+    -> Headmistress_NoAction -> retry
 + {tries >= 3} [timeout]
     ~ addDisobey()
     -> Headmistress_CheckIfInterested -> retry
@@ -684,12 +684,12 @@ Go and contemplate your failure.
 /perform signal_humble
 
 { say_short_explanation:
-    It is named <b>humble</b>.
+    It is named <b>humble</b>. #156
 }
 
 { say_full_explanation:
-    Bow forward to abase yourself before me.
-    Arms stretched out before you in submission.
+    Bow forward to abase yourself before me. #157
+    Arms stretched out before you in submission. #158
 }
 
 + [pose:humble{hide_pose_assist: no_assist}]
@@ -698,11 +698,11 @@ Go and contemplate your failure.
         ~ addObey()
         -> Headmistress_GoodJob ->
     - else:
-        Took you long enough.
+        Took you long enough. #159
     }
 + {tries == 1} [timeout] 
     /perform clasp_hands
-    -> Headmistress_BadJob ->
+    -> Headmistress_Unhappy ->
     ~ perfect = false
     ~ addDisobey()
     ~ say_short_explanation = true
@@ -713,7 +713,7 @@ Go and contemplate your failure.
     ~ addDisobey()
     ~ say_full_explanation = true
     /perform clasp_hands
-    -> Headmistress_BadJob -> retry
+    -> Headmistress_NoAction -> retry
 + {tries >= 3} [timeout]
     ~ addDisobey()
     -> Headmistress_CheckIfInterested -> retry

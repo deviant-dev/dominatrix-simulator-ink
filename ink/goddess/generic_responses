@@ -21,7 +21,7 @@
 
 === Goddess_PayAttention ===
 
-/perform amused angry 50
+/perform idle_tease angry 50
 
 { cycle:
     - Look at me when I'm speaking to you, {player_name}. #125

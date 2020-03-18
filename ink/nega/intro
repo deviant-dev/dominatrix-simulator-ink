@@ -40,7 +40,7 @@
 
 - (skip)
 
-{isWeb(): -> web_start | start}
+{isWeb(): -> web_start | -> start}
 
 
 = web_start
@@ -56,11 +56,11 @@
 //play some kind of dischordant sound when the player enters?
 = start
 
-/perform bored
+/perform inspect_hand_bored
 Don't worry, pretty {player_name}. #01
 Expect that to happen once in a while. #02
 
-/perform behold
+/perform open_arms_behold
 Walk out one door, expecting to arrive somewhere, #03
 and suddenly find yourself somewhere else. #04
 You could think of them as ... #05
@@ -80,7 +80,7 @@ that kiss-ass Yuki wasn't paying attention. #09
 {yuki_intro.Nega_finish: -> nega_tease }
 
 - (yuki_warning)
-/perform amused_nega
+/perform idle_tease
 I bet she told you not to talk to me, didn't she? #10
 
 + [yes]
@@ -100,7 +100,7 @@ I bet she told you not to talk to me, didn't she? #10
     You must be some kind of idiot who doesn't listen. #16
     /perform lean_forward
     Don't pull that shit with me. #17
-    /perform behold
+    /perform open_arms_behold
     Try to play dumb all you want,  #18
     but you better do what you're fucking told. #19
     
@@ -113,13 +113,13 @@ I bet she told you not to talk to me, didn't she? #10
 /perform inspect
 How's that cute little ass of yours? #21
 I enjoyed the show. #22
-/perform booty
+/perform ass_caress amused 60
 Does your poor tushy sting? #23
-/perform idle
+/perform idle amused 30
 
 + [yes]
     ~ addObey()
-    /perform amused_nega
+    /perform mocking
     Poor wittle baby. #24
     
 + [no]
@@ -131,7 +131,7 @@ Does your poor tushy sting? #23
 //have player present ass before she gets them to give up their stone 
 - /perform pleased
 
-{Headmistress_player_masturbate: 
+{headmistress_masturbated_for_crowd: 
     You're such a slut for an audience. #27
 - else: 
     Too bad you didn't want to perform more. #28
@@ -141,7 +141,7 @@ Does your poor tushy sting? #23
 Let's have a look. #29
 
 - (present_ass)
-/perform point_down
+/perform point_down angry 40
 Turn around and bend over. #30
 Hands on your knees and ass in the air! #31
 
@@ -183,7 +183,7 @@ TODO: Support 'wiggle' action
 // + [no] -> CheckIfInterested -> stand_straight
 
 - (check_reward)
-/perform behold
+/perform open_arms_behold skeptical 40
 Now. You have something I want. #38
 Once you give it to me, it's gone. No take-backsies! #39
 You have to give it to me to play. #40
@@ -192,8 +192,9 @@ Those are the rules. #41
 And I better warn you, I don't always play nice,  #42
 so you better think hard before you give it to me. #43
 
-- /perform lean_forward
+- /perform lean_forward skeptical 50
 What are you going to do, pretty {player_name}? #44
+/emotion amused 50
 Do you want to try your luck? #45
 
 + [yes]
@@ -240,11 +241,11 @@ TODO: Shake attic? Vibrate controllers with rumble?
 /sound goddess_interruption
 /ambient none
 /wait 2
-/perform behold
+/perform open_arms_behold
 
 Damn it! I was just getting started. #132
 
-/perform angry
+/perform fists_on_hips_stomp
 /music goddess
 /wait 1
 /scene None
@@ -252,14 +253,13 @@ Don't worry. You'll get yours. #133
 
 ~ tutorial_nega_intro_surprise_complete = true
 ~ tutorial_nega_intro_complete = true
--> goddess_monitoring_intro_nega
+-> goddess_monitoring_intro.angry
 
 
 // When the Goddess interrupts because Nega purposely tells on the player.
 = spiteful_interrupted
 
 /perform unhappy
-    TODO: Record new VO line
 I'll make sure you pay one way or another. #56
 
 
@@ -267,11 +267,11 @@ TODO: Shake attic? Vibrate controllers with rumble?
 /sound goddess_interruption
 /ambient none
 /wait 2
-/perform behold
+/perform open_arms_behold
 
 Oh yeah. Hear that? You're gonna get yours now. #57
 
-/perform angry
+/perform fists_on_hips_stomp
 /music goddess
 /wait 1
 /scene None
@@ -279,7 +279,7 @@ That's what you get for crossing me, you little bitch. #58
 
 ~ tutorial_nega_intro_spiteful_complete = true
 ~ tutorial_nega_intro_complete = true
--> goddess_monitoring_intro_nega
+-> goddess_monitoring_intro.angry
 
 
 

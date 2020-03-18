@@ -1,4 +1,4 @@
- = yuki_reward_puppyplay_milking
+=== yuki_reward_puppyplay_milking ===
 
 ~ setScene(reward_scene, Yuki)
 -> select_gender_check ->
@@ -8,9 +8,79 @@
 /ambient off
 /character yuki idle
 
-//Masturbates player
-/perform point_down
+
+/perform clasp_hands excited 75
+{shuffle:
+    - For a reward, my good puppy is going to get {hasPenis: milked dry|fingered hard.}
+    - The reward you're going to get is a puppy orgasm!
+    - I'm going to give you an orgasm for your reward, puppy. 
+}   
+
+- (consent)
+/perform idle_yuki neutral
+Would you like that, {player_name}?
+
++[yes]
+    ~ addObey()
+    /perform bouncing_little happy 50
+   -> Yuki_AcknowledgeYes ->
+   
+   /perform idle 
+    {shuffle:
+        - Such hedonistic exhibitionism will please <i>Her</i>. #17
+        - Your audience shall delight in feasting their eyes upon your body. #18
+        - Displaying your orgasm for the benefit of others is your duty. #19
+    }
+    -> begin
+  
++ [no]
+    /perform idle
+   -> consent_check
+  
++ [timeout] -> Yuki_Timeout -> consent
++ [distracted] -> Yuki_PayAttention -> consent
+
+= consent_check
+
+/perform cocks_head_to_left scared 50
+Are you uncomfortable having me masturbate you?
+
++ [yes]
+    /perform skeptical 50
+    Oh. I never thought of that.
+    -- (self_masturbate)
+    Would you like to make yourself cum for me instead?
+    
+    ++ [yes]
+        /perform open_arm_shrug_confused
+        Well, okay. If that's what you want.
+        -> milk_self
+    
+    ++ [no]
+        Really?
+        Well, that's disappointing.
+        If you don't like this reward,
+        you should visit a different Mistress.
+        -> exit
+
+    ++ [timeout] -> Yuki_Timeout -> self_masturbate
+    ++ [distracted] -> Yuki_PayAttention -> self_masturbate
+    
++ [no]
+    -> Yuki_AcknowledgeYes ->
+    I was a little worried for a minute.
+    -> begin
+
++ [timeout] -> Yuki_Timeout -> consent_check
++ [distracted] -> Yuki_PayAttention -> consent_check
+
+
+= begin
+
+/perform point_down happy 50
+Down on the floor.
 Roll onto your back like a good little puppy. #166
+
 /perform inspect_kneeling
 // Hands and legs in the air, just like a real puppy. #167
 // /perform open_arms_shrug
@@ -20,6 +90,7 @@ Roll onto your back like a good little puppy. #166
 - /perform yuki_kneel
 
 Now, spread your knees. #168
+
 {isBoy: 
     Time for my good puppy to be milked dry! #169
     - else:
@@ -27,6 +98,16 @@ Now, spread your knees. #168
 }
 
 /perform yuki_milk_puppy_{hasPenis:penis|vagina}
+
+- (masturbate)
+
+-> RandomCommentLoopWithYes(-> masturbation_comment, -> cum, 3, 5, 2, 5) ->
+
+-> Yuki_GoodJob ->
+
+--> question ->
+
+- (cum)
 
 /wait 5
 
@@ -47,6 +128,26 @@ Let your Mistress milk your little {hasPenis:prick|cunt}. #174
 
 /wait 5
 
+TODO: Is this the right place to go? Put this in here to fix the script -deviant
+-> milk_self
+
+= milk_self
+
+-> Yuki_Player_Masturbate -> finish 
+
+= masturbation_comment
+
+{ shuffle:
+    - -> Yuki_masturbation_comments ->
+    - -> puppy_comment ->
+    - -> Yuki_Aroused ->
+    
+}
+
+->->
+
+= finish
+
 /perform excited
 Such a good {player_name}. #175
 /perform idle_yuki
@@ -55,7 +156,7 @@ Sit up again, cutie. #176
 + [pose:puppy_sit]
 
 - (puppy_well)
-/perform agreement
+/perform idle_gesture
 I treat my puppies well, don't I? #177
 
 + [pose:puppy_yes]
@@ -70,3 +171,134 @@ I treat my puppies well, don't I? #177
 + [timeout] -> Yuki_Timeout -> puppy_well
 
 - -> Yuki_Puppyplay_Reward_Complete ->->
+
+= question
+
+{shuffle:
+        - Do you like being touched, puppy?
+        - Enjoying your reward, {player_name}? 
+        - Do you like this kind of reward, puppy?
+}
+
++ [yes]
+    -> Yuki_AcknowledgeYes ->
+
++ [no]
+    -- (stop)
+   Do you want to stop, puppy?
+
+    ++ [yes]
+        /perform open_arm_shrug_confused
+        Well, okay. If that's what you want.
+        //do they lose the reward after going this far?
+        -> exit
+    
+    ++ [no]
+        Really?
+        Then let's keep going!
+        -> masturbation_cycle
+
+    ++ [timeout] -> Yuki_Timeout -> stop
+    ++ [distracted] -> Yuki_PayAttention -> stop
+    
++ [timeout] -> Headmistress_Timeout -> question
++ [distracted] -> Headmistress_PayAttention -> question
+    
+--> command ->
+
+- (keep_going)
+/perform thoughtful
+{ cycle:
+    - Would you like to keep going, {isBoy:toad|strumpet}? #10
+    - Does our little {isBoy:runt|poppet} need more time? #11
+    - Are you going to ask our guests to continue waiting? #12
+    - Still working that {hasPenis:shaft|slit}? #13
+    - Our {isBoy:toad|strumpet} needs more time. Yes? #14
+} 
+
++ [yes]
+    /character headmistress idle
+    Then keep going! #99
+    -> masturbate
+
++ [no]
+    /character headmistress idle
+    Are you ready to cum, then, slave? #100
+    
+        ++ [yes]
+            -> orgasm
+            
+        ++ [no]
+            Yet you wish to stop. #101
+            Do you want to continue with your reward, slave? #102
+            
+            +++ [yes]
+                -> Headmistress_Resume ->
+                -> masturbate
+                
+            +++ [no]
+                Then I give you leave to depart, foible. #103
+                One reward has been deducted from your wrist. #104
+                ~removeReward()
+                -> exit
+            
++ [timeout] -> Headmistress_Timeout -> keep_going
++ [distracted] -> Headmistress_PayAttention -> keep_going
+
+->->
+
+= orgasm
+
+/log TODO: Orgasm scene here.
+
+->->
+
+= command
+//rewrite and have players do something extra
+{shuffle:
+    - Pause and {hasPenis: cup and raise your sac|spread your folds} that all may enjoy the view. #105
+    - {hasPenis: Squeeze harder as you stroke|Slide a finger into yourself as you rub your slit}. #32
+    - Moan loudly as you {hasPenis: stroke|finger} yourself. #106
+    - Pinch your nipples with your free hand, {isBoy: manwhore|harlot}. #107
+    - Sway your hips for the crowd, strumpet! #108
+}
+
++ [wait 2]
+
+- (display)
+
+Does it feel good to be put on display, foible? #109
+
++ [yes]
+    {embarassed:
+        How hard this must be for you then, slut.  #110
+        To enjoy being seen even as you flush with shame. #111
+       - else: 
+            As it should for one who enjoys whoring themself before an audience. #112
+    }
+    
+
++ [no]
+    What a shame. #113
+    This is your reward, after all. #114
+    
++ [timeout] -> Headmistress_Timeout -> display
++ [distracted] -> Headmistress_PayAttention -> display
+
+-
+
+->->
+
+= puppy_comment
+
+{shuffle:
+    - Note the cheeks flush with distress, ladies and gentlemen! #115
+    - Such a blushing harlot. #116
+    - {isBoy: His|{isGirl:Her|Their}} shame is palpable! #117
+    - Enjoy how mortified {isBoy: he is|{isGirl:she is|they are}}, students. #118
+    - Let us examine whether {isBoy: he grows|{isGirl:she grows|they grow}} flustered in {isBoy: his|{isGirl:her|their}} performance! #119
+    - Subjecting <i>Her</i> slaves to such demeaning rewards is so gratifying! #120
+    - Such self-conscious debasing delivers so much passion! #121
+}
+
+->->

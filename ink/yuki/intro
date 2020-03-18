@@ -9,24 +9,25 @@
 /scene entry.intro2
 /music yuki
 /ambient rain
-/character yuki idle_yuki
+/character yuki idle_yuki neutral
 // /equip feather_duster
 
+/perform clasp_hands happy 75
 Oh! There you are! #01
-
-/perform bounces
+/perform bouncing_big 
 
 I've been waiting for you. #02
-
-/perform clasp_hands
+/perform clasp_hands happy 50
 
 I'm Mistress Yuki-Onna. #03
-/perform idle_yuki
+
+/perform idle_yuki angry 30
 It's my job to make sure all new arrivals   #04
+/emotion neutral
 are taught how to behave  #05
 while you're a guest in Goddess's home. #06
 
-/perform serious
+/perform one_finger angry 30
 
 First things first. #07
 
@@ -34,8 +35,9 @@ First things first. #07
 - (stand_straight)
 ~ tries++
 
-/perform idle_yuki
+/perform thankful happy 30
 Always stand up straight with your head high  #08
+/perform idle_yuki neutral
 when you present yourself to a Mistress. #09
 
 + [pose:raised_chin] ->
@@ -43,24 +45,27 @@ when you present yourself to a Mistress. #09
 + { tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
-- /perform excited
+- /perform excited excited 50
 
 You're such a good {player_name}! #10
 
 - (new_guest)
 
-/perform thoughtful
+/perform curious skeptical 75
 
 Do you know why you're here? #11
 
+/perform idle_yuki neutral
+
  + [yes]
     ~ addDisobey()
-    /perform confused
+    /perform open_arm_shrug_confused angry 50
 
     I don't see how you'd know that already. #12
+    /perform oh_darn_yuki sad 50
     Someone must have told you. #13
    
-    /perform sighs
+    /perform curious skeptical 50
     
     Well, let's go through the basics anyways,  #14
     to make sure you have the right information.  #15
@@ -68,14 +73,14 @@ Do you know why you're here? #11
     
 + [no]
     ~ addObey()
-    /perform serious
+    /perform open_arm_shrug_confused happy 50
     Well, duh! #16
     You're not supposed to know. #17
-    /perform excited
+    /perform excited excited 50
     That's the fun part! #18
     
 + [timeout]
-    /perform cocks_head_to_left
+    /perform cocks_head_to_left skeptical 50
     Hello-o #19
     Anybody home? #20
     -> new_guest
@@ -83,14 +88,15 @@ Do you know why you're here? #11
 + [distracted] -> Yuki_PayAttention -> new_guest
 
 - (house_rules)
-/perform idle_yuki
+/perform nod_big neutral
 You are a guest of Threshold House. #21
-/perform thoughtful
+/perform curious skeptical 50
 Well, we call it a house, but it's not really one... #22
 
-/perform serious
+/perform open_arms_shrug neutral
 
 All guests must follow the rules #23
+/perform shake_finger angry 50
 or you will not be allowed to stay. #24
 
 - (learn_rules)
@@ -99,20 +105,20 @@ Would you like to know what the rules are? #25
 
 + [yes]
     ~ addObey()
-    /perform excited
+    /perform bouncing_eager excited 50
     Oh goody! I love telling people the rules! #26
     -> two_rules
 
 + [no]
     ~ addDisobey()
-    /perform pouty
+    /perform crossed_arms_unhappy sad 80
     Don't be a pouty baby. #27
-    /perform angry
+    /perform fists_on_hips_stomp angry
     You have to learn the rules or you can't be a good {player_name}! #28
     -> two_rules
 
 + [timeout]
-    /perform sighs
+    /perform sad_kick_foot_yuki sad 50
     You aren't listening very well. #29
     -> learn_rules
     
@@ -121,13 +127,13 @@ Would you like to know what the rules are? #25
     
 = two_rules
 
-/perform nod
+/perform nod_big angry 30
 The rules are simple! #30
 
-/perform two_fingers
+/perform two_fingers happy 50
 And there's only two of them! #31
 
-/perform one_finger
+/perform one_finger neutral
 
 Answer questions when you're asked. #32
 
@@ -135,19 +141,19 @@ Answer questions when you're asked. #32
 
 Follow directions when they're given. #33
 
-/perform open_arms_shrug
+/perform either_or angry 40
 
 Disobey and be punished. #34
 
-/perform clasp_hands
+/perform clasp_hands excited 50
 Obey and be rewarded. #35
 
 - (easy_rules)
-/perform idle_yuki
+/perform idle_yuki happy 30
 Easy, right? #36
 
 + [yes]
-    /perform bounces
+    /perform bouncing_little happy 60
     ~ addObey()
     I know! Our Goddess is so kind! #37
 
@@ -165,13 +171,14 @@ Easy, right? #36
 
 //insert puppy pose test
 
-- /perform behold
+- /perform open_arms_behold
 Let's practice! #45
 
 /perform idle_yuki
 I really love puppies. #169
 Petting them. Kissing them. Feeding them. Walking them. #170
 
+/emotion happy 50
 Would you like to be my puppy? #171
 
 + [yes]
@@ -214,7 +221,7 @@ Would you like to be my puppy? #171
 /perform serious
 First, puppy has to beg for my attention. #180
 
-/perform point_down
+/perform point_down angry 30
 Down on your knees and raise your hands to beg. #181
 
 + [pose:puppy_beg]
@@ -222,7 +229,7 @@ Down on your knees and raise your hands to beg. #181
 + { tries >= 2 } [timeout] ->
 
 - -> Yuki_GoodJob ->
-/perform bounces
+/perform bouncing_big
 Oh, that's so perfect!  #182
 You did so well following instructions. #183
 
@@ -254,7 +261,7 @@ Do you like being a good {player_name}? #42
 
 + [yes]
     ~ addObey()
-    /perform bounces
+    /perform bouncing_big
     Yay! We'll have so much fun together! #43
 
 + [no]
@@ -280,13 +287,13 @@ Do you like being a good {player_name}? #42
 /lookat yuki
 
 Oh please! You're always such a good girl, Yuki, #46
-/perform amused_nega
+/perform mocking
 never having any fun. #47
 
-/perform agreement
+/perform idle_gesture
 Don't you want to live a little? #48
 
-/perform behold
+/perform open_arms_behold
 Bend the rules once in a while and really let loose? #49
 /perform idle_nega
 
@@ -310,7 +317,7 @@ You just stop that right now, Nega-Yuki! #54
 /perform clasp_hands
 I want my own room someday.  #55
 
-/perform angry
+/perform fists_on_hips_stomp
 There's no way I'm breaking the rules! #56
 
 /perform excited
@@ -322,7 +329,7 @@ I really want the Goddess to be pleased with me. #57
 /character nega head_toss
 Ugh. You're such a goody two-shoes. #58
 
-/perform flash2_female_slave_butt_worship
+/perform flash_2_female_slave_butt_worship
 You'd have so much more fun if you bent the rules now and then. #59
 
 - (new_one)
@@ -343,7 +350,7 @@ So. You're the new one, huh? #60
     /perform inspect
     Not too bad. You have potential. #61
     
-    /perform amused
+    /perform idle_tease
     Though, I'm not too picky. #62
 
 + [no]
@@ -388,7 +395,7 @@ hasn't she? #70
 /lookat player
 Don't let her fool you.  #74
 
-/perform amused_nega
+/perform idle_tease
 She's not as sweet and innocent as she lets on. #75
 
 //insert teaching player to get slapped
@@ -419,7 +426,7 @@ Ready? #194
 
 + [no]
     ~ addObey()
-    /perform annoyed
+    /perform shake_head_annoyed
     No? #197
     Then you're not going to like me very much. #198
 
@@ -463,7 +470,7 @@ Have you figured out what's going on here yet? #76
     /perform curious
     Hmmm. You might just be smarter than you look, {player_name}. #77
     
-    /perform bored
+    /perform inspect_hand_bored
     We'll find out soon enough. #78
    
     /perform sassy
@@ -484,13 +491,13 @@ Have you figured out what's going on here yet? #76
     /lookat nega
     Don't you dare! #82
     The Goddess will be so angry with you! #83
-    /perform idle_yuki
+    /perform idle_yuki disgusted 40
     
     /character nega bored_nega
     Oh fine, party pooper! #84
     
     
-    /perform pleased
+    /perform pleased aroused 60
     /lookat player
     I guess I'll just make {isBoy:him|her} my fuck toy instead. #85
     
@@ -521,7 +528,7 @@ Let's find out. Shall we? #89
 
 + (caress_skipped) [no]
     ~ addObey()
-    /perform angry
+    /perform fists_on_hips_stomp
     Oh great. Another spoil-sport, just like Yuki. #91
     -> skip_caress
 
@@ -532,9 +539,9 @@ Let's find out. Shall we? #89
     
 + [distracted] -> Nega_PayAttention -> genitals
 
-- /character yuki flustered
+- /character yuki crossed_arms_unhappy angry
 Behave, Nega!  #93
-/perform idle_yuki
+/perform idle_yuki angry 50
 
 /character nega caress_genitals
 
@@ -582,18 +589,20 @@ You want to be a little fuck toy, don't you? #97
     -> caress_genitals
 
 - (skip_caress)
-/perform inspect
+/perform inspect aroused 
 The Mistresses will have so much fun #109
 tearing up that ass of yours. #110
 
-/perform lean_forward
+/perform lean_forward angry 30
 //nega whispers
 <i>Tick tock little mouse.</i> #111
 <i>You might want to run.</i> #112
 /perform chuckle
 <i>You're trapped in this house.</i> #113
-/perform laugh
+/emotion excited 50
 <i>And we own your cum.</i> #114
+/perform laugh
+Hahahaha! #207
 
 
 
@@ -628,17 +637,17 @@ Come find me when you've earned a reward. #119
 /music yuki 
 
 
-- /character yuki angry
+- /character yuki fists_on_hips_stomp
 Oh, gee. She's so awful! #120
 /perform shake_finger_stern
 Don't you pay any attention to her. #121
 
-/perform flustered
+/perform shake_finger scared 50
 She's going to get in big trouble one of these days! #122
 
 - {caress_skipped: -> rules}
 
-/perform inspect
+/perform inspect sad 30
 Your poor {hasPenis:penis|pussy} must be aching after that. #123
 
 + [wait:1]
@@ -675,11 +684,12 @@ Okay! That's all I have for now. #133
 Hurry up!  #134
 The Headmistress doesn't like to be kept waiting. #135
   
-/perform flustered
+/perform shake_finger_stern angry 50
 And stay away from that awful Nega-Yuki! #136
+/perform lean_forward scared 50
 She's a bad seed! #137
 
-/perform idle_yuki
+/perform idle_yuki angry 50
 You'll get a punishment if you get caught coming out of her room. #138
 
 ~ tutorial_step = at_hm_intro
@@ -698,16 +708,16 @@ You'll get a punishment if you get caught coming out of her room. #138
 
 - /perform head_toss
 Run off, little Yuki,  #142
-/perform amused_nega
+/perform mocking
 and tell the Headmistress all about  #143
 how naughty I've been. #144
 
-/perform angry
+/perform fists_on_hips_stomp
 She thought she could shove down #145
 all her dirty thoughts  #146
 by casting me aside... #147
 
-/perform behold
+/perform open_arms_behold
 But here I am! #148
 
 - {caress_skipped: -> skip_caress2}
@@ -751,7 +761,7 @@ Well, I won't take kindly to being ignored. #162
 The best part is you can't collect any rewards  #163
 until you've paid off all your punishments. #164
 
-/perform bored
+/perform inspect_hand_bored
 
 I'm bored with you.  #165
 

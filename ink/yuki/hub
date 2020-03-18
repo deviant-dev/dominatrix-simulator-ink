@@ -4,11 +4,11 @@
 ~ setHub(Yuki)
 
 {inTutorial:
-    What are you doing back here!?
-    You still have a punishment!
-    Go back to the headmistress
-    and get your punishment training,
-    silly {player_name}.
+    What are you doing back here!? #01
+    You still have a punishment! #02
+    Go back to the headmistress #03
+    and get your punishment training, #04
+    silly {player_name}. #05
     
     /wait 3
 
@@ -24,9 +24,9 @@
 + [move:Yuki]
 
 { hub == 1:
-    Hi!
+    <<< Hi! >>>
 - else:
-    Hi again!
+    <<< Hi again! >>>
 }
 
 // - (check_mega_punishment)
@@ -39,13 +39,13 @@
 - (check_punishment)
 { punishments > 0 :
     -> Yuki_Punishment_Response ->
-    Are you here to pay that off?
+    Are you here to pay that off? #08
     + [yes] 
-        Good.
+        Good. #09
         -> choose_punishment
     + [no] 
-        No? Well, don't forget you have one.
-        You can't receive any rewards until you finish all your punishments.
+        No? Well, don't forget you have one. #10
+        You can't receive any rewards until you finish all your punishments. #11
         -> check_task
 }
 
@@ -58,22 +58,22 @@
 
 - (check_reward)
 { punishments == 0 && rewards > 0:
-    Are you here for your reward?
+    Are you here for your reward? #12
     + [yes] -> choose_reward
     + [no] -> check_task
 }
 
-No punishments or rewards, huh?
+No punishments or rewards, huh? #13
 -> check_task
 
 
-- (check_task) Looking to serve me, then?
+- (check_task) Looking to serve me, then? #14
 
 + [yes] -> choose_task
 + [no]
     /perform pouts
-    Okay.
-    Maybe some other time then.
+    Okay. #15
+    Maybe some other time then. #16
     -> exit
 
 

@@ -33,7 +33,7 @@
 
 // Only play this if this is our first time in practice.
 - {yuki_task_puppyplay_practice == 1:
-    /perform behold
+    /perform open_arms_behold
     Now, if you're good, this won't take long. #150
     
     /perform clasp_hands
@@ -70,7 +70,7 @@ Be ready for anything you've already learned! #160
         TODO: Re-record this line as it is missing.
         // Maybe you don't need this practice after all! #148
     - else:
-        /perform agreement
+        /perform idle_gesture
         -> Yuki_AcknowledgeYes ->
     }
 
@@ -84,7 +84,7 @@ Be ready for anything you've already learned! #160
     ~ tries++
     -> Yuki_Timeout -> ready 
 
-- /perform behold
+- /perform open_arms_behold
 Pay attention! #165
 
 {yuki_task_puppyplay_practice == 1:
@@ -252,7 +252,7 @@ Pay attention! #165
 
 
 = prompt_back_pose
-/perform behold
+/perform open_arms_behold
 
 { cycle:
     - Sometimes, I want my puppy on {isBoy:his|her} <b>"back"</b>. #36

@@ -60,10 +60,10 @@ My puppy is so cute! #116
 
 -> pose3 ->
 
-/perform bounces
+/perform bouncing_big
 Oh, you're such a good puppy, learning all of those poses. #125
 
-/perform behold
+/perform open_arms_behold
 Don't forget, you need to remember those for future practice sessions! #126
 And also tests! #127
 
@@ -209,10 +209,10 @@ Stretch your arms out part way. #35
 
 Your last lesson for today is to <b>roll over</b> onto your back! #123
 
-/perform behold
+/perform open_arms_behold
 
 This one is going to lead to lots of fun! #38
-/perform bounces
+/perform bouncing_big
 
 ~ tries = 0
 - (back)

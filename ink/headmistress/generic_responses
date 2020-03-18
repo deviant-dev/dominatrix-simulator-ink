@@ -1,9 +1,5 @@
-TODO: Record missing VO
-
-// For actions
+/// For actions
 === Headmistress_GoodJob ===
-
-// /perform caress_thigh
 
 { shuffle:
     - Most excellent. #01
@@ -12,12 +8,11 @@ TODO: Record missing VO
     - You are raw, but you have potential. #05
     - I shall delight in shaping you to please Her. #06
     - I am pleased. For now. #07
-    //removed #11. 
     - You seek to impress. #12
     - Continue in this way. #13
     - Most pleasing. #14
     - You are making progress. #18
-    - Impressive.
+    - Impressive. #11
     
     // GoodJob with audience.
     - {headmistress_has_audience:
@@ -57,18 +52,17 @@ TODO: Record missing VO
 
 === Headmistress_BadJob ===
 
-// /perform caress_thigh
-
 { shuffle:
-    // Copy VO lines from badspanking
     - Tsk. Tsk. You can do better. #148
     - Are you even trying? #151
     - Where is your pride? Try harder. #153
     - Uggh. #247
     - You have a long ways to go. #249
     - I can see you will require much instruction. #250
-    - Slatternly.
-    - Decorum, poppet.
+    - Slatternly. #01
+    - Decorum, poppet. #02
+    - Tsk. Tsk. #03
+
     
     // BadJob with audience
     - {headmistress_has_audience:
@@ -77,6 +71,7 @@ TODO: Record missing VO
             -> Headmistress_BadJob
       }
     - {headmistress_has_audience:
+            /emotion disgusted 40
             Your lack of grace is stunning. #152
         - else:
             -> Headmistress_BadJob
@@ -91,74 +86,67 @@ TODO: Record missing VO
         - else:
             -> Headmistress_BadJob
       }
-//record new VO
-    - 
     
 }
 
 ->->
 
 === Headmistress_Unhappy ===
-TODO: Replace later with new lines - these are borrowed from bad spanking
 
 { shuffle:
 // Copy VO lines from badspanking
     - Uggh. #247
-    - I fail Her.
-    - Disappointing.
-    - I grow weary of this, peasant.
-    - I tire of your reticence.
-    - How droll.
-    - You disappoint.
-    - She frowns.
-    - Podsnappery.
-    - Slatternly.
-    - A conundrum.
-    - You waste my time, miscreant.
-    - Your presence disturbs.
+    - I fail Her. #01
+    - Disappointing. #02
+    - I grow weary of this, peasant. #03
+    - I tire of your reticence. #04
+    - How droll. #05
+    - You disappoint. #06
+    - <i>She</i> frowns. #07
+    - Podsnappery. #08
+    - Slatternly. #09
+    - A conundrum. #10
+    - You waste my time, miscreant. #11
+    - Your presence disturbs. #12
     
 }
 
 ->->    
     
-//copied from Yuki as a response to timeouts that require an action, rather than an answer. This has not been edited or added to the game yet.
-=== Headmistress_Interested ===
+=== Headmistress_NoAction ===
 
-TODO: record VO
 {cycle:
-    - Perform, mongrel.
-    - Do you intend to comply, slave?
-    - Make haste, wretch.
-    - Are your feet one with the ground?
-    - A sloppy layabout, I see.
-    - Why the reticence, bauble?
-    - Performance is required, trinket.
-    - Your limbs are as earth. Untether them!
+    - Perform, mongrel. #01
+    - Do you intend to comply, slave? #02
+    - Make haste, wretch. #03
+    - Are your feet one with the ground? #04
+    - A sloppy layabout, I see. #05
+    - Why the reticence, bauble? #06
+    - Performance is required, trinket. #07
+    - Your limbs are as earth. Untether them! #08
 }
 
 ->->
 
 === Headmistress_Timeout ===
 
-TODO: Record VO 
-
 {cycle:
-    - Respond, wretch.
-    - I am waiting, {player_name}.
-    - Perhaps you think I am not worthy of your time.
-    - Where is your head, slave? Respond.
-    - Attend to me, heathen. 
-    - I require your attention at all times, baffoon.
-    - You weary me. 
-    - Slave!
-    - You shiftless layabout. Attend!
-    - Stay alert, flawed one.
+    - Respond, wretch. #01
+    - I am waiting, {player_name}. #02
+    - Perhaps you think I am not worthy of your time. #03
+    - Where is your head, slave? Respond. #04
+    - Attend to me, heathen.  #05
+    - I require your attention at all times, buffoon. #06
+    - You weary me.  #07
+    - Slave! #08
+    - You shiftless layabout. Attend! #09
+    - Stay alert, flawed one. #10
 }
 
 ->->
 
 === Headmistress_PayAttention ===
-/perform amused
+/perform idle_tease
 
 { cycle:
     - The focus of your attention must remain on me. #01
@@ -191,19 +179,17 @@ TODO: Record VO
 
 === Headmistress_AcknowledgeYes ===
 
-TODO: record VO 
-
 { cycle:
-    - Excellent.
+    - Excellent. #01
     - How exquisite. #237
-    - Indeed.
-    - Good.
+    - Indeed. #02
+    - Good. #03
     - Your acceptance is most becoming. #93
-    - Hmm. 
-    - Superb.
-    - Mmmhmm.
-    - Just so. 
-    - I should think so.
+    - Hmm.  #04
+    - Superb. #05
+    - Mmmhmm. #06
+    - Just so.  #07
+    - I should think so. #08
     - Ahhh. I am pleased! #243
     }
     
@@ -212,15 +198,17 @@ TODO: record VO
 
 === Headmistress_Resume ===
 //generic responses whenever the Headmistress continues dialogue after a response or action.
-TODO: rewrite resumes
 
 { shuffle:
-    - Enough. We shall resume.
-    - I am eager to return to your admonishment.
-    - Your punishment shall resume.
-    - Let us continue.
-    - Retribution must continue.
-    - We shall recommence the chastisement.
+    - We shall resume, then. #01
+    - Pray let us continue. #02
+    - Then let us resume. #03
+    - We shall press ahead! #04
+    - We shall recommence with our performance! #05
+    - Let us continue what we started. #06
+    - We shall continue where we left off. #07
+    - Our demonstration continues. #08
+    - Let us continue where we left off. #09
 }
     
 ->->
@@ -238,6 +226,7 @@ TODO: rewrite resumes
     - Let us continue. #04
     - Retribution must continue. #05
     - We shall recommence the chastisement. #06
+    - Let us finish your punishment. #07
 }
     
 ->->
@@ -279,7 +268,7 @@ TODO: rewrite resumes
 
 === Headmistress_BadSpank ===
 ~ headmistress_spanking_mistakes++
-/character headmistress displeased
+/character headmistress shake_head_annoyed angry 50
 {shuffle:
     - Terrible. We'll have to repeat that one. #147
     - Tsk. Tsk. You can do better. #148
@@ -303,16 +292,12 @@ TODO: rewrite resumes
 /character headmistress
 ->->
 
-TODO: move lines to reward_exhibitionism, keep lines that are generic masturbation laying_down_caress_breasts
+TODO: decide whether to keep these lines
 === Headmistress_player_masturbate ===
 
 // {hasPenis: Wrap your hand around your rod|Slip your fingers between your nether lips} and entertain them. #02
 
-// /character headmistress idle
-// /wait 2
-// All eyes are on you, slave. #03
-// /wait 2
-// Are you {hasPenis: hard|wet}? #04
+
 
 // + [yes]
 //     ~ addObey()
@@ -324,57 +309,6 @@ TODO: move lines to reward_exhibitionism, keep lines that are generic masturbati
 //     A shame we must rectify. #07
 //     Arouse yourself and continue until I give you leave to stop. #08
 
-// - (masturbate_for_crowd)
-
-// + [wait:3]
-// -> masturbation_comment ->
-
-// -
-// + [wait:3]
-// -> masturbation_comment ->
-
-// -
-// + [wait:3]
-// -> masturbation_comment ->
-
-// -
-// + [wait:3]
-// -> masturbation_comment ->
-
-// -
-// + [wait:3]
-// -> masturbation_comment ->
-
-// - 
-// + [wait:5]
-
-// - /perform thoughtful
-// { cycle:
-//     - Are you having fun performing for our guests? #09
-//     - Would you like to keep going, {isBoy:toad|strumpet}? #10
-//     - Does our little {isBoy:runt|poppet} need more time? #11
-//     - Are you going to ask our guests to continue waiting? #12
-//     - Still working that {hasPenis:shaft|slit}? #13
-//     - Our {isBoy:toad|strumpet} needs more time. Yes? #14
-// } 
-
-// + [yes]
-//     /character headmistress idle
-//     -> masturbate_for_crowd
-
-// + [no]
-//     /character headmistress idle
-//     A fine performance, slave. #15
-        
-// - ->->
-
-// = masturbation_comment
-
-// { obeyed():
-//     -> Headmistress_masturbation_comments ->
-// - else:
-//     -> Headmistress_masturbation_punishment ->
-// }
 
 ->->
 
@@ -424,6 +358,7 @@ TODO: move lines to reward_exhibitionism, keep lines that are generic masturbati
         /character crowd oos
     - You are a divine {isBoy:reprobate|harlot}. #15
     - Our guests are frenzied and demand more. #16
+    - All eyes are on you, slave. #17
     - -> Headmistress_GoodJob ->
     - -> Headmistress_GoodJob ->
     - -> Headmistress_GoodJob ->
@@ -434,7 +369,6 @@ TODO: move lines to reward_exhibitionism, keep lines that are generic masturbati
 ->->
 
 === Headmistress_CheckIfInterested ===
-//this code was disabled, but not sure why. it needs to be used for the reward_exhibitionism scene
 
 {checked_if_interested: -> check_terse}
 
@@ -443,30 +377,29 @@ TODO: move lines to reward_exhibitionism, keep lines that are generic masturbati
 {
     - scene_type == punishment_scene:
     /perform unhappy
-    // VO needs to be moved over from HM punishment_spanking
         {shuffle:
             - Are you too good to take a punishment, {player_name}? #216
               Obey instructions. #217
-            - A punishment is owed, baffoon.
-              Will you comply?
+            - A punishment is owed, buffoon. #01
+              Will you comply? #02
         }
      
     - scene_type == reward_scene:
-    /perform behold
+    /perform open_arms_behold
         {shuffle:
-            - You would be remiss to turn away from your reward. 
-              Shall we continue?
-            - Perhaps today is not the day you deserve to be rewarded.
-              Do you want your reward?
+            - You would be remiss to turn away from your reward.  #03
+              Shall we continue? #04
+            - Perhaps today is not the day you deserve to be rewarded. #05
+              Do you want your reward? #06
         }
         
     - else:
     /perform cocks_head_to_left
-    You will leave with a punishment if you do not finish your task.
+    You will leave with a punishment if you do not finish your task. #07
         {shuffle:
-            - Do you desire to continue, {player_name}? 
-            - You came here to serve, {isBoy: urchen| moppet}.
-              Shall we continue?
+            - Do you desire to continue, {player_name}?  #08
+            - You came here to serve, {isBoy: urchin| moppet}. #09
+              Shall we continue? #10
         }
 }
 
@@ -482,39 +415,37 @@ TODO: move lines to reward_exhibitionism, keep lines that are generic masturbati
 
 - (check_terse) 
 
-TODO: Break remaining checks into scene type and/or shuffle options
 {
     - scene_type == punishment_scene:
-    /perform angry
+    /perform fists_on_hips_stomp
         {shuffle:
-            - //copy numbered VO from Headmistress Punishment_Spanking
-              Well? #218
+            - Well? #218
               You merely drag out the inevitable with your delay. #219
-            - Are you going to continue to play the reluctant {player_name}? #220.
+            - Are you going to continue to play the reluctant {player_name}? #220
         }
      
     - scene_type == reward_scene:
-    /perform behold
+    /perform open_arms_behold
         {shuffle:
-            - Your passion feeds and time is waisting.
-              Shall we continue?
-            - What a pity you would waist such a gift.
-              Shall we resume?
+            - Your passion feeds and time is wasting. #12
+              Shall we continue? #13
+            - What a pity you would waist such a gift. #14
+              Shall we resume? #15
         }
         
     - else:
     /perform cocks_head_to_left
-    I have no patience for fools. A punishment will be yours!
+    I have no patience for fools. A punishment will be yours! #16
         {shuffle:
-            - Will you finish your task, {player_name}? 
-            - Will you perform, ingrate?
+            - Will you finish your task, {player_name}?  #17
+            - Will you perform, ingrate? #18
         }
 }
 
 + [yes] -> check_yes
 + [no] 
 
-- /perform bored
+- /perform inspect_hand_bored
 Out of my office, heathen. #221
 I have no time for your shenanigans. #222
 -> out_heathen
@@ -523,8 +454,8 @@ I have no time for your shenanigans. #222
 /perform confused
 {shuffle: 
     - There is hope for you yet. #223
-    - Do not try my patience again.
-    - No more wasting time then.
+    - Do not try my patience again. #19
+    - No more wasting time then. #20
 }
 
 ->->

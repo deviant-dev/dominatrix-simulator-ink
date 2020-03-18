@@ -20,34 +20,34 @@
 
     <blockquote><i>You stand inside a spacious Victorian office with a large wooden desk, several sets of bookshelves, and walls lined with curtains. Before you stands a lean and lengthy woman with dark skin and an ample bosom forcefully spanking a young slave. Her face is stern and her eyes placid...</i></blockquote>
 
-    + [Start] -> start
+    + [Continue] -> start
 - else:
     -> start
 }
 
 = start
 
-/perform spank_x3 slave
+/perform spank_x3
 
 You are an unruly, undisciplined, low-born miscreant. #01
 
-/perform spank_x2 slave
+/perform spank_x2
 
 I will not abide by your disobedience. #02
 
 /character slave crying
 I'm sorry, Headmistress. #05
 
-/character headmistress spank_x3 slave
+/character headmistress spank_x3
 
 You <i>will</i> behave according to your station #03
-/perform spank_x3 slave
+/perform spank_x3
 or find yourself unable to rest on your backside for a week. #04
 
 /character slave crying
 
 Please, Headmistress! #07
-/character headmistress spank_x2 slave
+/character headmistress spank_x2
 
 + [wait]
 
@@ -114,7 +114,7 @@ Do you know who I am? #22
 //- You are newly arrived and already in trouble. #48
 - /perform idle
 As the Headmistress, I oversee the training #29
-/perform behold
+/perform open_arms_behold
 and correction of all slaves in this house. #30
 
 /perform cocks_head_to_left
@@ -122,7 +122,7 @@ Understood? #31
 
     + [yes]
         ~ addObey()
-        /perform agreement
+        /perform idle_gesture
         Excellent. #32
         
     + [no]
@@ -137,6 +137,7 @@ Understood? #31
     
 - /perform lean_forward
 - (present)
+- /perform lean_forward skeptical 50
 
 Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
 
@@ -146,7 +147,7 @@ Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your
     ~ addObey()
 
 + [timeout]
-    /perform annoyed
+    /perform shake_head_annoyed
     Your wrists, you witless cur. #39
     Present them before you #40
     so that I may confirm your measure. #41
@@ -155,13 +156,13 @@ Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your
     Like so, foolish {player_name}. #42
     -> present_retry
 
-- /perform look_up_and_down
+- /perform look_up_and_down excited 40
 Ah, Bloodstone. Diligence and commendation. #43
 
 /perform nod
 You have pleased the Goddess. #44
 
-/perform curious
+/perform curious skeptical 50
 Hmmmm. But also Obsidian. #45
 Entering the Goddess's chambers unbidden!  #49
 This is a serious infraction. #50
@@ -192,7 +193,7 @@ upon the body and soul.  #121
 /perform smooth_skirt
 You will be punished. #51
 And you will do it with grace. #52
-/perform behold
+/perform open_arms_behold
 I will teach you how. #53
 Just like I do with all the new slaves. #54
 
@@ -201,4 +202,4 @@ No need to waste time, then. #33
 
 - /perform idle 
 
-- -> headmistress_punishment_spanking
+- -> headmistress_punishment_spanking.start

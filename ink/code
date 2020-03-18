@@ -51,12 +51,13 @@
     -> game_intro
 
 === unlock_shortcuts ===
+~ goddess_shortcut = true
 ~ yuki_shortcut = true
 ~ nega_shortcut = true
 ~ hm_shortcut = true
-~ goddess_shortcut = true
+~ goddess_angry_shortcut = true
 ~ hm_bonus_shortcut = true
-~ goddess_bonus_shortcut = true
+~ goddess_pleased_shortcut = true
 ->->
 
 === unlock_all ===

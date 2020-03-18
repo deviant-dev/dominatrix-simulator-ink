@@ -1,4 +1,4 @@
-
+   
 === Nega_GoodJob ===
 
 {shuffle:
@@ -17,7 +17,7 @@
     - Good fucktoy. #13
     - Nice! #14
     - What a slut! #15
-    - I'm impressed, slut.
+    - I'm impressed, slut. #16
 }
     
 ->->
@@ -49,48 +49,49 @@
 
 //use this for responses from player she doesn't like - verbal
 
+{shuffle:
+    - Fucking liar. #01
+    - Bullshit. #02
+    - Stupid bitch! #03
+}
 
 
 ->->
-
 
 === Nega_Insult ===
 
 {shuffle:
-    - You're so goddamn pitiful.
-    - Fucking stupid {isBoy: prick|cunt}.
-    - Jeezus you're so predictable.
-    - You're so fucking slutty.
-    - You'd make a better cum bucket.
-    - Your {hasPenis: tiny cock|gaping cunt} is boring.
-    - Such a fucking whore.
+    - You're so goddamn pitiful. #01
+    - Fucking stupid {isBoy: prick|cunt}. #02
+    - Jeezus you're so predictable. #03
+    - You're so fucking slutty. #04
+    - You'd make a better cum bucket. #05
+    - Your {hasPenis: tiny cock|gaping cunt} is boring. #06
+    - Such a fucking whore. #07
 }
     
 ->->
 
-
-
-
 === Nega_Apologize ===
 
 -(repeat)
-Apologize for being a fuck up.
-Kiss the ground!
+Apologize for being a fuck up. #01
+Kiss the ground! #02
 
 + [pose:kiss_feet]
 + [timeout] -> Nega_BadJob -> repeat
 
-- Keep going until I tell you to stop.
+- Keep going until I tell you to stop. #03
 
 + [pose:kiss_feet]
 
-- That's it, little bitch.
-Show me how sorry you are.
+- That's it, little bitch. #04
+Show me how sorry you are. #05
 
 + [pose:kiss_feet]
 
-- Don't fucking lie to me again.
-Now get back up on your knees.
+- Don't fucking lie to me again. #06
+Now get back up on your knees. #07
 
 + [pose:kneel]
 
@@ -114,7 +115,6 @@ Now get back up on your knees.
 }
 
 ->->
-
 
 //response to player distraction
 === Nega_PayAttention ===
@@ -168,46 +168,35 @@ Are you going to behave and give me what I want? #02
 === Nega_prepare_masturbate ===
 
 {shuffle:
-    - {hasPenis: Grab your little cock and start stroking|Reach down and start rubbing your pussy}.
-    - {hasPenis: Get fucking hard for me!|Start rubbing that fucking pussy!}
-    - I want that {hasPenis: tiny little dick| gaping pussy} of yours all worked up.
-    - You're going to rub one out for me, pathetic {isBoy: worm|{isGirl: stain|wretch}}.
+    - {hasPenis: Grab your little cock and start stroking|Reach down and start rubbing your pussy}. #01
+    - {hasPenis: Get fucking hard for me!|Start rubbing that fucking pussy!} #02
+    - I want that {hasPenis: tiny little dick| gaping pussy} of yours all worked up. #03
+    - You're going to rub one out for me, pathetic {isBoy: worm|{isGirl: stain|wretch}}. #04
 }
 ->->
 
-=== Nega_Objectify === 
-
-{shuffle:
-    - Enjoy the view, slut! #16
-    - Being so close must be such a turn on for you, whore. #18
-    - That's all you're good for, cunt, being used. #19
-    - I enjoy watching you be a little whore for my attention. #21
-    - Only a lucky few get to see something so wonderful, be grateful! #22
-}
-    
-->->
-
-=== Nega_masturbation_comments ===
+=== Nega_Masturbation_Comments ===
 
 {shuffle:
     - Keep going. #06
-    - {hasPenis: Your dick's not hard enough yet.|Your pussy's not wet enough yet.}
+    - {hasPenis: Your dick's not hard enough.|Your pussy's not dripping enough.} #17
     - Harder. Faster. #08
     - I bet your arm is getting tired. Too bad! #09
     - More. More. More! #10
     - I enjoy watching you be a little whore for my attention. #14
     - That's it, little meatbag. #15
-    - {hasPenis: What a fucking slut getting /my/ cock ready for me to use.|Such a slut getting /my/ pussy so wet!}
-    - That's all you're good for, cunt, being used. #17
+    - {hasPenis: What a fucking slut getting <i>my</i> cock ready for me to use.|Such a slut getting <i>my</i> pussy so wet!} #23
     - Wallow in it, {isBoy: worm|cunt}. #18
-    - Work those fingers.
+    - Work those fingers. #03
+    - Enjoy the view, slut! #16
+    - Being so close must be such a turn on for you, whore. #01
+    - Only a lucky few get to see something so wonderful. Be grateful! #02
     --> break01 ->
     --> break02 ->
     --> break03 ->
     --> Nega_Objectify->
     --> Nega_Objectify->
 }
-
 
 ->->
 
@@ -241,31 +230,45 @@ Do you want to cum for me? #19
 - ->->
 
 = break03
-Does that feel good whore?
+Does that feel good whore? #04
 
 + [yes]
-    Thirsty little {isBoy: boy|{isGirl: girl|pet}}.
+    Thirsty little {isBoy: boy|{isGirl: girl|pet}}. #05
 
 
 + [no]
     -> Nega_BadJob ->
-    Too fucking bad. I hope it hurts!
+    Too fucking bad. I hope it hurts! #07
     
 - ->->    
 
-=== Nega_aroused ===
+=== Nega_Aroused ===
 
 {shuffle:
     - Ahhhh. Yesss... I'm so fucking wet. #04
-    - I can smell my own pussy, fuck toy.
-    - Your little performance is making me ooze.
-    - Damn. My cunt is throbbing watching you.
-    - I can't wait to slide my fingers into my hot cunt.
+    - I can smell my own pussy, fuck toy. #01
+    - Your little performance is making me ooze. #02
+    - Damn. My cunt is throbbing watching you. #03
+    - I can't wait to slide my fingers into my hot cunt. #05
+    - I'm going to cum so hard later. #06
 }
-
 
 ->->
 
+=== Nega_Objectify === 
+
+{shuffle:
+    - That's all you're good for, cunt, being used. #19
+    - I enjoy watching you be a little whore for my attention. #21
+    - You're just a filthy cum bucket to be used and abused. #01
+    - What a {hasPenis: tiny little pecker|gaping hole} you have. #02
+    - Good thing this House keeps you fucking firm. #03
+    - Filthy bag of fuck holes. #04
+    - Oooo... look at the little sex doll. #05
+    - Such a fucking cum dump.  #06
+}
+    
+->->
 
 === Nega_Give_Reward ===
 //This isn't being used anywhere.
@@ -304,15 +307,15 @@ TODO: create new animation
 + [wait 3]
 - I'm sure you loved that, my disgusting little {isBoy: pig|cunt}! #15
 
-Didn't you?
+Didn't you? #16
 
 +[yes]
-    Haha! Yes!
+    Haha! Yes! #17
     
 +[no]
-    Poor little baby.
-    So abused.
-    Waaa.
+    Poor little baby. #20
+    So abused. #21
+    Waaa. #22
     
 -   
 

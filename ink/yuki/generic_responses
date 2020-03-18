@@ -97,7 +97,6 @@
 
 === Yuki_Badjob ===
 
-TODO: record new VO
 {shuffle:
     - I thought you knew better. #01
     - Oh geez, slave. #02
@@ -107,17 +106,27 @@ TODO: record new VO
     - Can't you just do as I want? #06
     - Sometimes I have too much patience. #07
     - Please just meet your expectations. For me? #08
-    - You are so naughty!
-    - That was terrible!
-    - Very bad, {player_name}.
-    - The Goddess won't like that.
-    - Try harder.
-    - Tsk. Tsk. 
-    - What a shame!
-    - Yuck.
-    - That was awful.
+    - You are so naughty! #09
+    - That was terrible! #10
+    - Very bad, {player_name}. #11
+    - The Goddess won't like that. #12
+    - Try harder. #13
+    - Tsk. Tsk.  #14
+    - What a shame! #15
+    - Yuck. #16
+    - That was awful. #17
 }
 
+->->
+
+=== Yuki_Aroused ===
+
+{shuffle:
+    - Watching you is turning me on.
+    - My panties are wet.
+    - I just love rewarding good pets.
+}   
+    
 ->->
 
 === Yuki_Punishment_Response ===
@@ -134,13 +143,11 @@ TODO: record new VO
 
 === Yuki_Punishment_Chastise ===
 
-TODO: record new VO
-
 {shuffle:
     - /perform disappointed
-    - /perform angry
+    - /perform fists_on_hips_stomp
     - /perform shake_finger_stern
-    - /perform annoyed
+    - /perform shake_head_annoyed
     - /perform pouty
     }
     
@@ -149,9 +156,9 @@ TODO: record new VO
     - I'm so disappointed. #195
     - At this rate, you'll never be properly trained! #200
     - We'll never have any real fun until you start taking this more seriously! #201
-    - I put in so much effort and you just don't try hard enough.
-    - Oh my goodness. The Goddess will be so cross with me. 
-    - It makes me so sad when I have to punish you.
+    - I put in so much effort and you just don't try hard enough. #01
+    - Oh my goodness. The Goddess will be so cross with me.  #02
+    - It makes me so sad when I have to punish you. #03
     }
     
 ->->
@@ -200,7 +207,7 @@ Do you want to be sent away? #04
 + [yes] 
 + [no] -> check_yes
 
-- /perform annoyed
+- /perform shake_head_annoyed
 Then get out of here, you bad {player_name}. #05
 Come back when you're ready to follow the rules. #06
 -> exit

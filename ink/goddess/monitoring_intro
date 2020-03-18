@@ -1,10 +1,13 @@
-=== goddess_monitoring_intro_nega ===
+=== goddess_monitoring_intro ===
+
+= angry
+
 -> select_gender_check ->
 
 ~ rewards = 0
 ~ punishments = 0
 ~ tutorial_step = at_goddess_outro
-~ goddess_shortcut = true
+~ goddess_angry_shortcut = true
 ~ setScene(intro_scene, Goddess)
 
 /scene Huge.InHand
@@ -40,17 +43,24 @@ Ten Bloodstones will unlock you from your imprisonment. #12
 
 Now go and fail me no further {player_name}. #13
 ~ inTutorial = false
+
 ~ tutorial_goddess_outro_angry_complete = true
 
-- -> exit
+{deviation == tutorial:
+    -> demo_end
+- else:
+    -> entry_hub
+}
 
-=== goddess_monitoring_intro_headmistress ===
+
+= pleased
+
 -> select_gender_check ->
 
 ~ rewards = 0
 ~ punishments = 0
 ~ tutorial_step = at_goddess_outro
-~ goddess_bonus_shortcut = true
+~ goddess_pleased_shortcut = true
 ~ setScene(intro_scene, Goddess)
 
 /scene Huge.InHand
@@ -59,29 +69,34 @@ Now go and fail me no further {player_name}. #13
 /character goddess
 
 - /emotion amused
-Hello there, little {player_name}. 
-You have performed adquately for one so new.
-I am satisfied. For now.
+Hello there, little {player_name}. #14
+You have performed adequately for one so new. #15
+I am satisfied. For now. #16
 
 /emotion happy
-As always, the Headmistress out does herself.
-Her dedication to obedience serves me well.
-Restrained passion sustains so much longer 
-than a bright flame that burns out too soon.
+As always, the Headmistress outdoes herself. #17
+Her dedication to obedience serves me well. #18
+Restrained passion sustains so much longer #19
+than a bright flame that burns out too soon. #20
 
 /emotion amused
-I must commend Mistress Yuki-Onna, as well.
-It seems her lesson has increased her motivation to focus.
+I must commend Mistress Yuki-Onna, as well. #21
+It seems her recent lesson has provided quite the motivation. #22
 
-/emotion nuetral
-Continue to serve in my house, {player_name}, 
-and you remain useful.
+/emotion neutral
+Continue to serve in my house and remain useful. #23
 
 /emotion amused
-I shall leave you now.
-Go forth and please me, {player_name}.
+I shall leave you now. #24
+Go forth and please me, {player_name}. #25
 
 ~ inTutorial = false
 ~ tutorial_goddess_outro_happy_complete = true
 
-- -> exit
+{deviation == tutorial:
+    -> demo_end
+- else:
+    -> entry_hub
+}
+
+

@@ -2,11 +2,11 @@
 
 {not headmistress_apologize: -> accept}
 
-Do you apologize?
+<< Do you apologize? >>
 
 +[yes] 
     ~ headmistress_apologize = false
     -> accept
 +[no]
-    Fuck off.
+    << Fuck off. >>
     -> reject

@@ -38,7 +38,7 @@ Now. Onto your hands and knees, bauble. #233
 
 + [pose:hands_and_knees]
 
-- /perform amused
+- /perform idle_tease
 
 The back must be delicately arched, #21
 presenting the most ideal access #22
@@ -48,7 +48,7 @@ to the object of discipline: the buttocks. #23
 Lift your backside high, {isBoy: mongrel|moppet}. #24
 
 /perform paddle_desk
-
+    
 - Tell me, lump, is that as high as you can lift your hindquarters? #26
 
 +[yes]
@@ -66,7 +66,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
     Raise your ass! #32
 
 +[timeout]
-    /perform annoyed
+    /perform shake_head_annoyed
     What are you waiting for? #33
     Your back must strain with the effort of raising your derriere, chattel. #34
 
@@ -76,8 +76,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
 - /character headmistress lean_forward
 
 Time to rehearse. #118
-TODO: Record new VO
-Three perfect swats should be sufficient.
+Three perfect swats should be sufficient. #01
 
 /scene LectureHall.HeadmistressAtBack
 
@@ -153,9 +152,9 @@ Turn to the left. #241
 
 + [pose:present_ass_left]
 -> Headmistress_GoodJob ->
-This chattel has potential.
-Do you think we can mold it?
-/crowd cheers
+This chattel has potential. #02
+Do you think we can mold it? #03
+/character crowd cheers
 
 
 - (rotate_right_timeout)
@@ -165,9 +164,9 @@ Now turn to the right. #242
 
 + [pose:present_ass_right]
 - /character crowd gasps
-/character headmistress behold
+/character headmistress open_arms_behold
 -> Headmistress_AcknowledgeYes ->
-<i>She</i> will enjoy watching this one be broken, I think.
+<i>She</i> will enjoy watching this one be broken in, I think. #04
 
 
 ->->

@@ -1,10 +1,12 @@
 
+TODO: add emotions and performances to swipe a Bloodstone
+
 === Yuki_Puppyplay_Reward_Earned ===
 
 {shuffle:
     - /perform sassy
     - /perform clasp_hands
-    - /perform bounces
+    - /perform bouncing_big
 }
 
 {shuffle:
@@ -13,10 +15,13 @@
     - Now I'm even happier with you! #190
 }
 
-You've earned a reward!
-~ addReward()
+{shuffle:
+    - You've earned a reward!
+    - Now, you've got a new reward. 
+    - You just got a new Bloodstone.
+}
 
-TODO: Add receiving reward dialogue and action
+~ addReward()
 
 {shuffle:
     - /perform lean_forward
@@ -38,7 +43,7 @@ TODO: Add receiving reward dialogue and action
 {shuffle:
     - /perform sassy
     - /perform clasp_hands
-    - /perform bounces
+    - /perform bouncing_big
 }
 
 {shuffle:
@@ -47,10 +52,13 @@ TODO: Add receiving reward dialogue and action
     - You're the best puppy a girl could ask for. #191
 }
 
-That uses up a reward!
+{shuffle:
+    - That uses up a reward!
+    - You've just redeemed one reward. 
+    - Time to remove one Bloodstone reward. 
+}
 
 ~ removeReward()
-TODO: Add receiving reward dialogue and action
 
 {shuffle:
     - /perform lean_forward
@@ -68,12 +76,9 @@ TODO: Add receiving reward dialogue and action
 
 === Yuki_Puppyplay_Punishment_Earned ===
 
-TODO: record new VO
-TODO: move VO lines from Yuki_puppplay_badwrapup to yuki_puppyplay_punishment_complete
-
 {shuffle:
     - /perform sighs
-    - /perform bored
+    - /perform inspect_hand_bored
     - /perform open_arms_shrug
 }
 
@@ -83,10 +88,14 @@ TODO: move VO lines from Yuki_puppplay_badwrapup to yuki_puppyplay_punishment_co
     - The Goddess is not going to be pleased with you!
 }
 
-You've earned a punishment, puppy.
+{shuffle:
+    - You've earned a punishment, puppy.
+    - Now I have to give you a punishment. 
+    - Aw, gee. You have a new Obsidian punishment marker.
+}
 
 ~ addPunishment()
-TODO: add receiving punishment dialogue and action
+
 {shuffle:
     - /perform lean_forward
     - /perform idle_yuki
@@ -102,12 +111,10 @@ TODO: add receiving punishment dialogue and action
 ->->
 
 === Yuki_Puppyplay_Punishment_Complete ===
-TODO: record new VO
-TODO: move VO lines from Yuki_puppplay_badwrapup to yuki_puppyplay_punishment_complete
 
 {shuffle:
     - /perform sighs
-    - /perform bored
+    - /perform inspect_hand_bored
     - /perform open_arms_shrug
 }
 
@@ -117,11 +124,12 @@ TODO: move VO lines from Yuki_puppplay_badwrapup to yuki_puppyplay_punishment_co
     - You should really try to avoid punishments in the future, puppy.
 }
 
-I expect you to behave next time!
-You've paid off a punishment, puppy!
+{shuffle: 
+    - You've paid off a punishment, puppy!
+    - Alright. That's one Obsidian punishment removed!
+    - Phew! You just got rid of a punishment. 
+}
 ~ removePunishment()
-
-TODO: add receiving punishment dialogue and action
 
 {shuffle:
     - /perform lean_forward
@@ -132,13 +140,12 @@ TODO: add receiving punishment dialogue and action
 {shuffle:
     - Go on. I'm done with you now.
     - Stay out of trouble, puppy!
-    - You better be a good puppy for the other Mistresses!
+    - I expect you to behave better next time!
 }
 
 
 ->->
 === Yuki_Puppyplay_GoodSpank ===
-TODO: record VO lines 
 
 {shuffle:
     - Good puppies don't get spanked.
@@ -148,24 +155,33 @@ TODO: record VO lines
     - Ooof!
     - Your bottom is so pink!
     - I think I'm getting wet!
-    - 
-    - 
+    - This hurts me so much more than it hurts you.
+    - I'm so sad I have to do this!
+    - Hang in there!
+    -
+    -
+    -
+    -
     - 
  }
 
 ->->
 
 === Yuki_Puppyplay_BadSpank ===
-TODO: Record VO lines 
 
 {shuffle:
-    - Now you have to start
+    - Make sure you're counting.
     - Pfft. Make the next one better, puppy. 
     - Head up high, puppy. 
     - Are you even trying? 
     - I thought the Headmistress trained you to take a spanking? 
     - No squirming!
     - You don't seem very sorry, puppy. 
+    - This spanking's never going to end. 
+    - I want to see you react, puppy. 
+    - Try harder!
+    -
+    -
     -
     -
     -
@@ -175,7 +191,7 @@ TODO: Record VO lines
 === Yuki_Player_Masturbate ===
 
 
-Are you {hasPenis: hard|wet}?
+Are you {hasPenis: hard|wet} already?
 
 + [yes]
     ~ addObey()

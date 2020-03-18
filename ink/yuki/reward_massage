@@ -25,7 +25,7 @@ VAR massage_count = 0
 
 You performed so well in there!
 
-/perform amused
+/perform idle_tease
 
 I hope the Headmistress didn't leave your little tushie too sore.
 
@@ -987,7 +987,7 @@ Back off!
 
 /perform idle
 
-/perform angry
+/perform fists_on_hips_stomp
 
 What did I tell you?!
 
@@ -1115,7 +1115,7 @@ That's enough.
 
 /perform idle
 
-/perform angry
+/perform fists_on_hips_stomp
 
 And you {isBoy:mister|miss} don't get any satisfaction for yourself.
 

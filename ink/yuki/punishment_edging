@@ -24,7 +24,7 @@ I explained to you the rules didn't I?
 Somebody isn't a very good slave then.
 + [No]
 ~ addDisobey()
-/perform annoyed
+/perform shake_head_annoyed
 
 Now that's just not true, and you know it. Lying counts as being disobedient too. That'll earn you <i>another</i> punishment mark.
 
@@ -94,11 +94,11 @@ Well maybe next time you shouldn't be such a naughty little slave.
 
 // This is the first edging break. Here Yuki will transition to a different set of phrases, but allow the player to touch themselves.
 
-/perform amused
+/perform idle_tease
 
 Mmm, oh goodie, your {hasPenis: cock is nice and hard.|pussy is nice and wet.}
 
-/perform bored
+/perform inspect_hand_bored
 
 But I don't think that's enough. 
 
@@ -428,7 +428,7 @@ Make sure you tell me right before you cum.
 
 If you can follow directions so well, why are you here?
 
-/perform annoyed
+/perform shake_head_annoyed
 
 I probably have to let you go soon. 
 
@@ -509,7 +509,7 @@ If you're not going to pay attention to me, then I won't pay any more attention 
 
 Cum for me!
 
-/perform amused
+/perform idle_tease
 
 /perform laugh
 
