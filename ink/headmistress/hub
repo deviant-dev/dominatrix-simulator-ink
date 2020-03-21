@@ -13,7 +13,7 @@
 
 /scene LectureHall.Hub
 /music headmistress
-/character headmistress clasp_hands
+/character headmistress idle_clasp_hands
 
 + [move]
 
@@ -86,7 +86,7 @@ Are you here to receive your reward? #08
 
 
 = choose_reward
-/perform open_arms_behold
+/perform talk_behold
 
 {shuffle:
     - Then a reward you shall have. #15

@@ -146,7 +146,7 @@ Now get back up on your knees. #07
 
 === Nega_CheckIfInterested ===
 
-/perform unhappy
+/perform idle_unhappy
 What the fuck is wrong with you!? #01
 
 Are you going to behave and give me what I want? #02
@@ -297,7 +297,7 @@ Does that feel good whore? #04
 }
 
 = reward_spit
-/perform lean_forward
+/perform talk_lean_forward
 Open your mouth, slut! #14
 
 + [react-success]

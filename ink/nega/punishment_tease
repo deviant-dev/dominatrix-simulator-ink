@@ -6,7 +6,7 @@
 /scene attic.punishment_tease
 /music nega-punishment
 /ambient off
-/character nega shake_head_annoyed
+/character nega talk_annoyed
 
 - (tease_intro)
 
@@ -21,7 +21,7 @@ You've only earned a little pain for that roll, {isBoy: worm|{isGirl:cunt|wretch
 }
 
 - (insult)
-/perform fists_on_hips_stomp
+/perform idle_unhappy_stomp
 {shuffle:
     - You're a disgusting stain.
     - You're a nasty pile of shit.
@@ -59,13 +59,13 @@ Isn't that right?
 
 - -> Nega_GoodJob ->
 
-/perform fists_on_hips_stomp
+/perform idle_unhappy_stomp
 You can't fucking hide from me.
 I see what you are.
 
 -> Nega_Insult ->
 
-/perform lean_forward
+/perform talk_lean_forward
 You just can't stay away, can you?
 
 + [yes]

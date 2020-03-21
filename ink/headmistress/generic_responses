@@ -1,6 +1,6 @@
 /// For actions
 === Headmistress_GoodJob ===
-
+/character headmistress
 { shuffle:
     - Most excellent. #01
     - There is hope for you, yet! #02
@@ -51,7 +51,7 @@
 ->->
 
 === Headmistress_BadJob ===
-
+/character headmistress
 { shuffle:
     - Tsk. Tsk. You can do better. #148
     - Are you even trying? #151
@@ -94,7 +94,6 @@
 === Headmistress_Unhappy ===
 
 { shuffle:
-// Copy VO lines from badspanking
     - Uggh. #247
     - I fail Her. #01
     - Disappointing. #02
@@ -163,7 +162,7 @@
 + [pay-attention]
 + [timeout] -> Headmistress_PayAttention ->->
 
-/perform thoughtful
+/perform talk_thoughtful
 
 - { cycle:
     - Let us return to our demonstration. #10
@@ -245,7 +244,10 @@
     - I suspect that one hurt. #164
     - /character crowd oos
     - /character crowd gasps
-    - /character headmistress mmms
+
+//    - /character headmistress mmms
+TODO: Change this to an 'Mmmm' VO line. -Deviant
+
     - Brilliant! No doubt my guests are impressed by your display. #165
     - Have you been keeping track? #166
     - Notice the beads of sweat forming on the brow. #167
@@ -268,7 +270,7 @@
 
 === Headmistress_BadSpank ===
 ~ headmistress_spanking_mistakes++
-/character headmistress shake_head_annoyed angry 50
+/character headmistress talk_annoyed angry 50
 {shuffle:
     - Terrible. We'll have to repeat that one. #147
     - Tsk. Tsk. You can do better. #148
@@ -339,13 +341,15 @@ TODO: decide whether to keep these lines
 
 
 === Headmistress_masturbation_comments ===
+/perform do_arm_raise
+
 { shuffle:
     - A fine demonstration {isBoy:toad|strumpet}. #01
     - We have a little whore, guests! #02
     - Do you think {isBoy:he|she} is enjoying {isBoy:himself|herself}? #03
       /character crowd cheers
     - Exhibit control lest your arm tire. #04
-      /character headmistress smooth_skirt
+      /character headmistress do_smooth_skirt
     - Cumming without permission is expressly forbidden. #05
     - What a fine display. #06
     - Look at those deft fingers. #07
@@ -376,7 +380,7 @@ TODO: decide whether to keep these lines
 
 {
     - scene_type == punishment_scene:
-    /perform unhappy
+    /perform idle_unhappy
         {shuffle:
             - Are you too good to take a punishment, {player_name}? #216
               Obey instructions. #217
@@ -385,7 +389,7 @@ TODO: decide whether to keep these lines
         }
      
     - scene_type == reward_scene:
-    /perform open_arms_behold
+    /perform talk_behold
         {shuffle:
             - You would be remiss to turn away from your reward.  #03
               Shall we continue? #04
@@ -394,7 +398,7 @@ TODO: decide whether to keep these lines
         }
         
     - else:
-    /perform cocks_head_to_left
+    /perform idle_cocks_head_to_left
     You will leave with a punishment if you do not finish your task. #07
         {shuffle:
             - Do you desire to continue, {player_name}?  #08
@@ -417,7 +421,7 @@ TODO: decide whether to keep these lines
 
 {
     - scene_type == punishment_scene:
-    /perform fists_on_hips_stomp
+    /perform idle_unhappy_stomp
         {shuffle:
             - Well? #218
               You merely drag out the inevitable with your delay. #219
@@ -425,7 +429,7 @@ TODO: decide whether to keep these lines
         }
      
     - scene_type == reward_scene:
-    /perform open_arms_behold
+    /perform talk_behold
         {shuffle:
             - Your passion feeds and time is wasting. #12
               Shall we continue? #13
@@ -434,7 +438,7 @@ TODO: decide whether to keep these lines
         }
         
     - else:
-    /perform cocks_head_to_left
+    /perform idle_cocks_head_to_left
     I have no patience for fools. A punishment will be yours! #16
         {shuffle:
             - Will you finish your task, {player_name}?  #17
@@ -445,13 +449,13 @@ TODO: decide whether to keep these lines
 + [yes] -> check_yes
 + [no] 
 
-- /perform inspect_hand_bored
+- /perform idle_bored
 Out of my office, heathen. #221
 I have no time for your shenanigans. #222
 -> out_heathen
 
 - (check_yes) -> Headmistress_AcknowledgeYes ->
-/perform confused
+/perform react_shrug_long
 {shuffle: 
     - There is hope for you yet. #223
     - Do not try my patience again. #19
@@ -462,6 +466,6 @@ I have no time for your shenanigans. #222
 
 = out_heathen
 
-/perform point_to_leave
+/perform do_you_leave
 -> exit
 

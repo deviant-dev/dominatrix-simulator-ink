@@ -1,6 +1,6 @@
 === Goddess_GoodJob ===
 
-/perform fake_annoyed amused 50
+/perform idle_fake_annoyed amused 50
 
 { shuffle:
     - There's a good {player_name}. #114
@@ -38,7 +38,7 @@
 + [pay-attention]
 + [timeout] -> Goddess_PayAttention
 
-/perform thoughtful skeptical
+/perform talk_thoughtful skeptical
 
 - { cycle:
     - Where was I? Oh yes... #134

@@ -8,7 +8,7 @@
 /ambient howling-wind
 /character nega squat
 
-/perform point_down
+/perform do_point_down
 Get on the floor, bitch. #03
 On your back. #04
 
@@ -18,7 +18,7 @@ On your back. #04
 
 + [pose:lay_down] -> lay_down_done
 + { tries < 3 } [timeout]
-    /perform displeased
+    /perform talk_annoyed
     Hey, stupid. #05
     I gave you a command. #06
     -- (lay_down_again) #15
@@ -44,7 +44,7 @@ I'm so ready for this. #01
 I've been waiting a long time for some new blood to show up. #02
 
 - (ask_any_idea)
-/perform looming
+/perform idle_looming
 Do you have any idea what I'm going to do to you? #08
 
 + [yes]
@@ -58,7 +58,7 @@ Do you have any idea what I'm going to do to you? #08
     Well? #11
     -> ask_any_idea
 
-- /perform inspect
+- /perform do_inspect
 I want to get off on some deep dicking. #12
 
 // Handle cockification for female players.
@@ -68,7 +68,7 @@ I want to get off on some deep dicking. #12
 }
 
 /action equip_cock
-/perform looming
+/perform idle_looming
 
 //player has to masturbate to get "hard" for her
 
@@ -88,7 +88,7 @@ Put your wrists above your head! #14
 - -> Nega_GoodJob ->
 
 
-/perform pleased
+/perform idle_tease
 Fuck! I'm soaking my panties. #16
 
 //mutters
@@ -105,14 +105,14 @@ I don't know why I even bother wearing them. #17
 
 //-> Nega_player_masturbate ->
 
-/perform looming
+/perform idle_looming
 
 Now... time for me to get more comfortable. #20
 
 
 //nega yuki strips
 /scene attic.reward_forcedsex2
-/perform sassy
+/perform idle_sassy
 /action equip_cock
 
 //- Hold your cock with both hands, slut. #112
@@ -123,7 +123,7 @@ Look at you. Such a pathetic fleshbag. #21
 I bet you're just dying to find out  #22
 how wet my pussy feels against you. #23
 
-/perform looming
+/perform idle_looming
 - (pussy_wet)
 Aren't you? #24
 
@@ -144,7 +144,7 @@ Aren't you? #24
 // + [no]
 //     You're so fucking dumb. I swear. #30
 
-- /perform looming
+- /perform idle_looming
 I'm about to use you like the eager little whore you are. #31
 Let's find out how well you can fuck. #32
 /emotion aroused 50
@@ -204,7 +204,7 @@ Your job is to make me cum, got it?! #44
  It's going to be a wild ride. #113
  
 // //- (test_thrust)
-// ///perform pleased
+// ///perform idle_tease
 // //Thrust three times. Nice and slow. #47
 
 // //- (test_thrust_again)
@@ -262,7 +262,7 @@ You better move those goddamn hips while I fuck you, slut. #43
 
 /music nega-reward-forced-sex-mini-1
 
-/perform squat_thrust
+/perform sex_squat_thrust
 
 + [wait 5]
 
@@ -296,7 +296,7 @@ You better move those goddamn hips while I fuck you, slut. #43
 
 Decent. Let's pick up the pace, huh? #51
 
-/perform squat_thrust_fast
+/perform sex_squat_thrust_fast
 
 +[wait 5]
 
@@ -379,7 +379,7 @@ Do you want to cum with me, {isBoy: maggot|whore}? #56
     /perform squat //_grind_on_crotch_laugh
     
 - (nega_orgasm)
-/perform squat_thrust_single
+/perform sex_squat_thrust_single
  {shuffle:
     - Pick up the pace, slut! #118
     - Double time! #119
@@ -387,14 +387,14 @@ Do you want to cum with me, {isBoy: maggot|whore}? #56
      }
      
 + [wait]   
-- /perform squat_thrust_single    
+- /perform sex_squat_thrust_single    
 {shuffle:
     - I'm almost there. #121
     - Ahhhhh. I've been waiting so long! #122
     - That's it. That's it! #123
     }
 + [wait]
-- /perform squat_thrust_orgasm
+- /perform sex_squat_thrust_orgasm
 {shuffle:
     - Fuck yes! #124
     - Sooooo good! #125
@@ -413,7 +413,7 @@ Do you want to cum with me, {isBoy: maggot|whore}? #56
 
 - +[wait]
 /music nega-reward
-/perform idle_nega
+/perform idle_skeptical
 
 //orgasm conclude lines - decent job
 TODO: Orgasm ending dialogue. Three levels of feedback: Barely made her orgasm, decent orgasm, really made her cum her brains out.

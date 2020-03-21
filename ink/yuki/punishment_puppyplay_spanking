@@ -84,7 +84,7 @@ This is going to hurt me more than it hurts you!
 And don't forget to show me your reaction.
 
 - (spank)
-/character yuki spank_puppy
+/character yuki do_spank_puppy
 TODO: create new 'spank_puppy' anim
 
 + [react-success]
@@ -124,7 +124,7 @@ TODO: create new 'spank_puppy' anim
 
 = spank_failout
 
-/perform disappointed
+/perform react_disappointed
 -> Yuki_Badjob ->
 
 Leave and don't come back until you're sorry!
@@ -133,11 +133,11 @@ Leave and don't come back until you're sorry!
 
 = spank_success
 
-- /perform satisfied
+- /perform idle_pleased
 All done! Are you proud of yourself, puppy? 
 
     +[yes]
-    /perform pleased
+    /perform idle_tease
    -> Yuki_GoodJob ->
     
     +[no]
@@ -163,7 +163,7 @@ All done! Are you proud of yourself, puppy?
 - (sorry)
 ~ tries++
 
-/perform unhappy    
+/perform idle_unhappy    
 
 {cycle: 
     - Bow your head, puppy, and show me you're sorry. #196
@@ -177,18 +177,18 @@ All done! Are you proud of yourself, puppy?
 
 
 - (sorry_ask_again)
-/perform idle_upset 
+/perform idle_unhappy
 Are you sorry for breaking the rules, puppy?
 
 + [yes]
-    /perform shake_finger_stern
+    /perform do_shake_finger_stern
     If you feel bad about it, you should have paid better attention! #198
 //ending contains performances
     -> Yuki_Puppyplay_Punishment_Complete ->
     Now go.
 
 + [no]
-    /perform pouty  
+    /perform react_disappointed  
     You're not sorry?
     I think somebody <i>wants</i> to be a bad dog. #199
     If you're not sorry, then you haven't paid off your punishment.

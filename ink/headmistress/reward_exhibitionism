@@ -8,22 +8,34 @@ VAR embarassed = false
 /ambient crowd
 /character headmistress idle
 
-/perform arm_raise neutral
+/perform idle_tease happy 50
+
 {shuffle:
     - For your reward, you shall pleasure yourself for the crowd. #01
     - Your reward will be to titillate the crowd with your orgasm. #02
     - You will have the reward of masturbating for your audience, {isBoy: runt|moppet}. #03
 }
+/perform do_arm_raise
+/character crowd cheers_loud
+~ Headmistress_RaiseCurtains()
 
-/perform open_arms_behold happy 40
+
+/wait 2
+
 {shuffle:
-    - We have a full compliment of viewers today. #04
+    - /character headmistress react_shrug_long  happy 40
+    We have a full compliment of viewers today. #04
+    /character headmistress react_thankful aroused 50
     Eager students and connoisseurs of the flesh. #05
-    - Every opportunity to perform for an audience must be siezed. #06
+    - /character headmistress react_shrug_long excited 50
+    Every opportunity to perform for an audience must be siezed. #06
+    /character headmistress talk_thoughtful angry 50
     This is a true test of your willing obedience. #07
 }
 
-- /perform inspect skeptical 30
+- 
+/wait
+/perform talk_consider skeptical 30
 {shuffle:
     - You purpose is to serve with your pleasure, {player_name}. #08
     - Your existence is always dependent upon on your performance, {player_name}. #09
@@ -31,19 +43,25 @@ VAR embarassed = false
 }
 
 - (excited)
-/perform smooth_skirt neutral
+/wait 
+/perform talk_question amused 50
 Are you excited to be rewarded in this way, {isBoy: heathen|harlot}? #16
+
+/perform idle_pleased happy 50
 
 +[yes]
     ~ addObey()
-    /perform nod_pleased happy 20
+    /perform idle happy 50
    -> Headmistress_AcknowledgeYes ->
-   /perform idle 
+   /character crowd oos
+   /wait 2
+   --/character headmistress react_thankful
     {shuffle:
         - Such hedonistic exhibitionism will please <i>Her</i>. #17
         - Your audience shall delight in feasting their eyes upon your body. #18
         - Displaying your orgasm for the benefit of others is your duty. #19
     }
+    /wait 2
     -> nervous_tease
   
 + [no]
@@ -53,28 +71,44 @@ Are you excited to be rewarded in this way, {isBoy: heathen|harlot}? #16
 + [timeout] -> Headmistress_Timeout -> excited
 + [distracted] -> Headmistress_PayAttention -> excited
  
- 
+
 = nervous_consent_check
 
+/perform react_shrug_long amused 75
 Do you tremble with nervous embarassment, foible? #20
 
+/perform idle neutral
+
 + [yes]
+    /perform react_thankful 
     ~ embarassed = true
     Ahhh. Such delicate sensibilities. #21
+    /character crowd jeers
+    /wait 2
+    /character headmistress idle
     Nevertheless. This is your reward. #22
     -- (continue)
+    /perform talk_question neutral
     Do you desire to continue thusly? #23
 
     ++ [yes]
         ~ addObey() 
+        /perform idle_tease aroused 50
         Oh. This will be a treat. #24
         Your embarrassment will only enhance the succor of your release. #25
+        /character crowd oos
+        /wait
         -> prepare
     
     ++ [no]
+        /peform smooth_skirt anger 50
         If your discomfort overwhelms you,  #26
+        /perform react_scoffs
         then this reward is not for you. #27
         You are dismissed, bauble. #28
+        /character crowd boos
+        /wait
+        /character headmistress idle_clasp_hands
         Keep your reward and return when you are ready. #29
         -> exit
 
@@ -82,9 +116,36 @@ Do you tremble with nervous embarassment, foible? #20
     ++ [distracted] -> Headmistress_PayAttention -> continue
     
 + [no]
-    A true performer, students! #30
-    Our subject enjoys being on display. #31
+    /peform smooth_skirt anger 50
+    If your discomfort overwhelms you,  #26
+    /perform react_scoffs
+    then this reward is not for you. #27
+    /perform talk_question neutral
+    Do you desire to continue thusly? #23
+    /perform idle
+        
+    ++ [yes]
+    ~ addObey() 
+    /perform react_nod_big happy 50
+    -> Headmistress_AcknowledgeYes ->
+    /perform idle_clasp_hands
+    /character crowd cheers_short
+    /wait
+    /character headmistress
+    -> Headmistress_Resume ->
     -> prepare
+    
+    ++ [no]
+        /perform react_scoffs angry 50
+        You are dismissed, bauble. #28
+        /character crowd boos
+        /wait
+        /character headmistress idle_clasp_hands neutral
+        Keep your reward and return when you are ready. #29
+        -> exit
+
+    ++ [timeout] -> Headmistress_Timeout -> continue
+    ++ [distracted] -> Headmistress_PayAttention -> continue
 
 + [timeout] -> Headmistress_Timeout -> nervous_consent_check
 + [distracted] -> Headmistress_PayAttention -> nervous_consent_check
@@ -92,17 +153,27 @@ Do you tremble with nervous embarassment, foible? #20
 
 = nervous_tease
 
+/perform react_shrug_long amused 75
 Do you tremble with nervous embarassment, foible? #20
  
+/perform idle neutral
+ 
 +[yes]
-    ~ embarassed = true
-   How utterly delightful! #33
-   This will quench <i>our</i> refreshment even moreso. #34
-   -> prepare
+     /perform react_thankful aroused 75
+     ~ embarassed = true
+    How utterly delightful! #33
+    /perform talk_behold
+    This will quench <i>our</i> refreshment even moreso. #34
+    /character crowd cheers_short
+    /wait 2
+    -> prepare
    
  +[no]
+    /perform do_arm_raise happy 75
     A true performer, students! #30
     Our subject enjoys being on display. #31
+    /character crowd cheers_short
+    /wait 2
     -> prepare
     
 + [timeout] -> Headmistress_Timeout -> nervous_tease
@@ -111,46 +182,72 @@ Do you tremble with nervous embarassment, foible? #20
 
 = prepare
 
-/perform idle
+/character headmistress idle_clasp_hands skeptical 50
 You have a choice, slave. #37
+/perform talk_serious
 You may perform upright or on your knees. #38
+/perform talk_question scared 50
 Which will you choose? #39
 
-+ [pose:stand]
-        /perform nod
+/perform idle neutral
+
++ [pose:raised_chin]
+        /perform do_quick_bow neutral
         {isBoy: He|{isGirl: She|They}} shall perform for you standing. #40
+        /character crowd oos
+        /wait 2
+        /character headmistress talk_behold
         Such an excellent position for displaying {isBoy: his|{isGirl:her|their}} full physique! #41
     
 + [pose:kneel]
-        /perform nod 
+        /perform do_arm_raise amused 50
         {isBoy: He chooses|{isGirl: She chooses|They choose}} to perform on {isBoy: his|{isGirl: her|their}} knees. #42
+        /character crowd oos
+        /wait 2
+        /character headmistress react_thankful angry 50
         Such a heady position of submission and subservience! #43
  
 + [timeout] -> Headmistress_NoAction -> prepare
 + [distracted] -> Headmistress_PayAttention -> prepare
  
 - (instructions)
+/perform idle_clasp_hands neutral
 You will be allowed to cum today, slave, #44
+/perform talk_one_finger skeptical 50
 but you must seek approval first. #45
 
+/perform talk_emphatic_one_hand neutral
 When your orgasm seeks escape, <b>"nod"</b> your head for permission. #46
 
+/perform idle_cocks_head_to_left skeptical 50
 Do you understand, {isBoy: simpleton|ninny}? #47
 
+/perform idle neutral
+
 + [yes]
+    /perform react_thankful excited 50
     Extraordinary! #48
+    /perform tease_caress_breasts_large aroused 75
     Then we shall delight in witnessing your {hasPenis: seed|cream} paint the floor! #49
     
 + [no]
     -- (instructions_check)
+    /perform talk_annoyed angry 50
     You will communicate when you are ready to cum. #50
+    /perform react_nod_little
     <b>"Nod"</b> your head "yes" to ask permission to orgasm. #51
+    /perform react_scoffs
     Cum when I give you leave. #52
     
+    /perform talk_question angry 75
     Is that clear? #53
-    
+
+/perform idle neutral
+
     ++ [yes]
+        /perform do_arm_raise happy 50
         Extraordinary! #48
+        /perform talk_behold aroused 50
         Then we shall delight in witnessing your {hasPenis: seed|cream} paint the floor! #49
         
     ++ [no] -> Headmistress_CheckIfInterested -> instructions_check
@@ -169,30 +266,41 @@ Do you understand, {isBoy: simpleton|ninny}? #47
 }
 
 - (tease_slut)
+/wait
+/perform talk_question excited 50
 {shuffle:
     - Time to show us just how much of a slut you are. #56
     - We expect quite a performance from a self-proclaimed whore. #57
     - Show us your finest exhibitionist frigging, {isBoy: muttonmonger|trollop}! #58
-    
 }
 
 - (tease_embarassed)
-
+/wait
+/perform tease_caress_breasts_large aroused 75
 {shuffle:
     - We are about to feast upon your burning visage, {isBoy: duckling|mouse}! #59
     - Your shame shall be our succor! #60
     - It is time to defile yourself for our pleasure, tribute. #61
  }
+ /character crowd oos
 
 - (ready)
-/perform open_arms_behold
+/wait 2
+/character headmistress talk_behold happy 50
 Are you ready, {isBoy: toad|strumpet}? #62
 
+/perform idle neutral
+
 + [yes]
+    /perform react_head_toss_casual
     Exquisite. #63
+    /character crowd cheers_short
     
 + [no]
+    /perform talk_question skeptical 50
     We have a delay! #64
+    /character crowd gasps
+    /character headmistress
     -> Headmistress_CheckIfInterested -> ready
     
 + [timeout] -> Headmistress_Timeout -> ready
@@ -200,44 +308,55 @@ Are you ready, {isBoy: toad|strumpet}? #62
 
 - (give_reward)
 
-/character Headmistress hand_out
+/character Headmistress do_hand_out neutral
 {shuffle:
     - Time to turn over your Bloodstone, speck. #65
     - Present your wrist that I may remove your Bloodstone. #66
     - Thrust your wrist forward to spend one of your Bloodstones. #67
 }
 
+/perform idle neutral
+
 + [pose:present_wrist_reward]
 + [no] -> Headmistress_CheckIfInterested -> give_reward
 + [timeout] -> Headmistress_NoAction -> give_reward
 + [distracted] -> Headmistress_PayAttention -> give_reward
 
-- /perform swipe_hand
+- /perform do_swipe_hand happy 30
 ~ removeReward()
 
-- /perform arm_raise
+- /perform idle_clasp_hands neutral
 -> Headmistress_AcknowledgeYes ->
+/action equip_cock
 You may {hasPenis: wrap your hand around your rod|slip your fingers between your nether lips} and reward yourself. #68
 
 - (masturbate)
 
--> RandomCommentLoopWithYes(-> masturbation_comment, -> cum, 3, 5, 2, 5) ->
+-> RandomCommentLoopWithYes(-> masturbation_comment, -> cum, 3, 6, 4, 7) ->
 
 -> Headmistress_GoodJob ->
 
---> question ->
+-{shuffle:
+    --> question ->
+    --> command ->
+    --> keep_going ->
+    }
 
 - (cum)
 
+/perform talk_lean_forward amused 75
 {shuffle:
     - Do you tremble with the need to release, {isBoy: heathen|wretch}? #69
     - Are you pulsing with the desire to orgasm, slave? #70
     - Is it time to {hasPenis: explode|squirt}, trinket? #71
 }   
 
+/perform idle neutral
+
 + [yes]
     -> orgasm
 + [no]
+    /perform do_arm_raise
     Then continue masturbating yourself for our enjoyment! #72
     -> masturbate
         
@@ -245,47 +364,80 @@ You may {hasPenis: wrap your hand around your rod|slip your fingers between your
 + [distracted] -> Headmistress_PayAttention -> cum
 
 = orgasm
+
+/character crowd gasps
+/character headmistress
+/wait 2 
+
+{shuffle:
+    - /perform talk_behold amused 75
+    - /perform do_point_down excited 75
+    - /perform react_thankful aroused 75
+    }
+    
 {shuffle:
     - You may release your pent up passion, slave. #73
     - You may {hasPenis: spew your load|cream the floor}, whore. #74
     - I give you leave to cum, {isBoy: manwhore|soiled dove}. #75
 }
 
-- + [wait 5]
+/perform idle neutral
+/character crowd cheers
+/character Headmistress
 
-- /perform open_arms_behold
+- /wait 5
+
 {inTutorial:
     ~ tutorial_hm_bonus_complete = true
 }   
 
 - (finish)
 
+/perform idle_pleased scared 30
 {stopping:
     - Are you spent, {player_name}? #76
     - Have you finished releasing, {isBoy: toad|strumpet}? #77
     - Such a hedonist! Are you quite through with your orgasm? #78
 }
+/character headmistress idle neutral
+
 
 + [yes]
+    /character headmistress react_nod_little
    -> Headmistress_AcknowledgeYes ->
 
 + [timeout] -> Headmistress_Timeout -> finish
 
+- /character headmistress talk_behold happy 75
 - {shuffle:
     - Such a bold performance, foible! #79
     - A fine performance, slave. #143
 }
+
+/character crowd_claps_short
+/wait
+/character headmistress do_inspect sad 30
 I sense that you are spent with that reward. #80
 
 - (enjoy)
+/perform idle_tease aroused 75
 Did you enjoy yourself? #81
 
+/perform idle neutral
+
 + [yes]
+    /character crowd oos
+    /wait
+    /character headmistress react_thankful aroused 50
     Pleasure breeds pleasure. #82
     This is good. #83
 
 + [no]
+    /character crowd jeers
+    /wait
+    /character headmistress react_shrug_short sad 50
     A pity. #84
+    /perform react_scoffs happy 30
     Nevertheless, your performance fed us well, {isBoy:speck|poppet}. #85
     
 + [timeout] -> Headmistress_Timeout -> enjoy
@@ -293,23 +445,30 @@ Did you enjoy yourself? #81
     
 -
 {inTutorial: 
+    /perform do_you_leave neutral
     I give you leave to... #86
     -> surprise_interrupt
 }
 
+/point_to_leave neutral
 I give you leave to depart. #87
+/character crowd cheers
 
 -> exit
 
 = question
 
+/wait 2
+
 {embarassed:
+    /perform idle_tease amused 50
     {shuffle:
         - Are you mortified to perform before your fans, slave? #88
         - Is your skin moist with perspiration from being seen by so many? #89
         - Are your knees weak with nervousness from performing for others, foible? #90
     }
     - else:
+        /perform talk_behold excited 50
         {shuffle:
             - Are you having fun performing for our guests?  #91
             - Enjoying your reward, {player_name}? #92
@@ -317,25 +476,39 @@ I give you leave to depart. #87
         }
 }
 
+/perform idle neutral
+
 + [yes]
+    /perform react_nod_little
     -> Headmistress_AcknowledgeYes ->
+
     {embarassed:
-         We can tell, little one. #94
-         Your torment is our delight! #95
+        /perform talk_one_hand happy 30
+         {shuffle:
+            - We can tell, little one. #94
+            - Your torment is our delight! #95
+        }
     - else:
-        Your exhibitionist's soul is proudly on display. #96
-        A true performance artist. #97
+        /perform talk_behold excited 50
+        {shuffle:
+            - Your exhibitionist's soul is proudly on display. #96
+            - A true performance artist. #97
+        }
     }
+    
 + [no]
+    /perform do_arm_raise excited 30
    Then surely we must continue! #98
+   /character crowd cheers_short
+   /character headmistress
     
 + [timeout] -> Headmistress_Timeout -> question
 + [distracted] -> Headmistress_PayAttention -> question
     
---> command ->
+-->->
 
-- (keep_going)
-/perform thoughtful
+= keep_going
+/perform talk_thoughtful skeptical 50
 { cycle:
     - Would you like to keep going, {isBoy:toad|strumpet}? #10
     - Does our little {isBoy:runt|poppet} need more time? #11
@@ -345,27 +518,31 @@ I give you leave to depart. #87
 } 
 
 + [yes]
-    /character headmistress idle
+    /character headmistress react_scoffs excited 50
     Then keep going! #99
     -> masturbate
 
 + [no]
-    /character headmistress idle
+    /character headmistress idle_clasp_hands scared 30
     Are you ready to cum, then, slave? #100
     
         ++ [yes]
             -> orgasm
             
         ++ [no]
+        /perform react_shrug_long disgusted 50
             Yet you wish to stop. #101
             Do you want to continue with your reward, slave? #102
             
             +++ [yes]
+                /perform idle_cocks_head_to_left amused 50
                 -> Headmistress_Resume ->
                 -> masturbate
                 
             +++ [no]
+                /perform react_nod_big neutral
                 Then I give you leave to depart, foible. #103
+                /perform talk_one_finger
                 One reward has been deducted from your wrist. #104
                 ~removeReward()
                 -> exit
@@ -377,6 +554,14 @@ I give you leave to depart. #87
 
 = command
 
+/wait 2
+{shuffle:
+    - /perform do_arm_raise excited 50
+    - /perform talk_behold happy 50
+    - /perform tease_caress_breasts_large aroused 50
+    - /perform idle_tease amused 50
+    }
+    
 {shuffle:
     - Pause and {hasPenis: cup and raise your sac|spread your folds} that all may enjoy the view. #105
     - {hasPenis: Squeeze harder as you stroke|Slide a finger into yourself as you rub your slit}. #32
@@ -385,13 +570,21 @@ I give you leave to depart. #87
     - Sway your hips for the crowd, strumpet! #108
 }
 
-+ [wait 2]
+{shuffle:
+    - /character crowd gasps
+    - /character crowd oos
+    - /character crowd cheers_short
+}
+    
+/character Headmistress
+/wait 2
 
 - (display)
-
+/perform talk_consider scared 30
 Does it feel good to be put on display, foible? #109
 
 + [yes]
+    /perform talk_behold amused 50
     {embarassed:
         How hard this must be for you then, slut.  #110
         To enjoy being seen even as you flush with shame. #111
@@ -401,15 +594,15 @@ Does it feel good to be put on display, foible? #109
     
 
 + [no]
+    /perform react_disappointed disgusted 50
     What a shame. #113
     This is your reward, after all. #114
     
 + [timeout] -> Headmistress_Timeout -> display
 + [distracted] -> Headmistress_PayAttention -> display
 
--
 
-->->
+-->->
 
 = masturbation_comment
 //need to make it so the code will use either slut or embarassment comments, depending on the variable. 
@@ -433,6 +626,14 @@ Does it feel good to be put on display, foible? #109
 = embarassment_comment
 
 {shuffle:
+    - /perform talk_one_finger excited 50
+    - /perform do_inspect happy 50
+    - /perform react_shrug_long skeptical 50
+    - /perform idle_pleased amused 50
+    - /perform idle_tease aroused 50
+    }
+    
+{shuffle:
     - Note the cheeks flush with distress, ladies and gentlemen! #115
     - Such a blushing harlot. #116
     - {isBoy: His|{isGirl:Her|Their}} shame is palpable! #117
@@ -447,6 +648,14 @@ Does it feel good to be put on display, foible? #109
 = slut_comment
 
 {shuffle:
+    - /perform talk_one_finger excited 50
+    - /perform do_arm_raise happy 50
+    - /perform tease_caress_breasts_large amused 50
+    - /perform idle_pleased skeptical 50
+    - /perform idle_tease aroused 50
+    }
+    
+{shuffle:
     - We have the privilege of witnessing a true pervert debase {isBoy:himself|{isGirl:herself|themself}}! #122
     - Such a captivating whore for our attention! #123
     - Observe how a deviant reprobate thrives before an audience! #124
@@ -459,21 +668,31 @@ Does it feel good to be put on display, foible? #109
 ->->
 
 = crowd_comment
+
+{shuffle:
+    - /perform talk_one_finger excited 50
+    - /perform do_arm_raise happy 50
+    - /perform react_shrug_long skeptical 50
+    - /perform idle_clasp_hands amused 50
+    - /perform idle_tease aroused 50
+    }
+    
 //find people to record these lines with other languages or accents
 {shuffle:
     - Look at how proudly the {hasPenis: cock juts out from the body|pussy glistens between the legs}. #129
     - These performances always satisfy my hunger. #130
-    - Mmmm. {isBoy: He is|{isGirl: She is|They are}} making me so wet. #131
-    - I can hardly sit still. #132
-    - I'd gladly break that slave in.  #133
-    - I wish I was in {isBoy: his|{isGirl:her|their}} place. #134
-    - This one is going to be a favorite, to be sure. #135
-    - I hope {isBoy: he holds|{isGirl:she holds|they hold}} out for a long time.  #136
-    - I'm so hard right now. #137
-    - I want {hasPenis: that cock|those fingers} inside me. #138
-    - How do you think {isBoy:his|{isGirl:her|their}} cum tastes? #139
+    // - Mmmm. {isBoy: He is|{isGirl: She is|They are}} making me so wet. #131
+    // - I can hardly sit still. #132
+    // - I'd gladly break that slave in.  #133
+    // - I wish I was in {isBoy: his|{isGirl:her|their}} place. #134
+    // - This one is going to be a favorite, to be sure. #135
+    // - I hope {isBoy: he holds|{isGirl:she holds|they hold}} out for a long time.  #136
+    // - I'm so hard right now. #137
+    // - I want {hasPenis: that cock|those fingers} inside me. #138
+    // - How do you think {isBoy:his|{isGirl:her|their}} cum tastes? #139
 }
 
+/character headmistress
 ->->
 
 = surprise_interrupt
@@ -482,9 +701,10 @@ TODO: Vibrate controllers with rumble?
 /sound goddess_interruption
 /ambient none
 /wait 2
-/perform open_arms_behold
+/perform talk_behold aroused 75
 
 Ahhh. <i>She comes</i>. #140
+/perform react_thankful excited 50
 What a treat you have earned, trinket. #141
 
 /perform idle

@@ -5,27 +5,27 @@
 
 //Foot licking
 
-/perform excited
+/perform react_excited
 Mmm, I love watching my puppies perform well! #184
 
-/perform lean_forward
+/perform talk_lean_forward
 Do you want to worship my feet, puppy? #185
 
 +[pose:puppy_yes]
-    /perform bouncing_big    
+    /perform do_bouncing_big    
     Yippy! #186
 
 +[pose:puppy_no]
-    /perform open_arms_shrug
+    /perform react_shrug_long
     That's fine. #187
     We can do something else. #188
     -> yuki_reward_puppyplay_milking
 
 +[timeout] -> Yuki_Timeout ->
 
-- /perform point_down 
+- /perform do_point_down 
 Come here puppy! #189
-/perform present_foot
+/perform do_present_foot
 
 ~ tries = 0
 - (lick_feet)

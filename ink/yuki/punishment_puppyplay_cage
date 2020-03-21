@@ -13,11 +13,11 @@ TODO: rewrite
 
 -
 Time for you to be punished.
-/perform disappointed
+/perform react_disappointed
 What a bad puppy you are. #204
 You need to make it up to me. #205
 
-/perform point_down
+/perform do_point_down
 Turn around and show me your puppy tail. #206
 Face down on the ground. #207
 
@@ -28,7 +28,7 @@ Face down on the ground. #207
 + [pose:present_ass]
 + { tries < 2 } [timeout] -> present_ass
 
-- /perform cocks_head_to_left
+- /perform idle_cocks_head_to_left
 Well, at least you can manage that, {player_name}. #208
 
  - (wiggle)
@@ -49,7 +49,7 @@ Now, wiggle your little puppy tail for me! #209
     -> wiggle
  + [no] -> Nega_CheckIfInterested -> wiggle
 
-- /perform clasp_hands
+- /perform idle_pleased
 Mmmm! Much better! #210
 
 
@@ -66,7 +66,7 @@ Mmmm! Much better! #210
 }
   
 
-/perform fists_on_hips_stomp
+/perform idle_unhappy_stomp
 {shuffle:
     - You're a disgusting stain.
     - You're a nasty pile of shit.
@@ -76,27 +76,27 @@ Mmmm! Much better! #210
 }
 //spanking
 //text below is a placeholder to remind me of what code I can use in scene
-- /perform excited
+- /perform react_excited
 Mmm, I love watching my puppies perform well! #184
 
-/perform lean_forward
+/perform talk_lean_forward
 Do you want to worship my feet, puppy? #185
 
 +[pose:puppy_yes]
-    /perform bouncing_big    
+    /perform do_bouncing_big    
     Yippy! #186
 
 +[pose:puppy_no]
-    /perform open_arms_shrug
+    /perform react_shrug_long
     That's fine. #187
     We can do something else. #188
     -> yuki_reward_puppyplay_milking
 
 +[timeout] -> Yuki_Timeout ->
 
-- /perform point_down 
+- /perform do_point_down 
 Come here puppy! #189
-/perform present_foot
+/perform do_present_foot
 
 ~ tries = 0
 - (lick_feet)

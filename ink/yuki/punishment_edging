@@ -19,12 +19,12 @@ I explained to you the rules didn't I?
 
 + [Yes]
 ~ addObey()
-/perform confused 
+/perform react_shrug_long 
 
 Somebody isn't a very good slave then.
 + [No]
 ~ addDisobey()
-/perform shake_head_annoyed
+/perform talk_annoyed
 
 Now that's just not true, and you know it. Lying counts as being disobedient too. That'll earn you <i>another</i> punishment mark.
 
@@ -38,7 +38,7 @@ Now that's just not true, and you know it. Lying counts as being disobedient too
 
 - Now be a good {player_name}
 
-/perform point_down
+/perform do_point_down
 
 and come here.
 
@@ -98,7 +98,7 @@ Well maybe next time you shouldn't be such a naughty little slave.
 
 Mmm, oh goodie, your {hasPenis: cock is nice and hard.|pussy is nice and wet.}
 
-/perform inspect_hand_bored
+/perform idle_bored
 
 But I don't think that's enough. 
 
@@ -106,7 +106,7 @@ Your cum isn't as pent up as I want.
 
 We're gonna need to have some more fun!
 
-/perform serious 
+/perform talk_serious 
 
 Now this time, I'll let you touch yourself. Don't get too excited, there's a catch! You aren't allowed to cum, no matter how badly you want to!
 
@@ -139,7 +139,7 @@ Then next time you better behave yourself for me and the other Mistresses!
 - (edgebreak2)
 
 {bank3_loop: -> BCumQ}
-/perform cocks_head_to_left
+/perform idle_cocks_head_to_left
 
 I bet you've had enough of my teasing. 
 -(TouchQ) 
@@ -189,7 +189,7 @@ Don't worry, I have other plans for you!
 -> Yuki_PayAttention 
 -> CumQ1
 
-- /perform thoughtful
+- /perform talk_thoughtful
 
 I want to play with you myself now! 
 
@@ -378,7 +378,7 @@ But come on, you can't tell me this doesn't feel good.
 
 I liked the way you were staring at me earlier, so...Hmmm...OH! I know what we can do now!
 
-/perform point_down
+/perform do_point_down
 
 I want you to stare at my ass while you think about what you did to get here.
 
@@ -428,11 +428,11 @@ Make sure you tell me right before you cum.
 
 If you can follow directions so well, why are you here?
 
-/perform shake_head_annoyed
+/perform talk_annoyed
 
 I probably have to let you go soon. 
 
-/perform one_finger
+/perform talk_one_finger
 
 But I have one last idea before you are allowed to leave!
 
@@ -511,11 +511,11 @@ Cum for me!
 
 /perform idle_tease
 
-/perform laugh
+/perform react_laugh
 
 You silly {player_name}, you didn't think I'd let you have an orgasm, did you?
 
-/perform pleased
+/perform idle_tease
 
 Only good slaves get to orgasm!
 
@@ -525,7 +525,7 @@ I didn't lie, I did exactly what I told you I would!
 
 But naughty slaves only get ruined orgasms.
 
-/perform point_down
+/perform do_point_down
 
 Now, clean up your mess! You're not leaving until this floor is spotless of your filth {isBoy:mister|missy}.
 
@@ -545,7 +545,7 @@ And I think that's where I'm going to leave you for now!
 
 Congratulations, you made it through one of my punishment sessions!
 
-/perform laugh
+/perform react_laugh
 
 And I hope it's one of the worst cases of {hasPenis:blue balls|a blue bean} you've ever had.
 

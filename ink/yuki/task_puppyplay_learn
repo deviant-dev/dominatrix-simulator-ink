@@ -27,10 +27,10 @@ TODO: Replace generic learn set dialog with custom first-session flair.
 
 = intro_learn_set(-> pose1, -> pose2, -> pose3)
 
-/perform clasp_hands
+/perform idle_pleased
 Hello, puppy! You have more commands to learn. #107
 
-/perform point_down
+/perform do_point_down
 <b>"Sit",</b> {player_name}. #108
 
 + [pose:puppy_sit]
@@ -38,17 +38,17 @@ Hello, puppy! You have more commands to learn. #107
 - /perform idle_yuki
 If you learn to follow all my commands, #109
 you'll be one step closer to being my perfect little puppy! #110
-/perform one_finger
+/perform talk_one_finger
 Remember, there's no penalty for messing up when we're learning! #111
 
-/perform arm_raise
+/perform do_arm_raise
 Let's begin! #112
 
 /perform idle_yuki
 
 -> pose1 ->
 
-/perform excited
+/perform react_excited
 My puppy is so cute! #116
 /perform idle_yuki
 
@@ -60,10 +60,10 @@ My puppy is so cute! #116
 
 -> pose3 ->
 
-/perform bouncing_big
+/perform do_bouncing_big
 Oh, you're such a good puppy, learning all of those poses. #125
 
-/perform open_arms_behold
+/perform talk_behold
 Don't forget, you need to remember those for future practice sessions! #126
 And also tests! #127
 
@@ -97,7 +97,7 @@ I like it when my puppy <b>"begs"</b> for my attention! #08
 = pose_confused
 First, the <b>confused</b> pose. #114
 
-/perform confused
+/perform react_shrug_long
 
 ~ tries = 0
 - (confused)
@@ -133,7 +133,7 @@ To show that you're <b>"hungry"</b>, sit on your heels and hold your left paw li
 
 Second for today, the <b>playful</b> pose! #118
 
-/perform squirm
+/perform idle_eager
 When you're feeling <b>"playful"</b>, stick your cute little butt into the air and stretch your arms out in front of you! #20
 
 ~ tries = 0
@@ -150,7 +150,7 @@ When you're feeling <b>"playful"</b>, stick your cute little butt into the air a
 
 Second for today, the <b>tired</b> pose! #119
 
-/perform point_down
+/perform do_point_down
 
 ~ tries = 0
 - (tired)
@@ -169,7 +169,7 @@ You should be looking at the ground. #24
 
 Second for today, the <b>thirsty</b> pose! #120
 
-/perform lean_forward
+/perform talk_lean_forward
 Sometimes, busy little puppies get <b>"thirsty"</b>. #27
 /perform yuki_thirsty
 While on your knees, do this to show me you're <b>"thirsty"</b>. #28
@@ -188,7 +188,7 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 
 Your last lesson for today is the <b>sorry</b> pose! #122
 
-/perform pouty
+/perform react_disappointed
 
 The <b>"sorry"</b> pose is going to be a <i>little</i> tricky. #33
 
@@ -197,7 +197,7 @@ The <b>"sorry"</b> pose is going to be a <i>little</i> tricky. #33
 ~ tries++
 
 Put your head down AND look at the ground. #34
-/perform point_down
+/perform do_point_down
 Stretch your arms out part way. #35
 /perform idle_yuki
 
@@ -209,10 +209,10 @@ Stretch your arms out part way. #35
 
 Your last lesson for today is to <b>roll over</b> onto your back! #123
 
-/perform open_arms_behold
+/perform talk_behold
 
 This one is going to lead to lots of fun! #38
-/perform bouncing_big
+/perform do_bouncing_big
 
 ~ tries = 0
 - (back)
@@ -230,14 +230,14 @@ Hands above your chest. #40
 = pose_horny
 
 Your last lesson for today is the <b>horny</b> pose! #124
-/perform squirm
+/perform idle_eager
 
 ~ tries = 0
 - (horny)
 ~ tries++
 
 To show me you're <b>"horny"</b>, arch your back and look up at me! #43
-/perform clasp_hands
+/perform idle_pleased
 It's easy! #44
 
 /perform idle_yuki

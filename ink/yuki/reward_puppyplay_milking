@@ -9,7 +9,7 @@
 /character yuki idle
 
 
-/perform clasp_hands excited 75
+/perform idle_pleased excited 75
 {shuffle:
     - For a reward, my good puppy is going to get {hasPenis: milked dry|fingered hard.}
     - The reward you're going to get is a puppy orgasm!
@@ -22,7 +22,7 @@ Would you like that, {player_name}?
 
 +[yes]
     ~ addObey()
-    /perform bouncing_little happy 50
+    /perform do_bouncing_little happy 50
    -> Yuki_AcknowledgeYes ->
    
    /perform idle 
@@ -42,7 +42,7 @@ Would you like that, {player_name}?
 
 = consent_check
 
-/perform cocks_head_to_left scared 50
+/perform idle_cocks_head_to_left scared 50
 Are you uncomfortable having me masturbate you?
 
 + [yes]
@@ -52,7 +52,7 @@ Are you uncomfortable having me masturbate you?
     Would you like to make yourself cum for me instead?
     
     ++ [yes]
-        /perform open_arm_shrug_confused
+        /perform react_shrug_short
         Well, okay. If that's what you want.
         -> milk_self
     
@@ -77,13 +77,13 @@ Are you uncomfortable having me masturbate you?
 
 = begin
 
-/perform point_down happy 50
+/perform do_point_down happy 50
 Down on the floor.
 Roll onto your back like a good little puppy. #166
 
-/perform inspect_kneeling
+/perform do_inspect
 // Hands and legs in the air, just like a real puppy. #167
-// /perform open_arms_shrug
+// /perform react_shrug_long
 
 + [pose:puppy_back]
 
@@ -148,7 +148,7 @@ TODO: Is this the right place to go? Put this in here to fix the script -deviant
 
 = finish
 
-/perform excited
+/perform react_excited
 Such a good {player_name}. #175
 /perform idle_yuki
 Sit up again, cutie. #176
@@ -156,16 +156,16 @@ Sit up again, cutie. #176
 + [pose:puppy_sit]
 
 - (puppy_well)
-/perform idle_gesture
+/perform talk_one_hand
 I treat my puppies well, don't I? #177
 
 + [pose:puppy_yes]
-    /perform serious
+    /perform talk_serious
     That's right. #178
     I want my puppies to come back and play after all! #179
 
 + [pose:puppy_no]
-    /perform fake_annoyed
+    /perform idle_fake_annoyed
     Your other head seems to disagree with you. #180
 
 + [timeout] -> Yuki_Timeout -> puppy_well
@@ -188,7 +188,7 @@ I treat my puppies well, don't I? #177
    Do you want to stop, puppy?
 
     ++ [yes]
-        /perform open_arm_shrug_confused
+        /perform react_shrug_short
         Well, okay. If that's what you want.
         //do they lose the reward after going this far?
         -> exit
@@ -207,7 +207,7 @@ I treat my puppies well, don't I? #177
 --> command ->
 
 - (keep_going)
-/perform thoughtful
+/perform talk_thoughtful
 { cycle:
     - Would you like to keep going, {isBoy:toad|strumpet}? #10
     - Does our little {isBoy:runt|poppet} need more time? #11

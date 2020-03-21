@@ -2,7 +2,7 @@
 //response to player distraction
 === Yuki_PayAttention ===
 
-/perform yuki_idle
+/perform idle_yuki
 
 { cycle:
     - You're not very good at this yet, are you? #01
@@ -144,11 +144,11 @@
 === Yuki_Punishment_Chastise ===
 
 {shuffle:
-    - /perform disappointed
-    - /perform fists_on_hips_stomp
-    - /perform shake_finger_stern
-    - /perform shake_head_annoyed
-    - /perform pouty
+    - /perform react_disappointed
+    - /perform idle_unhappy_stomp
+    - /perform do_shake_finger_stern
+    - /perform talk_annoyed
+    - /perform react_disappointed
     }
     
 {cycle:
@@ -188,7 +188,7 @@
 
 ~ checked_if_interested = true
 
-/perform impatient
+/perform idle_clasp_hands
 Do you want to perform for me or not? #01
 - (check_again)
 
@@ -198,22 +198,22 @@ Do you want to perform for me or not? #01
 
 - (check_terse) Really? #02
 
-/perform foot_stomp
+/perform idle_unhappy_stomp
 You are not following the rules. #03
 
-/perform lean_forward
+/perform talk_lean_forward
 Do you want to be sent away? #04
 
 + [yes] 
 + [no] -> check_yes
 
-- /perform shake_head_annoyed
+- /perform talk_annoyed
 Then get out of here, you bad {player_name}. #05
 Come back when you're ready to follow the rules. #06
 -> exit
 
 - (check_yes) -> Yuki_GoodJob ->
-/perform confused
+/perform react_shrug_long
 It's so much better when you decide to follow the rules and behave. #07
 
 ->->

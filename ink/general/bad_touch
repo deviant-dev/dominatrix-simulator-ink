@@ -14,7 +14,7 @@
 
 
 = goddess
-/character goddess snap_fingers
+/character goddess do_snap_fingers
 /scene BedroomBroken.BadTouch
 /emotion angry
 Bad behavior will not be tolerated.

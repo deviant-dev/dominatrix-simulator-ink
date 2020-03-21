@@ -25,7 +25,7 @@
 }
 
 - (sit)
-/perform point_down
+/perform do_point_down
 <b>Sit</b>, puppy. #159
 
 + [pose:puppy_sit] -> Yuki_GoodJob ->
@@ -33,23 +33,23 @@
 
 // Only play this if this is our first time in practice.
 - {yuki_task_puppyplay_practice == 1:
-    /perform open_arms_behold
+    /perform talk_behold
     Now, if you're good, this won't take long. #150
     
-    /perform clasp_hands
+    /perform idle_pleased
     And if you do well during practices, I'll give you a special treat! #151
     
-    /perform lean_forward
+    /perform talk_lean_forward
     But if you do poorly, I'm going to punish you. #152
 }
 
-/perform one_finger
+/perform talk_one_finger
 Be ready for anything you've already learned! #160
 
 ~ tries = 0
 
 - (ready)
-/perform cocks_head_to_left
+/perform idle_cocks_head_to_left
 {cycle:
     - Are you listening, puppy? #161
     - Do you understand? #143
@@ -59,32 +59,32 @@ Be ready for anything you've already learned! #160
 + [no]
     -- (use_paws)
     ~ tries++
-    /perform chuckle
+    /perform react_chuckle
     Oh my gosh silly, answer with your paws! #144
     -> ready
 
 + [pose:puppy_yes]
     { tries == 0:
-        /perform excited
+        /perform react_excited
         -> Yuki_GoodJob ->
         TODO: Re-record this line as it is missing.
         // Maybe you don't need this practice after all! #148
     - else:
-        /perform idle_gesture
+        /perform talk_one_hand
         -> Yuki_AcknowledgeYes ->
     }
 
 + [pose:puppy_no]
     -- (wrong_no)
     ~ tries++
-    /perform impatient
+    /perform idle_clasp_hands
     Silly puppy, I think you meant to raise your <i>other</i> paw for <b>"yes."</b> #145
     -> ready
 + [timeout] 
     ~ tries++
     -> Yuki_Timeout -> ready 
 
-- /perform open_arms_behold
+- /perform talk_behold
 Pay attention! #165
 
 {yuki_task_puppyplay_practice == 1:
@@ -167,7 +167,7 @@ Pay attention! #165
 // Prompts for each pose type used by the 'test_pose' stitch above.
 
 = prompt_beg_pose
-/perform clasp_hands
+/perform idle_pleased
 
 {cycle:
     - Show me you're ready to play, {player_name}. <b>"Beg"</b>! #01
@@ -182,7 +182,7 @@ Pay attention! #165
 
 
 = prompt_confused_pose
-/perform confused
+/perform react_shrug_long
 
 {cycle:
     - Show me the <b>"confused"</b> pose. #09
@@ -194,7 +194,7 @@ Pay attention! #165
 
 
 = prompt_hungry_pose
-/perform thoughtful
+/perform talk_thoughtful
 
 {cycle:
     - Show me <b>"hungry"</b>. #13
@@ -206,7 +206,7 @@ Pay attention! #165
 
 
 = prompt_playful_pose
-/perform one_finger
+/perform talk_one_finger
 
 {cycle:
     - Let me see you be <b>"playful"</b>. #18
@@ -217,7 +217,7 @@ Pay attention! #165
 ->->
 
 = prompt_tired_pose
-/perform inspect_kneeling
+/perform do_inspect
 
 {cycle:
     - Perform <b>"tired"</b>, puppy. #21
@@ -229,7 +229,7 @@ Pay attention! #165
 
 
 = prompt_thirsty_pose
-/perform lean_forward
+/perform talk_lean_forward
 
 {cycle:
     - Can you let me know you're <b>"thirsty"</b>, puppy? #25
@@ -240,7 +240,7 @@ Pay attention! #165
 ->->
 
 = prompt_sorry_pose
-/perform pouty
+/perform react_disappointed
 
 {cycle:
     - Whenever you've been a bad puppy, you need to show me you're <b>"sorry"</b>. #31
@@ -252,7 +252,7 @@ Pay attention! #165
 
 
 = prompt_back_pose
-/perform open_arms_behold
+/perform talk_behold
 
 { cycle:
     - Sometimes, I want my puppy on {isBoy:his|her} <b>"back"</b>. #36
@@ -264,7 +264,7 @@ Pay attention! #165
 
 
 = prompt_horny_pose
-/perform squirm
+/perform idle_eager
 
 { cycle:
     - I know my naughty little puppy will get <b>"horny"</b> sometimes. You need to be able to tell me! #41

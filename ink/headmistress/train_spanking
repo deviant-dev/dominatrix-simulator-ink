@@ -33,7 +33,7 @@ into a proud and upright position. #114
 + [wait]
 
 - (hands_and_knees_timeout)
-/perform curious
+/perform talk_consider
 Now. Onto your hands and knees, bauble. #233
 
 + [pose:hands_and_knees]
@@ -44,36 +44,36 @@ The back must be delicately arched, #21
 presenting the most ideal access #22
 to the object of discipline: the buttocks. #23
 
-/perform serious
+/perform talk_serious
 Lift your backside high, {isBoy: mongrel|moppet}. #24
 
-/perform paddle_desk
+/perform idle_clasp_hands
     
 - Tell me, lump, is that as high as you can lift your hindquarters? #26
 
 +[yes]
     ~ addObey()
-    /perform lean_forward
+    /perform talk_lean_forward
     I disagree. #27
     Arch just a bit more. #28
-    /perform nod
+    /perform react_nod_little
     You will remain in this position without fail. #30
 
 +[no]
     ~ addDisobey()
-    /perform displeased
+    /perform talk_annoyed
     You serve yourself and our Goddess poorly, heathen. #31
     Raise your ass! #32
 
 +[timeout]
-    /perform shake_head_annoyed
+    /perform talk_annoyed
     What are you waiting for? #33
     Your back must strain with the effort of raising your derriere, chattel. #34
 
-- /perform satisfied
+- /perform idle_clasp_hands
 -> Headmistress_GoodJob ->
 
-- /character headmistress lean_forward
+- /character headmistress talk_lean_forward
 
 Time to rehearse. #118
 Three perfect swats should be sufficient. #01
@@ -85,7 +85,7 @@ Three perfect swats should be sufficient. #01
 ~temp spanks = 0
 
 - (try_spank)
-/character headmistress paddle_ass
+/character headmistress do_spank_player
 
 + [react-success]
     // This lets us count the number of successful attempts.
@@ -128,7 +128,7 @@ Three perfect swats should be sufficient. #01
 
 - (present_ass)
 
-/perform curious
+/perform talk_consider
 Stand up and present your ass for our guests. #235 
 Let us inspect how well your skin blooms with color. #236
 
@@ -164,7 +164,7 @@ Now turn to the right. #242
 
 + [pose:present_ass_right]
 - /character crowd gasps
-/character headmistress open_arms_behold
+/character headmistress talk_behold
 -> Headmistress_AcknowledgeYes ->
 <i>She</i> will enjoy watching this one be broken in, I think. #04
 

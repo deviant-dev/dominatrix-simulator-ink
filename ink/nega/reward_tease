@@ -6,12 +6,12 @@
 /scene attic.reward_tease
 /music nega-reward
 /ambient off
-/character nega inspect_hand_bored
+/character nega idle_bored
 
 - (tease_intro)
 
 
-/perform caress_breast_left amused 75
+/perform tease_caress_breast_left amused 75
 
 {shuffle:
     - The dice are kinder to you than I want to be. #01
@@ -21,13 +21,13 @@
     - You've earned a little tease for that roll. #05
 }
   
-- /perform scoffs angry 50
+- /perform react_scoffs angry 50
 The rules say I have to go easy on you. #06
 
 Lucky {isBoy: prick|{isGirl: cunt|slut}}. #07
 
 - (insult)
-/perform lean_forward disgusted 75
+/perform talk_lean_forward disgusted 75
 {shuffle:
     - You're a worthless slut. #08
     - You're a pathetic worm. #09
@@ -36,17 +36,15 @@ Lucky {isBoy: prick|{isGirl: cunt|slut}}. #07
     - You're a useless meatbag. #12
 }
 
-/perform idle_nega neutral    
+/perform idle_skeptical neutral    
 Aren't you? #13
 
     +[yes]
     ~ addObey()
-        /perform whatever amused 50
         That's right.  #14
       
     +[no]
      ~ addDisobey()
-        /perform open_arms_shrug disgusted 50
         {shuffle:
             - Then I guess it's time I teach you your place. #15
             - -> Nega_Unhappy ->
@@ -54,7 +52,7 @@ Aren't you? #13
  + [timeout] -> Nega_Timeout -> insult
  + [distracted] -> Nega_PayAttention -> insult
  
-- /perform open_arms_behold
+- /perform talk_behold
 {shuffle:
     - You're just a rotten little bitch I should crush under my boot. #16
     - A wretched little slut who just wants to be used. #17
@@ -65,7 +63,7 @@ Aren't you? #13
 - (kneel_tease)
 ~ tries++
 
-/perform point_down
+/perform do_point_down
 
 {shuffle:
     - Get down on your goddamn knees. #19
@@ -86,7 +84,7 @@ Aren't you? #13
 ~ addObey()
 
 - (stay_away)
-/perform lean_forward
+/perform talk_lean_forward
 You just can't stay away, can you? #23
 
 + [yes]
@@ -101,14 +99,14 @@ You just can't stay away, can you? #23
  + [timeout] -> Nega_Timeout -> stay_away
  + [distracted] -> Nega_PayAttention -> stay_away
  
-- /perform fists_on_hips_stomp
+- /perform idle_unhappy_stomp
 You can't fucking hide from me. #27
 I see what you are. #28
 
 /perform idle_tease
 You came here with that puny little reward of yours. #29
 
-/perform scoffs
+/perform react_scoffs
 For what? #30
 /perform idle
 Hoping you'd be mistreated. That's what. #31
@@ -117,7 +115,7 @@ You're just dying to be treated like the piece of shit you are. #32
 
 - (piece_of_shit)
 
-/perform displeased
+/perform talk_annoyed
 Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
 
 +[yes]
@@ -126,7 +124,7 @@ Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
       
 +[no]
      ~ addDisobey()
-    /perform laugh
+    /perform react_laugh
     -> Nega_Unhappy ->
     Playing all shy and innocent. #35
     
@@ -140,7 +138,7 @@ Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
     - Grovel at my feet! #38
 }
     
-/perform point_down
+/perform do_point_down
 { shuffle:
     - Kiss the ground I walk on. #39
     - Cheek on the floor. #40
@@ -158,7 +156,7 @@ TODO: does this pose need to be renamed to :grovel, but check for the same pose?
 - -> Nega_GoodJob ->
 ~ addObey()
 
-- /perform lean_forward
+- /perform talk_lean_forward
 I'm going to make you wallow in depravity. #42
 You will beg for more when I'm through with you. #43
 

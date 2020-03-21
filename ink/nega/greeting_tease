@@ -27,12 +27,12 @@
 
 
 - (hands_and_knees_timeout)
-/perform curious
+/perform talk_consider
 
 Get down on all fours like the dog you are, maggot!
 + [pose:hands_and_knees]
 
-- /perform present_foot
+- /perform do_present_foot
 -> Nega_GoodJob ->
 
 Come here and kiss my boot, worm!

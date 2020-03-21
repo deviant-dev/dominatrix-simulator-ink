@@ -71,7 +71,7 @@ No punishments or rewards, huh? #13
 
 + [yes] -> choose_task
 + [no]
-    /perform pouts
+    /perform react_disappointed
     Okay. #15
     Maybe some other time then. #16
     -> exit

@@ -21,7 +21,7 @@ VAR massage_count = 0
 
 -(FirstReward)
 
-/perform pleased
+/perform idle_tease
 
 You performed so well in there!
 
@@ -31,7 +31,7 @@ I hope the Headmistress didn't leave your little tushie too sore.
 
 Just remember, if you don't want to go through that, just follow the two simple rules I explained earlier!
 
-/perform thoughtful
+/perform talk_thoughtful
 
 Unless you're into that sort of thing.
 
@@ -41,7 +41,7 @@ But then you can always go for reward spankings.
 
 Now that you've paid off your punishment marker,
 
-/perform lean_forward
+/perform talk_lean_forward
 
 that's the Obsidian piece on your wrist there,
 
@@ -52,15 +52,15 @@ you can turn in your reward marker, the Bloodstone, for...
 Can you guess what?
 
 + [Yes]
-/perform pleased
+/perform idle_tease
 
 I knew you weren't just a pretty face.
 + [No]
-/perform fake_annoyed
+/perform idle_fake_annoyed
 
 Come on, I know you're smarter than this.
 + [timeout]
-/perform fake_annoyed
+/perform idle_fake_annoyed
 
 Come on, I know you're smarter than this.
 
@@ -77,7 +77,7 @@ Oh. Okay. That's fine. I hope I see you again slave!
 -(NormalVisit)
 {FirstVisit: -> Undress}
 
-/perform thoughtful
+/perform talk_thoughtful
 
 Mmm, well I do have a task for you.
 
@@ -987,7 +987,7 @@ Back off!
 
 /perform idle
 
-/perform fists_on_hips_stomp
+/perform idle_unhappy_stomp
 
 What did I tell you?!
 
@@ -999,7 +999,7 @@ All you had to was follow some simple directions!
 
 Just because you're here for a reward, doesn't mean you get to do whatever you want! 
 
-/perform unhappy
+/perform idle_unhappy
 
 The rules still apply!
 
@@ -1115,13 +1115,13 @@ That's enough.
 
 /perform idle
 
-/perform fists_on_hips_stomp
+/perform idle_unhappy_stomp
 
 And you {isBoy:mister|miss} don't get any satisfaction for yourself.
 
 Next time you come for a reward, you should act more grateful!
 
-/perform confused
+/perform react_shrug_long
 
 And on top of that, I'm giving you a punishment marker!
 

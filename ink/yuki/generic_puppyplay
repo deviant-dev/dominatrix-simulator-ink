@@ -4,9 +4,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Puppyplay_Reward_Earned ===
 
 {shuffle:
-    - /perform sassy
-    - /perform clasp_hands
-    - /perform bouncing_big
+    - /perform idle_sassy
+    - /perform idle_pleased
+    - /perform do_bouncing_big
 }
 
 {shuffle:
@@ -24,7 +24,7 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ addReward()
 
 {shuffle:
-    - /perform lean_forward
+    - /perform talk_lean_forward
     - /perform idle_yuki
     - /perform happy
 }
@@ -41,9 +41,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Puppyplay_Reward_Complete ===
 
 {shuffle:
-    - /perform sassy
-    - /perform clasp_hands
-    - /perform bouncing_big
+    - /perform idle_sassy
+    - /perform idle_pleased
+    - /perform do_bouncing_big
 }
 
 {shuffle:
@@ -61,7 +61,7 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ removeReward()
 
 {shuffle:
-    - /perform lean_forward
+    - /perform talk_lean_forward
     - /perform idle_yuki
     - /perform happy
 }
@@ -77,9 +77,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Puppyplay_Punishment_Earned ===
 
 {shuffle:
-    - /perform sighs
-    - /perform inspect_hand_bored
-    - /perform open_arms_shrug
+    - /perform react_sad_kick_foot_yuki
+    - /perform idle_bored
+    - /perform react_shrug_long
 }
 
 {shuffle:
@@ -97,9 +97,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ addPunishment()
 
 {shuffle:
-    - /perform lean_forward
+    - /perform talk_lean_forward
     - /perform idle_yuki
-    - /perform point_to_leave
+    - /perform do_you_leave
 }
 
 {shuffle:
@@ -113,9 +113,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Puppyplay_Punishment_Complete ===
 
 {shuffle:
-    - /perform sighs
-    - /perform inspect_hand_bored
-    - /perform open_arms_shrug
+    - /perform react_sad_kick_foot_yuki
+    - /perform idle_bored
+    - /perform react_shrug_long
 }
 
 {shuffle:
@@ -132,9 +132,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ removePunishment()
 
 {shuffle:
-    - /perform lean_forward
+    - /perform talk_lean_forward
     - /perform idle_yuki
-    - /perform point_to_leave
+    - /perform do_you_leave
 }
 
 {shuffle:
@@ -261,7 +261,7 @@ TODO: rewrite
 // - Do you think {isBoy:he|she} is enjoying {isBoy:himself|herself}? #03
 //   /character crowd cheers
 // - Exhibit control lest your arm tire. #04
-//   /character headmistress smooth_skirt
+//   /character headmistress do_smooth_skirt
 // - Cumming without permission is expressly forbidden. #05
 // - What a fine display. #06
 // - Look at those deft fingers. #07
