@@ -9,9 +9,14 @@
     ~ rewards = 1
 }
 
+{deviation == exhibitionism:
+    ~ punishments = 0
+    ~ rewards = 1
+}
+
 ~ setHub(Headmistress)
 
-/scene LectureHall.Hub
+/scene Theatre.Hub
 /music headmistress
 /character headmistress idle_clasp_hands
 
@@ -21,6 +26,7 @@
 
 
 = hello
+/wait
 
 { headmistress_regard >= 10: 
     I am pleased to see you, bauble. #01
@@ -64,6 +70,7 @@ Are you here to receive your reward? #08
 = check_task
 
 { inTutorial: -> goodbye }
+{ deviation == exhibitionism: -> goodbye }
 
 { punishments == 0 && rewards == 0:
     No rewards or punishments, huh? #12
@@ -95,6 +102,7 @@ Are you here to receive your reward? #08
 }
   
 {inTutorial: -> headmistress_reward_exhibitionism }
+{deviation == exhibitionism: -> headmistress_reward_exhibitionism }
 
 // Eventually we'll have the game randomly pick here.
 {shuffle:

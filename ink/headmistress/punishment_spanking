@@ -37,7 +37,7 @@ TODO: Support shuffling swats and equipment
 ~ headmistress_spanking_mistakes = 0
 
 
-/scene LectureHall.Punishment_Spanking
+/scene Theatre.DeskApproach
 /music headmistress-punishment
 /character headmistress
 // /equip {headmistress_spanking_implement}
@@ -389,7 +389,7 @@ Let us begin in earnest! #245
 
 + [wait]
 
-- /scene LectureHall.HeadmistressAtBack
+- /scene Theatre.HeadmistressAtBack
 
 // /character headmistress walk_to_back_of_desk
 
@@ -431,7 +431,7 @@ Prepare yourself for ten swats, {player_name}. #127
 - -> SpankingFinished
 
 = SpankingFinished
-/scene LectureHall.HeadmistressAtFront
+/scene Theatre.HeadmistressAtFront
 /character headmistress idle_pleased
 
 - (feel_better)
@@ -533,7 +533,7 @@ Stand at attention! #257
 
 ~ headmistress_spanking_break_count = 0
 
-- /scene LectureHall.HeadmistressAtFront
+- /scene Theatre.HeadmistressAtFront
 
 - {cycle: 
     - You may rest back on your heels, slave. #251
@@ -578,7 +578,7 @@ Stand at attention! #257
 + [pose:hands_and_knees]
 + [timeout] -> Headmistress_NoAction -> SpankBreak
 
-- /scene LectureHall.HeadmistressAtBack
+- /scene Theatre.HeadmistressAtBack
 ->->
 
 

@@ -156,7 +156,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 + [distracted] -> Goddess_PayAttention -> ask_spying_again
 
 
-- (ask_spying_done) /perform idle_sassy behold
+- (ask_spying_done) /perform idle_sassy
 I bet you have no idea where you are, do you? #36
  
 - (ask_where)
@@ -212,7 +212,7 @@ Would you like that? #47
 +[yes] 
     /perform idle_tease happy 50
     Well, well. I must say I'm pleased. #48
-    /perform indelible
+    /perform talk_thoughtful
     I think we are off to a good start. #49
     /perform idle_fake_annoyed happy 50
     Don't you? #50
@@ -411,7 +411,7 @@ I want to see you present yourself more fully to me. #100
   
 /perform idle
 
-+ [pose:present_kneeling]
++ [pose:present_kneel]
 + { tries < 2 } [timeout] -> present_self
 //+ { tries >= 2 } [timeout]
 + { tries >= 2 } [timeout] -> CheckIfInterested -> present_self

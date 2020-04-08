@@ -1,4 +1,4 @@
-
+ 
 === headmistress_task_handsignals_basics ===
 
 -> intro -> exit
@@ -9,7 +9,7 @@
 /perform do_smooth_skirt
 
 The time has come to accelerate your performance, heathen. #01
-To earn your place as cherished possession, you must embody attentiveness! #02
+To earn your place as a  cherished possession, you must embody attentiveness! #02
 Do you desire to be cherished, bauble? #03
 
 + [yes]
@@ -17,21 +17,16 @@ Do you desire to be cherished, bauble? #03
 
 + [no]
     /perform react_disappointed
-   -> Headmistress_Unhappy ->
-   I will ask you again. #04
+    -> Headmistress_Unhappy ->
+    I will ask you again. #04
     
     Do you desire to be cherished? #05
     
     ++ [Yes]
-    -> Headmistress_AcknowledgeYes ->
-    -> Headmistress_Resume ->
+        -> Headmistress_AcknowledgeYes ->
+        -> Headmistress_Resume ->
     
-    ++ [No]
-        /perform react_shrug_long
-        -> Headmistress_Unhappy ->
-        I have misjudged your readiness. #06
-        Return when you are further molded. #07
-        -> exit
+    ++ [No] -> ExitUnhappy
 
 + [timeout] -> Headmistress_Timeout -> intro_again
 + [distracted] -> Headmistress_PayAttention -> intro_again
@@ -79,16 +74,8 @@ Do you seek to delight your Mistress, {isBoy: speck|foible}? #15
     Do you seek to delight with your obedience? #17
     
     ++ [yes] -> Headmistress_AcknowledgeYes ->
-    
-    ++ [no]
-        /perform react_shrug_long
-        -> Headmistress_Unhappy ->
-        I have misjudged your readiness. #18
-        Return when you are further molded. #19
-        -> exit
-        
+    ++ [no] -> ExitUnhappy
     ++ [timeout] -> Headmistress_Timeout ->
-    
     ++ [distracted] -> Headmistress_PayAttention -> 
 
 + [timeout] -> Headmistress_Timeout -> delight
@@ -111,16 +98,8 @@ Are you prepared to serve so attentively, flawed one? #23
     Will you serve in this way, slave? #26
     
     ++ [yes] -> Headmistress_AcknowledgeYes ->
-    
-    ++ [no]
-        /perform react_shrug_long
-        -> Headmistress_Unhappy ->
-        I have misjudged your readiness. #27
-        Return when you are further molded. #28
-        -> exit
-        
+    ++ [no] -> ExitUnhappy
     ++ [timeout] -> Headmistress_Timeout ->
-    
     ++ [distracted] -> Headmistress_PayAttention -> 
 
 + [timeout] -> Headmistress_Timeout -> serve
@@ -162,12 +141,7 @@ Will you strive to please Her, chattel? #38
     
     
     ++ [yes] -> Headmistress_AcknowledgeYes -> 
-    ++ [no]
-        /perform react_shrug_long
-        -> Headmistress_Unhappy ->
-        I have misjudged your readiness. #39
-        Return when you are further molded. #40
-        -> exit
+    ++ [no] -> ExitUnhappy
     ++ [timeout] -> Headmistress_Timeout -> 
     ++ [distracted] -> Headmistress_PayAttention -> 
 
@@ -236,11 +210,7 @@ I expect you to perform the correct basic response. #59
 Are you ready to demonstrate your ability to follow the signals of my hand? #60
 
 + [yes] -> Headmistress_AcknowledgeYes ->
-    
-+ [no]
-    -> Headmistress_CheckIfInterested -> test_ready
-    
-
++ [no] -> Headmistress_CheckIfInterested -> test_ready
 + [timeout] -> Headmistress_Timeout -> test_ready
 + [distracted] -> Headmistress_PayAttention -> test_ready
 
@@ -273,6 +243,16 @@ Face me, foible. #66
 - {obeyed(): -> GoodEndingIntro | -> BadEndingIntro}
 + [timeout]-> Headmistress_NoAction -> turn_around
 
+
+= ExitUnhappy
+
+/character headmistress react_shrug_long
+-> Headmistress_Unhappy ->
+I have misjudged your readiness. #06
+Return when you are further molded. #07
+-> exit
+
+
 = TestRandom(difficulty)
 
 { shuffle:
@@ -284,7 +264,8 @@ Face me, foible. #66
 ->->
 
 
- = GoodEndingIntro
+= GoodEndingIntro
+
 /perform do_arm_raise
 If you continue to perform so gracefully, #67
 you will excel in pleasing Her. #68
@@ -295,6 +276,7 @@ Stay attentive to your lessons! #70
 - -> exit
 
 = BadEndingIntro
+
 /perform talk_behold
 Your performance today lacked enthusiasm and grace. #71
 To please Her, you must be perfect. #72

@@ -6,9 +6,46 @@
 /scene attic.reward_forcedsex1
 /music nega-reward
 /ambient howling-wind
-/character nega squat
+/character nega 
 
-/perform do_point_down
+- {inTutorial: -> forcedsex_intro| -> forcedsex_start}
+
+-(forcedsex_intro)
+
+/perform idle_sassy amused 75
+I've been waiting a long time for some new blood to show up. #02
+
+- (ask_any_idea)
+/perform do_inspect skeptical 
+Do you have any idea what I'm going to do to you? #08
+
++ [yes]
+    ~ addDisobey()
+    /perform talk_behold amused 75
+    You're about to find out. #09
+    
++ [no]
+    ~ addObey()
+    /perform react_shake_head_disbelief angry 50
+    Damn right, you don't. #10
+    
++ [timeout] 
+    /perform talk_question disgusted 75
+    Well? #11
+    -> ask_any_idea
+
+ + [distracted] -> Nega_PayAttention -> ask_any_idea
+
+- (forcedsex_start)
+/perform idle_tease excited 50
+{shuffle:
+    - I'm about to use you like the eager little whore you are. #31 
+    - Let's find out how well you can fuck. #32
+    - Time to be my slutty little bitch. #61
+}
+
+-     
+/perform do_point_down disgusted 50
 Get on the floor, bitch. #03
 On your back. #04
 
@@ -18,10 +55,11 @@ On your back. #04
 
 + [pose:lay_down] -> lay_down_done
 + { tries < 3 } [timeout]
-    /perform talk_annoyed
+    /perform talk_lean_forward angry 50
     Hey, stupid. #05
     I gave you a command. #06
     -- (lay_down_again) #15
+    /perform react_point_at_player_angry angry
     Lay the fuck down! #07
     -> lay_down
 + { tries >= 3 } [timeout] -> Nega_CheckIfInterested -> lay_down_again
@@ -30,7 +68,7 @@ On your back. #04
 
 
 - (lay_down_done)
-
+/perform idle_skeptical amused 75
 -> Nega_GoodJob ->
 
 {tries == 1:
@@ -39,56 +77,33 @@ On your back. #04
     ~ addDisobey()
 }
 
--/perform idle
-I'm so ready for this. #01
-I've been waiting a long time for some new blood to show up. #02
-
-- (ask_any_idea)
-/perform idle_looming
-Do you have any idea what I'm going to do to you? #08
-
-+ [yes]
-    ~ addDisobey()
-    //You're about to find out. #09
-+ [no]
-    ~ addObey()
-    Damn right, you don't. #10
-    
-+ [timeout] 
-    Well? #11
-    -> ask_any_idea
-
-- /perform do_inspect
-I want to get off on some deep dicking. #12
-
-// Handle cockification for female players.
-
-{not hasPenis:
-    I've got a strap-on right here for you, slut. #13
-}
-
-/action equip_cock
-/perform idle_looming
-
 //player has to masturbate to get "hard" for her
 
 ~ tries = 0
 - (bound_wrists)
 ~ tries++
- 
+/perform react_point_at_player_angry angry 50
 Put your wrists above your head! #14
-//equip rope
-//Put your ankles and wrists together! #14
+
+/perform idle_fake_annoyed angry 50
 
 + [pose:bound_wrists]
 + { tries < 2 } [timeout] -> Nega_Timeout -> bound_wrists
 + { tries >= 2 } [timeout] -> Nega_CheckIfInterested -> bound_wrists
 // + [no] -> CheckIfInterested -> lay_down
 
-- -> Nega_GoodJob ->
+- /perform idle_sassy skeptical 50
+Don't you fucking move, slut! #18
+
+/perform tease_stroke_motion amused 75
+I want to get off on some deep dicking. #12
+
+// Handle cockification for female players.
 
 
-/perform idle_tease
+
+
+/perform tease_caress_breast_left aroused 74
 Fuck! I'm soaking my panties. #16
 
 //mutters
@@ -96,7 +111,7 @@ I don't know why I even bother wearing them. #17
 
 //perform tie_ankles
 
-///Don't you fucking move, slut! #18
+
 //can she mutter to herself like she's crazy?
 
 //perform tie_wrists
@@ -105,14 +120,21 @@ I don't know why I even bother wearing them. #17
 
 //-> Nega_player_masturbate ->
 
-/perform idle_looming
+/perform do_rub_hands_together excited 75
 
 Now... time for me to get more comfortable. #20
 
 
 //nega yuki strips
 /scene attic.reward_forcedsex2
-/perform idle_sassy
+/perform idle_sassy skeptical 75
+
+- (get_cock)
+{not hasPenis:
+    /perform do_snap_fingers amused 75
+    I've got a strap-on right here for you, slut. #13
+}
+
 /action equip_cock
 
 //- Hold your cock with both hands, slut. #112
@@ -120,21 +142,27 @@ Now... time for me to get more comfortable. #20
 //I keep plenty of rope lying around just for this. #15
 
 Look at you. Such a pathetic fleshbag. #21
+/perform react_excited amused 50
 I bet you're just dying to find out  #22
+/perform idle_tease
 how wet my pussy feels against you. #23
 
-/perform idle_looming
+/perform talk_question amused 75
 - (pussy_wet)
 Aren't you? #24
 
 +[yes]
+    /perform talk_lean_forward happy 50
     Such a filthy whore.  #25
+    /emotion excited 75
     What a treat! #26
 
 +[no]
+    /perform react_scoffs disgusted 50
     Too fucking bad! #27
 
 + [timeout] -> Nega_Timeout -> pussy_wet
++ [distracted] -> Nega_PayAttention -> pussy_wet
 
 // - Do you know what I'm about to do, slut? #28
 
@@ -144,37 +172,45 @@ Aren't you? #24
 // + [no]
 //     You're so fucking dumb. I swear. #30
 
-- /perform idle_looming
-I'm about to use you like the eager little whore you are. #31
-Let's find out how well you can fuck. #32
-/emotion aroused 50
+-
+/perform idle_sassy aroused 50
 I'm going to ride that {hasPenis: cock|strap-on} of yours #33
 /emotion excited 70
 until I cum my fucking brains out! #34
 
 - (like_that)
+/perform idle_tease aroused 
 Would you like that, {isBoy: prick|bitch}? #35
 
 +[yes]
+    /perform do_fist_pump excited 
     Fan-fucking-tastic!  #36
+    /perform talk_gesture neutral 
     I'm getting what I want no matter what. #37
+    /perform react_whatever amused 75
     It's just a bonus for you that you want it too. #38
 
 +[no]
+    /perform talk_threaten angry 75
     It doesn't matter what you fucking want! #39
+    /perform idle_tease aroused 75
     You came to me and now I'm going to have some fun! #40
 
 + [timeout] -> Nega_Timeout -> like_that
++ [distracted] -> Nega_PayAttention -> like_that
+
 
 - (sex_ready)
 
 //player needs to be told to move their controller to their crotch
 //Need to teach the player how to move their controller like a cock/pussy and how to thrust to a beat/rhythm
 
+-/perform idle_tease excited 
+I'm so ready for this. #01
 
-
-/perform squat_over_player_crotch
+/perform sex_squat_idle aroused 74
 Ahhhh! That's it! #41
+/perform sex_squat_thrust_single happy 74
 You're stiff dick is just what I needed! #42
 
 
@@ -186,22 +222,31 @@ VAR nega_thrust_target_count = 20
 VAR nega_thrust_break_count = 6
 
 
-- Let's find out how well you can work that little dick of yours. #115
+- /perform sex_squat_idle angry 50
+Let's find out how well you can work that little dick of yours. #115
+
 - (make_cum)
+/perform sex_squat_thrust_forward disgusted 75
 Your job is to make me cum, got it?! #44
 
+/perform sex_squat_idle amused
+
 +[yes]
+    /perform sex_squat_thrust_single amused 50
     Good. Now fucking show me how you thrust. #45
     ~ addObey()
   
 
 +[no]
-    You'll do it anyways, bitch. #46
+    /perform sex_squat_thrust_single angry
     ~ addDisobey()
+    -> Nega_BadJob ->
+    
 + [timeout] -> Nega_Timeout ->  make_cum
 
-- Brace yourself! #127
- It's going to be a wild ride. #113
+- /perform sex_squat_writhe amused 75
+Brace yourself! #127
+It's going to be a wild ride. #113
  
 // //- (test_thrust)
 // ///perform idle_tease
@@ -247,87 +292,56 @@ Your job is to make me cum, got it?! #44
 // //+ [minigame-quit] -> Nega_CheckIfInterested -> thrust_more
 
 - (thrust_continue)
-// - /perform squat //_over_player_crotch_laugh
 
-
-// Ahhhh! That's it! #41
-// You're stiff dick is just what I fucking needed! #42
-
-+ [wait 5]
-
-- /perform squat //_over_player_crotch
+/perform sex_squat_thrust_single aroused
 Sometimes, I like to fuck to music, so listen to the beat, cunt. #116
+/perform sex_squat_writhe disgusted 50
 You better move those goddamn hips while I fuck you, slut. #43
-
 
 /music nega-reward-forced-sex-mini-1
 
-/perform sex_squat_thrust
+/perform sex_squat_thrust aroused 75
 
-+ [wait 5]
+- (forced_sex_loop)
 
-- -> Nega_GoodJob ->
+-> RandomCommentLoop (-> masturbation_comment, 3, 5, 3, 5) ->
 
-+ [wait 5]
+-> Nega_GoodJob ->
 
-- -> Nega_Objectify ->
+-> break03 ->
 
-+ [wait 5]
+/perform sex_squat_writhe aroused
 
-- I just adore cumming as the song peaks, so don't fuck it up! #117
+-> RandomCommentLoop (-> masturbation_comment, 2, 5, 2, 4) ->
 
-+ [wait 5]
+- /emotion amused 75
+I just adore cumming as the song peaks, so don't fuck it up! #117
+/perform sex_squat_thrust_fast aroused 
 
-- -> Nega_GoodJob ->
 
-+ [wait 5]
+-> Nega_GoodJob ->
 
-- -> Nega_Objectify ->
+-> RandomCommentLoop (-> masturbation_comment, 2, 4, 2, 4) ->
 
-+ [wait 5]
-
-- -> Nega_GoodJob ->
-
-+[wait 5]
-
-- -> Nega_Objectify ->
-
-/music nega-reward-forced-sex-mini-3
-
-Decent. Let's pick up the pace, huh? #51
-
-/perform sex_squat_thrust_fast
-
-+[wait 5]
-
-- -> Nega_GoodJob ->
-
-+[wait 5]
-
-- -> Nega_Objectify ->
-
-+[wait 5]
-
-- Give it to me harder, you worthless fuck. #52
-
-+[wait 5]
-
-- -> Nega_GoodJob ->
-
-+[wait 5]
 
 {inTutorial:
     -> nega_intro.surprise_interrupt
 }
 
-- -> Nega_Objectify ->
+- /music nega-reward-forced-sex-mini-3
+/perform sex_squat_thrust_forward skeptical
+Decent. Let's pick up the pace, huh? #51
+-> thrust_minigame_orgasm
 
-+[wait 5]
+= masturbation_comment
 
-- -> Nega_GoodJob ->
-
-+[wait 5]
-
+{shuffle:
+        - -> Nega_Objectify ->
+        - -> forced_sex_comment->
+        - -> Nega_GoodJob ->
+}
+   
+->->
 
 // - (thrust_restart)
 
@@ -369,7 +383,7 @@ Keep going, slut, and make me cum! #54
 Do you want to cum with me, {isBoy: maggot|whore}? #56
 
 + [yes]
-    /perform squat //_grind_on_crotch_laugh
+    //perform squat_grind_on_crotch_laugh
     You fucking wish! #57
     There's no orgasm for a pathetic flesh bag like you. #58
 
@@ -431,7 +445,7 @@ Present yourself.  #131
 
 = outro
 
-/perform squat_grind_on_crotch
+//perform squat_grind_on_crotch
 //this needs to last for a set amount of time with comments interspersed as player thrusts correctly
 //build in variable length of time the rhythm plays (could alternate between music, heart beats, metronome)
 //needs sound or vibration feedback to let the player know they are succeeding
@@ -472,7 +486,7 @@ Get back to it, slut! #66
 
 = break01
 //choke player during forced sex
-/perform squat_grab_player_throat
+//perform squat_grab_player_throat
 
 ~ temp choke_point = 1
 
@@ -484,12 +498,12 @@ Get back to it, slut! #66
 
 You belong to me right now, bitch. #67
 
-- {choke_point == 1: /perform squat_over_player_crotch }
+- //{choke_point == 1: //perform squat_over_player_crotch }
 
 My filthy fucktoy. #68
 A worm I will use and abuse until I'm satisfied. #69
 
-{choke_point == 2: /perform squat_over_player_crotch }
+//{choke_point == 2: //perform squat_over_player_crotch }
 
 Do you like being used? #70
 
@@ -502,7 +516,7 @@ Do you like being used? #70
     And yet look at you now. #74
     Your body is a piece of meat to get me off. #75
 
-- {choke_point == 3: /perform squat_over_player_crotch }
+- //{choke_point == 3: perform squat_over_player_crotch }
 
 Isn't that true? #76
     
@@ -513,7 +527,7 @@ Isn't that true? #76
     Wrong! #78
     I will use you and I will cum my brains out while doing it. #79
  
-- /perform squat_over_player_crotch
+- //perform squat_over_player_crotch
 ->->
 
 = break02
@@ -521,7 +535,7 @@ Isn't that true? #76
 
 - (try_slap)
 
-/perform squat_over_player_crotch_slap
+//perform squat_over_player_crotch_slap
 
 + [react-success]
 -> Nega_GoodJob ->
@@ -543,7 +557,7 @@ and I want to hear you whimper while I do. #83
 
 - (slap)
 
-/perform squat_over_player_crotch_slap
+//perform squat_over_player_crotch_slap
 ~ slap_count--
 
 + [react-success]
@@ -558,12 +572,18 @@ Time for more fucking! #84
 
 = break03
 //holding breath while Nega counts
+/perform sex_squat_idle amused
 Let's play a little game, whore. #85
+/emotion skeptical
 You're going to hold your breath for me. #86
+/perform sex_squat_tease
 Let's see what a good piggy you are. #87
+/emotion angry 50
 When I say 'go', hold your fucking breath. #88
 
-+ [wait:2]
++ [wait]
+
+- /perform sex_squat_thrust_forward skeptical 50
 Go! #89
 
 {shuffle:
@@ -572,15 +592,18 @@ Go! #89
     - One. Two. Three. Four. Five. Six. #92
     - One. Two. Three. Four. Five. Six. #110
     Seven. Eight. Nine. Ten.  #111
-    Impressive! #94
+   
     }
 
+/perform sex_squat_thrust_single disgusted 50
 Now, breathe bitch! #95
+/perform sex_squat_tease amused
+Impressive! #94
 
 ->->
 
 = Badthrust
-
+/emotion disgusted 75
 {shuffle:
     - Your cock is useless! #96
     - Haven't you ever fucked before? #97
@@ -602,4 +625,23 @@ Now, breathe bitch! #95
     
 ->->
 
-
+= forced_sex_comment
+/emotion amused 75
+{shuffle:
+    - My pussy is so hungry! #93
+    - I bet you wish you could bury your face in my tits. #140
+    - Don't let that pathetic {isBoy: cock|dildo} give out on me. #114
+    - I just love using filty little sluts. #132
+    - Your body is mine to use! #133
+    - Fuck yah! #134
+    - Forcing {isBoy: pricks|cunts} to be my bitch is so fucking fun! #135
+    - You aren't going anywhere until I'm done with you. #136
+    - Yah! Take it, little bitch. #137
+    - That hits the spot! #138
+    - I know you've begging for this! #139
+    - Give it to me harder, you worthless fuck. #52
+}
+ 
+ /emotion aroused
+ 
+->->  

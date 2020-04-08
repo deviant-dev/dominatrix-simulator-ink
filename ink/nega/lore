@@ -13,7 +13,50 @@ Since you've been so good, I'll tell you a little bit about the house.
 ->->
 
 = lore01
-<< Inster Lore01 Here >>
+/perform react_scoffs angry 75
+Those fucking bitches thought they could keep me away forever.
+
+/perform idle_sassy disgusted
+But jokes on them.
+/emotion happy 50
+I've got a new ally now.
+
+/perform react_point_at_player_angry angry 50
+And that means I can make you my little bitch anytime I want.
+
+/perform react_shrug_short neutral
+Well... 
+/perform talk_lean_forward amused
+only when you bring me a Bloodstone first.
+ 
+- (piggy)
+/perform idle_fake_annoyed aroused 50
+And you're a good little piggy who wants to please me.
+Isn't that right?
+
+ +[yes]
+  ~ addObey()
+    /perform do_rub_hands_together happy 75
+    Good little, piggy.
+    /emotion disgusted 75
+    Don't fucking forget what I want.
+    
++ [no]
+    ~ addObey()
+    /perform react_shake_head_disbelief angry 50
+   --> Nega_Unhappy ->
+   You're here, aren't you?
+   No more pretty little Bloodstone on your wrist.
+   So, try again.
+   
+    
++ [timeout] 
+    /perform talk_question disgusted 75
+    Well? #11
+    -> piggy
+
+ + [distracted] -> Nega_PayAttention -> piggy
+ 
 ->->
 
 = lore02
@@ -24,5 +67,9 @@ Since you've been so good, I'll tell you a little bit about the house.
 << Inster Lore01 Here >>
 ->->
 
+     
 === function negaLoreEmpty()
 ~ return nega_lore.lore03
+
+->->
+

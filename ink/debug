@@ -82,52 +82,62 @@
 // --- Headmistress Jumps ---
 
 // -> headmistress_intro
-//  /scene LectureHall
+//  /scene Theatre
 
 
 // /character headmistress
-// /scene LectureHall.Punishment_Spanking_Ready
+// /scene Theatre.DeskReady
 //  -> headmistress_punishment_spanking.accept_punishment
 // -> headmistress_punishment_spanking.spank_continue
 
-// /scene LectureHall.Intro3
+// /scene Theatre.Intro3
 // /character headmistress
 
 // ~ punishments = 1
-// ~ rewards = 1
+
 
 // -> headmistress_intro.present
 
-// /scene LectureHall.Punishment_Spanking_Ready
-//  /character headmistress
-//  /music headmistress
+// /scene Theatre.DeskReady
+// /character headmistress
+
 // -> headmistress_punishment_spanking.punish_continue
 
 // ~ deviation = hand_signals
-//  -> headmistress_hub
+// -> headmistress_hub
 
 // /action raise_curtains
-// /scene LectureHall.Punishment_Spanking
-//  -> headmistress_punishment_spanking.SpankingFinished
--> headmistress_reward_exhibitionism 
+// /scene Theatre.DeskApproach
+// -> headmistress_punishment_spanking.SpankingFinished
+// /music headmistress
+// ~ rewards = 1
+// -> headmistress_reward_exhibitionism 
 
+
+~ setDeviation(exhibitionism)
+~ rewards = 1
+-> unlock_all -> headmistress_reward_exhibitionism
 
 
 // --- Nega Jumps ---
 
 // -> nega_hub
 
-/scene Attic.Reward_ForcedSex1
-// /scene Attic.Reward_ForcedSex2
-/music nega
-/ambient howling-wind
-~ setScene(task_scene, Nega)
+// /scene Attic.Reward_ForcedSex1
+// // /scene Attic.Reward_ForcedSex2
+// /music nega
+// /ambient howling-wind
+// ~ setScene(task_scene, Nega)
 //-> nega_intro.nega_tease
 
 // -> nega_reward_forcedsex
+// /scene attic.reward_forcedsex2
+// /character nega
+// /perform idle_sassy skeptical 75
+//  -> nega_reward_forcedsex.get_cock
 // -> nega_reward_forcedsex.pussy_wet
 // -> nega_reward_dice.test_dice
-// -> nega_reward_tease
+//-> nega_reward_tease
 
 
 ->->

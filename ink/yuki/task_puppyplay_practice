@@ -68,7 +68,7 @@ Be ready for anything you've already learned! #160
         /perform react_excited
         -> Yuki_GoodJob ->
         TODO: Re-record this line as it is missing.
-        // Maybe you don't need this practice after all! #148
+        Maybe you don't need this practice after all! #148
     - else:
         /perform talk_one_hand
         -> Yuki_AcknowledgeYes ->

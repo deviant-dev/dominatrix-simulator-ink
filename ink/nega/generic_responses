@@ -1,6 +1,6 @@
    
 === Nega_GoodJob ===
-
++ [continue]
 {shuffle:
     - That's it, little bitch. #01
     - Just like that. #02
@@ -19,12 +19,14 @@
     - What a slut! #15
     - I'm impressed, slut. #16
 }
-    
+
+
+-
 ->->
 
 
 === Nega_BadJob ===
-
+/emotion angry 75
 {shuffle:
     - Stupid {isBoy:  prick|cunt}. #01
     - You're fucking up! #02
@@ -46,7 +48,7 @@
 ->->
 
 === Nega_Unhappy ===
-
+/emotion disgusted
 //use this for responses from player she doesn't like - verbal
 
 {shuffle:
@@ -59,7 +61,7 @@
 ->->
 
 === Nega_Insult ===
-
+/emotion disgusted
 {shuffle:
     - You're so goddamn pitiful. #01
     - Fucking stupid {isBoy: prick|cunt}. #02
@@ -99,7 +101,7 @@ Now get back up on your knees. #07
 
 //response to timeouts to questions
 === Nega_Timeout ===
-
+/emotion disgusted 75
 {cycle:
     - ...the fuck? I'm talking to you!  #01
     - Don't ignore me!  #02
@@ -118,7 +120,7 @@ Now get back up on your knees. #07
 
 //response to player distraction
 === Nega_PayAttention ===
-
+/emotion angry 75
 { cycle:
     - Eyes on me, pretty {player_name}. #01
     - I'm fucking talking to you! #02
@@ -256,6 +258,8 @@ Does that feel good whore? #04
 ->->
 
 === Nega_Objectify === 
++[continue]
+/emotion disgusted 75
 
 {shuffle:
     - That's all you're good for, cunt, being used. #19
@@ -303,7 +307,7 @@ Open your mouth, slut! #14
 + [react-success]
 
 TODO: create new animation
-/perform spit_in_mouth
+//perform spit_in_mouth
 + [wait 3]
 - I'm sure you loved that, my disgusting little {isBoy: pig|cunt}! #15
 
@@ -323,7 +327,7 @@ Didn't you? #16
 
 //decide how to use this or what anims should be used
 = reward_ass
-/perform reverse_cowgirl_ass_raised_wiggle
+//perform reverse_cowgirl_ass_raised_wiggle
 //long animation - appx 10 seconds
 Being so close must be such a turn on for you, whore. #18
 Don't get used to it! #19

@@ -16,9 +16,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 }
 
 {shuffle:
-    - You've earned a reward!
-    - Now, you've got a new reward. 
-    - You just got a new Bloodstone.
+    - You've earned a reward! #01
+    - Now, you've got a new reward.  #02
+    - You just got a new Bloodstone. #03
 }
 
 ~ addReward()
@@ -26,7 +26,7 @@ TODO: add emotions and performances to swipe a Bloodstone
 {shuffle:
     - /perform talk_lean_forward
     - /perform idle_yuki
-    - /perform happy
+    - /perform wave4_yuki
 }
 
 {shuffle:
@@ -47,15 +47,15 @@ TODO: add emotions and performances to swipe a Bloodstone
 }
 
 {shuffle:
-    - I love rewarding good puppies. 
-    - You should keep earning these kinds of rewards!
+    - I love rewarding good puppies.  #01
+    - You should keep earning these kinds of rewards! #02
     - You're the best puppy a girl could ask for. #191
 }
 
 {shuffle:
-    - That uses up a reward!
-    - You've just redeemed one reward. 
-    - Time to remove one Bloodstone reward. 
+    - That uses up a reward! #03
+    - You've just redeemed one reward.  #04
+    - Time to remove one Bloodstone reward.  #05
 }
 
 ~ removeReward()
@@ -63,13 +63,13 @@ TODO: add emotions and performances to swipe a Bloodstone
 {shuffle:
     - /perform talk_lean_forward
     - /perform idle_yuki
-    - /perform happy
+    - /perform wave3_yuki
 }
 
 {shuffle:
-    - See you soon, puppy!
-    - Keep being a good puppy!
-    - Go earn some more rewards!
+    - See you soon, puppy! #06
+    - Keep being a good puppy! #07
+    - Go earn some more rewards! #08
 }
 
 ->->
@@ -85,13 +85,13 @@ TODO: add emotions and performances to swipe a Bloodstone
 {shuffle:
     - It was kind of sad watching you struggle with your commands. #211
     - What a bad puppy you are. #204
-    - The Goddess is not going to be pleased with you!
+    - The Goddess is not going to be pleased with you! #01
 }
 
 {shuffle:
-    - You've earned a punishment, puppy.
-    - Now I have to give you a punishment. 
-    - Aw, gee. You have a new Obsidian punishment marker.
+    - You've earned a punishment, puppy. #02
+    - Now I have to give you a punishment.  #03
+    - Aw, gee. You have a new Obsidian punishment marker. #04
 }
 
 ~ addPunishment()
@@ -119,15 +119,15 @@ TODO: add emotions and performances to swipe a Bloodstone
 }
 
 {shuffle:
-    - I really hope I don't have to punish you again like that.
-    - I hope you've learned your lesson.
-    - You should really try to avoid punishments in the future, puppy.
+    - I really hope I don't have to punish you again like that. #01
+    - I hope you've learned your lesson. #02
+    - You should really try to avoid punishments in the future, puppy. #03
 }
 
 {shuffle: 
-    - You've paid off a punishment, puppy!
-    - Alright. That's one Obsidian punishment removed!
-    - Phew! You just got rid of a punishment. 
+    - You've paid off a punishment, puppy! #04
+    - Alright. That's one Obsidian punishment removed! #05
+    - Phew! You just got rid of a punishment.  #06
 }
 ~ removePunishment()
 
@@ -138,9 +138,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 }
 
 {shuffle:
-    - Go on. I'm done with you now.
-    - Stay out of trouble, puppy!
-    - I expect you to behave better next time!
+    - Go on. I'm done with you now. #07
+    - Stay out of trouble, puppy! #08
+    - I expect you to behave better next time! #09
 }
 
 
@@ -148,16 +148,16 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Puppyplay_GoodSpank ===
 
 {shuffle:
-    - Good puppies don't get spanked.
-    - You poor puppy.
-    - That must really hurt.
-    - It's okay puppy. It will be over soon.
-    - Ooof!
-    - Your bottom is so pink!
-    - I think I'm getting wet!
-    - This hurts me so much more than it hurts you.
-    - I'm so sad I have to do this!
-    - Hang in there!
+    - Good puppies don't get spanked. #01
+    - You poor puppy. #02
+    - That must really hurt. #03
+    - It's okay puppy. It will be over soon. #04
+    - Ooof! #05
+    - Your bottom is so pink! #06
+    - I think I'm getting wet! #07
+    - This hurts me so much more than it hurts you. #08
+    - I'm so sad I have to do this! #09
+    - Hang in there! #10
     -
     -
     -
@@ -170,16 +170,16 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Puppyplay_BadSpank ===
 
 {shuffle:
-    - Make sure you're counting.
-    - Pfft. Make the next one better, puppy. 
-    - Head up high, puppy. 
-    - Are you even trying? 
-    - I thought the Headmistress trained you to take a spanking? 
-    - No squirming!
-    - You don't seem very sorry, puppy. 
-    - This spanking's never going to end. 
-    - I want to see you react, puppy. 
-    - Try harder!
+    - Make sure you're counting. #01
+    - Pfft. Make the next one better, puppy.  #02
+    - Head up high, puppy.  #03
+    - Are you even trying?  #04
+    - I thought the Headmistress trained you to take a spanking?  #05
+    - No squirming! #06
+    - You don't seem very sorry, puppy.  #07
+    - This spanking's never going to end.  #08
+    - I want to see you react, puppy.  #09
+    - Try harder! #10
     -
     -
     -
@@ -191,25 +191,25 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Player_Masturbate ===
 
 
-Are you {hasPenis: hard|wet} already?
+Are you {hasPenis: hard|wet} already? #01
 
 + [yes]
     ~ addObey()
-   Oh goody.
-   That mean's you're excited!
+   Oh goody. #02
+   That mean's you're excited! #03
 
 + [no]
     ~ addDisobey()
-    That's okay.
-    You can warm yourself up first.
+    That's okay. #04
+    You can warm yourself up first. #05
 
 - (masturbate)
 
-{hasPenis: Grab your little cock and start strocking|Reach down and start rubbing your pussy.} 
+{hasPenis: Grab your little cock and start strocking|Reach down and start rubbing your pussy.}  #06
 
 /character yuki idle
 /wait 2
-That's it.
+That's it. #07
 //shuffles through a variable number of comments and different duration times between each
 //comment followed by mintimes, maxtimes, minwait, maxwait
 -> RandomCommentLoop(-> masturbation_comment, 2, 5, 3, 4) ->

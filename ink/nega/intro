@@ -141,15 +141,16 @@ Does your poor tushy sting? #23
 Let's have a look. #29
 
 - (present_ass)
-/perform do_point_down angry 40
+/perform react_point_at_player_angry angry 40
 Turn around and bend over. #30
+/perform idle
 Hands on your knees and ass in the air! #31
 
 + [pose:present_ass_reverse]
 + [no] -> Nega_CheckIfInterested -> present_ass
 + [timeout] -> present_ass
 
-- /perform idle
+- /perform idle_sassy amused 75
 My, my. Your ass turns a nice shade of pink. #32
 She does such good work. #33
 
@@ -220,13 +221,13 @@ Do you want to try your luck? #45
     
     ++[no]
         ~ addObey()
-        /perform tease_caress_breast_left
+        /perform tease_caress_breast_left aroused 75
         Very good.  #53
         I can be a lot of fun with the right... toy. #54
          -> nega_reward_dice
          
 + [timeout]
-    /perform idle
+    /perform idle skeptical
     Well. Are you going to give me what I want? #55
     -> check_reward
 
@@ -241,11 +242,11 @@ TODO: Shake attic? Vibrate controllers with rumble?
 /sound goddess_interruption
 /ambient none
 /wait 2
-/perform talk_behold
+/perform sex_squat_idle angry
 
 Damn it! I was just getting started. #132
 
-/perform idle_unhappy_stomp
+/perform idle_unhappy_stomp disgusted
 /music goddess
 /wait 1
 /scene None
@@ -267,7 +268,7 @@ TODO: Shake attic? Vibrate controllers with rumble?
 /sound goddess_interruption
 /ambient none
 /wait 2
-/perform talk_behold
+/perform talk_behold excited 57
 
 Oh yeah. Hear that? You're gonna get yours now. #57
 

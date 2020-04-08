@@ -100,6 +100,7 @@ VAR web = true
 // ~ setDeviation(demo)
 // ~ setDeviation(hand_signals)
 // ~ setDeviation(puppyplay)
+// ~ setDeviation(exhibitionism)
 ->->
 
 
@@ -119,6 +120,18 @@ VAR web = true
         -> headmistress_hub
     - else:
         -> game_intro
+}
+
+=== post_intro_deviation_check ===
+{ 
+    - deviation == puppyplay:
+        -> yuki_hub
+    - deviation == hand_signals:
+        -> headmistress_hub
+    - deviation == exhibitionism:
+        -> headmistress_hub
+    - else:
+        -> goddess_intro
 }
 
 
@@ -143,6 +156,11 @@ VAR web = true
     ~ setDeviation(hand_signals)
     -> unlock_all -> headmistress_task_handsignals
 
++ Headmistress Reward - Exhibitionism
+    ~ setDeviation(exhibitionism)
+    ~ rewards = 1
+    -> unlock_all -> headmistress_reward_exhibitionism
+
 + Nega Reward - Forced Sex
     -> unlock_all -> nega_reward_forcedsex
 
@@ -156,3 +174,4 @@ VAR web = true
 + Yuki Task - Puppy Play
     ~ setDeviation(puppyplay)
     -> unlock_all -> yuki_task_puppyplay
+ 

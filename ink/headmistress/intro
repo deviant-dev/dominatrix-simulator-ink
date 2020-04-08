@@ -7,7 +7,7 @@
 ~ setScene(intro_scene, Headmistress)
 
 - (jump_start)
-/scene LectureHall.Intro1
+/scene Theatre.Intro1
 /music headmistress
 /ambient female-crying
 /character slave all_fours
@@ -71,7 +71,7 @@ as befits an adornment of this house. #12
 Yes, Headmistress. #13
 Thank you for guiding me, Headmistress. #14
 
--/scene LectureHall.Intro3
+- /scene Theatre.Intro3
 /music headmistress
 /character headmistress idle_unhappy
 

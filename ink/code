@@ -8,6 +8,9 @@
     - deviation == hand_signals:
         /scene none
         -> headmistress_hub
+    - deviation == exhibitionism:
+        /scene none
+        -> headmistress_hub
     - deviation == puppyplay:
         /scene none
         -> yuki_hub

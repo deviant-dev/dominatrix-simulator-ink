@@ -30,7 +30,7 @@ VAR yuki_spanking_fails = 0
 //intro contains performances
 
 - (intro_puppy_spanking)
-My naughty puppy is going to be spanked!
+My naughty puppy is going to be spanked! #01
 
 TODO: create new pose 'point_to_left'
 /perform point_to_left
@@ -39,49 +39,49 @@ TODO: create new pose 'point_to_left'
 - (spanking_couch)
 ~ tries++
 
-Crawl over to that couch and lay across it.
+Crawl over to that couch and lay across it. #02
 
 {cycle:
-    - Butt sticking out nice and high.
-    - And stick out your butt!
-    - Present your puppy bottom.
+    - Butt sticking out nice and high. #03
+    - And stick out your butt! #04
+    - Present your puppy bottom. #05
     }
 
 /perform idle_yuki  
 
 + [move]
-    Get comfortable. You're going to be there for a while.
+    Get comfortable. You're going to be there for a while. #06
 + { tries < 2 } [timeout] -> Yuki_Interested -> spanking_couch
 + { tries>= 2 } [timeout]
     -> Yuki_CheckIfInterested -> spanking_couch
 + [distracted] -> Yuki_PayAttention -> spanking_couch
 
 //TODO: insert spanking scene
-- You have been a naughty puppy.
-You've obviously forgotten the rules.
-<i>Disobey and be punished.</i>
-<i>Obey and be rewarded!</i>
+- You have been a naughty puppy. #07
+You've obviously forgotten the rules. #08
+<i>Disobey and be punished.</i> #09
+<i>Obey and be rewarded!</i> #10
 
 - (remember)
-Don't you remember those rules, puppy?
+Don't you remember those rules, puppy? #11
 + [yes] -
-    Don't you lie to me, puppy.
-    Good {isBoy: boys|girls} don't earn punishments.
+    Don't you lie to me, puppy. #12
+    Good {isBoy: boys|girls} don't earn punishments. #13
 
 + [no]
-    Obviously you don't.
-    Or you wouldn't be here right now.
+    Obviously you don't. #14
+    Or you wouldn't be here right now. #15
     
 + [timeout] -> Yuki_Timeout -> remember
 + [distracted] -> Yuki_PayAttention -> remember
 
 // 5, 10
-- You're going to get {yuki_spanking_target_count}, big swats, puppy!
-I want to hear you count them out.
+- You're going to get {yuki_spanking_target_count}, big swats, puppy! #16
+I want to hear you count them out. #17
 
 /perform idle
-This is going to hurt me more than it hurts you!
-And don't forget to show me your reaction.
+This is going to hurt me more than it hurts you! #18
+And don't forget to show me your reaction. #19
 
 - (spank)
 /character yuki do_spank_puppy
@@ -105,15 +105,15 @@ TODO: create new 'spank_puppy' anim
     {yuki_spanking_fails > 2: -> spank_failout}
     
     {shuffle:
-    - Now you have to start over!
-    - Are you even trying? Start back at 1.
-    - I thought the Headmistress trained you to take a spanking? 
-    Time to start again.
+    - Now you have to start over! #20
+    - Are you even trying? Start back at 1. #21
+    - I thought the Headmistress trained you to take a spanking?  #22
+    Time to start again. #23
     }
     
-    Listen puppy. You have to perform every spanking perfectly to finish your punishment.
+    Listen puppy. You have to perform every spanking perfectly to finish your punishment. #24
     -- (spank_ready)
-    Ready?
+    Ready? #25
     
     ++ [yes]
     -> spank
@@ -127,14 +127,14 @@ TODO: create new 'spank_puppy' anim
 /perform react_disappointed
 -> Yuki_Badjob ->
 
-Leave and don't come back until you're sorry!
+Leave and don't come back until you're sorry! #26
 
 -> exit
 
 = spank_success
 
 - /perform idle_pleased
-All done! Are you proud of yourself, puppy? 
+All done! Are you proud of yourself, puppy?  #27
 
     +[yes]
     /perform idle_tease
@@ -142,16 +142,16 @@ All done! Are you proud of yourself, puppy?
     
     +[no]
     /perform idle_tease
-    Well, you should be!
+    Well, you should be! #28
     
 - (sit)
 
 /perform idle_yuki
 
 {cycle:
-    - Now come here. 
-    - Come here, puppy.
-    - I <i>said</i> come here! 
+    - Now, come here.  #29
+    - Come here, puppy. #30
+    - I <i>said</i> come here!  #31
 }
 
 + [pose: puppy_sit]
@@ -167,8 +167,8 @@ All done! Are you proud of yourself, puppy?
 
 {cycle: 
     - Bow your head, puppy, and show me you're sorry. #196
-    - Show me you're sorry, puppy. 
-    - I want to see you show me you're sorry!
+    - Show me you're sorry, puppy.  #32
+    - I want to see you show me you're sorry! #33
     }
 
 + [pose:puppy_sorry]
@@ -178,22 +178,22 @@ All done! Are you proud of yourself, puppy?
 
 - (sorry_ask_again)
 /perform idle_unhappy
-Are you sorry for breaking the rules, puppy?
+Are you sorry for breaking the rules, puppy? #34
 
 + [yes]
     /perform do_shake_finger_stern
     If you feel bad about it, you should have paid better attention! #198
 //ending contains performances
     -> Yuki_Puppyplay_Punishment_Complete ->
-    Now go.
+    Now go. #35
 
 + [no]
     /perform react_disappointed  
-    You're not sorry?
+    You're not sorry? #36
     I think somebody <i>wants</i> to be a bad dog. #199
-    If you're not sorry, then you haven't paid off your punishment.
-    You'll have to try next time if you want it removed.
-    Now get out of here!
+    If you're not sorry, then you haven't paid off your punishment. #37
+    You'll have to try next time if you want it removed. #38
+    Now, get out of here! #39
 //punishment marker will not be removed
 
 + [timeout] -> Yuki_Timeout -> sorry_ask_again

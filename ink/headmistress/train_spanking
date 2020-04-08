@@ -3,7 +3,7 @@
 // This is a tunnel to train the player on spanking at any time.
 
 {sentFromElsewhere:
-    /scene LectureHall.Punishment_Spanking
+    /scene Theatre.DeskApproach
     /music headmistress
     /ambient crowd
     ~ Headmistress_RaiseCurtains()
@@ -78,7 +78,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
 Time to rehearse. #118
 Three perfect swats should be sufficient. #01
 
-/scene LectureHall.HeadmistressAtBack
+/scene Theatre.HeadmistressAtBack
 
 + [wait]
 

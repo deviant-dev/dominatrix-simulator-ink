@@ -21,7 +21,7 @@
 + [no] -> Nega_CheckIfInterested -> give_reward
 + [distracted] -> Nega_PayAttention -> give_reward
 
-- /perform do_swipe_hand
+- /perform do_swipe_hand_fast
 ~ removeReward()
 
 /perform react_whatever excited 40
