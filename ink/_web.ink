@@ -67,20 +67,21 @@ INCLUDE promo/devil_girl
 
 
 
-
+//Uncommented lines 72-77
 // EXTERNAL isDebug()
-// EXTERNAL isWeb()
-// EXTERNAL getCode()
-// EXTERNAL getCodeUrl()
-// EXTERNAL getNegaDie1()
-// EXTERNAL getNegaDie2()
-// EXTERNAL getNegaDie3()
+EXTERNAL isWeb()
+EXTERNAL getCode()
+EXTERNAL getCodeUrl()
+EXTERNAL getNegaDie1()
+EXTERNAL getNegaDie2()
+EXTERNAL getNegaDie3()
 
 
 // Flow Variables
 
-VAR debug = false
-VAR web = true
+//Inverted the values
+VAR debug = true
+VAR web = false
 
 
 -> set_deviation ->
@@ -113,7 +114,7 @@ VAR web = true
 -> set_deviation ->
 
 // -> exit has the logic for module starting locations
-{ 
+{
     - deviation == puppyplay:
         -> yuki_hub
     - deviation == hand_signals:
@@ -144,12 +145,12 @@ VAR web = true
 + <b>DomSim: Threshold Replay</b>
     ~ setDeviation(tutorial)
     -> unlock_shortcuts -> game_intro_again.force
-    
+
 + <b>DomSim: Threshold Demo</b>
     ~ setDeviation(demo)
     -> game_intro_web
-    
-+ Headmistress Punishment - Spanking 
+
++ Headmistress Punishment - Spanking
     -> unlock_all -> headmistress_punishment_spanking
 
 + Headmistress Task - Hand Signals

@@ -45,7 +45,7 @@
 // --- Yuki Jumps ---
 // -> yuki_hub
 
-// /scene entry.intro2
+/scene entry.intro2
 // /character yuki
 // -> yuki_intro.learn_rules
 
@@ -64,8 +64,8 @@
 // -> yuki_intro.nega_slap
 
 //  -> yuki_punishment_edging
-// 
-    
+//
+
 // /scene atrium.close
 //-> yuki_task_puppyplay
 // -> yuki_task_puppyplay_intro.puppy_yes_intro -> exit
@@ -73,7 +73,7 @@
 
 //  -> yuki_punishment_puppyplay_spanking
 // -> yuki_punishment_puppyplay_cage
-    
+
 
 
 
@@ -152,7 +152,7 @@
 
     /character nega react_head_toss_casual
     /lookat yuki
-    
+
     + [yes] -> yuki_intro.test_lookat
 
 === test_marks ===
@@ -164,7 +164,7 @@
         ~ addReward()
     + remove reward
         ~ removeReward()
-    
+
 - /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
 -> test_marks
 

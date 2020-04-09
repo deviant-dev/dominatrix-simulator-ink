@@ -97,24 +97,24 @@ Are you? #22
    Oh how absolutely delusional you are! #23
    /perform react_shrug_long
    You are nowhere near worthy. #24
-    
+
 + [no]
     /perform talk_one_hand happy 50
     Now, that is a very honest answer. #25
     /perform idle
     Perhaps I will give you a chance to prove your worth. #26
     /wait
-    
+
 + (ask_exceptional_again)[timeout]
     /perform idle_cocks_head_to_left disgusted 50
     Do you think you're exceptional? #27
     -> ask_exceptional
-    
+
 + [distracted] -> Goddess_PayAttention -> ask_exceptional_again
 
 - /perform talk_one_hand aroused 50
 I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
-  
+
 /perform idle
 
 - (ask_spying)
@@ -132,12 +132,12 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
     /perform talk_behold
     I don't think you're going to be much fun at all. #34
     -> ask_spying_done
-    
+
 + [timeout]
     /perform do_inspect
     Be honest now. Spying on me turned you on, didn't it? #35
     -> ask_spying
-    
+
 + [distracted] -> Goddess_PayAttention -> ask_spying_again
 
 - (ask_spying2)
@@ -158,9 +158,9 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 
 - (ask_spying_done) /perform idle_sassy
 I bet you have no idea where you are, do you? #36
- 
+
 - (ask_where)
-  
+
 /perform idle
 
 + [yes]
@@ -168,17 +168,17 @@ I bet you have no idea where you are, do you? #36
     /perform idle_tease skeptical
     You think you know where you are? #37
     You have no clue. #38
-    
+
 + [no]
     // /perform talk_one_hand
     /perform idle_tease amused 50
     Of course you don't. #39
-    
+
 + (ask_where_again)[timeout]
     /perform idle_unhappy_stomp angry 50
     Well... do you have any idea where you are? #40
     -> ask_where
-    
+
 + [distracted] -> Goddess_PayAttention -> ask_where_again
 
 - /perform talk_lean_forward amused 50
@@ -206,27 +206,27 @@ That means I'll have to give you a name. #46
 /perform idle_sassy excited 50
 
 Would you like that? #47
-  
+
 /perform idle
 
-+[yes] 
++[yes]
     /perform idle_tease happy 50
     Well, well. I must say I'm pleased. #48
     /perform talk_thoughtful
     I think we are off to a good start. #49
     /perform idle_fake_annoyed happy 50
     Don't you? #50
-    
+
     /perform idle
-    
+
     ++[yes]
         /perform idle_cocks_head_to_left amused
         Keep this up and I might just take an interest in you. #51
-    
+
     ++[no] -> DemandApology ->
         /perform do_inspect skeptical 50
         Now... as for a name. #52
-    
+
 + [no]
     /perform idle_fake_annoyed disgusted
     Too bad. #53
@@ -252,7 +252,7 @@ Do you understand? #60
 
 /perform idle
 
-+ [yes] 
++ [yes]
     /perform idle_sassy happy 50
     -> Goddess_GoodJob ->
 
@@ -292,10 +292,10 @@ But first, let me have a good look at you. #71
 { cycle:
     - Come here. #72
     - Come here, {player_name}. #73
-    - /emotion angry 
+    - /emotion angry
     I <i>said</i> come here! #74
 }
-  
+
 + [move]
     /wait
     -> Goddess_GoodJob ->
@@ -340,7 +340,7 @@ You don't mind, do you? #79
     - Come on. Lift that head a bit for me. #85
     - Chin up, little one. Let me inspect you. #86
 }
-  
+
 /perform idle
 
 + [pose:raised_chin]
@@ -408,7 +408,7 @@ Thrust your chest out. Knees apart. #99
 /perform idle neutral
 
 I want to see you present yourself more fully to me. #100
-  
+
 /perform idle
 
 + [pose:present_kneel]
@@ -456,7 +456,7 @@ That's enough. #108
 - (stand_up)
 ~ tries++
 
-//new line with vo 
+//new line with vo
 /perform idle
 Come back up to your feet, {player_name}. #158
 
@@ -464,7 +464,7 @@ Come back up to your feet, {player_name}. #158
 + { tries < 3} [timeout] -> stand_up
 + { tries >= 3} [timeout]
 
-- /emotion amused 
+- /emotion amused
 You might just prove useful one day, #109
 
 /perform idle_bored neutral
@@ -598,8 +598,3 @@ Perhaps another time when you are ready to learn your place. #156
 Bye for now, {player_name}. #113
 
 + [wait:5] ->->
-
-
-
-
-
