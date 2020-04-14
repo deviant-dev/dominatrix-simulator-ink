@@ -1,52 +1,111 @@
 === Goddess_GoodJob ===
 
-/perform idle_fake_annoyed amused 50
-
 { shuffle:
-    - There's a good {player_name}. #114
-    - What a good little {player_name}. #115
-    - That's my {player_name}. #116
-    - Aren't you the sweetest little thing? #117
-    - Very nice. #118
-    - That will do just fine. #119
-    - Quite satisfying. #120
-    - Mmmm. I like that. #121
-    - Someone is being a good {player_name}. #122
-    - Well done. #123
-    - That's very pleasing. #124
-    - I am pleased. #61
+
+    - /perform idle_yuki happy 50
+    There's a good {player_name}. #114
+
+    - /perform idle_sassy happy 50
+    What a good little {player_name}. #115
+
+    - /perform talk_behold happy 50
+    That's my {player_name}. #116
+
+    - /perform talk_one_finger happy 50
+    Aren't you the sweetest little thing? #117
+
+    - /perform talk_consider happy 50
+    Very nice. #118
+
+    - /perform react_disappointed happy 50
+    That will do just fine. #119
+
+    - /perform idle_sassy happy 40
+    Quite satisfying. #120
+
+    - /perform idle_sassy aroused 60
+    Mmmm. I like that. #121
+
+    - /perform react_thankful happy 50
+    Someone is being a good {player_name}. #122
+
+    - /perform react_chuckle happy 50
+    Well done. #123
+
+    - /perform react_head_toss_casual aroused 40
+    That's very pleasing. #124
+
+    - /perform do_inspect aroused 60
+    I am pleased. #61
 }
 
 ->->
 
 === Goddess_PayAttention ===
 
-/perform idle_tease angry 50
 
 { cycle:
-    - Look at me when I'm speaking to you, {player_name}. #125
-    - I expect your eyes on me at all times, #126
+    - /perform do_shake_finger_stern angry 80
+    Look at me when I'm speaking to you, {player_name}. #125
+      /wait 1
+
+    - /perform talk_annoyed angry 80
+    I expect your eyes on me at all times, #126
     unless I tell you otherwise. #127
-    - Did I give you permission to look elsewhere? #128
-    - Didn't anyone ever teach you to look at people #129
+      /wait 1
+
+    - /perform idle_fake_annoyed angry 80
+    Did I give you permission to look elsewhere? #128
+      /wait 1
+
+    - /perform react_dumb angry 80
+    Didn't anyone ever teach you to look at people #129
     when they're speaking to you? #130
-    - Pay attention to me when you're in my presence. #131
-    - You're trying my patience. Pay attention. #132
-    - Eyes on me, {player_name}. #133
+      /wait 1
+
+    - /perform talk_one_finger angry 80
+    Pay attention to me when you're in my presence. #131
+      /wait 1
+
+    - /perform idle_unhappy_stomp angry 80
+    You're trying my patience. Pay attention. #132
+      /wait 1
+
+    - /perform talk_threaten angry 80
+    Eyes on me, {player_name}. #133
+      /wait 1
 }
+/*Added in waits, as the lines felt rushed when transitioning*/
 
 + [pay-attention]
 + [timeout] -> Goddess_PayAttention
 
-/perform talk_thoughtful skeptical
-
+//TODO: Make # of cycle elements equal or change to cycle/shuffle
 - { cycle:
-    - Where was I? Oh yes... #134
-    - That's better. Let's continue. #135
-    - Good {player_name}. #136
-    - Let's try that again. #137
-    - As I was saying... #138
-    - Now... Let's start over. #139
+
+    - /perform talk_consider happy 60
+    Where was I? Oh yes... #134
+      /wait 1
+
+    - /perform react_scoffs amused 60
+     That's better. Let's continue. #135
+      /wait 1
+
+    - /perform idle_clasp_hands happy 40
+    Good {player_name}. #136
+      /wait 1
+
+    - /perform talk_annoyed amused 30
+    Let's try that again. #137
+      /wait 1
+
+    - /perform idle_unhappy amused 30
+    As I was saying... #138
+      /wait 1
+
+    - /perform idle_sassy amused 30
+    Now... Let's start over. #139
+      /wait 1
 }
 
 ->->
@@ -75,5 +134,5 @@ TODO: Rewrite
 //     - Waste of time. #14
 //     - I don't know why I bother. #15
 // }
-    
+
 ->->

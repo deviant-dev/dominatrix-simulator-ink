@@ -10,7 +10,7 @@
 
 // Force a different deviation
 
-// ~ setDeviation(full_game)
+~ setDeviation(full_game)
 // ~ setDeviation(demo)
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(hand_signals)
@@ -33,7 +33,7 @@
 // /character goddess
 
 // -> entry_intro
-//-> goddess_intro.debug_jump
+-> goddess_intro.debug_jump
 // -> goddess_intro.stand_straight
 //-> goddess_intro.kneel
 // -> goddess_intro.ByeForNow
@@ -45,7 +45,7 @@
 // --- Yuki Jumps ---
 // -> yuki_hub
 
-/scene entry.intro2
+///scene entry.intro2
 // /character yuki
 // -> yuki_intro.learn_rules
 
@@ -111,12 +111,12 @@
 // -> headmistress_punishment_spanking.SpankingFinished
 // /music headmistress
 // ~ rewards = 1
-// -> headmistress_reward_exhibitionism 
+// -> headmistress_reward_exhibitionism
 
 
-~ setDeviation(exhibitionism)
-~ rewards = 1
--> unlock_all -> headmistress_reward_exhibitionism
+//~ setDeviation(exhibitionism)
+//~ rewards = 1
+//-> unlock_all -> headmistress_reward_exhibitionism
 
 
 // --- Nega Jumps ---
@@ -144,6 +144,7 @@
 
 
 
+/*
 === test_look ===
     /scene entry.intro3
 
@@ -154,7 +155,8 @@
     /lookat yuki
 
     + [yes] -> yuki_intro.test_lookat
-
+*/
+/*
 === test_marks ===
     + add punishment
         ~ addPunishment()
@@ -164,11 +166,11 @@
         ~ addReward()
     + remove reward
         ~ removeReward()
+*/
+//- /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
+//-> test_marks
 
-- /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
--> test_marks
-
-
+/*
 === test_multiple_poses ===
 /scene Entry.PoseTest
 
@@ -231,7 +233,7 @@
 + [pose:puppy_no]
     /notify title="You answered 'NO'."
 - -> move_270
-
+*/
 
 // === test_audio ===
 
