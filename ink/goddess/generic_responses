@@ -29,7 +29,7 @@
     - /perform react_thankful happy 50
     Someone is being a good {player_name}. #122
 
-    - /perform react_chuckle happy 50
+    - /perform talk_consider happy 50
     Well done. #123
 
     - /perform react_head_toss_casual aroused 40

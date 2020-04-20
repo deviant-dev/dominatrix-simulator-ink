@@ -33,7 +33,7 @@
 // /character goddess
 
 // -> entry_intro
--> goddess_intro.debug_jump
+//-> goddess_intro.debug_jump
 // -> goddess_intro.stand_straight
 //-> goddess_intro.kneel
 // -> goddess_intro.ByeForNow

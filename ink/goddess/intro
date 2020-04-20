@@ -114,7 +114,7 @@
 - /perform talk_consider amused 35
   Well, you can't stay here. #19
 
-  /perform idle_pleased amused 35
+  /perform idle_skeptical amused 35
   Only the truly exceptional may stay in my presence. #20
 
   /perform talk_lean_forward aroused 65
@@ -225,7 +225,7 @@
   /perform do_air_quotes aroused 70
   This is no ordinary house, mind you. #43
 
-  /perform do_inspect aroused 70
+  /perform talk_consider aroused 70
   Even so. You are here now. #44
 
   /perform talk_consider skeptical 50
@@ -267,7 +267,7 @@
     Cat got your tongue? #55
     Well... I'll ignore that for now. #56
 
-- /perform talk_thoughtful amused 50
+- /perform talk_one_finger amused 50
 
   I will name you... "{player_name}". #57
 
@@ -389,7 +389,7 @@
   Stick that pretty little ass out where I can see it. #89
 
   ///wait for:circle_player
-  /perform idle
+  /perform idle_sassy amused 75
   Now then... #90
 
 ~tries = 0
@@ -434,7 +434,7 @@
   Arms behind your head. #98
   Thrust your chest out. Knees apart. #99
 
-  /perform do_inspect aroused 20
+  /emotion aroused 30
   I want to see you present yourself more fully to me. #100
 
   /perform idle_sassy angry 25
