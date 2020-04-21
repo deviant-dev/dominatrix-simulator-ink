@@ -12,22 +12,22 @@
 /character yuki idle_yuki neutral
 // /equip feather_duster
 
-/perform idle_pleased happy 75
+/perform idle_slave aroused 75
 Oh! There you are! #01
-/perform do_bouncing_little excited 75
+/perform idle_slave aroused 75
 
 I've been waiting for you. #02
-/perform talk_consider happy 100
+/perform idle_slave aroused 75
 
 I'm Mistress Yuki-Onna. #03
 
-/perform do_smooth_skirt amused 35
+/perform idle_slave aroused 75
 It's my job to make sure all new arrivals   #04
-/perform idle_pleased amused 35
+/perform idle_slave aroused 75
 are taught how to behave  #05
 while you're a guest in Goddess's home. #06
 
-/perform talk_behold excited 69
+/perform idle_slave aroused 75
 
 First things first. #07
 
@@ -35,7 +35,7 @@ First things first. #07
 - (stand_straight)
 ~ tries++
 
-/perform idle_yuki happy 30
+/perform idle_slave aroused 75
 Always stand up straight with your head high  #08
 /perform idle_slave aroused 75
 when you present yourself to a Mistress. #09
@@ -45,46 +45,46 @@ when you present yourself to a Mistress. #09
 + { tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
-- /perform react_clapping amused 40
+- /perform idle_slave aroused 75
 
 You're such a good {player_name}! #10
 
 - (new_guest)
 
-/perform talk_one_finger amused 20
+/perform idle_slave aroused 75
 
 Do you know why you're here? #11
 
-/perform idle_yuki happy 50
+/perform idle_slave aroused 75
 
  + [yes]
     ~ addDisobey()
-    /perform react_disappointed skeptical 80
+    /perform idle_slave aroused 75
 
     I don't see how you'd know that already. #12
-    /perform talk_consider amused 50
+    /perform idle_slave aroused 75
     Someone must have told you. #13
-   
-    /perform talk_lean_forward happy 40
-    
+
+    /perform idle_slave aroused 75
+
     Well, let's go through the basics anyways,  #14
     to make sure you have the right information.  #15
-    
-    
+//Taco was here
+
 + [no]
     ~ addObey()
-    /perform react_head_toss_casual amused 70
+    /perform idle_slave aroused 75
     Well, duh! #16
     You're not supposed to know. #17
-    /perform do_snap_fingers amused 50
+    /perform idle_slave aroused 75
     That's the fun part! #18
-    
+
 + [timeout]
-    /perform react_shrug_long angry 75
+    /perform idle_slave aroused 75
     Hello-o #19
     Anybody home? #20
     -> new_guest
-    
+
 + [distracted] -> Yuki_PayAttention -> new_guest
 
 - (house_rules)
@@ -122,10 +122,10 @@ Would you like to know what the rules are? #25
     /perform talk_annoyed disgusted 50
     You aren't listening very well. #29
     -> learn_rules
-    
+
 + [distracted] -> Yuki_PayAttention -> learn_rules
 
-    
+
 = two_rules
 
 /perform talk_consider aroused 50
@@ -167,7 +167,7 @@ Easy, right? #36
     /perform idle_unhappy angry 60
     Are you still listening? #39
     -> easy_rules
-    
+
 + [distracted] -> Yuki_PayAttention -> easy_rules
 
 //insert puppy pose test
@@ -309,7 +309,7 @@ I know your deepest, darkest secrets. #52
 Remember? #53
 
 + [continue]
- 
+
 - /character yuki idle_unhappy_stomp angry 60
 You just stop that right now, Nega-Yuki! #54
 
@@ -349,7 +349,7 @@ So. You're the new one, huh? #60
     ~ addObey()
     /perform react_shrug_short disgusted 40
     Not too bad. You have potential. #61
-    
+
     /perform talk_consider amused 40
     Though, I'm not too picky. #62
 
@@ -357,18 +357,18 @@ So. You're the new one, huh? #60
     ~ addDisobey()
     /perform idle_sassy aroused 70
     Not new, huh? #63
-    
+
     /perform idle_fake_annoyed happy 70
     This one is more confused than most. #64
 
 + [timeout]
     /perform idle_unhappy_stomp angry 70
     Are you stupid, or something? #65
-    
+
     /perform talk_lean_forward disgusted 70
     I asked you if you're new here. #66
     -> nega_ask_again
-    
+
 - /perform talk_lean_forward amused 60
 I bet Yuki's been having so much fun #67
 explaining the rules to you  #68
@@ -383,7 +383,7 @@ hasn't she? #70
     /character yuki idle_unhappy_stomp angry 
     /character nega idle_bored scared 20
     Boring. #71
-    
+
 + [no]
     ~ addDisobey()
     /character yuki idle_pleased happy 50
@@ -497,10 +497,10 @@ Have you figured out what's going on here yet? #76
     ~ addDisobey()
     /perform talk_consider amused 50
     Hmmm. You might just be smarter than you look, {player_name}. #77
-    
+
     /perform talk_consider aroused 50
     We'll find out soon enough. #78
-   
+
     /perform idle_bored skeptical 50
     /lookat player
     Although, honestly, the dumb ones make better fuck toys. #79
@@ -509,34 +509,34 @@ Have you figured out what's going on here yet? #76
     ~ addObey()
     /perform react_disappointed disgusted 50
     Typical. <i>She</i> always wants them to learn the hard way. #80
-    
+
     /perform idle_unhappy disgusted 70
     /lookat yuki
     I think I should tell {isBoy:him|her}. #81
     /perform idle_cocks_head_to_left amused 70
-    
+
     /character yuki idle_unhappy_stomp angry 40
     /lookat nega
     Don't you dare! #82
     The Goddess will be so angry with you! #83
     /perform talk_one_finger disgusted 40
-    
+
     /character nega react_scoffs disgusted 70
     Oh fine, party pooper! #84
-    
-    
+
+
     /perform talk_lean_forward aroused 60
     /lookat player
     I guess I'll just make {isBoy:him|her} my fuck toy instead. #85
-    
+
 + [timeout]
     /perform talk_annoyed disgusted 70
     Are you stupid, or something? #86
-    
+
     /perform talk_serious angry 70
     I asked you if you're new here? #87
     -> going_on
-    
+
 + [distracted] -> Nega_PayAttention -> going_on
 
 - (caress_question)
@@ -571,7 +571,7 @@ Let's find out. Shall we? #89
     /perform talk_question skeptical 30
     Should we find out how well your {hasPenis:dick|pussy} works? #92
     -> genitals
-    
+
 + [distracted] -> Nega_PayAttention -> genitals
 
 - /character yuki react_disappointed angry 60
@@ -592,27 +592,27 @@ You want to be a little fuck toy, don't you? #97
     What a naughty {player_name}. #98
     I feel how {hasPenis:hard|wet} you are. #99
     Do you want to be my fuck toy? #100
-    
+
     ++ [yes]
         ~ addDisobey()
         /perform react_disappointed skeptical 75
         Too bad. I only use fuck toys that have something to give me. #101
-        
+
         /perform do_tap_wrist angry 50
         And you can't give me what I want yet. #102
-        
+
     ++ [no]
         ~ addObey()
         /perform tease_ass_caress amused 50
         No? You don't like me? #103
         Awww. But I'm way more fun than that uptight bitch. #104
         /perform do_snap_fingers amused 50
-    
+
     ++ [timeout]
         /perform talk_lean_forward skeptical 70
         I must be boring you. #105
-    
-+ [no] 
+
++ [no]
     ~ addObey()
     /perform react_whatever disgusted 70
     What a prude. You'll change your mind soon enough. #106
@@ -670,7 +670,7 @@ I'll see you again soon, little mouse. #118
 Come find me when you've earned a reward. #119
 
 /scene entry.intro4yuki
-/music yuki 
+/music yuki
 
 
 - /character yuki talk_annoyed scared 30
@@ -719,7 +719,7 @@ Okay! That's all I have for now. #133
 /perform do_you_leave angry 30
 Hurry up!  #134
 The Headmistress doesn't like to be kept waiting. #135
-  
+
 /perform talk_serious scared 30
 And stay away from that awful Nega-Yuki! #136
 /perform react_disappointed disgusted 80
@@ -788,7 +788,7 @@ while I do? #151
 Be a good {player_name}, do what you're told, and  #157
 that little {hasPenis: cock|cunt} of yours is going to #158
 have so much fun when you come see me. #159
-    
+
 /perform talk_threaten aroused 80
 But, if you decide to be a little {isBoy: prick|bitch}  #160
 and not visit me... #161
@@ -821,4 +821,3 @@ She doesn't like to be kept waiting. #168
 ~ tutorial_yuki_intro_complete = true
 ~ tutorial_yuki_intro_nega_ending = true
 -> entry_hub
-
