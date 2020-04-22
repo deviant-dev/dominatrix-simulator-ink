@@ -64,9 +64,8 @@ Did Mistress Yuki-Onna let you in? #05
 
  { cycle:
 
-    - It's a simple question.
-    /perform react_nod_big disgusted 60
-    Nod your head for yes. #09
+    - /perform react_nod_big disgusted 60
+    It's a simple question. Nod your head for yes. #09
     /perform react_head_toss_casual disgusted 60
     Shake your head for no. #10
     //Attempting to get the goddess to shake her head in time with the lines
@@ -89,7 +88,8 @@ Did Mistress Yuki-Onna let you in? #05
     /wait 1
  }
 
-/*Added in waits, as the lines felt rushed when transitioning*/
+// Added in waits, as the lines felt rushed when transitioning
+
 { shuffle:
 
     - /perform talk_lean_forward amused 35
@@ -131,7 +131,7 @@ Are you? #22
    /perform react_laugh skeptical 70
    Oh how absolutely delusional you are! #23
 
-   /perform react_shrug_long 65
+   /perform react_shrug_long
    You are nowhere near worthy. #24
 
 + [no]
@@ -483,9 +483,9 @@ That's enough. #108
 - (stand_up)
 ~ tries++
 
-  //new line with vo
-  /perform talk_question amused 60
-  Come back up to your feet, {player_name}. #158
+//new line with vo
+/perform talk_question amused 60
+Come back up to your feet, {player_name}. #158
 
 + [pose:raised_chin]
 + { tries < 3} [timeout] -> stand_up
