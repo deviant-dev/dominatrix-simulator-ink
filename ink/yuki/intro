@@ -12,22 +12,22 @@
 /character yuki idle_yuki neutral
 // /equip feather_duster
 
-/perform idle_slave aroused 75
+/perform idle_pleased happy 75
 Oh! There you are! #01
-/perform idle_slave aroused 75
+/perform do_bouncing_little excited 75
 
 I've been waiting for you. #02
-/perform idle_slave aroused 75
+/perform talk_consider happy 100
 
 I'm Mistress Yuki-Onna. #03
 
-/perform idle_slave aroused 75
+/perform do_smooth_skirt amused 35
 It's my job to make sure all new arrivals   #04
-/perform idle_slave aroused 75
+/perform idle_pleased amused 35
 are taught how to behave  #05
 while you're a guest in Goddess's home. #06
 
-/perform idle_slave aroused 75
+/perform talk_behold excited 69
 
 First things first. #07
 
@@ -35,7 +35,7 @@ First things first. #07
 - (stand_straight)
 ~ tries++
 
-/perform idle_slave aroused 75
+/perform idle_yuki happy 30
 Always stand up straight with your head high  #08
 /perform idle_slave aroused 75
 when you present yourself to a Mistress. #09
@@ -45,42 +45,42 @@ when you present yourself to a Mistress. #09
 + { tries >= 2 } [timeout] -> Yuki_Interested -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
-- /perform idle_slave aroused 75
+- /perform react_clapping amused 40
 
 You're such a good {player_name}! #10
 
 - (new_guest)
 
-/perform idle_slave aroused 75
+/perform talk_one_finger amused 20
 
 Do you know why you're here? #11
 
-/perform idle_slave aroused 75
+/perform idle_yuki happy 50
 
  + [yes]
     ~ addDisobey()
-    /perform idle_slave aroused 75
+    /perform react_disappointed skeptical 80
 
     I don't see how you'd know that already. #12
-    /perform idle_slave aroused 75
+    /perform talk_consider amused 50
     Someone must have told you. #13
 
-    /perform idle_slave aroused 75
+    /perform talk_lean_forward happy 40
 
     Well, let's go through the basics anyways,  #14
     to make sure you have the right information.  #15
-//Taco was here
+
 
 + [no]
     ~ addObey()
-    /perform idle_slave aroused 75
+    /perform react_head_toss_casual amused 70
     Well, duh! #16
     You're not supposed to know. #17
-    /perform idle_slave aroused 75
+    /perform do_snap_fingers amused 50
     That's the fun part! #18
 
 + [timeout]
-    /perform idle_slave aroused 75
+    /perform react_shrug_long angry 75
     Hello-o #19
     Anybody home? #20
     -> new_guest

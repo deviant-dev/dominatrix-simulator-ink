@@ -10,7 +10,7 @@
 
 // Force a different deviation
 
-~ setDeviation(full_game)
+// ~ setDeviation(full_game)
 // ~ setDeviation(demo)
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(hand_signals)
@@ -45,7 +45,7 @@
 // --- Yuki Jumps ---
 // -> yuki_hub
 
-///scene entry.intro2
+// /scene entry.intro2
 // /character yuki
 // -> yuki_intro.learn_rules
 
@@ -161,7 +161,6 @@
 
 
 
-/*
 === test_look ===
     /scene entry.intro3
 
@@ -172,8 +171,7 @@
     /lookat yuki
 
     + [yes] -> yuki_intro.test_lookat
-*/
-/*
+
 === test_marks ===
     + add punishment
         ~ addPunishment()
@@ -183,11 +181,11 @@
         ~ addReward()
     + remove reward
         ~ removeReward()
-*/
-//- /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
-//-> test_marks
+    
+- /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
+-> test_marks
 
-/*
+
 === test_multiple_poses ===
 /scene Entry.PoseTest
 
@@ -250,7 +248,7 @@
 + [pose:puppy_no]
     /notify title="You answered 'NO'."
 - -> move_270
-*/
+
 
 // === test_audio ===
 

@@ -68,21 +68,19 @@ INCLUDE nega/punishment_genital_torture
 
 
 
-//Uncommented lines 72-77
 // EXTERNAL isDebug()
-EXTERNAL isWeb()
-EXTERNAL getCode()
-EXTERNAL getCodeUrl()
-EXTERNAL getNegaDie1()
-EXTERNAL getNegaDie2()
-EXTERNAL getNegaDie3()
+// EXTERNAL isWeb()
+// EXTERNAL getCode()
+// EXTERNAL getCodeUrl()
+// EXTERNAL getNegaDie1()
+// EXTERNAL getNegaDie2()
+// EXTERNAL getNegaDie3()
 
 
 // Flow Variables
 
-//Inverted the values
-VAR debug = true
-VAR web = false
+VAR debug = false
+VAR web = true
 
 
 -> set_deviation ->
