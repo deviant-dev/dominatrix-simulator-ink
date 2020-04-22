@@ -1,6 +1,7 @@
 /// For actions
 === Headmistress_GoodJob ===
 /character headmistress
+
 { shuffle:
     - Most excellent. #01
     - There is hope for you, yet! #02
@@ -52,6 +53,7 @@
 
 === Headmistress_BadJob ===
 /character headmistress
+
 { shuffle:
     - Tsk. Tsk. You can do better. #148
     - Are you even trying? #151
@@ -92,6 +94,7 @@
 ->->
 
 === Headmistress_Unhappy ===
+/character headmistress
 
 { shuffle:
     - Uggh. #247
@@ -113,6 +116,7 @@
 ->->    
     
 === Headmistress_NoAction ===
+/character headmistress
 
 {cycle:
     - Perform, mongrel. #01
@@ -128,6 +132,7 @@
 ->->
 
 === Headmistress_Timeout ===
+/character headmistress
 
 {cycle:
     - Respond, wretch. #01
@@ -145,7 +150,7 @@
 ->->
 
 === Headmistress_PayAttention ===
-/perform idle_tease
+/character headmistress idle_tease
 
 { cycle:
     - The focus of your attention must remain on me. #01
@@ -177,6 +182,7 @@
 //For positive responses to questions
 
 === Headmistress_AcknowledgeYes ===
+/character headmistress
 
 { cycle:
     - Excellent. #01
@@ -190,12 +196,13 @@
     - Just so.  #07
     - I should think so. #08
     - Ahhh. I am pleased! #243
-    }
-    
+}
 
 ->->
 
 === Headmistress_Resume ===
+/character headmistress
+
 //generic responses whenever the Headmistress continues dialogue after a response or action.
 
 { shuffle:
@@ -213,11 +220,10 @@
 ->->
 
 === Headmistress_punishment_resumes ===
+/character headmistress
+
 //generic responses whenever the Headmistress returns from a break or interruption to resume a punishment
 
-// Adding an empty 'continue' here to fix a weird VO line selection bug.
-+ [continue]
-- 
 { shuffle:
     - Enough. We shall resume. #01
     - I am eager to return to your admonishment. #02
@@ -233,6 +239,7 @@
 
 
 === Headmistress_GoodSpank ===
+/character headmistress
 
 {shuffle:
     - A fine welt is forming. #158
@@ -265,6 +272,7 @@ TODO: Change this to an 'Mmmm' VO line. -Deviant
     unless permanency is desired, of course. #126
     - Feet must remain flat with no obscene curling of the toes. #47
 }
+
 /character headmistress
 ->->
 
@@ -291,6 +299,7 @@ TODO: Change this to an 'Mmmm' VO line. -Deviant
     - You have a long ways to go. #249
     - I can see you will require much instruction. #250
 }
+
 /character headmistress
 ->->
 
@@ -315,6 +324,8 @@ TODO: decide whether to keep these lines
 ->->
 
 === Headmistress_masturbation_punishment ===
+/character headmistress
+
 { shuffle:
     - Your suffering is prolonged when you fail to try. #01
     - At least you may please us with this performance. #02
@@ -341,7 +352,7 @@ TODO: decide whether to keep these lines
 
 
 === Headmistress_masturbation_comments ===
-/perform do_arm_raise
+/character headmistress do_arm_raise
 
 { shuffle:
     - A fine demonstration {isBoy:toad|strumpet}. #01
@@ -464,8 +475,10 @@ I have no time for your shenanigans. #222
 
 ->->
 
+
 = out_heathen
 
-/perform do_you_leave
+/character headmistress do_you_leave
+
 -> exit
 

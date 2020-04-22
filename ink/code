@@ -356,7 +356,7 @@
 
 === function getSummaryText() ===
 ~ temp regardText = ""
-~ temp deviationText = ""
+~ temp deviationText = "/ Deviation: {deviation}"
 
 // Set regard text if with a mistress.
 {
@@ -372,7 +372,7 @@
 
 // Set optional deviation-specific text
 {deviation == tutorial:
-    ~ deviationText = "/ Threshold Flow: {tutorial_step}"
+    ~ deviationText = "/ Deviation: tutorial @ {tutorial_step}"
 }
 
 ~ return  "Punishments: {punishments} / Rewards: {rewards} {regardText} {deviationText}"

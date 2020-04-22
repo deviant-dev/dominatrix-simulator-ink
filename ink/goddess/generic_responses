@@ -115,24 +115,14 @@
 
 /emotion angry 50
 
-TODO: Rewrite
-
 // { shuffle:
-//     - Stupid {isBoy:prick|cunt}. #01
-//     - You're fucking up! #02
-//     - You better entertain me, {isBoy:worm|whore}. #03
-//     - Try harder! #04
-//     - You're doing it wrong. #05
-//     - Useless. #06
-//     - Pathetic. #07
-//     - Ugggh. #08
-//     - I'm not happy. #09
-//     - You're boring me. #10
-//     - How lame. #11
-//     - Unworthy slut! #12
-//     - Grrrr. #13
-//     - Waste of time. #14
-//     - I don't know why I bother. #15
+//     - You dissapoint.
+//     - Perhaps you do not belong here, after all.
+//     - I tire of your presence.
+//     - Try harder, little one.
+//     - That's not quite right.
+//     - Tiresome.
+//     - I expect more.
 // }
 
 ->->

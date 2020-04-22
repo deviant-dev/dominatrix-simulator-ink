@@ -1,6 +1,7 @@
    
 === Nega_GoodJob ===
-+ [continue]
+/character nega
+
 {shuffle:
     - That's it, little bitch. #01
     - Just like that. #02
@@ -27,6 +28,7 @@
 
 === Nega_BadJob ===
 /emotion angry 75
+
 {shuffle:
     - Stupid {isBoy:  prick|cunt}. #01
     - You're fucking up! #02
@@ -62,6 +64,7 @@
 
 === Nega_Insult ===
 /emotion disgusted
+
 {shuffle:
     - You're so goddamn pitiful. #01
     - Fucking stupid {isBoy: prick|cunt}. #02
@@ -70,11 +73,19 @@
     - You'd make a better cum bucket. #05
     - Your {hasPenis: tiny cock|gaping cunt} is boring. #06
     - Such a fucking whore. #07
+    - Stupid dumbfuck.
+    - What a pathetic fuckdoll.
+    - You're a disgusting stain.
+    - You're a nasty pile of shit.
+    - You're a vomit inducing waste of time.
+    - You're a boring, simpering drain on my energy.
+    - You're an ugly, little wretch.
 }
     
 ->->
 
 === Nega_Apologize ===
+/character nega
 
 -(repeat)
 Apologize for being a fuck up. #01
@@ -121,6 +132,7 @@ Now get back up on your knees. #07
 //response to player distraction
 === Nega_PayAttention ===
 /emotion angry 75
+
 { cycle:
     - Eyes on me, pretty {player_name}. #01
     - I'm fucking talking to you! #02
@@ -168,6 +180,7 @@ Are you going to behave and give me what I want? #02
     {inTutorial: -> exit }
     
 === Nega_prepare_masturbate ===
+/character nega
 
 {shuffle:
     - {hasPenis: Grab your little cock and start stroking|Reach down and start rubbing your pussy}. #01
@@ -178,6 +191,7 @@ Are you going to behave and give me what I want? #02
 ->->
 
 === Nega_Masturbation_Comments ===
+/character nega
 
 {shuffle:
     - Keep going. #06
@@ -245,6 +259,7 @@ Does that feel good whore? #04
 - ->->    
 
 === Nega_Aroused ===
+/character nega
 
 {shuffle:
     - Ahhhh. Yesss... I'm so fucking wet. #04
@@ -258,7 +273,6 @@ Does that feel good whore? #04
 ->->
 
 === Nega_Objectify === 
-+[continue]
 /emotion disgusted 75
 
 {shuffle:
@@ -302,6 +316,7 @@ Does that feel good whore? #04
 
 = reward_spit
 /perform talk_lean_forward
+
 Open your mouth, slut! #14
 
 + [react-success]

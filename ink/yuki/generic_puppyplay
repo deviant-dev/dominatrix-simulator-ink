@@ -155,7 +155,6 @@ TODO: add emotions and performances to swipe a Bloodstone
     - Ooof! #05
     - Your bottom is so pink! #06
     - I think I'm getting wet! #07
-    - This hurts me so much more than it hurts you. #08
     - I'm so sad I have to do this! #09
     - Hang in there! #10
     -
@@ -205,7 +204,7 @@ Are you {hasPenis: hard|wet} already? #01
 
 - (masturbate)
 
-{hasPenis: Grab your little cock and start strocking|Reach down and start rubbing your pussy.}  #06
+{hasPenis: Grab your little cock and start stroking|Reach down and start rubbing your pussy.}  #06
 
 /character yuki idle
 /wait 2
@@ -227,7 +226,7 @@ That's it. #07
 ->->
 
 === Yuki_masturbation_punishment ===
-TODO: Rewrite for Yuki
+TODO: Rewrite for Yuki   
 // { shuffle:
 //     - Your suffering is prolonged when you fail to try. #01
 //     - At least you may please us with this performance. #02

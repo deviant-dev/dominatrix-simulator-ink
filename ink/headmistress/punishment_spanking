@@ -14,14 +14,15 @@ VAR headmistress_spanking_mistakes = 0
 
 TODO: Support shuffling swats and equipment
 
-// {shuffle:
-// - ~ headmistress_spanking_target_count = 10
-// - ~ headmistress_spanking_target_count = 25
-// - ~ headmistress_spanking_target_count = 35
-// }
-
-// Just use '10' swats for now.
-~ headmistress_spanking_target_count = 10
+{inTutorial:
+    ~ headmistress_spanking_target_count = 10
+    -else:
+     {shuffle:
+    - ~ headmistress_spanking_target_count = 10
+    - ~ headmistress_spanking_target_count = 15 
+    - ~ headmistress_spanking_target_count = 20
+    }
+}
 
 // {shuffle:
 // - ~headmistress_spanking_implement = "paddle"
@@ -31,7 +32,6 @@ TODO: Support shuffling swats and equipment
 
 // Just use the hand for now.
 ~ headmistress_spanking_implement = "hand"
-
 ~ headmistress_spanking_break_count = 0
 ~ headmistress_spanking_count = 0
 ~ headmistress_spanking_mistakes = 0
@@ -195,13 +195,10 @@ What say you, {isBoy: toad|strumpet}? #79
 - (aroused)
 
 {cycle:
-    - Will our esteemed guests be enthralled #80
-     by {hasPenis:your turgid bouncing cock?|the glistening of your cunt?} #81
     - Do you feel their eyes on you? #82
     - Are you throbbing in anticipation? #83
     - Do you want to touch yourself? #84
     - Does pain turn you on? #85
-    - Are you {hasPenis: hard|wet}? #04
 }
 
 + [yes]
@@ -276,7 +273,12 @@ Rub yourself until your {hasPenis: shaft is hard|slit is wet}. #227
 
 - (please)
 /character headmistress
- What say you, slave, will your {hasPenis: rod|folds} please our guests? #230
+{cycle:
+    - What say you, slave, will your {hasPenis: rod|folds} please our guests? #230
+    - Will our esteemed guests be enthralled #80
+     by {hasPenis:your turgid bouncing cock?|the glistening of your cunt?} #81
+     - Are you {hasPenis: hard|wet}? #04
+     }
 
 + [yes]
     ~ addObey()
@@ -397,8 +399,17 @@ Let us begin in earnest! #245
 
 /character headmistress idle skeptical 40
 
-// 10, 25, 35
-Prepare yourself for ten swats, {player_name}. #127
+// 10, 15, 20
+{
+- headmistress_spanking_target_count == 10:
+    Prepare yourself for ten swats, {player_name}. #127
+- headmistress_spanking_target_count == 15:
+    Prepare yourself for fifteen swats, {player_name}. #216
+- headmistress_spanking_target_count == 20:
+    Prepare yourself for twenty swats, {player_name}. #217
+- else: 
+    /logError bad swat count found
+}
 
 - (spank)
 /character headmistress do_spank_player

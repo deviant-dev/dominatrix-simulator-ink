@@ -41,7 +41,7 @@ Pleasure will be denied to you until you have proved your worth. #11
 Ten Bloodstones will unlock you from your imprisonment. #12
 //give chastity device
 
-Now go and fail me no further {player_name}. #13
+Now go and fail me no further, {player_name}. #13
 ~ inTutorial = false
 
 ~ tutorial_goddess_outro_angry_complete = true

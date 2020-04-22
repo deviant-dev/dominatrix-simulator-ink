@@ -127,8 +127,9 @@ Perfectly placed for a swat of my hand. #32
        
 - /perform idle
 Turn around and stand upright. #35
-Patience must be offered to those who are learning, but #36
-expect no mercy should you fail Her once your training is complete. #37
+Patience must be offered to those who are learning, #36
+but expect no mercy should you fail Her #37
+once your training is complete. #160
 
 - (strive)
 Will you strive to please Her, chattel? #38
@@ -164,7 +165,7 @@ This position is perfect for many things. #45
 Wouldn't you agree, poppet? #46
 
 + [yes] 
-    Your acquisence serves you well, trinket. #47
+    Your acquiescence serves you well, trinket. #47
      
      
 + [no]
@@ -301,7 +302,7 @@ Now, leave my sight. #74
 = practice_easy
 
 I think you need more practice with your hand basic signals. #75
-That will be your task for today. #76
+That shall be your task for today. #76
 
 -(begin)
 Shall we begin? #77
@@ -348,8 +349,8 @@ Shall we begin? #77
 { disobey == 0:
     Your obedience is impressive, bauble. #86
 - else:
-    Not bad, but not perfect.  #87
-    Keep improving and I'll have to show you off to the class one day. #88
+    Not bad, but not perfect.  #82
+    Keep improving and I'll have to show you off to the class one day. #83
 }
 
 
@@ -365,7 +366,7 @@ Position yourself to attend to my hand. #90
 { disobey == 0:
     ~ headmistress_signal_basics_difficulty++
     Flawless. You serve Her well today. #91
-    So well that I will make it this task harder next time. #92
+    So well that I will make this task harder next time. #92
 - else:
     Not perfect. I think we'll have to practice again. #93
     But if you are flawless next time, #94
@@ -461,7 +462,7 @@ Do you understand, {isBoy: tribute|token}? #124
     ++ [no]
         /perform react_shrug_long
         -> Headmistress_Unhappy ->
-        You waist my time. #125
+        You waist my time. #78
         -> exit
     ++ [timeout] -> Headmistress_Timeout -> 
     ++ [distracted] -> Headmistress_PayAttention -> 
@@ -563,7 +564,7 @@ Go and contemplate your failure. #146
 /perform signal_kneel
 
 { say_short_explanation:
-    This position is <b>kneel</b>. #147
+    This position is <b> kneel </b>. #147
 }
 
 { say_full_explanation:
@@ -616,7 +617,7 @@ Go and contemplate your failure. #146
 
 
 { say_short_explanation:
-    The title is <b>rear<b>. #152
+    The title is <b> rear </b>. #152
 }
 
 { say_full_explanation:
@@ -666,7 +667,7 @@ Go and contemplate your failure. #146
 /perform signal_humble
 
 { say_short_explanation:
-    It is named <b>humble</b>. #156
+    It is named <b> humble </b>. #156
 }
 
 { say_full_explanation:

@@ -109,26 +109,42 @@
 // /action raise_curtains
 // /scene Theatre.DeskApproach
 // -> headmistress_punishment_spanking.SpankingFinished
+
+// /scene TheatreOpen.Ready
 // /music headmistress
+// /ambient crowd
 // ~ rewards = 1
-// -> headmistress_reward_exhibitionism
+// -> headmistress_reward_exhibitionism.test_jump
 
 
-//~ setDeviation(exhibitionism)
-//~ rewards = 1
+// ~ setDeviation(exhibitionism)
+// ~ rewards = 1
 //-> unlock_all -> headmistress_reward_exhibitionism
 
 
 // --- Nega Jumps ---
 
-// -> nega_hub
+ //-> nega_hub
 
 // /scene Attic.Reward_ForcedSex1
-// // /scene Attic.Reward_ForcedSex2
-// /music nega
-// /ambient howling-wind
-// ~ setScene(task_scene, Nega)
+
+// Make sure we are set up as expected for Nega's intro.
+~ rewards = 1
+~ punishments = 0
+~ reward_just_removed = false
+~ tutorial_step = at_nega_intro
+~ nega_shortcut = true
+~ temp cameFromHub = current_mistress == None
+~ setScene(intro_scene, Nega)
+
+/music nega
+/ambient howling-wind
+
 //-> nega_intro.nega_tease
+// -> nega_intro.skip_checks
+/scene Attic.Ready
+/character nega
+-> nega_intro.check_reward
 
 // -> nega_reward_forcedsex
 // /scene attic.reward_forcedsex2
@@ -138,6 +154,7 @@
 // -> nega_reward_forcedsex.pussy_wet
 // -> nega_reward_dice.test_dice
 //-> nega_reward_tease
+// -> nega_punishment_genital_torture
 
 
 ->->

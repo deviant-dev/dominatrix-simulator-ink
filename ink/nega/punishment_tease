@@ -6,9 +6,10 @@
 /scene attic.punishment_tease
 /music nega-punishment
 /ambient off
-/character nega talk_annoyed
+/character nega idle_unhappy
 
 - (tease_intro)
+
 
 You've only earned a little pain for that roll, {isBoy: worm|{isGirl:cunt|wretch}}.
 
@@ -20,16 +21,16 @@ You've only earned a little pain for that roll, {isBoy: worm|{isGirl:cunt|wretch
     - Let's get this over with so I can go find some /real/ fun.
 }
 
+- /perform do_rub_hands_together excited 75
+I love it when the dice let me get nasty.
+
+/perform talk_lean_forward amused 75
+Poor {isBoy: fuckup|stain}.
+
 - (insult)
 /perform idle_unhappy_stomp
-{shuffle:
-    - You're a disgusting stain.
-    - You're a nasty pile of shit.
-    - You're a vomit inducing waste of time.
-    - You're a boring, simpering drain on my energy.
-    - You're a ugly, little wretch.
-}
-  //TODO: update script to be meaner and harder on player. Follow same structure    
+-> Nega_Insult ->
+  
 Isn't that right?
 
     +[yes]
@@ -41,6 +42,13 @@ Isn't that right?
  + [timeout] -> Nega_Timeout -> insult
  + [distracted] -> Nega_PayAttention -> insult      
 
+- /perform talk_behold
+{shuffle:
+    - You're just a rotten little bitch I should crush under my boot. #16
+    - A wretched little slut who just wants to be used. #17
+    - A horny piece of meat waiting to be devoured. #18
+    }
+    
 -  
 ~ tries = 0
 - (kneel_tease)
@@ -99,7 +107,6 @@ Now get back up on your knees.
     - -> tease_spitting ->
     - -> tease_puppy_horny ->
     - -> tease_kiss_floor ->
-    - -> tease_slapping ->
 }
 
 - -> exit
@@ -121,7 +128,4 @@ TODO: Player kisses the floor for a set amount of time. This scene will focus on
 
 ->->
 
-= tease_slapping
-TODO: Player has to endure slapping while kneeling. This scene will focus on Nega telling the player they don't get to be touched nicely. They aren't worthy of it. She will slap them and get them to slap their genitals / nipples.
 
-->->

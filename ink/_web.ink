@@ -64,6 +64,7 @@ INCLUDE yuki/task_puppyplay_practice
 INCLUDE yuki/task_teaservice
 INCLUDE yuki/train_spanking
 INCLUDE promo/devil_girl
+INCLUDE nega/punishment_genital_torture
 
 
 

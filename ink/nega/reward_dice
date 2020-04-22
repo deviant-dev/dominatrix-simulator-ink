@@ -3,17 +3,20 @@
 
 ~ setScene(reward_scene, Nega)
 
-/scene attic.negaintro
+/scene attic.Ready
 /music nega
 /ambient howling-wind
 
 - (give_reward)
+
 
 /character nega do_hand_out
 {shuffle:
     - Hand it over. #01
     - Gimme! #07
     - Oooo. Give it here.  #08
+    - Now, give it to me.
+    - Time to pay up!
 }
 
 + [pose:present_wrist_reward]
@@ -25,9 +28,23 @@
 ~ removeReward()
 
 /perform react_whatever excited 40
-Fuck yeah! #02
+{cycle:
+    - Fuck yeah! #02
+    - Hot damn!
+    - Mrow!
+    - -> Nega_GoodJob ->
+}
+
 /perform talk_threaten aroused 50
-You're my bitch now. #03
+{cycle:
+    - You're my bitch now. #03
+    - Thanks for the treat, fuckup!
+    - Your ass is mine!
+    - You're going to get what you deserve.
+    - You're in for it now!
+    - This'll be fun! For me at least!
+}
+
 
 Let's see what you're going to get #04
 for this pretty little gift. #05
@@ -177,8 +194,17 @@ TODO: Write 'no reward' dialog here.
 /lookat dice
 /perform squat_forward
 Well look at that. Skull and cup cancel each other out. #31
+
 /lookat player
-Nothing for you today. Better luck next time, bitch. #32
+Nothing for you today. 
+-> Nega_Insult ->
+
+{shuffle:
+    - And you thought you were going to get lucky!
+    - Better luck next time, bitch. #32
+    - Come back when you're a little richer.
+}
+
 /perform idle_looming
 
 -> exit

@@ -17,34 +17,62 @@ VAR demerits = 0
     -> nega_intro
 }
 
-/scene Attic.NegaHub
-/music nega
+/scene Attic.Approach
+/music nega2
 /ambient off
+/character Nega
 
 
 + [move: Nega]
 
 - (hub)
-{
-    - rewards > 0:
-        Mmm, I like the look of those yummy Bloodstones.
-        Are you here to try your luck?
-        + [yes] -> nega_humiliation_greeting
-        + [no]
-            Then get the fuck outta here, you little bitch.
-            -> exit
+
+/scene Attic.Ready
+
+{ nega_regard >= 10: 
+    {shuffle:
+    - Oh looky! My favorite little piggy is back.
+    - Woof! If it isn't my special {isBoy: dog|bitch}.
+    }
+- else:
+    {shuffle:
+        - Hello fuckup.
+        - You're back.
+        - Look who can't stay away.
+
+    }
+}
+
+{ rewards > 0: 
+    -> reward
+        
     - else:
         No Bloodstone treats for me, hmm? Not interested.
         -> exit
 }
 
-Thanks for the treat, fuckup!
+= reward
 
 {shuffle:
-    - I'll see that you get what you deserve.
-    - You're in for it now!
-    - This'll be fun! For me at least!
-    }
+    - Mmm, I like the look of those yummy Bloodstones.
+    Are you here to try your luck?
+    - I see you have a pretty little Bloodstone.
+    You want to give it to me, don't you?
+    - You brought me a Bloodstone.
+    Didn't you?
+}
+        
++ [yes] -> nega_humiliation_greeting ->
++ [no]
+    Then get the fuck outta here, you little bitch.
+    -> exit
+
+-
 
 /perform menacing
+
+-> nega_reward_dice
+
+
+
 

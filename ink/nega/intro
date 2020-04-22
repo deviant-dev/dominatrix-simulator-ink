@@ -13,7 +13,7 @@
 
 -> select_gender_check ->
 
-// Make sure we are set up as expected for Nega' intro.
+// Make sure we are set up as expected for Nega's intro.
 ~ rewards = 1
 ~ punishments = 0
 ~ reward_just_removed = false
@@ -22,17 +22,17 @@
 ~ temp cameFromHub = current_mistress == None
 ~ setScene(intro_scene, Nega)
 
-/scene Attic.NegaHub
+/scene Attic.Approach
 /music nega
 /ambient howling-wind
 
 + [move: Nega]
 
-- /scene Attic.NegaIntro
+- /scene Attic.Ready
 /character nega
 
 {skipChecks: -> skip}
-
+/log {cameFromHub}
 // Return to previous location if we've been here before.
 {check_reward: -> Nega_CheckIfInterested -> check_reward}
 {stand_straight: -> Nega_CheckIfInterested -> stand_straight}

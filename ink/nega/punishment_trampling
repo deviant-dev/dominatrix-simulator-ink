@@ -3,7 +3,7 @@
 
 ~ setScene(punishment_scene, Nega)
 
-/scene Attic.NegaIntro
+/scene Attic.Ready
 /music nega2
 /ambient off
 /character nega

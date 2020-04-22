@@ -63,7 +63,10 @@ On your back. #04
     Lay the fuck down! #07
     -> lay_down
 + { tries >= 3 } [timeout] -> Nega_CheckIfInterested -> lay_down_again
-+ [distracted] -> Nega_PayAttention -> lay_down_again
+
+// NOTE: Removing 'distracted' here since the player needs to change positions - deviant
+// + [distracted] -> Nega_PayAttention -> lay_down_again
+
 + [no] -> Nega_CheckIfInterested -> lay_down_again
 
 
@@ -142,13 +145,13 @@ Now... time for me to get more comfortable. #20
 //I keep plenty of rope lying around just for this. #15
 
 Look at you. Such a pathetic fleshbag. #21
+
+- (pussy_wet)
 /perform react_excited amused 50
 I bet you're just dying to find out  #22
 /perform idle_tease
 how wet my pussy feels against you. #23
-
 /perform talk_question amused 75
-- (pussy_wet)
 Aren't you? #24
 
 +[yes]
@@ -630,13 +633,13 @@ Impressive! #94
 {shuffle:
     - My pussy is so hungry! #93
     - I bet you wish you could bury your face in my tits. #140
-    - Don't let that pathetic {isBoy: cock|dildo} give out on me. #114
-    - I just love using filty little sluts. #132
+    - Don't let that pathetic {hasPenis: cock|dildo} give out on me. #114
+    - I just love using filthy little sluts. #132
     - Your body is mine to use! #133
     - Fuck yah! #134
     - Forcing {isBoy: pricks|cunts} to be my bitch is so fucking fun! #135
     - You aren't going anywhere until I'm done with you. #136
-    - Yah! Take it, little bitch. #137
+    - Yah! Take that, little bitch. #137
     - That hits the spot! #138
     - I know you've begging for this! #139
     - Give it to me harder, you worthless fuck. #52

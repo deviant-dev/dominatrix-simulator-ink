@@ -1,25 +1,228 @@
-
-
 //---------- GREETING: Humiliation before paying a reward -------------------
 
 // These should really be 'tease' modules that can be randomly cycled through.
 === nega_humiliation_greeting ===
 
-/scene Attic.NegaIntro
+/scene Attic.Ready
 /music nega2
 /ambient off
 /character Nega
 
 //slit, maggot, worm, meatbag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cumbucket, skank, pillow biter, tease
 
+/perform idle_fake_annoyed amused
 
-{shuffle:
-    - -> greeting_lick_boot ->
-   
-    - -> greeting_present_ass ->
+{cycle:
+    - Show me just how much you want to give me that stone.
+    - Then beg to give it to me.
+    - Prove it.
+    - I don't believe you.
 }
 
--> nega_reward_dice
+
+{shuffle:
+    - -> kiss ->
+    - -> sniff ->
+    - -> slap ->
+}
+
+
+{cycle:
+    - I guess I'll take your puny stone. 
+    - You've convinced me. For now.
+    - Such a fuckup, begging to give away your precious reward.
+    - So fucking desparate. Fine.
+    - I'll guess I'll let you give it to me.
+}
+
+{shuffle:
+    - If you're lucky, you might just get to do more of that. 
+    - If the dice find you worthy, you'll get more of that. 
+    - Maybe that Bloodstone will earn you more of that. 
+}
+
+->->
+
+= kiss 
+
+{shuffle:
+    - -> kiss_floor
+    - -> kiss_boot
+    - -> kiss_ass
+}
+
+- (kiss_floor)
+/perform do_point_down amused
+Bow down and kiss the ground I walk on.
+
++ [pose:kiss_floor]
++ { tries < 2 } [timeout] -> kiss_floor
++ { tries >= 2 } [timeout] 
+ 
+     -> Nega_CheckIfInterested 
+     -> kiss_floor
++ [distracted] -> Nega_PayAttention -> kiss_floor
+
+- -> Nega_GoodJob ->
+
+
+->->
+
+- (kiss_boot)
+/perform do_present_foot amused
+Kiss my dirty boot.
+    
++ [pose:kiss_feet]
++ { tries < 2 } [timeout] -> kiss_boot
++ { tries >= 2 } [timeout] 
+    
+     -> Nega_CheckIfInterested 
+     -> kiss_boot
++ [distracted] -> Nega_PayAttention -> kiss_boot
+
+- -> Nega_GoodJob ->
+
+
+->->
+
+- (kiss_ass)
+/perform tease_ass_caress
+Then kiss my ass. Literally.
+
++ [pose:present_ass]
++ { tries < 2 } [timeout] -> kiss_ass
++ { tries >= 2 } [timeout] 
+   
+     -> Nega_CheckIfInterested 
+     -> kiss_ass
++ [distracted] -> Nega_PayAttention -> kiss_ass
+
+- -> Nega_GoodJob ->
+
+
+->->
+
+= sniff
+
+{shuffle:
+    - -> sniff_ass
+    - -> sniff_crotch
+    - -> sniff_armpit
+}
+- (sniff_ass)
+/perform tease_ass_caress
+Stick your face in my ass and give it a good sniff.
+
++ [pose:present_ass]
++ { tries < 2 } [timeout] -> sniff_ass
++ { tries >= 2 } [timeout] 
+ 
+     -> Nega_CheckIfInterested 
+     -> sniff_ass
++ [distracted] -> Nega_PayAttention -> sniff_ass
+
+- -> Nega_GoodJob ->
+
+
+->->
+
+TODO: confirm kneel works or create new pose with head tilted backward
+- (sniff_crotch)
+/perform tease_ass_caress
+Get down here and stick your face in my crotch.
+Suck in that delicious smell, worm.
+
++ [pose:kneel]
++ { tries < 2 } [timeout] -> sniff_crotch
++ { tries >= 2 } [timeout] 
+   
+     -> Nega_CheckIfInterested 
+     -> sniff_crotch
++ [distracted] -> Nega_PayAttention -> sniff_crotch
+
+- -> Nega_GoodJob ->
+
+
+->->
+
+TODO: create new pose
+- (sniff_armpit)
+/perform do_present_armpit digusted
+Come get a nice big whif of my armpit, skank.
+
++ [pose:sniff_armpit]
++ { tries < 2 } [timeout] -> sniff_armpit
++ { tries >= 2 } [timeout] 
+   
+     -> Nega_CheckIfInterested 
+     -> sniff_armpit
++ [distracted] -> Nega_PayAttention -> sniff_armpit
+
+- -> Nega_GoodJob ->
+
+
+->->
+
+= slap 
+
+{shuffle:
+    - -> slap_face
+    - -> slap_ass
+    - -> slap_genitals
+}
+
+- (slap_face)
+/perform idle_fake_annoyed amused
+Take a slap, bitch, and don't fucking cry either!
+
+-(try_slap)
+/perform do_slap
+
++ [react-success]
+     -> Nega_GoodJob ->
+ + [react-fail]
+     -> Nega_BadJob ->
+     You get one more try.
+    -> try_slap
+-
+
+->->
+
+- (slap_ass)
+/perform idle_fake_annoyed amused
+Bend over and show me that ass.
+I want to smack it.
+
+/perform do_spank_player
+
+- (try_spank)
+/perform do_slap
+
++ [react-success]
+     -> Nega_GoodJob ->
++ [react-fail]
+     -> Nega_BadJob ->
+     You get one more try.
+    -> try_slap
+-
+
+->->
+
+- (slap_genitals)
+/perform idle_fake_annoyed amused
+Slap that filthy {hasPenis: prick|cunt} of yours.
+It better be hard enough to make you jump.
+
++ [react-success]
+     -> Nega_GoodJob ->
++ [react-fail]
+     -> Nega_BadJob ->
+     You get one more try.
+    -> try_slap
+-
+->->
+
+->->
 
 //make this a punishment light
 = greeting_lick_boot

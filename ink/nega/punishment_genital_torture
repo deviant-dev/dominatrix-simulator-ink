@@ -1,0 +1,174 @@
+=== nega_punishment_genital_torture ===
+
+~ setScene(punishment_scene, Nega)
+
+/scene Attic.Ready
+/music nega2
+/ambient off
+/character nega
+
+//slit, maggot, worm, meatbag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cumbucket, skank, pillow biter, tease
+
+// tease_slapping
+// TODO: Player has to endure slapping while kneeling. This scene will focus on Nega telling the player they don't get to be touched nicely. They aren't worthy of it. She will slap them and get them to slap their genitals / nipples.
+
+// Genital torture mixed with humiliation scene 
+// Slapping balls / pussy
+// Pulling / pinching
+// Squeeze it
+// Dig nails into it
+// Clothespin
+// Rubbing it
+
+// Mocked
+// Suffer for her 
+// They want to suffer, don't they?
+// Insult
+// shuffle type of suffering
+// pick between 2-3 actions
+// scene block for each type of torment
+// randomized number of times to do each torment
+// Check to see if they are enjoying it and want to Continue
+// If not, send them away with no refunds
+// If yes, continue
+// comment block during actions
+// soft, but rough praise
+// send them away
+
+- Let's have some fun fucking up your genitals.
+
+{shuffle:
+    - There's no point being kind to you,
+    because you're a pathetic stain 
+    who deserves to be mistreated.
+    - You're a piece of shit who likes to suffer.
+}
+
+- (mistreated)
+Aren't you?
+
+    +[yes]
+    ~ addObey()
+       Of course you are.
+      
+    +[no]
+     ~ addDisobey()
+        {shuffle:
+            - -> Nega_Unhappy ->
+            - I already know you are. 
+            That's why you're here.
+        }
+ + [timeout] -> Nega_Timeout -> mistreated
+ + [distracted] -> Nega_PayAttention -> mistreated
+
+And I know just how to make you suffer, meatbag.
+
+--> torture
+
+= torture
+
+{shuffle:
+    - -> slap_genitals
+    - -> yank_genitals
+    - -> pinch_genitals
+    // - -> squeeze_genitals
+    // - -> rub_genitals
+    // - -> nails_genitals
+    // - -> flick_genitals
+    // - -> nails_skin
+    // - -> pinch_nipple
+    // - -> nails_nipple
+    // - -> pull_nipple
+    // - -> flick_nipple
+}
+
+- (slap_genitals)
+/perform tease_slap_pussy aroused
+Reach down and start slapping that {hasPenis: cock|pussy}.
+
+- (try_slap_genitals)
+Make it hard enough to hurt!
+And don't stop until I tell you to.
+
++ [react-success]
+     -> Nega_GoodJob ->
++ [react-fail]
+    -> Nega_BadJob ->
+    -> try_slap_genitals
+
+- That's it. Keep going!
+I want to hear how bad it hurts.
+
+-> RandomCommentLoop (-> humiliation_comment, 3, 5, 2, 5) ->
+- -> Nega_GoodJob ->
+
+
+->->
+
+- (yank_genitals)
+/perform tease_slap_pussy aroused
+Reach down and start slapping that {hasPenis: cock|pussy}.
+
+- (try_yank_genitals)
+Make it hard enough to hurt!
+And don't stop until I tell you to.
+
++ [react-success]
+     -> Nega_GoodJob ->
++ [react-fail]
+    -> Nega_BadJob ->
+    -> try_yank_genitals
+
+- That's it. Keep going!
+
+-> RandomCommentLoop (-> humiliation_comment, 3, 5, 2, 5) ->
+- -> Nega_GoodJob ->
+
+
+->->
+
+- (pinch_genitals)
+/perform tease_slap_pussy aroused
+Reach down and start slapping that {hasPenis: cock|pussy}.
+
+- (try_pinch_genitals)
+Make it hard enough to hurt!
+And don't stop until I tell you to.
+
++ [react-success]
+     -> Nega_GoodJob ->
++ [react-fail]
+    -> Nega_BadJob ->
+    -> try_pinch_genitals
+
+- That's it. Keep going!
+
+-> RandomCommentLoop (-> humiliation_comment, 3, 5, 2, 5) ->
+- -> Nega_GoodJob ->
+
+
+->->
+= humiliation_comment
+
+{ shuffle:
+    - -> Nega_Objectify ->
+    - -> Nega_Insult ->
+    - -> Nega_Aroused ->
+    - -> torture_comments ->
+}
+
+->->
+
+= torture_comments
+
+{shuffle:
+    - Look at my little pain slut. 
+    - Suffer for me, bitch.
+    - Such a fucking masochist.
+    - I want to hear you moaning.
+    - Pant for me, dog. 
+    - Your pain is my pleasure. 
+    - Wallow in the ache, whore.
+}
+->->
+->->

@@ -9,10 +9,10 @@ VAR yuki_spanking_fails = 0
 
 //this scene has the player crawl over to the couch and lay across it with their butt out. They get a spanking similiar to the Headmistress scene
 
-// {shuffle:
-// - ~ yuki_spanking_target_count = 5
-// - ~ yuki_spanking_target_count = 10
-// }
+{shuffle:
+- ~ yuki_spanking_target_count = 5
+- ~ yuki_spanking_target_count = 10
+}
 
 ~ setScene(punishment_scene, Yuki)
 ~ yuki_spanking_count = 0
@@ -66,7 +66,7 @@ You've obviously forgotten the rules. #08
 Don't you remember those rules, puppy? #11
 + [yes] -
     Don't you lie to me, puppy. #12
-    Good {isBoy: boys|girls} don't earn punishments. #13
+    Good {isBoy: boys|{isGirl:girls|pets}} don't earn punishments. #13
 
 + [no]
     Obviously you don't. #14
@@ -76,7 +76,15 @@ Don't you remember those rules, puppy? #11
 + [distracted] -> Yuki_PayAttention -> remember
 
 // 5, 10
-- You're going to get {yuki_spanking_target_count}, big swats, puppy! #16
+- {
+- yuki_spanking_target_count == 5:
+    You're going to get five, big swats, puppy! #16
+- yuki_spanking_target_count == 10:
+    You're going to get ten, big swats, puppy! #40
+- else:
+    /log bad swat count found
+}
+
 I want to hear you count them out. #17
 
 /perform idle

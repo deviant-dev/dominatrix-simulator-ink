@@ -1,7 +1,6 @@
 
 //response to player distraction
-=== Yuki_PayAttention ===
-
+=== Yuki_PayAttention === 
 /perform idle_yuki
 
 { cycle:
@@ -27,6 +26,7 @@
 
 //Response to timeouts to questions
 === Yuki_Timeout ===
+/character yuki
 
 {cycle:
     - Hellooo? I'm talking to you! #01
@@ -44,6 +44,7 @@
 
 //Response to timeouts to actions
 === Yuki_Interested ===
+/character yuki
 
 {cycle:
     - I asked you to do something. #01
@@ -58,6 +59,7 @@
 ->->
 
 === Yuki_GoodJob ===
+/character yuki
 
 {cycle:
     - I'm so proud of you! #01
@@ -81,6 +83,7 @@
 ->->
 
 === Yuki_AcknowledgeYes ===
+/character yuki
 
 {cycle:
     - I like that answer. #01
@@ -96,6 +99,7 @@
 ->->
 
 === Yuki_Badjob ===
+/character yuki
 
 {shuffle:
     - I thought you knew better. #01
@@ -120,6 +124,7 @@
 ->->
 
 === Yuki_Aroused ===
+/character yuki
 
 {shuffle:
     - Watching you is turning me on.
@@ -130,6 +135,7 @@
 ->->
 
 === Yuki_Punishment_Response ===
+/character yuki
 
 {cycle:
     - What? A punishment?! #01
@@ -142,6 +148,7 @@
 ->->
 
 === Yuki_Punishment_Chastise ===
+/character yuki
 
 {shuffle:
     - /perform react_disappointed
@@ -164,10 +171,7 @@
 ->->
 
 === Yuki_PlayerToCum ===
-
-// Add a 'continue' in here to fix bug in the Ink path.
-+ [continue]
-- 
+/character yuki
 
 {cycle:
     - Is my good {player_name} close? #01
