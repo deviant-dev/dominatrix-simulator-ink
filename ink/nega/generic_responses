@@ -1,4 +1,4 @@
-   
+
 === Nega_GoodJob ===
 /character nega
 
@@ -46,7 +46,7 @@
     - Waste of time. #14
     - I don't know why I bother. #15
 }
-    
+
 ->->
 
 === Nega_Unhappy ===
@@ -81,7 +81,7 @@
     - You're a boring, simpering drain on my energy.
     - You're an ugly, little wretch.
 }
-    
+
 ->->
 
 === Nega_Apologize ===
@@ -112,49 +112,98 @@ Now get back up on your knees. #07
 
 //response to timeouts to questions
 === Nega_Timeout ===
-/emotion disgusted 75
+/character nega
 {cycle:
-    - ...the fuck? I'm talking to you!  #01
-    - Don't ignore me!  #02
-    - Fucking pay attention! #03
-    - Am I talking to a goddamn sack of potatoes? #04
-    - You little {isBoy: prick|cunt}. You're wasting my time. #05
-    - Answer me, {isBoy: maggot|slut}.  #06
-    - Are your ears still attached to your fucking head? #07
-    - Get your shit together and pay attention, {isBoy:dog|bitch}.   #08
-    - Wake the fuck up! #09
-    - You fucking falling asleep on me? #10
-    - I'm not a patient Mistress. #11
+
+    - /perform react_thankful disgusted 40
+    ...the fuck? I'm talking to you!  #01
+
+    - /perform idle_unhappy_stomp angry 35
+    Don't ignore me!  #02
+
+    - /perform do_snap_fingers amused 80
+    Fucking pay attention! #03
+
+    - /perform talk_annoyed sad 25
+    Am I talking to a goddamn sack of potatoes? #04
+
+    - /perform talk_lean_forward disgusted 25
+    You little {isBoy: prick|cunt}. You're wasting my time. #05
+
+    - /perform react_point_at_player_angry aroused 20
+    Answer me, {isBoy: maggot|slut}.  #06
+
+    - /perform talk_emphatic_one_hand angry 60
+    Are your ears still attached to your fucking head? #07
+
+    - /perform do_snap_fingers amused 35
+    Get your shit together and pay attention, {isBoy:dog|bitch}.   #08
+
+    - /perform react_clapping angry 60
+    Wake the fuck up! #09
+
+    - /perform talk_annoyed angry 50
+    You fucking falling asleep on me? #10
+
+    - /perform react_disappointed disgusted 75
+    I'm not a patient Mistress. #11
 }
 
 ->->
 
 //response to player distraction
 === Nega_PayAttention ===
-/emotion angry 75
-
+/character nega
 { cycle:
-    - Eyes on me, pretty {player_name}. #01
-    - I'm fucking talking to you! #02
-    - Is your brain goddamn mush? Over here. #03
-    - Look at me, bitch. #04
-    - Were you raised in a fucking barn? Pay attention! #05
-    - Get your head in the goddamn game. #06
-    - Looking for a place to hide, slut? It won't work. #07
-    - Now, pay attention! #08
+
+    - /perform react_disappointed disgusted 30
+    Eyes on me, pretty {player_name}. #01
+
+    - /perform react_point_at_player_angry angry 75
+    I'm fucking talking to you! #02
+
+    - /perform react_shrug_long skeptical 55
+    Is your brain goddamn mush? Over here. #03
+
+    - /perform do_snap_fingers skeptical 60
+    Look at me, bitch. #04
+
+    - /perform react_disappointed disgusted 60
+    Were you raised in a fucking barn? Pay attention! #05
+
+    - /perform talk_annoyed angry 30
+    Get your head in the goddamn game. #06
+
+    - /perform talk_lean_forward amused 70
+    Looking for a place to hide, slut? It won't work. #07
+
+    - /perform do_snap_fingers disgusted 50
+    Now, pay attention! #08
 }
 
 + [pay-attention]
     { cycle:
-        - Don't fucking let it happen again. #09
-        - What the fuck was I saying? #10
-        - Goddamn rude little whore. #11
-        - Do it again and I might think you don't like me. #12
-        - I fucking hate being interrupted. #13
-        - Damn right, you'll pay attention. #14
+
+        - /perform react_point_at_player_angry digusted 75
+        Don't fucking let it happen again. #09
+
+        - /perform talk_annoyed amused 50
+        What the fuck was I saying? #10
+
+        - /perform react_disappointed angry 35
+        Goddamn rude little whore. #11
+
+        - /perform talk_lean_forward amused 60
+        Do it again and I might think you don't like me. #12
+
+        - /perform idle_unhappy_stomp angry 60
+        I fucking hate being interrupted. #13
+
+        - /perform do_fist_pump aroused 60
+        Damn right, you'll pay attention. #14
     }
     ->->
-    
+
 + [timeout] -> Nega_PayAttention
 
 
@@ -165,7 +214,7 @@ What the fuck is wrong with you!? #01
 
 Are you going to behave and give me what I want? #02
 
-+ [yes] 
++ [yes]
     That's right, {isBoy: maggot|whore}. #03
     ->->
 
@@ -178,7 +227,7 @@ Are you going to behave and give me what I want? #02
     }
 
     {inTutorial: -> exit }
-    
+
 === Nega_prepare_masturbate ===
 /character nega
 
@@ -255,8 +304,8 @@ Does that feel good whore? #04
 + [no]
     -> Nega_BadJob ->
     Too fucking bad. I hope it hurts! #07
-    
-- ->->    
+
+- ->->
 
 === Nega_Aroused ===
 /character nega
@@ -272,7 +321,7 @@ Does that feel good whore? #04
 
 ->->
 
-=== Nega_Objectify === 
+=== Nega_Objectify ===
 /emotion disgusted 75
 
 {shuffle:
@@ -285,7 +334,7 @@ Does that feel good whore? #04
     - Oooo... look at the little sex doll. #05
     - Such a fucking cum dump.  #06
 }
-    
+
 ->->
 
 === Nega_Give_Reward ===
@@ -299,7 +348,7 @@ Does that feel good whore? #04
     - I hope you're feeling good. I am. #06
     - I enjoyed myself. #07
 }
-    
+
 {shuffle:
     - Perhaps you deserve a small reward. #08
     - I think I'll do something nice for you. #09
@@ -330,13 +379,13 @@ Didn't you? #16
 
 +[yes]
     Haha! Yes! #17
-    
+
 +[no]
     Poor little baby. #20
     So abused. #21
     Waaa. #22
-    
--   
+
+-
 
 ->->
 
@@ -348,5 +397,3 @@ Being so close must be such a turn on for you, whore. #18
 Don't get used to it! #19
 
 ->->
-
-
