@@ -1,24 +1,43 @@
 
 //response to player distraction
-=== Yuki_PayAttention === 
-/perform idle_yuki
-
+=== Yuki_PayAttention ===
+/character yuki
 { cycle:
-    - You're not very good at this yet, are you? #01
+    - /perform react_shrug_short sad 30
+    You're not very good at this yet, are you? #01
+
+      /perform react_shake_head_disbelief happy 25
     You're supposed to look at me when I'm talking. #02
-    - Bad {player_name}! You should look at me when I'm speaking to you. #03
-    - Oh, gee. You need a lot of training. Look at me. #04
-    - Didn't anyone ever teach you to look at people when they're speaking to you? #05
-    - It's very rude to not look at me when I'm speaking to you. #06
-    - Over here, silly.#07
+
+    - /perform idle_unhappy_stomp sad 55
+    Bad {player_name}! You should look at me when I'm speaking to you. #03
+
+    - /perform talk_annoyed amused 65
+    Oh, gee. You need a lot of training. Look at me. #04
+
+    - /perform react_dumb skeptical 60
+    Didn't anyone ever teach you to look at people when they're speaking to you? #05
+
+    - /perform react_disappointed angry 30
+    It's very rude to not look at me when I'm speaking to you. #06
+
+    - /perform do_snap_fingers amused 50
+    Over here, silly.#07
 }
 
 + [pay-attention]
     { cycle:
-        - Now... what was I saying? Oh right... #08
-        - Much better. Ahem. #09
-        - Good {player_name}. You might be teachable after all. #10
-        - Now back to your instructions. #11
+        - /perform talk_consider skeptical 30
+        Now... what was I saying? Oh right... #08
+
+        - /perform react_thankful happy 30
+        Much better. Ahem. #09
+
+        - /perform idle_clasp_hands aroused 70
+        Good {player_name}. You might be teachable after all. #10
+
+        - /perform do_smooth_skirt happy 60
+        Now back to your instructions. #11
     }
     ->->
 
@@ -27,17 +46,34 @@
 //Response to timeouts to questions
 === Yuki_Timeout ===
 /character yuki
-
 {cycle:
-    - Hellooo? I'm talking to you! #01
-    - Don't ignore me! #02
-    - Would you answer me already? #03
-    - Hey doofus, I'm speaking to you. #04
-    - Am I talking to a wall right now? #05
-    - Hey {player_name}, I'm not talking to myself you know! #06
-    - Answer me, {player_name}! #07
-    - Are you even listening? #08
-    - Focus, {player_name}.  #09
+
+    - /perform react_dumb angry 20
+    Hellooo? I'm talking to you! #01
+
+    - /perform idle_unhappy_stomp sad 50
+    Don't ignore me! #02
+
+    - /perform talk_annoyed scared 20
+    Would you answer me already? #03
+
+    - /perform talk_lean_forward amused 65
+    Hey doofus, I'm speaking to you. #04
+
+    - /perform react_whatever angry 80
+    Am I talking to a wall right now? #05
+
+    - /perform react_crazy_gesture excited 40
+    Hey {player_name}, I'm not talking to myself you know! #06
+
+    - /perform do_snap_fingers amused 60
+    Answer me, {player_name}! #07
+
+    - /perform react_disappointed scared 65
+    Are you even listening? #08
+
+    - /perform react_point_at_player_angry angry 50
+    Focus, {player_name}.  #09
 }
 
 ->->
@@ -79,7 +115,7 @@
     - Such a good {player_name}. #15
     - You're doing so well! #16
     }
-    
+
 ->->
 
 === Yuki_AcknowledgeYes ===
@@ -95,7 +131,7 @@
     - Mmmmhmmm! #07
     - Hooray! #08
     }
-    
+
 ->->
 
 === Yuki_Badjob ===
@@ -130,8 +166,8 @@
     - Watching you is turning me on.
     - My panties are wet.
     - I just love rewarding good pets.
-}   
-    
+}
+
 ->->
 
 === Yuki_Punishment_Response ===
@@ -157,7 +193,7 @@
     - /perform talk_annoyed
     - /perform react_disappointed
     }
-    
+
 {cycle:
     - That was a very bad session! #194
     - I'm so disappointed. #195
@@ -167,7 +203,7 @@
     - Oh my goodness. The Goddess will be so cross with me.  #02
     - It makes me so sad when I have to punish you. #03
     }
-    
+
 ->->
 
 === Yuki_PlayerToCum ===
@@ -208,7 +244,7 @@ You are not following the rules. #03
 /perform talk_lean_forward
 Do you want to be sent away? #04
 
-+ [yes] 
++ [yes]
 + [no] -> check_yes
 
 - /perform talk_annoyed
