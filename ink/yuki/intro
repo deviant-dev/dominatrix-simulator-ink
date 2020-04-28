@@ -334,7 +334,8 @@ You'd have so much more fun if you bent the rules now and then. #59
 
 - (new_one)
 
-/character yuki lookat nega
+/character yuki
+/lookat nega
 /perform idle_unhappy angry 50
 
 
@@ -377,7 +378,8 @@ So. You're the new one, huh? #60
 I bet Yuki's been having so much fun #67
 explaining the rules to you  #68
 
-/character yuki lookat nega
+/character yuki
+/lookat nega
 /perform idle_fake_annoyed angry 50
 
 /character nega react_scoffs aroused 60
@@ -387,7 +389,8 @@ hasn't she? #70
 
 + [yes]
     ~ addObey()
-    /character yuki lookat player
+    /character yuki
+    /lookat player
     /perform idle_pleased happy 60
     /character nega idle_bored amused 20
     Boring. #71
@@ -420,10 +423,12 @@ She's not as sweet and innocent as she lets on. #75
 
 - (rough)
 I bet you like it rough. #187
-/character yuki lookat nega
+/character yuki
+/lookat nega
 /perform idle_skeptical angry 50
 
-/character nega lookat player
+/character nega
+/lookat player
 /perform talk_threaten aroused 60
 Let's find out how rough, shall we? #188
 
@@ -498,7 +503,8 @@ Do you want to change your mind and take a slap? #200
 
 + [no]
     ~ addObey()
-    /character yuki lookat player
+    /character yuki
+    /lookat player
     /perform do_bouncing_little excited 50
 
     /character nega react_scoffs disgusted 70
@@ -562,7 +568,8 @@ Have you figured out what's going on here yet? #76
 
     /lookat player
     /perform talk_lean_forward aroused 60
-    /character yuki lookat nega
+    /character yuki
+    /lookat nega
     /perform do_throat_cut angry 90
     /character nega
 
@@ -590,7 +597,8 @@ Have you figured out what's going on here yet? #76
 /lookat player
 I bet that {hasPenis:cock|cunt} of yours works just fine. #88
 
-/character yuki lookat nega
+/character yuki
+/lookat nega
 /perform talk_annoyed angry 30
 
 /character nega
@@ -617,7 +625,8 @@ Let's find out. Shall we? #89
 
 + [distracted] -> Nega_PayAttention -> genitals
 
-- /character yuki lookat nega
+- /character yuki
+/lookat nega
 /perform react_disappointed angry 60
 Behave, Nega!  #93
 /perform idle_unhappy disgusted 30

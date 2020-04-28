@@ -59,101 +59,65 @@
 
 
 === Nega_BadJob ===
+-> DoComment(false)
+
+= Squatting
+-> DoComment(true)
+
+= DoComment(inSquat)
+
 /character nega
 
 {shuffle:
 
-    - /perform react_dumb angry 65
+    - {inSquat:/emotion angry 65|/perform react_dumb angry 65}
     Stupid {isBoy:  prick|cunt}. #01
 
-    - /perform react_point_at_player_angry angry 70
+    - {inSquat:/emotion angry 70|/perform react_point_at_player_angry angry 70}
     You're fucking up! #02
 
-    -/perform idle_unhappy_stomp angry 65
+    - {inSquat:/emotion skeptical 70|/perform idle_unhappy_stomp angry 65}
     You better entertain me, {isBoy: worm|whore}. #03
 
-    - /perform talk_annoyed skeptical 70
+    - {inSquat:/emotion skeptical 70|/perform talk_annoyed skeptical 70}
     Try harder! #04
 
-    - /perform react_scoffs disgusted 65
+    - {inSquat:/emotion disgusted 65|/perform react_scoffs disgusted 65}
     You're doing it wrong. #05
 
-    - /perform talk_annoyed angry 55
+    - {inSquat:/emotion angry 55|/perform talk_annoyed angry 55}
     Useless. #06
 
-    - /perform react_dismissive angry 45
+    - {inSquat:/emotion angry 45|/perform react_dismissive angry 45}
     Pathetic. #07
 
-    - /perform react_whatever disgusted 65
+    - {inSquat:/emotion disgusted 65|/perform react_whatever disgusted 65}
     Ugggh. #08
 
-    - /perform idle_unhappy_stomp sad 75
+    - {inSquat:/emotion sad 75|/perform idle_unhappy_stomp sad 75}
     I'm not happy. #09
 
-    - /perform react_dismissive skeptical 65
+    - {inSquat:/emotion skeptical 65|/perform react_dismissive skeptical 65}
     You're boring me. #10
 
-    - /perform react_dismissive skeptical 55
+    - {inSquat:/emotion skeptical 55|/perform react_dismissive skeptical 55}
     How lame. #11
 
-    - /perform talk_threaten angry 85
+    - {inSquat:/emotion disgusted 65|/perform talk_threaten angry 85}
     Unworthy slut! #12
 
-    - /perform talk_lean_forward angry 85
+    - {inSquat:/emotion angry 85|/perform talk_lean_forward angry 85}
     Grrrr. #13
 
-    - /perform idle_cocks_head_to_left sad 65
+    - {inSquat:/emotion sad 65|/perform idle_cocks_head_to_left sad 65}
     Waste of time. #14
 
-    - /perform react_resigned skeptical 35
+    - {inSquat:/emotion disgusted 65|/perform react_resigned skeptical 35}
     I don't know why I bother. #15
 }
 
 ->->
 
-=== Nega_BadJob_Squatting ===
-/character nega
-
-{shuffle:
-
-    - /emotion angry 65
-    Stupid {isBoy:  prick|cunt}. #01
-
-    - /emotion angry 70
-    You're fucking up! #02
-
-    - /emotion skeptical 70
-    Try harder! #04
-
-    - /emotion disgusted 65
-    You're doing it wrong. #05
-
-    - /emotion angry 55
-    Useless. #06
-
-    - /emotion angry 45
-    Pathetic. #07
-
-    - /emotion disgusted 65
-    Ugggh. #08
-
-    - /emotion sad 75
-    I'm not happy. #09
-
-    - /emotion skeptical 65
-    You're boring me. #10
-
-    - /emotion skeptical 55
-    How lame. #11
-
-    - /emotion angry 85
-    Grrrr. #13
-
-    - /emotion sad 65
-    Waste of time. #14
-}
-
-->->
 
 === Nega_Unhappy ===
 /emotion disgusted

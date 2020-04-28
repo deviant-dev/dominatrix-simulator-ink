@@ -98,14 +98,14 @@ Take the dice and give them a good shake. #11
 
 
 + [hold:dice!]
-+ [timeout:5] -> Nega_BadJob_Squatting -> hold
++ [timeout:5] -> Nega_BadJob.Squatting -> hold
 
 - (roll)
 /perform squat excited 25
 Go ahead. Roll them bones. #06
 
 + [roll!] -> rolled
-+ [timeout] -> Nega_BadJob_Squatting -> roll
++ [timeout] -> Nega_BadJob.Squatting -> roll
 
 // 'Roll' event will force the script into this thread.
 = rolled
