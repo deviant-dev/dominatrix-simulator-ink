@@ -4,9 +4,9 @@
 
 ~ setScene(task_scene, Yuki)
 ~ tries = 0
-~ Practice_Counts = 0
-~ Practice_Attempts = 0
-~ Practice_Goal = 0
+~ task_count = 0
+~ task_attempts = 0
+~ task_goal = 0
 
 
 // ====== Begin Debug ======
@@ -87,11 +87,11 @@ Be ready for anything you've already learned! #160
 Pay attention! #165
 
 {yuki_task_puppyplay_practice == 1:
-    ~ Practice_Goal = 5
+    ~ task_goal = 5
 - else:
     {cycle:
-        - ~ Practice_Goal = 7
-        - ~ Practice_Goal = 9
+        - ~ task_goal = 7
+        - ~ task_goal = 9
     }
 }
 
@@ -99,33 +99,33 @@ Pay attention! #165
 
 -> test_next_pose ->
 
-~ Practice_Counts++
+~ task_count++
 
-{Practice_Counts < Practice_Goal: -> Practice_Loop}
+{task_count < task_goal: -> Practice_Loop}
 
-{Practice_Attempts == Practice_Goal:
+{task_attempts == task_goal:
     ~ addReward()
     ~ yuki_puppy_difficulty = 2
 }
 
-{Practice_Attempts > Practice_Goal + 1:
+{task_attempts > task_goal + 1:
     ~ yuki_puppy_difficulty = 1
 }
 
-{Practice_Attempts > Practice_Goal + 2:
+{task_attempts > task_goal + 2:
     ~ yuki_puppy_difficulty = 1
     ~ addPunishment()
 }
 
 {yuki_task_puppyplay_practice == 1:
-    {Practice_Attempts > Practice_Goal + 2:
+    {task_attempts > task_goal + 2:
         -> Yuki_Puppyplay_Punishment_Earned ->
     - else:
         -> Yuki_Puppyplay_Reward_Earned ->
     }
 }
 
-{Practice_Attempts > Practice_Goal + 2:
+{task_attempts > task_goal + 2:
     -> Yuki_Puppyplay_Punishment_Earned ->
 - else:
     -> Yuki_Puppyplay_Reward_Earned ->
@@ -157,7 +157,7 @@ Pay attention! #165
 - (retry)
 -> prompt ->
 ~ tries++
-~ Practice_Attempts++
+~ task_attempts++
 + [pose:{pose}] -> Yuki_GoodJob ->->
 + { tries < 2 } [timeout] -> retry
 
@@ -278,15 +278,15 @@ Pay attention! #165
 
 // Fill in shuffles with extra endings
 
-{ shuffle:
-    - -> yuki_reward_puppyplay_milking ->->
-    - -> yuki_reward_puppyplay_lickfeet ->->
-}
-
+// { shuffle:
+    // - -> yuki_reward_puppyplay_milking ->->
+    // - -> yuki_reward_puppyplay_lickfeet ->->
+// }
+->->
 = Bad_Ending_Director
 
 { shuffle:
-    - -> yuki_punishment_puppyplay_cage ->->
+    // - -> yuki_punishment_puppyplay_cage ->->
     - -> yuki_punishment_puppyplay_spanking ->->
     }
 

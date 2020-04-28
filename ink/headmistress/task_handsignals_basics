@@ -6,19 +6,25 @@
 = intro
 
 - (intro_again)
-/perform do_smooth_skirt
-
+/perform talk_behold happy 50
 The time has come to accelerate your performance, heathen. #01
-To earn your place as a  cherished possession, you must embody attentiveness! #02
+
+/perform do_smooth_skirt neutral
+To earn your place as a cherished possession, you must embody attentiveness! #02
+
+/perform talk_consider skeptical 
 Do you desire to be cherished, bauble? #03
+
+/perform idle_swaying
 
 + [yes]
     -> Headmistress_AcknowledgeYes ->
 
 + [no]
-    /perform react_disappointed
+    /perform react_disappointed angry 50
     -> Headmistress_Unhappy ->
     I will ask you again. #04
+    
     
     Do you desire to be cherished? #05
     
@@ -41,6 +47,8 @@ To be cherished, one must be entirely fixated upon one's Mistress. #08
 /perform do_arm_raise
 Come hither. #09
 
+/scene TheatreOpen.Ready
+
 + [move]
    
 + { tries < 2 } [timeout]
@@ -50,6 +58,8 @@ Come hither. #09
 + [distracted] -> Headmistress_PayAttention -> come
 
 - The time has come to train you to respond to commands without words. #10
+TODO: need a handsignal idle for when she is preparing to signal, but hasn't yet
+
 Attend to my hand, peasant. #11
 
 Through the delicate position of my fingers, #12
@@ -81,7 +91,14 @@ Do you seek to delight your Mistress, {isBoy: speck|foible}? #15
 + [timeout] -> Headmistress_Timeout -> delight
 + [distracted] -> Headmistress_PayAttention -> delight
 
-- /perform idle
+- Rise up to your feet, {player_name}. #56
+
+- (stand_straight)
+
++ [pose:raised_chin]
++ [timeout]-> Headmistress_NoAction -> stand_straight
+
+/perform idle
 The bond between a Mistress and her pet must be strong. #20
 Communication does not always require words, vassal. #21
 Simplicity. Elegance. Silence. #22
@@ -173,7 +190,7 @@ Wouldn't you agree, poppet? #46
     
 
 + [timeout] -> Headmistress_Timeout -> position
-+ [distracted] -> Headmistress_PayAttention -> position
+
 
 - In this position, your ass and nether regions are on full display. #49
 Ripe for punishment and eager for reward. #50
@@ -194,15 +211,15 @@ Can you feel the cool air caress your {isBoy: sack|slit}? #52
     
 
 + [timeout] -> Headmistress_Timeout -> caress
-+ [distracted] -> Headmistress_PayAttention -> caress
+
 
 - Rise up to your feet, {player_name}. #56
 Let us see how well you have absorbed this lesson. #57
 
-- (stand_straight)
+- (stand_straight2)
 
 + [pose:raised_chin]
-+ [timeout]-> Headmistress_NoAction -> stand_straight
++ [timeout]-> Headmistress_NoAction -> stand_straight2
 
 With merely a signal and a command,  #58
 I expect you to perform the correct basic response. #59
@@ -303,6 +320,23 @@ Now, leave my sight. #74
 
 I think you need more practice with your hand basic signals. #75
 That shall be your task for today. #76
+
+~ tries = 0
+- (come)
+~ tries++
+
+/perform do_arm_raise
+Come hither. #09
+
+/scene TheatreOpen.Ready
+
++ [move]
+   
++ { tries < 2 } [timeout]
+    -> come
++ { tries >= 2 } [timeout]
+    -> Headmistress_NoAction -> come
++ [distracted] -> Headmistress_PayAttention -> come
 
 -(begin)
 Shall we begin? #77
@@ -416,6 +450,23 @@ that you will proudly demonstrate them to an audience. #109
 ~ Headmistress_RaiseCurtains()
 They do so love an excellent performance. #110
 Fail not to perform, flawed one. #111
+
+~ tries = 0
+- (come)
+~ tries++
+
+/perform do_arm_raise
+Come hither. #09
+
+/scene TheatreOpen.Ready
+
++ [move]
+   
++ { tries < 2 } [timeout]
+    -> come
++ { tries >= 2 } [timeout]
+    -> Headmistress_NoAction -> come
++ [distracted] -> Headmistress_PayAttention -> come
 
 - (eyes)
 Can you feel all eyes upon you? #112
@@ -665,6 +716,8 @@ Go and contemplate your failure. #146
 ~ tries++
 
 /perform signal_humble
+
++[wait 2]
 
 { say_short_explanation:
     It is named <b> humble </b>. #156

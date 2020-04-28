@@ -69,7 +69,7 @@ Are you here to receive your reward? #08
 
 = check_task
 
-{ inTutorial: -> goodbye }
+{ inTutorial && deviation == tutorial: -> goodbye }
 { deviation == exhibitionism: -> goodbye }
 
 { punishments == 0 && rewards == 0:
@@ -79,7 +79,10 @@ Are you here to receive your reward? #08
     Shall I give you a task then? #14
 }
 
-+ [yes] -> choose_task
++ [yes] 
+    -> Headmistress_AcknowledgeYes ->
+    -> choose_task
+
 + [no] -> goodbye
 
 
@@ -106,7 +109,7 @@ Are you here to receive your reward? #08
 
 // Eventually we'll have the game randomly pick here.
 {shuffle:
-    - -> headmistress_reward_cunnilingus
+    // - -> headmistress_reward_cunnilingus
     - -> headmistress_reward_exhibitionism
 }
 

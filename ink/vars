@@ -62,9 +62,11 @@ VAR disobey = 0
 VAR reward_just_removed = false
 VAR punishment_just_removed = false
 VAR tries = 0
-VAR Practice_Counts = 0
-VAR Practice_Attempts = 0
-VAR Practice_Goal = 0
+VAR task_count = 0
+VAR task_attempts = 0
+VAR task_goal = 0
+VAR scene_goal = 0 
+VAR scene_count = 0 
 
 // Goddess Variables
 VAR goddess_regard = 0 

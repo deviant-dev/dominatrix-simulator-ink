@@ -6,7 +6,7 @@
 
 - (start)
 
-/scene Theatre.DeskApproach
+/scene TheatreOpen.Approach
 /music headmistress
 /character headmistress idle_clasp_hands
 
@@ -31,8 +31,8 @@
 
 { shuffle:
     - -> headmistress_task_handsignals_basics.practice ->
-    - -> headmistress_task_handsignals_endurance.practice ->
-    - -> headmistress_task_handsignals_furniture.practice ->
+    // - -> headmistress_task_handsignals_endurance.practice ->
+    // - -> headmistress_task_handsignals_furniture.practice ->
 }
 
 + [continue]

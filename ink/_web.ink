@@ -21,24 +21,25 @@ INCLUDE headmistress/intro
 INCLUDE headmistress/lore
 INCLUDE headmistress/generic_responses
 INCLUDE headmistress/apologize
-INCLUDE headmistress/punishment_flogging
+// INCLUDE headmistress/punishment_flogging
 INCLUDE headmistress/punishment_spanking
-INCLUDE headmistress/reward_cunnilingus
+// INCLUDE headmistress/reward_cunnilingus
 INCLUDE headmistress/reward_exhibitionism
-INCLUDE headmistress/reward_spanking
-INCLUDE headmistress/task_flogging
+// INCLUDE headmistress/reward_spanking
+// INCLUDE headmistress/task_flogging
 INCLUDE headmistress/task_handsignals
 INCLUDE headmistress/task_handsignals_basics
-INCLUDE headmistress/task_handsignals_endurance
-INCLUDE headmistress/task_handsignals_furniture
+// INCLUDE headmistress/task_handsignals_endurance
+// INCLUDE headmistress/task_handsignals_furniture
 INCLUDE headmistress/train_spanking
 INCLUDE nega/hub
 INCLUDE nega/intro
 INCLUDE nega/lore
 INCLUDE nega/generic_responses
 INCLUDE nega/greeting_tease
+INCLUDE nega/punishment_genital_torture
 INCLUDE nega/punishment_tease
-INCLUDE nega/punishment_trampling
+// INCLUDE nega/punishment_trampling
 INCLUDE nega/reward_dice
 INCLUDE nega/reward_forcedsex
 INCLUDE nega/reward_tease
@@ -48,23 +49,23 @@ INCLUDE yuki/generic_responses
 INCLUDE yuki/generic_puppyplay
 INCLUDE yuki/intro
 INCLUDE yuki/lore
-INCLUDE yuki/punishment_edging
+// INCLUDE yuki/punishment_edging
 INCLUDE yuki/punishment_puppyplay_spanking
-INCLUDE yuki/punishment_puppyplay_cage
-INCLUDE yuki/review
-INCLUDE yuki/reward_bathe
-INCLUDE yuki/reward_massage
+// INCLUDE yuki/punishment_puppyplay_cage
+// INCLUDE yuki/review
+// INCLUDE yuki/reward_bathe
+// INCLUDE yuki/reward_massage
 INCLUDE yuki/reward_puppyplay_milking
-INCLUDE yuki/reward_puppyplay_lickfeet
-INCLUDE yuki/task_fanning
+// INCLUDE yuki/reward_puppyplay_lickfeet
+// INCLUDE yuki/task_fanning
 INCLUDE yuki/task_puppyplay
 INCLUDE yuki/task_puppyplay_intro
 INCLUDE yuki/task_puppyplay_learn
 INCLUDE yuki/task_puppyplay_practice
-INCLUDE yuki/task_teaservice
+// INCLUDE yuki/task_teaservice
 INCLUDE yuki/train_spanking
 INCLUDE promo/devil_girl
-INCLUDE nega/punishment_genital_torture
+
 
 
 

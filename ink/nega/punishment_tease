@@ -1,3 +1,6 @@
+
+// writing status: in progress
+
 === nega_punishment_tease ===
  -> select_gender_check ->
 
@@ -21,8 +24,8 @@ You've only earned a little pain for that roll, {isBoy: worm|{isGirl:cunt|wretch
     - Let's get this over with so I can go find some /real/ fun.
 }
 
-- /perform do_rub_hands_together excited 75
-I love it when the dice let me get nasty.
+- /perform idle_swaying excited 75
+At least I get to hurt you... a little.
 
 /perform talk_lean_forward amused 75
 Poor {isBoy: fuckup|stain}.

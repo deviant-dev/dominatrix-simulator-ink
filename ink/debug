@@ -137,14 +137,14 @@
 ~ temp cameFromHub = current_mistress == None
 ~ setScene(intro_scene, Nega)
 
-/music nega
-/ambient howling-wind
+// /music nega
+// /ambient howling-wind
 
 //-> nega_intro.nega_tease
 // -> nega_intro.skip_checks
-/scene Attic.Ready
-/character nega
--> nega_intro.check_reward
+// /scene Attic.Ready
+// /character nega
+// -> nega_intro.check_reward
 
 // -> nega_reward_forcedsex
 // /scene attic.reward_forcedsex2
@@ -154,7 +154,7 @@
 // -> nega_reward_forcedsex.pussy_wet
 // -> nega_reward_dice.test_dice
 //-> nega_reward_tease
-// -> nega_punishment_genital_torture
+-> nega_punishment_genital_torture
 
 
 ->->

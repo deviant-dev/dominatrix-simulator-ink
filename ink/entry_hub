@@ -22,8 +22,8 @@
 /music entry
 /ambient rain
 
-+ {LIST_VALUE(goddess_hub_status)} [move: Goddess ({goddess_hub_status})]
-    -> tryEnter(goddess_hub_status, -> goddess_hub, -> exit)
+// + {LIST_VALUE(goddess_hub_status)} [move: Goddess ({goddess_hub_status})]
+//     -> tryEnter(goddess_hub_status, -> goddess_hub, -> exit)
 + [move: Yuki] -> yuki_hub
 + [move: Nega] -> nega_hub
 + [move: Headmistress] -> headmistress_hub

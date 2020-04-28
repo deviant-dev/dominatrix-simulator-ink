@@ -114,12 +114,14 @@ TODO: create new 'spank_puppy' anim
     
     {shuffle:
     - Now you have to start over! #20
-    - Are you even trying? Start back at 1. #21
+    - Are you even trying? #41
+    Start back at one. #21
     - I thought the Headmistress trained you to take a spanking?  #22
     Time to start again. #23
     }
     
-    Listen puppy. You have to perform every spanking perfectly to finish your punishment. #24
+    Listen puppy. #42
+    You have to perform every spanking perfectly to finish your punishment. #24
     -- (spank_ready)
     Ready? #25
     
@@ -142,7 +144,8 @@ Leave and don't come back until you're sorry! #26
 = spank_success
 
 - /perform idle_pleased
-All done! Are you proud of yourself, puppy?  #27
+All done! #43
+Are you proud of yourself, puppy?  #27
 
     +[yes]
     /perform idle_tease
@@ -178,7 +181,7 @@ All done! Are you proud of yourself, puppy?  #27
     - Show me you're sorry, puppy.  #32
     - I want to see you show me you're sorry! #33
     }
-
+ 
 + [pose:puppy_sorry]
 + { tries < 2 } [timeout] -> Yuki_Interested -> sorry
 + { tries >= 2} [timeout] -> Yuki_CheckIfInterested -> sorry

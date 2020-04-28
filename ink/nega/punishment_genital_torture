@@ -4,7 +4,7 @@
 
 /scene Attic.Ready
 /music nega2
-/ambient off
+/ambient howling-wind
 /character nega
 
 //slit, maggot, worm, meatbag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cumbucket, skank, pillow biter, tease
@@ -35,101 +35,347 @@
 // soft, but rough praise
 // send them away
 
-- Let's have some fun fucking up your genitals.
+- /perform do_rub_hands_together excited 75
+I love it when the dice let me get nasty.
+
+/perform idle_swaying
 
 {shuffle:
     - There's no point being kind to you,
-    because you're a pathetic stain 
-    who deserves to be mistreated.
-    - You're a piece of shit who likes to suffer.
+        because you're a pathetic stain 
+        who deserves to be mistreated.
+    - And you're a piece of shit who likes to suffer.
+    - And you're a filthy, little pig who wants me to get nasty.
 }
 
 - (mistreated)
 Aren't you?
 
-    +[yes]
-    ~ addObey()
-       Of course you are.
+    + [yes]
+        ~ addObey()
+        Of course you are.
       
-    +[no]
-     ~ addDisobey()
+    + [no]
+        ~ addDisobey()
         {shuffle:
             - -> Nega_Unhappy ->
-            - I already know you are. 
+            I already know you are. 
             That's why you're here.
         }
- + [timeout] -> Nega_Timeout -> mistreated
- + [distracted] -> Nega_PayAttention -> mistreated
++ [timeout] -> Nega_Timeout -> mistreated
++ [distracted] -> Nega_PayAttention -> mistreated
 
+
+- /perform do_throat_cut disgusted
 And I know just how to make you suffer, meatbag.
+
+/perform tease_caress_breast_left excited
+Let's have some fun fucking up your genitals!
+
+What do you think about that, skank?
+
+- (consent)
+Want to torture yourself for me 
+to prove what a pathetic fleshbag you really are?
+
+ + [yes]
+    ~ addObey()
+    -> Nega_Insult ->
+    I'm going to make sure you suffer for it.
+      
+    + [no]
+        ~ addDisobey()
+        {shuffle:
+            - -> Nega_Unhappy ->
+            - I don't believe you.
+        }
+        
+        -- (confirm_consent)
+            I know you're a dirty whore like you wants to torture yourself for me.
+            Don't you?
+        
+        ++ [yes]
+            That's what I fucking thought!
+            
+        ++ [no]
+            Goddamnit.
+            Get the fuck out of here!
+            -> exit
+            
+        ++ [timeout] -> Nega_Timeout -> confirm_consent
+        ++ [distracted] -> Nega_PayAttention -> confirm_consent
+        
++ [timeout] -> Nega_Timeout -> consent
++ [distracted] -> Nega_PayAttention -> consent
+
 
 --> torture
 
+
 = torture
 
+~ scene_goal = RANDOM (2,4)
+~ scene_count = 0
+
+- (torture_repeat)
+
 {shuffle:
-    - -> slap_genitals
-    - -> yank_genitals
-    - -> pinch_genitals
-    // - -> squeeze_genitals
-    // - -> rub_genitals
-    // - -> nails_genitals
-    // - -> flick_genitals
-    // - -> nails_skin
-    // - -> pinch_nipple
-    // - -> nails_nipple
-    // - -> pull_nipple
-    // - -> flick_nipple
+    // - -> slap_genitals ->
+    - -> flick_genitals ->
+    // - -> yank_genitals ->
+    // - -> pinch_genitals ->
+    // - -> squeeze_genitals ->
+    // - -> rub_genitals ->
+    // - -> nails_genitals ->
+    // - -> nails_skin ->
+    //nails can be digging on different parts or scratching different parts
+    // - -> pinch_nipple ->
+    // - -> nails_nipple ->
+    // - -> pull_nipple ->
+    // - -> flick_nipple ->
+    // - -> twist_nipple ->
+    // have one nipple choice that is long and one that is short
+    // - -> rub_nipple ->
+    }
+
+~ scene_count++
+/log scene progress {scene_count} / {scene_goal}
+
+{ scene_count < scene_goal: 
+    {shuffle:
+        - Enough of that one. 
+        - Okay, stop!
+        - Piggy can stop.
+    }
+    {shuffle:
+        - Time to switch gears.
+        - Let's try something different.
+        - Now, let's get creative.
+    }
+    
+    {shuffle:
+        - I really want to fuck you up!
+        - Let's make piggy squeal!
+        - Time to experiment with more pain!
+    }
+    
+-> torture_repeat
+
 }
 
-- (slap_genitals)
+-> torture_end
+
+
+= slap_genitals
+
+I'm gonna to start counting.
 /perform tease_slap_pussy aroused
-Reach down and start slapping that {hasPenis: cock|pussy}.
+And you're going to reach down and slap that {hasPenis: cock|pussy} each time I do.
+/perform talk_one_finger angry 50
+One smack for each count.
+
+-/perform talk_threaten disgusted 50
+It better fucking hurt!
+/perform idle_unhappy angry 50
+Hard enough to make you jerk your head.
+/perform react_scoffs skeptical
+Fuck up and I start over.
+
+- (ready)
+/perform talk_lean_forward amused
+Got it?
+
++[yes]
+    ~ addObey()
+
++[no]
+    ~ addDisobey()
+    -> check_ready
+
+
++ [timeout] -> Nega_Timeout -> ready
++ [distracted] -> Nega_PayAttention -> ready
+
+- ~ task_goal = RANDOM(3,10)
 
 - (try_slap_genitals)
-Make it hard enough to hurt!
-And don't stop until I tell you to.
+
+~ task_count = 1
+
+/log Goal = {task_goal}
+
+- (try_slap_react)
+
+/wait 1 
+
+-> SayNumber(task_count) ->
 
 + [react-success]
-     -> Nega_GoodJob ->
 + [react-fail]
     -> Nega_BadJob ->
+    Looks like we have to start all over.
     -> try_slap_genitals
 
-- That's it. Keep going!
-I want to hear how bad it hurts.
+- ~ task_count++
+/log Progress = {task_count} / {task_goal}
 
--> RandomCommentLoop (-> humiliation_comment, 3, 5, 2, 5) ->
-- -> Nega_GoodJob ->
+{
+    - task_count == 1:
+        -> Nega_GoodJob ->
+        Keep going!
+    - task_count == 4:
+        -> humiliation_comment ->
+    - task_count == 7:
+        -> humiliation_comment ->
+}
+
+{task_count <= task_goal: -> try_slap_react}
+
 
 
 ->->
 
-- (yank_genitals)
-/perform tease_slap_pussy aroused
-Reach down and start slapping that {hasPenis: cock|pussy}.
+= flick_genitals
 
-- (try_yank_genitals)
-Make it hard enough to hurt!
-And don't stop until I tell you to.
+Time for me to start counting!
+
+And my pathetic little whore is going to do it while flicking your {hasPenis: tip|clit}.
+
+- (ready)
+/perform talk_lean_forward amused
+Understood?
+
++[yes]
+    ~ addObey()
+
++[no]
+    ~ addDisobey()
+    -> check_ready
+
+
++ [timeout] -> Nega_Timeout -> ready
++ [distracted] -> Nega_PayAttention -> ready
+
+/perform talk_one_finger amused
+One smack for each count.
+
+-/perform talk_threaten disgusted 50
+It better fucking hurt!
+/perform idle_unhappy angry 50
+Hard enough to make you jerk your head.
+/perform react_scoffs skeptical
+Fuck up and I start over.
+
+
+- ~ task_goal = RANDOM(3,10)
+
+- (try_flick_genitals)
+
+~ task_count = 1
+
+/log Goal = {task_goal}
+
+- (try_flick_react)
+
+/wait 1 
+
+-> SayNumber(task_count) ->
 
 + [react-success]
-     -> Nega_GoodJob ->
 + [react-fail]
     -> Nega_BadJob ->
-    -> try_yank_genitals
+    Looks like we have to start all over.
+    -> try_flick_genitals
 
-- That's it. Keep going!
+- ~ task_count++
+/log Progress = {task_count} / {task_goal}
 
--> RandomCommentLoop (-> humiliation_comment, 3, 5, 2, 5) ->
-- -> Nega_GoodJob ->
+{
+    - task_count == 1:
+        -> Nega_GoodJob ->
+        Keep going!
+    - task_count == 4:
+        -> humiliation_comment ->
+    - task_count == 7:
+        -> humiliation_comment ->
+}
+
+{task_count <= task_goal: -> try_flick_react}
+
 
 
 ->->
+= yank_genitals
 
-- (pinch_genitals)
-/perform tease_slap_pussy aroused
-Reach down and start slapping that {hasPenis: cock|pussy}.
+/perform tease_grab_pussy aroused
+I wanna see you grab that filthy {hasPenis: sack|pussy lips} and start yanking!
+
+- (handle)
+Can you handle it, little piggy?
+
++[yes]
+    ~ addObey()
+
++[no]
+     ~ addDisobey()
+     -- -> check_ready
+   
+            
++ [timeout] -> Nega_Timeout -> handle
++ [distracted] -> Nega_PayAttention -> handle
+
+
+
+- (start_yank)
+
+{shuffle:
+    - ~ task_goal = 3
+    - ~ task_goal = 5
+    - ~ task_goal = 10
+}
+
+~ task_count = task_goal
+
+/log timer = {task_goal}
+
+Don't stop pulling until I tell you to.
+Let's count you down.
+
+// 3, 5, 10
+{ 
+    - task_goal < 5:
+        We'll keep this short.
+    - task_goal == 5:
+        I wanna make sure you suffer a bit.
+    - task_goal > 5:
+        I'll bet your a tough {isBoy: dog|bitch}.
+}
+
+- (yank_again)
+
+-> SayNumber(task_count) ->
+
+~ task_count--
+
+{
+    - task_count == 7:
+        -> Nega_Insult ->
+    - task_count == 4 && task_goal > 5:
+        -> Nega_Aroused ->
+        Keep pulling.
+    - else:
+        /wait 1
+}
+
+{task_count > 0: -> yank_again}
+
+-> Nega_GoodJob ->->
+
+
+= pinch_genitals
+
+/perform tease_grab_pussy aroused
+Now. I want you to grab that {hasPenis: tiny pecker of yours and pinch the head hard|fat clit of yours and pinch it hard}.
 
 - (try_pinch_genitals)
 Make it hard enough to hurt!
@@ -148,16 +394,18 @@ And don't stop until I tell you to.
 
 
 ->->
+
+
 = humiliation_comment
 
 { shuffle:
     - -> Nega_Objectify ->
-    - -> Nega_Insult ->
     - -> Nega_Aroused ->
     - -> torture_comments ->
 }
 
 ->->
+
 
 = torture_comments
 
@@ -169,6 +417,54 @@ And don't stop until I tell you to.
     - Pant for me, dog. 
     - Your pain is my pleasure. 
     - Wallow in the ache, whore.
+    - I want to hear how bad it hurts.
+    - I can't hear you.
+    - I don't think you're doing it hard enough.
+    - I thought you wanted to suffer for me? Harder!
+}
+
+->->
+
+
+= check_ready
+Are you a fucking wimp who can't take a little torture?
+      
+        ++ [yes]
+            Then get the fuck out!
+            -> exit
+            
+        ++ [no]
+            Good. 
+            Then get to it!
+            -> try_slap_genitals
+            
+        ++ [timeout] -> Nega_Timeout -> check_ready
+        ++ [distracted] -> Nega_PayAttention -> check_ready 
+->->
+
+= torture_end
+
+/perform react_head_toss_casual amused
+I'm done with you. 
+Get out.
+/perform idle_sassy
+
+-> exit
+
+
+= SayNumber(n)
+{
+    - n == 1: One. #1
+    - n == 2: Two. #2
+    - n == 3: Three. #3
+    - n == 4: Four. #4
+    - n == 5: Five. #5 
+    - n == 6: Six. #6
+    - n == 7: Seven. #7
+    - n == 8: Eight. #8
+    - n == 9: Nine. #9
+    - n == 10: Ten. #10
+    - else: /logError Can't say number '{n}'.
 }
 ->->
-->->
+

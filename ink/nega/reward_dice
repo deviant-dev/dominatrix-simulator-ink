@@ -212,11 +212,11 @@ You get nothing, of course, but for a roll like that... #28
 
 /perform squat
 { negaLoreEmpty():
-    perhaps I'll make an exception. #29
+    Perhaps I'll make an exception. #29
     -> check_consent ->
     -> result_punishment_tease_no_intro
 - else:
-    perhaps I'll let you in on a little secret. #30
+    Perhaps I'll let you in on a little secret. #30
     -> nega_lore
 }
 
@@ -267,9 +267,9 @@ but I bet I can still make you squirm. #37
 TODO: Randomly select from Nega's 'tease punishment' scenes here.
 
 - (result_punishment_tease_no_intro)
-{shuffle:
-    - -> nega_punishment_trampling
-}
+// {shuffle:
+//     - -> nega_punishment_trampling
+// }
 
 
 - (result_punishment_light)
@@ -281,9 +281,9 @@ That means your ass is mine. #39
 -> check_consent ->
 
 TODO: Randomly select from Nega's 'light punishment' scenes here.
-{shuffle:
-    - -> nega_punishment_trampling
-}
+// {shuffle:
+//     - -> nega_punishment_trampling
+// }
 
 
 - (result_punishment_hard)
@@ -296,9 +296,9 @@ Three skulls. I'm going to enjoy <i>this</i>. #41
 -> check_consent ->
 
 TODO: Randomly select from Nega's 'hard punishment' scenes here.
-{shuffle:
-    - -> nega_punishment_trampling
-}
+// {shuffle:
+//     - -> nega_punishment_trampling
+// }
 
 
 = intro_change_dice

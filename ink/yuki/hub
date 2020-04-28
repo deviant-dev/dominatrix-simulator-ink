@@ -83,7 +83,7 @@ No punishments or rewards, huh? #13
 {deviation == puppyplay:
     {shuffle:
         - -> yuki_reward_puppyplay_milking
-        - -> yuki_reward_puppyplay_lickfeet
+        // - -> yuki_reward_puppyplay_lickfeet
     }
 
 - else:
@@ -91,7 +91,7 @@ No punishments or rewards, huh? #13
         //- -> yuki_reward_bathe
         //- -> yuki_reward_massage
         - -> yuki_reward_puppyplay_milking
-        - -> yuki_reward_puppyplay_lickfeet
+        // - -> yuki_reward_puppyplay_lickfeet
     
         // Put more reward scenes here.
     }
@@ -102,14 +102,14 @@ No punishments or rewards, huh? #13
 
 {deviation == puppyplay:
     {shuffle:
-        - -> yuki_punishment_puppyplay_cage
+        // - -> yuki_punishment_puppyplay_cage
         - -> yuki_punishment_puppyplay_spanking
     }
 
 - else:
     {shuffle:
         // - -> yuki_punishment_edging
-        - -> yuki_punishment_puppyplay_cage
+        // - -> yuki_punishment_puppyplay_cage
         - -> yuki_punishment_puppyplay_spanking
         // Put more punishment scenes here.
     }

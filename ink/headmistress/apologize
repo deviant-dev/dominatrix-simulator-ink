@@ -1,3 +1,5 @@
+// writing status: in progress
+
 = apology_check(-> accept, -> reject)
 
 {not headmistress_apologize: -> accept}
