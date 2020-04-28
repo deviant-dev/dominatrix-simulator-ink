@@ -56,23 +56,26 @@
 //play some kind of dischordant sound when the player enters?
 = start
 
-/perform idle_bored
+/perform idle_bored amused 45
 Don't worry, pretty {player_name}. #01
 Expect that to happen once in a while. #02
 
-/perform talk_behold
+/perform talk_lean_forward amused 75
 Walk out one door, expecting to arrive somewhere, #03
+
+/perform talk_one_finger happy 50
 and suddenly find yourself somewhere else. #04
+
+/perform talk_behold skeptical 60
 You could think of them as ... #05
-/perform do_air_quotes
+
+/perform do_air_quotes happy 60
 "interlewds", I suppose. #06
 
-/perform react_shrug_long
-
+/perform react_dismissive skeptical 75
 You'll get used to it. #07
 
-+ [wait]
-- /perform idle_sassy
+- /perform idle_bored aroused 70
 I pulled in a little favor to make sure #08
 that kiss-ass Yuki wasn't paying attention. #09
 
@@ -80,78 +83,113 @@ that kiss-ass Yuki wasn't paying attention. #09
 {yuki_intro.Nega_finish: -> nega_tease }
 
 - (yuki_warning)
-/perform idle_tease
+
+/perform talk_lean_forward angry 75
 I bet she told you not to talk to me, didn't she? #10
 
 + [yes]
     ~ addObey()
-    /perform talk_lean_forward
+
+    /perform react_disappointed sad 35
     Don't waste your time with that simpering brat. #11
-    /perform react_head_toss_casual
+
+    /perform react_excited happy 75
     Oh sure, she'll be all sweet and attentive, #12
+
+    /perform react_crazy_gesture sad 65
     but she'll bore the shit out of you eventually. #13
-    /perform idle_sassy
+
+    /perform idle_sassy aroused 40
     Stick with me if you really want to have some fun. #14
-    
+
 + [no]
     ~ addDisobey()
-    /perform idle_unhappy
+
+    /perform react_thankful skeptical 65
     No? I'm sure she would have. #15
+
+    /perform talk_consider amused 50
     You must be some kind of idiot who doesn't listen. #16
-    /perform talk_lean_forward
+
+    /perform react_point_at_player_angry angry 60
     Don't pull that shit with me. #17
-    /perform talk_behold
+
+    /perform react_dumb happy 45
     Try to play dumb all you want,  #18
+
+    /perform idle_unhappy angry 30
     but you better do what you're fucking told. #19
-    
+
 + [timeout]
     /perform idle_cocks_head_to_left
     Well? #20
     -> yuki_warning
 
++[distracted] -> Nega_PayAttention -> yuki_warning
+
 - (nega_tease)
-/perform do_inspect
+
+/perform do_inspect aroused 40
 How's that cute little ass of yours? #21
+
+/perform talk_consider aroused 45
 I enjoyed the show. #22
+
+- (nega_tease_again)
+
 /perform tease_ass_caress amused 60
 Does your poor tushy sting? #23
-/perform idle amused 30
+/perform idle_sassy amused 30
 
 + [yes]
     ~ addObey()
-    /perform react_whatever
+
+    /perform  react_thankful amused 60
     Poor wittle baby. #24
-    
+
 + [no]
     ~ addDisobey()
-    /perform talk_consider
-    Oh, a tough {isBoy:guy|girl}, huh? #25
-    Nice. #26
-    
-//have player present ass before she gets them to give up their stone 
-- /perform idle_tease
 
-{headmistress_masturbated_for_crowd: 
+    /perform talk_consider aroused 50
+    Oh, a tough {isBoy:guy|girl}, huh? #25
+
+    /perform do_fist_pump excited 65
+    Nice. #26
+
++ [timeout] -> Nega_Timeout -> nega_tease_again
+
++ [distracted] -> Nega_PayAttention -> nega_tease_again
+
+//have player present ass before she gets them to give up their stone
+-{headmistress_masturbated_for_crowd:
+    /perform talk_lean_forward aroused 60
     You're such a slut for an audience. #27
-- else: 
+
+- else:
+
+    /perform idle_bored sad 25
     Too bad you didn't want to perform more. #28
 }
 
-/perform do_inspect
+/perform talk_question skeptical 35
 Let's have a look. #29
 
 - (present_ass)
+
 /perform react_point_at_player_angry angry 40
 Turn around and bend over. #30
-/perform idle
+
+/perform talk_lean_forward angry 60
 Hands on your knees and ass in the air! #31
 
 + [pose:present_ass_reverse]
 + [no] -> Nega_CheckIfInterested -> present_ass
 + [timeout] -> present_ass
 
-- /perform idle_sassy amused 75
+- /perform tease_bend_over amused 75
 My, my. Your ass turns a nice shade of pink. #32
+
+/perform idle_unhappy amused 65
 She does such good work. #33
 
 TODO: Support 'wiggle' action
@@ -161,10 +199,11 @@ TODO: Support 'wiggle' action
 
 // //check to see if the headset wiggles?
 
-// + [wiggle-success:5] 
-//     -> Nega_GoodJob -> 
+// + [wiggle-success:5]
+//     -> Nega_GoodJob ->
 //     ++ [wiggle-success:5]
 //         That's enough.  #35
+        /perform idle_cocks_head_to_left amused 25
         Turn back around and present yourself.  #36
 //         ~ addObey()
 // + [wiggle-timeout]
@@ -184,55 +223,90 @@ TODO: Support 'wiggle' action
 // + [no] -> CheckIfInterested -> stand_straight
 
 - (check_reward)
-/perform talk_behold skeptical 40
+/perform talk_question amused 35
 Now. You have something I want. #38
+
+/perform talk_one_finger happy 45
 Once you give it to me, it's gone. No take-backsies! #39
+
+/perform talk_consider aroused 50
 You have to give it to me to play. #40
+
+/perform talk_lean_forward skeptical 65
 Those are the rules. #41
 
+/perform talk_threaten angry 65
 And I better warn you, I don't always play nice,  #42
+
+/perform idle_cocks_head_to_left amused 45
 so you better think hard before you give it to me. #43
 
-- /perform talk_lean_forward skeptical 50
+- (check_reward_loop)
+
+/perform talk_lean_forward skeptical 50
 What are you going to do, pretty {player_name}? #44
-/emotion amused 50
+
+/perform idle_tease aroused 65
 Do you want to try your luck? #45
 
 + [yes]
     ~ addObey()
-    /perform idle_tease
+
+    /perform do_fist_pump excited 65
     That's right. #46
+
+    /perform do_tap_wrist happy 40
     You're going to give me that lovely little Bloodstone. #47
+
+    /perform talk_lean_forward aroused 75
     Maybe you'll get lucky and get something nice in return. #48
     -> nega_reward_dice
 
++ [timeout]
+
+    /perform idle skeptical skeptical 65
+    Well. Are you going to give me what I want? #55
+    {inTutorial:->check_reward|->check_reward_loop}
+    //Can't find a way to test this logic statement, halp
+
++ [distracted] -> Nega_PayAttention -> check_reward_loop
+    //Had to move timeout and distracted here to make them work properly
+
+
 + [no]
     ~ addDisobey()
-    /perform talk_thoughtful
+
+    /perform talk_annoyed amused 35
     What a fucking pity. #49
+    - (check_reward_again)
+
+    /perform idle_sassy aroused 75
     Are you sure you don't want to give me that pretty Bloodstone? #50
-    
+
     ++[yes]
         ~ addDisobey()
-        /perform idle_unhappy
+
+        /perform idle_unhappy_stomp angry 45
         Stop wasting my time! #51
+
+        /perform do_get_the_fuck_out angry 95
         Get the fuck out of here. #52
         -> exit
-    
+
     ++[no]
         ~ addObey()
-        /perform tease_caress_breast_left aroused 75
+
+        /perform tease_caress_breast_left aroused 40
         Very good.  #53
+
+        /perform talk_behold aroused 75
         I can be a lot of fun with the right... toy. #54
          -> nega_reward_dice
-         
-+ [timeout]
-    /perform idle skeptical
-    Well. Are you going to give me what I want? #55
-    -> check_reward
 
+    ++[distracted] -> Nega_PayAttention -> check_reward_again
 
-+[distracted] -> Nega_PayAttention -> nega_reward_dice
+    ++[timeout] -> Nega_Timeout -> check_reward_again
+
 
 
 // When the Goddess interrupts Nega playing with the player.
@@ -242,14 +316,15 @@ TODO: Shake attic? Vibrate controllers with rumble?
 /sound goddess_interruption
 /ambient none
 /wait 2
-/perform sex_squat_idle angry
 
+/perform sex_squat_idle angry 60
 Damn it! I was just getting started. #132
 
-/perform idle_unhappy_stomp disgusted
 /music goddess
 /wait 1
 /scene None
+
+/perform idle_unhappy_stomp angry 75
 Don't worry. You'll get yours. #133
 
 ~ tutorial_nega_intro_surprise_complete = true
@@ -281,8 +356,3 @@ That's what you get for crossing me, you little bitch. #58
 ~ tutorial_nega_intro_spiteful_complete = true
 ~ tutorial_nega_intro_complete = true
 -> goddess_monitoring_intro.angry
-
-
-
-
-
