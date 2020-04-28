@@ -10,13 +10,25 @@
 - (give_reward)
 
 
-/character nega do_hand_out
-{shuffle:
-    - Hand it over. #01
-    - Gimme! #07
-    - Oooo. Give it here.  #08
-    - Now, give it to me.
-    - Time to pay up!
+
+{cycle:
+
+    - /perform do_hand_out angry 60
+    Hand it over. #01
+
+    - /perform do_hand_out excited 25
+    Gimme! #07
+
+    - /perform do_hand_out happy 40
+    Oooo. Give it here.  #08
+
+    - /perform idle_unhappy_stomp angry 55
+    Now, give it to me.
+      /perform do_hand_out angry 55
+
+    - /perform talk_lean_forward amused 65
+    Time to pay up!
+      /perform do_hand_out amused 65
 }
 
 + [pose:present_wrist_reward]
@@ -24,55 +36,76 @@
 + [no] -> Nega_CheckIfInterested -> give_reward
 + [distracted] -> Nega_PayAttention -> give_reward
 
-- /perform do_swipe_hand_fast
+- /perform do_swipe_hand_fast excited 25
 ~ removeReward()
 
-/perform react_whatever excited 40
+
 {cycle:
-    - Fuck yeah! #02
-    - Hot damn!
-    - Mrow!
+
+    - /perform do_fist_pump happy 65
+    Fuck yeah! #02
+
+    - /perform react_excited aroused 45
+    Hot damn!
+
+    - /perform tease_stroke_motion amused 55
+    Mrow!
+
     - -> Nega_GoodJob ->
 }
 
-/perform talk_threaten aroused 50
-{cycle:
-    - You're my bitch now. #03
-    - Thanks for the treat, fuckup!
-    - Your ass is mine!
-    - You're going to get what you deserve.
-    - You're in for it now!
-    - This'll be fun! For me at least!
+{shuffle:
+
+    - /perform do_fist_pump aroused 45
+    You're my bitch now. #03
+
+    - /perform idle_sassy happy 45
+    Thanks for the treat, fuckup!
+
+    - /perform react_point_at_player_angry aroused 65
+    Your ass is mine!
+
+    - /perform talk_lean_forward amused 55
+    You're going to get what you deserve.
+
+    - /perform do_shake_finger_stern happy 35
+    You're in for it now!
+
+    - /perform do_rub_hands_together excited 45
+    This'll be fun! For me at least!
 }
 
-
+/perform talk_one_finger amused 65
 Let's see what you're going to get #04
+
+/perform tease_bend_over aroused 45
 for this pretty little gift. #05
 
-/perform squat
+/perform squat excited 35
 Get down here. #09
 
 + [pose:kneel]
-    
+
 
 - (test_dice)
-/perform squat_dice_give
+/perform squat_dice_give amused 35
 Time to play a little game. #10
-/wait 2
+/wait 1
 
 - (hold)
-/perform squat_dice_shake
+/perform squat_dice_shake amused 45
 Take the dice and give them a good shake. #11
 
 
 + [hold:dice!]
-+ [timeout:5] -> Nega_BadJob -> hold
++ [timeout:5] -> Nega_BadJob_Squatting -> hold
 
-- (roll) 
+- (roll)
+/perform squat excited 25
 Go ahead. Roll them bones. #06
 
 + [roll!] -> rolled
-+ [timeout] -> Nega_BadJob -> roll
++ [timeout] -> Nega_BadJob_Squatting -> roll
 
 // 'Roll' event will force the script into this thread.
 = rolled
@@ -82,7 +115,7 @@ Go ahead. Roll them bones. #06
 ~ temp result3 = getNegaDie3()
 ~ temp result = result1 + result2 + result3
 
-/notify title="Dice Roll Results" delay=10 text="<> 
+/notify title="Dice Roll Results" delay=10 text="<>
 ~ rollToText(result1)
 <> + <>
 ~ rollToText(result2)
@@ -91,19 +124,19 @@ Go ahead. Roll them bones. #06
 <>"
 
 {
-    - inTutorial && result > 0: -> intro_reward 
-    - inTutorial: -> intro_change_dice 
-    
-    - result == 3: -> result_reward_hard 
-    - result == 2: -> result_reward_light 
-    - result == 1: -> result_reward_tease 
-    
-    - result1 == 0 && result2 == 0 && result3 == 0: -> result_all_blank 
-    - result == 0: -> result_no_reward 
+    - inTutorial && result > 0: -> intro_reward
+    - inTutorial: -> intro_change_dice
 
-    - result == -1: -> result_punishment_tease 
-    - result == -2: -> result_punishment_light 
-    - result == -3: -> result_punishment_hard 
+    - result == 3: -> result_reward_hard
+    - result == 2: -> result_reward_light
+    - result == 1: -> result_reward_tease
+
+    - result1 == 0 && result2 == 0 && result3 == 0: -> result_all_blank
+    - result == 0: -> result_no_reward
+
+    - result == -1: -> result_punishment_tease
+    - result == -2: -> result_punishment_light
+    - result == -3: -> result_punishment_hard
 }
 
 - (result_reward_hard)
@@ -157,7 +190,7 @@ TODO: Randomly select from Nega's 'light reward' scenes here.
 }
 
 /lookat player
-/perform 
+/perform
 Not bad. But not great. #25
 I suppose you deserve a little something for that. #26
 
@@ -196,7 +229,7 @@ TODO: Write 'no reward' dialog here.
 Well look at that. Skull and cup cancel each other out. #31
 
 /lookat player
-Nothing for you today. 
+Nothing for you today.
 -> Nega_Insult ->
 
 {shuffle:

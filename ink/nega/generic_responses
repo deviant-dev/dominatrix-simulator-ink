@@ -3,22 +3,54 @@
 /character nega
 
 {shuffle:
-    - That's it, little bitch. #01
-    - Just like that. #02
-    - Maybe you aren't a waste of time. #03
-    - Not bad. #04
-    - Huh. Maybe I will get to have a little fun after all. #05
-    - You're making my pussy wet. #06
-    - Toying with you is so much fun! #07
-    - Good little {isBoy: meatbag|slit}. #08
-    - I'm glad you came to see me. #09
-    - Oh, yeah. #10
-    - Mmmmm. #11
-    - So hot! #12
-    - Good fucktoy. #13
-    - Nice! #14
-    - What a slut! #15
-    - I'm impressed, slut. #16
+
+    -
+    That's it, little bitch. #01
+
+    -
+    Just like that. #02
+
+    -
+    Maybe you aren't a waste of time. #03
+
+    -
+    Not bad. #04
+
+    -
+    Huh. Maybe I will get to have a little fun after all. #05
+
+    -
+    You're making my pussy wet. #06
+
+    -
+    Toying with you is so much fun! #07
+
+    -
+    Good little {isBoy: meatbag|slit}. #08
+
+    -
+    I'm glad you came to see me. #09
+
+    -
+    Oh, yeah. #10
+
+    -
+    Mmmmm. #11
+
+    -
+    So hot! #12
+
+    -
+    Good fucktoy. #13
+
+    -
+    Nice! #14
+
+    -
+    What a slut! #15
+
+    -
+    I'm impressed, slut. #16
 }
 
 
@@ -27,24 +59,98 @@
 
 
 === Nega_BadJob ===
-/emotion angry 75
+/character nega
 
 {shuffle:
-    - Stupid {isBoy:  prick|cunt}. #01
-    - You're fucking up! #02
-    - You better entertain me, {isBoy: worm|whore}. #03
-    - Try harder! #04
-    - You're doing it wrong. #05
-    - Useless. #06
-    - Pathetic. #07
-    - Ugggh. #08
-    - I'm not happy. #09
-    - You're boring me. #10
-    - How lame. #11
-    - Unworthy slut! #12
-    - Grrrr. #13
-    - Waste of time. #14
-    - I don't know why I bother. #15
+
+    - /perform react_dumb angry 65
+    Stupid {isBoy:  prick|cunt}. #01
+
+    - /perform react_point_at_player_angry angry 70
+    You're fucking up! #02
+
+    -/perform idle_unhappy_stomp angry 65
+    You better entertain me, {isBoy: worm|whore}. #03
+
+    - /perform talk_annoyed skeptical 70
+    Try harder! #04
+
+    - /perform react_scoffs disgusted 65
+    You're doing it wrong. #05
+
+    - /perform talk_annoyed angry 55
+    Useless. #06
+
+    - /perform react_dismissive angry 45
+    Pathetic. #07
+
+    - /perform react_whatever disgusted 65
+    Ugggh. #08
+
+    - /perform idle_unhappy_stomp sad 75
+    I'm not happy. #09
+
+    - /perform react_dismissive skeptical 65
+    You're boring me. #10
+
+    - /perform react_dismissive skeptical 55
+    How lame. #11
+
+    - /perform talk_threaten angry 85
+    Unworthy slut! #12
+
+    - /perform talk_lean_forward angry 85
+    Grrrr. #13
+
+    - /perform idle_cocks_head_to_left sad 65
+    Waste of time. #14
+
+    - /perform react_resigned skeptical 35
+    I don't know why I bother. #15
+}
+
+->->
+
+=== Nega_BadJob_Squatting ===
+/character nega
+
+{shuffle:
+
+    - /emotion angry 65
+    Stupid {isBoy:  prick|cunt}. #01
+
+    - /emotion angry 70
+    You're fucking up! #02
+
+    - /emotion skeptical 70
+    Try harder! #04
+
+    - /emotion disgusted 65
+    You're doing it wrong. #05
+
+    - /emotion angry 55
+    Useless. #06
+
+    - /emotion angry 45
+    Pathetic. #07
+
+    - /emotion disgusted 65
+    Ugggh. #08
+
+    - /emotion sad 75
+    I'm not happy. #09
+
+    - /emotion skeptical 65
+    You're boring me. #10
+
+    - /emotion skeptical 55
+    How lame. #11
+
+    - /emotion angry 85
+    Grrrr. #13
+
+    - /emotion sad 65
+    Waste of time. #14
 }
 
 ->->
@@ -114,7 +220,6 @@ Now get back up on your knees. #07
 === Nega_Timeout ===
 /character nega
 {cycle:
-
     - /perform react_thankful disgusted 40
     ...the fuck? I'm talking to you!  #01
 
@@ -155,7 +260,6 @@ Now get back up on your knees. #07
 === Nega_PayAttention ===
 /character nega
 { cycle:
-
     - /perform react_disappointed disgusted 30
     Eyes on me, pretty {player_name}. #01
 
@@ -183,7 +287,6 @@ Now get back up on your knees. #07
 
 + [pay-attention]
     { cycle:
-
         - /perform react_point_at_player_angry digusted 75
         Don't fucking let it happen again. #09
 
@@ -208,20 +311,25 @@ Now get back up on your knees. #07
 
 
 === Nega_CheckIfInterested ===
+/character nega
 
-/perform idle_unhappy
+/perform idle_unhappy angry 75
 What the fuck is wrong with you!? #01
 
+/perform react_point_at_player_angry disgusted 80
 Are you going to behave and give me what I want? #02
 
 + [yes]
+    /perform talk_lean_forward amused 65
     That's right, {isBoy: maggot|whore}. #03
     ->->
 
 + [no]
+    /perform do_get_the_fuck_out disgusted 55
     Then fuck off. #04
 
     {reward_just_removed:
+        /perform do_snap_fingers angry 85
         No refunds, you little bitch. #05
         {inTutorial: -> nega_intro.spiteful_interrupted}
     }
