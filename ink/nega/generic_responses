@@ -220,38 +220,38 @@ Now get back up on your knees. #07
 === Nega_Timeout ===
 /character nega
 {cycle:
-  - /perform react_thankful disgusted 40
-  ...the fuck? I'm talking to you!  #01
+    - /perform react_thankful disgusted 40
+    ...the fuck? I'm talking to you!  #01
 
-  - /perform idle_unhappy_stomp angry 35
-  Don't ignore me!  #02
+    - /perform idle_unhappy_stomp angry 35
+    Don't ignore me!  #02
 
-  - /perform do_snap_fingers amused 80
-  Fucking pay attention! #03
+    - /perform do_snap_fingers amused 80
+    Fucking pay attention! #03
 
-  - /perform talk_annoyed sad 25
-  Am I talking to a goddamn sack of potatoes? #04
+    - /perform talk_annoyed sad 25
+    Am I talking to a goddamn sack of potatoes? #04
 
-  - /perform talk_lean_forward disgusted 25
-  You little {isBoy: prick|cunt}. You're wasting my time. #05
+    - /perform talk_lean_forward disgusted 25
+    You little {isBoy: prick|cunt}. You're wasting my time. #05
 
-  - /perform react_point_at_player_angry aroused 20
-  Answer me, {isBoy: maggot|slut}.  #06
+    - /perform react_point_at_player_angry aroused 20
+    Answer me, {isBoy: maggot|slut}.  #06
 
-  - /perform talk_emphatic_one_hand angry 60
-  Are your ears still attached to your fucking head? #07
+    - /perform talk_emphatic_one_hand angry 60
+    Are your ears still attached to your fucking head? #07
 
-  - /perform do_snap_fingers amused 35
-  Get your shit together and pay attention, {isBoy:dog|bitch}.   #08
+    - /perform do_snap_fingers amused 35
+    Get your shit together and pay attention, {isBoy:dog|bitch}.   #08
 
-  - /perform react_clapping angry 60
-  Wake the fuck up! #09
+    - /perform react_clapping angry 60
+    Wake the fuck up! #09
 
-  - /perform talk_annoyed angry 50
-  You fucking falling asleep on me? #10
+    - /perform talk_annoyed angry 50
+    You fucking falling asleep on me? #10
 
-  - /perform react_disappointed disgusted 75
-  I'm not a patient Mistress. #11
+    - /perform react_disappointed disgusted 75
+    I'm not a patient Mistress. #11
 }
 
 ->->
@@ -260,34 +260,34 @@ Now get back up on your knees. #07
 === Nega_PayAttention ===
 /character nega
 { cycle:
-  - /perform react_disappointed disgusted 30
-  Eyes on me, pretty {player_name}. #01
+    - /perform react_disappointed disgusted 30
+    Eyes on me, pretty {player_name}. #01
 
-  - /perform react_point_at_player_angry angry 75
-  I'm fucking talking to you! #02
+    - /perform react_point_at_player_angry angry 75
+    I'm fucking talking to you! #02
 
-  - /perform react_shrug_long skeptical 55
-  Is your brain goddamn mush? Over here. #03
+    - /perform react_shrug_long skeptical 55
+    Is your brain goddamn mush? Over here. #03
 
-  - /perform do_snap_fingers skeptical 60
-  Look at me, bitch. #04
+    - /perform do_snap_fingers skeptical 60
+    Look at me, bitch. #04
 
-  - /perform react_disappointed disgusted 60
-  Were you raised in a fucking barn? Pay attention! #05
+    - /perform react_disappointed disgusted 60
+    Were you raised in a fucking barn? Pay attention! #05
 
-  - /perform talk_annoyed angry 30
-  Get your head in the goddamn game. #06
+    - /perform talk_annoyed angry 30
+    Get your head in the goddamn game. #06
 
-  - /perform talk_lean_forward amused 70
-  Looking for a place to hide, slut? It won't work. #07
+    - /perform talk_lean_forward amused 70
+    Looking for a place to hide, slut? It won't work. #07
 
-  - /perform do_snap_fingers disgusted 50
-  Now, pay attention! #08
+    - /perform do_snap_fingers disgusted 50
+    Now, pay attention! #08
 }
 
 + [pay-attention]
     { cycle:
-        - /perform react_point_at_player_angry disgusted 75
+        - /perform react_point_at_player_angry digusted 75
         Don't fucking let it happen again. #09
 
         - /perform talk_annoyed amused 50
