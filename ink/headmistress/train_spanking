@@ -8,9 +8,9 @@
     /ambient crowd
     ~ Headmistress_RaiseCurtains()
     /character crowd cheers_loud
-    
+
     /character headmistress
-    
+
     -> headmistress_punishment_spanking.get_on_desk ->
 }
 
@@ -18,62 +18,72 @@
 
 + [yes]
 
-- 
+-
 //With each swat, you will show me clearly #109
 //just how much you feel it. #110
-/character headmistress idle
+/character headmistress idle idle_clasp_hands amused 60
 
 // hand, crop, paddle
-
+/perform talk_serious excited 50
 When you hear the slap of my hand #111
 and feel its sting upon your ass, #112
+
+/perform do_arm_raise amused 75
 I want to see that empty head of yours jerk up and back #113
 into a proud and upright position. #114
 
 + [wait]
 
 - (hands_and_knees_timeout)
-/perform talk_consider
+/perform do_point_down disgusted 50
 Now. Onto your hands and knees, bauble. #233
 
 + [pose:hands_and_knees]
 
-- /perform idle_tease
+- /perform idle_tease aroused 65
 
+/perform talk_one_finger amused 80
 The back must be delicately arched, #21
 presenting the most ideal access #22
+
+/perform do_arm_raise excited 70
 to the object of discipline: the buttocks. #23
 
-/perform talk_serious
+/perform talk_question amused 65
 Lift your backside high, {isBoy: mongrel|moppet}. #24
 
-/perform idle_clasp_hands
-    
-- Tell me, lump, is that as high as you can lift your hindquarters? #26
+/perform talk_annoyed scared 50
+- Is that as high as you can lift your hindquarters? #26
 
 +[yes]
     ~ addObey()
-    /perform talk_lean_forward
+    /perform talk_lean_forward skeptical 75
     I disagree. #27
+
+    /perform do_hand_out happy 50
     Arch just a bit more. #28
-    /perform react_nod_little
+
+    /perform idle_cocks_head_to_left amused 55
     You will remain in this position without fail. #30
 
 +[no]
     ~ addDisobey()
-    /perform talk_annoyed
+
+    /perform talk_lean_forward angry 70
     You serve yourself and our Goddess poorly, heathen. #31
     Raise your ass! #32
 
 +[timeout]
-    /perform talk_annoyed
+    /perform react_shake_head_disbelief sad 60
     What are you waiting for? #33
+
+    /perform talk_one_hand skeptical 70
     Your back must strain with the effort of raising your derriere, chattel. #34
 
 - /perform idle_clasp_hands
 -> Headmistress_GoodJob ->
 
-- /character headmistress talk_lean_forward
+- /character headmistress idle_skeptical angry 50
 
 Time to rehearse. #118
 Three perfect swats should be sufficient. #01
@@ -85,17 +95,18 @@ Three perfect swats should be sufficient. #01
 ~temp spanks = 0
 
 - (try_spank)
-/character headmistress do_spank_player
+/character headmistress do_spank_player excited 65
 
 + [react-success]
     // This lets us count the number of successful attempts.
     ~spanks++
-    
+
     // Once there have been 3 good spanks, we continue.
     {spanks < 3:
         -> Headmistress_GoodJob ->
         -> try_spank
     - else:
+        /perform react_nod_little amused 70
         Just so. #119
         -> present_ass
     }
@@ -105,17 +116,19 @@ Three perfect swats should be sufficient. #01
 
     // We will continue if they fail 3 times.
     { headmistress_spanking_mistakes < 3:
+        /perform react_resigned angry 65
         Not good enough. Try again. #120
         -> try_spank
     - else:
         ~ addDisobey()
+        /perform idle_skeptical angry 70
         That will do for now. #121
         We will work on that in the future. #122
     }
-    
+
     ~ headmistress_difficulty = 0
 
-- 
+-
 
 { headmistress_spanking_mistakes > 0:
     ~ addDisobey()
@@ -128,18 +141,20 @@ Three perfect swats should be sufficient. #01
 
 - (present_ass)
 
-/perform talk_consider
-Stand up and present your ass for our guests. #235 
+/perform talk_behold amused 60
+Stand up and present your ass for our guests. #235
 Let us inspect how well your skin blooms with color. #236
 
 + [pose:present_ass]
 
-- /perform idle
+- /perform idle_clasp_hands amused 50
 How exquisite. #237
 
 /lookat crowd
 
 Do you see my students? #238
+
+/perform do_arm_raise excited 65
 Look at how the round orbs go flush #239
 with excitement at my ministrations! #240
 
@@ -151,10 +166,12 @@ Turn to the left. #241
 
 
 + [pose:present_ass_left]
--> Headmistress_GoodJob ->
-This chattel has potential. #02
-Do you think we can mold it? #03
-/character crowd cheers
+
+      -> Headmistress_GoodJob ->
+      /perfom talk_consider happy 65
+      This chattel has potential. #02
+      Do you think we can mold it? #03
+      /character crowd cheers
 
 
 - (rotate_right_timeout)
@@ -163,10 +180,12 @@ Now turn to the right. #242
 
 
 + [pose:present_ass_right]
-- /character crowd gasps
-/character headmistress talk_behold
--> Headmistress_AcknowledgeYes ->
-<i>She</i> will enjoy watching this one be broken in, I think. #04
+
+
+      - /character crowd gasps
+      /character headmistress talk_behold amused 65
+      -> Headmistress_AcknowledgeYes ->
+      <i>She</i> will enjoy watching this one be broken in, I think. #04
 
 
 ->->
