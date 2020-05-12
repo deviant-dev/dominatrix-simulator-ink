@@ -128,11 +128,13 @@ I don't know why I even bother wearing them. #17
 Now... time for me to get more comfortable. #20
 
 
+- (get_cock)
+
 //nega yuki strips
 /scene attic.reward_forcedsex2
-/perform idle_sassy skeptical 75
+/character nega
+/wait
 
-- (get_cock)
 {not hasPenis:
     /perform do_snap_fingers amused 75
     I've got a strap-on right here for you, slut. #13
@@ -144,6 +146,7 @@ Now... time for me to get more comfortable. #20
 
 //I keep plenty of rope lying around just for this. #15
 
+/perform idle_sassy skeptical 75
 Look at you. Such a pathetic fleshbag. #21
 
 - (pussy_wet)

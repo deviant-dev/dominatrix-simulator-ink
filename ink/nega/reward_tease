@@ -3,7 +3,7 @@
 
 ~ setScene(reward_scene, Nega)
  
-/scene attic.reward_tease
+/scene attic.Ready
 /music nega-reward
 /ambient off
 /character nega idle_bored
@@ -25,6 +25,52 @@
 The rules say I have to go easy on you. #06
 
 Lucky {isBoy: prick|{isGirl: cunt|slut}}. #07
+
+- (present)
+Stand up fucking straight and present yourself.
+
++ [pose:present_stand]
++ { tries < 2 } [timeout] -> present
++ { tries >= 2 } [timeout] 
+     ~ addDisobey()
+     -> Nega_CheckIfInterested 
+     -> present
++ [distracted] -> Nega_PayAttention -> present
+
+- 
+Don't you fucking move unless I give you permission.
+
+- (hold_still)
+Got it, {isBoy: prick|cunt}?
+
+  +[yes]
+    ~ addObey()
+        Good.
+      
+    +[no]
+     ~ addDisobey()
+        {shuffle:
+            - Move and I'll boot your ass out of here so fast, 
+            it will make your head spin. 
+            - -> Nega_Unhappy ->
+            Move and your ass is gone!
+        }
+        -- (understood)
+        Understood?
+        
+        ++[yes]
+        ~ addObey()
+           That's what I fucking thought.
+      
+        ++[no]
+         ~ addDisobey()
+         -> exit
+         
+         ++ [timeout] -> Nega_Timeout -> understood
+         ++ [distracted] -> Nega_PayAttention -> understood
+ 
+ + [timeout] -> Nega_Timeout -> hold_still
+ + [distracted] -> Nega_PayAttention -> hold_still
 
 - (insult)
 /perform talk_lean_forward disgusted 75
@@ -48,11 +94,14 @@ Aren't you? #13
         {shuffle:
             - Then I guess it's time I teach you your place. #15
             - -> Nega_Unhappy ->
+          
         }
  + [timeout] -> Nega_Timeout -> insult
  + [distracted] -> Nega_PayAttention -> insult
  
 - /perform talk_behold
+ I know what you are.
+  
 {shuffle:
     - You're just a rotten little bitch I should crush under my boot. #16
     - A wretched little slut who just wants to be used. #17
@@ -89,7 +138,9 @@ You just can't stay away, can you? #23
 
 + [yes]
     ~ addDisobey()
+    -> Nega_Unhappy ->
    That bloodstone you just added to my pile says different. #24
+   
    
 + [no]
     ~ addObey()
@@ -108,12 +159,55 @@ You came here with that puny little reward of yours. #29
 
 /perform react_scoffs
 For what? #30
-/perform idle
+
+{shuffle:
+    - -> lucky
+    - -> slut 
+    }
+    
+= lucky
+Hoping you'd get lucky?
+Maybe get to be a slutty little fucktoy?
+
++ [yes]
+    ~ addDisobey()
+    Too fucking bad. #86
+   
++ [no]
+    ~ addObey()
+    No, you didn't.
+ 
+ + [timeout] -> Nega_Timeout -> lucky
+ + [distracted] -> Nega_PayAttention -> lucky
+
+- /perform idle
+I know what you really came here for.
+
 Hoping you'd be mistreated. That's what. #31
 
-You're just dying to be treated like the piece of shit you are. #32
+->->
+
+= slut
+You don't deserve to be my slut. 
+To be fucked and enjoyed.
+
+Do you?
+
++ [yes]
+    ~ addDisobey()
+    -> Nega_Unhappy ->
+   
++ [no]
+    ~ addObey()
+    That's right. You don't.
+ 
+ + [timeout] -> Nega_Timeout -> slut
+ + [distracted] -> Nega_PayAttention -> slut
+
+->->
 
 - (piece_of_shit)
+You're just dying to be treated like the piece of shit you are. #32
 
 /perform talk_annoyed
 Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
@@ -129,7 +223,6 @@ Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
     Playing all shy and innocent. #35
     
 + [timeout] -> Nega_Timeout -> piece_of_shit
-+ [distracted] -> Nega_PayAttention -> piece_of_shit
 
 - (grovel)
 {shuffle:
@@ -160,6 +253,22 @@ TODO: does this pose need to be renamed to :grovel, but check for the same pose?
 I'm going to make you wallow in depravity. #42
 You will beg for more when I'm through with you. #43
 
+- (kneel_again)
+/perform idle_unhappy angry 50
+Back up on your knees.
+
++ [pose:kneel]
++ { tries < 2 } [timeout] -> kneel_again
++ { tries >= 2 } [timeout] 
+     ~ addDisobey()
+     -> Nega_CheckIfInterested 
+     -> kneel_again
++ [distracted] -> Nega_PayAttention -> kneel_again
+
+- -> Nega_GoodJob ->
+~ addObey()
+
+/perform idle_tease amused 75
 Now don't you move while I get more comfortable. #44
 
 {shuffle:
@@ -190,16 +299,21 @@ TODO: Player kisses her feet for a set amount of time. Dialogue will focus on mo
 
 = tease_edging
 
-/scene attic.reward_tease_edging
+/scene attic.chair
 /music nega-reward
 /ambient off
+/character nega sex_chair_crosslegs_open amused
+/wait 2
+/perform sex_chair_crosslegs_right
 ~ edged = true
-//Scene reloads with Nega sitting in a chair with no panties on and legs crossed
-TODO: need animations for crossing and uncrossing legs
+
 - (boots)
 /emotion amused
 Tell me {isBoy: dog|{isGirl: bitch|maggot}},  #45
+/perform sex_chair_crosslegs_backfromright
+
 does the sight of my boots turn you on? #46
+/perform sex_chair_crosslegs_left
 
 +   [Yes]
     Ha! You're such a skank, you know that? #47
@@ -224,7 +338,7 @@ does the sight of my boots turn you on? #46
 + [distracted] -> Nega_PayAttention -> boots
 
 - (after_observe_boots)
-- 
+- /character nega sex_chair_crosslegs_left
 We're going to make sure the sight of my boots #52
 /perform cross_leg_tease
 makes you want to cream your pants. #53

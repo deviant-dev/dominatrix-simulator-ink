@@ -6,9 +6,7 @@ VAR embarassed = false
 /scene TheatreOpen.Ready
 /music headmistress
 /ambient crowd
-/character headmistress idle
-
-/perform idle_tease happy 50
+/character headmistress idle_tease happy 50
 
 {shuffle:
     - For your reward, you shall pleasure yourself for the crowd. #01
