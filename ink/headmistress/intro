@@ -26,120 +26,148 @@
 }
 
 = start
+/character headmistress
 
-/perform do_spank_x3
-
+/perform do_spank_x2 disgusted 100
 You are an unruly, undisciplined, low-born miscreant. #01
 
-/perform do_spank_x2
-
-I will not abide by your disobedience. #02
+/perform do_spank_x2 skeptical 100
+I <i>will</i> not abide by your disobedience. #02
+/perform idle_clasp_hands disgusted 100
 
 /character slave
 I'm sorry, Headmistress. #05
 
-/character headmistress do_spank_x3
-
+/character headmistress do_spank_x3 angry 100
 You <i>will</i> behave according to your station #03
+
 /perform do_spank_x3
-or find yourself unable to rest on your backside for a week. #04
+or find yourself unable to rest on your backside for a <i>week.</i> #04
+/perform idle_clasp_hands disgusted 100
 
 /character slave
-
 Please, Headmistress! #07
-/character headmistress do_spank_x2
+
+/character headmistress do_spank_x2 amused 100
 
 + [wait]
 
-- 
+-
+/perform idle_clasp_hands disgusted 100
 /character slave
 I'll be good. I promise! #06
 
-/perform do_smooth_skirt
+/character headmistress
+/perform do_smooth_skirt happy 100
 That will be sufficient for today. #08
+
+/character slave
+/perform idle_clasp_hands
+/lookat headmistress
+
+/character headmistress
+/lookat slave
+/perform talk_one_finger aroused 100
 Remember this lesson, flawed one. #09
 
-/character headmistress do_you_leave
-
+/character headmistress do_now_leave amused 100
 Depart with grace and pride #11
-/perform talk_serious
+
+/perform react_thankful happy 100
 as befits an adornment of this house. #12
+
 /perform idle
 /character slave
 
 /ambient off
+/perform do_quick_bow
 Yes, Headmistress. #13
+/perform idle_clasp_hands
 Thank you for guiding me, Headmistress. #14
 
 - /scene Theatre.Intro3
 /music headmistress
-/character headmistress idle_unhappy
 
+/character headmistress idle_unhappy skeptical 65
 What do we have here? #15
+
+/perform talk_consider aroused 50
 Another new procurement, I see. #16
 
-/perform react_shrug_long
+/perform talk_annoyed disgusted 60
 And once again, I have not been appropriately notified #17
+
+/perform react_shake_head_disbelief disgusted 60
 of an addition to Her collection. #18
 
-/perform do_inspect
-
+/perform react_disappointed angry 55
 Another careless oversight in Yuki's fervent attempts to please, no doubt. #19
 
-/perform talk_serious
+/perform idle_skeptical amused 50
 Our beloved Goddess forgives only so often. #20
 //I shall correct her oversight <i>forthwith</i>. #21
 
 - (meet_headmistress)
-/perform do_smooth_skirt
+/perform idle_unhappy skeptical 40
 Do you know who I am? #22
 
 + [yes]
     ~ addObey()
-    /perform react_nod_little
+    /perform idle_clasp_hands amused 50
     My reputation precedes me! #55
-    
+
 + [no]
     ~ addDisobey()
     //perform tap_paddle
-    /perform idle
+    /perform talk_lean_forward angry 50
     I think you do. #25
+
+    /perform talk_one_finger angry 70
     You just heard that slave say it. #26
-    /perform talk_lean_forward
+
+    /perform talk_consider amused 40
     What an unobservant little wart you are. #27
 
 + [timeout]
-    /perform react_scoffs
+    /perform react_scoffs angry 50
     Speak up. #28
     -> meet_headmistress
 
-//- You are newly arrived and already in trouble. #48
-- /perform idle
-As the Headmistress, I oversee the training #29
-/perform talk_behold
-and correction of all slaves in this house. #30
++ [distracted] -> Headmistress_PayAttention -> meet_headmistress
 
-/perform idle_cocks_head_to_left
+
+//- You are newly arrived and already in trouble. #48
+- /perform react_thankful happy 35
+As the Headmistress, I oversee the training #29
+
+/perform talk_lean_forward aroused 45
+and correction of all slaves in <i>this</i> house. #30
+
+/perform idle_unhappy skeptical 50
 Understood? #31
 
     + [yes]
         ~ addObey()
-        /perform talk_one_hand
+        /perform idle_clasp_hands happy 40
         Excellent. #32
-        
+
     + [no]
         -- (not_understood)
-        /perform react_shrug_long
+
+        /perform do_shake_finger amused 50
         ~ addDisobey()
         Come, come. #35
         Don't play dumb. #36
+
+        /perform idle_unhappy angry 45
         It is a waste of my time. #37
-    
+
     + [timeout] -> not_understood
-    
-- /perform talk_lean_forward
+
++ [distracted] -> Headmistress_PayAttention -> not_understood
+
 - (present)
-- /perform talk_lean_forward skeptical 50
+- /perform idle_clasp_hands skeptical 50
 
 Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your worth for myself. #38
 
@@ -149,23 +177,28 @@ Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your
     ~ addObey()
 
 + [timeout]
-    /perform talk_annoyed
+    /perform talk_annoyed angry 35
     Your wrists, you witless cur. #39
+
+    /perform talk_lean_forward sad 45
     Present them before you #40
     so that I may confirm your measure. #41
     ~ addDisobey()
-    /perform do_present_wrists
-    Like so, foolish {player_name}. #42
-    -> present_retry
 
-- /perform do_inspect excited 40
+    /perform do_present_wrists disgusted 65
+    Like so, foolish {player_name}. #42
+    -> Headmistress_NoAction -> present_retry
+
+- /perform do_consider excited 40
 Ah, Bloodstone. Diligence and commendation. #43
 
-/perform react_nod_little
+/perform do_arm_raise happy 50
 You have pleased the Goddess. #44
 
-/perform talk_consider skeptical 50
+/perform do_inspect skeptical 50
 Hmmmm. But also Obsidian. #45
+
+/perform talk_behold angry 50
 Entering the Goddess's chambers unbidden!  #49
 This is a serious infraction. #50
 
@@ -173,7 +206,7 @@ This is a serious infraction. #50
 - (stand_straight)
 ~ tries++
 
-/perform talk_one_finger
+/perform idle_clasp_hands angry 60
 Stand at attention! #57
 
 + [pose:raised_chin]
@@ -181,27 +214,32 @@ Stand at attention! #57
 + { tries >= 2 } [timeout] -> Headmistress_Timeout -> stand_straight
 // + [no] -> CheckIfInterested -> stand_straight
 
-- -> Headmistress_GoodJob -> 
-/perform talk_thoughtful
+- -> Headmistress_GoodJob ->
+/perform talk_emphatic_one_hand angry 40
 Atonement and adjustment are required. #46
 
-/perform react_shrug_long
-This must be immediate. #47 
+/perform react_point_at_player_angry angry 50
+This must be immediate. #47
 
-/perform do_arm_raise
+/perform talk_one_finger skeptical 65
 It must be firm, swift, and leave an indelible mark  #120
 upon the body and soul.  #121
 
-/perform do_smooth_skirt
+/perform talk_lean_forward amused 45
 You will be punished. #51
+
+/perform do_smooth_skirt aroused 50
 And you will do it with grace. #52
-/perform talk_behold
+
+/perform talk_behold happy 40
 I will teach you how. #53
 Just like I do with all the new slaves. #54
 
-/perform do_arm_raise
+/perform do_arm_raise excited 65
 No need to waste time, then. #33
 
-- /perform idle 
+-/perform react_clapping
+//experiment for dramatic effect
+
 
 - -> headmistress_punishment_spanking.start
