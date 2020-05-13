@@ -826,3 +826,36 @@ I have no time for your shenanigans. #222
 /character headmistress do_you_leave angry 80
 
 -> exit
+
+
+
+=== Headmistress_CrowdComment ===
+
+// {shuffle:
+//     - /perform talk_one_finger excited 50
+//     - /perform do_arm_raise happy 50
+//     - /perform react_shrug_long skeptical 50
+//     - /perform idle_clasp_hands amused 50
+//     - /perform idle_tease aroused 50
+// }
+    
+//find people to record these lines with other languages or accents
+
+/character crowd
+{shuffle:
+    - Look at how proudly the {hasPenis: cock juts out from the body|pussy glistens between the legs}. #129
+    - These performances always satisfy my hunger. #130
+    - Mmmm. {isBoy: He is|{isGirl: She is|They are}} making me so wet. #131
+    - I can hardly sit still. #132
+    - I'd gladly break that slave in.  #133
+    - I wish I was in {isBoy: his|{isGirl:her|their}} place. #134
+    - This one is going to be a favorite, to be sure. #135
+    - I hope {isBoy: he holds|{isGirl:she holds|they hold}} out for a long time.  #136
+    - I'm so hard right now. #137
+    - I want {hasPenis: that cock|those fingers} inside me. #138
+    - How do you think {isBoy:his|{isGirl:her|their}} cum tastes? #139
+}
+
+->->
+
+

@@ -121,7 +121,7 @@
 // ~ rewards = 1
 // -> unlock_all -> headmistress_reward_exhibitionism
 
--> test_crowd_comments
+//-> test_crowd_comments
 
 // --- Nega Jumps ---
 
@@ -157,10 +157,11 @@
 
 // -> nega_reward_forcedsex.pussy_wet
 // -> nega_reward_dice.test_dice
--> nega_reward_tease
-// -> nega_reward_tease.tease_edging
+// -> nega_reward_tease
+-> nega_reward_tease.tease_edging
 //-> nega_punishment_genital_torture
 
+/log Returning from debug.
 
 ->->
 
@@ -173,8 +174,21 @@
 /character headmistress idle_tease happy 50
 
 - (loop)
+// {shuffle:
+//     - /character crowd oos
+//     - /character crowd cheers
+//     - /character crowd boos
+//     - /character crowd murmur
+//     - /character crowd gasps
+//     - /character crowd jeers
+//     - /character crowd angry_crowd
+//     - /character crowd cheers_loud
+//     - /character crowd cheers_short
+// }
 
--> headmistress_reward_exhibitionism.crowd_comment ->
+// /wait 5
+
+-> Headmistress_CrowdComment ->
 
 + [wait] -> loop
 

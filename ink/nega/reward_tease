@@ -27,7 +27,7 @@ The rules say I have to go easy on you. #06
 Lucky {isBoy: prick|{isGirl: cunt|slut}}. #07
 
 - (present)
-Stand up fucking straight and present yourself.
+Stand up straight, {isBoy: maggot|skank}, and present yourself.
 
 + [pose:present_stand]
 + { tries < 2 } [timeout] -> present
@@ -161,10 +161,13 @@ You came here with that puny little reward of yours. #29
 For what? #30
 
 {shuffle:
-    - -> lucky
-    - -> slut 
-    }
-    
+    - -> lucky ->
+    - -> slut ->
+    - -> piece_of_shit ->
+}
+
+-> grovel
+
 = lucky
 Hoping you'd get lucky?
 Maybe get to be a slutty little fucktoy?
@@ -180,10 +183,7 @@ Maybe get to be a slutty little fucktoy?
  + [timeout] -> Nega_Timeout -> lucky
  + [distracted] -> Nega_PayAttention -> lucky
 
-- /perform idle
-I know what you really came here for.
-
-Hoping you'd be mistreated. That's what. #31
+- 
 
 ->->
 
@@ -204,9 +204,9 @@ Do you?
  + [timeout] -> Nega_Timeout -> slut
  + [distracted] -> Nega_PayAttention -> slut
 
-->->
+- ->->
 
-- (piece_of_shit)
+= piece_of_shit
 You're just dying to be treated like the piece of shit you are. #32
 
 /perform talk_annoyed
@@ -223,8 +223,17 @@ Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
     Playing all shy and innocent. #35
     
 + [timeout] -> Nega_Timeout -> piece_of_shit
++ [distracted] -> Nega_PayAttention -> piece_of_shit
 
-- (grovel)
+- ->->
+
+= grovel
+
+/perform idle
+I know what you really came here for.
+
+Hoping you'd be mistreated. That's what. #31
+
 {shuffle:
     - Apologize for pretending to be anything else. #36
     - Thank me for seeing the real you. #37
@@ -304,16 +313,13 @@ TODO: Player kisses her feet for a set amount of time. Dialogue will focus on mo
 /ambient off
 /character nega sex_chair_crosslegs_open amused
 /wait 2
-/perform sex_chair_crosslegs_right
+/perform sex_chair_crosslegs_left
 ~ edged = true
 
 - (boots)
-/emotion amused
+/perform sex_chair_crosslegs_presentfoot amused
 Tell me {isBoy: dog|{isGirl: bitch|maggot}},  #45
-/perform sex_chair_crosslegs_backfromright
-
 does the sight of my boots turn you on? #46
-/perform sex_chair_crosslegs_left
 
 +   [Yes]
     Ha! You're such a skank, you know that? #47
