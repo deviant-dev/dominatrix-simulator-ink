@@ -1,11 +1,13 @@
 === nega_reward_tease ===
  -> select_gender_check ->
 
+TODO: the series of questions are a little repetitive. Would be good to pull at least one of them out and put it into the punishment_tease scene.
+
 ~ setScene(reward_scene, Nega)
  
 /scene attic.Ready
 /music nega-reward
-/ambient off
+/ambient howling-wind
 /character nega idle_bored
 
 - (tease_intro)
@@ -326,7 +328,7 @@ does the sight of my boots turn you on? #46
     
     ++ [Yes]
         That was a rhetorical question, dumbfuck! #48
-        /perform head_toss_chair
+        // /perform head_toss_chair
         -> after_observe_boots
             
     ++ [No]
@@ -344,9 +346,9 @@ does the sight of my boots turn you on? #46
 + [distracted] -> Nega_PayAttention -> boots
 
 - (after_observe_boots)
-- /character nega sex_chair_crosslegs_left
+// /character nega sex_chair_crosslegs_left
 We're going to make sure the sight of my boots #52
-/perform cross_leg_tease
+// /perform cross_leg_tease
 makes you want to cream your pants. #53
 
 {shuffle:
@@ -381,7 +383,7 @@ Got that, whore? #59
 - Shake your head "no" when you're about to cum. #64
 
 - (start)
-/perform snap_fingers_chair
+// /perform snap_fingers_chair
 Get going! #65
 
 -> Nega_prepare_masturbate ->

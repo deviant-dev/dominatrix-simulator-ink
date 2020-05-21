@@ -1,0 +1,129 @@
+=== punishment_lick_boot ===
+
+~ licked_boots = true
+
+/scene attic.Ready
+/music nega-punishment
+/ambient howling-wind
+/character nega idle_bored
+
+- (hands_and_knees_timeout)
+/perform talk_consider
+
+Get down on all fours like the dog you are, maggot!
+
++ [pose:hands_and_knees]
+
+
+--> Nega_GoodJob ->
+
+- (kiss_feet)
+/perform do_present_foot
+Come here and kiss my boot, worm!
+
++ [pose:kiss_feet]
++ { tries < 3 } [timeout] -> kiss_feet
++ { tries >= 3 } [timeout]
++ [no] No?! 
+Then get the fuck out! 
+And take a punishment with you.
+~ addPunishment()
+-> exit
+
+- Very good.
+Accept your place beneath me. 
+Embrace that which will hurt you!
+
+
+~ tries = 0
+- (ask_clean_boot) 
+~ tries++
+
+I stepped outside earlier and got the bottoms of my boots dirty.
+
+{cycle:
+    - Would you be a dear and clean that up for me with your tongue?
+    - Now, are you going to clean my boot?
+}
+    
++ [Yes]
+    You're such a dirty whore! I love it! Now get busy!
+    -> accept_boot_lick
+    
++ [No]
+    You ungrateful loser! 
+    Here's a piece of Obsidian. 
+    ~ addPunishment()
+    { tries < 12:
+        -> ask_clean_boot
+    - else:
+        -> deny_boot_lick
+    }
+
+- (accept_boot_lick)
+//The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. It would be really tool if there was actually dirt on the boot that disappeared/fell off as the player "licked"
+
+- (lick_1) 
+/Player must move head up and down near the bottom of the boot.
+
+    +   [Successful Lick]
+    Very good, maggot! Just like that. 
+    -> lick_2
+    
+    +   [Unsuccessful]
+    That's not right, cunt! Try again! 
+    -> lick_1
+    
+- (lick_2) You're so disgusting. Keep going!
+    +   [Successful Lick]
+    Can you believe how lowly you are, worm? 
+    You're less important than the dirt beneath my heels. 
+    -> switch_feet
+    
+    +   [Unsuccessful]
+    You should know how to do this by now, cunt! Again! 
+    - ~ demerits++ 
+    -> lick_2
+    
+- (switch_feet) /Nega switches feet, so the other boot is now in front of the player.
+
+- (lick_3) 
+{shuffle:
+    - Now, for the other boot, scum!
+    - Lick it, worm!
+    }
+    
+    +   [Successful Lick]
+    You make a good shoe polisher! 
+    Perhaps I'll have you clean out up my shoe closet one of these days. 
+    -> lick_4
+    
+    +   [Unsuccessful]
+    My other boot deserves the same attention as the first, bitch! Again! 
+    - ~ demerits++ 
+    -> lick_3
+    
+- (lick_4) 
+{cycle:
+    - Keep licking, whore!
+    - Don't disappoing me now, cunt!
+    }
+    
+    Very nice! All clean! -> inspect
+    
+    +   [Unsuccessful]
+    You're worthless! 
+    - ~ demerits++ 
+    -> lick_4
+
+- (inspect) /Nega inspects the bottoms of her boots.
+If your tongue is this thorough, 
+I'll bet it would be useful for other things as well...
+
+
+
+- (deny_boot_lick)
+
+Alright, maggot, playtime's over!
+
+- -> exit

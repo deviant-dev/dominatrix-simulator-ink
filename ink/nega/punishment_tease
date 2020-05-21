@@ -6,9 +6,9 @@
 
 ~ setScene(punishment_scene, Nega)
  
-/scene attic.punishment_tease
+/scene attic.Ready
 /music nega-punishment
-/ambient off
+/ambient howling-wind
 /character nega idle_unhappy
 
 - (tease_intro)
@@ -25,7 +25,7 @@ You've only earned a little pain for that roll, {isBoy: worm|{isGirl:cunt|wretch
 }
 
 - /perform idle_swaying excited 75
-At least I get to hurt you... a little.
+Looks like this visit won't be a waste after all.
 
 /perform talk_lean_forward amused 75
 Poor {isBoy: fuckup|stain}.
@@ -34,6 +34,8 @@ Poor {isBoy: fuckup|stain}.
 /perform idle_unhappy_stomp
 -> Nega_Insult ->
   
+//this is the place in the script I copied from reward tease and still needs to be rewritten
+
 Isn't that right?
 
     +[yes]
@@ -130,5 +132,7 @@ TODO: Player must have completed puppy play learning for this scene to be availa
 TODO: Player kisses the floor for a set amount of time. This scene will focus on humiliating the player by being unworthy to even touch her body and only being able to grovel and worship the ground she walks on.
 
 ->->
+
+
 
 

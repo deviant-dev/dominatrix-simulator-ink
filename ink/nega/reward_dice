@@ -3,9 +3,9 @@
 
 ~ setScene(reward_scene, Nega)
 
-/scene attic.Ready
-/music nega
-/ambient howling-wind
+// /scene attic.Ready
+// /music nega
+// /ambient howling-wind
 
 - (give_reward)
 
@@ -156,7 +156,6 @@ I suppose I have to give you something very special, then, don't I? #20
 
 -> check_consent ->
 
-TODO: Randomly select from Nega's 'hard reward' scenes here.
 {shuffle:
     - -> nega_reward_forcedsex
 }
@@ -172,9 +171,8 @@ Two cups and a blank, hmm? Not bad. #21
 
 -> check_consent ->
 
-TODO: Randomly select from Nega's 'light reward' scenes here.
 {shuffle:
-    - -> nega_reward_forcedsex
+    - -> nega_reward_light
 }
 
 
@@ -201,9 +199,8 @@ I suppose you deserve a little something for that. #26
 
 -> check_consent ->
 
-TODO: Randomly select from Nega's 'tease reward' scenes here.
 {shuffle:
-    - -> nega_reward_forcedsex
+    - -> nega_reward_tease
 }
 
 
@@ -269,12 +266,10 @@ but I bet I can still make you squirm. #37
 
 -> check_consent ->
 
-TODO: Randomly select from Nega's 'tease punishment' scenes here.
-
 - (result_punishment_tease_no_intro)
-// {shuffle:
-//     - -> nega_punishment_trampling
-// }
+{shuffle:
+   - -> nega_punishment_tease
+}
 
 
 - (result_punishment_light)
@@ -285,10 +280,10 @@ Ooo, two skulls. #38
 That means your ass is mine. #39
 -> check_consent ->
 
-TODO: Randomly select from Nega's 'light punishment' scenes here.
-// {shuffle:
-//     - -> nega_punishment_trampling
-// }
+{shuffle:
+     - -> nega_punishment_boot_lick
+     - -> nega_punishment_camera_shoot
+}
 
 
 - (result_punishment_hard)
@@ -300,11 +295,9 @@ Three skulls. I'm going to enjoy <i>this</i>. #41
 
 -> check_consent ->
 
-TODO: Randomly select from Nega's 'hard punishment' scenes here.
-// {shuffle:
-//     - -> nega_punishment_trampling
-// }
-
+{shuffle:
+    - -> nega_punishment_genital_torture
+}
 
 = intro_change_dice
 
@@ -340,7 +333,7 @@ You're gonna love getting rewards from me. #49
 
 
 = check_consent
-
+//these may need adjusting - you wouldn't say I'm going to use your hard if you only get a light tease
 {shuffle:
     - It's not too late to back out, {isBoy: worm|slit}. #50
     - I'm going to use you hard. #51

@@ -3,14 +3,16 @@
 // -> devil_girl_care
 
 // Auto-set gender here to skip gender selection step
-~setGender("m")
-// ~setGender("f")
+// ~setGender("m")
+~setGender("f")
+
+// -> exit
 
 // -> RandomCommentLoop(-> Goddess_GoodJob, 1, 2, 3, 3) ->
 
 // Force a different deviation
 
-// ~ setDeviation(full_game)
+~ setDeviation(full_game)
 // ~ setDeviation(demo)
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(hand_signals)
@@ -49,7 +51,7 @@
 // /character yuki
 // -> yuki_intro.learn_rules
 
-// -> yuki_intro
+-> yuki_intro
 // -> yuki_intro.easy_rules
 // -> select_gender_check ->
 
@@ -110,10 +112,11 @@
 // /scene Theatre.DeskApproach
 // -> headmistress_punishment_spanking.SpankingFinished
 
-// /scene TheatreOpen.Ready
-// /music headmistress
-// /ambient crowd
-// ~ rewards = 1
+/scene TheatreOpen.Ready
+/music headmistress
+/ambient crowd
+~ rewards = 5
+// -> DONE
 // -> headmistress_reward_exhibitionism.test_jump
 
 
@@ -124,8 +127,10 @@
 //-> test_crowd_comments
 
 // --- Nega Jumps ---
-
-// -> nega_hub
+~inTutorial = false
+~ rewards = 5
+-> nega_hub
+// -> nega_punishment_camera_shoot
 
 // /scene Attic.Reward_ForcedSex1
 
@@ -149,16 +154,16 @@
 // -> nega_intro.skip_checks
 
 // -> nega_reward_forcedsex
-// /scene attic.reward_forcedsex2
+//  /scene attic.reward_forcedsex2
+// /scene attic.chair
+// /music nega-reward
 
-/music nega-reward
-/ambient howling-wind
 // -> nega_reward_forcedsex.get_cock
-
+// -> nega_greeting_tease
 // -> nega_reward_forcedsex.pussy_wet
 // -> nega_reward_dice.test_dice
 // -> nega_reward_tease
--> nega_reward_tease.tease_edging
+// -> nega_reward_tease.tease_edging
 //-> nega_punishment_genital_torture
 
 /log Returning from debug.
@@ -174,19 +179,19 @@
 /character headmistress idle_tease happy 50
 
 - (loop)
-// {shuffle:
-//     - /character crowd oos
-//     - /character crowd cheers
-//     - /character crowd boos
-//     - /character crowd murmur
-//     - /character crowd gasps
-//     - /character crowd jeers
-//     - /character crowd angry_crowd
-//     - /character crowd cheers_loud
-//     - /character crowd cheers_short
-// }
+{shuffle:
+    - /character crowd oos
+    - /character crowd cheers
+    - /character crowd boos
+    - /character crowd murmur
+    - /character crowd gasps
+    - /character crowd jeers
+    - /character crowd angry_crowd
+    - /character crowd cheers_loud
+    - /character crowd cheers_short
+}
 
-// /wait 5
+/wait 5
 
 -> Headmistress_CrowdComment ->
 
