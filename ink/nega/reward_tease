@@ -102,7 +102,7 @@ Aren't you? #13
  + [distracted] -> Nega_PayAttention -> insult
  
 - /perform talk_behold
- I know what you are.
+I see what you are. #28
   
 {shuffle:
     - You're just a rotten little bitch I should crush under my boot. #16
@@ -154,7 +154,7 @@ You just can't stay away, can you? #23
  
 - /perform idle_unhappy_stomp
 You can't fucking hide from me. #27
-I see what you are. #28
+
 
 /perform idle_tease
 You came here with that puny little reward of yours. #29
@@ -402,6 +402,8 @@ Get going! #65
 
 -> Nega_GoodJob ->
 - You really are a foot whore! #66
+
+TODO: Need to add in here a question block around - are you enjoying worshiping my boots.
 
 --> question
 

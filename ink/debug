@@ -1,6 +1,7 @@
 === Debug ===
 
-// -> devil_girl_care
+-> devil_girl_care
+// -> devil_girl_promo
 
 // Auto-set gender here to skip gender selection step
 // ~setGender("m")
@@ -112,9 +113,9 @@
 // /scene Theatre.DeskApproach
 // -> headmistress_punishment_spanking.SpankingFinished
 
-/scene TheatreOpen.Ready
-/music headmistress
-/ambient crowd
+// /scene TheatreOpen.Ready
+// /music headmistress
+// /ambient crowd
 ~ rewards = 5
 // -> DONE
 // -> headmistress_reward_exhibitionism.test_jump
@@ -129,7 +130,7 @@
 // --- Nega Jumps ---
 ~inTutorial = false
 ~ rewards = 5
--> nega_hub
+// -> nega_hub
 // -> nega_punishment_camera_shoot
 
 // /scene Attic.Reward_ForcedSex1

@@ -1,23 +1,32 @@
 === devil_girl_promo ===
 
 /scene FloorAndChair.DevilGirl
+/music entry
 /character DevilGirl 
-/perform idle_tease neutral
+
+/perform idle_fake annoyed amused 50
 Well aren't you a kinky little thing, forking over your cash to fund so much perversion. #01
 
+/perform idle_tease
 I've got so many devious things I want to do to you #02
+
 /perform idle_skeptical amused 100
 ahem I want to put into our game, #03
 
+/perform tease_caress_breast_left amused 50
 so thank you for showing me just how badly you want to experience them. #04
-
+/perform do_inspect skeptical
 I mean, that's why you’re funding this game, right? #05
+
 /perform talk_bashful aroused 100
 To experience all those naughty things you just can't get enough of? #06
 
+/perform idle amused
 Keep supporting us and we'll both find out just how far you can fall. #07
+
 /perform talk_lean_forward neutral
 After all... #08
+
 /perform talk_behold aroused 100
 Good things come to those who obey. #09
 /perform do_blow_kiss aroused 100

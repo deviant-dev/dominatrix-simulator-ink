@@ -37,12 +37,15 @@ INCLUDE nega/intro
 INCLUDE nega/lore
 INCLUDE nega/generic_responses
 INCLUDE nega/reward_dice
-
+INCLUDE nega/reward_tease
+INCLUDE nega/reward_light
+INCLUDE nega/reward_forcedsex
 INCLUDE nega/punishment_tease
+INCLUDE nega/punishment_boot_lick
+INCLUDE nega/punishment_camera_shoot
 INCLUDE nega/punishment_genital_torture
 // INCLUDE nega/punishment_trampling
-INCLUDE nega/reward_tease
-INCLUDE nega/reward_forcedsex
+
 INCLUDE yuki/hub
 INCLUDE yuki/code
 INCLUDE yuki/intro
@@ -67,9 +70,7 @@ INCLUDE yuki/reward_puppyplay_milking
 INCLUDE yuki/train_spanking
 INCLUDE devil_girl/promo
 INCLUDE devil_girl/care
-INCLUDE nega/punishment_boot_lick
-INCLUDE nega/punishment_camera_shoot
-INCLUDE nega/reward_light
+
 
 
 

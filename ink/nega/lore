@@ -4,7 +4,7 @@
 // If we've heard the last lore, then don't say anything else here.
 {negaLoreEmpty(): ->->}
 
-Since you've been so good, I'll tell you a little bit about the house.
+Since you've been so good, I'll tell you a little bit about the House.
 { once:
     - -> lore01 ->
     - -> lore02 ->
