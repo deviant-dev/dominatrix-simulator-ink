@@ -1,60 +1,63 @@
-
 === Nega_GoodJob ===
-/character nega
+-> DoComment(false)
+
+= Squatting
+-> DoComment(true)
+
+= DoComment(inSquat)
+
 
 {shuffle:
 
-    -
+    -{inSquat:/emotion amused 65|/perform talk_consider aroused 45}
     That's it, little bitch. #01
 
-    -
+    -{inSquat:/emotion excited 50|/perform idle_unhappy excited 50}
     Just like that. #02
 
-    -
+    -{inSquat:/emotion amused 50|/perform do_inspect amused 55}
     Maybe you aren't a waste of time. #03
 
-    -
+    -{inSquat:/emotion disgusted 45|/perform react_dismissive disgusted 45}
     Not bad. #04
 
-    -
+    -{inSquat:/emotion skeptical 50|/perform talk_consider skeptical 75}
     Huh. Maybe I will get to have a little fun after all. #05
 
-    -
+    -{inSquat:/emotion excited 65|/perform tease_caress_breast_left excited 45}
     You're making my pussy wet. #06
 
-    -
+    -{inSquat:/emotion happy 55|/perform talk_lean_forward happy 55}
     Toying with you is so much fun! #07
 
-    -
+    -{inSquat:/emotion aroused 65|/perform do_shake_finger aroused 65}
     Good little {isBoy: meatbag|slit}. #08
 
-    -
+    -{inSquat:/emotion amused 45|/perform react_thankful amused 45}
     I'm glad you came to see me. #09
 
-    -
+    -{inSquat:/emotion excited 45|/perform do_inspect excited 45}
     Oh, yeah. #10
 
-    -
+    -{inSquat:/emotion aroused 40|/perform talk_consider aroused 40 }
     Mmmmm. #11
 
-    -
+    -{inSquat:/emotion aroused 65|/perform tease_caress_breasts aroused 65}
     So hot! #12
 
-    -
+    -{inSquat:/emotion happy 40|/perform idle_sassy happy 40}
     Good fucktoy. #13
 
-    -
+    -{inSquat:/emotion amused 45|/perform do_fist_pump amused 45}
     Nice! #14
 
-    -
+    -{inSquat:/emotion amused 55|/perform react_whatever amused 55}
     What a slut! #15
 
-    -
+    -{inSquat:/emotion excited 40|/perform talk_consider excited 40}
     I'm impressed, slut. #16
 }
 
-
--
 ->->
 
 
@@ -66,7 +69,6 @@
 
 = DoComment(inSquat)
 
-/character nega
 
 {shuffle:
 
@@ -127,7 +129,7 @@
     - Fucking liar. #01
     - Bullshit. #02
     - Stupid bitch! #03
-    - Lie to yourself, but you can't lie to me. 
+    - Lie to yourself, but you can't lie to me.
     - What a load of crap.
     - Who are you fucking kidding?
     - Who are you trying to fool?
@@ -160,7 +162,7 @@
 ->->
 
 === Nega_Apologize ===
-/character nega
+
 
 -(repeat)
 Apologize for being a fuck up. #01
@@ -187,39 +189,46 @@ Now get back up on your knees. #07
 
 //response to timeouts to questions
 === Nega_Timeout ===
-/character nega
+-> DoComment(false)
+
+= Squatting
+-> DoComment(true)
+
+= DoComment(inSquat)
+
+
 {cycle:
-    - /perform react_thankful disgusted 40
+    -{inSquat:/emotion disgusted 40|/perform react_thankful disgusted 40}
     ...the fuck? I'm talking to you!  #01
 
-    - /perform idle_unhappy_stomp angry 35
+    -{inSquat:/emotion angry 35|/perform idle_unhappy_stomp angry 35}
     Don't ignore me!  #02
 
-    - /perform do_snap_fingers amused 80
+    -{inSquat:/emotion amused 80|/perform do_snap_fingers amused 80}
     Fucking pay attention! #03
 
-    - /perform talk_annoyed sad 25
+    -{inSquat:/emotion sad 25|/perform talk_annoyed sad 25}
     Am I talking to a goddamn sack of potatoes? #04
 
-    - /perform talk_lean_forward disgusted 25
+    -{inSquat:/emotion disgusted 25|/perform talk_lean_forward disgusted 25}
     You little {isBoy: prick|cunt}. You're wasting my time. #05
 
-    - /perform react_point_at_player_angry aroused 20
+    -{inSquat:/emotion aroused 20|/perform react_point_at_player_angry aroused 20}
     Answer me, {isBoy: maggot|slut}.  #06
 
-    - /perform talk_emphatic_one_hand angry 60
+    -{inSquat:/emotion angry 60|/perform talk_emphatic_one_hand angry 60}
     Are your ears still attached to your fucking head? #07
 
-    - /perform do_snap_fingers amused 35
+    -{inSquat:/emotion amused 35|/perform do_snap_fingers amused 35}
     Get your shit together and pay attention, {isBoy:dog|bitch}.   #08
 
-    - /perform react_clapping angry 60
+    -{inSquat:/emotion angry 60|/perform react_clapping angry 60}
     Wake the fuck up! #09
 
-    - /perform talk_annoyed angry 50
+    -{inSquat:/emotion angry 50|/perform talk_annoyed angry 50}
     You fucking falling asleep on me? #10
 
-    - /perform react_disappointed disgusted 75
+    -{inSquat:/emotion disgusted 75|/perform react_disappointed disgusted 75}
     I'm not a patient Mistress. #11
 }
 
@@ -227,8 +236,8 @@ Now get back up on your knees. #07
 
 //response to player distraction
 === Nega_PayAttention ===
-/character nega
-{ cycle:
+
+{ shuffle:
     - /perform react_disappointed disgusted 30
     Eyes on me, pretty {player_name}. #01
 
@@ -255,8 +264,8 @@ Now get back up on your knees. #07
 }
 
 + [pay-attention]
-    { cycle:
-        - /perform react_point_at_player_angry digusted 75
+    { shuffle:
+        - /perform react_point_at_player_angry disgusted 75
         Don't fucking let it happen again. #09
 
         - /perform talk_annoyed amused 50
@@ -289,7 +298,7 @@ What the fuck is wrong with you!? #01
 Are you going to behave and give me what I want? #02
 
 + [yes]
-    /perform talk_lean_forward amused 65
+    /perform talk_one_finger disgusted 65
     That's right, {isBoy: maggot|whore}. #03
     ->->
 
@@ -305,6 +314,10 @@ Are you going to behave and give me what I want? #02
 
     {inTutorial: -> exit }
 
++[timeout]
+  -> Nega_Timeout -> Nega_CheckIfInterested
+
++[distracted] -> Nega_PayAttention -> Nega_CheckIfInterested
 === Nega_prepare_masturbate ===
 /character nega
 
@@ -317,22 +330,56 @@ Are you going to behave and give me what I want? #02
 ->->
 
 === Nega_Masturbation_Comments ===
-/character nega
+-> DoComment(false)
+
+= Squatting
+-> DoComment(true)
+
+= DoComment(inSquat)
 
 {shuffle:
-    - Keep going. #06
-    - {hasPenis: Your dick's not hard enough.|Your pussy's not dripping enough.} #17
-    - Harder. Faster. #08
-    - I bet your arm is getting tired. Too bad! #09
-    - More. More. More! #10
-    - I enjoy watching you be a little whore for my attention. #14
-    - That's it, little meatbag. #15
-    - {hasPenis: What a fucking slut getting <i>my</i> cock ready for me to use.|Such a slut getting <i>my</i> pussy so wet!} #23
-    - Wallow in it, {isBoy: worm|cunt}. #18
-    - Work those fingers. #03
-    - Enjoy the view, slut! #16
-    - Being so close must be such a turn on for you, whore. #01
-    - Only a lucky few get to see something so wonderful. Be grateful! #02
+
+    -{inSquat:/emotion amused 40|/perform idle_sassy amused 40}
+    Keep going. #06
+
+    -{inSquat:/emotion angry 55  |/perform talk_threaten angry 55 }
+    {hasPenis: Your dick's not hard enough.|Your pussy's not dripping enough.} #17
+
+    -{inSquat:/emotion excited 45 |/perform tease_stroke_motion excited 45  }
+    Harder. Faster. #08
+
+    //-{inSquat:/emotion disgusted 55 |/perform react_scoffs disgusted 55  }
+    //I bet your arm is getting tired. Too bad! #09
+    //Commented out as it breaks the 4th wall in Negas forced sex scene
+
+    -{inSquat:/emotion happy 60 |/perform idle_pleased happy 60 }
+    More. More. More! #10
+
+    -{inSquat:/emotion aroused 65 |/perform talk_lean_forward aroused 65 }
+    I enjoy watching you be a little whore for my attention. #14
+
+    -{inSquat:/emotion amused 75 |/perform do_inspect amused 75 }
+    That's it, little meatbag. #15
+
+    -{inSquat:/emotion amused 65 |/perform talk_consider amused 65 }
+    {hasPenis: What a fucking slut getting <i>my</i> cock ready for me to use.|Such a slut getting <i>my</i> pussy so wet!} #23
+
+    -{inSquat:/emotion aroused 55 |/perform idle_bored aroused 55  }
+    Wallow in it, {isBoy: worm|cunt}. #18
+
+    //-{inSquat:/emotion aroused 75 |/perform talk_question aroused 75  }
+    //Work those fingers. #03
+    //Commented out as it breaks the 4th wall in Negas forced sex scene
+
+    -{inSquat:/emotion happy 65 |/perform idle_tease happy 65 }
+    Enjoy the view, slut! #16
+
+    -{inSquat:/emotion amused 75 |/perform talk_lean_forward amused 75 }
+    Being so close must be such a turn on for you, whore. #01
+
+    -{inSquat:/emotion disgusted 45  |/perform talk_annoyed disgusted 45 }
+    Only a lucky few get to see something so wonderful. Be grateful! #02
+
     --> break01 ->
     --> break02 ->
     --> break03 ->
@@ -349,11 +396,13 @@ Do you like the idea of getting ready for me, {isBoy: worm|skank}? #11
 +[yes]
     ~ addObey()
     -> Nega_GoodJob ->
+    /emotion amused 70
     Good. Keep going. #12
 
 +[no]
     ~ addDisobey()
     -> Nega_BadJob ->
+    /emotion disgusted 70
     Do it anyways! #13
 
 - ->->
@@ -362,11 +411,16 @@ Do you like the idea of getting ready for me, {isBoy: worm|skank}? #11
 Do you want to cum for me? #19
 
 + [yes]
+    /emotion angry 55
     No fucking way! #20
+
+    /emotion angry 70
     I do the cumming around here! #21
 
 + [no]
     -> Nega_BadJob ->
+
+    /angry 65
     Well, you'll stroke until your dick falls off if that's what I want! #22
 
 - ->->
@@ -375,11 +429,13 @@ Do you want to cum for me? #19
 Does that feel good whore? #04
 
 + [yes]
+    /emotion amused 55
     Thirsty little {isBoy: boy|{isGirl: girl|pet}}. #05
 
 
 + [no]
     -> Nega_BadJob ->
+    /emotion disgusted 65
     Too fucking bad. I hope it hurts! #07
 
 - ->->
@@ -399,17 +455,41 @@ Does that feel good whore? #04
 ->->
 
 === Nega_Objectify ===
-/emotion disgusted 75
+-> DoComment(false)
+
+= Squatting
+-> DoComment(true)
+
+= DoComment(inSquat)
 
 {shuffle:
-    - That's all you're good for, cunt, being used. #19
-    - I enjoy watching you be a little whore for my attention. #21
-    - You're just a filthy cum bucket to be used and abused. #01
-    - What a {hasPenis: tiny little pecker|gaping hole} you have. #02
-    - Good thing this House keeps you fucking firm. #03
-    - Filthy bag of fuck holes. #04
-    - Oooo... look at the little sex doll. #05
-    - Such a fucking cum dump.  #06
+
+    -{inSquat:/emotion disgusted 65 |/perform talk_lean_forward disgusted 65}
+    That's all you're good for, cunt, being used. #19
+
+    -{inSquat:/emotion aroused 65|/perform tease_caress_breast_left aroused 65}
+    I enjoy watching you be a little whore for my attention. #21
+
+    -{inSquat:/emotion excited 55|/perform idle_skeptical excited 55}
+    You're just a filthy cum bucket to be used and abused. #01
+    //Does this make sense if the player is the one penetrating?
+
+    -{inSquat:/emotion amused 55|/perform react_chuckle amused 55}
+    What a {hasPenis: tiny little pecker|gaping hole} you have. #02
+
+    -{inSquat:/emotion angry 45 |/perform react_point_at_player_angry angry 45}
+    Good thing this House keeps you fucking firm. #03
+
+    -{inSquat:/emotion disgusted 60|/perform react_dismissive disgusted 60}
+    Filthy bag of fuck holes. #04
+    //Does this make sense if the player is the one penetrating?
+
+    -{inSquat:/emotion aroused 55|/perform do_inspect aroused 55}
+    Oooo... look at the little sex doll. #05
+
+    -{inSquat:/emotion aroused 60 |/perform talk_one_finger aroused 60}
+    Such a fucking cum dump.  #06
+    //Does this make sense if the player is the one penetrating?
 }
 
 ->->

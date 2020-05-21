@@ -15,28 +15,30 @@
 /ambient huge-space
 /character goddess
 
-- /emotion skeptical
+- /emotion skeptical 35
 Well, well {player_name}. #01
 You've only just arrived and already you misbehave. #02
 So disappointing. #03
 
-/emotion neutral
+/emotion sad 45
 There are no secrets in my house. #04
 Every soul here must serve. #05
+
+/emotion angry 35
 You will be made pleasing #06
 or you will cease to be of use. #07
 
-/emotion amused
+/emotion amused 35
 For your transgressions, you will suffer. #08
 Ten Obsidians worth of punishments will do. #09
 
 //give player 10 punishment markers
 
-/emotion angry 20
+/emotion angry 25
 You will pay them all now! #10
-//remove 10 punishment markers with flare 
+//remove 10 punishment markers with flare
 
-/emotion neutral
+/emotion aroused 35
 Pleasure will be denied to you until you have proved your worth. #11
 Ten Bloodstones will unlock you from your imprisonment. #12
 //give chastity device
@@ -98,5 +100,3 @@ Go forth and please me, {player_name}. #25
 - else:
     -> entry_hub
 }
-
-
