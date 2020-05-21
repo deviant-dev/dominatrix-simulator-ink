@@ -59,20 +59,25 @@
     - /perform do_fist_pump aroused 45
     You're my bitch now. #03
 
-    - /perform idle_sassy happy 45
-    Thanks for the treat, fuckup!
+    //- /perform idle_sassy happy 45
+    //Thanks for the treat, fuckup!
+    //Needs proper tagging
 
-    - /perform react_point_at_player_angry aroused 65
-    Your ass is mine!
+    //- /perform react_point_at_player_angry aroused 65
+    //Your ass is mine!
+    //Needs proper tagging
 
-    - /perform talk_lean_forward amused 55
-    You're going to get what you deserve.
+    //- /perform talk_lean_forward amused 55
+    //You're going to get what you deserve.
+    //Needs proper tagging
 
-    - /perform do_shake_finger_stern happy 35
-    You're in for it now!
+    //- /perform do_shake_finger_stern happy 35
+    //You're in for it now!
+    //Needs proper tagging
 
-    - /perform do_rub_hands_together excited 45
-    This'll be fun! For me at least!
+    //- /perform do_rub_hands_together excited 45
+    //This'll be fun! For me at least!
+    //Needs proper tagging
 }
 
 /perform talk_one_finger amused 65
@@ -303,7 +308,6 @@ TODO: Randomly select from Nega's 'hard punishment' scenes here.
 
 = intro_change_dice
 
-/lookat dice
 /perform squat_forward
 Aaaw, look at that. No fun. #42
 
@@ -359,12 +363,20 @@ You're gonna love getting rewards from me. #49
     -> exit
 
 = come_again
-/perform react_head_toss_casual
-- {cycle:
-    - Come visit me again, cunt. #59
-    - Come back when you have another reward to spend. #60
-    - I'll let you come see me again. #61
-    - You know where to find me. #62
+
+- {shuffle:
+
+    -/perform idle_skeptical amused 45
+    Come visit me again, cunt. #59
+
+    -/perform talk_lean_forward skeptical 50
+    Come back when you have another reward to spend. #60
+
+    -/perform do_inspect aroused 55
+    I'll let you come see me again. #61
+
+    -/perform idle_sassy happy 25
+    You know where to find me. #62
 }
 
 -> exit

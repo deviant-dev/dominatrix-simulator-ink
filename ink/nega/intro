@@ -139,7 +139,7 @@ I enjoyed the show. #22
 
 /perform tease_ass_caress amused 60
 Does your poor tushy sting? #23
-/perform idle_sassy amused 30
+
 
 + [yes]
     ~ addObey()
@@ -324,7 +324,6 @@ Damn it! I was just getting started. #132
 /wait 1
 /scene None
 
-/perform idle_unhappy_stomp angry 75
 Don't worry. You'll get yours. #133
 
 ~ tutorial_nega_intro_surprise_complete = true
