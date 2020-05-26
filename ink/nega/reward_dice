@@ -56,7 +56,7 @@
 
 {shuffle:
 
-    - /perform do_fist_pump aroused 45
+    - /perform do_rub_hands_together excited 65
     You're my bitch now. #03
 
     //- /perform idle_sassy happy 45
@@ -83,7 +83,7 @@
 /perform talk_one_finger amused 65
 Let's see what you're going to get #04
 
-/perform tease_bend_over aroused 45
+/perform idle_tease aroused 45
 for this pretty little gift. #05
 
 /perform squat excited 35
@@ -301,18 +301,16 @@ Three skulls. I'm going to enjoy <i>this</i>. #41
 
 = intro_change_dice
 
-/perform squat_forward
+/perform squat_forward amused 65
 Aaaw, look at that. No fun. #42
 
 /lookat player
-/perform squat
+/perform squat aroused 70
 Since it's your first time,  #43
 perhaps I'll make it rain for you. #44
 Just this once. #45
 
-/perform squat_swipe_hand
 /action force_dice
-
 TODO: Remove this and actually force the dice in-game.
 -> nega_reward_forcedsex
 

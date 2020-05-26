@@ -5,25 +5,25 @@
     - /perform idle_yuki happy 50
     There's a good {player_name}. #114
 
-    - /perform idle_sassy happy 50
+    - /perform idle_tease aroused 65
     What a good little {player_name}. #115
 
-    - /perform talk_behold happy 50
+    - /perform talk_lean_forward amused 55
     That's my {player_name}. #116
 
-    - /perform talk_one_finger happy 50
+    - /perform idle_clasp_hands happy 50
     Aren't you the sweetest little thing? #117
 
     - /perform talk_consider happy 50
     Very nice. #118
 
-    - /perform react_disappointed happy 50
+    - /perform react_thankful happy 45
     That will do just fine. #119
 
-    - /perform idle_sassy happy 40
+    - /perform do_inspect happy 40
     Quite satisfying. #120
 
-    - /perform idle_sassy aroused 60
+    - /perform idle_sassy aroused 65
     Mmmm. I like that. #121
 
     - /perform react_thankful happy 50

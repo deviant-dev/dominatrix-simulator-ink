@@ -684,7 +684,7 @@ TODO: decide whether to keep these lines
     -/perform react_thankful amused 65
     What a fine display. #06
 
-    -/perform talk_lean_forward excited 55
+    -/perform do_consider excited 55
     Look at those deft fingers. #07
 
     -/perform react_thankful disgusted 85
@@ -725,7 +725,7 @@ TODO: decide whether to keep these lines
     - -> Headmistress_GoodJob ->
 }
 
-/character headmistress
+/perform idle_clasp_hands amused 55 
 ->->
 
 === Headmistress_CheckIfInterested ===
@@ -838,7 +838,7 @@ I have no time for your shenanigans. #222
 //     - /perform idle_clasp_hands amused 50
 //     - /perform idle_tease aroused 50
 // }
-    
+
 //find people to record these lines with other languages or accents
 
 /character crowd
@@ -857,5 +857,3 @@ I have no time for your shenanigans. #222
 }
 
 ->->
-
-

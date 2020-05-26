@@ -97,7 +97,7 @@ I bet she told you not to talk to me, didn't she? #10
     Oh sure, she'll be all sweet and attentive, #12
 
     /perform react_crazy_gesture sad 65
-    but she'll bore the shit out of you eventually. #13
+    But she'll bore the shit out of you eventually. #13
 
     /perform idle_sassy aroused 40
     Stick with me if you really want to have some fun. #14
@@ -186,7 +186,7 @@ Hands on your knees and ass in the air! #31
 + [no] -> Nega_CheckIfInterested -> present_ass
 + [timeout] -> present_ass
 
-- /perform tease_bend_over amused 75
+- /perform do_inspect amused 75
 My, my. Your ass turns a nice shade of pink. #32
 
 /perform idle_unhappy amused 65
@@ -235,10 +235,10 @@ You have to give it to me to play. #40
 /perform talk_lean_forward skeptical 65
 Those are the rules. #41
 
-/perform talk_threaten angry 65
+/perform react_point_at_player_angry angry 65
 And I better warn you, I don't always play nice,  #42
 
-/perform idle_cocks_head_to_left amused 45
+/perform react_dumb amused 45
 so you better think hard before you give it to me. #43
 
 - (check_reward_loop)
