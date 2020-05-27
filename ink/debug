@@ -1,6 +1,6 @@
 === Debug ===
 
--> devil_girl_care
+// -> devil_girl_care
 // -> devil_girl_promo
 
 // Auto-set gender here to skip gender selection step
@@ -13,7 +13,7 @@
 
 // Force a different deviation
 
-~ setDeviation(full_game)
+// ~ setDeviation(full_game)
 // ~ setDeviation(demo)
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(hand_signals)
@@ -52,7 +52,7 @@
 // /character yuki
 // -> yuki_intro.learn_rules
 
--> yuki_intro
+// -> yuki_intro
 // -> yuki_intro.easy_rules
 // -> select_gender_check ->
 
@@ -128,8 +128,8 @@
 //-> test_crowd_comments
 
 // --- Nega Jumps ---
-~inTutorial = false
-~ rewards = 5
+// ~ inTutorial = false
+// ~ rewards = 5
 // -> nega_hub
 // -> nega_punishment_camera_shoot
 
@@ -154,12 +154,12 @@
 // -> nega_intro.nega_tease
 // -> nega_intro.skip_checks
 
-// -> nega_reward_forcedsex
-//  /scene attic.reward_forcedsex2
+//  -> nega_reward_forcedsex
+  /scene attic.reward_forcedsex2
 // /scene attic.chair
-// /music nega-reward
+ /music nega-reward
 
-// -> nega_reward_forcedsex.get_cock
+-> nega_reward_forcedsex.get_cock
 // -> nega_greeting_tease
 // -> nega_reward_forcedsex.pussy_wet
 // -> nega_reward_dice.test_dice

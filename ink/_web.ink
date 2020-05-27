@@ -111,6 +111,8 @@ VAR web = true
 // ~ setDeviation(hand_signals)
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(exhibitionism)
+// ~ setDeviation(devilgirl)
+// ~ setDeviation(nega_dice)
 ->->
 
 
@@ -128,10 +130,16 @@ VAR web = true
         -> yuki_hub
     - deviation == hand_signals:
         -> headmistress_hub
+    - deviation == devilgirl:
+        -> devil_girl_care
+    - deviation == nega_dice:
+        -> nega_reward_forcedsex
     - else:
         -> game_intro
 }
 
+
+// For deviations that start after the main game intro's gender check.
 === post_intro_deviation_check ===
 { 
     - deviation == puppyplay:
@@ -142,6 +150,45 @@ VAR web = true
         -> headmistress_hub
     - else:
         -> goddess_intro
+}
+
+
+=== exit ===
+// {isWeb(): -> table_of_contents}
+
+{
+    - deviation == hand_signals:
+        /scene none
+        -> headmistress_hub
+    - deviation == exhibitionism:
+        /scene none
+        -> headmistress_hub
+    - deviation == puppyplay:
+        /scene none
+        -> yuki_hub
+    - deviation == tutorial:
+        -> pause(3) ->
+        -> entry_hub
+    - deviation == demo:
+        -> pause(3) ->
+        -> demo_end
+    - deviation == devilgirl:
+        -> devil_girl_care
+    - deviation == nega_dice:
+        -> nega_reward_forcedsex
+}
+
+{inTutorial:
+    -> entry_hub
+- else:
+    {shuffle:
+        - -> goddess_monitoring
+        - -> entry_hub
+        - -> entry_hub
+        - -> entry_hub
+        - -> entry_hub
+        - -> entry_hub
+    }
 }
 
 

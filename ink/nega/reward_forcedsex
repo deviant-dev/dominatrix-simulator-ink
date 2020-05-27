@@ -142,7 +142,6 @@ Now... time for me to get more comfortable. #20
 //nega yuki strips
 /scene attic.reward_forcedsex2
 /character nega
-/wait
 
 {not hasPenis:
     /perform do_snap_fingers amused 75
@@ -155,12 +154,12 @@ Now... time for me to get more comfortable. #20
 
 //I keep plenty of rope lying around just for this. #15
 
-/perform idle_tease skeptical 75
+/perform talk_question skeptical 75
 Look at you. Such a pathetic fleshbag. #21
 
 - (pussy_wet)
 
-/perform idle_sassy aroused 50
+/perform talk_behold aroused 50
 I bet you're just dying to find out  #22
 
 /perform idle_fake_annoyed aroused 60
@@ -227,7 +226,7 @@ Would you like that, {isBoy: prick|bitch}? #35
 //player needs to be told to move their controller to their crotch
 //Need to teach the player how to move their controller like a cock/pussy and how to thrust to a beat/rhythm
 
--/perform idle_tease aroused 50
+-/perform do_rub_hands_together aroused 50
 I'm so ready for this. #01
 
 /perform sex_squat_idle aroused 70
@@ -245,6 +244,7 @@ VAR nega_thrust_count = 0
 VAR nega_thrust_target_count = 20
 VAR nega_thrust_break_count = 6
 
+/music nega-reward-forced-sex-mini-1
 
 - /perform sex_squat_idle aroused 50
 Let's find out how well you can work that little dick of yours. #115
@@ -321,8 +321,6 @@ Sometimes, I like to fuck to music, so listen to the beat, cunt. #116
 
 /perform sex_squat_tease disgusted 65
 You better move those goddamn hips while I fuck you, slut. #43
-
-/music nega-reward-forced-sex-mini-1
 
 /perform sex_squat_thrust aroused 60
 

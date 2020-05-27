@@ -1,40 +1,6 @@
 
 
 
-=== exit ===
-// {isWeb(): -> table_of_contents}
-
-{
-    - deviation == hand_signals:
-        /scene none
-        -> headmistress_hub
-    - deviation == exhibitionism:
-        /scene none
-        -> headmistress_hub
-    - deviation == puppyplay:
-        /scene none
-        -> yuki_hub
-    - deviation == tutorial:
-        -> pause(3) ->
-        -> entry_hub
-    - deviation == demo:
-        -> pause(3) ->
-        -> demo_end
-}
-
-{inTutorial:
-    -> entry_hub
-- else:
-    {shuffle:
-        - -> goddess_monitoring
-        - -> entry_hub
-        - -> entry_hub
-        - -> entry_hub
-        - -> entry_hub
-        - -> entry_hub
-    }
-}
-
 === pause(seconds) ===
 + [wait:{seconds}] 
 - ->->
