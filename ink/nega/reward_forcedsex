@@ -115,9 +115,6 @@ I want to get off on some deep dicking. #12
 
 // Handle cockification for female players.
 
-
-
-
 /perform tease_caress_breasts aroused 45
 Fuck! I'm soaking my panties. #16
 
@@ -176,7 +173,7 @@ Aren't you? #24
     /perform talk_lean_forward amused 50
     Such a filthy whore.  #25
 
-    /emotion excited 40
+    /perform do_rub_hands_together excited 40
     What a treat! #26
 
 +[no]
@@ -195,7 +192,7 @@ Aren't you? #24
 //     You're so fucking dumb. I swear. #30
 
 
-/perform tease_stroke_motion aroused 50
+-/perform tease_stroke_motion aroused 50
 I'm going to ride that {hasPenis: cock|strap-on} of yours #33
 
 /emotion happy 55
@@ -238,6 +235,7 @@ Ahhhh! That's it! #41
 
 /perform sex_squat_thrust happy 50
 Your stiff dick is just what I needed! #42
+//Alternate line for strap-on?
 
 
 VAR thrusts = 0
@@ -250,6 +248,7 @@ VAR nega_thrust_break_count = 6
 
 - /perform sex_squat_idle aroused 50
 Let's find out how well you can work that little dick of yours. #115
+//Alternate line for strap-on?
 
 - (make_cum)
 /perform sex_squat_thrust_forward angry 55
@@ -320,7 +319,7 @@ It's going to be a wild ride. #113
 /perform sex_squat_thrust_single aroused 45
 Sometimes, I like to fuck to music, so listen to the beat, cunt. #116
 
-/perform sex_squat_writhe disgusted 65
+/perform sex_squat_tease disgusted 65
 You better move those goddamn hips while I fuck you, slut. #43
 
 /music nega-reward-forced-sex-mini-1
@@ -679,7 +678,7 @@ Time for more fucking! #84
 /perform sex_squat_idle amused 35
 Let's play a little game, whore. #85
 
-/emotion sad 65
+/emotion aroused 45
 You're going to hold your breath for me. #86
 
 /perform sex_squat_tease excited 35

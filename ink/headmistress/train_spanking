@@ -44,15 +44,18 @@ Now. Onto your hands and knees, bauble. #233
 
 /perform talk_one_finger amused 80
 The back must be delicately arched, #21
-presenting the most ideal access #22
 
-/perform do_arm_raise excited 70
-to the object of discipline: the buttocks. #23
+/perform talk_behold aroused 75
+Presenting the most ideal access #22
 
-/perform talk_question amused 65
+/perform talk_question excited 70
+To the object of discipline: the buttocks. #23
+
+/perform do_arm_raise amused 65
 Lift your backside high, {isBoy: mongrel|moppet}. #24
+/wait 1
 
-/perform talk_annoyed scared 50
+/perform idle_skeptical scared 50
 - Is that as high as you can lift your hindquarters? #26
 
 +[yes]
@@ -80,11 +83,12 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
     /perform talk_one_hand skeptical 70
     Your back must strain with the effort of raising your derriere, chattel. #34
 
-- /perform idle_clasp_hands
+- /emotion amused 55
 -> Headmistress_GoodJob ->
 
 - /character headmistress idle_skeptical angry 50
 
+/idle_pleased happy 65
 Time to rehearse. #118
 Three perfect swats should be sufficient. #01
 
@@ -143,7 +147,7 @@ Three perfect swats should be sufficient. #01
 
 /perform talk_behold amused 60
 Stand up and present your ass for our guests. #235
-Let us inspect how well your skin blooms with color. #236
+Let us inspect how well your ass blooms with color. #236
 
 + [pose:present_ass]
 
@@ -170,6 +174,8 @@ Turn to the left. #241
       -> Headmistress_GoodJob ->
       /perfom talk_consider happy 65
       This chattel has potential. #02
+
+      /perform talk_behold amused 65
       Do you think we can mold it? #03
       /character crowd cheers
 
