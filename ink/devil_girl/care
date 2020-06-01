@@ -4,7 +4,7 @@
 /scene BedroomChair.DevilGirlCareIntro
 /character DevilGirl
 /music care-01
-/perform prone_lounge_right
+/perform couch_lounge_back
 
 // NOTE: Care selection UI is built into the scene.
 
@@ -14,6 +14,7 @@
 = comfort
 
 /scene BedroomBed.DevilGirl
+/character DevilGirl prone_lounge_right
 /notify title="Instructions." text="Sit or lay down to begin. Stand to leave."
 
 +[pose:sit] -> begin
@@ -29,10 +30,8 @@
 
 {cycle:
     - I like taking care of people. #28
-    - I know I'm just a stranger on the internet, 
-    but I'm a stranger that can be here for you. #27
-    - I'll protect you with my arms 
-    and keep all of the icky world out for a while. #34
+    - I know I'm just a stranger on the internet, but I'm a stranger that can be here for you. #27
+    - I'll protect you with my arms and keep all of the icky world out for a while. #34
     - And you can just hide and you can be safe and warm. #35
     - You can be protected. #36
     - I've got plenty of strength to share. #17
@@ -52,7 +51,7 @@
 }
 
 + [wait: 1] -> healing1
-+ [pose:raised_chin] -> end_scene
++ [pose:raised_chin no_feedback no_assist] -> end_scene
 
 
 - (healing2)
@@ -70,39 +69,26 @@
     - Let them fall. Let it out. #22
     - If your heart hurts and you need to sob... #23
     - Do that. #24
-    - Don't be afraid to feel. 
-    Don't be afraid to ask for help. #25
+    - Don't be afraid to feel. Don't be afraid to ask for help. #25
     - You're not alone, and I'm here to hold you as much as you need. #26
     - Maybe you won't show anybody how you're feeling... #42
-    - But it's okay. 
-    It's okay to need a place to hide 
-    where you're safe and you won't be judged.  #43
+    - But it's okay. It's okay to need a place to hide where you're safe and you won't be judged. #43
     - And you won't be asked to do anything you can't handle. #44
     - All you have to do is breathe. #83
     //there is a verbal stutter in this line. maybe it can be removed with editing (take care)
-    - You don't have to do anything else. 
-    You don't have to take care of anybody else 
-    right now in this moment. #84
+    - You don't have to do anything else. You don't have to take care of anybody else right now in this moment. #84
     - Fall into me. #55
     - Just breathe. #56
     - Just be with me right now. #57
     - Let each breath fill your body with cleansing, fresh air. #58
     //long pause between 'let' and 'the'
-    - Let the breath exit your body... 
-    letting all those feelings go with it. #59
+    - Let the breath exit your body... letting all those feelings go with it. #59
     //add breathing sounds
-    - Whatever you need to be in the real world 
-    for anyone else in your life... 
-    be that. #45
-    - But just know that when you come find me... 
-    when you need to be held... #46
-    - When you need to be loved... 
-    when you need to be cared for and comforted... #47
-    - I'll be here. 
-    My arms will be here. 
-    My hugs will be here. #48
-    - My warm soothing presence... 
-    The safety... #49
+    - Whatever you need to be in the real world for anyone else in your life... be that. #45
+    - But just know that when you come find me... when you need to be held... #46
+    - When you need to be loved... when you need to be cared for and comforted... #47
+    - I'll be here. My arms will be here. My hugs will be here. #48
+    - My warm soothing presence... The safety... #49
     - The acceptance... #50
     - The care... #51
     - I'll hold you. #52
@@ -113,8 +99,7 @@
     - I promise you're not alone. #102
     - I promise I will be here. #103
     - Anytime you need to be held... #104
-    - You know where I am. 
-    Come to me when you need me. #105
+    - You know where I am. Come to me when you need me. #105
     - I will catch you. #106
     - I will give you my strength. #107
     - I will hold you. I will care for you. #108
@@ -124,7 +109,7 @@
 }
 
 + [wait: 2] -> healing2
-+ [pose:raised_chin] -> end_scene
++ [pose:raised_chin no_feedback no_assist] -> end_scene
 
 - (meditation_healing)
 
@@ -155,17 +140,17 @@
     - Rocking you. Breathing with you. #62
     - Comforting you. #92
     - Taking care of you. #93
-    - Giving you my strength... 
-    my care... my affection. #64
+    - Giving you my strength... my care... my affection. #64
 }
 
 + [wait: 3] -> meditation_healing
-+ [pose:raised_chin] -> end_scene
++ [pose:raised_chin no_feedback no_assist] -> end_scene
 
 
 = grief
 
 /scene BedroomBed.DevilGirl
+/character DevilGirl prone_lounge_right
 /notify title="Instructions." text="Sit or lay down to begin. Stand to leave."
 
 +[pose:sit] -> begin2
@@ -192,8 +177,7 @@
     - Anytime you need a hug or snuggles. #12
     - Or just to be held or rocked or soothed. #13
     - I'll catch you. #14
-    - And you don't have to strong right now. 
-    I'll help take care of you. #16
+    - And you don't have to strong right now. I'll help take care of you. #16
     - I've got plenty of strength to share.#17
     - Just breathe. #18
     - Slow. Deep. #19
@@ -203,43 +187,30 @@
     - If your heart hurts and you need to sob... #23
     - Do that. #24
     - Don't be afraid to feel. Don't be afraid to ask for help. #25
-    - You're not alone...
-    and I'm here to hold you as much as you need. #26
-    - I know I'm just a stranger on the internet,
-    but I'm a stranger that can be here for you. #27
+    - You're not alone... and I'm here to hold you as much as you need. #26
+    - I know I'm just a stranger on the internet, but I'm a stranger that can be here for you. #27
     - I like taking care of people. #28
-    - I like taking care of people when they are small, 
-    and they are vulnerable,
-    and they are hurting. #29
+    - I like taking care of people when they are small, and they are vulnerable, and they are hurting. #29
     - Nobody who is hurting should be alone. #30
     - And you don't have to be strong with me, because I'll hold you. #31
     - And I'll catch you. #32
     - And I'll keep you safe. #33
     - Breathe. #78
-    - I'll protect you with my arms 
-    and keep all of the icky world out for a while. #34
+    - I'll protect you with my arms and keep all of the icky world out for a while. #34
     - And you can just hide... and you can be safe and warm. #35
     - You can be protected. #36
     - It will be okay. #37
     - You'll be okay. I promise. #38
-    - It won't feel like that right now. 
-    It may not feel like that for a long time. #39
-    - Sometimes it will feel like it's a little better
-    and then it will come back.#40
+    - It won't feel like that right now. It may not feel like that for a long time. #39
+    - Sometimes it will feel like it's a little better and then it will come back.#40
     - And you'll want to hide or you'll want to curl up inside. #41
     - Maybe you won't show anybody how you're feeling... #42
-    - But it's okay. 
-    It's okay to need a place to hide where you're safe 
-    and you won't be judged.  #43
+    - But it's okay. It's okay to need a place to hide where you're safe and you won't be judged.  #43
     - And you won't be asked to do anything you can't handle. #44
-     - Whatever you need to be in the real world for anyone else in your life... 
-     be that. #45
-    - But just know that when you come find me... 
-    when you need to be held... #46
-    - When you need to be loved... 
-    when you need to be cared for and comforted. #47
-    - I'll be here. 
-    My arms will be here, my hugs will be here. #48
+    - Whatever you need to be in the real world for anyone else in your life... be that. #45
+    - But just know that when you come find me... when you need to be held... #46
+    - When you need to be loved... when you need to be cared for and comforted. #47
+    - I'll be here. My arms will be here, my hugs will be here. #48
     - My warm soothing presence... the safety. #49
     - The acceptance. #50
     - The care. #51
@@ -255,57 +226,41 @@
     
  
 + [wait: 1] -> grief1
-+ [pose:raised_chin] -> end_scene
++ [pose:raised_chin no_feedback no_assist] -> end_scene
 
 
 - (grief2)
 
 {cycle:   
-    - Let the breath exit your body... 
-    letting all those feelings go with it. #59
+    - Let the breath exit your body... letting all those feelings go with it. #59
     - Because there will more and you need to let them move through you. #60
-    - Just let them wash over you. It's okay. 
-    They won't be there forever and know that I'm here holding you. #61
+    - Just let them wash over you. It's okay. They won't be there forever and know that I'm here holding you. #61
     - Rocking you. Breathing with you. #62
-    - Taking all that pain and helping hold it for you...
-    and helping it move through you. #63
+    - Taking all that pain and helping hold it for you... and helping it move through you. #63
     - Giving you my strength... my care... my affection. #64
-    - It's going to be okay. 
-    It's going to be okay. #65
+    - It's going to be okay. It's going to be okay. #65
     - You're going to be okay. #66
-    - Maybe not right away. 
-    Maybe not right now. 
-    But you will. I promise. #67
-    - I promise it will get better. 
-    I promise the pain will get less strong over time. #68
-    - You're going to fill a hole... 
-    that hole inside you is going to feel so deep. #69
-    - It's going to feel like it's going to suck you down 
-    and you're going to get lost inside it. #70
-    - But I promise you won't... 
-    because I'm there with you every step of the way. #71
-    - Holding you as much or as little as you need. 
-    You're not walking that path alone.  #72
-    - You're not falling into nothingness. 
-    I'm there to catch you.  #73
-    - I'm there to hold you. 
-    I'm there to take some of that pain for you. #74
+    - Maybe not right away. Maybe not right now. But you will. I promise. #67
+    - I promise it will get better. I promise the pain will get less strong over time. #68
+    - You're going to fill a hole... that hole inside you is going to feel so deep. #69
+    - It's going to feel like it's going to suck you down and you're going to get lost inside it. #70
+    - But I promise you won't... because I'm there with you every step of the way. #71
+    - Holding you as much or as little as you need. You're not walking that path alone.  #72
+    - You're not falling into nothingness. I'm there to catch you.  #73
+    - I'm there to hold you. I'm there to take some of that pain for you. #74
     - Give it to me. Let it go. Let me have it for a while. #75
     - You don't have to carry this burden alone. You're not alone. #76
     //the word 'anytime' has an awkward pause. Could use a sound edit to see if the pause can be removed
     - I will be here... anytime you need. #77
     - Breathe. #78
     - When the pain is that strong it feels like your entire body is in a knot... #79
-    - When your heart is so tiny...
-    gripped in a vice of pain...
-    listen to my voice. #80
+    - When your heart is so tiny... gripped in a vice of pain... listen to my voice. #80
     //this line has a heavy blowign over the microphone sound that distorts it
     - And breathe.  #81
     - That's all you have to do right now. #82
     - All you have to do is breathe. #83
     //there is a verbal stutter in this line. maybe it can be removed with editing
-    - You don't have to do anything else. 
-    You don't have to take care of anybody else right now in this moment. #84
+    - You don't have to do anything else. You don't have to take care of anybody else right now in this moment. #84
     - All you have to do is breathe. #85
     - Let me hold you. #86
     - Let me give you my strength. #87
@@ -335,7 +290,7 @@
     }
 
 + [wait: 2] -> grief2
-+ [pose:raised_chin] -> end_scene
++ [pose:raised_chin no_feedback no_assist] -> end_scene
 
 - (meditation_grief)
 
@@ -351,16 +306,13 @@
     - Just breathe. #56
     - Whatever you need to feel. #97
     - It's okay. #98
-    - Just let them wash over you. It's okay. 
-    They won't be there forever and know that I'm here holding you. #61
+    - Just let them wash over you. It's okay. They won't be there forever and know that I'm here holding you. #61
     - Rocking you. Breathing with you. #62
     - You're going to be okay. #99
     - I promise. #100
     - I promise you're not alone. #102
-    - You're not falling into nothingness. 
-    I'm there to catch you.  #73
-    - I'm there to hold you. 
-    I'm there to take some of that pain for you. #74
+    - You're not falling into nothingness. I'm there to catch you.  #73
+    - I'm there to hold you. I'm there to take some of that pain for you. #74
     - Breathe. #78
     - All you have to do is breathe. #85
     - It's okay to be sad. #09
@@ -373,12 +325,11 @@
     - Holding you. #91
     - Comforting you. #92
     - Taking care of you. #93
-    - Giving you my strength... 
-    my care... my affection. #64
+    - Giving you my strength... my care... my affection. #64
 }
 
 + [wait: 3] -> meditation_grief
-+ [pose:raised_chin] -> end_scene
++ [pose:raised_chin no_feedback no_assist] -> end_scene
 
 
 //end
