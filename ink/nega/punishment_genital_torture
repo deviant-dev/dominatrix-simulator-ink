@@ -138,6 +138,14 @@ to prove what a pathetic fleshbag you really are?
     // - -> rub_nipple ->
     }
 
+/perform do_slap_genitals
+/perform do_pinch
+/perform do_rub_genitals
+/perform do_scratch_air
+/perform do_pull_nipple
+/perform do_twist_fingers
+/perform do_rub_nipple
+
 ~ scene_count++
 /log scene progress {scene_count} / {scene_goal}
 
@@ -169,7 +177,7 @@ to prove what a pathetic fleshbag you really are?
 = slap_genitals
 
 I'm gonna to start counting.
-/perform tease_slap_pussy aroused
+/perform do_slap_pussy aroused
 And you're going to reach down and slap that {hasPenis: cock|pussy} each time I do.
 /perform talk_one_finger angry 50
 One smack for each count.
@@ -236,6 +244,8 @@ Got it?
 ->->
 
 = flick_genitals
+
+/perform do_flick_air
 
 Time for me to start counting!
 
@@ -307,7 +317,8 @@ Fuck up and I start over.
 ->->
 = yank_genitals
 
-/perform tease_grab_pussy aroused
+/perform do_yank_air angry 50
+
 I wanna see you grab that filthy {hasPenis: sack|pussy lips} and start yanking!
 
 - (handle)
@@ -374,7 +385,7 @@ Let's count you down.
 
 = pinch_genitals
 
-/perform tease_grab_pussy aroused
+/perform do_grab_pussy aroused
 Now. I want you to grab that {hasPenis: tiny pecker of yours and pinch the head hard|fat clit of yours and pinch it hard}.
 
 - (try_pinch_genitals)

@@ -35,7 +35,7 @@
     - And you can just hide and you can be safe and warm. #35
     - You can be protected. #36
     - I've got plenty of strength to share. #17
-    - Breathe. #78
+    - Breathe. #114
     - Let me hold you. #86
     - Let me give you my strength. #87
     - You can go back and be strong for others later. #88
@@ -46,8 +46,9 @@
     - Taking care of you. #93
     - All you have to do is breathe. #85
     - Just breathe. #18
+    - [Deep breath] #119
+    - [Deep breath] #119
     - -> healing2
-    //insert breathing sounds.
 }
 
 + [wait: 1] -> healing1
@@ -65,37 +66,39 @@
     - Just breathe. #18
     - Slow. Deep. #19
     - One breath after the other. #20
-    - If tears come with it... it's okay. #21
+    - If tears come with it, it's okay. #21
     - Let them fall. Let it out. #22
     - If your heart hurts and you need to sob... #23
     - Do that. #24
-    - Don't be afraid to feel. Don't be afraid to ask for help. #25
-    - You're not alone, and I'm here to hold you as much as you need. #26
+    - Don't be afraid to feel. #115
+    - Don't be afraid to ask for help. #116
+    - You're not alone. #117
+    - And I'm here to hold you as much as you need. #118
     - Maybe you won't show anybody how you're feeling... #42
     - But it's okay. It's okay to need a place to hide where you're safe and you won't be judged. #43
     - And you won't be asked to do anything you can't handle. #44
     - All you have to do is breathe. #83
-    //there is a verbal stutter in this line. maybe it can be removed with editing (take care)
     - You don't have to do anything else. You don't have to take care of anybody else right now in this moment. #84
     - Fall into me. #55
-    - Just breathe. #56
+    - I'll catch you. #112
+    - Just breathe. #113
     - Just be with me right now. #57
     - Let each breath fill your body with cleansing, fresh air. #58
-    //long pause between 'let' and 'the'
     - Let the breath exit your body... letting all those feelings go with it. #59
-    //add breathing sounds
+    - [Deep breath] #119
     - Whatever you need to be in the real world for anyone else in your life... be that. #45
     - But just know that when you come find me... when you need to be held... #46
-    - When you need to be loved... when you need to be cared for and comforted... #47
+    - When you need to be loved... #123
+    - When you need to be cared for and comforted. #124
     - I'll be here. My arms will be here. My hugs will be here. #48
-    - My warm soothing presence... The safety... #49
-    - The acceptance... #50
-    - The care... #51
+    - My warm soothing presence... The safety. #49
+    - The acceptance. #50
+    - The care. #51
     - I'll hold you. #52
     - Anytime you need a hug or snuggles, #12
     - Or just to be held or rocked or soothed. #13
     - I'll catch you. #14
-    - Breathe. #78
+    - Breathe. #114
     - I promise you're not alone. #102
     - I promise I will be here. #103
     - Anytime you need to be held... #104
@@ -105,6 +108,7 @@
     - I will hold you. I will care for you. #108
     - You don't have to carry this burden alone. You're not alone. #76
     - Give it to me. Let it go. Let me have it for a while. #75
+    - [Deep breath] #119
     - -> meditation_healing
 }
 
@@ -116,31 +120,40 @@
 {cycle:
     - I'm here. #02
     - Just breathe. #18
-    - Slow deep. #19
+    - Slow. Deep. #19
+    - [Deep breath] #119
     - One breath after the other. #20
+    - [Deep breath] #119
     - Just be with me right now. #57
+    - Listen to my voice. #141
     - Fall into me. #55
     - I will catch you. #106
-    - Just breathe. #56
+    - Just breathe. #113
     - Whatever you need to feel. #97
+    - Let me have it for a while. #125
     - It's okay. #98
+    - You're not walking that path alone. #135
+    - [Deep breath] #119
     - You're going to be okay. #99
     - I promise. #100
     - I promise you're not alone. #102
     - I'll hold you. #52
-    - Breathe. #78
+    - Breathe. #114
     - All you have to do is breathe. #85
+    - [Deep breath] #119
+    - You don't have to do anything else. #142
     - Let me hold you. #86
     - Let me give you my strength. #87
     - Fall into me. #54
-    // another heavy breathing over mic that distorts sound
     - Breathe. #109
     - You are not alone. I am here. #110
     - Holding you. #91
     - Rocking you. Breathing with you. #62
+    - [Deep breath] #119
     - Comforting you. #92
     - Taking care of you. #93
     - Giving you my strength... my care... my affection. #64
+    - [Deep breath] #119
 }
 
 + [wait: 3] -> meditation_healing
@@ -173,8 +186,9 @@
     - But it will get better over time. #08
     - It's okay to be sad. #09
     - It's okay to hurt. #10
-    - I'll hold you. I'll catch you.#11
-    - Anytime you need a hug or snuggles. #12
+    - I'll hold you. #111
+    - I'll catch you. #112
+    - Anytime you need a hug or snuggles, #12
     - Or just to be held or rocked or soothed. #13
     - I'll catch you. #14
     - And you don't have to strong right now. I'll help take care of you. #16
@@ -186,8 +200,10 @@
     - Let them fall. Let it out. #22
     - If your heart hurts and you need to sob... #23
     - Do that. #24
-    - Don't be afraid to feel. Don't be afraid to ask for help. #25
-    - You're not alone... and I'm here to hold you as much as you need. #26
+    - Don't be afraid to feel. #115
+    - Don't be afraid to ask for help. #116
+    - You're not alone. #117
+    - And I'm here to hold you as much as you need. #118
     - I know I'm just a stranger on the internet, but I'm a stranger that can be here for you. #27
     - I like taking care of people. #28
     - I like taking care of people when they are small, and they are vulnerable, and they are hurting. #29
@@ -195,9 +211,9 @@
     - And you don't have to be strong with me, because I'll hold you. #31
     - And I'll catch you. #32
     - And I'll keep you safe. #33
-    - Breathe. #78
+    - Breathe. #114
     - I'll protect you with my arms and keep all of the icky world out for a while. #34
-    - And you can just hide... and you can be safe and warm. #35
+    - And you can just hide and you can be safe and warm. #35
     - You can be protected. #36
     - It will be okay. #37
     - You'll be okay. I promise. #38
@@ -209,18 +225,20 @@
     - And you won't be asked to do anything you can't handle. #44
     - Whatever you need to be in the real world for anyone else in your life... be that. #45
     - But just know that when you come find me... when you need to be held... #46
-    - When you need to be loved... when you need to be cared for and comforted. #47
-    - I'll be here. My arms will be here, my hugs will be here. #48
-    - My warm soothing presence... the safety. #49
+    - When you need to be loved... #123
+    - When you need to be cared for and comforted. #124
+    - I'll be here. My arms will be here. My hugs will be here. #48
+    - My warm soothing presence... The safety. #49
     - The acceptance. #50
     - The care. #51
     - I'll hold you. #52
     - You don't have to fall alone. #53
     - Fall into me. #54
     - Fall into me. #55
-    - Just breathe. #56
+    - Just breathe. #113
     - Just be with me right now. #57
     - Let each breath fill your body with cleansing, fresh air. #58
+    - [Deep breath] #119
     - -> grief2
     }
     
@@ -232,43 +250,50 @@
 - (grief2)
 
 {cycle:   
-    - Let the breath exit your body... letting all those feelings go with it. #59
+    - Let the breath exit your body... #126
+    - Letting all those feelings go with it. #127
     - Because there will more and you need to let them move through you. #60
-    - Just let them wash over you. It's okay. They won't be there forever and know that I'm here holding you. #61
+    - Just let them wash over you. #128
+    - It's okay. They won't be there forever. #129
+    - And know that I'm here holding you. #144
     - Rocking you. Breathing with you. #62
     - Taking all that pain and helping hold it for you... and helping it move through you. #63
-    - Giving you my strength... my care... my affection. #64
+    - Giving you my strength... #130
+    - My care... my affection. #131
     - It's going to be okay. It's going to be okay. #65
     - You're going to be okay. #66
     - Maybe not right away. Maybe not right now. But you will. I promise. #67
-    - I promise it will get better. I promise the pain will get less strong over time. #68
+    - I promise it will get better. #132
+    - I promise the pain will get less strong over time. #133
     - You're going to fill a hole... that hole inside you is going to feel so deep. #69
     - It's going to feel like it's going to suck you down and you're going to get lost inside it. #70
     - But I promise you won't... because I'm there with you every step of the way. #71
-    - Holding you as much or as little as you need. You're not walking that path alone.  #72
+    - Holding you as much or as little as you need. #134
+    - You're not walking that path alone. #135
     - You're not falling into nothingness. I'm there to catch you.  #73
     - I'm there to hold you. I'm there to take some of that pain for you. #74
-    - Give it to me. Let it go. Let me have it for a while. #75
+    - Give it to me. #121
+    - Let it go. #122
+    - Let me have it for a while. #125
     - You don't have to carry this burden alone. You're not alone. #76
-    //the word 'anytime' has an awkward pause. Could use a sound edit to see if the pause can be removed
     - I will be here... anytime you need. #77
-    - Breathe. #78
-    - When the pain is that strong it feels like your entire body is in a knot... #79
-    - When your heart is so tiny... gripped in a vice of pain... listen to my voice. #80
-    //this line has a heavy blowign over the microphone sound that distorts it
+    - Breathe. #114
+    - When the pain is that strong it feels like our entire body is in a knot... #79
+    - When your heart is so tiny... gripped in a vice of pain... #140
+    - Listen to my voice. #141
     - And breathe.  #81
     - That's all you have to do right now. #82
     - All you have to do is breathe. #83
-    //there is a verbal stutter in this line. maybe it can be removed with editing
-    - You don't have to do anything else. You don't have to take care of anybody else right now in this moment. #84
+    - You don't have to do anything else. #142
+    - You don't have to take care of anybody else right now in this moment. #143
     - All you have to do is breathe. #85
     - Let me hold you. #86
     - Let me give you my strength. #87
     - You can go back and be strong for others later. #88
     - But right now this is your time. #89
     - And I'm here. #90
-    - Holding you... #91
-    - Comforting you... #92
+    - Holding you. #91
+    - Comforting you. #92
     - Taking care of you. #93
     - Be little. #94
     - Be tired. #95
@@ -283,7 +308,6 @@
     - I will catch you. #106
     - I will give you my strength. #107
     - I will hold you. I will care for you. #108
-     //another heavy breathing over mic that distorts sound
     - Breathe. #109
     - You are not alone. I am here. #110
     - -> meditation_grief
@@ -296,36 +320,44 @@
 
 {cycle:
     - Just breathe. #18
-    - Slow deep. #19
+    - Slow. Deep. #19
+    - [Deep breath] #119
     - One breath after the other. #20
+    - [Deep breath] #119
     - Just be with me right now. #57
     - Fall into me. #55
     - I will catch you. #106
     - I'm here. #02
     - I'll hold you. #52
-    - Just breathe. #56
+    - Just breathe. #113
     - Whatever you need to feel. #97
     - It's okay. #98
     - Just let them wash over you. It's okay. They won't be there forever and know that I'm here holding you. #61
     - Rocking you. Breathing with you. #62
+    - [Deep breath] #119
     - You're going to be okay. #99
     - I promise. #100
     - I promise you're not alone. #102
     - You're not falling into nothingness. I'm there to catch you.  #73
     - I'm there to hold you. I'm there to take some of that pain for you. #74
-    - Breathe. #78
+    - Let it go. #122
+    - [Deep breath] #119
+    - Let me have it for a while. #125
+    - I'm there with you every step of the way. #145
+    - Breathe. #114
     - All you have to do is breathe. #85
+    - [Deep breath] #119
     - It's okay to be sad. #09
     - It's okay to hurt. #10
     - Let me hold you. #86
     - Let me give you my strength. #87
-    // another heavy breathing over mic that distorts sound
     - Breathe. #109
     - You are not alone. I am here. #110
     - Holding you. #91
     - Comforting you. #92
     - Taking care of you. #93
     - Giving you my strength... my care... my affection. #64
+    - [Deep breath] #119
 }
 
 + [wait: 3] -> meditation_grief

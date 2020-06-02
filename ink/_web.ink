@@ -20,6 +20,7 @@ INCLUDE headmistress/code
 INCLUDE headmistress/intro
 INCLUDE headmistress/lore
 INCLUDE headmistress/generic_responses
+INCLUDE headmistress/crowd_responses
 INCLUDE headmistress/apologize
 INCLUDE headmistress/task_handsignals
 INCLUDE headmistress/task_handsignals_basics

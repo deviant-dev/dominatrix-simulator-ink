@@ -156,15 +156,12 @@
 // -> nega_intro.skip_checks
 
 //  -> nega_reward_forcedsex
-
-/scene attic.reward_forcedsex2
-/music nega-reward
-/character nega
-
+//   /scene attic.reward_forcedsex2
 // /scene attic.chair
+//  /music nega-reward
 
 // -> nega_greeting_tease
--> nega_reward_forcedsex.pussy_wet
+// -> nega_reward_forcedsex.pussy_wet
 // -> nega_reward_dice.test_dice
 // -> nega_reward_tease
 // -> nega_reward_tease.tease_edging
