@@ -218,7 +218,7 @@ Even so. You are here now. #44
 /perform do_inspect skeptical 50
 And you won't be going anywhere for quite a while. #45
 
-/emotion do_consider happy 45
+/perform talk_consider happy 45
 That means I'll have to give you a name. #46
 
 /perform idle_tease amused 70

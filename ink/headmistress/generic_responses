@@ -31,7 +31,7 @@
     -/perform react_nod_little happy 55s
     Continue in this way. #13
 
-    -/perform do_consider aroused 85
+    -/perform talk_consider aroused 85
     Most pleasing. #14
 
     -/perform idle_skeptical amused 70
@@ -338,7 +338,7 @@
     -/perform react_nod_little aroused 65
     Good. #03
 
-    -/perform do_consider happy 65
+    -/perform talk_consider happy 65
     Your acceptance is most becoming. #93
 
     -/perform react_nod_little aroused 65
@@ -684,7 +684,7 @@ TODO: decide whether to keep these lines
     -/perform react_thankful amused 65
     What a fine display. #06
 
-    -/perform do_consider excited 55
+    -/perform talk_consider excited 55
     Look at those deft fingers. #07
 
     -/perform react_thankful disgusted 85
@@ -725,7 +725,7 @@ TODO: decide whether to keep these lines
     - -> Headmistress_GoodJob ->
 }
 
-/perform idle_clasp_hands amused 55 
+/perform idle_clasp_hands amused 55
 ->->
 
 === Headmistress_CheckIfInterested ===

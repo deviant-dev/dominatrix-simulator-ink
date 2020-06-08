@@ -1,4 +1,4 @@
- 
+
 === headmistress_task_handsignals_basics ===
 
 -> intro -> exit
@@ -6,118 +6,141 @@
 = intro
 
 - (intro_again)
-/perform talk_behold happy 50
+/perform talk_one_finger excited 65
 The time has come to accelerate your performance, heathen. #01
 
-/perform do_smooth_skirt neutral
+/perform do_smooth_skirt aroused 70
 To earn your place as a cherished possession, you must embody attentiveness! #02
 
-/perform talk_consider skeptical 
+/perform talk_question skeptical 65
 Do you desire to be cherished, bauble? #03
+/wait 1
 
-/perform idle_swaying
+/perform idle_pleased happy 55
 
 + [yes]
     -> Headmistress_AcknowledgeYes ->
 
 + [no]
-    /perform react_disappointed angry 50
+
     -> Headmistress_Unhappy ->
+    /perform react_disappointed angry 50
     I will ask you again. #04
-    
-    
+
+    /perform talk_question skeptical 65
     Do you desire to be cherished? #05
-    
+
     ++ [Yes]
         -> Headmistress_AcknowledgeYes ->
         -> Headmistress_Resume ->
-    
+
     ++ [No] -> ExitUnhappy
 
 + [timeout] -> Headmistress_Timeout -> intro_again
 + [distracted] -> Headmistress_PayAttention -> intro_again
 
-- /perform idle
+- /perform idle_clasp_hands happy 35
 To be cherished, one must be entirely fixated upon one's Mistress. #08
 
 ~ tries = 0
 - (come)
 ~ tries++
 
-/perform do_arm_raise
+/perform do_point_down amused 60
 Come hither. #09
 
 /scene TheatreOpen.Ready
 
 + [move]
-   
+
 + { tries < 2 } [timeout]
     -> come
 + { tries >= 2 } [timeout]
     -> Headmistress_NoAction -> come
 + [distracted] -> Headmistress_PayAttention -> come
 
-- The time has come to train you to respond to commands without words. #10
+- /perform talk_behold excited 45
+The time has come to train you to respond to commands without words. #10
 TODO: need a handsignal idle for when she is preparing to signal, but hasn't yet
 
+/perform do_snap_fingers disgusted 35
 Attend to my hand, peasant. #11
 
+/perform talk_emphatic_one_hand skeptical 45
 Through the delicate position of my fingers, #12
+
+/perform talk_one_finger amused 45
 I signal to you a position your body must obey. #13
 
 -> TestKneel(0) ->
 
-- /perform talk_behold
+- /perform react_thankful amused 35
 Such delight to be found in this position. #14
 
 - (delight)
+/perform idle_pleased happy 45
 Do you seek to delight your Mistress, {isBoy: speck|foible}? #15
 
 
 + [yes] -> Headmistress_AcknowledgeYes ->
-     
+
 + [no]
     -> Headmistress_Unhappy ->
+    /perform react_point_at_player_angry disgusted 35
     Think carefully about your response. #16
-    
+
     ~ addDisobey()
+    /perform idle_skeptical angry 50
     Do you seek to delight with your obedience? #17
-    
+
     ++ [yes] -> Headmistress_AcknowledgeYes ->
     ++ [no] -> ExitUnhappy
     ++ [timeout] -> Headmistress_Timeout ->
-    ++ [distracted] -> Headmistress_PayAttention -> 
+    ++ [distracted] -> Headmistress_PayAttention ->
 
 + [timeout] -> Headmistress_Timeout -> delight
 + [distracted] -> Headmistress_PayAttention -> delight
 
-- Rise up to your feet, {player_name}. #56
+-/perform talk_question skeptical 65
+Rise up to your feet, {player_name}. #56
 
 - (stand_straight)
 
 + [pose:raised_chin]
 + [timeout]-> Headmistress_NoAction -> stand_straight
 
-/perform idle
+/perform
 The bond between a Mistress and her pet must be strong. #20
+
+/perform talk_one_finger happy 35
 Communication does not always require words, vassal. #21
+
+/perform talk_two_fingers amused 25
 Simplicity. Elegance. Silence. #22
 
 - (serve)
+/perform idle_fake_annoyed skeptical 45
 Are you prepared to serve so attentively, flawed one? #23
- 
+
 + [yes] -> Headmistress_AcknowledgeYes ->
-    
+
 + [no]
+    /perform react_dismissive disgusted 35
     Perhaps this is more than your simple mind can comprehend. #24
+
+    /perform react_point_at_player_angry sad 55
     You will obey the commands I teach you to follow with my hands. #25
-   
+
+    /perform talk_question happy 45
     Will you serve in this way, slave? #26
-    
+    /wait 1
+
+    /perform idle_clasp_hands excited 50
+
     ++ [yes] -> Headmistress_AcknowledgeYes ->
     ++ [no] -> ExitUnhappy
     ++ [timeout] -> Headmistress_Timeout ->
-    ++ [distracted] -> Headmistress_PayAttention -> 
+    ++ [distracted] -> Headmistress_PayAttention ->
 
 + [timeout] -> Headmistress_Timeout -> serve
 + [distracted] -> Headmistress_PayAttention -> serve
@@ -134,14 +157,14 @@ Perfectly placed for a swat of my hand. #32
 - (swat)
 /character headmistress do_spank_player
 
-+ [react-success] 
-    
++ [react-success]
+
     Such a delightful response! #33
-        
+
 + [react-fail]
-    
+
     Tut. Already you forget how to please. #34
-       
+
 - /perform idle
 Turn around and stand upright. #35
 Patience must be offered to those who are learning, #36
@@ -152,23 +175,23 @@ once your training is complete. #160
 Will you strive to please Her, chattel? #38
 
 + [yes] -> Headmistress_AcknowledgeYes ->
-     
-    
+
+
 + [no]
     -> Headmistress_CheckIfInterested ->
-    
-    
-    ++ [yes] -> Headmistress_AcknowledgeYes -> 
+
+
+    ++ [yes] -> Headmistress_AcknowledgeYes ->
     ++ [no] -> ExitUnhappy
-    ++ [timeout] -> Headmistress_Timeout -> 
-    ++ [distracted] -> Headmistress_PayAttention -> 
+    ++ [timeout] -> Headmistress_Timeout ->
+    ++ [distracted] -> Headmistress_PayAttention ->
 
 + [timeout] -> Headmistress_Timeout -> strive
 + [distracted] -> Headmistress_PayAttention -> strive
-  
 
-- 
-/perform talk_behold 
+
+-
+/perform talk_behold
 I shall demonstrate the final signal for you to learn today. #41
 
 -> TestHumble(0) ->
@@ -181,13 +204,13 @@ Punishment. Reward. Or otherwise. #44
 This position is perfect for many things. #45
 Wouldn't you agree, poppet? #46
 
-+ [yes] 
++ [yes]
     Your acquiescence serves you well, trinket. #47
-     
-     
+
+
 + [no]
     I shall enlighten you. #48
-    
+
 
 + [timeout] -> Headmistress_Timeout -> position
 
@@ -201,14 +224,14 @@ It also serves to inform your Mistress that you are sorry. #51
 - (caress)
 Can you feel the cool air caress your {isBoy: sack|slit}? #52
 
-+ [yes] 
++ [yes]
     The gentle musk of your arousal wafts toward me. #53
-     
-     
+
+
 + [no]
     We must work on your sexual excitation {isBoy: philistine|jezebel}. #54
     That will wait for another day. #55
-    
+
 
 + [timeout] -> Headmistress_Timeout -> caress
 
@@ -306,7 +329,7 @@ Now, leave my sight. #74
 - -> exit
 
 
-= practice 
+= practice
 
 { headmistress_signal_basics_difficulty <= 1:
         -> practice_easy ->
@@ -331,7 +354,7 @@ Come hither. #09
 /scene TheatreOpen.Ready
 
 + [move]
-   
+
 + { tries < 2 } [timeout]
     -> come
 + { tries >= 2 } [timeout]
@@ -342,22 +365,22 @@ Come hither. #09
 Shall we begin? #77
 
 + [yes] -> Headmistress_AcknowledgeYes ->
-    
+
 + [no]
     -> Headmistress_CheckIfInterested ->
-    
-    ++ [yes] -> Headmistress_AcknowledgeYes -> 
+
+    ++ [yes] -> Headmistress_AcknowledgeYes ->
     ++ [no]
         /perform react_shrug_long
         -> Headmistress_Unhappy ->
         You waist my time. #78
         -> exit
-    ++ [timeout] -> Headmistress_Timeout -> 
-    ++ [distracted] -> Headmistress_PayAttention -> 
+    ++ [timeout] -> Headmistress_Timeout ->
+    ++ [distracted] -> Headmistress_PayAttention ->
 
 + [timeout] -> Headmistress_Timeout -> begin
 + [distracted] -> Headmistress_PayAttention -> begin
-  
+
 
 // todo: endurance signals practice
 - Attend to my hand, {isBoy: buffoon|dove}. #79
@@ -415,7 +438,7 @@ Stand at attention before me, miscreant. #96
 - {obeyed(): -> GoodEndingEasy | -> BadEndingEasy}
 + [timeout]-> Headmistress_NoAction -> turn_around
 
-- ->-> 
+- ->->
 
  = GoodEndingEasy
 /perform do_arm_raise
@@ -461,7 +484,7 @@ Come hither. #09
 /scene TheatreOpen.Ready
 
 + [move]
-   
+
 + { tries < 2 } [timeout]
     -> come
 + { tries >= 2 } [timeout]
@@ -472,7 +495,7 @@ Come hither. #09
 Can you feel all eyes upon you? #112
 
 + [yes] -> Headmistress_AcknowledgeYes ->
-    
+
 + [no]
     Ahh, but indeed they are. #113
 
@@ -485,7 +508,7 @@ Does it excite you to be the focus of so much attention? #114
 + [yes] -> Headmistress_AcknowledgeYes ->
     Your soul brims with passion. #115
     So much delicious sustenance to provide. #116
-    
+
 + [no]
     A pity to be so shy. #117
     Do not let your nerves get the best of you. #118
@@ -505,18 +528,18 @@ and you will obey without assistance. #123
 Do you understand, {isBoy: tribute|token}? #124
 
 + [yes] -> Headmistress_AcknowledgeYes ->
-    
+
 + [no]
     -> Headmistress_CheckIfInterested -> understand
-    
-    ++ [yes] -> Headmistress_AcknowledgeYes -> 
+
+    ++ [yes] -> Headmistress_AcknowledgeYes ->
     ++ [no]
         /perform react_shrug_long
         -> Headmistress_Unhappy ->
         You waist my time. #78
         -> exit
-    ++ [timeout] -> Headmistress_Timeout -> 
-    ++ [distracted] -> Headmistress_PayAttention -> 
+    ++ [timeout] -> Headmistress_Timeout ->
+    ++ [distracted] -> Headmistress_PayAttention ->
 
 + [timeout] -> Headmistress_Timeout -> understand
 + [distracted] -> Headmistress_PayAttention -> understand
@@ -632,10 +655,10 @@ Go and contemplate your failure. #146
     - else:
         Much better. #151
     }
-+ {tries == 1} [timeout] 
++ {tries == 1} [timeout]
     /perform idle_clasp_hands
-    -> Headmistress_Unhappy -> 
- 
+    -> Headmistress_Unhappy ->
+
     ~ perfect = false
     ~ addDisobey()
     ~ say_short_explanation = true
@@ -647,7 +670,7 @@ Go and contemplate your failure. #146
     ~ say_full_explanation = true
     /perform idle_clasp_hands
     -> Headmistress_NoAction -> retry
-+ {tries >= 3} [timeout] 
++ {tries >= 3} [timeout]
     ~ addDisobey()
     -> Headmistress_CheckIfInterested -> retry
 
@@ -684,7 +707,7 @@ Go and contemplate your failure. #146
     - else:
         I expect more effort. #155
     }
-+ {tries == 1} [timeout] 
++ {tries == 1} [timeout]
     /perform idle_clasp_hands
     -> Headmistress_Unhappy ->
     ~ perfect = false
@@ -736,7 +759,7 @@ Go and contemplate your failure. #146
     - else:
         Took you long enough. #159
     }
-+ {tries == 1} [timeout] 
++ {tries == 1} [timeout]
     /perform idle_clasp_hands
     -> Headmistress_Unhappy ->
     ~ perfect = false
@@ -755,4 +778,3 @@ Go and contemplate your failure. #146
     -> Headmistress_CheckIfInterested -> retry
 
 - ->->
-

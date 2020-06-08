@@ -190,7 +190,7 @@ Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your
     Like so, foolish {player_name}. #42
     -> Headmistress_NoAction -> present_retry
 
-- /perform do_consider excited 40
+- /perform talk_consider excited 40
 Ah, Bloodstone. Diligence and commendation. #43
 
 /perform do_arm_raise happy 50

@@ -215,7 +215,7 @@ What say you, {isBoy: toad|strumpet}? #79
     -/perform talk_lean_forward excited 65
     Do you feel their eyes on you? #82
 
-    -/perform do_consider aroused 45
+    -/perform talk_consider aroused 45
     Are you throbbing in anticipation? #83
 
     -/perform idle_skeptical skeptical 45
