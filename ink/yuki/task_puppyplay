@@ -9,7 +9,7 @@
 /scene atrium.close
 /music yuki
 /ambient none
-/character yuki idle_yuki happy 65
+/character yuki idle_yuki
 
 - (session_selection)
 

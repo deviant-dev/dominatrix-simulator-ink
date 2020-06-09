@@ -4,55 +4,48 @@
 ~ setScene(task_scene, Yuki)
 
 - (intro_again)
-/perform idle_pleased excited 45
+/perform idle_pleased
+
 Do you remember from before, about how much I like puppies? #45
 
 + [yes]
-    /perform do_bouncing_big happy 65
+    /perform do_bouncing_big
     Oh good! I'm glad you remember! #46
 
 + [no]
-    /perform talk_consider skeptical 45
+    /perform talk_thoughtful
     It <i>was</i> a little while ago. #47
-
-    /perform react_chuckle amused 65
     I guess you've been pretty busy. #48
 
 + [timeout] -> Yuki_Timeout -> intro_again
 + [distracted] -> Yuki_PayAttention -> intro_again
 
-- /perform do_bouncing_little happy 60
+- /perform idle_eager
 One of my favorite things in the <i>whole world</i> is playing with a puppy. #49
-
-/perform do_inspect aroused 55
+/perform talk_consider
 So, I was wondering... #50
 
-- (be_puppy)
-/perform idle_cocks_head_to_left aroused 75
+- (be_puppy) 
+/perform idle_cocks_head_to_left
 Is that something you're interested in? #51
-
-/perform talk_question happy 45
 Being my puppy? #52
-
-/perform idle_yuki aroused 55
+/perform idle_yuki
 
 + [yes] -> Yuki_AcknowledgeYes ->
-
+    
 + [no]
     -- (check_again_puppy)
-    /perform idle_pleased sad 75
+    /perform talk_behold
     Oh, come on. Please? #54
-
-    /perform idle_eager excited 45
+    /perform idle_pleased
     It would make me so happy! #55
-
 
     ++ [yes] -> Yuki_AcknowledgeYes ->
     ++ [no]
-        /perform talk_bashful sad 75
+        /perform react_shrug_long
         Well, okay. I don't really have anything else for you then. #56
         -> exit
-    ++ [timeout] -> Yuki_Timeout -> check_again_puppy
+    ++ [timeout] -> Yuki_Timeout -> check_again_puppy 
     ++ [distracted] -> Yuki_PayAttention -> be_puppy
 
 + [timeout] -> Yuki_Timeout -> be_puppy
@@ -70,8 +63,8 @@ And you can't be a good puppy until you learn how to behave like one. #59
 /perform idle_clasp_hands
 So pay attention! #60
 
-+ [continue]
-+ [distracted] -> Yuki_PayAttention ->
++ [continue] 
++ [distracted] -> Yuki_PayAttention -> 
 
 - /perform talk_consider
 I'm going to teach you to respond to some basic commands first. #61
@@ -140,7 +133,7 @@ Understand? #76
     /perform idle_clasp_hands
     Always start in the <b>"sit"</b> position whenever you are a puppy, #77
     then follow commands from there. #78
-
+    
     /perform talk_lean_forward
     Make sense? #79
 
@@ -206,8 +199,8 @@ Remember to answer like a proper puppy would. #93
     Then, you practice those poses. #99
     Eventually, I test you on those poses. #100
 
-+ [timeout] -> Yuki_Interested -> puppy_reminder
-
++ [timeout] -> Yuki_Interested -> puppy_reminder 
+    
 - /perform idle_eager
 If you do well, I'll reward you for being a good {player_name}. #101
 /perform talk_one_finger
@@ -225,3 +218,5 @@ That's it for today, puppy. #105
 Come visit me again soon! #106
 
 ->->
+
+
