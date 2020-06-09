@@ -70,25 +70,25 @@ Now go and fail me no further, {player_name}. #13
 /ambient huge-space
 /character goddess
 
-- /emotion amused
+- /emotion amused 85
 Hello there, little {player_name}. #14
 You have performed adequately for one so new. #15
 I am satisfied. For now. #16
 
-/emotion happy
+/emotion happy 65
 As always, the Headmistress outdoes herself. #17
 Her dedication to obedience serves me well. #18
 Restrained passion sustains so much longer #19
 than a bright flame that burns out too soon. #20
 
-/emotion amused
+/emotion skeptical 75
 I must commend Mistress Yuki-Onna, as well. #21
 It seems her recent lesson has provided quite the motivation. #22
 
-/emotion neutral
+/emotion excited 65
 Continue to serve in my house and remain useful. #23
 
-/emotion amused
+/emotion amused 75
 I shall leave you now. #24
 Go forth and please me, {player_name}. #25
 
