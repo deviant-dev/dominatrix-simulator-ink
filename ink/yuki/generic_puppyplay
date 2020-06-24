@@ -41,9 +41,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Puppyplay_Reward_Complete ===
 
 {shuffle:
-    - /perform idle_sassy
-    - /perform idle_pleased
-    - /perform do_bouncing_big
+    - /perform idle_sassy happy 65
+    - /perform idle_pleased happy 50
+    - /perform do_bouncing_big excited 70
 }
 
 {shuffle:
@@ -124,7 +124,7 @@ TODO: add emotions and performances to swipe a Bloodstone
     - You should really try to avoid punishments in the future, puppy. #03
 }
 
-{shuffle: 
+{shuffle:
     - You've paid off a punishment, puppy! #04
     - Alright. That's one Obsidian punishment removed! #05
     - Phew! You just got rid of a punishment.  #06
@@ -161,7 +161,7 @@ TODO: add emotions and performances to swipe a Bloodstone
     -
     -
     -
-    - 
+    -
  }
 
 ->->
@@ -189,24 +189,27 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 === Yuki_Player_Masturbate ===
 
-
+/perform tease_pinup aroused 65
 Are you {hasPenis: hard|wet} already? #01
 
 + [yes]
     ~ addObey()
+    /perform tease_caress_breast_left excited 55
    Oh goody. #02
    That mean's you're excited! #03
 
 + [no]
     ~ addDisobey()
+
+    /perform tease_bend_over aroused 65
     That's okay. #04
     You can warm yourself up first. #05
 
 - (masturbate)
-
+/character yuki tease_rubbing_crotch aroused  80
 {hasPenis: Grab your little cock and start stroking|Reach down and start rubbing your pussy.}  #06
 
-/character yuki idle
+
 /wait 2
 That's it. #07
 //shuffles through a variable number of comments and different duration times between each
@@ -226,7 +229,7 @@ That's it. #07
 ->->
 
 === Yuki_masturbation_punishment ===
-TODO: Rewrite for Yuki   
+TODO: Rewrite for Yuki
 // { shuffle:
 //     - Your suffering is prolonged when you fail to try. #01
 //     - At least you may please us with this performance. #02
@@ -307,11 +310,11 @@ TODO: rewrite
 
 // //Yes -> That's a good [gender] Get yourself extra [adjective].
 
-// //No -> Hmph. Well then back to work [gender]. 
+// //No -> Hmph. Well then back to work [gender].
 
 // //Timeout -> Hey, you're supposed to be serving me, not the other way around! Get back to work!
 
-// //Distracted -> 
+// //Distracted ->
 
 // (Yes) - > “Oooh, I love that I don't have to punish you.”
 
