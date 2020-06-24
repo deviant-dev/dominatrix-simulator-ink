@@ -1,186 +1,174 @@
 === Debug ===
-
-// Auto-set gender here to skip gender selection step
+// --- Set gender here to skip gender selection step ---
 // ~setGender("m")
-~setGender("f")
-
--> devil_girl_care
-
-// -> devil_girl_promo
-
-// -> exit
-
-// -> RandomCommentLoop(-> Goddess_GoodJob, 1, 2, 3, 3) ->
-
-// Force a different deviation
-
-// ~ setDeviation(full_game)
-// ~ setDeviation(demo)
-// ~ setDeviation(puppyplay)
-// ~ setDeviation(hand_signals)
+// ~setGender("f")
 
 
-// /scene Entry.Empty
+// --- Cheat codes ---
+// -> unlock_all
+// -> unlock_shortcuts
+ ~ punishments = 0
+ ~ rewards = 2
+// ~ goddess_regard =
+// ~ yuki_regard =
+// ~ nega_regard =
+// ~ headmistress_regard =
+// ~ devilgirl_regard =
+// ~ pragma_regard =
+// ~ drill_sergeant_regard =
+
+// --- Tests ---
+// -> test_look
 // -> test_audio
 // -> test_marks
-// -> entry_hub
-// -> game_intro.use_journal
-// -> demo_end
-
-// -> unlock_shortcuts -> game_intro_again
-
 // -> test_multiple_poses
+// -> test_crowd_comments
+
+
+// --- Force a different deviation ---
+// ~ setDeviation(demo)
+// ~ setDeviation(tutorial)
+// ~ setDeviation(full_game)
+// ~ setDeviation(devilgirl)
+// ~ setDeviation(puppyplay)
+// ~ setDeviation(nega_dice)
+// ~ setDeviation(hand_signals)
+// ~ setDeviation(exhibitionism)
+
+
+// --- Models ---
+// /character goddess
+// /character yuki
+// /character nega
+// /character headmistress
+// /character pragma
+// /character devilgirl
+// /character sergeant
+// /character female slave
+// /character male slave
+// /character crowd
+
+
+// --- Music ---
+// /music goddess
+// /music yuki
+// /music nega
+// /music headmistress
+// /music pragma
+// /music devilgirl
+// /music sergeant
+
+
+// --- Game Jumps ---
+// -> DONE
+// -> exit
+// -> entry_hub
+// -> demo_end
+// -> game_intro
+// -> game_intro_again
+
 
 // --- Goddess Jumps ---
 // -> goddess_hub
-// /scene bedroom.close
-// /character goddess
-
-// -> entry_intro
-// -> goddess_intro.debug_jump
-// -> goddess_intro.stand_straight
-// -> goddess_intro.kneel
-// -> goddess_intro.ByeForNow
-// -> goddess_intro.flash_1
+// -> goddess_intro
 // -> goddess_monitoring
-// -> goddess_monitoring_intro.angry
+// -> goddess_monitoring_intro
+
 
 
 // --- Yuki Jumps ---
 // -> yuki_hub
-
-// /scene entry.intro2
-// /character yuki
-// -> yuki_intro.learn_rules
-
 // -> yuki_intro
-// -> yuki_intro.easy_rules
-// -> select_gender_check ->
-
-// /scene entry.intro3
-// /character nega
-// -> yuki_intro.skip_caress
-
-// -> test_look
-
-
-// -> yuki_intro.nega_interruption
-// -> yuki_intro.nega_slap
-
-// -> yuki_punishment_edging
-//
-
-// /scene atrium.close
 // -> yuki_task_puppyplay
-// -> yuki_task_puppyplay_intro.puppy_yes_intro -> exit
-// -> yuki_reward_puppyplay_milking
-
+// -> yuki_task_puppyplay_intro
+// -> yuki_task_puppyplay_learn
+// -> yuki_task_puppyplay_practice
+//  -> yuki_reward_puppyplay_milking
 // -> yuki_punishment_puppyplay_spanking
 // -> yuki_punishment_puppyplay_cage
+// -> yuki_punishment_edging
 
 
-
-
+// --- Nega Jumps ---
+// -> nega_hub
+// -> nega_intro
+// -> nega_reward_dice
+// -> nega_reward_tease
+// -> nega_reward_forcedsex
+// -> nega_punishment_camera_shoot
+// -> nega_punishment_genital_torture
 
 
 // --- Headmistress Jumps ---
-
-// -> headmistress_intro
-//  /scene Theatre
-
-
-// /character headmistress
-// /scene Theatre.DeskReady
-// -> headmistress_punishment_spanking.accept_punishment
-// -> headmistress_punishment_spanking.spank_continue
-
-// /scene Theatre.Intro3
-// /character headmistress
-
-// ~ punishments = 1
-
-
-// -> headmistress_intro.present
-
-// /scene Theatre.DeskReady
-// /character headmistress
-
-// -> headmistress_punishment_spanking.punish_continue
-
-// ~ deviation = hand_signals
 // -> headmistress_hub
-
-// /action raise_curtains
-// /scene Theatre.DeskApproach
-// -> headmistress_punishment_spanking.SpankingFinished
-
-// /scene TheatreOpen.Ready
-// /music headmistress
-// /ambient crowd
-~ rewards = 5
-// -> DONE
-// -> headmistress_reward_exhibitionism.test_jump
+// -> headmistress_intro
+// -> headmistress_task_handsignals
+// -> headmistress_task_handsignals_basics
+// -> headmistress_punishment_spanking
+// -> headmistress_punishment_spanking
+// -> headmistress_reward_exhibitionism
 
 
-// ~ setDeviation(exhibitionism)
-// ~ rewards = 1
-// -> unlock_all -> headmistress_reward_exhibitionism
-
-//-> test_crowd_comments
-
-// --- Nega Jumps ---
-// ~ inTutorial = false
-// ~ rewards = 5
-// -> nega_hub
-// -> nega_punishment_camera_shoot
-
-// /scene Attic.Reward_ForcedSex1
-
-// Make sure we are set up as expected for Nega's intro.
-~ rewards = 1
-~ punishments = 0
-~ reward_just_removed = false
-~ tutorial_step = at_nega_intro
-~ nega_shortcut = true
-~ temp cameFromHub = current_mistress == None
-~ setScene(intro_scene, Nega)
-
-// /music nega
-// /ambient howling-wind
+// --- Devilgirl Jumps ---
+// -> devil_girl_hub
+// -> devil_girl_care
+// -> devil_girl_intro
+// -> devil_girl_promo
 
 
-// /scene Attic.Ready
-// /character nega
-// -> nega_intro.check_reward
-// -> nega_intro.nega_tease
-// -> nega_intro.skip_checks
+// --- Pragma Jumps ---
+// -> pragma_hub
+// -> pragma_intro
 
-//  -> nega_reward_forcedsex
-//   /scene attic.reward_forcedsex2
-// /scene attic.chair
-//  /music nega-reward
 
-// -> nega_greeting_tease
-// -> nega_reward_forcedsex.pussy_wet
-// -> nega_reward_dice.test_dice
-// -> nega_reward_tease
-// -> nega_reward_tease.tease_edging
-//-> nega_punishment_genital_torture
+// --- Drill Sergeant ---
+// -> drill_sergeant_hub
+// -> drill_sergeant_intro
+
+
 
 /log Returning from debug.
 
 ->->
 
 
-=== test_crowd_comments ===
+=== test_marks ===
+    + add punishment
+        ~ addPunishment()
+    + remove punishment
+        ~ removePunishment()
+    + add reward
+        ~ addReward()
+    + remove reward
+        ~ removeReward()
+
+- /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
+-> test_marks
+
+
+ === test_audio ===
+
++ [Goddess Music] /music Goddess
++ [Entry Music] /music entry
++ [Headmistress Music] /music headmistress
++ [Music Off] /music off
++ [Orgy Audio] /ambient orgy
++ [Rain Audio] /ambient rain
++ [Crowd Audio] /ambient crowd
++ [Audio Off] /ambient off
+
+- -> test_audio
+
+
+=== test_crowd_reaction ===
 
 /scene TheatreOpen.Ready
 /music headmistress
 /ambient crowd
-/character headmistress idle_tease happy 50
+/character headmistress idle_tease amused 75
 
 - (loop)
-{shuffle:
+{cycle:
     - /character crowd oos
     - /character crowd cheers
     - /character crowd boos
@@ -198,29 +186,8 @@
 
 + [wait] -> loop
 
-=== test_look ===
-/scene entry.intro3
 
-/character yuki talk_thoughtful
-/lookat nega
 
-/character nega react_head_toss_casual
-/lookat yuki
-
-+ [yes] -> yuki_intro.test_lookat
-
-=== test_marks ===
-    + add punishment
-        ~ addPunishment()
-    + remove punishment
-        ~ removePunishment()
-    + add reward
-        ~ addReward()
-    + remove reward
-        ~ removeReward()
-    
-- /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
--> test_marks
 
 
 === test_multiple_poses ===
@@ -285,17 +252,3 @@
 + [pose:puppy_no]
     /notify title="You answered 'NO'."
 - -> move_270
-
-
-// === test_audio ===
-
-// + [Goddess Music] /music Goddess
-// + [Entry Music] /music entry
-// + [Headmistress Music] /music headmistress
-// + [Music Off] /music off
-// + [Orgy Audio] /ambient orgy
-// + [Rain Audio] /ambient rain
-// + [Crowd Audio] /ambient crowd
-// + [Audio Off] /ambient off
-
-// - -> test_audio
