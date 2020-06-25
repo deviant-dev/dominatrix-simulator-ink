@@ -4,72 +4,91 @@
 
 ~ setScene(reward_scene, Yuki)
 -> select_gender_check ->
- 
+
 /scene atrium.intro
 /music yuki
 /ambient off
-/character yuki idle
+/character yuki idle_pleased excited 75
 
 
-/perform idle_pleased excited 75
 {shuffle:
-    - For a reward, my good puppy is going to get {hasPenis: milked dry|fingered hard.}
-    - The reward you're going to get is a puppy orgasm!
-    - I'm going to give you an orgasm for your reward, puppy. 
-}   
+
+    - /perform idle_sassy aroused 75
+    For a reward, my good puppy is going to get {hasPenis: milked dry|fingered hard.}
+
+    - /perform do_bouncing_little aroused 65
+    The reward you're going to get is a puppy orgasm!
+
+    - /perform talk_one_finger excited 55
+    I'm going to give you an orgasm for your reward, puppy.
+}
 
 - (consent)
-/perform idle_yuki neutral
+/perform talk_bashful aroused 60
 Would you like that, {player_name}?
 
 +[yes]
     ~ addObey()
-    /perform do_bouncing_little happy 50
-   -> Yuki_AcknowledgeYes ->
-   
-   /perform idle 
+       -> Yuki_AcknowledgeYes ->
+
     {shuffle:
-        - Such hedonistic exhibitionism will please <i>Her</i>. #17
-        - Your audience shall delight in feasting their eyes upon your body. #18
-        - Displaying your orgasm for the benefit of others is your duty. #19
+
+        - /perform do_arm_raise happy 60
+        Such hedonistic exhibitionism will please <i>Her</i>. #17
+
+        - /perform do_inspect aroused 55
+        Your audience shall delight in feasting their eyes upon your body. #18
+
+        - /perform talk_one_finger amused 65
+        Displaying your orgasm for the benefit of others is your duty. #19
     }
     -> begin
-  
+
 + [no]
-    /perform idle
+
    -> consent_check
-  
+
 + [timeout] -> Yuki_Timeout -> consent
 + [distracted] -> Yuki_PayAttention -> consent
 
 = consent_check
 
-/perform idle_cocks_head_to_left scared 50
+/perform idle_sassy scared 50
 Are you uncomfortable having me masturbate you?
 
 + [yes]
-    /perform skeptical 50
+    /perform idle_unhappy_arms_crossed scared 75
     Oh. I never thought of that.
     -- (self_masturbate)
+
+    /perform idle_tease skeptical 45
     Would you like to make yourself cum for me instead?
-    
+
     ++ [yes]
-        /perform react_shrug_short
+        /perform react_shrug_short amused 55
         Well, okay. If that's what you want.
         -> milk_self
-    
+
     ++ [no]
+
+        /perform react_whatever skeptical 85
         Really?
+
+        /perform react_disappointed sad 55
         Well, that's disappointing.
+
+        /perform talk_annoyed disgusted 80
         If you don't like this reward,
         you should visit a different Mistress.
         -> exit
 
     ++ [timeout] -> Yuki_Timeout -> self_masturbate
     ++ [distracted] -> Yuki_PayAttention -> self_masturbate
-    
+
 + [no]
     -> Yuki_AcknowledgeYes ->
+
+    /perform react_thankful happy 55
     I was a little worried for a minute.
     -> begin
 
@@ -79,23 +98,29 @@ Are you uncomfortable having me masturbate you?
 
 = begin
 
-/perform do_point_down happy 50
+/perform do_point_down happy 55
 Down on the floor.
+
+/perform tease_bend_over aroused 45
 Roll onto your back like a good little puppy. #166
 
-/perform do_inspect
+/perform idle_swaying excited 65
 // Hands and legs in the air, just like a real puppy. #167
-// /perform react_shrug_long
+
 
 + [pose:puppy_back]
 
-- /perform yuki_kneel
+- /perform yuki_kneel aroused 70
 
 Now, spread your knees. #168
 
-{isBoy: 
+{isBoy:
+
+    /emotion excited 60
     Time for my good puppy to be milked dry! #169
     - else:
+
+    /emotion excited 60
     Time for my good puppy to be juiced!
 }
 
@@ -105,7 +130,7 @@ Now, spread your knees. #168
 
 -> RandomCommentLoopWithYes(-> masturbation_comment, -> cum, 3, 5, 2, 5) ->
 
--> Yuki_GoodJob ->
+-> Yuki_GoodJob.Kneeling ->
 
 --> question ->
 
@@ -113,8 +138,11 @@ Now, spread your knees. #168
 
 /wait 5
 
+/perform tease_dance_slow aroused 65
 Since this is a reward, I'm going to let you finish.
 Better tell me when you're ready to cum, puppy. #170
+
+/perform do_arm_raise excited 70
 Just raise your right paw! #171
 
 - (masturbation_cycle)
@@ -135,7 +163,7 @@ TODO: Is this the right place to go? Put this in here to fix the script -deviant
 
 = milk_self
 
--> Yuki_Player_Masturbate -> finish 
+-> Yuki_Player_Masturbate -> finish
 
 = masturbation_comment
 
@@ -143,7 +171,7 @@ TODO: Is this the right place to go? Put this in here to fix the script -deviant
     - -> Yuki_masturbation_comments ->
     - -> puppy_comment ->
     - -> Yuki_Aroused ->
-    
+
 }
 
 ->->
@@ -177,35 +205,45 @@ I treat my puppies well, don't I? #177
 = question
 
 {shuffle:
-        - Do you like being touched, puppy?
-        - Enjoying your reward, {player_name}? 
-        - Do you like this kind of reward, puppy?
+        - /emotion happy 45
+        Do you like being touched, puppy?
+
+        - /emotion aroused 55
+        Enjoying your reward, {player_name}?
+
+        - /emotion amused 65
+        Do you like this kind of reward, puppy?
 }
 
 + [yes]
-    -> Yuki_AcknowledgeYes ->
+    -> Yuki_AcknowledgeYes.Kneeling ->
 
 + [no]
     -- (stop)
+
    Do you want to stop, puppy?
 
     ++ [yes]
-        /perform react_shrug_short
+        /perform react_shrug_short sad 45
         Well, okay. If that's what you want.
         //do they lose the reward after going this far?
         -> exit
-    
+
     ++ [no]
+
+        /emotion happy 45
         Really?
+
+        /emotion excited 65
         Then let's keep going!
         -> masturbation_cycle
 
     ++ [timeout] -> Yuki_Timeout -> stop
     ++ [distracted] -> Yuki_PayAttention -> stop
-    
+
 + [timeout] -> Headmistress_Timeout -> question
 + [distracted] -> Headmistress_PayAttention -> question
-    
+
 --> command ->
 
 - (keep_going)
@@ -216,7 +254,7 @@ I treat my puppies well, don't I? #177
     - Are you going to ask our guests to continue waiting? #12
     - Still working that {hasPenis:shaft|slit}? #13
     - Our {isBoy:toad|strumpet} needs more time. Yes? #14
-} 
+}
 
 + [yes]
     /character headmistress idle
@@ -226,24 +264,24 @@ I treat my puppies well, don't I? #177
 + [no]
     /character headmistress idle
     Are you ready to cum, then, slave? #100
-    
+
         ++ [yes]
             -> orgasm
-            
+
         ++ [no]
             Yet you wish to stop. #101
             Do you want to continue with your reward, slave? #102
-            
+
             +++ [yes]
                 -> Headmistress_Resume ->
                 -> masturbate
-                
+
             +++ [no]
                 Then I give you leave to depart, foible. #103
                 One reward has been deducted from your wrist. #104
                 ~removeReward()
                 -> exit
-            
+
 + [timeout] -> Headmistress_Timeout -> keep_going
 + [distracted] -> Headmistress_PayAttention -> keep_going
 
@@ -275,15 +313,15 @@ Does it feel good to be put on display, foible? #109
     {embarassed:
         How hard this must be for you then, slut.  #110
         To enjoy being seen even as you flush with shame. #111
-       - else: 
+       - else:
             As it should for one who enjoys whoring themself before an audience. #112
     }
-    
+
 
 + [no]
     What a shame. #113
     This is your reward, after all. #114
-    
+
 + [timeout] -> Headmistress_Timeout -> display
 + [distracted] -> Headmistress_PayAttention -> display
 

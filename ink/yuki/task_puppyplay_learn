@@ -27,47 +27,46 @@ TODO: Replace generic learn set dialog with custom first-session flair.
 
 = intro_learn_set(-> pose1, -> pose2, -> pose3)
 
-/perform idle_pleased
+/perform idle_pleased happy 75
 Hello, puppy! You have more commands to learn. #107
 
-/perform do_point_down
+/perform do_point_down aroused 65
 <b>"Sit",</b> {player_name}. #108
 
 + [pose:puppy_sit]
 
-- /perform idle_yuki
+-
+/perform talk_lean_forward happy 65
 If you learn to follow all my commands, #109
+
+/perform idle_tease aroused 70
 you'll be one step closer to being my perfect little puppy! #110
-/perform talk_one_finger
+
+/perform talk_one_finger amused 55
 Remember, there's no penalty for messing up when we're learning! #111
 
-/perform do_arm_raise
+/perform idle_pleased excited 75
 Let's begin! #112
-
-/perform idle_yuki
 
 -> pose1 ->
 
-/perform react_excited
+/perform do_bouncing_little excited 65
 My puppy is so cute! #116
-/perform idle_yuki
 
 -> pose2 ->
 
 -> Yuki_GoodJob ->
 
-/perform idle_yuki
-
 -> pose3 ->
 
-/perform do_bouncing_big
+/perform do_bouncing_big excited 70
 Oh, you're such a good puppy, learning all of those poses. #125
 
-/perform talk_behold
+/perform do_shake_finger happy 45
 Don't forget, you need to remember those for future practice sessions! #126
 And also tests! #127
 
-/perform idle_yuki
+/perform idle_pleased happy 65
 I hope you come back soon! #128
 
 ->->
@@ -77,8 +76,7 @@ I hope you come back soon! #128
 
 First, the <b>beg</b> pose. #113
 
-/perform yuki_ready
-
+/perform yuki_ready happy 75
 To show me you're ready, sit back on your knees and <b>"beg"</b>. #06
 And hold your hands like this. #07
 
@@ -86,43 +84,40 @@ And hold your hands like this. #07
 - (beg)
 ~ tries++
 
+/perform idle_eager excited 65
 I like it when my puppy <b>"begs"</b> for my attention! #08
-
-/perform idle_yuki
 
 + [pose:puppy_beg] ->->
 + { tries < 2 } [timeout] -> beg
 
 
 = pose_confused
-First, the <b>confused</b> pose. #114
 
-/perform react_shrug_long
+/perform idle_yuki excited 55
+First, the <b>confused</b> pose. #114
 
 ~ tries = 0
 - (confused)
 ~ tries++
 
 To show me you're <b>"confused"</b>, tip your head to the left when you're on your hands and knees. #11
-/perform yuki_confused
-
 Like this! #12
-
-/perform idle_yuki
+/perform yuki_confused happy 70
 
 + [pose:puppy_confused] ->->
 + { tries < 2 } [timeout] -> confused
 
 
 = pose_hungry
+
+/perform talk_behold happy 55
 First, the <b>hungry</b> pose. #115
 
 ~ tries = 0
 - (hungry)
 ~ tries++
 
-/perform yuki_hungry
-
+/perform yuki_hungry happy 65
 To show that you're <b>"hungry"</b>, sit on your heels and hold your left paw like this. #15
 
 + [pose:puppy_hungry] ->->
@@ -131,16 +126,16 @@ To show that you're <b>"hungry"</b>, sit on your heels and hold your left paw li
 
 = pose_playful
 
+/perform talk_two_fingers amused 60
 Second for today, the <b>playful</b> pose! #118
 
-/perform idle_eager
+/perform react_excited happy 55
 When you're feeling <b>"playful"</b>, stick your cute little butt into the air and stretch your arms out in front of you! #20
 
 ~ tries = 0
 - (playful)
 ~ tries++
 
-/perform idle_yuki
 
 + [pose:puppy_playful] ->->
 + { tries < 2 } [timeout] -> playful
@@ -148,18 +143,18 @@ When you're feeling <b>"playful"</b>, stick your cute little butt into the air a
 
 = pose_tired
 
+/perform talk_two_fingers amused 45
 Second for today, the <b>tired</b> pose! #119
-
-/perform do_point_down
 
 ~ tries = 0
 - (tired)
 ~ tries++
 
+/perform talk_bashful sad 45
 Whenever you're <b>"tired"</b>, sit back on your feet and hang your head, puppy. #23
 You should be looking at the ground. #24
 
-/perform idle_yuki
+/perform idle_swaying happy 25
 
 + [pose:puppy_tired] ->->
 + { tries < 2 } [timeout] -> tired
@@ -167,18 +162,21 @@ You should be looking at the ground. #24
 
 = pose_thirsty
 
+/perform talk_behold 50
 Second for today, the <b>thirsty</b> pose! #120
 
-/perform talk_lean_forward
+/perform talk_lean_forward amused 55
 Sometimes, busy little puppies get <b>"thirsty"</b>. #27
-/perform yuki_thirsty
-While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 
 ~ tries = 0
 - (thirsty)
 ~ tries++
 
-/perform idle_yuki
+/perform yuki_thirsty aroused 55
+While on your knees, do this to show me you're <b>"thirsty"</b>. #28
+/wait 1
+
+/perform idle_yuki happy 55
 
 + [pose:puppy_thirsty] ->->
 + { tries < 2 } [timeout] -> thirsty
@@ -186,20 +184,23 @@ While on your knees, do this to show me you're <b>"thirsty"</b>. #28
 
 = pose_sorry
 
+/perform talk_one_finger aroused 25
 Your last lesson for today is the <b>sorry</b> pose! #122
 
-/perform react_disappointed
-
+/perform do_inspect aroused 55
 The <b>"sorry"</b> pose is going to be a <i>little</i> tricky. #33
+
 
 ~ tries = 0
 - (sorry)
 ~ tries++
 
+/perform do_point_down amused 45
 Put your head down AND look at the ground. #34
-/perform do_point_down
+
+/perform idle_yuki amused 65
 Stretch your arms out part way. #35
-/perform idle_yuki
+
 
 + [pose:puppy_sorry] ->->
 + { tries < 2 } [timeout] -> sorry
@@ -207,21 +208,25 @@ Stretch your arms out part way. #35
 
 = pose_rollover
 
+/perform idle_eager happy 55
 Your last lesson for today is to <b>roll over</b> onto your back! #123
 
-/perform talk_behold
-
+/perform do_bouncing_big excited 65
 This one is going to lead to lots of fun! #38
-/perform do_bouncing_big
+
 
 ~ tries = 0
 - (back)
 ~ tries++
 
+/perform do_smooth_skirt happy 75
 Roll onto your <b>"back"</b>, puppy. #39
-Hands above your chest. #40
 
-/perform idle_yuki
+/perform yuki_ready amused 60
+Hands above your chest. #40
+/wait 1
+
+/perform idle_yuki skeptical 45
 
 + [pose:puppy_back] ->->
 + { tries < 2 } [timeout] -> back
@@ -229,21 +234,19 @@ Hands above your chest. #40
 
 = pose_horny
 
+/perform idle_tease aroused 45
 Your last lesson for today is the <b>horny</b> pose! #124
-/perform idle_eager
 
 ~ tries = 0
 - (horny)
 ~ tries++
 
+/perform do_hand_out aroused 65
 To show me you're <b>"horny"</b>, arch your back and look up at me! #43
-/perform idle_pleased
+
+/perform idle_pleased happy 60
 It's easy! #44
 
-/perform idle_yuki
 
 + [pose:puppy_horny] ->->
 + { tries < 2 } [timeout] -> horny
-    
-    
-    

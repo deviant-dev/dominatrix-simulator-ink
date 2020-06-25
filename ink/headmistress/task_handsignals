@@ -8,7 +8,7 @@
 
 /scene TheatreOpen.Approach
 /music headmistress
-/character headmistress idle_clasp_hands
+/character headmistress idle_skeptical aroused 60
 
 - (session_selection)
 
@@ -38,5 +38,3 @@
 + [continue]
 
 - -> exit
-
-

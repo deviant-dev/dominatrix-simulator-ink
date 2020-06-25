@@ -95,41 +95,101 @@
 ->->
 
 === Yuki_GoodJob ===
-/character yuki
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inKneel)
+
 
 {cycle:
-    - I'm so proud of you! #01
-    - What a good {player_name}! #02
-    - You're so cute! #03
-    - I like you! #04
-    - Good job. #05
-    - Wow! You're doing so well! #06
-    - I'm so impressed! #07
-    - Who's a good {player_name}? You are! #08
-    - Keep up the good work! #09
-    - You're so much fun! #10
-    - What a fast learner you are! #11
-    - Ooo! That's nice. #12
-    - Keep it up! #13
-    - You're so good. #14
-    - Such a good {player_name}. #15
-    - You're doing so well! #16
+
+    -{inKneel:excited 55|/perform do_bouncing_little excited 55}
+    I'm so proud of you! #01
+
+    -{inKneel:happy 55|/perform talk_lean_forward happy 55}
+    What a good {player_name}! #02
+
+    -{inKneel:excited 75|/perform do_bouncing_big excited 75}
+    You're so cute! #03
+
+    -{inKneel:amused 50|/perform do_consider amused 50}
+    I like you! #04
+
+    -{inKneel:aroused 65|/perform idle_pleased aroused 65}
+    Good job. #05
+
+    -{inKneel:excited 75|/perform do_bouncing_little excited 75}
+    Wow! You're doing so well! #06
+
+    -{inKneel:happy 55|/perform do_bouncing_big happy 55}
+    I'm so impressed! #07
+
+    -{inKneel:excited 75|/perform talk_lean_forward excited 75}
+    Who's a good {player_name}? You are! #08
+
+    -{inKneel:amused 60|/perform idle_eager amused 60}
+    Keep up the good work! #09
+
+    -{inKneel:amused 50|/perform do_bouncing_big amused 50}
+    You're so much fun! #10
+
+    -{inKneel:happy 55|/perform do_bouncing_little happy 55}
+    What a fast learner you are! #11
+
+    -{inKneel:aroused 65|/perform do_inspect aroused 65}
+    Ooo! That's nice. #12
+
+    -{inKneel:excited 60|/perform idle_eager excited 60}
+    Keep it up! #13
+
+    -{inKneel:happy 55|/perform idle_pleased happy 55}
+    You're so good. #14
+
+    -{inKneel:amused 50|/perform talk_lean_forward amused 50}
+    Such a good {player_name}. #15
+
+    -{inKneel:excited 75|/perform do_bouncing_little excited 75}
+    You're doing so well! #16
     }
 
 ->->
 
 === Yuki_AcknowledgeYes ===
-/character yuki
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inKneel)
+
 
 {cycle:
-    - I like that answer. #01
-    - That makes me happy. #02
-    - Yay! #03
-    - Oh, goody!  #04
-    - Okay! #05
-    - Perfect. #06
-    - Mmmmhmmm! #07
-    - Hooray! #08
+
+    -{inKneel:happy 65|/perform idle_clasp_hands happy 65}
+    I like that answer. #01
+
+    -{inKneel:excited 55|/perform idle_pleased excited 55}
+    That makes me happy. #02
+
+    -{inKneel:happy 70|/perform do_bouncing_little happy 70}
+    Yay! #03
+
+    -{inKneel:aroused 65|/perform react_excited aroused 65}
+    Oh, goody!  #04
+
+    -{inKneel:excited 55|/perform idle_clasp_hands excited 55}
+    Okay! #05
+
+    -{inKneel:amused 55|/perform do_inspect amused 55}
+    Perfect. #06
+
+    -{inKneel:aroused 75|/perform talk_lean_forward aroused 75}
+    Mmmmhmmm! #07
+
+    -{inKneel:excited 60|/perform do_bouncing_little excited 60}
+    Hooray! #08
     }
 
 ->->
@@ -174,11 +234,20 @@
 /character yuki
 
 {cycle:
-    - What? A punishment?! #01
-      After everything I do to make sure you avoid punishments... #04
-    - Didn't I explain to you the rules to avoid a punishment? #02
-      You slaves never learn. #03
-    - Punishment? And I thought you had promise... #05
+    - /perform talk_lean_forward scared 65
+    What? A punishment?! #01
+
+    /perform idle_unhappy_stomp sad 75
+    After everything I do to make sure you avoid punishments... #04
+
+    - /perform react_point_at_player_angry disgusted 45
+    Didn't I explain to you the rules to avoid a punishment? #02
+
+    /perform talk_annoyed angry 65
+    You slaves never learn. #03
+
+    - /perform do_shake_finger angry 65
+    Punishment? And I thought you had promise... #05
 }
 
 ->->
@@ -207,17 +276,39 @@
 ->->
 
 === Yuki_PlayerToCum ===
-/character yuki
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inKneel)
+
 
 {cycle:
-    - Is my good {player_name} close? #01
-    - Are you almost there slave? #02
-    - I can feel you getting close. #03
-    - Your {hasPenis:cock|pussy} is throbbing in my hand. #04
-    - You're riding the edge. #05
-    - You're so close to exploding for me slave. #06
-    - Just a little more. #07
-    - Are you going to cum? #08
+
+    -{inKneel:excited 65|/perform talk_lean_forward excited 65}
+    Is my good {player_name} close? #01
+
+    - /perform tease_caress_breast_left aroused 85
+    Are you almost there slave? #02
+
+    - /perform tease_dance_slow aroused 55
+    I can feel you getting close. #03
+
+    - /perform
+    Your {hasPenis:cock|pussy} is throbbing in my hand. #04
+
+    -
+    You're riding the edge. #05
+
+    - /perform tease_caress_breast_left
+    You're so close to exploding for me slave. #06
+
+    -
+    Just a little more. #07
+
+    - /perform tease_caress_breast_left
+    Are you going to cum? #08
 }
 
 ->->

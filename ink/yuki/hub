@@ -25,7 +25,7 @@
 
 - (hub)
 
-/character yuki
+/character yuki idle_pleased happy 65
 /music yuki
 /scene atrium.hub
 
@@ -47,9 +47,12 @@
 - (check_punishment)
 { punishments > 0 :
     -> Yuki_Punishment_Response ->
+
     /perform talk_question skeptical 65
     Are you here to pay that off? #08
+    /wait 1
     /perform idle_yuki amused 55
+
     + [yes]
         /perform do_fist_pump excited 55
         Good. #09
@@ -65,6 +68,8 @@
 
 // - (check_mega_reward)
 // { rewards == 10 && punishments == 0:
+//
+//         /perform do_bouncing_big excited 85
 //         Are you here for your mega-reward?
 //         + [yes] -> TBD
 //         + [no] -> check_reward
@@ -74,11 +79,12 @@
 { punishments == 0 && rewards > 0:
     /perform talk_question amused 55
     Are you here for your reward? #12
-    /idle_tease aroused 70
+    /perform idle_tease aroused 70
     + [yes] -> choose_reward
     + [no] -> check_task
 }
 
+/perform do_consider skeptical 55
 No punishments or rewards, huh? #13
 -> check_task
 
@@ -89,7 +95,7 @@ Looking to serve me, then? #14
 
 + [yes] -> choose_task
 + [no]
-    /perform talk_bashful sad 65
+    /perform react_oh_darn sad 65
     Okay. #15
     Maybe some other time then. #16
     -> exit

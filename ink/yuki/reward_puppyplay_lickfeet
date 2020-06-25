@@ -1,31 +1,33 @@
- 
+
 === yuki_reward_puppyplay_lickfeet
 
 ~ setScene(reward_scene, Yuki)
 
 //Foot licking
 
-/perform react_excited
+/perform react_excited aroused 55
 Mmm, I love watching my puppies perform well! #184
 
-/perform talk_lean_forward
+/perform talk_lean_forward aroused 70
 Do you want to worship my feet, puppy? #185
 
 +[pose:puppy_yes]
-    /perform do_bouncing_big    
+    /perform do_bouncing_big  excited 65
     Yippy! #186
 
 +[pose:puppy_no]
-    /perform react_shrug_long
+    /perform react_shrug_short skeptical 55
     That's fine. #187
+
+    /perform do_consider amused 65
     We can do something else. #188
     -> yuki_reward_puppyplay_milking
 
 +[timeout] -> Yuki_Timeout ->
 
-- /perform do_point_down 
+- /perform do_present_foot excited 55
 Come here puppy! #189
-/perform do_present_foot
+
 
 ~ tries = 0
 - (lick_feet)
@@ -43,10 +45,18 @@ Come here puppy! #189
 = Foot_Licking_Responses
 
 {cycle:
-    - Gooood puppy! Clean my whole foot. #213
-    - Mmmm, lick me just like that. #214
-    - Yes puppy, yes! Your tongue feels so good on my toes. #215
-    - What a good puppy cleaning my toes with your tongue. #216
+
+    - /perform idle_eager excited 65
+    Gooood puppy! Clean my whole foot. #213
+
+    - /perform tease_bend_over aroused 75
+    Mmmm, lick me just like that. #214
+
+    - /perform do_arm_raise happy 80
+    Yes puppy, yes! Your tongue feels so good on my toes. #215
+
+    - /perform talk_lean_forward amused 65
+    What a good puppy cleaning my toes with your tongue. #216
 }
 
 ->->
