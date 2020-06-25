@@ -18,6 +18,7 @@
 
 /scene Theatre.Hub
 /music headmistress
+/ambient none
 /character headmistress idle_clasp_hands amused 45
 
 + [move]

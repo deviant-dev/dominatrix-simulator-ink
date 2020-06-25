@@ -27,6 +27,7 @@
 
 /character yuki idle_pleased happy 65
 /music yuki
+/ambient none
 /scene atrium.hub
 
 + [move:Yuki]

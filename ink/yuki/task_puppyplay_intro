@@ -102,7 +102,7 @@ Okay? #65
 + [timeout] -> Yuki_Timeout -> remember_pose
 + [distracted] -> Yuki_PayAttention -> remember_pose
 
-- /notify title="<color=red>Pro Tip!</color>" text="Grab a pillow for your knees! You're going to need it! Got it?"
+- /notify title="<color=red>Pro Tip!</color>" text="Grab a pillow for your knees! You're going to need it! Got it?" #note03
 
 + [yes]
 

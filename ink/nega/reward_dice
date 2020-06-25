@@ -23,11 +23,11 @@
     Oooo. Give it here.  #08
 
     - /perform idle_unhappy_stomp angry 55
-    Now, give it to me.
+    Now, give it to me. #12
       /perform do_hand_out angry 55
 
     - /perform talk_lean_forward amused 65
-    Time to pay up!
+    Time to pay up! #13
       /perform do_hand_out amused 65
 }
 
@@ -46,10 +46,10 @@
     Fuck yeah! #02
 
     - /perform react_excited aroused 45
-    Hot damn!
+    Hot damn! #14
 
     - /perform tease_stroke_motion amused 55
-    Mrow!
+    Mrow! #15
 
     - -> Nega_GoodJob ->
 }
@@ -120,7 +120,7 @@ Go ahead. Roll them bones. #06
 ~ temp result3 = getNegaDie3()
 ~ temp result = result1 + result2 + result3
 
-/notify title="Dice Roll Results" delay=10 text="<>
+/notify title="Dice Roll Results" delay=10 text="<> #note04
 ~ rollToText(result1)
 <> + <>
 ~ rollToText(result2)
@@ -231,13 +231,13 @@ TODO: Write 'no reward' dialog here.
 Well look at that. Skull and cup cancel each other out. #31
 
 /lookat player
-Nothing for you today.
+Nothing for you today. #16
 -> Nega_Insult ->
 
 {shuffle:
-    - And you thought you were going to get lucky!
+    - And you thought you were going to get lucky! #17
     - Better luck next time, bitch. #32
-    - Come back when you're a little richer.
+    - Come back when you're a little richer. #63
 }
 
 /perform idle_looming

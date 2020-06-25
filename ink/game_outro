@@ -1,0 +1,120 @@
+=== game_outro ===
+/scene none
+
+/log Cherry popped! Setting variable which should restart at shortcuts.
+~ cherryPopped = true
+~ hasRestarted = true
+
+// Wait a beat for the transition.
++ [wait:2]
+
+- /music entry
+/ambient rain
+/scene EntryDark.EndScreen
+/character DevilGirl 
+
+/perform idle_pleased amused
+
+// Wait a moment for the player to aclimate to their new surroundings.
++ [wait:3]
+
+- I'm so proud of you for playing my naughty, little game! #01
+
+/perform idle_skeptical happy 50
+{
+    - deviation == tutorial:
+        That was my early access tutorial. #02
+
+    - deviation == demo:
+        You've just had a taste of the Dominatrix Simulator world. #03
+
+    - else:
+        You've just gone through a Dominatrix Simulator experience. #04
+}
+
+/perform talk_question amused 50
+/wait
+Did you have fun? #05
+
++ [yes]
++ [no] -> sorry
+
+- /perform talk_one_hand happy 50
+Would you like to see more? #06
+
++ [yes]
++ [no] -> sorry
+
+- /perform talk_behold aroused 50
+What a good little {isBoy:boy|{isGirl:girl|pet}} you are. #07
+/perform idle_tease aroused
+I've got so much more I want to do to you, #08
+but you're going to have to convince me it's worth my time. #09
+
+{ deviation == demo:
+    /perform idle happy 50
+    Get access to the full game. #10
+    /action show_website
+    Go to deviant.tech #11
+    and decide which method of devotion suits you best. #13
+- else:
+    /perform talk_one_finger amused 50
+    /action show_social
+    Show your devotion.<br/>Spread the word on social media. #14
+
+    /wait
+    /perform talk_consider
+    /action show_review
+    Engage in worship.<br/>Leave a review on Steam, Twitter, or Reddit. #15
+
+    /wait
+    /perform talk_behold
+    /action show_patreon
+    Pay tribute.<br/>Help support new content creation! #16
+
+    /wait
+    /perform idle_tease
+    /action show_discord
+    Share your deepest desires.<br/>Connect with us on Discord! #17
+
+    /wait
+    /action show_website
+    See deviant.tech for more info. #18
+}
+
++ [wait 2] -> credits
+
+
+= sorry
+
+/perform idle_fake_annoyed angry 30
+How disappointing. Tell me what went wrong. #20
+/action show_feedback
+/wait 5
+-> credits
+
+
+= credits
+
+/character DevilGirl idle_skeptical aroused
+I hope I see you again soon. #19
+/perform do_stand_to_right
+
++ [move:Credits] -> credits_end
++ [wait:2]
+
+- /perform idle_stand_to_right
+
++ [move:Credits] -> credits_end
+
+
+= credits_end
+
+/scene EntryDark.EndScreen2
+
++ [restart]
+    ~ inTutorial = true
+    ~ tutorial_step = at_game_intro
+    ~ hasRestarted = true
+    -> game_intro
+

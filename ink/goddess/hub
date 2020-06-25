@@ -10,6 +10,7 @@
 
 /scene bedroom.hub
 /music goddess
+/ambient none
 /character goddess
 
 { shuffle:
@@ -21,24 +22,24 @@
 
 { 
     - punishments > 0 :
-        You require correction. Go get your punishments and perhaps we'll talk.
+        You require correction. Go get your punishments and perhaps we'll talk. #01
         -> exit
     - rewards >= 10 :
-        My, you have been good. Here for your reward?
+        My, you have been good. Here for your reward? #02
         + [yes] -> choose_reward
         + [no]
-            No? Then out of my sight.
+            No? Then out of my sight. #03
             -> exit
     - else:
-        You are not yet worthy.
-        Raise your standing with my Mistresses
-        and save your high marks,
-        then perhaps I'll entertain your presence.
-        Ten should suffice.
-        Now leave.
+        You are not yet worthy. #04
+        Raise your standing with my Mistresses #05
+        and save your high marks, #06
+        then perhaps I'll entertain your presence. #07
+        Ten should suffice. #08
+        Now leave. #09
         + [yes] -> exit
         + [no]
-            No? Then take a punishment and leave anyway.
+            No? Then take a punishment and leave anyway. #10
             ~ addPunishment()
             -> exit
 }

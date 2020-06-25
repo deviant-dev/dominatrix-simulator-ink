@@ -404,7 +404,9 @@ Do you accept that you must be punished? #92
 
 + [distracted] -> Headmistress_PayAttention -> accept_timeout
 
--/character headmistress react_thankful amused 50
+- {inTutorial: -> headmistress_train_spanking(false) -> spank_continue }
+
+/character headmistress react_thankful amused 50
 Because I am generous, #234
 
 /perform idle_pleased happy 65
@@ -416,20 +418,19 @@ Would you welcome that, {isBoy: mongrel|moppet}? #107
 ~ headmistress_difficulty = 1
 
 +[yes]
-    -> headmistress_train_spanking(false) ->
+    -> headmistress_train_spanking(false) -> spank_continue
 
 +[no]
     /perform do_inspect amused 50
     An expert, are we? We will see about that. #108
+    -> spank_continue
 
 + [timeout] -> Headmistress_Timeout -> practice
 
 + [distracted] -> Headmistress_PayAttention -> practice
 
-- {inTutorial: -> headmistress_train_spanking(false) | -> spank_continue }
-//Moved this line here, as the headmistress needs to ask the player if they want to practice
 
-- (spank_continue)
+= spank_continue
 
 /perform do_point_down amused 45
 Back onto your hands and knees, slave. #244

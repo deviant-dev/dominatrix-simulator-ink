@@ -33,15 +33,15 @@ VAR demerits = 0
 
 { nega_regard >= 10: 
     {shuffle:
-    - Oh looky! My favorite little piggy is back.
-    - Woof! If it isn't my special {isBoy: dog|bitch}.
+    - Oh looky! My favorite little piggy is back. #01
+    - Woof! If it isn't my special {isBoy: dog|bitch}. #02
     }
 - else:
     {shuffle:
-        - Hello fuckup.
-        - You're back.
-        - Look who can't stay away.
-        - Oh. It's you again. 
+        - Hello fuckup. #03
+        - You're back. #04
+        - Look who can't stay away. #05
+        - Oh. It's you again. #06
     }
 }
 
@@ -49,44 +49,44 @@ VAR demerits = 0
     -> reward
         
     - else:
-        No Bloodstone treats for me, hmm? Not interested.
+        No Bloodstone treats for me, hmm? Not interested. #07
         -> exit
 }
 
 = reward
 
 {shuffle:
-    - Mmm, I like the look of those yummy Bloodstones.
-    Are you here to try your luck?
-    - I see you have a pretty little Bloodstone.
-    You want to give it to me, don't you?
-    - You brought me a Bloodstone.
-    Didn't you?
-    - Oh yah. You've got a Bloodstone.
-    Gonna hand it over?
+    - Mmm, I like the look of those yummy Bloodstones. #08
+    Are you here to try your luck? #09
+    - I see you have a pretty little Bloodstone. #10
+    You want to give it to me, don't you? #11
+    - You brought me a Bloodstone. #12
+    Didn't you? #13
+    - Oh yah. You've got a Bloodstone. #14
+    Gonna hand it over? #15
 }
         
 + [yes] -> nega_greeting_tease ->
         
 + [no]
-    Then get the fuck outta here, you little bitch.
+    Then get the fuck outta here, you little bitch. #16
     -> exit
 
 -
 /log return from greeting tease.
 /perform menacing
 {cycle:
-    - I guess I'll take your puny stone. 
-    - You've convinced me. For now.
-    - Such a fuckup, begging to give away your precious reward.
-    - So fucking desparate. Fine.
-    - I'll guess I'll let you give it to me.
+    - I guess I'll take your puny stone. #17
+    - You've convinced me. For now. #18
+    - Such a fuckup, begging to give away your precious reward. #19
+    - So fucking desparate. Fine. #20
+    - I'll guess I'll let you give it to me. #21
 }
 
 {shuffle:
-    - If you're lucky, you might just get to do more of that. 
-    - If the dice find you worthy, you'll get more of that. 
-    - Maybe that Bloodstone will earn you more of that. 
+    - If you're lucky, you might just get to do more of that. #22
+    - If the dice find you worthy, you'll get more of that. #23
+    - Maybe that Bloodstone will earn you more of that. #24
 }
 
 -> nega_reward_dice
@@ -96,10 +96,10 @@ VAR demerits = 0
 /perform idle_fake_annoyed amused
 
 {cycle:
-    - Show me just how much you want to give me that stone.
-    - Then beg to give it to me.
-    - Prove it.
-    - I don't believe you.
+    - Show me just how much you want to give me that stone. #25
+    - Then beg to give it to me. #26
+    - Prove it. #27
+    - I don't believe you. #28
 }
 
 
@@ -123,7 +123,7 @@ VAR demerits = 0
 
 - (kiss_floor)
 /perform do_point_down amused
-Bow down and kiss the ground I walk on.
+Bow down and kiss the ground I walk on. #29
 TODO: make sure poses don't register too quickly, so the scene drags out a bit
 + [pose:kiss_floor]
 + { tries < 2 } [timeout] -> kiss_floor
@@ -140,7 +140,7 @@ TODO: make sure poses don't register too quickly, so the scene drags out a bit
 
 - (kiss_boot)
 /perform do_present_foot amused
-Kiss my dirty boot.
+Kiss my dirty boot. #30
 TODO: make sure poses don't register too quickly, so the scene drags out a bit    
 + [pose:kiss_feet]
 + { tries < 2 } [timeout] -> kiss_boot
@@ -157,7 +157,7 @@ TODO: make sure poses don't register too quickly, so the scene drags out a bit
 
 - (kiss_ass)
 /perform tease_ass_caress
-Time to kiss my ass. Literally.
+Time to kiss my ass. Literally. #31
 TODO: make sure poses don't register too quickly, so the scene drags out a bit
 + [pose:present_ass]
 + { tries < 2 } [timeout] -> kiss_ass
@@ -181,7 +181,7 @@ TODO: make sure poses don't register too quickly, so the scene drags out a bit
 }
 - (sniff_ass)
 /perform tease_ass_caress
-Stick your face in my ass and give it a good sniff.
+Stick your face in my ass and give it a good sniff. #32
 
 + [pose:present_ass]
 + { tries < 2 } [timeout] -> sniff_ass
@@ -199,8 +199,8 @@ Stick your face in my ass and give it a good sniff.
 TODO: confirm kneel works or create new pose with head tilted backward and don't have the pose register immediately
 - (sniff_crotch)
 /perform tease_ass_caress
-Get down here and stick your face in my crotch.
-Suck in that delicious smell, worm.
+Get down here and stick your face in my crotch. #33
+Suck in that delicious smell, worm. #34
 
 + [pose:kneel]
 + { tries < 2 } [timeout] -> sniff_crotch
@@ -218,7 +218,7 @@ Suck in that delicious smell, worm.
 TODO: create new pose
 - (sniff_armpit)
 /perform do_present_armpit digusted
-Come get a nice big whif of my armpit, skank.
+Come get a nice big whif of my armpit, skank. #35
 
 + [pose:sniff_armpit]
 + { tries < 2 } [timeout] -> sniff_armpit
@@ -243,7 +243,7 @@ Come get a nice big whif of my armpit, skank.
 
 - (slap_face)
 /perform idle_fake_annoyed amused
-Take a slap, bitch, and don't fucking cry either!
+Take a slap, bitch, and don't fucking cry either! #36
 
 -(try_slap)
 /perform do_slap
@@ -252,7 +252,7 @@ Take a slap, bitch, and don't fucking cry either!
      -> Nega_GoodJob ->
  + [react-fail]
      -> Nega_BadJob ->
-     You get one more try.
+     You get one more try. #37
     -> try_slap
 -
 
@@ -260,8 +260,8 @@ Take a slap, bitch, and don't fucking cry either!
 
 - (slap_ass)
 /perform idle_fake_annoyed amused
-Bend over and show me that ass.
-I want to smack it.
+Bend over and show me that ass. #38
+I want to smack it. #39
 
 /perform do_spank_player
 
@@ -272,7 +272,7 @@ I want to smack it.
      -> Nega_GoodJob ->
 + [react-fail]
      -> Nega_BadJob ->
-     You get one more try.
+     You get one more try. #40
     -> try_slap
 -
 
@@ -280,14 +280,14 @@ I want to smack it.
 
 - (slap_genitals)
 /perform idle_fake_annoyed amused
-Slap that filthy {hasPenis: prick|cunt} of yours.
-It better be hard enough to make you jump.
+Slap that filthy {hasPenis: prick|cunt} of yours. #41
+It better be hard enough to make you jump. #42
 
 + [react-success]
      -> Nega_GoodJob ->
 + [react-fail]
      -> Nega_BadJob ->
-     You get one more try.
+     You get one more try. #43
     -> try_slap
 -
 ->->

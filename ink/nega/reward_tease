@@ -29,7 +29,7 @@ The rules say I have to go easy on you. #06
 Lucky {isBoy: prick|{isGirl: cunt|slut}}. #07
 
 - (present)
-Stand up straight, {isBoy: maggot|skank}, and present yourself.
+Stand up straight, {isBoy: maggot|skank}, and present yourself. #102
 
 + [pose:present_stand]
 + { tries < 2 } [timeout] -> present
@@ -40,29 +40,29 @@ Stand up straight, {isBoy: maggot|skank}, and present yourself.
 + [distracted] -> Nega_PayAttention -> present
 
 - 
-Don't you fucking move unless I give you permission.
+Don't you fucking move unless I give you permission. #103
 
 - (hold_still)
-Got it, {isBoy: prick|cunt}?
+Got it, {isBoy: prick|cunt}? #104
 
   +[yes]
     ~ addObey()
-        Good.
+        Good. #105
       
     +[no]
      ~ addDisobey()
         {shuffle:
-            - Move and I'll boot your ass out of here so fast, 
-            it will make your head spin. 
+            - Move and I'll boot your ass out of here so fast, #106
+            it will make your head spin. #107
             - -> Nega_Unhappy ->
-            Move and your ass is gone!
+            Move and your ass is gone! #108
         }
         -- (understood)
-        Understood?
+        Understood? #109
         
         ++[yes]
         ~ addObey()
-           That's what I fucking thought.
+           That's what I fucking thought. #110
       
         ++[no]
          ~ addDisobey()
@@ -171,8 +171,8 @@ For what? #30
 -> grovel
 
 = lucky
-Hoping you'd get lucky?
-Maybe get to be a slutty little fucktoy?
+Hoping you'd get lucky? #111
+Maybe get to be a slutty little fucktoy? #112
 
 + [yes]
     ~ addDisobey()
@@ -180,7 +180,7 @@ Maybe get to be a slutty little fucktoy?
    
 + [no]
     ~ addObey()
-    No, you didn't.
+    No, you didn't. #113
  
  + [timeout] -> Nega_Timeout -> lucky
  + [distracted] -> Nega_PayAttention -> lucky
@@ -190,10 +190,10 @@ Maybe get to be a slutty little fucktoy?
 ->->
 
 = slut
-You don't deserve to be my slut. 
-To be fucked and enjoyed.
+You don't deserve to be my slut. #114
+To be fucked and enjoyed. #115
 
-Do you?
+Do you? #116
 
 + [yes]
     ~ addDisobey()
@@ -201,7 +201,7 @@ Do you?
    
 + [no]
     ~ addObey()
-    That's right. You don't.
+    That's right. You don't. #117
  
  + [timeout] -> Nega_Timeout -> slut
  + [distracted] -> Nega_PayAttention -> slut
@@ -232,7 +232,7 @@ Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
 = grovel
 
 /perform idle
-I know what you really came here for.
+I know what you really came here for. #118
 
 Hoping you'd be mistreated. That's what. #31
 
@@ -266,7 +266,7 @@ You will beg for more when I'm through with you. #43
 
 - (kneel_again)
 /perform idle_unhappy angry 50
-Back up on your knees.
+Back up on your knees. #119
 
 + [pose:kneel]
 + { tries < 2 } [timeout] -> kneel_again

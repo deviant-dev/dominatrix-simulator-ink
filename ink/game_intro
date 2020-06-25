@@ -1,69 +1,133 @@
 === game_intro ===
 
-{hasRestarted: -> game_intro_again.choices}
-
-{cherryPopped && deviation != demo: -> game_intro_again}
-
 ~ tutorial_step = at_game_intro
 ~ setScene(intro_scene, None)
 
 /scene EntryDark.TitleScreen
 /music entry
 
-+ [wait:6]
++ [wait:6] -> verify_age
 
 
-- (instructions)
-
-/scene EntryDark.Instructions
-
-+ [yes]
-+ [no]
-    /scene EntryDark.Empty
-    -> instructions
-
-- (use_journal)
-/scene EntryDark.JournalInfo
-
-+ [Use Journal]
-
-- (verify_age)
+= verify_age
 /scene EntryDark.VerifyAge
 
-+ [yes]
-+ [no] -> demo_end
-
-- (choices)
-/scene EntryDark.Notifications
-
-+ [yes]
-
-- (ready)
-
-+ [move: Intro] -> select_gender -> post_intro_deviation_check
++ [yes] -> instructions
++ [no] -> game_outro
 
 
-=== game_intro_again ====
+= instructions
 
-- (force)
-~ tutorial_step = at_game_intro
-~ setScene(intro_scene, None)
-/scene EntryDark.TitleScreen
+/scene EntryDark.Instructions
+/character DevilGirl
 /music entry
 
-+ [wait:6]
+/perform do_walk_up amused 50
+/wait 4
+/perform idle amused 50
 
-- (choices)
-/scene EntryDark.Notifications
-/music entry
+Hello. #01
 
-+ [move: Intro] -> select_gender -> post_intro_deviation_check
-+ {deviation != demo && yuki_shortcut}[move: Yuki] -> yuki_intro
-+ {deviation != demo && hm_shortcut}[move: Headmistress] -> headmistress_intro
-+ {deviation != demo && nega_shortcut}[move: Nega] -> nega_intro.skip_checks
-+ {deviation != demo && goddess_angry_shortcut}[move: Goddess] -> goddess_monitoring_intro.angry
-+ {deviation != demo && hm_bonus_shortcut}[move: Headmistress Bonus] -> headmistress_hub
-+ {deviation != demo && goddess_pleased_shortcut}[move: Goddess Bonus] -> goddess_monitoring_intro.pleased
+- (again)
+
+Would you like to play a little game? #02
+
++ [yes] -> lets_play
++ [continue]
+
+- (nod_info)
+
+/perform react_yes happy 50
+Nod your head for "yes." #03
+
++ [yes] -> lets_play
++ [continue]
+
+- /perform react_no
+Shake your head for "no." #04
+
++ [yes] -> lets_play
++ [continue]
+
+- /perform idle
+
++ [yes] -> lets_play
++ [no]
+    TODO: add in dialogue - I'm sure you'd enjoy my little game. Let's try this again.
+    -> again
++ [timeout] -> nod_info
+
+
+= lets_play
+
+/perform talk_behold happy 50
+Of course you would. #05
+I think you're going to like this little game I've created. #06
+
+/perform talk_gesture amused 50
+Just do what you're told and you'll be fine. #07
+
+/perform idle_skeptical happy 50
+If you get stuck, I've given you a journal to guide you. #08
+/perform talk_question skeptical 50
+Give it a try. #09
+
+/perform idle_skeptical happy 50
+{inVR: 
+    Use the 'X' or 'menu' buttons on your controller. #10
+- else: 
+    Just hit 'E' on your keyboard. #11
+}
+
++ [use-journal]
+
+- /action close_journal
+/perform do_arm_raise happy
+Perfect! #12
+
+/perform talk_thoughtful amused 50
+Now... #13
+If you want the most authentic experience, #14
+/perform talk_lean_forward amused
+strip naked and begin with no clothes on. #15
+
+/perform idle_tease aroused
+Wouldn't you just love to do that for me? #16
+I promise you won't regret it. #17
+And, I promise to watch while you do. #18
+
+/perform idle_skeptical amused
+Don't worry. I'll wait for you. #19
+
++ [wait 2]
+
+- (check_ready)
+/emotion amused 50
+Are you ready? #20
+
++ [yes] -> ready
++[no]
+    I'll wait. #23
+    <b>Nod</b> your head when you're ready #24
+    or come back later. #25
+    -> check_ready
++ [timeout] 
+    Don't forget to <b>nod</b> your head for "yes". #26
+    -> check_ready        
+
+
+= ready
+
+/perform react_thankful happy 50
+Wonderful. #21
+/perform do_stand_to_right
+Have fun! #22
+/perform idle_stand_to_right
+/wait 1
+
++ [move]
+    -> select_gender -> post_intro_deviation_check
+
 
 === game_intro_web ===
 
@@ -82,7 +146,7 @@
     }
     ~ setGender("m")
     -> options
-+ {player_name != "girl"}[Touch the female statue] Female 
++ {player_name != "girl"}[Touch the female statue] Female
     <blockquote><i>The female statue disappears and you now have hands with slender feminine fingers. The missing statue's hands.</i></blockquote>
     {
         - player_name == "none": <blockquote><i>The door at the end of the hall cracks open...</i></blockquote>

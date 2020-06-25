@@ -159,7 +159,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
     /perform tease_bend_over aroused 80
     Perhaps you'd like to be one some day? #31
 
-+ (spying_no)[no]
++ [no]
     /perform talk_thoughtful disgusted 40
     No? How disappointing. #33
 
@@ -167,12 +167,12 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
     I don't think you're going to be much fun at all. #34
     -> ask_spying_done
 
-+ [timeout]
++ (ask_spying_again)[timeout]
     /perform do_inspect aroused 35
     Be honest now. Spying on me turned you on, didn't it? #35
     -> ask_spying
 
-+ [distracted] -> Goddess_PayAttention -> ask_spying
++ [distracted] -> Goddess_PayAttention -> ask_spying_again
 
 - (ask_spying2)
 
@@ -517,7 +517,7 @@ I'm sure she can show you the ropes, so to speak. #112
 
 // If this is the demo with just the Goddess, end the demo.
 {deviation == demo:
-    -> demo_end
+    -> game_outro
 - else:
     -> exit
 }
@@ -618,7 +618,7 @@ There is hope for you yet. #157
 Then away with you. #155
 Perhaps another time when you are ready to learn your place. #156
 
--> ByeForNow -> demo_end
+-> ByeForNow -> game_outro
 
 
 = ByeForNow

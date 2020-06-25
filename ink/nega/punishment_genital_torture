@@ -36,70 +36,70 @@
 // send them away
 
 - /perform do_rub_hands_together excited 75
-I love it when the dice let me get nasty.
+I love it when the dice let me get nasty. #11
 
 /perform idle_swaying
 
 {shuffle:
-    - There's no point being kind to you,
-        because you're a pathetic stain 
-        who deserves to be mistreated.
-    - And you're a piece of shit who likes to suffer.
-    - And you're a filthy, little pig who wants me to get nasty.
+    - There's no point being kind to you, #12
+        because you're a pathetic stain #13
+        who deserves to be mistreated. #14
+    - And you're a piece of shit who likes to suffer. #15
+    - And you're a filthy, little pig who wants me to get nasty. #16
 }
 
 - (mistreated)
-Aren't you?
+Aren't you? #17
 
     + [yes]
         ~ addObey()
-        Of course you are.
+        Of course you are. #18
       
     + [no]
         ~ addDisobey()
         {shuffle:
             - -> Nega_Unhappy ->
-            I already know you are. 
-            That's why you're here.
+            I already know you are. #19
+            That's why you're here. #20
         }
 + [timeout] -> Nega_Timeout -> mistreated
 + [distracted] -> Nega_PayAttention -> mistreated
 
 
 - /perform do_throat_cut disgusted
-And I know just how to make you suffer, meatbag.
+And I know just how to make you suffer, meatbag. #21
 
 /perform tease_caress_breast_left excited
-Let's have some fun fucking up your genitals!
+Let's have some fun fucking up your genitals! #22
 
-What do you think about that, skank?
+What do you think about that, skank? #23
 
 - (consent)
-Want to torture yourself for me 
-to prove what a pathetic fleshbag you really are?
+Want to torture yourself for me #24
+to prove what a pathetic fleshbag you really are? #25
 
  + [yes]
     ~ addObey()
     -> Nega_Insult ->
-    I'm going to make sure you suffer for it.
+    I'm going to make sure you suffer for it. #26
       
     + [no]
         ~ addDisobey()
         {shuffle:
             - -> Nega_Unhappy ->
-            - I don't believe you.
+            - I don't believe you. #27
         }
         
         -- (confirm_consent)
-            I know you're a dirty whore like you wants to torture yourself for me.
-            Don't you?
+            I know you're a dirty whore like you wants to torture yourself for me. #28
+            Don't you? #29
         
         ++ [yes]
-            That's what I fucking thought!
+            That's what I fucking thought! #30
             
         ++ [no]
-            Goddamnit.
-            Get the fuck out of here!
+            Goddamnit. #31
+            Get the fuck out of here! #32
             -> exit
             
         ++ [timeout] -> Nega_Timeout -> confirm_consent
@@ -151,20 +151,20 @@ to prove what a pathetic fleshbag you really are?
 
 { scene_count < scene_goal: 
     {shuffle:
-        - Enough of that one. 
-        - Okay, stop!
-        - Piggy can stop.
+        - Enough of that one. #33
+        - Okay, stop! #34
+        - Piggy can stop. #35
     }
     {shuffle:
-        - Time to switch gears.
-        - Let's try something different.
-        - Now, let's get creative.
+        - Time to switch gears. #36
+        - Let's try something different. #37
+        - Now, let's get creative. #38
     }
     
     {shuffle:
-        - I really want to fuck you up!
-        - Let's make piggy squeal!
-        - Time to experiment with more pain!
+        - I really want to fuck you up! #39
+        - Let's make piggy squeal! #40
+        - Time to experiment with more pain! #41
     }
     
 -> torture_repeat
@@ -176,22 +176,22 @@ to prove what a pathetic fleshbag you really are?
 
 = slap_genitals
 
-I'm gonna to start counting.
+I'm gonna to start counting. #42
 /perform do_slap_pussy aroused
-And you're going to reach down and slap that {hasPenis: cock|pussy} each time I do.
+And you're going to reach down and slap that {hasPenis: cock|pussy} each time I do. #43
 /perform talk_one_finger angry 50
-One smack for each count.
+One smack for each count. #44
 
 -/perform talk_threaten disgusted 50
-It better fucking hurt!
+It better fucking hurt! #45
 /perform idle_unhappy angry 50
-Hard enough to make you jerk your head.
+Hard enough to make you jerk your head. #46
 /perform react_scoffs skeptical
-Fuck up and I start over.
+Fuck up and I start over. #47
 
 - (ready)
 /perform talk_lean_forward amused
-Got it?
+Got it? #48
 
 +[yes]
     ~ addObey()
@@ -221,7 +221,7 @@ Got it?
 + [react-success]
 + [react-fail]
     -> Nega_BadJob ->
-    Looks like we have to start all over.
+    Looks like we have to start all over. #49
     -> try_slap_genitals
 
 - ~ task_count++
@@ -230,7 +230,7 @@ Got it?
 {
     - task_count == 1:
         -> Nega_GoodJob ->
-        Keep going!
+        Keep going! #50
     - task_count == 4:
         -> humiliation_comment ->
     - task_count == 7:
@@ -247,13 +247,13 @@ Got it?
 
 /perform do_flick_air
 
-Time for me to start counting!
+Time for me to start counting! #51
 
-And my pathetic little whore is going to do it while flicking your {hasPenis: tip|clit}.
+And my pathetic little whore is going to do it while flicking your {hasPenis: tip|clit}. #52
 
 - (ready)
 /perform talk_lean_forward amused
-Understood?
+Understood? #53
 
 +[yes]
     ~ addObey()
@@ -267,14 +267,14 @@ Understood?
 + [distracted] -> Nega_PayAttention -> ready
 
 /perform talk_one_finger amused
-One smack for each count.
+One smack for each count. #54
 
 -/perform talk_threaten disgusted 50
-It better fucking hurt!
+It better fucking hurt! #55
 /perform idle_unhappy angry 50
-Hard enough to make you jerk your head.
+Hard enough to make you jerk your head. #56
 /perform react_scoffs skeptical
-Fuck up and I start over.
+Fuck up and I start over. #57
 
 
 - ~ task_goal = RANDOM(3,10)
@@ -294,7 +294,7 @@ Fuck up and I start over.
 + [react-success]
 + [react-fail]
     -> Nega_BadJob ->
-    Looks like we have to start all over.
+    Looks like we have to start all over. #58
     -> try_flick_genitals
 
 - ~ task_count++
@@ -303,7 +303,7 @@ Fuck up and I start over.
 {
     - task_count == 1:
         -> Nega_GoodJob ->
-        Keep going!
+        Keep going! #59
     - task_count == 4:
         -> humiliation_comment ->
     - task_count == 7:
@@ -319,10 +319,10 @@ Fuck up and I start over.
 
 /perform do_yank_air angry 50
 
-I wanna see you grab that filthy {hasPenis: sack|pussy lips} and start yanking!
+I wanna see you grab that filthy {hasPenis: sack|pussy lips} and start yanking! #60
 
 - (handle)
-Can you handle it, little piggy?
+Can you handle it, little piggy? #61
 
 +[yes]
     ~ addObey()
@@ -349,17 +349,17 @@ Can you handle it, little piggy?
 
 /log timer = {task_goal}
 
-Don't stop pulling until I tell you to.
-Let's count you down.
+Don't stop pulling until I tell you to. #62
+Let's count you down. #63
 
 // 3, 5, 10
 { 
     - task_goal < 5:
-        We'll keep this short.
+        We'll keep this short. #64
     - task_goal == 5:
-        I wanna make sure you suffer a bit.
+        I wanna make sure you suffer a bit. #65
     - task_goal > 5:
-        I'll bet your a tough {isBoy: dog|bitch}.
+        I'll bet your a tough {isBoy: dog|bitch}. #66
 }
 
 - (yank_again)
@@ -373,7 +373,7 @@ Let's count you down.
         -> Nega_Insult ->
     - task_count == 4 && task_goal > 5:
         -> Nega_Aroused ->
-        Keep pulling.
+        Keep pulling. #67
     - else:
         /wait 1
 }
@@ -386,11 +386,11 @@ Let's count you down.
 = pinch_genitals
 
 /perform do_grab_pussy aroused
-Now. I want you to grab that {hasPenis: tiny pecker of yours and pinch the head hard|fat clit of yours and pinch it hard}.
+Now. I want you to grab that {hasPenis: tiny pecker of yours and pinch the head hard|fat clit of yours and pinch it hard}. #68
 
 - (try_pinch_genitals)
-Make it hard enough to hurt!
-And don't stop until I tell you to.
+Make it hard enough to hurt! #69
+And don't stop until I tell you to. #70
 
 + [react-success]
      -> Nega_GoodJob ->
@@ -398,7 +398,7 @@ And don't stop until I tell you to.
     -> Nega_BadJob ->
     -> try_pinch_genitals
 
-- That's it. Keep going!
+- That's it. Keep going! #71
 
 -> RandomCommentLoop (-> humiliation_comment, 3, 5, 2, 5) ->
 - -> Nega_GoodJob ->
@@ -421,32 +421,32 @@ And don't stop until I tell you to.
 = torture_comments
 
 {shuffle:
-    - Look at my little pain slut. 
-    - Suffer for me, bitch.
-    - Such a fucking masochist.
-    - I want to hear you moaning.
-    - Pant for me, dog. 
-    - Your pain is my pleasure. 
-    - Wallow in the ache, whore.
-    - I want to hear how bad it hurts.
-    - I can't hear you.
-    - I don't think you're doing it hard enough.
-    - I thought you wanted to suffer for me? Harder!
+    - Look at my little pain slut. #72
+    - Suffer for me, bitch. #73
+    - Such a fucking masochist. #74
+    - I want to hear you moaning. #75
+    - Pant for me, dog. #76
+    - Your pain is my pleasure. #77
+    - Wallow in the ache, whore. #78
+    - I want to hear how bad it hurts. #79
+    - I can't hear you. #80
+    - I don't think you're doing it hard enough. #81
+    - I thought you wanted to suffer for me? Harder! #82
 }
 
 ->->
 
 
 = check_ready
-Are you a fucking wimp who can't take a little torture?
+Are you a fucking wimp who can't take a little torture? #83
       
         ++ [yes]
-            Then get the fuck out!
+            Then get the fuck out! #84
             -> exit
             
         ++ [no]
-            Good. 
-            Then get to it!
+            Good. #85
+            Then get to it! #86
             -> try_slap_genitals
             
         ++ [timeout] -> Nega_Timeout -> check_ready
@@ -456,26 +456,38 @@ Are you a fucking wimp who can't take a little torture?
 = torture_end
 
 /perform react_head_toss_casual amused
-I'm done with you. 
-Get out.
+I'm done with you. #87
+Get out. #88
 /perform idle_sassy
 
 -> exit
 
 
 = SayNumber(n)
+// NOTE: Keep these on separate lines for the subtitle system. -deviant
 {
-    - n == 1: One. #1
-    - n == 2: Two. #2
-    - n == 3: Three. #3
-    - n == 4: Four. #4
-    - n == 5: Five. #5 
-    - n == 6: Six. #6
-    - n == 7: Seven. #7
-    - n == 8: Eight. #8
-    - n == 9: Nine. #9
-    - n == 10: Ten. #10
-    - else: /logError Can't say number '{n}'.
+    - n == 1: 
+        One. #1
+    - n == 2:
+        Two. #2
+    - n == 3:
+        Three. #3
+    - n == 4:
+        Four. #4
+    - n == 5:
+        Five. #5 
+    - n == 6:
+        Six. #6
+    - n == 7:
+        Seven. #7
+    - n == 8:
+        Eight. #8
+    - n == 9:
+        Nine. #9
+    - n == 10:
+        Ten. #10
+    - else:
+        /logError Can't say number '{n}'.
 }
 ->->
 

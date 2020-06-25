@@ -5,21 +5,10 @@
 + [wait:{seconds}] 
 - ->->
 
-=== demo_end ===
-/scene EntryDark.EndScreen
-/music entry
-/ambient rain
-/log Cherry popped! Setting variable which should restart at shortcuts.
-~ cherryPopped = true
-~ hasRestarted = true
 
-+ [restart]
-    ~ inTutorial = true
-    ~ tutorial_step = at_game_intro
-    ~ hasRestarted = true
-    -> game_intro
 
-=== unlock_shortcuts ===
+=== function unlockShortcuts() ===
+/log Unlocking shortcuts.
 ~ goddess_shortcut = true
 ~ yuki_shortcut = true
 ~ nega_shortcut = true
@@ -27,13 +16,13 @@
 ~ goddess_angry_shortcut = true
 ~ hm_bonus_shortcut = true
 ~ goddess_pleased_shortcut = true
-->->
+~ return
 
-=== unlock_all ===
+=== function unlockAll() ===
 ~ goddess_hub_status = unlocked
 ~ inTutorial = false
--> unlock_shortcuts ->
-->->
+~ unlockShortcuts()
+~ return
 
 
 // Fallback for isWeb() external function

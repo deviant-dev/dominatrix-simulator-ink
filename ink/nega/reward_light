@@ -1,6 +1,6 @@
 === nega_reward_light ===
 
-/notify title="Scene coming soon!" text="Insert light reward scene here."
+/notify title="Scene coming soon!" text="Insert light reward scene here." #note06
 
 /wait 3 
 -> exit

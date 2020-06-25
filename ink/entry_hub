@@ -11,7 +11,7 @@
 ~ setHub(None)
 
 { inTutorial: -> tutorial_entry }
-{ deviation == tutorial || deviation == demo: -> demo_end}
+{ deviation == tutorial || deviation == demo: -> game_outro}
 
 -> normal_entry
 
@@ -54,13 +54,13 @@
 { tutorial_step == at_goddess_outro:
     ~ punishments = 0
     ~ rewards = 0
-    -> demo_end
+    -> game_outro
 }
 
 /logError Shouldn't be in the entry at this point.
 ~ punishments = 0
 ~ rewards = 0
--> demo_end
+-> game_outro
 
 
 = move_yuki_intro

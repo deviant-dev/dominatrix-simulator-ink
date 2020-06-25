@@ -6,6 +6,7 @@ INCLUDE vars
 INCLUDE code
 INCLUDE access_code
 INCLUDE game_intro
+INCLUDE game_outro
 INCLUDE entry_hub
 INCLUDE general/bad_touch
 INCLUDE goddess/hub
@@ -79,6 +80,7 @@ INCLUDE devil_girl/care
 
 
 
+
 // EXTERNAL isDebug()
 // EXTERNAL isWeb()
 // EXTERNAL getCode()
@@ -92,6 +94,7 @@ INCLUDE devil_girl/care
 
 VAR debug = false
 VAR web = true
+VAR inVR = false
 
 
 -> set_deviation ->
@@ -172,7 +175,7 @@ VAR web = true
         -> entry_hub
     - deviation == demo:
         -> pause(3) ->
-        -> demo_end
+        -> game_outro
     - deviation == devilgirl:
         -> devil_girl_care
     - deviation == nega_dice:
@@ -199,37 +202,40 @@ VAR web = true
     ~ setDeviation(tutorial)
     -> game_intro_web
 
-+ <b>DomSim: Threshold Replay</b>
-    ~ setDeviation(tutorial)
-    -> unlock_shortcuts -> game_intro_again.force
-
 + <b>DomSim: Threshold Demo</b>
     ~ setDeviation(demo)
     -> game_intro_web
 
 + Headmistress Punishment - Spanking
-    -> unlock_all -> headmistress_punishment_spanking
+    ~  unlockAll()
+    -> headmistress_punishment_spanking
 
 + Headmistress Task - Hand Signals
     ~ setDeviation(hand_signals)
-    -> unlock_all -> headmistress_task_handsignals
+    ~  unlockAll()
+    -> headmistress_task_handsignals
 
 + Headmistress Reward - Exhibitionism
     ~ setDeviation(exhibitionism)
     ~ rewards = 1
-    -> unlock_all -> headmistress_reward_exhibitionism
+    ~  unlockAll()
+    -> headmistress_reward_exhibitionism
 
 + Nega Reward - Forced Sex
-    -> unlock_all -> nega_reward_forcedsex
+    ~  unlockAll()
+    -> nega_reward_forcedsex
 
 + Nega Reward - Tease
-    -> unlock_all -> nega_reward_tease
+    ~  unlockAll()
+    -> nega_reward_tease
 
 + Yuki Punishment - Puppy Play Spanking
     ~ setDeviation(puppyplay)
-    -> unlock_all -> yuki_punishment_puppyplay_spanking
+    ~  unlockAll()
+    -> yuki_punishment_puppyplay_spanking
 
 + Yuki Task - Puppy Play
     ~ setDeviation(puppyplay)
-    -> unlock_all -> yuki_task_puppyplay
+    ~  unlockAll()
+    -> yuki_task_puppyplay
  

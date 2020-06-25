@@ -1,7 +1,9 @@
-
 === devil_girl_care ===
 
-/scene BedroomChair.DevilGirlCareIntro
+-> start_scene
+
+= start_scene
+/scene BedroomCouch.DevilGirlCareIntro
 /character DevilGirl
 /music care-01
 /perform couch_lounge_back
@@ -9,366 +11,363 @@
 // NOTE: Care selection UI is built into the scene.
 
 + [comfort] -> comfort
-+ [grief] -> grief 
+// + [grief] -> grief
+
 
 = comfort
 
 /scene BedroomBed.DevilGirl
 /character DevilGirl prone_lounge_right
-/notify title="Instructions." text="Sit or lay down to begin. Stand to leave."
+/notify title="Instructions." text="Sit or lay down to begin. Stand to leave." #note05
 
 +[pose:sit] -> begin
 +[pose:lay_down_left] -> begin
 
 
 - (begin)
+
 /music care-02
 /wait 2
 
+- (loop_intro)
 
-- (healing1)
-
-{cycle:
-    - I like taking care of people. #28
-    - I know I'm just a stranger on the internet, but I'm a stranger that can be here for you. #27
-    - I'll protect you with my arms and keep all of the icky world out for a while. #34
-    - And you can just hide and you can be safe and warm. #35
-    - You can be protected. #36
-    - I've got plenty of strength to share. #17
-    - Breathe. #114
-    - Let me hold you. #86
-    - Let me give you my strength. #87
-    - You can go back and be strong for others later. #88
-    - But right now this is your time. #89
-    - And I'm here. #90
-    - Holding you. #91
-    - Comforting you. #92
-    - Taking care of you. #93
-    - All you have to do is breathe. #85
-    - Just breathe. #18
+{cycle: 
+    - I like taking care of people. #01
+    - I like giving people a safe place to be for a while. #11
+    - I'm glad that you came to me for comfort. #197
+    - I want to comfort you. #198
+    - I want to take care of you. #199
+    - I want to give you a safe place to let go, #200
+    - to rest, #201
+    - to know that everything will be okay. #202
+    - Just rest. #12
     - [Deep breath] #119
+    - Let go. #13
     - [Deep breath] #119
-    - -> healing2
+    - Relax. #14
+    - [Deep breath] #119
+    - Take a deep breath. #15
+    - [Deep breath] #119
+    - Feel all of the tension go out of your body #16
+    - as you let the air escape your chest. #17  
+    - [Deep breath] #119
+    - I'm here to protect you with my arms. #03
+    - and keep all of the icky world out for a while. #04
+    - And you can just hide. #05
+    - And you can be safe. #06
+    - And warm. #07
+    - You can be protected. #08
+    - -> loop
 }
 
-+ [wait: 1] -> healing1
-+ [pose:raised_chin no_feedback no_assist] -> end_scene
++ [wait: 1] -> loop_intro
++ [pose:stand no_feedback no_assist] -> end_scene
 
+- (loop)
 
-- (healing2)
-
-{cycle:
-    - Be little. #94
-    - Be tired. #95
-    - Be sad. #96
-    - Whatever you need to feel. #97
-    - It's okay. #98
-    - Just breathe. #18
-    - Slow. Deep. #19
-    - One breath after the other. #20
-    - If tears come with it, it's okay. #21
-    - Let them fall. Let it out. #22
-    - If your heart hurts and you need to sob... #23
-    - Do that. #24
-    - Don't be afraid to feel. #115
-    - Don't be afraid to ask for help. #116
-    - You're not alone. #117
-    - And I'm here to hold you as much as you need. #118
-    - Maybe you won't show anybody how you're feeling... #42
-    - But it's okay. It's okay to need a place to hide where you're safe and you won't be judged. #43
-    - And you won't be asked to do anything you can't handle. #44
-    - All you have to do is breathe. #83
-    - You don't have to do anything else. You don't have to take care of anybody else right now in this moment. #84
-    - Fall into me. #55
-    - I'll catch you. #112
-    - Just breathe. #113
-    - Just be with me right now. #57
-    - Let each breath fill your body with cleansing, fresh air. #58
-    - Let the breath exit your body... letting all those feelings go with it. #59
-    - [Deep breath] #119
-    - Whatever you need to be in the real world for anyone else in your life... be that. #45
-    - But just know that when you come find me... when you need to be held... #46
-    - When you need to be loved... #123
-    - When you need to be cared for and comforted. #124
-    - I'll be here. My arms will be here. My hugs will be here. #48
-    - My warm soothing presence... The safety. #49
-    - The acceptance. #50
-    - The care. #51
-    - I'll hold you. #52
-    - Anytime you need a hug or snuggles, #12
-    - Or just to be held or rocked or soothed. #13
-    - I'll catch you. #14
-    - Breathe. #114
-    - I promise you're not alone. #102
-    - I promise I will be here. #103
-    - Anytime you need to be held... #104
-    - You know where I am. Come to me when you need me. #105
-    - I will catch you. #106
-    - I will give you my strength. #107
-    - I will hold you. I will care for you. #108
-    - You don't have to carry this burden alone. You're not alone. #76
-    - Give it to me. Let it go. Let me have it for a while. #75
-    - [Deep breath] #119
-    - -> meditation_healing
-}
-
-+ [wait: 2] -> healing2
-+ [pose:raised_chin no_feedback no_assist] -> end_scene
-
-- (meditation_healing)
+~ temp count = 20
 
 {cycle:
-    - I'm here. #02
-    - Just breathe. #18
-    - Slow. Deep. #19
     - [Deep breath] #119
-    - One breath after the other. #20
+    - I'm here. #20
+    - I'll keep you warm. #21
+    - I'll keep you safe. #22
+    - My arms will be the shield that you need #23
+    - to keep everything else out for a while. #24
+    - While you just take time here for yourself. #25
+    - You can just hide and be protected #18
+    - and be safe for a while. #19
+    - Breathe. #27
     - [Deep breath] #119
-    - Just be with me right now. #57
-    - Listen to my voice. #141
-    - Fall into me. #55
-    - I will catch you. #106
-    - Just breathe. #113
-    - Whatever you need to feel. #97
-    - Let me have it for a while. #125
-    - It's okay. #98
-    - You're not walking that path alone. #135
+    - Let me hold you. #28
+    - Let me give you my strength. #29
+    - You can go back and be strong for others later #30
+    - but right now, this is your time #31
+    - and I'm here holding you, #32
+    - comforting you, #33
+    - taking care of you. #34
+    - All you have to do is breathe. #35
     - [Deep breath] #119
-    - You're going to be okay. #99
-    - I promise. #100
-    - I promise you're not alone. #102
-    - I'll hold you. #52
-    - Breathe. #114
-    - All you have to do is breathe. #85
+    - Just breathe. #36
     - [Deep breath] #119
-    - You don't have to do anything else. #142
-    - Let me hold you. #86
-    - Let me give you my strength. #87
-    - Fall into me. #54
-    - Breathe. #109
-    - You are not alone. I am here. #110
-    - Holding you. #91
-    - Rocking you. Breathing with you. #62
+    - I'm glad you're here. #10
+    - I've got plenty of strength to share. #09
+    - Take a deep breath. #15
     - [Deep breath] #119
-    - Comforting you. #92
-    - Taking care of you. #93
-    - Giving you my strength... my care... my affection. #64
+    - Whatever you need to feel, just feel it. #37
+    - Just let it move through you. #38
     - [Deep breath] #119
-}
-
-+ [wait: 3] -> meditation_healing
-+ [pose:raised_chin no_feedback no_assist] -> end_scene
-
-
-= grief
-
-/scene BedroomBed.DevilGirl
-/character DevilGirl prone_lounge_right
-/notify title="Instructions." text="Sit or lay down to begin. Stand to leave."
-
-+[pose:sit] -> begin2
-+[pose:lay_down_left] -> begin2
-
-- (begin2)
-/music care-02
-/wait 2
-
-
-- (grief1)
-
-{cycle:
-    - I'm here. #02
-    - You're not alone. #03
-    - I know it's hard right now. #04
-    - And I know it hurts. #05
-    - Breathing probably takes a lot of effort. #06
-    - It will hurt for a while. #07
-    - But it will get better over time. #08
-    - It's okay to be sad. #09
-    - It's okay to hurt. #10
-    - I'll hold you. #111
-    - I'll catch you. #112
-    - Anytime you need a hug or snuggles, #12
-    - Or just to be held or rocked or soothed. #13
-    - I'll catch you. #14
-    - And you don't have to strong right now. I'll help take care of you. #16
-    - I've got plenty of strength to share.#17
-    - Just breathe. #18
-    - Slow. Deep. #19
-    - One breath after the other. #20
-    - If tears come with it, it's okay. #21
-    - Let them fall. Let it out. #22
-    - If your heart hurts and you need to sob... #23
-    - Do that. #24
-    - Don't be afraid to feel. #115
-    - Don't be afraid to ask for help. #116
-    - You're not alone. #117
-    - And I'm here to hold you as much as you need. #118
-    - I know I'm just a stranger on the internet, but I'm a stranger that can be here for you. #27
-    - I like taking care of people. #28
-    - I like taking care of people when they are small, and they are vulnerable, and they are hurting. #29
-    - Nobody who is hurting should be alone. #30
-    - And you don't have to be strong with me, because I'll hold you. #31
-    - And I'll catch you. #32
-    - And I'll keep you safe. #33
-    - Breathe. #114
-    - I'll protect you with my arms and keep all of the icky world out for a while. #34
-    - And you can just hide and you can be safe and warm. #35
-    - You can be protected. #36
-    - It will be okay. #37
-    - You'll be okay. I promise. #38
-    - It won't feel like that right now. It may not feel like that for a long time. #39
-    - Sometimes it will feel like it's a little better and then it will come back.#40
-    - And you'll want to hide or you'll want to curl up inside. #41
-    - Maybe you won't show anybody how you're feeling... #42
-    - But it's okay. It's okay to need a place to hide where you're safe and you won't be judged.  #43
-    - And you won't be asked to do anything you can't handle. #44
-    - Whatever you need to be in the real world for anyone else in your life... be that. #45
-    - But just know that when you come find me... when you need to be held... #46
-    - When you need to be loved... #123
-    - When you need to be cared for and comforted. #124
-    - I'll be here. My arms will be here. My hugs will be here. #48
-    - My warm soothing presence... The safety. #49
-    - The acceptance. #50
-    - The care. #51
-    - I'll hold you. #52
-    - You don't have to fall alone. #53
-    - Fall into me. #54
-    - Fall into me. #55
-    - Just breathe. #113
-    - Just be with me right now. #57
-    - Let each breath fill your body with cleansing, fresh air. #58
+    - Be little. #39
+    - Be sad. #40
+    - Be scared. #41
+    - Be in pain. #42
+    - Be tired. #43
+    - Whatever you need to be, #44
+    - It's okay. #45
+    - I'm here to hold that for you. #46
+    - Give it to me. #47
+    - Just give it to me for a little while. #48
+    - Let me hold it for you. #49
+    - I've got strong shoulders. #50
+    - I'm strong enough to carry that for you. #51
+    - You don't have to carry it alone. #52
+    - And right now, you don't have to carry it at all. #53
+    - It's okay. #54
     - [Deep breath] #119
-    - -> grief2
-    }
-    
- 
-+ [wait: 1] -> grief1
-+ [pose:raised_chin no_feedback no_assist] -> end_scene
-
-
-- (grief2)
-
-{cycle:   
-    - Let the breath exit your body... #126
-    - Letting all those feelings go with it. #127
-    - Because there will more and you need to let them move through you. #60
-    - Just let them wash over you. #128
-    - It's okay. They won't be there forever. #129
-    - And know that I'm here holding you. #144
-    - Rocking you. Breathing with you. #62
-    - Taking all that pain and helping hold it for you... and helping it move through you. #63
-    - Giving you my strength... #130
-    - My care... my affection. #131
-    - It's going to be okay. It's going to be okay. #65
-    - You're going to be okay. #66
-    - Maybe not right away. Maybe not right now. But you will. I promise. #67
-    - I promise it will get better. #132
-    - I promise the pain will get less strong over time. #133
-    - You're going to fill a hole... that hole inside you is going to feel so deep. #69
-    - It's going to feel like it's going to suck you down and you're going to get lost inside it. #70
-    - But I promise you won't... because I'm there with you every step of the way. #71
-    - Holding you as much or as little as you need. #134
-    - You're not walking that path alone. #135
-    - You're not falling into nothingness. I'm there to catch you.  #73
-    - I'm there to hold you. I'm there to take some of that pain for you. #74
-    - Give it to me. #121
-    - Let it go. #122
-    - Let me have it for a while. #125
-    - You don't have to carry this burden alone. You're not alone. #76
-    - I will be here... anytime you need. #77
-    - Breathe. #114
-    - When the pain is that strong it feels like our entire body is in a knot... #79
-    - When your heart is so tiny... gripped in a vice of pain... #140
-    - Listen to my voice. #141
-    - And breathe.  #81
-    - That's all you have to do right now. #82
-    - All you have to do is breathe. #83
-    - You don't have to do anything else. #142
-    - You don't have to take care of anybody else right now in this moment. #143
-    - All you have to do is breathe. #85
-    - Let me hold you. #86
-    - Let me give you my strength. #87
-    - You can go back and be strong for others later. #88
-    - But right now this is your time. #89
-    - And I'm here. #90
-    - Holding you. #91
-    - Comforting you. #92
-    - Taking care of you. #93
-    - Be little. #94
-    - Be tired. #95
-    - Be sad. #96
-    - Whatever you need to feel. #97
-    - It's okay. #98
-    - You're going to be okay. #99
-    - I promise. #100
-    - I promise it will get better. #101
-    - I promise you're not alone. #102
-    - You know where I am. Come to me when you need me. #105
-    - I will catch you. #106
-    - I will give you my strength. #107
-    - I will hold you. I will care for you. #108
-    - Breathe. #109
-    - You are not alone. I am here. #110
-    - -> meditation_grief
-    }
-
-+ [wait: 2] -> grief2
-+ [pose:raised_chin no_feedback no_assist] -> end_scene
-
-- (meditation_grief)
-
-{cycle:
-    - Just breathe. #18
-    - Slow. Deep. #19
+    - Breathe. #27
     - [Deep breath] #119
-    - One breath after the other. #20
+    - Slow. Deep. #55
+    - Breathe. #56
     - [Deep breath] #119
-    - Just be with me right now. #57
-    - Fall into me. #55
-    - I will catch you. #106
-    - I'm here. #02
-    - I'll hold you. #52
-    - Just breathe. #113
-    - Whatever you need to feel. #97
-    - It's okay. #98
-    - Just let them wash over you. It's okay. They won't be there forever and know that I'm here holding you. #61
-    - Rocking you. Breathing with you. #62
+    - One breath after the other. #57
+    - If tears come with it, it's okay. #58
+    - Let them fall. #59
+    - Let them run down your cheeks. #60
+    - Let it out. #61
+    - Let them go. #62
+    - Breathe. #27
     - [Deep breath] #119
-    - You're going to be okay. #99
-    - I promise. #100
-    - I promise you're not alone. #102
-    - You're not falling into nothingness. I'm there to catch you.  #73
-    - I'm there to hold you. I'm there to take some of that pain for you. #74
-    - Let it go. #122
+    - If your heart hurts #63
+    - and you need to sob, #64
+    - do that. #65
     - [Deep breath] #119
-    - Let me have it for a while. #125
-    - I'm there with you every step of the way. #145
-    - Breathe. #114
-    - All you have to do is breathe. #85
+    - If you're tired, #66
+    - and you just want to fall apart for a little while #67
+    - do that. #68
+    - If you've had a bad day #69
     - [Deep breath] #119
-    - It's okay to be sad. #09
-    - It's okay to hurt. #10
-    - Let me hold you. #86
-    - Let me give you my strength. #87
-    - Breathe. #109
-    - You are not alone. I am here. #110
-    - Holding you. #91
-    - Comforting you. #92
-    - Taking care of you. #93
-    - Giving you my strength... my care... my affection. #64
+    - and you just can't face the world anymore right now, #70
+    - then don't. #71
+    - Just breathe. #36
+    - [Deep breath] #119
+    - Don't be afraid to feel. #72
+    - Don't be afraid to ask for help. #73
+    - You're not alone. #74
+    - [Deep breath] #119
+    - I'm here. #75
+    - I'm here with your for as long as you need. #76
+    - I'm not going anywhere. #77
+    - I'm here to hold you as much as you need. #78
+    - Breathe. #27
+    - [Deep breath] #119
+    - Maybe you won't show anybody how you're feeling. #79
+    - Maybe you need to be strong when you're around other people. #80
+    - Maybe you just can't let go right now. #81
+    - But with me, #82
+    - it's okay. #83
+    - [Deep breath] #119
+    - It's going to be okay. #84
+    - I'm glad that you're here. #02
+    - You're going to be okay. #85
+    - I promise. #86
+    - I promise it's going to be okay. #87
+    - [Deep breath] #119
+    - Breathe. #27
+    - [Deep breath] #119
+    - Just rest. #12
+    - Let go. #13
+    - Relax. #14
+    - [Deep breath] #119
+    - It's okay to need a place to hide where you're safe #88
+    - and you won't be judged. #89
+    - I will never judge you. #90
+    - I will always be here to welcome you. #91
+    - I will always be here to hold you. #92
+    - That's what I do. #93
+    - I take care of you. #94
+    - I've got plenty of strength to share. #26
+    - All you have to do is breathe. #95
+    - [Deep breath] #119
+    - You don't have to do anything else. #96
+    - You don't have to take care of anybody else right now. #97
+    - In this moment all you have to do is breathe. #98
+    - [Deep breath] #119
+    - Slow. Deep. #55
+    - [Deep breath] #119
+    - Fall into me. #99
+    - I'll catch you. #100
+    - Just breathe. #101
+    - [Deep breath] #119
+    - Just be with me right now. #102
+    - Be here. #103
+    - Be with me. #104
+    - Turn off the outside world right now. #105
+    - Just close the door. #106
+    - Close the curtains. #107
+    - Close your eyes. #108
+    - [Deep breath] #119
+    - Breathe. #27
+    - [Deep breath] #119
+    - You're with me. #109
+    - You're here. #110
+    - You're not out there right now. #111
+    - And I'm going to be here with you #112
+    - for as long as you need. #113
+    - Let each breath fill your body #114
+    - with cleansing, fresh air. #115
+    - Let the breath exit your body #116
+    - [Deep breath] #119
+    - Letting all those feelings go with it. #117
+    - [Deep breath] #119
+    - Letting the tiredness seep out of your body. #118
+    - [Deep breath] #119
+    - Letting the tension go out of your neck. #120
+    - [Deep breath] #119
+    - Just breathe. #121
+    - [Deep breath] #119
+    - Whatever you need to be for anyone else in your life, #122
+    - be that. #123
+    - Be that when you go, #126
+    - but not right now. #127
+    - Right now, be with me. #137
+    - [Deep breath] #119
+    - Let the breath exit your body #124
+    - letting all those feelings go with it. #125
+    - [Deep breath] #119
+    - Know that when you come find me, #128
+    - when you need to be held, #129
+    - when you need to be loved, #130
+    - when you need to be cared for and comforted, #131
+    - I'll be here. #132
+    - All you have to do is breathe. #95
+    - [Deep breath] #119
+    - Slow. Deep. #55
+    - [Deep breath] #119
+    - My arms will be there. #133
+    - My hugs will be there. #134
+    - My care will be there. #135
+    - My warm soothing presence #136
+    - The safety. #138
+    - The acceptance. #139
+    - The care. #140
+    - I'll hold you. #141
+    - Any time you need a hug or snuggles #142
+    - or just to be held or rocked or soothed, #143
+    - I'll catch you. #144
+    - Breathe. #27
+    - [Deep breath] #119
+    - Fall into me. #145
+    - Let go. #146
+    - I'll catch you. #147
+    - I promise you're not alone. #148
+    - I promise I will be here #149
+    - any time you need to be held. #150
+    - [Deep breath] #119
+    - You know where I am. #151
+    - Come to me when you need me. #152
+    - I will catch you. #153
+    - I will give you my strength. #154
+    - I will hold you. #155
+    - I will care for you. #156
+    - Breathe. #27
+    - [Deep breath] #119
+    - You don't have to carry this burden alone. #157
+    - You're not alone. #158
+    - Give it to me. #159
+    - Let it go. #160
+    - Let me have it for a while. #161
+    - I'm here. #162
+    - Listen to my voice. #163
+    - All you have to do right now #164
+    - is breathe. #165
+    - [Deep breath] #119
+    - and listen to my voice. #166
+    - You're not walking this path alone. #167
+    - You're going to be okay. #168
+    - I promise. #169
+    - I'm here #170
+    - rocking you, #171
+    - breathing with you, #172
+    - [Deep breath] #119
+    - giving you my strength. #173
+    - giving you my care. #174
+    - giving you my affection. #175
+    - You're not alone. #176
+    - [Deep breath] #119
+    - I know it's hard right now. #177
+    - I know it feels like you just can't carry any more. #178
+    - Not right now #179
+    - and that's okay. #180
+    - I can carry it for you. #181
+    - That's what I'm here for. #182
+    - [Deep breath] #119
+    - I'm here to carry things #183
+    - when they just get too heavy for you to carry them anymore. #184
+    - Later, you can pick it back up. #185
+    - You can go be whatever you need to be #186
+    - in that outside world. #187
+    - But right now, with me, #188
+    - You don't have to carry anything. #189
+    - [Deep breath] #119
+    - All you have to do is breathe. #95
+    - [Deep breath] #119
+    - I know sometimes life is hard #190
+    - even when you feel like you're doing everything right. #191
+    - Still, sometimes it's just hard. #192
+    - That's okay. #193
+    - Not everything is going to be easy. #194
+    - but you can do it. #195
+    - Breathe. #218
+    - [Deep breath] #119
+    - I'm glad you're here. #196
+    - I'm glad that you came to me for comfort. #197
+    - I want to comfort you. #198
+    - I want to take care of you. #199
+    - I want to give you a safe place to let go, #200
+    - to rest, #201
+    - to know that everything will be okay. #202
+    - [Deep breath] #119
+    - Maybe not right now, #203
+    - maybe not for a while, #204
+    - but they will. #205
+    - It will be okay. #206
+    - And you will be okay. #207
+    - [Deep breath] #119
+    - I'm here with you. #208
+    - I'm walking this path with you. #209
+    - Any time you need me, I'll be here. #210
+    - I'll be here to give you my strength. #211
+    - I'll be here to give you a safe place. #212
+    - [Deep breath] #119
+    - Breathe. #213
+    - Take a deep breath. #214
+    - [Deep breath] #119
+    - Fill your body with fresh air. #215
+    - Let that breath move through you. #216
+    - Just breathe. #217
+    - [Deep breath] #119
+    - Slow. Deep. #55
+    - [Deep breath] #119
+    - Breathe. #218
     - [Deep breath] #119
 }
 
-+ [wait: 3] -> meditation_grief
-+ [pose:raised_chin no_feedback no_assist] -> end_scene
+~ count++
+~ temp delay = 1
+
+{
+    - count > 200: ~ delay = 3
+    - count > 100: ~ delay = 2
+}
+
++ [wait: {delay}] -> loop
++ [pose:stand no_feedback no_assist] -> end_scene
+
 
 
 //end
 = end_scene
 
-    - I promise I will be here. #103
-    - Anytime you need to be held... #104
+/scene BedroomCouch.DevilGirlCare
+/character DevilGirl
+/music care-01
+/perform couch_lounge_back
 
--> exit
+I promise I will be here #149
+any time you need to be held. #150
+
+/scene BedroomCouch.DevilGirlCareOutro
+
++ [play] -> devil_girl_care
+
 

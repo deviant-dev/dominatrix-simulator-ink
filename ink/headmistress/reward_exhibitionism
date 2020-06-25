@@ -337,7 +337,7 @@ Are you ready, {isBoy: toad|strumpet}? #62
 
 = begin
 
-- /notify title="<color=red>Pro Tip!</color>" text="Early Access: Currently, this scene is meant for you to perform **IRL** (in real life)! <br><br>Future: An in-game masturbation scene is coming soon!!<br><br>"Nod" YES to continue?"</br>
+- /notify title="<color=red>Pro Tip!</color>" text="Early Access: Currently, this scene is meant for you to perform **IRL** (in real life)! <br><br>Future: An in-game masturbation scene is coming soon!!<br><br>"Nod" YES to continue?"</br> #note01
 
 + [yes]
 
