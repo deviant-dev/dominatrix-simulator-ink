@@ -2,7 +2,6 @@
 
 - (start)
 
-~ setScene(task_scene, Yuki)
 ~ tries = 0
 ~ task_count = 0
 ~ task_attempts = 0
@@ -21,7 +20,7 @@
 /perform idle_yuki
 {shuffle:
 
-    - /perform do_consider happy 45
+    - /perform talk_consider happy 45
     I think we should practice your poses some more, puppy. #158
 
     - /perform talk_lean_forward amused 50
@@ -33,8 +32,13 @@
 /perform do_point_down happy 55
 <b>Sit</b>, puppy. #159
 
-+ [pose:puppy_sit] -> Yuki_GoodJob ->
-+ [timeout] -> Yuki_Timeout -> sit
++ [pose:puppy_sit] 
+    ~addObey()
+    -> Yuki_GoodJob ->
+    
++ [timeout] 
+    ~addDisobey()
+    -> Yuki_Timeout -> sit
 
 // Only play this if this is our first time in practice.
 - {yuki_task_puppyplay_practice == 1:
@@ -106,16 +110,17 @@ Pay attention! #165
     }
 }
 
+/log Goal = {task_goal}
+
 -(Practice_Loop)
 
 -> test_next_pose ->
 
 ~ task_count++
-
+/log Progress = {task_count} / {task_goal}
 {task_count < task_goal: -> Practice_Loop}
 
 {task_attempts == task_goal:
-    ~ addReward()
     ~ yuki_puppy_difficulty = 2
 }
 
@@ -123,18 +128,6 @@ Pay attention! #165
     ~ yuki_puppy_difficulty = 1
 }
 
-{task_attempts > task_goal + 2:
-    ~ yuki_puppy_difficulty = 1
-    ~ addPunishment()
-}
-
-{yuki_task_puppyplay_practice == 1:
-    {task_attempts > task_goal + 2:
-        -> Yuki_Puppyplay_Punishment_Earned ->
-    - else:
-        -> Yuki_Puppyplay_Reward_Earned ->
-    }
-}
 
 {task_attempts > task_goal + 2:
     -> Yuki_Puppyplay_Punishment_Earned ->
@@ -240,7 +233,7 @@ Pay attention! #165
     - /perform talk_one_finger happy 60
     Let me see you be <b>"playful"</b>. #18
 
-    - /perform idle_please excited 45
+    - /perform idle_pleased excited 45
     Okay! Be my <b>"playful"</b> little puppy. #19
 }
 
@@ -328,20 +321,3 @@ Pay attention! #165
 ->->
 
 
-= Good_Ending_Director
-
-// Fill in shuffles with extra endings
-
-// { shuffle:
-    // - -> yuki_reward_puppyplay_milking ->->
-    // - -> yuki_reward_puppyplay_lickfeet ->->
-// }
-->->
-= Bad_Ending_Director
-
-{ shuffle:
-    // - -> yuki_punishment_puppyplay_cage ->->
-    - -> yuki_punishment_puppyplay_spanking ->->
-    }
-
-->->

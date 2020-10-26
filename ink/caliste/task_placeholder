@@ -1,0 +1,24 @@
+=== caliste_task_placeholder ===
+-> select_gender_check ->
+~ setScene(task_scene, Caliste, "caliste_task_placeholder", -> caliste_task_placeholder)
+/scene CalistesRoom.Ready
+/music caliste
+/ambient caliste
+/character caliste
+
+/notify title="Priestess Caliste's Task Check" text="This is a placeholder task check. Do you want to do the task?"
+
++ [yes]
++ [no] -> exit
+
+- /notify title="Priestess Caliste's Task Test" text="This is a placeholder task scene. Do you complete your task?"
+
++ [yes]
+    ~addReward()
+    /notify title="Priestess Caliste's Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
++ [no]
+    ~addPunishment()
+    /notify title="Priestess Caliste's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+
+- /wait 5
+-> exit

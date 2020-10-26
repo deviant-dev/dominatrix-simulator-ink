@@ -1,0 +1,17 @@
+=== caliste_intro ===
+~ setScene(intro_scene, Caliste, "caliste_intro", -> caliste_intro)
+
+/scene CalistesRoom.Hub
+/music caliste
+/ambient caliste
+/character caliste
+
+-/notify title="Priestess Caliste's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Ritualism<br/>Dark Magic<br/>Tantric Sex"
+
++ [move]
+
+-/notify title="Priestess Caliste's Intro Completed." text="Returning to the entry."
+/wait 5
+
+~ caliste_intro_complete = true
+-> exit

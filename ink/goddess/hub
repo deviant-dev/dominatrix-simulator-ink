@@ -1,10 +1,15 @@
 // writing status: in progress
 
+//first visit, player encounters Goddess and gets hint about needing more rewards first
+//future visits, the door can be locked if they don't have 10 bloodstones, but they need to know why they can't enter - could be acheived with in game notification or whisper 
+
+//future idea - Yuki could tell you that you can't enter and why, which would require scene reloading and returning player to entry hub
+
 == goddess_hub ==
 -> select_gender_check ->
 - (hub)
 
-~ setHub(Goddess)
+~ setHub(Goddess, "goddess_hub", -> goddess_hub)
 
 {inTutorial: -> goddess_intro}
 
@@ -13,37 +18,203 @@
 /ambient none
 /character goddess
 
-{ shuffle:
-   - -> goddess_monitoring
-   - -> goddess_monitoring
-   - -> goddess_monitoring
- }
- 
+- /notify title="The Goddess' Hub" text="This is a placeholder. You negotiate a scene with the Mistress here."
 
-{ 
-    - punishments > 0 :
-        You require correction. Go get your punishments and perhaps we'll talk. #01
-        -> exit
-    - rewards >= 10 :
-        My, you have been good. Here for your reward? #02
-        + [yes] -> choose_reward
-        + [no]
-            No? Then out of my sight. #03
-            -> exit
-    - else:
-        You are not yet worthy. #04
-        Raise your standing with my Mistresses #05
-        and save your high marks, #06
-        then perhaps I'll entertain your presence. #07
-        Ten should suffice. #08
-        Now leave. #09
-        + [yes] -> exit
-        + [no]
-            No? Then take a punishment and leave anyway. #10
-            ~ addPunishment()
-            -> exit
++ [move] -> apology_check(-> hello, -> exit)
+
+
+= hello
+
+/wait
+
+{ goddess_regard >= 10:
+    << Hello favored slave. >>
+- else:
+    << Hello slave. >>
 }
 
+{ 
+    - punishments > 0 && inChastity:
+        You require correction. Go get your punishments and perhaps we'll talk. #01
+        -> exit
+    - rewards >= 10 && inChastity: -> chastity_release
+    - rewards >= 10: -> check_reward_mega
+    - inChastity: -> chastity_rejection
+    - punishments >= 10: -> chastity_offer
+    - punishments > 0: -> check_punishment
+    - rewards >= 10: -> check_reward_mega
+    - rewards > 0 : -> check_reward
+    - else: -> check_task
+}
+
+
+= chastity_rejection
+You are not yet worthy. #04
+Raise your standing with my Mistresses #05
+and save your high marks, #06
+then perhaps I'll entertain your presence. #07
+<< and release you from your cage. >>
+Ten should suffice. #08
+Now leave. #09
++ [yes] -> exit
++ [no]
+    No? Then take a punishment and leave anyway. #10
+    ~ addPunishment()
+    -> exit
+
+
+= chastity_offer
+<< So many punishments. Submit to chastity and I shall remove them. >>
+<< Do you accept? >>
+
++ [yes]
++ [no] -> check_punishment
+
+- (accept_chastity)
+/notify title="Chastity Accepted" text="Insert enter chastity dialog here."
+~ inChastity = true
+/wait 5
+-> exit
+
+
+= chastity_release
+ << All full? Here to be released, then? >>
+ 
++ [yes] 
++ [no]
+    << I can't play with you when you're in chastity. >>
+   -> exit
+            
+- /notify title="Chastity Release" text="Insert chastity release dialog here. Returning to entry"
+~ inChastity = false
+~ removeBigReward(-> exit)
+/wait 5
+-> exit
+
+
+= check_punishment
+
+/character goddess
+<< Are you here to pay your punishment? >>
++ [yes] -> choose_punishment
++ [no]
+
+- << No? >>
+
+{
+    - punishments < 10 && rewards < 10:
+        -> check_task
+    - punishments >= 10:
+        << You have too many punishments for a task, I'm afraid. >>
+    - rewards >= 10:
+        << You have too many rewards for a task, I'm afraid. >>
+        << Pay off those punishments and you might get yourself something nice from me. >>
+}
+
+-> goodbye
+
+
+= check_reward_mega
+
+<< Full band of rewards, huh? >>
+
+
+            
+{goddess_regard < 10:
+    << It's too bad you haven't pleased me more or I might have something special for you. >>
+    << But I can still give you a reward if you spend just one. >>
+    -> check_reward
+}
+
+{inChastity:
+    << Too bad you are in chastity or we could truly enjoy ourselves. >>
+    -> check_reward
+}
+
+<< And you've pleased me quite a lot. >>
+<< Give me all 10 and I'll see you get something very special indeed. >>
+<< Would you like that? >>
+
++ [yes] -> choose_reward_mega
++ [no] -> check_reward
+
+
+= check_reward
+
+/character goddess
+
+My, you have been good. Here for your reward? #02
+        + [yes] -> choose_reward
+        + [no]
+
+- << No? >>
+
+{
+    - rewards < 10:
+        -> check_task
+
+    - rewards >= 10:
+        << You have too many rewards for a task. >>
+        << Indulge yourself before performing any more tasks. >>
+}
+
+-> goodbye
+
+
+= check_task
+
+{ punishments == 0 && rewards == 0:
+    << No rewards or punishments, huh? >>
+    << You must be here to do a task. >>
+- else:
+    << Shall I give you a task then? >>
+}
+
++ [yes] -> choose_task
++ [no] 
+    No? Then out of my sight. #03
+    -> exit
+
+
+= choose_punishment
+
+<< Time to punish you, then. >>
+
+{ shuffle:
+    - -> goddess_punishment_placeholder
+}
+
+
+= choose_reward_mega
+
+<< Let's get intimate. >>
+
+{shuffle:
+    - -> goddess_rewardmega_giantess
+}
+
+
 = choose_reward
-// Eventually we'll have the game randomly pick here.
--> goddess_reward_huge -> hub
+
+<< Time to reward you, then. >>
+
+{shuffle:
+    - -> goddess_reward_placeholder
+}
+
+
+= choose_task
+
+{ shuffle:
+    - -> goddess_task_placeholder
+}
+
+
+= goodbye
+<< I have nothing for you. >>
+<< You may go. >>
+/wait
+-> exit
+
+
+

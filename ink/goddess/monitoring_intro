@@ -9,14 +9,14 @@
 ~ punishments = 0
 ~ tutorial_step = at_goddess_outro
 ~ goddess_angry_shortcut = true
-~ setScene(intro_scene, Goddess)
+~ setScene(intro_scene, Goddess, "goddess_monitoring_intro.angry", -> goddess_monitoring_intro.angry)
 
 /scene Huge.InHand
-/music goddess
-/ambient huge-space
+/music goddess-giant-punishment
+/ambient none
 /character goddess
 
-- /emotion skeptical 35
+/emotion skeptical 35
 Well, well {player_name}. #01
 You've only just arrived and already you misbehave. #02
 So disappointing. #03
@@ -35,25 +35,42 @@ Ten Obsidians worth of punishments will do. #09
 
 //give player 10 punishment markers
 
+- (punishment_loop)
+
+-> continue ->
+~addPunishment()
+/wait 0.2
+
+{punishments < 10:
+    -> punishment_loop
+}
+
 /emotion angry 25
 You will pay them all now! #10
+
+-> continue ->
+
 //remove 10 punishment markers with flare
+~removeBigPunishment()
 
 /emotion aroused 35
 Pleasure will be denied to you until you have proved your worth. #11
 Ten Bloodstones will unlock you from your imprisonment. #12
+
 //give chastity device
+~ inChastity = true
 
 Now go and fail me no further, {player_name}. #13
+
 ~ inTutorial = false
 
 ~ tutorial_goddess_outro_angry_complete = true
 
-{deviation == tutorial:
+// {deviation == tutorial:
     -> game_outro
-- else:
-    -> entry_hub
-}
+// - else:
+//     -> entry_hub
+// }
 
 
 = pleased
@@ -64,14 +81,14 @@ Now go and fail me no further, {player_name}. #13
 ~ punishments = 0
 ~ tutorial_step = at_goddess_outro
 ~ goddess_pleased_shortcut = true
-~ setScene(intro_scene, Goddess)
+~ setScene(intro_scene, Goddess, "goddess_monitoring_intro.pleased", -> goddess_monitoring_intro.pleased)
 
 /scene Huge.InHand
 /music goddess
 /ambient huge-space
 /character goddess
 
-- /emotion amused 85
+/emotion amused 85
 Hello there, little {player_name}. #14
 You have performed adequately for one so new. #15
 I am satisfied. For now. #16
@@ -96,8 +113,8 @@ Go forth and please me, {player_name}. #25
 ~ inTutorial = false
 ~ tutorial_goddess_outro_happy_complete = true
 
-{deviation == tutorial:
+// {deviation == tutorial:
     -> game_outro
-- else:
-    -> entry_hub
-}
+// - else:
+//     -> entry_hub
+// }

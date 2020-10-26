@@ -6,9 +6,9 @@
     -> yuki_task_puppyplay
 }
 
-~ reward_just_removed = false
-~ punishment_just_removed = false
-~ setHub(None)
+//Variable reset used by the Goddess monitoring scene to determine what type of interaction she has with the player
+~ just_changed = none
+~ setHub(None, "entry_hub", -> entry_hub)
 
 { inTutorial: -> tutorial_entry }
 { deviation == tutorial || deviation == demo: -> game_outro}
@@ -17,53 +17,44 @@
 
 
 = normal_entry
+~ main_entry_shortcut = true
 
 /scene entry.hub
 /music entry
 /ambient rain
 
-// + {LIST_VALUE(goddess_hub_status)} [move: Goddess ({goddess_hub_status})]
-//     -> tryEnter(goddess_hub_status, -> goddess_hub, -> exit)
+//first visit, player encounters Goddess and gets hint about needing more rewards first
+//future visits, the door can be locked if they don't have 10 bloodstones, but they need to know why they can't enter - could be acheived with in game notification or whisper 
+
++ [move: Goddess] -> goddess_hub
 + [move: Yuki] -> yuki_hub
 + [move: Nega] -> nega_hub
 + [move: Headmistress] -> headmistress_hub
++ [move: Pragma] -> pragma_hub
++ [move: Furia] -> furia_hub
++ [move: Angel] -> angel_hub
++ [move: Treat] -> treat_hub
++ [move: Caliste] -> caliste_hub
 
 
 = tutorial_entry
 
-{ tutorial_step == at_yuki_intro:
-    ~ punishments = 1
-    ~ rewards = 1
-    ~ yuki_shortcut = true
-    -> move_yuki_intro
+{
+    - tutorial_step == at_yuki_intro: -> move_yuki_intro
+    - tutorial_step == at_hm_intro: -> move_headmistress_or_yuki
+    - tutorial_step == at_nega_intro || tutorial_step == at_hm_bonus: -> move_headmistress_or_nega
+    - tutorial_step == at_goddess_outro: -> game_outro
+    - else:
+        /logError Shouldn't be in the entry at this point. Skipping to entry.
+        -> game_outro
 }
-
-{ tutorial_step == at_hm_intro:
-    ~ punishments = 1
-    ~ rewards = 1
-    ~ hm_shortcut = true
-    -> move_headmistress_or_yuki
-}
-
-{ tutorial_step == at_nega_intro || tutorial_step == at_hm_bonus:
-    ~ punishments = 0
-    ~ rewards = 1
-    -> move_headmistress_or_nega
-}
-
-{ tutorial_step == at_goddess_outro:
-    ~ punishments = 0
-    ~ rewards = 0
-    -> game_outro
-}
-
-/logError Shouldn't be in the entry at this point.
-~ punishments = 0
-~ rewards = 0
--> game_outro
 
 
 = move_yuki_intro
+
+~ punishments = 1
+~ rewards = 1
+~ yuki_shortcut = true
 
 -> select_gender_check ->
 
@@ -71,7 +62,7 @@
 /music yuki
 /ambient rain
 
-{ isWeb(): 
+{ web: 
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
 
     <blockquote><i>You stand inside a large Victorian foyer with a sweeping staircase and several sets of doors leading off of it. The room is fairly well lit, but all of the doors are shrouded in shadows. Before you stands a lithe, young woman dressed in a maid's uniform. Beaming a bright smile, she greets you...</i></blockquote>
@@ -82,7 +73,11 @@
 
 = move_headmistress_or_yuki
 
-/scene entry.hub
+~ punishments = 1
+~ rewards = 1
+~ hm_shortcut = true
+
+/scene entry.TutorialHMOrYuki
 /music entry
 /ambient rain
 
@@ -93,7 +88,10 @@
 
 = move_headmistress_or_nega
 
-/scene entry.hub_empty
+~ punishments = 0
+~ rewards = 1
+
+/scene entry.TutorialHMOrNega
 /music entry
 /ambient rain
 

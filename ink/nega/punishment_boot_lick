@@ -1,6 +1,8 @@
 === nega_punishment_boot_lick ===
 //punishment_light
+~ setScene(punishment_scene, Nega, "nega_punishment_boot_lick", -> nega_punishment_boot_lick)
 ~ licked_boots = true
+
 
 /scene attic.Ready
 /music nega-punishment
@@ -18,7 +20,7 @@ Get down on all fours like the dog you are, maggot!
 --> Nega_GoodJob ->
 
 - (kiss_feet)
-/perform do_present_foot
+/perform idle_present_foot
 Come here and kiss my boot, worm!
 
 + [pose:kiss_feet]
@@ -64,7 +66,7 @@ I stepped outside earlier and got the bottoms of my boots dirty.
 //The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. It would be really tool if there was actually dirt on the boot that disappeared/fell off as the player "licked"
 
 - (lick_1) 
-/Player must move head up and down near the bottom of the boot.
+//Player must move head up and down near the bottom of the boot.
 
     +   [Successful Lick]
     Very good, maggot! Just like that. 
@@ -85,7 +87,7 @@ I stepped outside earlier and got the bottoms of my boots dirty.
     - ~ demerits++ 
     -> lick_2
     
-- (switch_feet) /Nega switches feet, so the other boot is now in front of the player.
+- (switch_feet) //Nega switches feet, so the other boot is now in front of the player.
 
 - (lick_3) 
 {shuffle:
@@ -116,7 +118,7 @@ I stepped outside earlier and got the bottoms of my boots dirty.
     - ~ demerits++ 
     -> lick_4
 
-- (inspect) /Nega inspects the bottoms of her boots.
+- (inspect) //Nega inspects the bottoms of her boots.
 If your tongue is this thorough, 
 I'll bet it would be useful for other things as well...
 

@@ -1,4 +1,5 @@
 === nega_punishment_camera_shoot ===
+~ setScene(punishment_scene, Nega, "nega_punishment_camera_shoot", -> nega_punishment_camera_shoot)
 ~ posed = true
 //punishment_light
 
@@ -45,6 +46,7 @@ Ha! Well it's not your lucky day!
       I will use you as I see fit.
     }
     
+/wait 
 
 - (present_ass) 
 Now, turn around, bend over and present your ass to me!
@@ -61,14 +63,14 @@ Now, turn around, bend over and present your ass to me!
 
 
 - (present_ass_success)
-/Nega laughs
+//Nega laughs
 You look ridiculous, worm!
 Hold that pose for a bit.
 
 /Wait 5
-/Nega pulls out a camera (could be a phone)
+//Nega pulls out a camera (could be a phone)
 
-/Camera shutter noise
+//Camera shutter noise
 There we go! 
 It's always good to have a little blackmail material! 
 Don't cross me, or who knows where that picture might end up!

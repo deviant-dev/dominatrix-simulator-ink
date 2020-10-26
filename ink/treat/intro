@@ -1,0 +1,17 @@
+=== treat_intro ===
+~ setScene(intro_scene, Treat, "treat_intro", -> treat_intro)
+
+/scene Hell.Hub
+/music treat
+/ambient treat
+/character treat
+
+-/notify title="Ms. Treatment's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Hypnotherapy<br/>Sex Therapist<br/>Aftercare"
+
++ [move]
+
+-/notify title="Ms. Treatment's Intro Completed." text="Returning to the entry."
+/wait 5
+
+~ treat_intro_complete = true
+-> exit

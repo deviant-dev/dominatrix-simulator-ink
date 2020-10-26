@@ -1,0 +1,183 @@
+=== pragma_hub ===
+
+-> select_gender_check ->
+
+{pragma_intro == false: -> pragma_intro }
+
+~ setHub(Pragma, "pragma_hub", -> pragma_hub)
+/scene none
+/scene PragmasRoom.Hub
+/music pragma
+/ambient pragma
+/character pragma
+
+- /notify title="The Divine Engine Pragma's Hub" text="This is a placeholder. You negotiate a scene with the Mistress here.<br/><br/>Kinks:<br/>Dehumanization<br/>Mind Games<br/>Fucking Machines"
+
++ [move] -> apology_check(-> hello, -> exit)
+
+
+= hello
+
+/wait
+
+{ pragma_regard >= 10:
+    << Hello favored subject. >>
+- else:
+    << Hello subject. >>
+}
+
+{
+    - punishments > 0: -> check_punishment
+    - rewards >= 10: -> check_reward_mega
+    - rewards > 0 : -> check_reward
+    - else: -> check_task
+}
+
+
+= check_punishment
+
+/character pragma
+<< Are you here to pay your punishment? >>
++ [yes] -> choose_punishment
++ [no]
+
+- << No? >>
+
+{
+    - punishments < 10 && rewards < 10:
+        -> check_task
+    - punishments >= 10:
+        << You have too many punishments for a task, I'm afraid. >>
+    - else:
+        << You have too many rewards for a task, I'm afraid. >>
+        {punishments > 1:
+            << Pay off those punishments and you might get a big reward. >>
+        - else:
+            << Pay off that punishment and you might get a big reward. >>
+        }
+}
+
+- << Don't you want to pay off a punishment? >>
+
++ [yes] -> choose_punishment
++ [no]
+
+-
+{inChastity == false:
+    << FYI: The Goddess can remove all of those punishments if you go into chastity. >>
+}
+
+-> goodbye
+
+
+
+= check_reward_mega
+
+<< Full band of rewards, huh? >>
+
+
+{pragma_regard < 10:
+    << It's too bad you haven't pleased me more or I might have something special for you. >>
+    << But I can still give you a reward if you spend just one. >>
+    -> check_reward
+}
+
+{inChastity:
+    << Too bad you are in chastity or we could truly enjoy ourselves. >>
+    -> check_reward
+}
+
+<< And you've pleased me quite a lot. >>
+<< Give me all 10 and I'll see you get something very special indeed. >>
+<< Would you like that? >>
+
++ [yes] -> choose_reward_mega
++ [no] -> check_reward
+
+
+= check_reward
+
+/character pragma
+<< Are you here to receive your reward? >>
+
++ [yes] -> choose_reward
++ [no]
+
+- << No? >>
+
+{
+    - rewards < 10:
+        -> check_task
+
+    - rewards >= 10:
+        << You have too many rewards for a task. >>
+        << Indulge yourself before performing any more tasks. >>
+}
+
+<< Would you like to indulge yourself? >>
++ [yes] -> choose_reward
++ [no]
+
+- << Perhaps you are saving those for someone special. >>
+{ inChastity:
+    << FYI: See the Goddess about having that chastity device. >>
+}
+
+-> goodbye
+
+
+= check_task
+
+{ punishments == 0 && rewards == 0:
+    << No rewards or punishments, huh? >>
+    << You must be here to do a task. >>
+- else:
+    << Shall I give you a task then? >>
+}
+
++ [yes] -> choose_task
++ [no] -> goodbye
+
+
+= choose_punishment
+
+<< Time to punish you, then. >>
+
+{ shuffle:
+    - -> pragma_punishment_placeholder
+}
+
+
+= choose_reward_mega
+
+<< Let's get intimate. >>
+
+{shuffle:
+    - -> pragma_rewardmega_placeholder
+}
+
+
+= choose_reward
+
+<< Time to reward you, then. >>
+
+{shuffle:
+    - -> pragma_reward_placeholder
+}
+
+
+= choose_task
+
+{ shuffle:
+    - -> pragma_task_placeholder
+}
+
+
+= goodbye
+<< I have nothing for you. >>
+<< You may go. >>
+/wait
+-> exit
+
+
+

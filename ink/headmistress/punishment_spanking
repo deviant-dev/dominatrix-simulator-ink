@@ -7,7 +7,7 @@ VAR headmistress_spanking_mistakes = 0
 
 === headmistress_punishment_spanking ===
 
-~ setScene(punishment_scene, Headmistress)
+~ setScene(punishment_scene, Headmistress, "headmistress_punishment_spanking", -> headmistress_punishment_spanking)
 -> start
 
 = start
@@ -36,6 +36,86 @@ TODO: Support shuffling swats and equipment
 ~ headmistress_spanking_count = 0
 ~ headmistress_spanking_mistakes = 0
 
+-> ask_consent
+
+
+= ask_consent
+
+/music headmistress-punishment
+/character headmistress talk_question skeptical 55
+/lookat player
+
+Do you accept that you must be punished? #92
+/wait 1
+/perform idle_clasp_hands skeptical 70
+
+- (ask_punish_ready)
+
++ [yes]
+    ~ addObey()
+    /character headmistress react_thankful happy 60
+    Your acceptance is most becoming. #93
+    -> get_on_desk
+   
++ [no]
+    ~ addDisobey()
+   /character headmistress idle_skeptical angry 75
+    Foolish, little slave. #94
+
+    It will be over quickly and your compliance will please the Goddess. #95
+    
+    /perform idle_clasp_hands angry 45
+    
+    -- (continue_punishment)
+    Shall we continue with your punishment? #96
+
+    ++ [yes]
+        ~ addObey()
+        /perform talk_serious
+        Magnificent. Let us begin. #97
+        -> get_on_desk
+
+    ++ [no]
+        ~ addDisobey()
+        /character headmistress react_scoffs angry 45
+        Make haste from my sight! #98
+
+        /perform react_shrug_long angry 75
+        You have squandered my time and my attentions. #99
+
+        /perform talk_lean_forward angry 100
+        I will not suffer fools. #100
+
+        {not inTutorial:
+            You've just earned yet another punishment. #101
+            ~ addPunishment()
+            ~ headmistress_apologize = true
+        }
+        
+        /perform do_get_the_fuck_out angry 100
+        Now leave. #102
+        -> exit
+
+    ++ [timeout] -> Headmistress_Timeout -> continue_punishment
+
+    ++ [distracted] -> Headmistress_PayAttention -> continue_punishment
+
++ [timeout]
+    -- (accept_timeout)
+    /perform idle_tease aroused 65
+    You have had enough time to think. #103
+
+    /perform idle_skeptical skeptical 45
+    Your punishment must begin. #104
+
+    /perform idle_clasp_hands skeptical 70
+    Do you agree? #105
+    -> ask_punish_ready
+
++ [distracted] -> Headmistress_PayAttention -> accept_timeout
+
+
+= get_on_desk
 
 /scene Theatre.DeskApproach
 /music headmistress-punishment
@@ -43,12 +123,6 @@ TODO: Support shuffling swats and equipment
 /lookat player
 // /equip {headmistress_spanking_implement}
 // /perform circle_desk
-
--> get_on_desk ->
-
-{inTutorial: -> punish_intro | -> punish_continue}
-
-= get_on_desk
 
 {inTutorial:
     /perform talk_behold excited 55
@@ -67,6 +141,7 @@ Alight forthwith! #08
 + [move:get_on_desk]
     /perform idle_clasp_hands happy 70
     Pleasingly executed. #09
+    
 + [timeout]
     -- (get_on_desk_timed_out)
     /perform talk_one_finger sad 65
@@ -75,6 +150,7 @@ Alight forthwith! #08
 
 + [distracted]
   -> Headmistress_PayAttention -> prompt
+  
 - (kneel)
 /perform do_point_down aroused 60
  Now, kneel, slave. #225
@@ -104,7 +180,7 @@ Alight forthwith! #08
     Such offends the Goddess and must be stricken from the specimen. #16
 }
 
-->->
+- {inTutorial: -> punish_intro | -> punish_continue}
 
 = punish_intro
 
@@ -115,23 +191,20 @@ The muscles of the ass must remain relaxed between swats. #44
 This provides an exceptionally pleasing display when they clench #45
 
 /perform idle_pleased happy 45
-In response to the impact of my admonishments. #46
+in response to the impact of my admonishments. #46
 //perform tap_paddle
-
 
 /character headmistress do_smooth_skirt excited 65
 But enough of this pretense. #48
-
+/wait
 /character crowd murmur
 /ambient crowd
 
-/character headmistress idle
-/perform talk_lean_forward aroused 75
+/character headmistress idle_clasp_hands aroused 75
 We aren't here just for you. #49
 
 /perform talk_serious amused 65
 We have our entire class to enlighten! #50
-
 
 /perform idle_pleased aroused 75
 Let us show our audience #51
@@ -144,12 +217,14 @@ the fine display you have for us. #52
 
 
 = punish_continue
-
+/music headmistress-punishment-crowd
 /character headmistress do_arm_raise happy 65
 Welcome esteemed guests! #53
 
 /perform idle_clasp_hands amused 75
 Our subject today has earned a spanking. #54
+-> Headmistress_Crowd_Punishment ->
+/character headmistress
 
 /perform do_arm_raise excited 55
 {headmistress_spanking_implement == "paddle":
@@ -163,23 +238,24 @@ Our subject today has earned a spanking. #54
     My own hand will do today. #58
     /perform talk_behold aroused 65
     I want to relish the crisp strike of my hand #60
-    And the quivering sound of flesh meeting flesh. #61
+    and the quivering sound of flesh meeting flesh. #61
 }
 
 {headmistress_spanking_implement == "crop":
     For today's punishment, I have selected #62
-    A slender and rigid crop. #63
+    a slender and rigid crop. #63
     /perform talk_behold
     The pattern of stinging pain that will burst forth #64
-    From the skin is exotic to behold! #65
+    from the skin is exotic to behold! #65
 }
-
 /character crowd oos
+/wait 2
 
+-> Headmistress_Crowd_Punishment ->
 - /character headmistress do_arm_raise excited 55
 Listen to that excitement, {player_name}. #67
 /perform talk_one_finger aroused 70
-Your ass will provide a fine demonstration today. #68
+your ass will provide a fine demonstration today. #68
 
 - (fortunate)
 /perform react_shrug_long happy 45
@@ -200,11 +276,11 @@ Are they not fortunate to have one such as you to observe? #69
 
 - /perform idle_sassy amused 50
 As always, purrs, moans, and words of encouragement #73
-Are permitted during the punishment lesson. #74
+are permitted during the punishment lesson. #74
 
 /character crowd oos
 
-/perform talk_question amused 55
+/character headmistress talk_question amused 55
 What say you, {isBoy: toad|strumpet}? #79
 /wait 1
 /character headmistress idle_clasp_hands excited 50
@@ -253,18 +329,18 @@ What say you, {isBoy: toad|strumpet}? #79
 
  - (get_aroused)
 
-    /perform talk_behold excited 55
-    Shall we appease them? #59
+/perform talk_behold excited 55
+Shall we appease them? #59
 
-+[yes]
++ [yes]
    -> Headmistress_AcknowledgeYes ->
    ~headmistress_masturbated_for_crowd = true
 
-+[no]
++ [no]
    -> Headmistress_Unhappy ->
    /perform talk_one_finger skeptical 65
    Sexual excitation makes for a more delightful punishment. #111
-   -> Headmistress_Resume -> punishment_ready
+   -> Headmistress_Resume ->
 
 + [timeout] -> Headmistress_Timeout -> get_aroused
 
@@ -272,6 +348,7 @@ What say you, {isBoy: toad|strumpet}? #79
 
 - /perform idle_clasp_hands amused 55
 Rub yourself until your {hasPenis: shaft is hard|slit is wet}. #227
+-> Headmistress_Crowd_Slut ->
 
 + [wait:3]
 
@@ -303,6 +380,8 @@ A little more, I think. #229
 + [continue]
 
 - (please)
+
+-> Headmistress_Crowd_GoodJob ->
 /character headmistress
 {cycle:
     - /perform talk_behold excited 40
@@ -310,11 +389,11 @@ A little more, I think. #229
 
     -/perform idle_pleased amused 50
     Will our esteemed guests be enthralled #80
-     by {hasPenis:your turgid bouncing cock?|the glistening of your cunt?} #81
+    by {hasPenis:your turgid bouncing cock?|the glistening of your cunt?} #81
 
-     -/perform talk_question angry 35
-     Are you {hasPenis: hard|wet}? #04
-     }
+    -/perform talk_question angry 35
+    Are you {hasPenis: hard|wet}? #04
+}
 
 + [yes]
     ~ addObey()
@@ -333,76 +412,7 @@ A little more, I think. #229
 - /perform do_smooth_skirt happy 55
 And finally, we come to the heart of the matter. #91
 
-- (punishment_ready)
 
-/perform talk_question skeptical 55
-Do you accept that you must be punished? #92
-/wait 1
-/perform idle_clasp_hands skeptical 70
-
-- (ask_punish_ready)
-
-+ [yes]
-    ~ addObey()
-    /perform react_thankful happy 60
-    Your acceptance is most becoming. #93
-    /character crowd cheers
-
-+ [no]
-    ~ addDisobey()
-    /character crowd boos
-    /character headmistress idle_skeptical angry 75
-    Foolish, little slave. #94
-
-    It will be over quickly and your compliance will please the Goddess. #95
-    /perform idle_clasp_hands angry 45
-    -- (continue)
-    Shall we continue with your punishment? #96
-
-    ++ [yes]
-        ~ addObey()
-        /perform talk_serious
-        Magnificent. Let us begin. #97
-
-    ++ [no]
-        ~ addDisobey()
-        /character crowd angry_crowd
-        /character headmistress react_point_at_player_angry angry 45
-        Make haste from my sight! #98
-
-        /perform react_shrug_long angry 75
-        You have squandered my time and my attentions. #99
-
-        /perform talk_lean_forward angry 100
-        I will not suffer fools. #100
-
-        {not inTutorial:
-            You've just earned yet another punishment. #101
-            ~ addPunishment()
-            ~ headmistress_apologize = true
-        }
-
-        Now leave. #102
-        /perform do_get_the_fuck_out angry 100
-        -> exit
-
-    ++ [timeout] -> Headmistress_Timeout -> continue
-
-    ++ [distracted] -> Headmistress_PayAttention -> continue
-
-+ [timeout]
-    -- (accept_timeout)
-    /perform idle_tease aroused 65
-    You have had enough time to think. #103
-
-    /perform idle_skeptical skeptical 45
-    Your punishment must begin. #104
-
-    /perform idle_clasp_hands skeptical 70
-    Do you agree? #105
-    -> ask_punish_ready
-
-+ [distracted] -> Headmistress_PayAttention -> accept_timeout
 
 - {inTutorial: -> headmistress_train_spanking(false) -> spank_continue }
 
@@ -446,7 +456,9 @@ Let us begin in earnest! #245
 
 + [wait]
 
-- /scene Theatre.HeadmistressAtBack
+- (spank_test)
+
+/scene Theatre.HeadmistressAtBack
 
 // /character headmistress walk_to_back_of_desk
 
@@ -474,7 +486,7 @@ Let us begin in earnest! #245
     ~ headmistress_spanking_break_count++
 
     {headmistress_spanking_break_count %2 == 0:
-    -> Headmistress_GoodSpank ->
+        -> Headmistress_GoodSpank ->
     }
 
     {headmistress_spanking_break_count >= 6:
@@ -509,7 +521,7 @@ Ahhhh. Now, don't you feel better, {player_name}? #128
     That is because you desire #129
 
     /perform talk_lean_forward aroused 80
-    To be an obedient little toy. #130
+    to be an obedient little toy. #130
 
 +[no]
     /perform idle_tease disgusted 45
@@ -569,6 +581,8 @@ You have a long ways to go. #249
 
 /perform talk_one_finger skeptical 65
 Stand at attention! #257
+
+-> continue ->
 
 + [pose:raised_chin]
 + { tries < 2 } [timeout] -> stand_straight
@@ -679,7 +693,7 @@ Have you been keeping count {isBoy: toad|strumpet}? #10
     /perform react_nod_little amused 65
     Let's see how well. #18
 
-    /idle_clasp_hands skeptical 70
+    /perform idle_clasp_hands skeptical 70
     Are we up to seven now? #21
 
         ++[yes]

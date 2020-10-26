@@ -1,0 +1,24 @@
+=== angel_task_placeholder ===
+-> select_gender_check ->
+~ setScene(task_scene, Angel, "angel_task_placeholder", -> angel_task_placeholder)
+/scene AngelsRoom.Ready
+/music angel
+/ambient angel
+/character angel
+
+/notify title="Lady Angelica's Task Check" text="This is a placeholder task check. Do you want to do the task?"
+
++ [yes]
++ [no] -> exit
+
+- /notify title="Lady Angelica'sTask Test" text="This is a placeholder task scene. Do you complete your task?"
+
++ [yes]
+    ~addReward()
+    /notify title="Lady Angelica's Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
++ [no]
+    ~addPunishment()
+    /notify title="Lady Angelica's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+
+- /wait 5
+-> exit

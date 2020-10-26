@@ -32,13 +32,31 @@
     - /perform talk_consider happy 50
     Well done. #123
 
-    - /perform react_head_toss_casual aroused 40
+    - /perform idle_tease aroused 40
     That's very pleasing. #124
 
     - /perform do_inspect aroused 60
     I am pleased. #61
 }
 
+->->
+
+=== Goddess_Timeout ===
+
+{ shuffle:
+    - /perform idle_clasp_hands angry 45
+    I asked you a question. #11
+
+    - /perform talk_emphatic_one_hand angry 55
+    Hurry up. I'm waiting. #12
+
+    - /perform talk_lean_forward skeptical 35
+    I don't like it when people make me wait. #13
+
+    - /perform idle_unhappy_stomp angry 65
+    What makes you think you can ignore me? Answer me. #14
+ }
+ 
 ->->
 
 === Goddess_PayAttention ===

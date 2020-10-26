@@ -21,7 +21,7 @@
 -
 //With each swat, you will show me clearly #109
 //just how much you feel it. #110
-/character headmistress idle idle_clasp_hands amused 60
+/character headmistress idle_clasp_hands amused 60
 
 // hand, crop, paddle
 /perform talk_serious excited 50
@@ -46,10 +46,10 @@ Now. Onto your hands and knees, bauble. #233
 The back must be delicately arched, #21
 
 /perform talk_behold aroused 75
-Presenting the most ideal access #22
+presenting the most ideal access #22
 
 /perform talk_question excited 70
-To the object of discipline: the buttocks. #23
+to the object of discipline: the buttocks. #23
 
 /perform do_arm_raise amused 65
 Lift your backside high, {isBoy: mongrel|moppet}. #24
@@ -88,7 +88,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
 
 - /character headmistress idle_skeptical angry 50
 
-/idle_pleased happy 65
+/perform idle_pleased happy 65
 Time to rehearse. #118
 Three perfect swats should be sufficient. #01
 
@@ -161,6 +161,7 @@ Do you see my students? #238
 /perform do_arm_raise excited 65
 Look at how the round orbs go flush #239
 with excitement at my ministrations! #240
+/perform idle
 
 /lookat player
 
@@ -172,7 +173,7 @@ Turn to the left. #241
 + [pose:present_ass_left]
 
       -> Headmistress_GoodJob ->
-      /perfom talk_consider happy 65
+      /perform talk_consider happy 65
       This chattel has potential. #02
 
       /perform talk_behold amused 65
@@ -181,7 +182,7 @@ Turn to the left. #241
 
 
 - (rotate_right_timeout)
-/character headmistress
+/character headmistress idle
 Now turn to the right. #242
 
 

@@ -1,11 +1,10 @@
+TODO: add logic for mega-reward
+
 === yuki_hub ===
 -> select_gender_check ->
 
-~ setHub(Yuki)
-
 {inTutorial:
-    /character yuki
-    /perform react_whatever sad 55
+    /character yuki react_whatever sad 55
     What are you doing back here!? #01
 
     /perform react_chuckle amused 65
@@ -13,29 +12,31 @@
 
     /perform do_you_leave skeptical 60
     Go back to the headmistress #03
-    And get your punishment training, #04
+    and get your punishment training, #04
 
     /perform react_chuckle amused 70
     Silly {player_name}. #05
 
-    /wait 3
+    /wait
 
-    -> entry_hub
+    -> exit
 }
 
-- (hub)
+~ setHub(Yuki, "yuki_hub", -> yuki_hub)
 
-/character yuki idle_pleased happy 65
+-(hub)
+/scene atrium.hub
 /music yuki
 /ambient none
-/scene atrium.hub
+/character yuki
+/perform idle_pleased happy 65
 
 + [move:Yuki]
 
 { hub == 1:
-    <<< Hi! >>>
+    Hello! #06
 - else:
-    <<< Hi again! >>>
+    Welcome back! #07
 }
 
 // - (check_mega_punishment)
@@ -44,28 +45,30 @@
 //     + [yes] -> TBD
 //     + [no] -> check_punishment
 // }
+{ punishments > 0 : -> check_punishment}
+{ punishments == 0 && rewards > 0 : -> check_reward}
+{ punishments == 0 && rewards == 0 : -> no_punish_reward}
 
-- (check_punishment)
-{ punishments > 0 :
+= check_punishment
     -> Yuki_Punishment_Response ->
 
-    /perform talk_question skeptical 65
-    Are you here to pay that off? #08
-    /wait 1
-    /perform idle_yuki amused 55
+- (pay)
+/perform idle_yuki amused 55
+Are you here to pay that off? #08
 
-    + [yes]
-        /perform do_fist_pump excited 55
-        Good. #09
-        -> choose_punishment
-    + [no]
-        /perform talk_annoyed sad 60
-        No? Well, don't forget you have one. #10
++ [yes]
+    /perform react_nod_little disgusted 25
+    Good. #09
+    -> choose_punishment
++ [no]
+    /perform talk_annoyed sad 60
+    No? Well, don't forget you have one. #10
 
-        /perform idle_fake_annoyed sad 70
-        You can't receive any rewards until you finish all your punishments. #11
-        -> check_task
-}
+    /perform idle_fake_annoyed sad 70
+    You can't receive any rewards until you finish all your punishments. #11
+    -> check_task
+
++ [timeout] -> Yuki_Timeout -> pay
 
 // - (check_mega_reward)
 // { rewards == 10 && punishments == 0:
@@ -76,33 +79,51 @@
 //         + [no] -> check_reward
 // }
 
-- (check_reward)
-{ punishments == 0 && rewards > 0:
-    /perform talk_question amused 55
-    Are you here for your reward? #12
-    /perform idle_tease aroused 70
-    + [yes] -> choose_reward
-    + [no] -> check_task
-}
+= check_reward
+/perform idle_tease aroused 70
+Are you here for your reward? #12
 
-/perform do_consider skeptical 55
++ [yes] -> choose_reward
+
++ [no] -> check_task
+
++ [timeout] -> Yuki_Timeout -> check_reward
+
+- (no_punish_reward)
+/perform talk_consider skeptical 55
 No punishments or rewards, huh? #13
+
 -> check_task
 
+= check_task
 
-- (check_task)
 /perform idle_clasp_hands happy 55
 Looking to serve me, then? #14
 
-+ [yes] -> choose_task
++ [yes]
+    -> Yuki_AcknowledgeYes ->
+    -> choose_task
+
 + [no]
-    /perform react_oh_darn sad 65
+    /perform react_oh_darn_yuki sad 65
     Okay. #15
     Maybe some other time then. #16
     -> exit
 
++ [timeout] -> Yuki_Timeout -> check_task
 
 = choose_reward
+
+{shuffle:
+    - /perform react_excited excited 65
+    Oh goody! I love rewards! #17
+
+    -/perform do_bouncing_eager happy 75
+    Giving rewards makes me so happy! #18
+
+    -/perform idle_swaying happy 50
+    Every reward proves just what a good Mistress I am! #19
+}
 
 {deviation == puppyplay:
     {shuffle:
@@ -123,6 +144,17 @@ Looking to serve me, then? #14
 
 
 = choose_punishment
+
+{shuffle:
+    - /perform react_sad_kick_foot_yuki sad 35
+    Best to pay off your punishment right away. #20
+
+    -/perform react_nod_little disgusted 25
+    Let's get your punishment out of the way. #21
+
+    -/perform do_shake_finger angry 30
+    I want you to be the best {isBoy: boy|{isGirl:girl|pet}}! #22
+}
 
 {deviation == puppyplay:
     {shuffle:

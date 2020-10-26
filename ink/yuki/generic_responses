@@ -2,11 +2,12 @@
 //response to player distraction
 === Yuki_PayAttention ===
 /character yuki
+
 { cycle:
-    - /perform react_shrug_short sad 30
+    - /perform react_shrug_short sad 45
     You're not very good at this yet, are you? #01
 
-      /perform react_shake_head_disbelief happy 25
+      /perform react_shake_head_disbelief happy 50
     You're supposed to look at me when I'm talking. #02
 
     - /perform idle_unhappy_stomp sad 55
@@ -18,7 +19,7 @@
     - /perform react_dumb skeptical 60
     Didn't anyone ever teach you to look at people when they're speaking to you? #05
 
-    - /perform react_disappointed angry 30
+    - /perform react_disappointed angry 65
     It's very rude to not look at me when I'm speaking to you. #06
 
     - /perform do_snap_fingers amused 50
@@ -27,16 +28,16 @@
 
 + [pay-attention]
     { cycle:
-        - /perform talk_consider skeptical 30
+        - /perform talk_consider skeptical 45
         Now... what was I saying? Oh right... #08
 
-        - /perform react_thankful happy 30
+        - /perform react_thankful happy 50
         Much better. Ahem. #09
 
-        - /perform idle_clasp_hands aroused 70
+        - /perform idle_clasp_hands aroused 60
         Good {player_name}. You might be teachable after all. #10
 
-        - /perform do_smooth_skirt happy 60
+        - /perform do_smooth_skirt happy 50
         Now back to your instructions. #11
     }
     ->->
@@ -46,15 +47,16 @@
 //Response to timeouts to questions
 === Yuki_Timeout ===
 /character yuki
+
 {cycle:
 
-    - /perform react_dumb angry 20
+    - /perform react_dumb angry 45
     Hellooo? I'm talking to you! #01
 
     - /perform idle_unhappy_stomp sad 50
     Don't ignore me! #02
 
-    - /perform talk_annoyed scared 20
+    - /perform talk_annoyed scared 45
     Would you answer me already? #03
 
     - /perform talk_lean_forward amused 65
@@ -83,18 +85,34 @@
 /character yuki
 
 {cycle:
-    - I asked you to do something. #01
-    - Are you going to follow directions? #02
-    - It's time to move, slave. #03
-    - Are you stuck? #04
-    - Come on, hurry up! #05
-    - What's taking so long? #06
-    - Move it, {player_name}! #07
+
+    - /perform talk_lean_forward skeptical 45
+    I asked you to do something. #01
+
+    - /perform talk_annoyed angry 55
+    Are you going to follow directions? #02
+
+    - /perform talk_consider amused 60
+    It's time to move, slave. #03
+
+    - /perform talk_question amused 55
+    Are you stuck? #04
+
+    - /perform talk_one_finger skeptical 60
+    Come on, hurry up! #05
+
+    - /perform react_dumb angry 45
+    What's taking so long? #06
+
+    - /perform do_snap_fingers angry 45
+    Move it, {player_name}! #07
 }
 
 ->->
 
 === Yuki_GoodJob ===
+/character yuki
+
 -> DoComment(false)
 
 = Kneeling
@@ -105,58 +123,60 @@
 
 {cycle:
 
-    -{inKneel:excited 55|/perform do_bouncing_little excited 55}
+    -{inKneel: /emotion excited 55|/perform do_bouncing_little excited 55}
     I'm so proud of you! #01
 
-    -{inKneel:happy 55|/perform talk_lean_forward happy 55}
+    -{inKneel: /emotion happy 55|/perform talk_lean_forward happy 55}
     What a good {player_name}! #02
 
-    -{inKneel:excited 75|/perform do_bouncing_big excited 75}
+    -{inKneel: /emotion excited 75|/perform do_bouncing_big excited 75}
     You're so cute! #03
 
-    -{inKneel:amused 50|/perform do_consider amused 50}
+    -{inKneel: /emotion amused 50|/perform talk_consider amused 50}
     I like you! #04
 
-    -{inKneel:aroused 65|/perform idle_pleased aroused 65}
+    -{inKneel: /emotion aroused 65|/perform idle_pleased aroused 65}
     Good job. #05
 
-    -{inKneel:excited 75|/perform do_bouncing_little excited 75}
+    -{inKneel: /emotion excited 75|/perform do_bouncing_little excited 75}
     Wow! You're doing so well! #06
 
-    -{inKneel:happy 55|/perform do_bouncing_big happy 55}
+    -{inKneel: /emotion happy 55|/perform do_bouncing_big happy 55}
     I'm so impressed! #07
 
-    -{inKneel:excited 75|/perform talk_lean_forward excited 75}
+    -{inKneel: /emotion excited 75|/perform talk_lean_forward excited 75}
     Who's a good {player_name}? You are! #08
 
-    -{inKneel:amused 60|/perform idle_eager amused 60}
+    -{inKneel: /emotion amused 60|/perform idle_eager amused 60}
     Keep up the good work! #09
 
-    -{inKneel:amused 50|/perform do_bouncing_big amused 50}
+    -{inKneel: /emotion amused 50|/perform do_bouncing_big amused 50}
     You're so much fun! #10
 
-    -{inKneel:happy 55|/perform do_bouncing_little happy 55}
+    -{inKneel: /emotion happy 55|/perform do_bouncing_little happy 55}
     What a fast learner you are! #11
 
-    -{inKneel:aroused 65|/perform do_inspect aroused 65}
+    -{inKneel: /emotion aroused 65|/perform do_inspect aroused 65}
     Ooo! That's nice. #12
 
-    -{inKneel:excited 60|/perform idle_eager excited 60}
+    -{inKneel: /emotion excited 60|/perform idle_eager excited 60}
     Keep it up! #13
 
-    -{inKneel:happy 55|/perform idle_pleased happy 55}
+    -{inKneel: /emotion happy 55|/perform idle_pleased happy 55}
     You're so good. #14
 
-    -{inKneel:amused 50|/perform talk_lean_forward amused 50}
+    -{inKneel: /emotion amused 50|/perform talk_lean_forward amused 50}
     Such a good {player_name}. #15
 
-    -{inKneel:excited 75|/perform do_bouncing_little excited 75}
+    -{inKneel: /emotion excited 75|/perform do_bouncing_little excited 75}
     You're doing so well! #16
     }
 
 ->->
 
 === Yuki_AcknowledgeYes ===
+/character yuki
+
 -> DoComment(false)
 
 = Kneeling
@@ -167,29 +187,69 @@
 
 {cycle:
 
-    -{inKneel:happy 65|/perform idle_clasp_hands happy 65}
+    -{inKneel: /emotion happy 65|/perform idle_clasp_hands happy 65}
     I like that answer. #01
 
-    -{inKneel:excited 55|/perform idle_pleased excited 55}
+    -{inKneel: /emotion excited 55|/perform idle_pleased excited 55}
     That makes me happy. #02
 
-    -{inKneel:happy 70|/perform do_bouncing_little happy 70}
+    -{inKneel: /emotion happy 70|/perform do_bouncing_little happy 70}
     Yay! #03
 
-    -{inKneel:aroused 65|/perform react_excited aroused 65}
+    -{inKneel: /emotion aroused 65|/perform react_excited aroused 65}
     Oh, goody!  #04
 
-    -{inKneel:excited 55|/perform idle_clasp_hands excited 55}
+    -{inKneel: /emotion excited 55|/perform idle_clasp_hands excited 55}
     Okay! #05
 
-    -{inKneel:amused 55|/perform do_inspect amused 55}
+    -{inKneel: /emotion amused 55|/perform do_inspect amused 55}
     Perfect. #06
 
-    -{inKneel:aroused 75|/perform talk_lean_forward aroused 75}
+    -{inKneel: /emotion aroused 75|/perform talk_lean_forward aroused 75}
     Mmmmhmmm! #07
 
-    -{inKneel:excited 60|/perform do_bouncing_little excited 60}
+    -{inKneel: /emotion excited 60|/perform do_bouncing_little excited 60}
     Hooray! #08
+    }
+
+->->
+
+=== Yuki_AcknowledgeNo ===
+/character yuki
+
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inKneel)
+
+
+{cycle:
+
+    -{inKneel: /emotion sad 40|/perform react_shrug_short sad 40}
+    Huh. #01
+
+    -{inKneel: /emotion disgust 30|/perform idle_unhappy disgust 30}
+    That's disappointing. #02
+
+    -{inKneel: /emotion sad 60|/perform react_sad_kick_foot_yuki sad 60}
+    What a shame. #03
+
+    -{inKneel: /emotion skeptical 65|/perform react_whatever skeptical 65}
+    Really? #04
+
+    -{inKneel: /emotion disgusted 25|/perform react_oh_darn_yuki disgusted 25}
+    Oh come on. #05
+
+    -{inKneel: /emotion amused 30|/perform do_inspect amused 30}
+    Well, okay. #06
+
+    -{inKneel: /emotion disgusted 30|/perform talk_lean_forward disgusted 30}
+    No? #07
+
+    -{inKneel: /emotion angry 35|/perform react_shake_head_disbelief angry 35}
+    That's too bad. #08
     }
 
 ->->
@@ -197,24 +257,58 @@
 === Yuki_Badjob ===
 /character yuki
 
-{shuffle:
-    - I thought you knew better. #01
-    - Oh geez, slave. #02
-    - I know you know better. #03
-    - Would you just behave for me? #04
-    - Why do you have to be such a problem? #05
-    - Can't you just do as I want? #06
-    - Sometimes I have too much patience. #07
-    - Please just meet your expectations. For me? #08
-    - You are so naughty! #09
-    - That was terrible! #10
-    - Very bad, {player_name}. #11
-    - The Goddess won't like that. #12
-    - Try harder. #13
-    - Tsk. Tsk.  #14
-    - What a shame! #15
-    - Yuck. #16
-    - That was awful. #17
+{cycle:
+
+    - /perform talk_annoyed angry 35
+    I thought you knew better. #01
+
+    - /perform talk_behold skeptical 45
+    Oh geez, slave. #02
+
+    - /perform talk_lean_forward sad 45
+    I know you know better. #03
+
+    - /perform idle_unhappy_stomp angry 50
+    Would you just behave for me? #04
+
+    - /perform talk_lean_forward skeptical 75
+    Why do you have to be such a problem? #05
+
+    - /perform do_snap_fingers angry 40
+    Can't you just do as I want? #06
+
+    - /perform talk_one_finger sad 65
+    Sometimes I have too much patience. #07
+
+    - /perform idle_pleased sad 75
+    Please just meet your expectations. For me? #08
+
+    - /perform do_shake_finger_stern angry 45
+    You are so naughty! #09
+
+    - /perform react_dumb scared 55
+    That was terrible! #10
+
+    - /perform do_smooth_skirt skeptical 65
+    Very bad, {player_name}. #11
+
+    - /perform idle_unhappy_arms_crossed scared 55
+    The Goddess won't like that. #12
+
+    - /perform react_point_at_player_angry angry 45
+    Try harder. #13
+
+    - /perform react_dismissive sad 55
+    Tsk. Tsk.  #14
+
+    - /perform react_scoffs sad 50
+    What a shame! #15
+
+    - /perform react_disappointed disgusted 60
+    Yuck. #16
+
+    - /perform talk_lean_forward disgusted 45
+    That was awful. #17
 }
 
 ->->
@@ -222,10 +316,32 @@
 === Yuki_Aroused ===
 /character yuki
 
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inPosition)
+
 {shuffle:
-    - Watching you is turning me on. #01
-    - My panties are wet. #02
-    - I just love rewarding good pets. #03
+
+    -{inPosition: /emotion aroused 75 | /perform tease_bend_over aroused 75}
+    Watching you is turning me on. #01
+
+    -{inPosition: /emotion aroused 65 | /perform tease_caress_breast_left aroused 65}
+    My panties are so wet. #02
+
+    -{inPosition: /emotion aroused 45 | /perform idle_tease aroused 45}
+    I just love rewarding good pets. #03
+
+    - {inPosition: /emotion aroused 45 | /perform idle_tease aroused 45}
+    Oooo. My tummy is full of butterflies watching you! #04
+
+    - {inPosition: /emotion aroused 45 | /perform idle_tease aroused 45}
+    You're making me quiver down there! #05
+
+    - {inPosition: /emotion aroused 45 | /perform idle_tease aroused 45}
+    Oh my goodness. I'm so hot and bothered right now! #06
 }
 
 ->->
@@ -247,7 +363,7 @@
     You slaves never learn. #03
 
     - /perform do_shake_finger angry 65
-    Punishment? And I thought you had promise... #05
+    Punishment? And I thought you had promised.... #05
 }
 
 ->->
@@ -256,11 +372,11 @@
 /character yuki
 
 {shuffle:
-    - /perform react_disappointed
-    - /perform idle_unhappy_stomp
-    - /perform do_shake_finger_stern
-    - /perform talk_annoyed
-    - /perform react_disappointed
+    - /perform react_disappointed sad 65
+    - /perform idle_unhappy_stomp angry 45
+    - /perform do_shake_finger_stern angry 50
+    - /perform talk_annoyed angry 60
+    - /perform react_disappointed sad 75
     }
 
 {cycle:
@@ -276,6 +392,8 @@
 ->->
 
 === Yuki_PlayerToCum ===
+/character yuki
+
 -> DoComment(false)
 
 = Kneeling
@@ -284,66 +402,107 @@
 = DoComment(inKneel)
 
 
-{cycle:
+{shuffle:
 
-    -{inKneel:excited 65|/perform talk_lean_forward excited 65}
+    -{inKneel: /emotion excited 65|/perform talk_lean_forward excited 65}
     Is my good {player_name} close? #01
 
-    - /perform tease_caress_breast_left aroused 85
+    -{inKneel: /emotion aroused 85| /perform tease_caress_breast_left aroused 85}
     Are you almost there slave? #02
 
-    - /perform tease_dance_slow aroused 55
+    -{inKneel: /emotion aroused 55 | /perform tease_dance_slow aroused 55}
     I can feel you getting close. #03
 
-    - /perform
+    -/emotion happy 55
     Your {hasPenis:cock|pussy} is throbbing in my hand. #04
 
-    -
+    -{inKneel: /emotion excited 75 | /perform do_inspect excited 75}
     You're riding the edge. #05
 
-    - /perform tease_caress_breast_left
+    -{inKneel: /emotion aroused 65 | /perform tease_caress_breast_left aroused 65}
     You're so close to exploding for me slave. #06
 
-    -
+    -{inKneel: /emotion excited 65 |/perform talk_one_finger excited 65}
     Just a little more. #07
 
-    - /perform tease_caress_breast_left
+    -{inKneel: /emotion aroused 85 | /perform tease_caress_breast_left aroused 85}
     Are you going to cum? #08
 }
 
 ->->
 
 === Yuki_CheckIfInterested ===
+/character yuki
+
+-> DoCheck(false)
+
+= Puppy
+-> DoCheck(true)
+
+= DoCheck(isPuppy)
 
 {checked_if_interested: -> check_terse}
 
 ~ checked_if_interested = true
 
-/perform idle_clasp_hands
-Do you want to perform for me or not? #01
 - (check_again)
+/perform idle_unhappy skeptical 75
+Do you want to perform for me or not? #01
 
-+ [yes] -> check_yes
-+ [no]
+
++ {not isPuppy}[yes] -> check_yes
++ {not isPuppy}[no]
++ {isPuppy}[yes]
+    -> Yuki_PuppyPlay_UsePaws ->
+    -> check_again
+
++ {isPuppy}[no]
+    -> Yuki_PuppyPlay_UsePaws ->
+    -> check_again
+
++ {isPuppy}[pose:puppy_yes]
+    -> check_yes
+
++ {isPuppy}[pose:puppy_no]
+    -> check_terse
+
 + [timeout] -> check_again
 
-- (check_terse) Really? #02
+- (check_terse)
 
-/perform idle_unhappy_stomp
+/perform talk_annoyed skeptical 60
+Really? #02
+
+/perform idle_unhappy_stomp angry 65
 You are not following the rules. #03
 
-/perform talk_lean_forward
+-(repeat)
+/perform talk_lean_forward angry 80
 Do you want to be sent away? #04
 
-+ [yes]
-+ [no] -> check_yes
++ {not isPuppy}[yes]
++ {not isPuppy}[no] -> check_yes
++ {isPuppy}[yes]
+    -> Yuki_PuppyPlay_UsePaws ->
+    -> repeat
+
++ {isPuppy}[no]
+    -> Yuki_PuppyPlay_UsePaws ->
+    -> check_yes
+
++ {isPuppy}[pose:puppy_yes]
+
++ {isPuppy}[pose:puppy_no]
+    -> check_yes
+
++ [timeout] -> repeat
 
 - /perform talk_annoyed
 Then get out of here, you bad {player_name}. #05
 Come back when you're ready to follow the rules. #06
 -> exit
 
-- (check_yes) -> Yuki_GoodJob ->
+- (check_yes)
 /perform react_shrug_long
 It's so much better when you decide to follow the rules and behave. #07
 

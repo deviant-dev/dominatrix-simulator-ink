@@ -1,0 +1,30 @@
+=== angel_reward_placeholder ===
+-> select_gender_check ->
+~ setScene(reward_scene, Angel, "angel_reward_placeholder", -> angel_reward_placeholder)
+-> scene_setup ->
+
+/notify title="Lady Angelica's Reward Confirmation" text="This is a placeholder reward. Do you want to spend a bloodstone?"
+
++ [yes]
+    ~ removeReward(-> load_gave_reward)
+    /notify title="Lady Angelica's Reward Paid" text="You turn over one Bloodstone."
+    -> gave_reward
++ [no] -> exit
+
+
+= scene_setup
+/scene AngelsRoom.Ready
+/music angel
+/ambient angel
+/character angel
+->->
+
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+
+= gave_reward
+/notify title="Lady Angelica's Placeholder Reward" text="You have been rewarded. Returning to entry."
+/wait 5
+-> exit

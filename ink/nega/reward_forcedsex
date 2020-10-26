@@ -1,7 +1,7 @@
  === nega_reward_forcedsex ===
  -> select_gender_check ->
 //reward_hard
-~ setScene(reward_scene, Nega)
+~ setScene(reward_scene, Nega, "nega_reward_forcedsex", -> nega_reward_forcedsex)
 
 /scene attic.Ready
 /music nega-reward
@@ -68,7 +68,7 @@ On your back. #04
     /perform react_point_at_player_angry angry 60
     I gave you a command. #06
 
-    -- (lay_down_again) #15
+    -- (lay_down_again)
     /perform idle_unhappy_stomp angry 70
     Lay the fuck down! #07
 
@@ -247,8 +247,7 @@ VAR nega_thrust_break_count = 6
 /music nega-reward-forced-sex-mini-1
 
 - /perform sex_squat_idle aroused 50
-Let's find out how well you can work that little dick of yours. #115
-//Alternate line for strap-on?
+Let's find out how well you can work that {hasPenis:little dick|fat dildo} of yours. #115
 
 - (make_cum)
 /perform sex_squat_thrust_forward angry 55
@@ -350,7 +349,7 @@ I just adore cumming as the song peaks, so don't fuck it up! #117
     -> nega_intro.surprise_interrupt
   }
 
-- /music nega-reward-forced-sex-mini-3
+- /music nega-reward-forced-sex-mini-2
 
 /perform sex_squat_thrust_forward skeptical 45
 Decent. Let's pick up the pace, huh? #51
@@ -398,6 +397,7 @@ Decent. Let's pick up the pace, huh? #51
 
 = thrust_minigame_orgasm
 
+- /music nega-reward-forced-sex-mini-3
 /perform sex_squat_thrust_single aroused 55
 Uhhhhnnn. I'm so close! #53
 
@@ -476,7 +476,7 @@ Do you want to cum with me, {isBoy: maggot|whore}? #56
 
 +[wait 2]
 
-/perform sex_squat_idle
+- /perform sex_squat_idle
 - {cycle:
 
     -/emotion amused 65

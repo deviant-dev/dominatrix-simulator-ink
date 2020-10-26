@@ -1,0 +1,22 @@
+=== caliste_punishment_placeholder ===
+-> select_gender_check ->
+~ setScene(punishment_scene, Caliste, "caliste_punishment_placeholder", -> caliste_punishment_placeholder)
+/scene CalistesRoom.Ready
+/music caliste
+/ambient caliste
+/character caliste
+
+/notify title="Priestess Caliste's Punishment Check" text="This is a placeholder punishment. Do you accept your punishment?"
+
++ [yes]
++ [no]
+    << Don't waste my time, then. >>
+    << Go away.>>
+    /wait
+    -> exit
+
+- ~removePunishment()
+/notify title="Priestess Caliste's Punishment Result" text="You have been punished. One obsidian removed.<br/> Returning to the entry."
+
+- /wait 5
+-> exit

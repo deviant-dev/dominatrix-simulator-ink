@@ -2,12 +2,13 @@
 
 -> select_gender_check ->
 
-~ setScene(task_scene, Headmistress)
+~ setScene(task_scene, Headmistress, "headmistress_task_handsignals", -> headmistress_task_handsignals)
 
 - (start)
 
 /scene TheatreOpen.Approach
 /music headmistress
+/ambient none
 /character headmistress idle_skeptical aroused 60
 
 - (session_selection)

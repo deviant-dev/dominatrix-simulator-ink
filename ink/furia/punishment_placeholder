@@ -1,0 +1,22 @@
+=== furia_punishment_placeholder ===
+-> select_gender_check ->
+~ setScene(punishment_scene, Furia, "furia_punishment_placeholder", -> furia_punishment_placeholder)
+/scene FuriasRoom.Ready
+/music furia
+/ambient furia
+/character furia
+
+/notify title="Enforcer Furia's Punishment Check" text="This is a placeholder punishment. Do you accept your punishment?"
+
++ [yes]
++ [no]
+    << Don't waste my time, then. >>
+    << Go away.>>
+    /wait
+    -> exit
+
+- ~removePunishment()
+/notify title="Enforcer Furia's Punishment Result" text="You have been punished. One obsidian removed.<br/> Returning to the entry."
+
+- /wait 5
+-> exit

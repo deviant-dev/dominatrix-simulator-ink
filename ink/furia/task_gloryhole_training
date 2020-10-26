@@ -1,0 +1,335 @@
+=== furia_task_gloryhole_training ===
+
+-> select_gender_check ->
+~ setScene(task_scene, Furia, "furia_task_placeholder", -> furia_task_placeholder)
+/scene FuriasRoom.Ready
+/music furia
+/ambient furia
+/character furia
+
+//this scene will get progressively more challenging for the player
+//First level training -
+//during the first pass, the player is introduced to needing to pleasure a cock with their mouth.
+//during the second pass, the player must pleasure a pussy with their mouth.
+//during the third pass, the player must pleasure a cock with their hand.
+//during the fourth pass, the player must pleasure a pussy with their fingers.
+//Second level training -
+//random selection of one of the four tasks above, for a random number of times from 1-4, and for variable durations.
+//Third level training -
+//player must pleasure two cocks or two pussies at one time with their hands with a variable duration.
+
+//scene with one slave laying down on the mattress in one of the cells.
+
+-> intro -> begin_glory_training -> player_inspection
+
+
+
+
+
+= intro
+
+
+~ tries = 0
+-(cell)
+~ tries ++
+
+/perform do_point_left
+Take your spot in that cell.
+
+/perform
+By the wall.
+
+//Furia points to the empty cell with the gloryholes. Cell door is open.
+//there is a move point available to the player to teleport into the room
+
+/perform
+On your knees with your mouth positioned before the hole.
+
++ [pose: kneeling ]
++ { tries < 2 } [timeout] -> cell
++ { tries >= 2 } [timeout]
+     ~ addDisobey()
+     -> furia_CheckIfInterested
+     -> cell
+
++ [distracted] -> furia_PayAttention -> cell
+
+
+
+
+-(near_hole)
+// check pose - kneeling
+//intro dialogue for 'first time' through the scene
+
+/perform
+Your first lesson is to serve with your mouth.
+
+/perform
+I want to see how skilled you already are.
+
+/perform
+If you choose to submit to my re-programming,
+then you will become the perfect cum vessel.
+//end of intro dialogue
+->->
+
+
+
+= begin_glory_training
+
+-(on_hole)
+
+/perform
+Open your mouth.
+
+TODO create mouth_hole pose recognition
++ [pose: mouth_hole ]
++ { tries < 2 } [timeout] -> on_hole
++ { tries >= 2 } [timeout]
+     ~ addDisobey()
+     -> furia_CheckIfInterested
+     -> on_hole
+
++ [distracted] -> furia_PayAttention -> on_hole
+
+//make a random comment loop that provides instructions
+//on the players 'first time' it will say the line below
+
+
+-(swallow)
+
+/perform
+I expect you to swallow the seed of
+
+/perform
+whatever cock comes out of that hole.
+
+/perform
+You will not move from this position until I release you.
+
+/perform
+Understood?
+
+~ tries = 0
+-(consent)
+~ tries++
+
++[yes]
+Y - (begin)
+
++[no]
+N - You hestitate. Are you ready for this level of training?
+
+    { cycle:
+
+          -
+
+          -
+    }
+
+    -- (consent_check)
+
+
+
+    ++[yes]
+    Y - (begin)
+
+    ++[no]
+    -> exit
+    N - Then leave. (exit)
+
+    ++ [timeout] -> _Timeout -> consent_check
+    ++ [distracted] -> _PayAttention -> consent_check
+
++ { tries < 2 } [timeout] -> consent
++ { tries >= 2 } [timeout]
+    ~ addDisobey()
+    -> furia_CheckIfInterested
+    -> consent
++ [distracted] -> _PayAttention -> consent
+
+    Y - Good. (acknowledge yes)
+    N - then why are you here? (check if interested)
+
+
+
+
+
+/scene FuriasRoom.Gloryhole
+/ambient moaning
+/music benny hill
+
+
+Are you ready?
+//1 cock pops through the hole
+//this scene will eventually have a a random number of cocks or vaginas from 1-5, but for the first time, it will only be one.
+
+Suck that cock. Now!
+
+-> minigame_glory
+
+//mini game to have player slide their head forward and back over cock until progress 'halo' is fulfilled
+//ambient track of moans, grunts, sighs of Pleasure
+//cock twitches and orgasm sound
+
+-(receive_load)
+
+    That's enough for today.
+    Just a tease to show you what's in store for you.
+    Let me see that mouth of yours. Turn around.
+
+-> player_inspection
+
+
+//player must turn to left while on Knees
+= player_inspection
+//Furia cups the player jaw and leans forward - can we make the player have to turn their head left and right?
+-(inspection)
+
++ [pose: head_inspection ]
++ { tries < 2 } [timeout] -> inspection
++ { tries >= 2 } [timeout]
+     ~ addDisobey()
+     -> furia_CheckIfInterested
+     -> inspection
+
++ [distracted] -> furia_PayAttention -> inspection
+
+- (performance_evaluation)
+
+ if addobey < #
+      then
+
+          else
+
+
+Not bad. (evaluation comments should be based on performance)
+
+    (give reward)
+    or
+    (give punishment)
+
+Come back again and we will continue your training.
+
+- /wait 5
+-> exit
+
+
+
+= minigame_glory
+
+phase one
+
+  suck.minigame1
+
+  ->furia_glory_comments.glory_train_tease
+
+
+  ->break1
+
+phase two
+
+  suck.minigame2
+
+  ->furia_glory_comments.glory_train_entice
+
+  ->break2
+
+phase three
+
+  suck.minigame3
+
+  ->furia_glory_comments.glory_train_orgasm
+
+  ->break3
+
+->->
+
+
+
+= furia_glory_comments
+
+-(glory_train_tease)
+//Comment loop
+
+{shuffle stopping:
+
+    -/perform
+    That's it.
+
+    -/perform
+    Use your tongue.
+
+    -/perform
+    You are not allowed to touch yourself.
+
+    -/perform
+    Your pleasure is irrelevant.
+
+    -/perform
+    No teeth.
+
+    -/perform
+    Suckle like a baby as you serve.
+
+    -/perform
+    Look at how you slobber on yourself.
+
+    -/perform
+    Slow and steady.
+
+    -/perform
+    Keep that mouth nice and wide.
+
+    -/perform
+    If you earn my regard, mayble you'll be allowed to touch yourself.
+
+}
+
+->->
+
+
+-(glory_train_entice)
+//comment loop
+{cycle:
+
+    -/perform
+    Such a dirty little slut.
+
+    -/perform
+    Right where you belong. On your knees.
+
+    -/perform
+    This is just the beginning.
+
+    -/perform
+    Your belly will swell with seed.
+
+    -/perform
+    Wallow in serving.
+
+}
+
+->->
+
+
+-(glory_train_orgasm)
+//orgasm loop
+{once:
+
+    -
+    He / she / They are close. Keep going.
+
+    -
+    Faster.
+
+    -
+    Suck the seed out of that cock.
+
+    -
+    You're going to swallow every drop.
+
+    - -> receive_load
+}
+
+->->

@@ -1,15 +1,11 @@
 === nega_reward_dice ===
 -> select_gender_check ->
 
-~ setScene(reward_scene, Nega)
+~ setScene(reward_scene, Nega, "nega_reward_dice", -> nega_reward_dice)
 
-// /scene attic.Ready
-// /music nega
-// /ambient howling-wind
+-> scene_setup ->
 
 - (give_reward)
-
-
 
 {cycle:
 
@@ -37,8 +33,24 @@
 + [distracted] -> Nega_PayAttention -> give_reward
 
 - /perform do_swipe_hand_fast excited 25
-~ removeReward()
+~ removeReward(-> load_gave_reward)
+/wait
+-> roll_dice
 
+
+= scene_setup
+/scene attic.Ready
+/music nega-ambient-1
+/ambient howling-wind
+/character nega
+->->
+
+
+= load_gave_reward
+-> scene_setup -> roll_dice
+
+
+= roll_dice
 
 {cycle:
 
@@ -59,25 +71,20 @@
     - /perform do_rub_hands_together excited 65
     You're my bitch now. #03
 
-    //- /perform idle_sassy happy 45
-    //Thanks for the treat, fuckup!
-    //Needs proper tagging
+    - /perform idle_sassy happy 45
+    Thanks for the treat, fuckup! #68
 
-    //- /perform react_point_at_player_angry aroused 65
-    //Your ass is mine!
-    //Needs proper tagging
+    - /perform react_point_at_player_angry aroused 65
+    Your ass is mine! #69
 
-    //- /perform talk_lean_forward amused 55
-    //You're going to get what you deserve.
-    //Needs proper tagging
+    - /perform talk_lean_forward amused 55
+    You're going to get what you deserve. #70
 
-    //- /perform do_shake_finger_stern happy 35
-    //You're in for it now!
-    //Needs proper tagging
+    - /perform do_shake_finger_stern happy 35
+    You're in for it now! #71
 
-    //- /perform do_rub_hands_together excited 45
-    //This'll be fun! For me at least!
-    //Needs proper tagging
+    - /perform do_rub_hands_together excited 45
+    This'll be fun! For me at least! #72
 }
 
 /perform talk_one_finger amused 65
@@ -94,6 +101,7 @@ Get down here. #09
 
 - (test_dice)
 /perform squat_dice_give amused 35
+/music nega-ambient-2
 Time to play a little game. #10
 /wait 1
 
@@ -109,42 +117,55 @@ Take the dice and give them a good shake. #11
 /perform squat excited 25
 Go ahead. Roll them bones. #06
 
-+ [roll!] -> rolled
++ [roll!] -> get_roll
 + [timeout] -> Nega_BadJob.Squatting -> roll
 
-// 'Roll' event will force the script into this thread.
-= rolled
 
-~ temp result1 = getNegaDie1()
-~ temp result2 = getNegaDie2()
-~ temp result3 = getNegaDie3()
-~ temp result = result1 + result2 + result3
+// 'Roll' event will force the script into this thread.
+= get_roll
+~ nega_die_1 = getNegaDie1()
+~ nega_die_2 = getNegaDie2()
+~ nega_die_3 = getNegaDie3()
+
+~ save(-> load_post_roll)
+
+-> post_roll
+
+
+= load_post_roll
+-> scene_setup -> post_roll
+
+
+= post_roll
+~ temp result = nega_die_1 + nega_die_2 + nega_die_3
 
 /notify title="Dice Roll Results" delay=10 text="<> #note04
-~ rollToText(result1)
+~ rollToText(nega_die_1)
 <> + <>
-~ rollToText(result2)
+~ rollToText(nega_die_2)
 <> + <>
-~ rollToText(result3)
+~ rollToText(nega_die_3)
 <>"
+
 
 {
     - inTutorial && result > 0: -> intro_reward
     - inTutorial: -> intro_change_dice
 
-    - result == 3: -> result_reward_hard
+    - result >= 3: -> result_reward_hard
     - result == 2: -> result_reward_light
     - result == 1: -> result_reward_tease
 
-    - result1 == 0 && result2 == 0 && result3 == 0: -> result_all_blank
+    - nega_die_1 == 0 && nega_die_2 == 0 && nega_die_3 == 0: -> result_all_blank
     - result == 0: -> result_no_reward
 
     - result == -1: -> result_punishment_tease
     - result == -2: -> result_punishment_light
-    - result == -3: -> result_punishment_hard
+    - result <= -3: -> result_punishment_hard
 }
 
-- (result_reward_hard)
+= result_reward_hard
+
 /lookat dice
 /perform squat_forward
 Oooo, three cups! You are a lucky little shit. #18
@@ -152,7 +173,12 @@ That does <i>not</i> happen often. #19
 
 /lookat player
 /perform squat
-I suppose I have to give you something very special, then, don't I? #20
+
+{shuffle:
+    - I suppose I have to give you something very special, then, don't I? #20
+    - Not the kind of result I really wanted you to get, #73
+    but this will still be /fun/! #74
+}
 
 -> check_consent ->
 
@@ -161,13 +187,20 @@ I suppose I have to give you something very special, then, don't I? #20
 }
 
 
-- (result_reward_light)
+= result_reward_light
 
 // This can only be two cups and a blank.
 
 /lookat dice
 /perform squat_forward
 Two cups and a blank, hmm? Not bad. #21
+
+{shuffle:
+    - I suppose you deserve a little something for that. #26
+    - Let's get this over with so I can go find some /real/ fun. #75
+    -/perform react_resigned angry 45
+    The dice are kinder to you than I want to be. #64
+}
 
 -> check_consent ->
 
@@ -176,11 +209,11 @@ Two cups and a blank, hmm? Not bad. #21
 }
 
 
-- (result_reward_tease)
+= result_reward_tease
 
 // This can either be 2 cups and a skull or 1 cup and two blanks.
 
-{ result1 == -1 || result2 == -1 || result3 == -1:
+{ nega_die_1 == -1 || nega_die_2 == -1 || nega_die_3 == -1:
     /lookat dice
     /perform squat_forward
     Two cups and a skull, hmm? #22
@@ -195,7 +228,16 @@ Two cups and a blank, hmm? Not bad. #21
 /lookat player
 /perform
 Not bad. But not great. #25
-I suppose you deserve a little something for that. #26
+
+{shuffle:
+    - Time for a playful bit of teasing! #76
+
+    -/emotion aroused 60
+    Teasing is what I do best. #66
+
+    -/emotion skeptical 55
+    You've earned a little tease for that roll. #67
+}
 
 -> check_consent ->
 
@@ -204,7 +246,7 @@ I suppose you deserve a little something for that. #26
 }
 
 
-- (result_all_blank)
+= result_all_blank
 
 /lookat dice
 /perform squat_forward
@@ -222,9 +264,7 @@ You get nothing, of course, but for a roll like that... #28
     -> nega_lore
 }
 
-- (result_no_reward)
-
-TODO: Write 'no reward' dialog here.
+= result_no_reward
 
 /lookat dice
 /perform squat_forward
@@ -245,9 +285,10 @@ Nothing for you today. #16
 -> exit
 
 
-- (result_punishment_tease)
 
-{ result1 == 1 || result2 == 1 || result3 == 1:
+= result_punishment_tease
+
+{ nega_die_1 == 1 || nega_die_2 == 1 || nega_die_3 == 1:
     /lookat dice
     /perform squat_forward
     Two skulls and a cup, hmm? #33
@@ -260,9 +301,18 @@ Nothing for you today. #16
 
 /lookat player
 /perform squat
-I suppose I can't go too hard on you, #36
-/perform squat_forward
-but I bet I can still make you squirm. #37
+
+{shuffle:
+    - I suppose I can't go too hard on you, #36
+    /perform squat_forward
+    but I bet I can still make you squirm. #37
+    
+    -/emotion amused 75
+    I'm gonna give you a taste of what a better roll might get you. #65
+    
+    - Fucking dice... spoiling my fun. #77
+    I'm going to taunt you with what a worse roll gets you. #78
+}
 
 -> check_consent ->
 
@@ -272,12 +322,18 @@ but I bet I can still make you squirm. #37
 }
 
 
-- (result_punishment_light)
+= result_punishment_light
 
 /lookat dice
 /perform squat_forward
 Ooo, two skulls. #38
-That means your ass is mine. #39
+
+{shuffle:
+    - It's so hard to resist the urge to crush you. #79
+    - You've only earned a little pain for that roll, {isBoy: worm|{isGirl:cunt|wretch}}. #80
+    - That means your ass is mine. #39
+}
+
 -> check_consent ->
 
 {shuffle:
@@ -286,12 +342,19 @@ That means your ass is mine. #39
 }
 
 
-- (result_punishment_hard)
+= result_punishment_hard
 
 /lookat dice
 /perform squat_forward
 Mmmm, look at that. #40
-Three skulls. I'm going to enjoy <i>this</i>. #41
+
+{shuffle:
+    - Three skulls. I'm going to enjoy <i>this</i>. #41
+    - Skulls across the board! I'm going to hook you like a fish. #81
+    - I hope you're well rested and fed. #82
+    'Cause I'm about to use the fuck out of you. #83
+    - I'm going to use you hard. #51
+}
 
 -> check_consent ->
 
@@ -333,11 +396,12 @@ You're gonna love getting rewards from me. #49
 = check_consent
 //these may need adjusting - you wouldn't say I'm going to use your hard if you only get a light tease
 {shuffle:
-    - It's not too late to back out, {isBoy: worm|slit}. #50
-    - I'm going to use you hard. #51
+    - It's not too late to back out, {hasPenis: worm|slit}. #50
     - You can still change your mind. #52
     - I wonder if you can handle me.  #53
 }
+
+- (check_consent_again)
 
 {shuffle:
     - Are you ready? #54
@@ -352,6 +416,9 @@ You're gonna love getting rewards from me. #49
 
 + [no]
     -> exit
+    
++ [timeout]
+    -> Nega_Timeout.Squatting -> check_consent_again
 
 = come_again
 

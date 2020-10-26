@@ -1,0 +1,30 @@
+=== treat_rewardmega_placeholder ===
+-> select_gender_check ->
+~ setScene(reward_scene, Treat, "treat_rewardmega_placeholder", -> treat_rewardmega_placeholder)
+-> scene_setup ->
+
+/notify title="Ms. Treatment's Mega-Reward Confirmation" text="This is a placeholder big reward. Do you want to spend 10 bloodstones?"
+
++ [yes]
+    ~ removeBigReward(-> load_gave_reward)
+    /notify title="Ms. Treatment's Mega-Reward Paid" text="You turn over ten Bloodstones."
+    -> gave_reward
++ [no] -> exit
+
+
+= scene_setup
+/scene Hell.Ready
+/music treat
+/ambient treat
+/character treat
+->->
+
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+
+= gave_reward
+/notify title="Ms. Treatment's Mega-Reward" text="You received your big reward. Returning to entry."
+/wait 5
+-> exit

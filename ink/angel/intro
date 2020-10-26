@@ -1,0 +1,16 @@
+=== angel_intro ===
+
+/scene AngelsRoom.Hub
+/music angel
+/ambient angel
+/character angel
+
+-/notify title="Lady Angelica's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>High School Bitch<br/>Forced Feminization<br/>Cuckholding"
+
++ [move]
+
+-/notify title="Lady Angelica's Intro Completed." text="Returning to the entry."
+/wait 5
+
+~ angel_intro_complete = true
+-> exit

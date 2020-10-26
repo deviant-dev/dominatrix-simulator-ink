@@ -6,17 +6,17 @@
 = intro
 
 - (intro_again)
-/perform talk_one_finger excited 65
+/perform talk_behold excited 65
 The time has come to accelerate your performance, heathen. #01
 
-/perform do_smooth_skirt aroused 70
+/perform talk_gesture aroused 70
 To earn your place as a cherished possession, you must embody attentiveness! #02
 
 /perform talk_question skeptical 65
 Do you desire to be cherished, bauble? #03
 /wait 1
 
-/perform idle_pleased happy 55
+/perform idle happy 55
 
 + [yes]
     -> Headmistress_AcknowledgeYes ->
@@ -39,7 +39,7 @@ Do you desire to be cherished, bauble? #03
 + [timeout] -> Headmistress_Timeout -> intro_again
 + [distracted] -> Headmistress_PayAttention -> intro_again
 
-- /perform idle_clasp_hands happy 35
+- /perform idle_clasp_hands happy 45
 To be cherished, one must be entirely fixated upon one's Mistress. #08
 
 ~ tries = 0
@@ -49,8 +49,6 @@ To be cherished, one must be entirely fixated upon one's Mistress. #08
 /perform do_point_down amused 60
 Come hither. #09
 
-/scene TheatreOpen.Ready
-
 + [move]
 
 + { tries < 2 } [timeout]
@@ -59,26 +57,29 @@ Come hither. #09
     -> Headmistress_NoAction -> come
 + [distracted] -> Headmistress_PayAttention -> come
 
-- /perform talk_behold excited 45
+TODO: This line is repetative "the time has come". Would be good to redo this VO line with a different beginning.
+- /scene TheatreOpen.Ready
+/perform talk_behold excited 50
 The time has come to train you to respond to commands without words. #10
-TODO: need a handsignal idle for when she is preparing to signal, but hasn't yet
 
-/perform do_snap_fingers disgusted 35
-Attend to my hand, peasant. #11
-
-/perform talk_emphatic_one_hand skeptical 45
+/perform talk_one_finger skeptical 50
 Through the delicate position of my fingers, #12
 
-/perform talk_one_finger amused 45
+/perform talk_one_hand amused 60
 I signal to you a position your body must obey. #13
+
+/perform do_arm_raise disgusted 50
+Attend to my hand, peasant. #11
 
 -> TestKneel(0) ->
 
-- /perform react_thankful amused 35
+- /perform react_thankful amused 70
 Such delight to be found in this position. #14
+/perform idle
+You should be quite familiar with it. #148
 
 - (delight)
-/perform idle_pleased happy 45
+/perform idle_pleased happy 50
 Do you seek to delight your Mistress, {isBoy: speck|foible}? #15
 
 
@@ -103,23 +104,24 @@ Do you seek to delight your Mistress, {isBoy: speck|foible}? #15
 
 -/perform talk_question skeptical 65
 Rise up to your feet, {player_name}. #56
+/perform idle
 
 - (stand_straight)
 
 + [pose:raised_chin]
 + [timeout]-> Headmistress_NoAction -> stand_straight
 
-/perform
+- /perform idle happy 50
 The bond between a Mistress and her pet must be strong. #20
 
 /perform talk_one_finger happy 35
 Communication does not always require words, vassal. #21
 
-/perform talk_two_fingers amused 25
+/perform talk_one_hand amused 25
 Simplicity. Elegance. Silence. #22
 
 - (serve)
-/perform idle_fake_annoyed skeptical 45
+/perform idle_fake_annoyed skeptical 60
 Are you prepared to serve so attentively, flawed one? #23
 
 + [yes] -> Headmistress_AcknowledgeYes ->
@@ -145,33 +147,44 @@ Are you prepared to serve so attentively, flawed one? #23
 + [timeout] -> Headmistress_Timeout -> serve
 + [distracted] -> Headmistress_PayAttention -> serve
 
-- /perform do_smooth_skirt
+- /perform do_smooth_skirt amused 60
 You will find this next position equally familiar. #29
 I know my audience found it quite entertaining. #30
 
 -> TestRear(0) ->
 
-- Ahhh, the delightful orbs of your ass are in plain view. #31
+- /perform react_thankful happy 30
+Ahhh, the delightful orbs of your ass are in plain view. #31
+/perform talk_one_finger amused 30
 Perfectly placed for a swat of my hand. #32
 
 - (swat)
 /character headmistress do_spank_player
 
 + [react-success]
-
+    /perform do_arm_raise excited 40
     Such a delightful response! #33
 
 + [react-fail]
-
+    /perform react_head_toss_casual sad 30
     Tut. Already you forget how to please. #34
 
-- /perform idle
+- /perform talk_question neutral
 Turn around and stand upright. #35
+
+- (upright)
+
++ [pose:raised_chin]
++ [timeout]-> Headmistress_NoAction -> upright
+
+-/perform talk_gesture 
 Patience must be offered to those who are learning, #36
+/perform talk_behold angry 30
 but expect no mercy should you fail Her #37
 once your training is complete. #160
 
 - (strive)
+/perform talk_consider skeptical 30
 Will you strive to please Her, chattel? #38
 
 + [yes] -> Headmistress_AcknowledgeYes ->
@@ -190,39 +203,46 @@ Will you strive to please Her, chattel? #38
 + [distracted] -> Headmistress_PayAttention -> strive
 
 
--
-/perform talk_behold
+- /perform talk_gesture neutral
 I shall demonstrate the final signal for you to learn today. #41
 
 -> TestHumble(0) ->
 
-- Trinkets must, at all times,  #42
+- /perform talk_one_finger skeptical 25
+Trinkets must, at all times,  #42
+/perform talk_one_hand happy 30
 be prepared to receive whatever a Mistress desires.  #43
+/perform react_shrug_long amused 30
 Punishment. Reward. Or otherwise. #44
 
+//can the game recognize nodding when the head is down toward the ground?
 - (position)
+/perform idle neutral
 This position is perfect for many things. #45
+/perform idle_sassy amused 50
 Wouldn't you agree, poppet? #46
 
 + [yes]
+    /perform react_nod_big happy 40
     Your acquiescence serves you well, trinket. #47
 
-
 + [no]
+    /perform idle_fake_annoyed sad 30
     I shall enlighten you. #48
 
 
 + [timeout] -> Headmistress_Timeout -> position
 
 
-- In this position, your ass and nether regions are on full display. #49
+- /perform idle happy 30 
+In this position, your ass and nether regions are on full display. #49
 Ripe for punishment and eager for reward. #50
 It also serves to inform your Mistress that you are sorry. #51
 
-+ [wait 2]
++ [wait]
 
 - (caress)
-Can you feel the cool air caress your {isBoy: sack|slit}? #52
+Can you feel the cool air caress your {hasPenis: sack|slit}? #52
 
 + [yes]
     The gentle musk of your arousal wafts toward me. #53
@@ -236,7 +256,9 @@ Can you feel the cool air caress your {isBoy: sack|slit}? #52
 + [timeout] -> Headmistress_Timeout -> caress
 
 
-- Rise up to your feet, {player_name}. #56
+- /perform do_arm_raise neutral
+Rise up to your feet, {player_name}. #56
+/perform talk_gesture skeptical 30
 Let us see how well you have absorbed this lesson. #57
 
 - (stand_straight2)
@@ -244,10 +266,12 @@ Let us see how well you have absorbed this lesson. #57
 + [pose:raised_chin]
 + [timeout]-> Headmistress_NoAction -> stand_straight2
 
+- /perform do_shake_finger skeptical 30
 With merely a signal and a command,  #58
 I expect you to perform the correct basic response. #59
 
 - (test_ready)
+/perform idle_clasp_hands skeptical 50
 Are you ready to demonstrate your ability to follow the signals of my hand? #60
 
 + [yes] -> Headmistress_AcknowledgeYes ->
@@ -259,27 +283,35 @@ Are you ready to demonstrate your ability to follow the signals of my hand? #60
 - (start_test)
 
 ~ resetObeyed()
-
+- /perform react_thankful amused 35
 We shall see. #61
+Attend to my hand, peasant. #11
 
 -> TestRandom(1) ->
 
+- /perform talk_question skeptical 30
 Can you recall this one, chattel? #62
 
 -> TestRandom(1) ->
 
+- /perform talk_one_hand excited 30
 Now to see if you can recall the final signal. #63
 
 -> TestRandom(1) ->
 
+- /perform react_thankful skeptical 20
 Whenever I feel you need further practice, #64
+
+/perform talk_behold amused 30
 expect to be tested on basic hand signals in this way. #65
 
 
 - (turn_around)
+/perform do_snap_fingers neutral
 Face me, foible. #66
 
 + [pose:raised_chin]
++ [timeout]-> Headmistress_NoAction -> turn_around
 
 - {obeyed(): -> GoodEndingIntro | -> BadEndingIntro}
 + [timeout]-> Headmistress_NoAction -> turn_around
@@ -287,9 +319,10 @@ Face me, foible. #66
 
 = ExitUnhappy
 
-/character headmistress react_shrug_long
+/character headmistress react_shrug_long sad 40
 -> Headmistress_Unhappy ->
 I have misjudged your readiness. #06
+/perform do_you_leave skeptical 30
 Return when you are further molded. #07
 -> exit
 
@@ -307,23 +340,28 @@ Return when you are further molded. #07
 
 = GoodEndingIntro
 
-/perform do_arm_raise
+/perform talk_behold happy 35
 If you continue to perform so gracefully, #67
+/perform do_arm_raise excited 50
 you will excel in pleasing Her. #68
+/perform react_thankful happy 50
 You have earned a reward for your performance today. #69
 ~ addReward()
+/perform talk_one_finger amused 35
 Stay attentive to your lessons! #70
 
 - -> exit
 
 = BadEndingIntro
 
-/perform talk_behold
+/perform talk_annoyed sad 50
 Your performance today lacked enthusiasm and grace. #71
+/perform talk_gesture angry 30
 To please Her, you must be perfect. #72
+/perform talk_question skeptical 30
 Perhaps a punishment marker will provide future incentive. #73
 ~ addPunishment()
-
+/perform do_now_leave sad 50
 Now, leave my sight. #74
 
 - -> exit
@@ -340,18 +378,17 @@ Now, leave my sight. #74
 - ->->
 
 = practice_easy
-
+/perform talk_consider amused 30
 I think you need more practice with your hand basic signals. #75
+/perform talk_one_finger amused 50
 That shall be your task for today. #76
 
 ~ tries = 0
 - (come)
 ~ tries++
 
-/perform do_arm_raise
+/perform do_arm_raise happy 40
 Come hither. #09
-
-/scene TheatreOpen.Ready
 
 + [move]
 
@@ -362,6 +399,9 @@ Come hither. #09
 + [distracted] -> Headmistress_PayAttention -> come
 
 -(begin)
+/scene TheatreOpen.Ready
+
+/perform idle_clasp_hands skeptical 30
 Shall we begin? #77
 
 + [yes] -> Headmistress_AcknowledgeYes ->
@@ -382,58 +422,80 @@ Shall we begin? #77
 + [distracted] -> Headmistress_PayAttention -> begin
 
 
-// todo: endurance signals practice
-- Attend to my hand, {isBoy: buffoon|dove}. #79
+- /perform do_arm_raise neutral
+Attend to my hand, {isBoy: buffoon|dove}. #79
 
 -> TestRandom(1) ->
 
 { disobey == 0:
+    /perform idle_pleased happy 75
     Such perfection will make you a star performer.  #80
+    /emotion excited 50
     Keep it up! #81
 - else:
+    /perform talk_either_or sad 30
     Not bad, but not perfect.  #82
+    /perform talk_thoughtful skeptical 40
     Keep improving and I'll have to show you off to the class one day. #83
 }
 
-- Turn to me. #84
+- (face_forward)
+/perform idle neutral 
+Turn to me. #84
 + [pose:raised_chin]
++ [timeout]-> Headmistress_NoAction -> face_forward
 
-- Can you recall this one, chattel? #85
+- /perform talk_question skeptical 40
+Can you recall this one, chattel? #85
 
 -> TestRandom(1) ->
 
 
 { disobey == 0:
+    /perform react_thankful happy 40
     Your obedience is impressive, bauble. #86
 - else:
+    /perform talk_either_or sad 30
     Not bad, but not perfect.  #82
+    /perform talk_thoughtful skeptical 40
     Keep improving and I'll have to show you off to the class one day. #83
 }
 
 
-- Now to see if you can recall the final signal. #89
+- /perform talk_one_finger amused 40
+Now to see if you can recall the final signal. #89
 
+- (position)
+/perform do_smooth_skirt excited 25
 Position yourself to attend to my hand. #90
 
 +[pose:raised_chin]
++ [timeout]-> Headmistress_NoAction -> position
 
 - -> TestRandom(1) ->
 
 
 { disobey == 0:
     ~ headmistress_signal_basics_difficulty++
+    /perform do_quick_bow happy 50
     Flawless. You serve Her well today. #91
+    /perform talk_behold amused 75
     So well that I will make this task harder next time. #92
 - else:
+    /perform react_shake_head_disbelief angry 40
     Not perfect. I think we'll have to practice again. #93
+    /perform talk_one_finger skeptical 30
     But if you are flawless next time, #94
+    /perform idle_pleased amused 60
     I just might have to show you off to the class. #95
 }
 
 - (turn_around)
+/perform do_smooth_skirt amused 25
 Stand at attention before me, miscreant. #96
 
 + [pose:raised_chin]
++ [timeout]-> Headmistress_NoAction -> turn_around
 
 - {obeyed(): -> GoodEndingEasy | -> BadEndingEasy}
 + [timeout]-> Headmistress_NoAction -> turn_around
@@ -441,47 +503,58 @@ Stand at attention before me, miscreant. #96
 - ->->
 
  = GoodEndingEasy
-/perform do_arm_raise
+/perform idle happy 30
 The beginning of excellence, bauble. #97
+/perform idle_clasp_hands happy 50
 You please with your service. #98
+/perform do_arm_raise excited 50
 You shall be rewarded! #99
 ~ addReward()
+/perform do_inspect amused 30
 Your passion for obedience shall be stoked in future lessons. #100
+/perform do_quick_bow neutral
 Depart. #101
 
 - -> exit
 
 = BadEndingEasy
-/perform talk_behold
+/perform idle_unhappy_arms_crossed disgusted 30
 The shape of your service is still unmolded. #102
+/perform idle_skeptical skeptical 40
 I expect more diligence in the future. #103
+/perform do_shake_finger angry 50
 Another punishment has been earned. #104
 ~ addPunishment()
+/perform idle disgusted 30
 Return again to practice further. #105
+/perform react_scoffs neutral
 For now, you are excused. #106
 
 - -> exit
 
 = practice_hard
-
+/perform idle_skeptical amused 25
 Your response to basic hand signals has been most impressive. #107
+/perform talk_thoughtful
 So impressive,  #108
+/perform talk_behold amused 50
 that you will proudly demonstrate them to an audience. #109
 
-/perform do_arm_raise
+
+/perform do_arm_raise amused 75
 /ambient crowd
 ~ Headmistress_RaiseCurtains()
+/perform idle_pleased happy 50
 They do so love an excellent performance. #110
+/perform talk_one_finger amused 30
 Fail not to perform, flawed one. #111
 
 ~ tries = 0
 - (come)
 ~ tries++
 
-/perform do_arm_raise
+/perform do_point_down skeptical 30
 Come hither. #09
-
-/scene TheatreOpen.Ready
 
 + [move]
 
@@ -492,39 +565,52 @@ Come hither. #09
 + [distracted] -> Headmistress_PayAttention -> come
 
 - (eyes)
+/scene TheatreOpen.Ready
+/perform talk_behold amused 50
 Can you feel all eyes upon you? #112
 
 + [yes] -> Headmistress_AcknowledgeYes ->
 
 + [no]
+    /perform idle_clasp_hands amused 30
     Ahh, but indeed they are. #113
 
 + [timeout] -> Headmistress_Timeout -> eyes
 + [distracted] -> Headmistress_PayAttention -> eyes
 
 - (excite)
+/perform idle_skeptical skeptical 30
 Does it excite you to be the focus of so much attention? #114
 
 + [yes] -> Headmistress_AcknowledgeYes ->
+    /perform talk_behold excited 40
     Your soul brims with passion. #115
+    /perform idle_tease aroused 50
     So much delicious sustenance to provide. #116
 
 + [no]
+    /perform react_shake_head_disbelief sad 30
     A pity to be so shy. #117
-    Do not let your nerves get the best of you. #118
+    /perform react_scoffs disgusted 30
+    Do not let your nerves get the best of you. #118   
+    /perform talk_consider amused 30
     A trembling performance of perfection will still feed. #119
 
 + [timeout] -> Headmistress_Timeout -> excite
 + [distracted] -> Headmistress_PayAttention -> excite
 
 
-- For today, you will be challenged on your memory  #120
+- /perform talk_thoughtful skeptical 30 
+For today, you will be challenged on your memory  #120
 of basic hand signals. #121
 
+/perform react_scoffs amused 50
 Without voice, I shall indicate which position for you to take, #122
+/perform do_shake_finger angry 30
 and you will obey without assistance. #123
 
 - (understand)
+/perform idle_skeptical skeptical 30
 Do you understand, {isBoy: tribute|token}? #124
 
 + [yes] -> Headmistress_AcknowledgeYes ->
@@ -534,8 +620,9 @@ Do you understand, {isBoy: tribute|token}? #124
 
     ++ [yes] -> Headmistress_AcknowledgeYes ->
     ++ [no]
-        /perform react_shrug_long
+        /perform react_shrug_long disgusted 50
         -> Headmistress_Unhappy ->
+        /perform idle neutral
         You waist my time. #78
         -> exit
     ++ [timeout] -> Headmistress_Timeout ->
@@ -545,46 +632,57 @@ Do you understand, {isBoy: tribute|token}? #124
 + [distracted] -> Headmistress_PayAttention -> understand
 
 // todo: endurance signals practice w/ audience and w/o pose assist
-- We shall begin.  #126
+- /perform do_arm_raise excited 35
+We shall begin.  #126
 /character crowd oos
-/character headmistress talk_behold
+/character headmistress do_snap_fingers neutral
 Attend! #127
 
 -> TestRandom(2) ->
 
 { disobey == 0:
+    /perform react_thankful happy 35
     I sense an artist within you. #128
 - else:
+    /perform do_smooth_skirt angry 35
     I am disappointed, stain.  #129
 }
 
 -> TestRandom(2) ->
 
 { disobey == 0:
+    /perform idle_pleased excited 35
     Dare I witness a moment of perfection? #130
 - else:
+    /perform idle_unhappy_arms_crossed disgusted 35
     I can barely tolerate such clumsiness. #131
+    /perform do_shake_finger angry 40
     You are close to earning a punishment. #132
 }
 
 -> TestRandom(2) ->
 
 { disobey == 0:
+    /perform react_clapping excited 40
     I shudder with the headiness of such perfection! #133
     - else:
+    /perform react_shake_head_disbelief disgusted 40
     You shamefully disappoint your audience. #134
     /character crowd boos
     /character headmistress
+    /perform do_smooth_skirt sad 40
     I can see I have put too much faith in your abilities. #135
+    /perform react_scoffs amused 30
     Next time, I will guide you as one would a child. #136
     ~ headmistress_signal_basics_difficulty = 1
 }
 
-- (turn_around)
-/character headmistress do_arm_raise
+- (turn_around2)
+/character headmistress do_arm_raise amused 40
 Rise and face your audience. #137
 
 + [pose:raised_chin]
++ [timeout]-> Headmistress_NoAction -> turn_around2
 
 - {obeyed(): -> GoodEndingHard | -> BadEndingHard}
 + [timeout]-> Headmistress_NoAction -> turn_around
@@ -594,12 +692,15 @@ Rise and face your audience. #137
  = GoodEndingHard
 //earn favor with HM
 /character crowd cheers_loud
-/character headmistress do_arm_raise
+/character headmistress talk_behold excited 35
 I am awed to behold such exquisite grace. #138
+/perform react_thankful aroused 50
 What a delicious feast to devour. #139
+/perform talk_lean_forward amused 50
 You were born to serve, little one. #140
 ~ addReward()
 //what do players earn when they max out learning?
+/perform talk_question happy 75
 You have my permission to depart. #141
 
 - -> exit
@@ -607,13 +708,17 @@ You have my permission to depart. #141
 = BadEndingHard
 //lose favor with HM
 /character crowd angry_crowd
-/character headmistress talk_behold
+/character headmistress react_point_at_player_angry angry 65
 Your cheeks should be flush with shame, stain. #142
+/perform react_scoffs disgusted 40
 Your audience is left ravenous and unsatisfied. #143
+/perform talk_gesture skeptical 50
 We shall resume practice and try this again when you are ready. #144
+/perform talk_annoyed sad 50
 Sadly, I must punish your imperfection. #145
 ~ addPunishment()
 
+/perform do_now_leave angry 50
 Go and contemplate your failure. #146
 
 - -> exit
@@ -635,16 +740,16 @@ Go and contemplate your failure. #146
 - (retry)
 ~ tries++
 
-/perform signal_kneel
-
-{ say_short_explanation:
-    This position is <b> kneel </b>. #147
-}
+/perform signal_kneel skeptical 30
+/wait
 
 { say_full_explanation:
-    You should be quite familiar with it. #148
     Down onto your knees, chattel. #149
     Hands resting  upon your thighs. #150
+}
+
+{ say_short_explanation:
+    This position is <b> kneel</b>. #147
 }
 
 + [pose:kneel{hide_pose_assist: no_assist}]
@@ -653,6 +758,7 @@ Go and contemplate your failure. #146
         ~ addObey()
         -> Headmistress_GoodJob ->
     - else:
+        /perform react_nod_big happy 30
         Much better. #151
     }
 + {tries == 1} [timeout]
@@ -666,12 +772,10 @@ Go and contemplate your failure. #146
     ~ hide_pose_assist = false
     -> retry
 + {tries == 2} [timeout]
-    ~ addDisobey()
     ~ say_full_explanation = true
     /perform idle_clasp_hands
     -> Headmistress_NoAction -> retry
 + {tries >= 3} [timeout]
-    ~ addDisobey()
     -> Headmistress_CheckIfInterested -> retry
 
 - ->->
@@ -687,8 +791,8 @@ Go and contemplate your failure. #146
 - (retry)
 ~ tries++
 
-/perform signal_rear
-
+/perform signal_rear skeptical 30
+/wait
 
 { say_short_explanation:
     The title is <b> rear </b>. #152
@@ -705,6 +809,7 @@ Go and contemplate your failure. #146
         -> Headmistress_GoodJob ->
         ~ addObey()
     - else:
+        /perform do_shake_finger angry 30
         I expect more effort. #155
     }
 + {tries == 1} [timeout]
@@ -717,12 +822,10 @@ Go and contemplate your failure. #146
     ~ hide_pose_assist = false
     -> retry
 + {tries == 2} [timeout]
-    ~ addDisobey()
     ~ say_full_explanation = true
     /perform idle_clasp_hands
     -> Headmistress_NoAction -> retry
 + {tries >= 3} [timeout]
-    ~ addDisobey()
     -> Headmistress_CheckIfInterested -> retry
 
 - ->->
@@ -738,9 +841,8 @@ Go and contemplate your failure. #146
 - (retry)
 ~ tries++
 
-/perform signal_humble
-
-+[wait 2]
+/perform signal_humble skeptical 30
+/wait
 
 { say_short_explanation:
     It is named <b> humble </b>. #156
@@ -757,6 +859,7 @@ Go and contemplate your failure. #146
         ~ addObey()
         -> Headmistress_GoodJob ->
     - else:
+        /perform react_shake_head_disbelief disgusted 30
         Took you long enough. #159
     }
 + {tries == 1} [timeout]
@@ -769,12 +872,10 @@ Go and contemplate your failure. #146
     ~ hide_pose_assist = false
     -> retry
 + {tries == 2} [timeout]
-    ~ addDisobey()
     ~ say_full_explanation = true
     /perform idle_clasp_hands
     -> Headmistress_NoAction -> retry
 + {tries >= 3} [timeout]
-    ~ addDisobey()
     -> Headmistress_CheckIfInterested -> retry
 
 - ->->

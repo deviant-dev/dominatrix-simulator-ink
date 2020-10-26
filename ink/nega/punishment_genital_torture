@@ -1,6 +1,6 @@
 === nega_punishment_genital_torture ===
 
-~ setScene(punishment_scene, Nega)
+~ setScene(punishment_scene, Nega, "nega_punishment_genital_torture", -> nega_punishment_genital_torture)
 
 /scene Attic.Ready
 /music nega2
@@ -118,15 +118,16 @@ to prove what a pathetic fleshbag you really are? #25
 ~ scene_count = 0
 
 - (torture_repeat)
+~ scene_count++
+/log scene progress {scene_count} / {scene_goal}
 
 {shuffle:
-    // - -> slap_genitals ->
+    - -> slap_genitals ->
     - -> flick_genitals ->
-    // - -> yank_genitals ->
-    // - -> pinch_genitals ->
-    // - -> squeeze_genitals ->
+    - -> yank_genitals ->
+    - -> pinch_genitals ->
     // - -> rub_genitals ->
-    // - -> nails_genitals ->
+    - -> nails_genitals ->
     // - -> nails_skin ->
     //nails can be digging on different parts or scratching different parts
     // - -> pinch_nipple ->
@@ -138,16 +139,13 @@ to prove what a pathetic fleshbag you really are? #25
     // - -> rub_nipple ->
     }
 
-/perform do_slap_genitals
-/perform do_pinch
-/perform do_rub_genitals
-/perform do_scratch_air
-/perform do_pull_nipple
-/perform do_twist_fingers
-/perform do_rub_nipple
-
-~ scene_count++
-/log scene progress {scene_count} / {scene_goal}
+// /perform do_slap_genitals
+// /perform do_pinch
+// /perform do_rub_genitals
+// /perform do_scratch_air
+// /perform do_pull_nipple
+// /perform do_twist_fingers
+// /perform do_rub_nipple
 
 { scene_count < scene_goal: 
     {shuffle:
@@ -173,21 +171,32 @@ to prove what a pathetic fleshbag you really are? #25
 
 -> torture_end
 
+= set_task_count
+
+{ shuffle:
+    - ~ task_goal = RANDOM(4,6)
+    - ~ task_goal = RANDOM(3,4)
+    - ~ task_goal = RANDOM(7,10)
+}
+
+->->
 
 = slap_genitals
+/perform idle_fake_annoyed amused 60
 
 I'm gonna to start counting. #42
-/perform do_slap_pussy aroused
+
 And you're going to reach down and slap that {hasPenis: cock|pussy} each time I do. #43
-/perform talk_one_finger angry 50
+
+/perform do_slap_pussy aroused
 One smack for each count. #44
 
 -/perform talk_threaten disgusted 50
 It better fucking hurt! #45
+
 /perform idle_unhappy angry 50
 Hard enough to make you jerk your head. #46
-/perform react_scoffs skeptical
-Fuck up and I start over. #47
+-> warning ->
 
 - (ready)
 /perform talk_lean_forward amused
@@ -200,20 +209,19 @@ Got it? #48
     ~ addDisobey()
     -> check_ready
 
-
 + [timeout] -> Nega_Timeout -> ready
 + [distracted] -> Nega_PayAttention -> ready
 
-- ~ task_goal = RANDOM(3,10)
+- -> set_task_count ->
 
 - (try_slap_genitals)
 
-~ task_count = 1
+~ task_count = 0
 
 /log Goal = {task_goal}
 
 - (try_slap_react)
-
+~ task_count++
 /wait 1 
 
 -> SayNumber(task_count) ->
@@ -221,35 +229,41 @@ Got it? #48
 + [react-success]
 + [react-fail]
     -> Nega_BadJob ->
-    Looks like we have to start all over. #49
+    -> start_over ->
     -> try_slap_genitals
 
-- ~ task_count++
-/log Progress = {task_count} / {task_goal}
+- /log Progress = {task_count} / {task_goal}
 
 {
     - task_count == 1:
         -> Nega_GoodJob ->
-        Keep going! #50
-    - task_count == 4:
+        -> Nega_Keep_Going ->
+    - task_count == 4 && task_count < task_goal:
         -> humiliation_comment ->
-    - task_count == 7:
+    - task_count == 7 && task_count < task_goal:
         -> humiliation_comment ->
 }
 
-{task_count <= task_goal: -> try_slap_react}
-
-
+{task_count < task_goal: -> try_slap_react}
 
 ->->
 
 = flick_genitals
+/perform idle_fake_annoyed excited 50
+I just love counting out your pain!
 
-/perform do_flick_air
+Time for my pathetic little whore to flick {isBoy: his|{isGirl: her|their}} {hasPenis: tip|clit}. #52
 
-Time for me to start counting! #51
+/perform do_flick_air amused
+One flick for each count. #54
 
-And my pathetic little whore is going to do it while flicking your {hasPenis: tip|clit}. #52
+/perform do_rub_hands_together excited 75
+This is really going to hurt!
+
+/perform idle_unhappy angry 50
+I wanna hear you whimper when you jerk your head. #56
+
+-> warning ->
 
 - (ready)
 /perform talk_lean_forward amused
@@ -262,31 +276,19 @@ Understood? #53
     ~ addDisobey()
     -> check_ready
 
-
 + [timeout] -> Nega_Timeout -> ready
 + [distracted] -> Nega_PayAttention -> ready
 
-/perform talk_one_finger amused
-One smack for each count. #54
-
--/perform talk_threaten disgusted 50
-It better fucking hurt! #55
-/perform idle_unhappy angry 50
-Hard enough to make you jerk your head. #56
-/perform react_scoffs skeptical
-Fuck up and I start over. #57
-
-
-- ~ task_goal = RANDOM(3,10)
+- -> set_task_count ->
 
 - (try_flick_genitals)
 
-~ task_count = 1
+~ task_count = 0
 
 /log Goal = {task_goal}
 
 - (try_flick_react)
-
+~ task_count++
 /wait 1 
 
 -> SayNumber(task_count) ->
@@ -294,48 +296,45 @@ Fuck up and I start over. #57
 + [react-success]
 + [react-fail]
     -> Nega_BadJob ->
-    Looks like we have to start all over. #58
+    -> start_over ->
     -> try_flick_genitals
 
-- ~ task_count++
+- 
 /log Progress = {task_count} / {task_goal}
 
 {
     - task_count == 1:
         -> Nega_GoodJob ->
-        Keep going! #59
-    - task_count == 4:
+        -> Nega_Keep_Going ->
+    - task_count == 4 && task_count < task_goal:
         -> humiliation_comment ->
-    - task_count == 7:
+    - task_count == 7 && task_count < task_goal:
         -> humiliation_comment ->
 }
 
-{task_count <= task_goal: -> try_flick_react}
-
-
+{task_count < task_goal: -> try_flick_react}
 
 ->->
+
 = yank_genitals
+/perform idle_fake_annoyed disgusted 50
+I bet your floppy {hasPenis: sac stretches|pussy lips stretch} really far!
 
-/perform do_yank_air angry 50
-
-I wanna see you grab that filthy {hasPenis: sack|pussy lips} and start yanking! #60
+I wanna see yank hard on {hasPenis: that filthy sac|those skanky lips}.
 
 - (handle)
 Can you handle it, little piggy? #61
 
 +[yes]
+    Good.
     ~ addObey()
 
 +[no]
      ~ addDisobey()
      -- -> check_ready
    
-            
 + [timeout] -> Nega_Timeout -> handle
 + [distracted] -> Nega_PayAttention -> handle
-
-
 
 - (start_yank)
 
@@ -348,8 +347,20 @@ Can you handle it, little piggy? #61
 ~ task_count = task_goal
 
 /log timer = {task_goal}
+/perform do_yank_air angry 50
+Now grab that {hasPenis: pathetic limp dick|ragged pussy} of yours
+and show me how bad it hurts by jerking your head up.
 
-Don't stop pulling until I tell you to. #62
+- (react)
+
++ [react-success]
++ [react-fail]
+    -> Nega_BadJob ->
+    I said grab it and show me how much it hurts!
+    -> react
+
+- Don't stop pulling until I tell you to. #62
+/wait
 Let's count you down. #63
 
 // 3, 5, 10
@@ -384,12 +395,16 @@ Let's count you down. #63
 
 
 = pinch_genitals
+/perform idle_fake_annoyed aroused 50
+Now. I wanna hear you whine.
 
-/perform do_grab_pussy aroused
-Now. I want you to grab that {hasPenis: tiny pecker of yours and pinch the head hard|fat clit of yours and pinch it hard}. #68
+Grab that {hasPenis: tiny pecker of yours and pinch the head hard|fat clit of yours and pinch it hard}. #68
 
 - (try_pinch_genitals)
-Make it hard enough to hurt! #69
+/perform do_pinch_air excited 75
+Make it hard enough to hurt so I can see it! #69
+
+/perform idle_fake_annoyed amused
 And don't stop until I tell you to. #70
 
 + [react-success]
@@ -398,14 +413,109 @@ And don't stop until I tell you to. #70
     -> Nega_BadJob ->
     -> try_pinch_genitals
 
-- That's it. Keep going! #71
+- -> Nega_Keep_Going ->
 
 -> RandomCommentLoop (-> humiliation_comment, 3, 5, 2, 5) ->
+
 - -> Nega_GoodJob ->
 
 
 ->->
 
+
+= nails_genitals
+/perform idle_fake_annoyed disgusted 50
+Time to watch you wince in pain!
+
+You're going to dig your nails into that 
+pathetic {hasPenis: cock|pussy} of yours.
+
+- (ready)
+Aren't you excited to suffer for me, meatbag?
+
++[yes]
+    My little pain slut.
+    ~ addObey()
+
++[no]
+     ~ addDisobey()
+     -- -> check_ready
+   
++ [timeout] -> Nega_Timeout -> ready
++ [distracted] -> Nega_PayAttention -> ready
+
+- 
+Dig your nails in each time I count.
+I wanna see you react each time!
+
+Since I know this once is really going to hurt,
+I'll count backwards just to be nice.
+
+-> set_task_count ->
+
+- (try_nails_genitals)
+
+{shuffle:
+    - ~ task_goal = 4
+    - ~ task_goal = 6
+    - ~ task_goal = 10
+}
+~ task_count = task_goal
+
+/log Goal = {task_goal}
+
+- (try_nails_react)
+
+/wait {RANDOM(1,3)} 
+
+-> SayNumber(task_count) ->
+
++ [react-success]
++ [react-fail]
+    -> Nega_BadJob ->
+    -> start_over ->
+    -> try_nails_genitals
+
+- /log Progress = {task_count} / {task_goal}
+
+~ task_count--
+{
+    - task_count == 7:
+        -> Nega_Insult ->
+    - task_count == 4 && task_count > 5:
+        -> humiliation_comment ->
+    - else:
+        -> humiliation_comment ->
+}
+
+{task_count > 0: -> try_nails_react}
+
+->->
+
+= warning 
+
+/perform react_scoffs skeptical
+
+{ shuffle:
+    - Fuck up and I start over.
+    - Better not fuck up. 
+    - One mistake and I restart.
+    - Don't mess up or I'll start counting all over again.
+    - Make a mistake, so I can start recounting!
+}
+
+->->
+
+= start_over
+
+{shuffle: 
+    - Looks like we have to start all over. #58
+    - Time to start again!
+    - Wooo! Time for a recount!
+    - Poor little {isBoy:worm|cunt}. Time to start over.
+}
+
+->->
 
 = humiliation_comment
 
@@ -456,6 +566,7 @@ Are you a fucking wimp who can't take a little torture? #83
 = torture_end
 
 /perform react_head_toss_casual amused
+
 I'm done with you. #87
 Get out. #88
 /perform idle_sassy

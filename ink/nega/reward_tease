@@ -1,10 +1,10 @@
-=== nega_reward_tease ===
- -> select_gender_check ->
+  === nega_reward_tease ===
+-> select_gender_check ->
 
 TODO: the series of questions are a little repetitive. Would be good to pull at least one of them out and put it into the punishment_tease scene.
 
-~ setScene(reward_scene, Nega)
- 
+~ setScene(reward_scene, Nega, "nega_reward_tease", -> nega_reward_tease)
+
 /scene attic.Ready
 /music nega-reward
 /ambient howling-wind
@@ -12,154 +12,154 @@ TODO: the series of questions are a little repetitive. Would be good to pull at 
 
 - (tease_intro)
 
-
-/perform tease_caress_breast_left amused 75
-
-{shuffle:
-    - The dice are kinder to you than I want to be. #01
-    - I'm gonna give you a taste of what a better roll might get you. #02
-    - Teasing is what I do best. #03
-    - This won't take long. (wicked laugh) #04
-    - You've earned a little tease for that roll. #05
-}
-  
 - /perform react_scoffs angry 50
 The rules say I have to go easy on you. #06
 
 Lucky {isBoy: prick|{isGirl: cunt|slut}}. #07
 
+
+~ tries = 0
 - (present)
+~ tries++
+
+/perform do_snap_fingers angry 55
 Stand up straight, {isBoy: maggot|skank}, and present yourself. #102
 
 + [pose:present_stand]
 + { tries < 2 } [timeout] -> present
-+ { tries >= 2 } [timeout] 
-     ~ addDisobey()
-     -> Nega_CheckIfInterested 
-     -> present
++ { tries >= 2 } [timeout]
+    ~ addDisobey()
+    -> Nega_CheckIfInterested
+    -> present
 + [distracted] -> Nega_PayAttention -> present
 
-- 
+-/perform react_point_at_player_angry angry 65
 Don't you fucking move unless I give you permission. #103
 
+
 - (hold_still)
+/perform idle_bored skeptical 60
 Got it, {isBoy: prick|cunt}? #104
 
-  +[yes]
++ [yes]
     ~ addObey()
-        Good. #105
-      
-    +[no]
-     ~ addDisobey()
-        {shuffle:
-            - Move and I'll boot your ass out of here so fast, #106
-            it will make your head spin. #107
-            - -> Nega_Unhappy ->
-            Move and your ass is gone! #108
-        }
-        -- (understood)
-        Understood? #109
-        
-        ++[yes]
+    /perform react_nod_little amused 55
+    Good. #105
+
++ [no]
+    ~ addDisobey()
+    {shuffle:
+        - /perform talk_threaten angry 45
+        Move and I'll boot your ass out of here so fast, #106
+
+        /perform react_crazy_gesture amused 50
+        it will make your head spin. #107
+
+        - -> Nega_Unhappy ->
+        /perform idle_unhappy_stomp disgusted 70
+        Move and your ass is gone! #108
+    }
+
+    -- (understood)
+    /perform talk_question skeptical 50
+    Understood? #109
+
+    ++ [yes]
         ~ addObey()
-           That's what I fucking thought. #110
-      
-        ++[no]
-         ~ addDisobey()
-         -> exit
-         
-         ++ [timeout] -> Nega_Timeout -> understood
-         ++ [distracted] -> Nega_PayAttention -> understood
- 
+        /perform do_fist_pump amused 45
+        That's what I fucking thought. #110
+
+    ++ [no]
+        ~ addDisobey()
+        -> exit
+
+    ++ [timeout] -> Nega_Timeout -> understood
+    ++ [distracted] -> Nega_PayAttention -> understood
+
  + [timeout] -> Nega_Timeout -> hold_still
  + [distracted] -> Nega_PayAttention -> hold_still
 
 - (insult)
-/perform talk_lean_forward disgusted 75
+
 {shuffle:
-    - You're a worthless slut. #08
-    - You're a pathetic worm. #09
-    - You're a dirty little whore. #10
-    - You're a slutty fleshbag. #11
-    - You're a useless meatbag. #12
+    -/perform talk_lean_forward angry 65
+    You're a worthless slut. #08
+
+    -/perform react_shrug_long disgusted 75
+    You're a pathetic worm. #09
+
+    -/perform talk_one_finger amused 45
+    You're a dirty little whore. #10
+
+    -/perform idle_tease excited 60
+    You're a slutty fleshbag. #11
+
+    -/perform talk_annoyed angry 55
+    You're a useless meatbag. #12
 }
 
-/perform idle_skeptical neutral    
+/perform idle_skeptical skeptical 70
 Aren't you? #13
 
-    +[yes]
++ [yes]
     ~ addObey()
-        That's right.  #14
-      
-    +[no]
-     ~ addDisobey()
-        {shuffle:
-            - Then I guess it's time I teach you your place. #15
-            - -> Nega_Unhappy ->
-          
-        }
- + [timeout] -> Nega_Timeout -> insult
- + [distracted] -> Nega_PayAttention -> insult
- 
-- /perform talk_behold
+    /perform talk_one_finger happy 70
+    That's right.  #14
+
++ [no]
+    ~ addDisobey()
+    {shuffle:
+        - Then I guess it's time I teach you your place. #15
+        - -> Nega_Unhappy ->
+    }
+
++ [timeout] -> Nega_Timeout -> insult
++ [distracted] -> Nega_PayAttention -> insult
+
+- /perform talk_behold amused 45
 I see what you are. #28
-  
-{shuffle:
-    - You're just a rotten little bitch I should crush under my boot. #16
-    - A wretched little slut who just wants to be used. #17
-    - A horny piece of meat waiting to be devoured. #18
-    }
-
-~ tries = 0
-- (kneel_tease)
-~ tries++
-
-/perform do_point_down
 
 {shuffle:
-    - Get down on your goddamn knees. #19
-    - On your knees, whore. #20
-    - Kneel, maggot. #21
-    - Down! I want you on your knees. #22
-    }
+    -/perform do_inspect aroused 45
+    You're just a rotten little bitch I should crush under my boot. #16
 
-+ [pose:kneel]
-+ { tries < 2 } [timeout] -> kneel_tease
-+ { tries >= 2 } [timeout] 
-     ~ addDisobey()
-     -> Nega_CheckIfInterested 
-     -> kneel_tease
-+ [distracted] -> Nega_PayAttention -> kneel_tease
+    -/perform idle_sassy amused 70
+    A wretched little slut who just wants to be used. #17
 
-- -> Nega_GoodJob ->
-~ addObey()
+    -/perform tease_caress_breasts aroused 75
+    A horny piece of meat waiting to be devoured. #18
+}
+
+//orders player to get on their knees - kneel instructions now moved to gen responses
 
 - (stay_away)
-/perform talk_lean_forward
+/perform idle_skeptical aroused 75
 You just can't stay away, can you? #23
 
 + [yes]
     ~ addDisobey()
     -> Nega_Unhappy ->
+    /perform talk_question skeptical 70
    That bloodstone you just added to my pile says different. #24
-   
-   
+
+
 + [no]
     ~ addObey()
+    /perform talk_lean_forward skeptical 75
     Too curious for your own good. #25
+
+    /perform do_rub_hands_together excited 65
     That's perfect. I like abusing stupid little {isBoy: pricks|{isGirl: bitches|maggots}}. #26
- 
- + [timeout] -> Nega_Timeout -> stay_away
- + [distracted] -> Nega_PayAttention -> stay_away
- 
-- /perform idle_unhappy_stomp
+
++ [timeout] -> Nega_Timeout -> stay_away
++ [distracted] -> Nega_PayAttention -> stay_away
+
+- /perform idle_unhappy_stomp angry 75
 You can't fucking hide from me. #27
 
 
-/perform idle_tease
+/perform idle_tease aroused 55
 You came here with that puny little reward of yours. #29
-
-/perform react_scoffs
 For what? #30
 
 {shuffle:
@@ -168,100 +168,132 @@ For what? #30
     - -> piece_of_shit ->
 }
 
+-> Nega_Kneel ->
+
 -> grovel
 
+
 = lucky
+/perform talk_question skeptical 45
 Hoping you'd get lucky? #111
+
+/perform idle_sassy amused 55
 Maybe get to be a slutty little fucktoy? #112
 
 + [yes]
     ~ addDisobey()
+    /perform react_dismissive angry 60
     Too fucking bad. #86
-   
+
 + [no]
     ~ addObey()
+    /perform talk_one_finger disgusted 80
     No, you didn't. #113
- 
+
  + [timeout] -> Nega_Timeout -> lucky
  + [distracted] -> Nega_PayAttention -> lucky
 
-- 
-
+-
 ->->
 
+
 = slut
+/perform react_shrug_long angry 75
 You don't deserve to be my slut. #114
+
+/perform tease_caress_breast_left aroused 65
 To be fucked and enjoyed. #115
 
+/perform idle_unhappy disgusted 60
 Do you? #116
 
 + [yes]
     ~ addDisobey()
     -> Nega_Unhappy ->
-   
+
 + [no]
     ~ addObey()
+    /perform react_point_at_player_angry angry 75
     That's right. You don't. #117
- 
- + [timeout] -> Nega_Timeout -> slut
- + [distracted] -> Nega_PayAttention -> slut
+
++ [timeout] -> Nega_Timeout -> slut
++ [distracted] -> Nega_PayAttention -> slut
 
 - ->->
 
+
 = piece_of_shit
+
+/perform talk_gesture disgusted 45
 You're just dying to be treated like the piece of shit you are. #32
 
-/perform talk_annoyed
+/perform idle_skeptical disgusted 75
 Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
 
 +[yes]
     ~ addObey()
+    /perform react_thankful amused 65
     Of course you are! #34
-      
+
 +[no]
      ~ addDisobey()
-    /perform react_laugh
     -> Nega_Unhappy ->
+    /perform talk_annoyed angry 80
     Playing all shy and innocent. #35
-    
+
 + [timeout] -> Nega_Timeout -> piece_of_shit
+
 + [distracted] -> Nega_PayAttention -> piece_of_shit
 
 - ->->
 
+
 = grovel
 
-/perform idle
+/perform talk_question amused 75
 I know what you really came here for. #118
 
+/perform talk_consider amused 80
 Hoping you'd be mistreated. That's what. #31
 
 {shuffle:
-    - Apologize for pretending to be anything else. #36
-    - Thank me for seeing the real you. #37
-    - Grovel at my feet! #38
+    -/perform react_point_at_player_angry disgusted 75
+    Apologize for pretending to be anything else. #36
+
+    -/perform talk_behold amused 65
+    Thank me for seeing the real you. #37
+
+    -/perform idle_unhappy_stomp angry 65
+    Grovel at my feet! #38
 }
-    
-/perform do_point_down
+
+
 { shuffle:
-    - Kiss the ground I walk on. #39
-    - Cheek on the floor. #40
-    - Lick the ground! #41
+    -/perform do_point_down angry 75
+    Kiss the ground I walk on. #39
+
+    -/perform talk_threaten disgusted 65
+    Cheek on the floor. #40
+
+    -/perform react_point_at_player_angry angry 70
+    Lick the ground! #41
 }
 
-TODO: does this pose need to be renamed to :grovel, but check for the same pose? This is so that the right name shows up in the journal.
 
-+ [pose:kiss_feet]
-+ [timeout] 
+/perform idle_skeptical angry 55
+
++ [pose:grovel]
++ [timeout]
      ~ addDisobey()
      -> Nega_BadJob -> grovel
-+ [distracted] -> Nega_PayAttention -> grovel
 
 - -> Nega_GoodJob ->
 ~ addObey()
 
-- /perform talk_lean_forward
+- /perform talk_emphatic_one_hand excited 65
 I'm going to make you wallow in depravity. #42
+
+/perform talk_gesture aroused 75
 You will beg for more when I'm through with you. #43
 
 - (kneel_again)
@@ -270,230 +302,103 @@ Back up on your knees. #119
 
 + [pose:kneel]
 + { tries < 2 } [timeout] -> kneel_again
-+ { tries >= 2 } [timeout] 
-     ~ addDisobey()
-     -> Nega_CheckIfInterested 
-     -> kneel_again
-+ [distracted] -> Nega_PayAttention -> kneel_again
+
++ { tries >= 2 } [timeout]
+    ~ addDisobey()
+    -> Nega_CheckIfInterested
+    -> kneel_again
+//+ [distracted] -> Nega_PayAttention -> kneel_again
 
 - -> Nega_GoodJob ->
 ~ addObey()
 
-/perform idle_tease amused 75
-Now don't you move while I get more comfortable. #44
+// /perform idle_tease amused 75
+// Now don't you move while I get more comfortable. #44
 
 {shuffle:
-   // - -> tease_sniff_crotch ->
-    //- -> tease_worship_ass ->
-   // - -> tease_kiss_feet ->
-    - -> tease_edging ->
+    - -> tease_sniff_crotch ->
+    - -> tease_worship_ass ->
+    - -> tease_kiss_feet ->
 }
 
 - -> exit
 
+
 = tease_sniff_crotch
-TODO: create 'worship_crotch' performance. Mistress sits on ground and spreads legs. Or sits on chair and spreads legs. This scene will focus on making the player feel small, little, useless and only good enough for sniffing her crotch.
-/perform worship_crotch
+
+/perform sex_chair_openlegs_wide amused 70
+
+{shuffle:
+    - Get over here and give my panties a good whiff. #01
+    - Stick that pathetic face of yours into my crotch. #02
+    And breathe in deep! #03
+    - Bring your ass over here and drink in smell of my cunt! #04
+    
+}
+
+-> Nega_GoodJob.Sex_Chair ->
+
+{shuffle:
+    - Breathe in nice and deep. #05
+    - Really suck in my smell. #19
+    - Wallow in the reek of my pussy. #20
+}
+
+-> Nega_GoodJob.Sex_Chair ->
+
+
+- (belong)
+This is where you belong, isn't it {isBoy: piggy|bitch}? #21
+
++[yes]
+    ~ addObey()
+    /emotion amused 65
+    Of course it is! #22
+
++[no]
+     ~ addDisobey()
+    -> Nega_Unhappy ->
+    /perform talk_annoyed angry 80
+    You'll learn your place soon enough. #45
+
++ [timeout] -> Nega_Timeout -> belong
+
++ [distracted] -> Nega_PayAttention -> belong
+
+- 
+{shuffle:
+    - That's all your good for. #46
+    - You're not worth anything else. #47
+    - You're only use is to amuse me. #48
+    - You're an insignificant toy for me to play with. #49
+}
+
+That's enough! #50
+
+Now get the fuck away from me. #51
+
+I'm done with you. #52
+
+-> exit
+
 
 ->->
+
 
 = tease_worship_ass
 TODO: create 'worship_ass' performance. Mistress turns around and pushes their ass out toward player. This scene will focus on humiliating the player for being an ass slut who's happy just smelling and nuzzling her ass.
 /perform worship_ass
 
+/notify title="Mistress Nega Yuki's Tease Scene" text="This is a placeholder tease scene. Returning to entry."
 ->->
+
 
 //consider putting in for Yuki instead
-= tease_kiss_body
+= tease_kiss_feet
 TODO: Player kisses her feet for a set amount of time. Dialogue will focus on mocking them for being so eager to kiss her feet.
+
+/notify title="Mistress Nega Yuki's Tease Scene" text="This is a placeholder tease scene. Returning to entry."
 ->->
 
-= tease_edging
 
-/scene attic.chair
-/music nega-reward
-/ambient off
-/character nega sex_chair_crosslegs_open amused
-/wait 2
-/perform sex_chair_crosslegs_left
-~ edged = true
-
-- (boots)
-/perform sex_chair_crosslegs_presentfoot amused
-Tell me {isBoy: dog|{isGirl: bitch|maggot}},  #45
-does the sight of my boots turn you on? #46
-
-+   [Yes]
-    Ha! You're such a skank, you know that? #47
-    
-    ++ [Yes]
-        That was a rhetorical question, dumbfuck! #48
-        // /perform head_toss_chair
-        -> after_observe_boots
-            
-    ++ [No]
-        I don't think you'll hold onto that self-esteem for very long here, slave. #49
-        -> after_observe_boots
-        
-    ++ [timeout] -> after_observe_boots
-    ++ [distracted] -> Nega_PayAttention ->
-    
-+ [No]
-    Not a foot fetishist, huh?  #50
-    That'll only make what I'm about to do to you all the more satisfying. #51
-    
-+ [timeout] -> Nega_Timeout -> after_observe_boots
-+ [distracted] -> Nega_PayAttention -> boots
-
-- (after_observe_boots)
-// /character nega sex_chair_crosslegs_left
-We're going to make sure the sight of my boots #52
-// /perform cross_leg_tease
-makes you want to cream your pants. #53
-
-{shuffle:
-    - You're going to masturbate for me until you want to cum your brains out. #54
-    - I'm going to taunt you until you can't take anymore. #55
-    - I better see you quaking with the need to {hasPenis: explode|squirt}. #56
-}
-
-When you're about to fucking burst, #57
-shake your head "no". #58
-
-- (understand)
-Got that, whore? #59
-
-+ [yes]
-    Delish! #60
-    -> start
-+ [no]
-    It's not that fucking complicated. #61
-    Do you want to edge for me or not? #62
-        
-        ++[yes]
-         'Bout fucking time. #63
-         -> start
-         
-         ++[no]
-         -> Nega_CheckIfInterested ->
-         
-+ [timeout] -> Nega_Timeout ->
-+ [distracted] -> Nega_PayAttention -> 
-
-- Shake your head "no" when you're about to cum. #64
-
-- (start)
-// /perform snap_fingers_chair
-Get going! #65
-
--> Nega_prepare_masturbate ->
-
-+[wait 2]
-
---> edging_comment ->
-
-+[wait 2]
-
-//shuffles through a variable number of comments and different duration times between each
-//comment followed by mintimes, maxtimes, minwait, maxwait
-- (edge_boots)
-
--> RandomCommentLoopWithNo(-> masturbation_comment, -> no_more, 3, 5, 2, 5) ->
-
--> Nega_GoodJob ->
-- You really are a foot whore! #66
-
-TODO: Need to add in here a question block around - are you enjoying worshiping my boots.
-
---> question
-
-- (no_more)
-{shuffle:
-    - Stop! #67
-    - Hands off! #68
-    - Stop friggen yourself, idiot! #69
-}
-
--> Nega_Insult ->
-
-You should be able to last longer than that. #70
-
-{shuffle:
-    - Better catch your goddam breath. #71
-    - Rest for a minute, worm. #72
-    - Fine. Rest. You don't deserve the pleasure of release. #73
-}
-
-+ [wait 3]
-
-- (question)
-
-{shuffle:
-    - Can you take more, my dirty little cumbucket? #74
-    - Wanna keep going? #75
-    - You want to keep frigging yourself, don't you? #76
-}   
-
-+ [yes]
-    {shuffle:
-        - Good. Then keep going. #77
-        - You're a cheeky one, aren't you! Keep going! #78
-        - Back to masturbating then, maggot! #79
-        - Quit being cheeky! Keep going!  #80
-    }
-    Don't forget to shake your head "no" when you wanna explode. #81
-    -> edge_boots
-    
-+ [no]
-    I think you're lying. #82
-    I think you want a lot more. #83
-    Don't you? #84
-    
-        ++[yes]
-            That's just what I thought. #85
-            Too fucking bad. #86
-            You can't have it. #87
-            
-        ++[no]
-        Fine. Then consider your fucking tease over. #88
-        I'm bored now. #89
-        Leave. #90
-        -> exit
-        
-+ [timeout] -> Nega_Timeout -> question
-+ [distracted] -> Nega_PayAttention -> 
-
--
-That should keep you sufficiently horny!    #91
-Get out of here. #92
-
--> exit
-
-
-= masturbation_comment
-
-{ shuffle:
-    - -> Nega_Masturbation_Comments ->
-    - -> edging_comment ->
-    - -> Nega_Aroused ->
-    - -> Nega_GoodJob ->
-}
-
-->->
-
-= edging_comment
-
-{shuffle:
-    - Don't you take your fucking eyes off my boots.  #93
-    - Worship my boots, fuckup! #94
-    - It's a privilege just to look at my filthy boots. #95
-    - You're just worthless dirt under my feet! #96
-    - You will learn to love groveling at my feet. #97
-    - One day, these boots are going to trample such a filthy slut.  #98
-    - Your place is beneath my boots. #99
-    - One of these days, I'm gonna shove one of these boots straight up your ass. #100
-    - I know you wish you were rubbing your {hasPenis:cock|pussy} on my boot right now. #101
-}
-  
-->->  
 

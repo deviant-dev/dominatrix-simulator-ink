@@ -2,7 +2,7 @@
 
 -> select_gender_check ->
 
-~ setScene(task_scene, Yuki)
+~ setScene(task_scene, Yuki, "yuki_task_puppyplay", -> yuki_task_puppyplay)
 
 - (start)
 
@@ -15,13 +15,20 @@
 
 // Determine which puppyplay session to run
 { stopping:
-    - -> yuki_task_puppyplay_intro ->
+    - -> yuki_task_puppyplay_intro -> exit
     - -> yuki_task_puppyplay_learn.session1 ->
     - -> yuki_task_puppyplay_learn.session2 ->
     - -> yuki_task_puppyplay_learn.session3 ->
     - -> yuki_task_puppyplay_practice ->
 }
 
-+ [continue]
+- {obeyed(): 
+    ~addReward()
+    -> Yuki_Puppyplay_Reward_Earned -> 
+    
+    - else:
+    ~addPunishment()
+    -> Yuki_Puppyplay_Punishment_Earned ->
+}
 
 - -> exit

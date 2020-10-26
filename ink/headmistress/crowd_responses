@@ -1,38 +1,19 @@
 
-
-TODO: remember to move the crowd comments from the current file to the new files
 === Headmistress_CrowdComment ===
 
-// {shuffle:
-//     - /perform talk_one_finger excited 50
-//     - /perform do_arm_raise happy 50
-//     - /perform react_shrug_long skeptical 50
-//     - /perform idle_clasp_hands amused 50
-//     - /perform idle_tease aroused 50
-// }
-
-//find people to record these lines with other languages or accents
-
-/character crowd
 {shuffle:
-    - Look at how proudly the {hasPenis: cock juts out from the body|pussy glistens between the legs}. #129
-    - These performances always satisfy my hunger. #130
-    - Mmmm. {isBoy: He is|{isGirl: She is|They are}} making me so wet. #131
-    - I can hardly sit still. #132
-    - I'd gladly break that slave in.  #133
-    - I wish I was in {isBoy: his|{isGirl:her|their}} place. #134
-    - This one is going to be a favorite, to be sure. #135
-    - I hope {isBoy: he holds|{isGirl:she holds|they hold}} out for a long time.  #136
-    - I'm so hard right now. #137
-    - I want {hasPenis: that cock|those fingers} inside me. #138
-    - How do you think {isBoy:his|{isGirl:her|their}} cum tastes? #139
+    - /perform talk_one_finger excited 50
+    - /perform do_arm_raise happy 50
+    - /perform react_shrug_long skeptical 50
+    - /perform idle_clasp_hands amused 50
+    - /perform idle_tease aroused 50
 }
 
 ->->
 
 === Headmistress_Crowd_Punishment ===
 //These comments are made when the player is being punished (eg, spanked, masturbating without being allowed to orgasm).
-
+/character crowd
 {shuffle:
     - This one needs a lot of work. #01
     - I wonder what they did to deserve this. #02
@@ -52,7 +33,7 @@ TODO: remember to move the crowd comments from the current file to the new files
 
 === Headmistress_Crowd_Reward ===
 //These comments are made when the player is being rewarded (eg, being allowed to masturbate and cum, worshipping a Mistress’ feet).
-
+/character crowd
 {shuffle:
     - This one is going to be a favorite, to be sure. #01
     - I heard {isBoy:he|{isGirl:she|they}} really earned this. #02
@@ -72,6 +53,7 @@ TODO: remember to move the crowd comments from the current file to the new files
 
 === Headmistress_Crowd_General ===
 //These comments occur at anytime, but most often during task scenes (eg, being trained to position their body certain ways, cleaning sexual toys).
+/character crowd
 {shuffle:
     - She’s so good at what she does. #01
     - I just love these performances. #02
@@ -92,7 +74,7 @@ TODO: remember to move the crowd comments from the current file to the new files
 
 === Headmistress_Crowd_Embarrassed ===
 //These comments occur during reward scenes when the player has indicated they are embarassed to perform.
-
+/character crowd
 {shuffle:
     - Surely, {isBoy:he|{isGirl:she|they}} could put on more of a performance. #01
     - It’s so fun when they’re embarrassed! #02
@@ -112,7 +94,7 @@ TODO: remember to move the crowd comments from the current file to the new files
 
 === Headmistress_Crowd_Slut ===
 //These comments occur during reward scenes when the player has indicated they are excited to perform.
-
+/character crowd
 {shuffle:
     - Look at how proudly the {hasPenis: cock juts out from the body|pussy glistens between the legs}. #01
     - I hope {isBoy: he holds|{isGirl:she holds|they hold}} out for a long time. #02
@@ -132,7 +114,7 @@ TODO: remember to move the crowd comments from the current file to the new files
 
 === Headmistress_Crowd_GoodJob ===
 //This gets used whenever a player does / responds to something in a favorable way.
-
+/character crowd
 {shuffle:
     - {isBoy:He has|{isGirl:She has|They have}} potential. #01
     - Very nice. #02
@@ -154,7 +136,7 @@ TODO: remember to move the crowd comments from the current file to the new files
 
 === Headmistress_Crowd_BadJob ===
 //This gets used whenever a player does / responds to something in a displeasing way.
-
+/character crowd
 {shuffle:
     - How pathetic. #01
     - {isBoy:Is he|{isGirl:Is she|Are they}} even trying? #02

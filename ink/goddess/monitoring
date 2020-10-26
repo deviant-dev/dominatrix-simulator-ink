@@ -9,9 +9,9 @@
     - /scene Huge.InHand
     - /scene Huge.InHand
 }
-
-/character goddess talk_consider
 /music goddess
+/ambient huge-space
+/character goddess
 
 
 //acknowledging player
@@ -33,8 +33,8 @@
 
 //check for type of scene
 {
-    - reward_just_removed: -> reward_monitor
-    - punishment_just_removed: -> punishment_monitor
+    - just_changed == reward_removed: -> reward_monitor
+    - just_changed == punishment_removed: -> punishment_monitor
     - else: -> task_monitor
 }
 

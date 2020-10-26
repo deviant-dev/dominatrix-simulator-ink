@@ -1,0 +1,542 @@
+/// For actions
+=== Furia_GoodJob ===
+/character furia
+
+{ shuffle:
+
+    -/perform
+
+
+    -/perform
+
+
+    -/perform
+
+
+    -/perform
+
+
+    -/perform
+
+
+    -/perform
+
+
+    -/perform
+
+
+    // GoodJob with audience.
+    - {furia_has_audience:
+            /perform
+
+        - else:
+            -> Furia_GoodJob
+      }
+    - {furia_has_audience:
+            /perform
+
+        - else:
+            -> Furia_GoodJob
+      }
+    - {furia_has_audience:
+            /perform
+            A rousing performance. #10
+        - else:
+            -> Furia_GoodJob
+      }
+    - {furia_has_audience:
+            /perform
+            I take such joy in my role. #15
+        - else:
+            -> Furia_GoodJob
+      }
+    - {furia_has_audience:
+            /perform
+            Such a delight to behold! #16
+        - else:
+            -> Furia_GoodJob
+      }
+    - {furia_has_audience:
+            /perform
+            I am overwhelmed with satisfaction. #17
+        - else:
+            -> Furia_GoodJob
+      }
+}
+
+->->
+
+=== Furia_BadJob ===
+/character furia
+
+{ shuffle:
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+
+    // BadJob with audience
+    - {furia_has_audience:
+            /perform
+        - else:
+            -> Furia_BadJob
+      }
+    - {furia_has_audience:
+            /perform
+        - else:
+            -> Furia_BadJob
+      }
+    - {furia_has_audience:
+            /perform
+        - else:
+            -> Furia_BadJob
+      }
+    - {furia_has_audience:
+            /perform
+        - else:
+            -> Furia_BadJob
+      }
+
+}
+
+->->
+
+=== Furia_Unhappy ===
+/character furia
+
+{ shuffle:
+
+    -/perform
+
+
+    -/perform
+
+
+    -/perform
+
+
+    -/perform
+
+
+    -/perform
+
+
+}
+
+->->
+
+=== Furia_NoAction ===
+/character furia
+
+{ shuffle:
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+}
+
+->->
+
+=== Furia_Timeout ===
+/character furia
+
+{ shuffle:
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+}
+
+->->
+
+=== Furia_PayAttention ===
+{ shuffle:
+
+    -/perform
+
+    -/perform
+
+}
+
++ [pay-attention]
++ [timeout] -> Furia_PayAttention ->->
+
+/perform
+
+-
+{ shuffle:
+
+    -/perform
+
+    -/perform
+
+
+    -/perform
+
+
+    -/perform
+
+
+}
+
+->->
+//For positive responses to questions
+
+=== Furia_AcknowledgeYes ===
+/character furia
+
+{ shuffle:
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+}
+
+->->
+
+=== Furia_Resume ===
+/character furia
+
+//generic responses whenever the Furia continues dialogue after a response or action.
+
+{ shuffle:
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+}
+
+->->
+
+=== Furia_punishment_resumes ===
+/character furia
+
+//generic responses whenever the Furia returns from a break or interruption to resume a punishment
+
+{ shuffle:
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+   -/perform
+
+
+
+}
+
+->->
+
+
+
+=== Furia_GoodSpank ===
+/character furia
+
+{ shuffle:
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+}
+
+/character furia
+->->
+
+=== Furia_BadSpank ===
+~ furia_spanking_mistakes++
+/character furia
+{ shuffle:
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+}
+
+/character furia
+->->
+
+
+=== Furia_player_masturbate ===
+
+
+
+
+->->
+
+=== Furia_masturbation_punishment ===
+/character furia
+
+{ shuffle:
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+    - -> Furia_BadJob ->
+    - -> Furia_BadJob ->
+    - -> Furia_BadJob ->
+    - -> Furia_BadJob ->
+}
+
+/character furia
+->->
+
+
+=== Furia_masturbation_comments ===
+/character furia
+
+{ shuffle:
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+
+    - -> Furia_GoodJob ->
+    - -> Furia_GoodJob ->
+    - -> Furia_GoodJob ->
+    - -> Furia_GoodJob ->
+}
+
+/perform idle_clasp_hands amused 55
+->->
+
+=== Furia_CheckIfInterested ===
+
+{checked_if_interested: -> check_terse}
+
+~ checked_if_interested = true
+
+{
+    - scene_type == punishment_scene:
+    /perform
+        {shuffle:
+            -/perform
+
+
+            -/perform
+
+        }
+
+    - scene_type == reward_scene:
+    /perform
+        {shuffle:
+          -/perform
+
+          -/perform
+
+        }
+
+    - else:
+    /perform
+
+        {shuffle:
+          -/perform
+
+          -/perform
+
+        }
+}
+
+
+
+- (check_again)
+
+/perform idle
+
++ [yes] -> check_yes
++ [no]
++ [timeout] -> check_terse
+
+- (check_terse)
+
+{
+    - scene_type == punishment_scene:
+    /perform
+        {shuffle:
+          -/perform
+
+
+          -/perform
+
+        }
+
+    - scene_type == reward_scene:
+    /perform talk_behold
+        {shuffle:
+          -/perform
+
+
+          -/perform
+
+        }
+
+    - else:
+    /perform idle_cocks_head_to_left
+    I have no patience for fools. A punishment will be yours! #16
+        {shuffle:
+          -/perform
+
+
+          -/perform
+
+        }
+}
+
++ [yes] -> check_yes
++ [no]
+
+- /perform
+
+-> out_
+
+- (check_yes) -> Furia_AcknowledgeYes ->
+/perform
+{shuffle:
+  -/perform
+
+
+  -/perform
+
+
+  -/perform
+
+}
+
+->->
+
+
+= out_
+
+/character furia
+
+-> exit

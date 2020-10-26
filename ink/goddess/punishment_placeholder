@@ -1,0 +1,22 @@
+=== goddess_punishment_placeholder ===
+-> select_gender_check ->
+~ setScene(punishment_scene, Goddess, "goddess_punishment_placeholder", -> goddess_punishment_placeholder)
+/scene bedroom.hub
+/music goddess
+/ambient none
+/character goddess
+
+/notify title="The Goddess' Punishment Check" text="This is a placeholder punishment. Do you accept your punishment?"
+
++ [yes]
++ [no]
+    << Don't waste my time, then. >>
+    << Leave. >>
+    /wait
+    -> exit
+
+- ~removePunishment()
+/notify title="The Goddess' Punishment Result" text="You have been punished. One obsidian removed.<br/> Returning to the entry."
+
+- /wait 5
+-> exit

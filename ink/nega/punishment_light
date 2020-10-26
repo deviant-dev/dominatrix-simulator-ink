@@ -18,7 +18,7 @@ Get down on all fours like the dog you are, maggot!
 --> Nega_GoodJob ->
 
 - (kiss_feet)
-/perform do_present_foot
+/perform idle_present_foot
 Come here and kiss my boot, worm!
 
 + [pose:kiss_feet]

@@ -1,8 +1,0 @@
-=== goddess_reward_huge ===
-~ setScene(reward_scene, Goddess)
-
-<<< Insert huge reward here. >>>
-
-~ removeBigReward()
-
-->->

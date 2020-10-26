@@ -1,9 +1,9 @@
 === yuki_task_fanning ===
 
-~ setScene(task_scene, Yuki)
+~ setScene(task_scene, Yuki, "yuki_task_fanning", -> yuki_task_fanning)
 
-<<< Insert fanning task here. >>>
-<<< Let's pretend you've been bad and good. >>>
+<< Insert fanning task here. >>
+<< Let's pretend you've been bad and good. >>
 ~ addPunishment()
 ~ addReward()
 

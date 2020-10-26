@@ -1,10 +1,12 @@
 === game_intro ===
 
 ~ tutorial_step = at_game_intro
-~ setScene(intro_scene, None)
+~ setScene(intro_scene, None, "game_intro", -> game_intro)
+~ save(-> game_intro)
 
 /scene EntryDark.TitleScreen
 /music entry
+/ambient none
 
 + [wait:6] -> verify_age
 
@@ -19,7 +21,7 @@
 = instructions
 
 /scene EntryDark.Instructions
-/character DevilGirl
+/character Treat
 /music entry
 
 /perform do_walk_up amused 50
@@ -28,32 +30,26 @@
 
 Hello. #01
 
++ [continue]
+
 - (again)
 
 Would you like to play a little game? #02
-
-+ [yes] -> lets_play
-+ [continue]
 
 - (nod_info)
 
 /perform react_yes happy 50
 Nod your head for "yes." #03
 
-+ [yes] -> lets_play
-+ [continue]
-
-- /perform react_no
+/perform react_no
 Shake your head for "no." #04
+/perform idle
 
-+ [yes] -> lets_play
-+ [continue]
-
-- /perform idle
-
-+ [yes] -> lets_play
-+ [no]
-    TODO: add in dialogue - I'm sure you'd enjoy my little game. Let's try this again.
++ [yes!] -> lets_play
++ [no!]
+    No?! #27
+    But I'm just certain you'll enjoy it. #28
+    Let's try this again. #29
     -> again
 + [timeout] -> nod_info
 
@@ -67,10 +63,15 @@ I think you're going to like this little game I've created. #06
 /perform talk_gesture amused 50
 Just do what you're told and you'll be fine. #07
 
++ [continue]
+
+- (journal_loop)
+
 /perform idle_skeptical happy 50
 If you get stuck, I've given you a journal to guide you. #08
 /perform talk_question skeptical 50
 Give it a try. #09
+
 
 /perform idle_skeptical happy 50
 {inVR: 
@@ -79,7 +80,8 @@ Give it a try. #09
     Just hit 'E' on your keyboard. #11
 }
 
-+ [use-journal]
++ [use-journal!]
+// + [timeout:15] -> journal_loop
 
 - /action close_journal
 /perform do_arm_raise happy
@@ -127,39 +129,3 @@ Have fun! #22
 
 + [move]
     -> select_gender -> post_intro_deviation_check
-
-
-=== game_intro_web ===
-
-~ player_name = "none"
-
-<blockquote><i>Two nude statues kneel before you with outstretched hands, one male and one female. Which would you choose?</i></blockquote>
-
-- (options)
-
-
-+ {player_name != "boy"}[Touch the male statue] You touch the male statue.
-    <blockquote><i>The male statue disappears and you now have hands with thick masculine fingers. The missing statue's hands.</i></blockquote>
-    {
-        - player_name == "none": <blockquote><i>The door at the end of the hall cracks open...</i></blockquote>
-        - else: <blockquote><i>The female statue reappears.</i></blockquote>
-    }
-    ~ setGender("m")
-    -> options
-+ {player_name != "girl"}[Touch the female statue] Female
-    <blockquote><i>The female statue disappears and you now have hands with slender feminine fingers. The missing statue's hands.</i></blockquote>
-    {
-        - player_name == "none": <blockquote><i>The door at the end of the hall cracks open...</i></blockquote>
-        - else: <blockquote><i>The male statue reappears.</i></blockquote>
-    }
-    ~ setGender("f")
-    -> options
-
-+ {player_name != "none"}[Open the door.] You open the door.
-
-- <blockquote><i>You have just stepped into a darkened room with a storm thundering outside. Lighting flashes and you see a devilish figure locked in a sexual exchange with two other figures, moaning filling your ears. The lightning flashes again, filling your eyes with a new, this time, tortuous exchange. Again, it flashes, and you find those same figures in a new embrace - each scene wildly different from one another. Without warning, the storm abates, the lightning ceases, and before you stands a Goddess.</i></blockquote>
-
-<blockquote><i>She looks at you for a moment and then challenges you...</i></blockquote>
-
-+ [Introduction] -> goddess_intro
-

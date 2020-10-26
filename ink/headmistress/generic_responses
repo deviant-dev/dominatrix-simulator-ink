@@ -344,7 +344,7 @@
     -/perform react_nod_little aroused 65
     Hmm.  #04
 
-    -/perform react_nod_little aroused 65
+    -/perform idle_pleased aroused 65
     Superb. #05
 
     -/perform react_nod_little aroused 65
@@ -701,6 +701,7 @@ TODO: decide whether to keep these lines
 
     -/perform react_thankful amused 65
      /character crowd oos
+     /character headmistress
     You please our guests with your performance. #12
 
     -/perform talk_lean_forward excited 55

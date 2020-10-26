@@ -1,10 +1,10 @@
-=== devil_girl_promo ===
+=== treat_promo ===
 
-/scene FloorAndChair.DevilGirl
+/scene FloorAndChair.Treat
 /music entry
-/character DevilGirl 
+/character Treat 
 
-/perform idle_fake annoyed amused 50
+/perform idle_fake_annoyed amused 50
 Well aren't you a kinky little thing, forking over your cash to fund so much perversion. #01
 
 /perform idle_tease
@@ -31,6 +31,4 @@ After all... #08
 Good things come to those who obey. #09
 /perform do_blow_kiss aroused 100
 
-+ [yes] -> devil_girl_promo
-
-
++ [yes] -> treat_promo

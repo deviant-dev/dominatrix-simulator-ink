@@ -1,0 +1,16 @@
+=== pragma_intro ===
+~ setScene(intro_scene, Pragma, "pragma_intro", -> pragma_intro)
+/scene PragmasRoom.Hub
+/music pragma
+/ambient pragma
+/character pragma
+
+-/notify title="The Divine Engine Pragma's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Dehumanization<br/>Mind Games<br/>Fucking Machines"
+
++ [move]
+
+-/notify title="The Divine Engine Pragma's Intro Completed." text="Returning to the entry."
+
+/wait 5
+~ pragma_intro_complete = true
+-> exit

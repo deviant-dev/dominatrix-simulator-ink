@@ -1,8 +1,4 @@
 
-
-
-
-
 // Player Variables
 VAR isBoy = true
 VAR isGirl = false
@@ -11,21 +7,18 @@ VAR player_name = "none"
 VAR rewards = 0
 VAR punishments = 0
 VAR inTutorial = true
-
-// Set by StoryTeller when player restarts
-VAR hasRestarted = false
-
-// Tracks whether the player has ever gotten to the end credits
-VAR cherryPopped = false
+VAR load_path = -> game_start
+VAR inChastity = false
 
 // Kink Lessons
 VAR has_learned_spanking = false
 
 // Lists
-LIST deviation = full_game, tutorial, demo, puppyplay, hand_signals, exhibitionism, devilgirl, nega_dice
+LIST deviation = full_game, tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma
 LIST move_status = hidden = 0, locked, unlocked, early_access, under_construction
-LIST scene_type = hub_scene, intro_scene, punishment_scene, reward_scene, task_scene
-LIST current_mistress = (None), Goddess, Headmistress, Yuki, Nega
+LIST scene_type = hub_scene, intro_scene, punishment_scene, reward_scene, task_scene, session_scene
+LIST current_mistress = (None), Goddess, Headmistress, Yuki, Nega, Treat, Pragma, Angel, Furia, Caliste
+LIST just_changed = (none), reward_added, reward_removed, punishment_added, punishment_removed
 
 // Tutorial Progress
 LIST tutorial_step = (at_game_intro), at_goddess_intro, at_yuki_intro, at_hm_intro, at_nega_intro, at_hm_bonus, at_goddess_outro
@@ -38,6 +31,7 @@ VAR hm_shortcut = false
 VAR goddess_angry_shortcut = false
 VAR goddess_pleased_shortcut = false
 VAR hm_bonus_shortcut = false
+VAR main_entry_shortcut = false
 
 // Achievement Tracking
 VAR tutorial_goddess_intro_complete = false
@@ -53,14 +47,25 @@ VAR tutorial_goddess_outro_angry_complete = false
 VAR tutorial_goddess_outro_happy_complete = false
 
 
+// Save Variable
+VAR profile_total_time = 0.0
+VAR profile_load_time = 0.0
+VAR profile_save_time = 0.0
+VAR profile_scene_count = 0
+VAR scene_name = "none"
+
+
+// Holidays
+VAR isHalloween = false
+VAR isThanksgiving = false
+VAR isXmas = false
+
 // Scene Variables
 VAR checked_if_interested = false
 VAR obey = 0
 VAR disobey = 0
 
 // Temp Variables
-VAR reward_just_removed = false
-VAR punishment_just_removed = false
 VAR tries = 0
 VAR task_count = 0
 VAR task_attempts = 0
@@ -84,8 +89,50 @@ VAR headmistress_masturbated_for_crowd = false
 
 // Nega Variables
 VAR nega_regard = 0
+VAR nega_die_1 = 0
+VAR nega_die_2 = 0
+VAR nega_die_3 = 0
 
 // Yuki Variables
 VAR yuki_regard = 0
 VAR yuki_puppy_difficulty = 1
+
+// Pragma Variables
+VAR pragma_intro_complete = false
+VAR pragma_regard = 0
+
+// Ms Treatment Variables
+VAR treat_intro_complete = false
+VAR treat_regard = 0
+
+// Angelica Variables
+VAR angel_intro_complete = false
+VAR angel_regard = 0
+
+// Sergeant Furia Variables
+VAR furia_intro_complete = false
+VAR furia_regard = 0
+
+// Priestess Caliste Variables
+VAR caliste_intro_complete = false
+VAR caliste_regard = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

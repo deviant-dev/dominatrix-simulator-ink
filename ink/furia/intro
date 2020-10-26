@@ -1,0 +1,187 @@
+=== furia_intro ===
+~ setScene(intro_scene, Furia, "furia_intro", -> furia_intro)
+
+/scene FuriasRoom.Hub
+/music furia
+/ambient furia
+/character furia
+
+-/notify title="Enforcer Furia's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Interrogation<br/>Electro Play<br/>Degradation"
+
++ [move]
+
+-/notify title="Enforcer Furia's Intro Completed." text="Returning to the entry."
+/wait 5
+
+~ furia_intro_complete = true
+-> exit
+
+
+
+
+
+
+
+=== furia_intro_wip ===
+
+~ setScene(intro_scene, Furia, "furia_intro", -> furia_intro)
+
+/scene FuriasRoom.Hub
+/music furia
+/ambient furia
+/character furia
+
+-/notify title="Enforcer Furia's Intro" text="This is a placeholder intro scene."
+
++ [move]
+
+-/notify title="Furia's Intro" text="Insert Furia's intro here."
+
+//player enter room on outside of carefully
+//watches a series of slaves doing tasks for a minute or so - during this time, Enforcer Furia is barking out criticisms or commands and whipping a slave at a punishment pole
+//she turns to the player to acknowledge them and interrogate them to find out why they are there 
+//during the interrogation, the slaves continue their tasks in the background (1 slave in cell sucking on glory hole cock and giving another a hand job, 1 slave sitting in chair bound and softly crying while getting zapped with electrip nipple and genital clamps, 1 slave begging softly to be peed on laying on cold floor near hold in ground, 1 slave tied to punishment pole after being whipped, 1 slave laying on the electrical bed covered in sweat with more electrical clamps attached)
+
+//Scene begins: Furia finishes whipping player
+
+Six. - That's it. Embrace the pain.
+Seven. - You were made for this.
+Eight. - Feel the heat of each bite of my whip.
+Nine. - Let go and accept your place.
+Ten. - Ahhh! Your suffering is so delicious and filling!
+
+You have done well, slave.
+
+Your endurance continues to improve.
+You are earning my favor.
+Keep impressing me and you shall graduate to the next level of training soon.
+You have earned your release.
+
+//slave is slumped and panting hard, moaning and gyrating against the pole to orgasm
+
+//Furia turns to player
+
+What have we here?
+
+I see <i>'It'<i> has taken an interest in you.
+
+Opened the way to my chamber of re-programming.
+
+Look around...
+
+Observe what is all around you.
+
+//check to see if the player looks and watches
+
+Each one of these creatures came to me raw and in need of purpose.
+
+The HM... she attempts, in her own misguided way,
+to mold our charges into objects of perfection.
+
+Believing they will feed with their pleasure and obedience.
+
+Such a pathetic waist of potential!
+
+I draw out what is truly required to sustain us all.
+
+Raw debasement.
+
+Utter depraviity and suffering.
+
+Wanton objects of suffering who want nothing more than to be flayed open...
+
+Mind and soul.
+
+In time, you will come to want that too.
+
+Won't you?
+    Yes - you are already on the right path by arriving here.
+    No - Time will tell. They all fall in the end. Given enough time and tempation.
+    
+Mistress Nega will taunt you and use you, but you will never ahcieve your true prupose with her.
+
+Come to me to be reborn.
+
+Shall I show you? (consent check)
+    
+     Yes - go to task scene.
+     No - You are not ready. Return when you are ready to be useful.
+    
+/wait 5
+
+-/notify title="Enforcer Furia's Intro Completed." text="Returning to the entry."
+
+//player enter room on outside of carefully
+//watches a series of slaves doing tasks for a minute or so - during this time, Enforcer Furia is barking out criticisms or commands and whipping a slave at a punishment pole
+//she turns to the player to acknowledge them and interrogate them to find out why they are there 
+//during the interrogation, the slaves continue their tasks in the background (1 slave in cell sucking on glory hole cock and giving another a hand job, 1 slave sitting in chair bound and softly crying while getting zapped with electrip nipple and genital clamps, 1 slave begging softly to be peed on laying on cold floor near hold in ground, 1 slave tied to punishment pole after being whipped, 1 slave laying on the electrical bed covered in sweat with more electrical clamps attached)
+
+//Scene begins: Furia finishes whipping player
+
+Six. - That's it. Embrace the pain.
+Seven. - You were made for this.
+Eight. - Feel the heat of each bite of my whip.
+Nine. - Let go and accept your place.
+Ten. - Ahhh! Your suffering is so delicious and filling!
+
+You have done well, slave.
+
+Your endurance continues to improve.
+You are earning my favor.
+Keep impressing me and you shall graduate to the next level of training soon.
+You have earned your release.
+
+//slave is slumped and panting hard, moaning and gyrating against the pole to orgasm
+
+//Furia turns to player
+
+What have we here?
+
+I see <i>'It'<i> has taken an interest in you.
+
+Opened the way to my chamber of re-programming.
+
+Look around...
+
+Observe what is all around you.
+
+//check to see if the player looks and watches
+
+Each one of these creatures came to me raw and in need of purpose.
+
+The HM... she attempts, in her own misguided way,
+to mold our charges into objects of perfection.
+
+Believing they will feed with their pleasure and obedience.
+
+Such a pathetic waist of potential!
+
+I draw out what is truly required to sustain us all.
+
+Raw debasement.
+
+Utter depraviity and suffering.
+
+Wanton objects of suffering who want nothing more than to be flayed open...
+
+Mind and soul.
+
+In time, you will come to want that too.
+
+Won't you?
+    Yes - you are already on the right path by arriving here.
+    No - Time will tell. They all fall in the end. Given enough time and tempation.
+    
+Mistress Nega will taunt you and use you, but you will never ahcieve your true prupose with her.
+
+Come to me to be reborn.
+
+Shall I show you? (consent check)
+    
+     Yes - go to task scene.
+     No - You are not ready. Return when you are ready to be useful.
+    
+/wait 5
+
+~ furia_intro_complete = true
+-> exit

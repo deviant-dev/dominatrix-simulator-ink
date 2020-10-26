@@ -4,18 +4,23 @@
 INCLUDE debug
 INCLUDE vars
 INCLUDE code
-INCLUDE access_code
+INCLUDE web
 INCLUDE game_intro
 INCLUDE game_outro
 INCLUDE entry_hub
 INCLUDE general/bad_touch
+
 INCLUDE goddess/hub
 INCLUDE goddess/intro
 INCLUDE goddess/lore
 INCLUDE goddess/generic_responses
 INCLUDE goddess/monitoring
 INCLUDE goddess/monitoring_intro
-INCLUDE goddess/reward_huge
+INCLUDE goddess/task_placeholder
+INCLUDE goddess/punishment_placeholder
+INCLUDE goddess/reward_placeholder
+INCLUDE goddess/rewardmega_giantess
+
 INCLUDE headmistress/hub
 INCLUDE headmistress/code
 INCLUDE headmistress/intro
@@ -30,10 +35,12 @@ INCLUDE headmistress/punishment_spanking
 INCLUDE headmistress/train_spanking
 // INCLUDE headmistress/reward_cunnilingus
 INCLUDE headmistress/reward_exhibitionism
+INCLUDE headmistress/rewardmega_placeholder
 // INCLUDE headmistress/reward_spanking
 // INCLUDE headmistress/task_flogging
 // INCLUDE headmistress/task_handsignals_endurance
 // INCLUDE headmistress/task_handsignals_furniture
+
 INCLUDE nega/hub
 INCLUDE nega/intro
 INCLUDE nega/lore
@@ -47,6 +54,45 @@ INCLUDE nega/punishment_boot_lick
 INCLUDE nega/punishment_camera_shoot
 INCLUDE nega/punishment_genital_torture
 // INCLUDE nega/punishment_trampling
+
+INCLUDE pragma/hub
+INCLUDE pragma/intro
+INCLUDE pragma/task_placeholder
+INCLUDE pragma/punishment_placeholder
+INCLUDE pragma/reward_placeholder
+INCLUDE pragma/rewardmega_placeholder
+
+INCLUDE angel/hub
+INCLUDE angel/intro
+INCLUDE angel/task_placeholder
+INCLUDE angel/punishment_placeholder
+INCLUDE angel/reward_placeholder
+INCLUDE angel/rewardmega_placeholder
+
+INCLUDE furia/hub
+INCLUDE furia/intro
+INCLUDE furia/task_placeholder
+INCLUDE furia/punishment_placeholder
+INCLUDE furia/reward_placeholder
+INCLUDE furia/rewardmega_placeholder
+
+INCLUDE caliste/hub
+INCLUDE caliste/intro
+INCLUDE caliste/task_placeholder
+INCLUDE caliste/punishment_placeholder
+INCLUDE caliste/reward_placeholder
+INCLUDE caliste/rewardmega_placeholder
+
+INCLUDE treat/hub
+INCLUDE treat/intro
+INCLUDE treat/session_placeholder
+INCLUDE treat/task_placeholder
+INCLUDE treat/punishment_placeholder
+INCLUDE treat/reward_placeholder
+INCLUDE treat/rewardmega_placeholder
+
+INCLUDE treat/promo
+INCLUDE treat/care
 
 INCLUDE yuki/hub
 INCLUDE yuki/code
@@ -66,25 +112,15 @@ INCLUDE yuki/punishment_puppyplay_spanking
 // INCLUDE yuki/reward_massage
 INCLUDE yuki/reward_puppyplay_milking
 // INCLUDE yuki/reward_puppyplay_lickfeet
-// INCLUDE yuki/task_fanning
-
+INCLUDE yuki/rewardmega_placeholder
+INCLUDE yuki/task_fanning
 // INCLUDE yuki/task_teaservice
 INCLUDE yuki/train_spanking
-INCLUDE devil_girl/promo
-INCLUDE devil_girl/care
+//INCLUDE furia/task_gloryhole_training
 
 
 
 
-
-
-
-
-
-// EXTERNAL isDebug()
-// EXTERNAL isWeb()
-// EXTERNAL getCode()
-// EXTERNAL getCodeUrl()
 // EXTERNAL getNegaDie1()
 // EXTERNAL getNegaDie2()
 // EXTERNAL getNegaDie3()
@@ -100,8 +136,12 @@ VAR inVR = false
 -> set_deviation ->
 
 // Debug Jump
-// (must be in-editor and have 'Debug' checked in StoryTeller)
-{ isDebug(): -> Debug -> }
+// (must be in-editor and have 'Debug' checked on Settings object)
+{ debug:
+    /log Entering ink debug.
+    -> Debug ->
+    /log Exiting ink debug.
+}
 
 -> game_start
 
@@ -109,24 +149,21 @@ VAR inVR = false
 === set_deviation ===
 // Redirects the story flow to focus on a specific kink or game mode
 
-// ~ setDeviation(full_game)
-~ setDeviation(tutorial)
+ ~ setDeviation(full_game)
+// ~ setDeviation(tutorial)
 // ~ setDeviation(demo)
 // ~ setDeviation(hand_signals)
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(exhibitionism)
-// ~ setDeviation(devilgirl)
+// ~ setDeviation(treat)
 // ~ setDeviation(nega_dice)
+// ~ setDeviation(pragma)
 ->->
 
 
 === game_start ===
 
-{ isWeb(): -> table_of_contents }
-
-// Make sure deviation is set in case the story state was reset
-// via 'RestartStory()' in StoryTeller.
--> set_deviation ->
+{ web: -> table_of_contents }
 
 // -> exit has the logic for module starting locations
 {
@@ -134,18 +171,32 @@ VAR inVR = false
         -> yuki_hub
     - deviation == hand_signals:
         -> headmistress_hub
-    - deviation == devilgirl:
-        -> devil_girl_care
+    - deviation == treat:
+        -> treat_care
     - deviation == nega_dice:
-        -> nega_reward_forcedsex
+        -> nega_hub
+    - deviation == pragma:
+        -> pragma_hub
+    - inTutorial == false:
+        -> entry_hub
     - else:
         -> game_intro
 }
 
 
+=== game_restart ===
+// Make sure deviation is set in case the story state was reset
+// via 'RestartStory()' in StoryTeller.
+-> set_deviation -> game_start
+
+
+=== load_game ===
+-> load_path
+
+
 // For deviations that start after the main game intro's gender check.
 === post_intro_deviation_check ===
-{ 
+{
     - deviation == puppyplay:
         -> yuki_hub
     - deviation == hand_signals:
@@ -158,7 +209,12 @@ VAR inVR = false
 
 
 === exit ===
-// {isWeb(): -> table_of_contents}
+/scene None
+
+// {web: -> table_of_contents}
+{just_changed != none:
+    ~ profile_scene_count++
+}
 
 {
     - deviation == hand_signals:
@@ -170,19 +226,21 @@ VAR inVR = false
     - deviation == puppyplay:
         /scene none
         -> yuki_hub
-    - deviation == tutorial:
-        -> pause(3) ->
-        -> entry_hub
     - deviation == demo:
         -> pause(3) ->
         -> game_outro
-    - deviation == devilgirl:
-        -> devil_girl_care
+    - deviation == treat:
+        -> treat_care
     - deviation == nega_dice:
-        -> nega_reward_forcedsex
+        -> nega_hub
+    - deviation == pragma:
+        -> pragma_hub
 }
 
-{inTutorial:
+-> pause(3) ->
+
+{inTutorial or current_mistress == Goddess or just_changed == none:
+    /log Skipping monitoring
     -> entry_hub
 - else:
     {shuffle:
@@ -194,48 +252,3 @@ VAR inVR = false
         - -> entry_hub
     }
 }
-
-
-=== table_of_contents ===
-
-+ <b>DomSim: Threshold</b>
-    ~ setDeviation(tutorial)
-    -> game_intro_web
-
-+ <b>DomSim: Threshold Demo</b>
-    ~ setDeviation(demo)
-    -> game_intro_web
-
-+ Headmistress Punishment - Spanking
-    ~  unlockAll()
-    -> headmistress_punishment_spanking
-
-+ Headmistress Task - Hand Signals
-    ~ setDeviation(hand_signals)
-    ~  unlockAll()
-    -> headmistress_task_handsignals
-
-+ Headmistress Reward - Exhibitionism
-    ~ setDeviation(exhibitionism)
-    ~ rewards = 1
-    ~  unlockAll()
-    -> headmistress_reward_exhibitionism
-
-+ Nega Reward - Forced Sex
-    ~  unlockAll()
-    -> nega_reward_forcedsex
-
-+ Nega Reward - Tease
-    ~  unlockAll()
-    -> nega_reward_tease
-
-+ Yuki Punishment - Puppy Play Spanking
-    ~ setDeviation(puppyplay)
-    ~  unlockAll()
-    -> yuki_punishment_puppyplay_spanking
-
-+ Yuki Task - Puppy Play
-    ~ setDeviation(puppyplay)
-    ~  unlockAll()
-    -> yuki_task_puppyplay
- 

@@ -1,0 +1,24 @@
+=== goddess_task_placeholder ===
+-> select_gender_check ->
+~ setScene(task_scene, Goddess, "goddess_task_placeholder", -> goddess_task_placeholder)
+/scene bedroom.hub
+/music goddess
+/ambient none
+/character goddess
+
+/notify title="The Goddess' Task Check" text="This is a placeholder task check. Do you want to do the task?"
+
++ [yes]
++ [no] -> exit
+
+- /notify title="The Goddess' Task Test" text="This is a placeholder task scene. Do you complete your task?"
+
++ [yes]
+    ~addReward()
+    /notify title="The Goddess' Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
++ [no]
+    ~addPunishment()
+    /notify title="The Goddess' Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+
+- /wait 5
+-> exit

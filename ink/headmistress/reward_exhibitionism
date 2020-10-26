@@ -1,8 +1,9 @@
 VAR embarassed = false
 
 === headmistress_reward_exhibitionism ===
+-> select_gender_check ->
 
-~ setScene(reward_scene, Headmistress)
+~ setScene(reward_scene, Headmistress, "headmistress_reward_exhibitionism", -> headmistress_reward_exhibitionism)
 /scene TheatreOpen.Ready
 /music headmistress
 /ambient crowd
@@ -84,7 +85,7 @@ Do you tremble with nervous embarassment, foible? #20
     
     /character headmistress idle neutral
     Nevertheless. This is your reward. #22
-    -- (continue)
+    -- (continue_consent)
     /perform talk_question scared 30
     Do you desire to continue thusly? #23
 
@@ -109,8 +110,8 @@ Do you tremble with nervous embarassment, foible? #20
         Keep your reward and return when you are ready. #29
         -> exit
 
-    ++ [timeout] -> Headmistress_Timeout -> continue
-    ++ [distracted] -> Headmistress_PayAttention -> continue
+    ++ [timeout] -> Headmistress_Timeout -> continue_consent
+    ++ [distracted] -> Headmistress_PayAttention -> continue_consent
     
 + [no]
     /perform do_smooth_skirt angry 50
@@ -140,8 +141,8 @@ Do you tremble with nervous embarassment, foible? #20
         Keep your reward and return when you are ready. #29
         -> exit
 
-    ++ [timeout] -> Headmistress_Timeout -> continue
-    ++ [distracted] -> Headmistress_PayAttention -> continue
+    ++ [timeout] -> Headmistress_Timeout -> continue_consent
+    ++ [distracted] -> Headmistress_PayAttention -> continue_consent
 
 + [timeout] -> Headmistress_Timeout -> nervous_consent_check
 + [distracted] -> Headmistress_PayAttention -> nervous_consent_check
@@ -174,7 +175,14 @@ Do you tremble with nervous embarassment, foible? #20
     
 + [timeout] -> Headmistress_Timeout -> nervous_tease
 + [distracted] -> Headmistress_PayAttention -> nervous_tease
- 
+
+
+= load_gave_reward
+/scene TheatreOpen.Ready
+/music headmistress
+/ambient crowd
+-> prepare
+
 
 = prepare
 
@@ -330,14 +338,13 @@ Are you ready, {isBoy: toad|strumpet}? #62
 
 - /perform do_swipe_hand happy 50
 -> Headmistress_AcknowledgeYes->
-~ removeReward()
-
+~ removeReward(-> load_gave_reward)
 --> prepare
 
 
 = begin
 
-- /notify title="<color=red>Pro Tip!</color>" text="Early Access: Currently, this scene is meant for you to perform **IRL** (in real life)! <br><br>Future: An in-game masturbation scene is coming soon!!<br><br>"Nod" YES to continue?"</br> #note01
+- /notify title="<color=red>Pro Tip!</color>" text="Early Access: Currently, this scene is meant for you to perform <b>in real life</b>! <br><br>Future: An in-game masturbation scene is coming soon!!<br><br>Understood?" #note01
 
 + [yes]
 
@@ -587,7 +594,7 @@ I give you leave to depart. #87
                 Then I give you leave to depart, foible. #103
                 /perform talk_one_finger
                 One reward has been deducted from your wrist. #104
-                ~removeReward()
+                ~removeReward(-> entry_hub)
                 -> exit
             
 + [timeout] -> Headmistress_Timeout -> keep_going
@@ -648,19 +655,22 @@ Does it feel good to be put on display, foible? #109
 -->->
 
 = masturbation_comment
-//need to make it so the code will use either slut or embarassment comments, depending on the variable. 
+
+TODO: replace Headmistress crowdcomment (obsolete) with general
 
 {embarassed:
     { shuffle:
         - -> Headmistress_masturbation_comments ->
         - -> embarassment_comment ->
-        - -> Headmistress_CrowdComment ->
+        - -> Headmistress_Crowd_Embarrassed ->
+        - -> Headmistress_Crowd_General ->
     }
     - else:
     { shuffle:
         - -> Headmistress_masturbation_comments ->
         - -> slut_comment ->
-        - -> Headmistress_CrowdComment  ->
+        - -> Headmistress_Crowd_Slut  ->
+        - -> Headmistress_Crowd_General ->
     }
 }
 

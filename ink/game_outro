@@ -1,9 +1,10 @@
 === game_outro ===
-/scene none
+~ punishments = 0
+~ rewards = 0
+~ inTutorial = false
+~ main_entry_shortcut = true
 
-/log Cherry popped! Setting variable which should restart at shortcuts.
-~ cherryPopped = true
-~ hasRestarted = true
+/scene none
 
 // Wait a beat for the transition.
 + [wait:2]
@@ -11,7 +12,7 @@
 - /music entry
 /ambient rain
 /scene EntryDark.EndScreen
-/character DevilGirl 
+/character Treat 
 
 /perform idle_pleased amused
 
@@ -96,8 +97,11 @@ How disappointing. Tell me what went wrong. #20
 
 = credits
 
-/character DevilGirl idle_skeptical aroused
+/character Treat idle_skeptical aroused
 I hope I see you again soon. #19
+
+-> continue ->
+
 /perform do_stand_to_right
 
 + [move:Credits] -> credits_end
@@ -112,9 +116,5 @@ I hope I see you again soon. #19
 
 /scene EntryDark.EndScreen2
 
-+ [restart]
-    ~ inTutorial = true
-    ~ tutorial_step = at_game_intro
-    ~ hasRestarted = true
-    -> game_intro
++ [button-continue] -> entry_hub
 

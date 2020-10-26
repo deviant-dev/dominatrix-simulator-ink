@@ -6,6 +6,9 @@
 - ->->
 
 
+=== continue ===
++ [continue] ->->
+
 
 === function unlockShortcuts() ===
 /log Unlocking shortcuts.
@@ -16,6 +19,7 @@
 ~ goddess_angry_shortcut = true
 ~ hm_bonus_shortcut = true
 ~ goddess_pleased_shortcut = true
+~ main_entry_shortcut = true
 ~ return
 
 === function unlockAll() ===
@@ -23,16 +27,6 @@
 ~ inTutorial = false
 ~ unlockShortcuts()
 ~ return
-
-
-// Fallback for isWeb() external function
-=== function isWeb() ===
-~ return web
-
-
-// Fallback for isDebug() external function
-=== function isDebug() ===
-~ return debug
 
 
 === select_gender_check ===
@@ -64,6 +58,14 @@
 === function hasChosen() ===
 ~ return player_name != "none"
 
+=== function save(-> load) ===
+~ setLoadPath(load)
+{not debug:
+    /save
+}
+
+=== function setLoadPath(-> path) ===
+~ load_path = path
 
 === function setGender(gender) ===
 {
@@ -88,17 +90,21 @@
 
 
 === function addPunishment() ===
+~ return addPunishmentWithPath(-> entry_hub)
+
+
+=== function addPunishmentWithPath(-> path)
 { punishments >= 10:
     /logError Can't add a punishment. Already at 10.
     ~ return false
 }
 
 ~ punishments++
-~ reward_just_removed = false
-~ punishment_just_removed = false
-~ changeRegard(-1)
+~ just_changed = punishment_added
+~ decreaseRegard()
+~ save(path)
 
-{isWeb():
+{web:
     <b>Punishment Added</b>
 	<i>{getSummaryText()}</i>
 - else:
@@ -115,10 +121,11 @@
 }
 
 ~ punishments--
-~ reward_just_removed = true
-~ punishment_just_removed = false
+~ just_changed = punishment_removed
+~ increaseRegard()
+~ save(-> entry_hub)
 
-{isWeb():
+{web:
     <b>Punishment Removed</b>
 	<i>{getSummaryText()}</i>
 - else:
@@ -135,10 +142,11 @@
 }
 
 ~ punishments -= 10
-~ reward_just_removed = false
-~ punishment_just_removed = false
+~ just_changed = punishment_removed
+~ increaseRegard()
+~ save(-> entry_hub)
 
-{isWeb():
+{web:
     <b>Punishment x10 Removed</b>
 	<i>{getSummaryText()}</i>
 - else:
@@ -149,17 +157,20 @@
 
 
 === function addReward() ===
+~ return addRewardWithPath(-> entry_hub)
+
+=== function addRewardWithPath(-> load) ===
 { rewards >= 10:
     /logError Can't add a reward. Already at 10.
     ~ return false
 }
 
 ~ rewards++
-~ reward_just_removed = false
-~ punishment_just_removed = false
-~ changeRegard(1)
+~ just_changed = reward_added
+~ increaseRegard()
+~ save(load)
 
-{isWeb():
+{web:
     <b>Reward Added</b>
 	<i>{getSummaryText()}</i>
 - else:
@@ -169,17 +180,18 @@
 ~ return
 
 
-=== function removeReward() ===
+=== function removeReward(-> load) ===
 { rewards <= 0:
     /logError Can't remove a reward. Already at 0.
     ~ return false
 }
 
 ~ rewards--
-~ punishment_just_removed = true
-~ reward_just_removed = false
+~ just_changed = reward_removed
+~ increaseRegard()
+~ save(load)
 
-{isWeb():
+{web:
     <b>Reward Removed</b>
 	<i>{getSummaryText()}</i>
 - else:
@@ -189,17 +201,18 @@
 ~ return true
 
 
-=== function removeBigReward() ===
+=== function removeBigReward(-> load) ===
 { rewards < 10:
     /logError Can't remove 10 rewards. Not at 10.
     ~ return false
 }
 
 ~ rewards -= 10
-~ punishment_just_removed = true
-~ reward_just_removed = false
+~just_changed = reward_removed
+~ increaseRegard()
+~ save(load)
 
-{isWeb():
+{web:
     <b>Reward x10 Removed</b>
 	<i>{getSummaryText()}</i>
 - else:
@@ -234,6 +247,16 @@
         ~ nega_regard += amount
     - mistress == Yuki:
         ~ yuki_regard += amount
+    - mistress == Pragma:
+        ~ pragma_regard += amount
+    - mistress == Angel:
+        ~ angel_regard += amount
+    - mistress == Caliste:
+        ~ caliste_regard += amount
+    - mistress == Furia:
+        ~ furia_regard += amount
+    - mistress == Treat:
+        ~ treat_regard += amount
     - else:
         /logError Can't change {mistress}'s regard.
 }
@@ -286,13 +309,14 @@
 ~ return
 
 
-=== function setHub(mistress) ===
-~ setScene(hub_scene, mistress)
+=== function setHub(mistress, name, -> load) ===
+~ setScene(hub_scene, mistress, name, load)
 
 
-=== function setScene(type, mistress) ===
+=== function setScene(type, mistress, name, -> load) ===
 ~ current_mistress = mistress
 ~ scene_type = type
+~ scene_name = name
 ~ checked_if_interested = false
 ~ resetObeyed()
 
@@ -302,12 +326,14 @@
     - ~ mistressName = "Entry"
 }
 
-{isWeb():
+{web:
     <b>{mistressName} {type}</b>
 	<i>{getSummaryText()}</i>
 - else:
-    /log {mistressName} {type} / {getSummaryText()}
+    /log Scene: {name} / {getSummaryText()}
 }
+
+~ save(load)
 
 === function getSummaryText() ===
 ~ temp regardText = ""
@@ -323,17 +349,28 @@
         ~ regardText = "/ {current_mistress} Regard: {nega_regard}"
     - current_mistress == Yuki:
         ~ regardText = "/ {current_mistress} Regard: {yuki_regard}"
+    - current_mistress == Pragma:
+        ~ regardText = "/ {current_mistress} Regard: {pragma_regard}"
+    - current_mistress == Angel:
+        ~ regardText = "/ {current_mistress} Regard: {angel_regard}"
+    - current_mistress == Treat:
+        ~ regardText = "/ {current_mistress} Regard: {treat_regard}"
+    - current_mistress == Caliste:
+        ~ regardText = "/ {current_mistress} Regard: {caliste_regard}"
+    - current_mistress == Furia:
+        ~ regardText = "/ {current_mistress} Regard: {furia_regard}"
 }
 
 // Set optional deviation-specific text
-{deviation == tutorial:
-    ~ deviationText = "/ Deviation: tutorial @ {tutorial_step}"
+{(deviation == tutorial || deviation == full_game) && inTutorial:
+    ~ deviationText += "/ tutorial @ {tutorial_step}"
 }
 
 ~ return  "Punishments: {punishments} / Rewards: {rewards} {regardText} {deviationText}"
 
+
 === function obeyed() ===
-{isWeb():
+{web:
 	<i>Checking Obeyed: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}</i>
 - else:
     /log Checking Obeyed: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}
@@ -341,28 +378,30 @@
 
 ~ return obey - disobey > 0
 
+
 === function resetObeyed() ===
 ~ obey = 0
 ~ disobey = 0
 
+
 === function addObey() ===
 ~ obey++
 
-{isWeb():
+{web:
 	<i>Obey Increased: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}</i>
 - else:
     /log Obey Increased: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}
 }
 
+
 === function addDisobey() ===
 ~ disobey++
 
-{isWeb():
+{web:
 	<i>Disobey Increased: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}</i>
 - else:
     /log Disobey Increased: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}
 }
-
 
 
 === RandomCommentLoop(-> commentTunnel, minTimes, maxTimes, minWait, maxWait)
@@ -401,5 +440,16 @@
 { count < max: -> repeat | ->-> }
 
 
+=== RandomCommentLoopWithPuppyBackYes (-> commentTunnel, -> yesTunnel, minTimes, maxTimes, minWait, maxWait)
+~ temp count = 0
+~ temp max = RANDOM(minTimes, maxTimes)
+/log Comments looping {max} times.
+- (repeat)
+
+-> commentTunnel ->
++ [wait {RANDOM(minWait, maxWait)}]
++ [pose:puppy_back_yes] -> yesTunnel
+- ~ count++
+{ count < max: -> repeat | ->-> }
 
 

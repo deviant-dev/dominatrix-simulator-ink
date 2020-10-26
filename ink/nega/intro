@@ -16,11 +16,10 @@
 // Make sure we are set up as expected for Nega's intro.
 ~ rewards = 1
 ~ punishments = 0
-~ reward_just_removed = false
 ~ tutorial_step = at_nega_intro
 ~ nega_shortcut = true
 ~ temp cameFromHub = current_mistress == None
-~ setScene(intro_scene, Nega)
+~ setScene(intro_scene, Nega, "nega_intro", -> nega_intro)
 
 /scene Attic.Approach
 /music nega
@@ -32,7 +31,7 @@
 /character nega
 
 {skipChecks: -> skip}
-/log {cameFromHub}
+
 // Return to previous location if we've been here before.
 {check_reward: -> Nega_CheckIfInterested -> check_reward}
 {stand_straight: -> Nega_CheckIfInterested -> stand_straight}
@@ -40,7 +39,7 @@
 
 - (skip)
 
-{isWeb(): -> web_start | -> start}
+{web: -> web_start | -> start}
 
 
 = web_start
@@ -97,7 +96,7 @@ I bet she told you not to talk to me, didn't she? #10
     Oh sure, she'll be all sweet and attentive, #12
 
     /perform react_crazy_gesture sad 65
-    But she'll bore the shit out of you eventually. #13
+    but she'll bore the shit out of you eventually. #13
 
     /perform idle_sassy aroused 40
     Stick with me if you really want to have some fun. #14

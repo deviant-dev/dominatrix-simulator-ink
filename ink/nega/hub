@@ -13,11 +13,13 @@ VAR demerits = 0
 // If the player hasn't done the intro yet,
 // then have them go to the intro.
 
-~ setHub(Nega)
+~ setHub(Nega, "nega_hub", -> nega_hub)
 
 {inTutorial:
     -> nega_intro
 }
+
+//we don't have an attic.hub like we do with the other players
 
 /scene Attic.Approach
 /music nega2
@@ -27,28 +29,43 @@ VAR demerits = 0
 
 + [move: Nega]
 
+{deviation == nega_dice:
+ -> nega_reward_light
+}
+
 - (hub)
 
 /scene Attic.Ready
 
-{ nega_regard >= 10: 
+{ nega_regard >= 10:
     {shuffle:
-    - Oh looky! My favorite little piggy is back. #01
-    - Woof! If it isn't my special {isBoy: dog|bitch}. #02
+    -/perform idle_tease excited 75
+    Oh looky! My favorite little piggy is back. #01
+
+    -/perform idle_tease amused 75
+    Woof! If it isn't my special {isBoy: dog|bitch}. #02
     }
 - else:
     {shuffle:
-        - Hello fuckup. #03
-        - You're back. #04
-        - Look who can't stay away. #05
-        - Oh. It's you again. #06
+        -/perform talk_one_hand skeptical 25
+        Hello fuckup. #03
+
+        -/perform idle_unhappy angry 25
+        You're back. #04
+
+        -/perform idle_bored amused 25 
+        Look who can't stay away. #05
+
+        -/perform react_head_toss_casual disgusted 25
+        Oh. It's you again. #06
     }
 }
 
-{ rewards > 0: 
+{ rewards > 0:
     -> reward
-        
+
     - else:
+        /perform react_scoffs disgusted 75
         No Bloodstone treats for me, hmm? Not interested. #07
         -> exit
 }
@@ -56,52 +73,80 @@ VAR demerits = 0
 = reward
 
 {shuffle:
-    - Mmm, I like the look of those yummy Bloodstones. #08
+    - /perform do_rub_hands_together excited 60
+    Mmm, I like the look of those yummy Bloodstones. #08
     Are you here to try your luck? #09
-    - I see you have a pretty little Bloodstone. #10
+
+    - /perform idle_tease amused 60
+    I see you have a pretty little Bloodstone. #10
     You want to give it to me, don't you? #11
-    - You brought me a Bloodstone. #12
+
+    - /perform react_excited excited 60
+    You brought me a Bloodstone. #12
     Didn't you? #13
-    - Oh yah. You've got a Bloodstone. #14
+
+    -/perform tease_caress_breast_left aroused 60
+    Oh yah. You've got a Bloodstone. #14
     Gonna hand it over? #15
 }
-        
+
 + [yes] -> nega_greeting_tease ->
-        
+
 + [no]
+    /perform do_now_leave angry 75
     Then get the fuck outta here, you little bitch. #16
     -> exit
 
++ [timeout] -> Nega_Timeout ->
+
 -
 /log return from greeting tease.
-/perform menacing
+
 {cycle:
-    - I guess I'll take your puny stone. #17
-    - You've convinced me. For now. #18
-    - Such a fuckup, begging to give away your precious reward. #19
-    - So fucking desparate. Fine. #20
-    - I'll guess I'll let you give it to me. #21
+    - /perform react_scoffs angry 30
+    I guess I'll take your puny stone. #17
+
+    - /perform react_shrug_short skeptical 30
+    You've convinced me. For now. #18
+
+    - /perform idle_tease disgusted 30
+    Such a fuckup, begging to give away your precious reward. #19
+
+    - /perform talk_either_or amused 40
+    So fucking desparate. Fine. #20
+
+    -/perform  talk_lean_forward amused 40
+    I'll guess I'll let you give it to me. #21
 }
 
 {shuffle:
-    - If you're lucky, you might just get to do more of that. #22
-    - If the dice find you worthy, you'll get more of that. #23
-    - Maybe that Bloodstone will earn you more of that. #24
+    - /perform idle_tease happy 40
+    If you're lucky, you might just get to do more of that. #22
+
+    - /perform idle_tease skeptical 40
+    If the dice find you worthy, you'll get more of that. #23
+
+    -/perform idle_tease amused 40
+    Maybe that Bloodstone will earn you more of that. #24
 }
 
 -> nega_reward_dice
 
-= nega_greeting_tease 
-
-/perform idle_fake_annoyed amused
+= nega_greeting_tease
 
 {cycle:
-    - Show me just how much you want to give me that stone. #25
-    - Then beg to give it to me. #26
-    - Prove it. #27
-    - I don't believe you. #28
-}
+    - /perform idle_fake_annoyed amused 60
+    Show me just how much you want to give me that stone. #25
 
+    - /perform talk_behold amused 60
+    Then beg to give it to me. #26
+
+    - /perform react_point_at_player_angry angry 60
+    Prove it. #27
+
+    -/perform react_shrug_long amused 60
+    I don't believe you. #28
+}
 
 {shuffle:
     - -> kiss ->
@@ -110,10 +155,11 @@ VAR demerits = 0
 }
 
 /log leave to hub.
+
 ->->
 
 
-= kiss 
+= kiss
 
 {shuffle:
     - -> kiss_floor
@@ -122,118 +168,122 @@ VAR demerits = 0
 }
 
 - (kiss_floor)
-/perform do_point_down amused
+/perform do_point_down amused 75
 Bow down and kiss the ground I walk on. #29
-TODO: make sure poses don't register too quickly, so the scene drags out a bit
+/wait
+
 + [pose:kiss_floor]
 + { tries < 2 } [timeout] -> kiss_floor
-+ { tries >= 2 } [timeout] 
- 
-     -> Nega_CheckIfInterested 
++ { tries >= 2 } [timeout]
+
+     -> Nega_CheckIfInterested
      -> kiss_floor
-+ [distracted] -> Nega_PayAttention -> kiss_floor
 
-- -> Nega_GoodJob ->
-
+- /wait 3
+-> Nega_GoodJob ->
+/wait 2
 
 ->->
 
 - (kiss_boot)
-/perform do_present_foot amused
+/perform idle_present_foot amused 65
 Kiss my dirty boot. #30
-TODO: make sure poses don't register too quickly, so the scene drags out a bit    
+/wait
+
 + [pose:kiss_feet]
 + { tries < 2 } [timeout] -> kiss_boot
-+ { tries >= 2 } [timeout] 
-    
-     -> Nega_CheckIfInterested 
++ { tries >= 2 } [timeout]
+
+     -> Nega_CheckIfInterested
      -> kiss_boot
-+ [distracted] -> Nega_PayAttention -> kiss_boot
 
-- -> Nega_GoodJob ->
-
+- /wait 3 
+-> Nega_GoodJob ->
+/wait 2
 
 ->->
 
 - (kiss_ass)
-/perform tease_ass_caress
+/perform tease_ass_caress amused 70
 Time to kiss my ass. Literally. #31
-TODO: make sure poses don't register too quickly, so the scene drags out a bit
-+ [pose:present_ass]
+/wait 
+
++ [pose:kiss_ass]
 + { tries < 2 } [timeout] -> kiss_ass
-+ { tries >= 2 } [timeout] 
-   
-     -> Nega_CheckIfInterested 
++ { tries >= 2 } [timeout]
+
+     -> Nega_CheckIfInterested
      -> kiss_ass
-+ [distracted] -> Nega_PayAttention -> kiss_ass
 
-- -> Nega_GoodJob ->
-
+- /wait 3
+-> Nega_GoodJob ->
+/wait 2
 
 ->->
 
 = sniff
-TODO: make sure poses don't register too quickly, so the scene drags out a bit
+
 {shuffle:
     - -> sniff_ass
     - -> sniff_crotch
     - -> sniff_armpit
 }
 - (sniff_ass)
-/perform tease_ass_caress
+/perform idle_present_ass aroused 75
 Stick your face in my ass and give it a good sniff. #32
+/wait
 
-+ [pose:present_ass]
++ [pose:sniff_ass]
 + { tries < 2 } [timeout] -> sniff_ass
-+ { tries >= 2 } [timeout] 
- 
-     -> Nega_CheckIfInterested 
++ { tries >= 2 } [timeout]
+
+     -> Nega_CheckIfInterested
      -> sniff_ass
-+ [distracted] -> Nega_PayAttention -> sniff_ass
 
-- -> Nega_GoodJob ->
-
+- /wait 3 
+-> Nega_GoodJob ->
+/wait 2
 
 ->->
 
-TODO: confirm kneel works or create new pose with head tilted backward and don't have the pose register immediately
 - (sniff_crotch)
-/perform tease_ass_caress
+/perform idle_present_crotch aroused 65
 Get down here and stick your face in my crotch. #33
 Suck in that delicious smell, worm. #34
+/wait 
 
-+ [pose:kneel]
++ [pose:sniff_crotch]
 + { tries < 2 } [timeout] -> sniff_crotch
-+ { tries >= 2 } [timeout] 
-   
-     -> Nega_CheckIfInterested 
++ { tries >= 2 } [timeout]
+
+     -> Nega_CheckIfInterested
      -> sniff_crotch
-+ [distracted] -> Nega_PayAttention -> sniff_crotch
 
-- -> Nega_GoodJob ->
-
+- /wait 3
+-> Nega_GoodJob ->
+/wait 2
 
 ->->
 
-TODO: create new pose
 - (sniff_armpit)
-/perform do_present_armpit digusted
-Come get a nice big whif of my armpit, skank. #35
+/perform idle_present_armpit disgusted 50
+Come get a nice big whiff of my armpit, skank. #35
+/wait 
 
 + [pose:sniff_armpit]
 + { tries < 2 } [timeout] -> sniff_armpit
-+ { tries >= 2 } [timeout] 
-   
-     -> Nega_CheckIfInterested 
++ { tries >= 2 } [timeout]
+
+     -> Nega_CheckIfInterested
      -> sniff_armpit
-+ [distracted] -> Nega_PayAttention -> sniff_armpit
 
-- -> Nega_GoodJob ->
-
+- /wait 3
+-> Nega_GoodJob ->
+/wait 2
 
 ->->
 
-= slap 
+= slap
 
 {shuffle:
     - -> slap_face
@@ -242,8 +292,9 @@ Come get a nice big whif of my armpit, skank. #35
 }
 
 - (slap_face)
-/perform idle_fake_annoyed amused
+/perform idle_unhappy amused 65
 Take a slap, bitch, and don't fucking cry either! #36
+/wait 
 
 -(try_slap)
 /perform do_slap
@@ -254,42 +305,50 @@ Take a slap, bitch, and don't fucking cry either! #36
      -> Nega_BadJob ->
      You get one more try. #37
     -> try_slap
--
+
+- /wait 2
 
 ->->
 
 - (slap_ass)
-/perform idle_fake_annoyed amused
+/perform idle_fake_annoyed amused 75
 Bend over and show me that ass. #38
 I want to smack it. #39
+/wait 
 
-/perform do_spank_player
++ [pose:present_ass_right]
+    -> Nega_GoodJob ->
++ [react-fail]
+    -> Nega_BadJob ->    
+
 
 - (try_spank)
-/perform do_slap
+/perform do_spank_player
 
 + [react-success]
-     -> Nega_GoodJob ->
+    -> Nega_GoodJob ->
 + [react-fail]
-     -> Nega_BadJob ->
-     You get one more try. #40
-    -> try_slap
--
+    -> Nega_BadJob ->
+    You get one more try. #40
+    -> try_spank
+
+- /wait 2
 
 ->->
 
 - (slap_genitals)
-/perform idle_fake_annoyed amused
+/perform idle_nega amused 75 
 Slap that filthy {hasPenis: prick|cunt} of yours. #41
 It better be hard enough to make you jump. #42
+/wait 
 
 + [react-success]
      -> Nega_GoodJob ->
 + [react-fail]
      -> Nega_BadJob ->
      You get one more try. #43
-    -> try_slap
--
+    -> slap_genitals
+
+- /wait 2
+
 ->->
-
-

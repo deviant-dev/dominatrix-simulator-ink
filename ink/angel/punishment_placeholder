@@ -1,0 +1,22 @@
+=== angel_punishment_placeholder ===
+-> select_gender_check ->
+~ setScene(punishment_scene, Angel, "angel_punishment_placeholder", -> angel_punishment_placeholder)
+/scene AngelsRoom.Ready
+/music angel
+/ambient angel
+/character angel
+
+/notify title="Lady Angelica's Punishment Check" text="This is a placeholder punishment. Do you accept your punishment?"
+
++ [yes]
++ [no]
+    << Don't waste my time, then. >>
+    << Go away.>>
+    /wait
+    -> exit
+
+- ~removePunishment()
+/notify title="Lady Angelica's Punishment Result" text="You have been punished. One obsidian removed.<br/> Returning to the entry."
+
+- /wait 5
+-> exit

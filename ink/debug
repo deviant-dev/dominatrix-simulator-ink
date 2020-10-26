@@ -1,135 +1,238 @@
 === Debug ===
 // --- Set gender here to skip gender selection step ---
-// ~setGender("m")
-// ~setGender("f")
+// ~ setGender("m")
+~setGender("f")
+
+~SEED_RANDOM(5)
+
+// --- Force a different deviation ---
+//   ~ setDeviation(demo)
+//   ~ setDeviation(tutorial)
+  ~ setDeviation(full_game)
+//   ~ setDeviation(treat)
+//   ~ setDeviation(puppyplay)
+//   ~ setDeviation(nega_dice)
+//   ~ setDeviation(hand_signals)
+//   ~ setDeviation(exhibitionism)
 
 
-// --- Cheat codes ---
-// -> unlock_all
-// -> unlock_shortcuts
- ~ punishments = 0
- ~ rewards = 2
+
+// --- Unlocks ---
+ ~ unlockAll()
+//  ~ unlockShortcuts()
+
+
+
+// --- Punish and Reward ---
+//   ~ punishments =
+  ~ rewards = 1
+
+
+
+// --- Tutorial ---
+// ~ inTutorial = 
+
+
+// --- Regard ---
+// ~ angel_regard =
+// ~ caliste_regard =
+// ~ furia_regard =
 // ~ goddess_regard =
-// ~ yuki_regard =
-// ~ nega_regard =
 // ~ headmistress_regard =
-// ~ devilgirl_regard =
+// ~ nega_regard =
 // ~ pragma_regard =
-// ~ drill_sergeant_regard =
+// ~ treat_regard =
+// ~ yuki_regard =
+
+
+
+// --- Mistress Models ---
+// /character angel
+// /character caliste
+// /character furia
+// /character goddess
+// /character headmistress
+// /character nega
+// /character pragma
+// /character treat
+// /character yuki
+
+
+
+// --- Other Models ---
+///character crowd
+///character female slave
+///character male slave
+
+
+
+// --- Music ---
+// /music angel
+// /music caliste
+// /music furia
+// /music goddess
+// /music headmistress
+// /music nega
+// /music pragma
+// /music treat
+// /music yuki
+
+
+
+// --- Angel Scene Jumps ---
+// -> angel_hub
+// -> angel_intro
+// -> angel_punishment_placeholder
+// -> angel_reward_placeholder
+// -> angel_rewardmega_placeholder
+// -> angel_task_placeholder
+ 
+
+
+// --- Caliste Scene Jumps ---
+// -> caliste_hub
+// -> caliste_intro
+// -> caliste_punishment_placeholder
+// -> caliste_reward_placeholder
+// -> caliste_rewardmega_placeholder
+// -> caliste_task_placeholder
+
+
+
+// --- Furia Scene Jumps ---
+// -> furia_hub
+// -> furia_intro
+// -> furia_punishment_placeholder
+// -> furia_reward_placeholder
+// -> furia_rewardmega_placeholder
+// -> furia_task_placeholder
+
+
+
+// --- Goddess Scene Jumps ---
+// -> goddess_hub
+// -> goddess_intro
+// -> goddess_monitoring
+// -> goddess_monitoring_intro
+// -> goddess_punishment_placeholder
+// -> goddess_reward_placeholder
+// -> goddess_rewardmega_giantess
+// -> goddess_task_placeholder
+// -> goddess_intro.load_at_interview
+
+
+// --- Headmistress Scene Jumps ---
+// -> headmistress_hub
+// -> headmistress_intro
+// -> headmistress_punishment_flogging
+// -> headmistress_punishment_spanking
+-> headmistress_punishment_spanking.spank_test
+// -> headmistress_reward_cunnilingus
+// -> headmistress_reward_exhibitionism
+// -> headmistress_reward_spanking
+// -> headmistress_rewardmega_placeholder
+// -> headmistress_task_flogging
+// -> headmistress_task_handsignals
+// -> headmistress_task_handsignals_basics
+// -> headmistress_task_handsignals_endurance
+// -> headmistress_task_handsignals_furniture
+// -> headmistress_train_spanking
+
+
+
+// --- Nega Scene Jumps ---
+//  -> nega_hub
+// -> nega_intro
+// -> nega_punishment_boot_lick
+// -> nega_punishment_camera_shoot
+// -> nega_punishment_genital_torture
+// -> nega_punishment_light
+// -> nega_punishment_tease
+// -> nega_punishment_trampling
+// -> nega_reward_dice
+// -> nega_reward_forcedsex
+// -> nega_reward_light
+// -> nega_reward_tease
+// -> nega_trample
+
+
+
+// --- Pragma Scene Jumps ---
+// -> pragma_hub
+// -> pragma_intro
+// -> pragma_punishment_placeholder
+// -> pragma_reward_placeholder
+// -> pragma_rewardmega_placeholder
+// -> pragma_task_placeholder
+
+
+
+// --- Treat Scene Jumps ---
+// -> treat_care
+// -> treat_hub
+// -> treat_intro
+// -> treat_promo
+// -> treat_punishment_placeholder
+// -> treat_reward_placeholder
+// -> treat_rewardmega_placeholder
+// -> treat_session_placeholder
+// -> treat_task_placeholder
+
+
+
+// --- Yuki Scene Jumps ---
+// -> yuki_hub
+// -> yuki_intro
+
+// /scene entry.intro3
+// -> yuki_intro.start_slap
+
+// -> yuki_punishment_edging
+// -> yuki_punishment_puppyplay_cage
+// -> yuki_punishment_puppyplay_spanking
+// -> yuki_reward_bathe
+// -> yuki_reward_massage
+// -> yuki_reward_puppyplay_lickfeet
+// -> yuki_reward_puppyplay_milking
+// -> yuki_rewardmega_placeholder
+// -> yuki_task_fanning
+// -> yuki_task_puppyplay
+// -> yuki_task_puppyplay_intro
+// -> yuki_task_puppyplay_learn
+// -> yuki_task_puppyplay_practice
+// -> yuki_task_teaservice
+// -> yuki_train_spanking
+ 
+
+
+// --- Game Jumps ---
+// -> demo_end
+// -> DONE
+// -> exit
+// -> entry_hub
+// -> game_intro
+// -> game_intro_again
+// -> game_outro
+// -> skip_to_full_loop
+ 
+
 
 // --- Tests ---
 // -> test_look
 // -> test_audio
 // -> test_marks
 // -> test_multiple_poses
-// -> test_crowd_comments
+// -> test_crowd_reactions
 
-
-// --- Force a different deviation ---
-// ~ setDeviation(demo)
-// ~ setDeviation(tutorial)
-// ~ setDeviation(full_game)
-// ~ setDeviation(devilgirl)
-// ~ setDeviation(puppyplay)
-// ~ setDeviation(nega_dice)
-// ~ setDeviation(hand_signals)
-// ~ setDeviation(exhibitionism)
-
-
-// --- Models ---
-// /character goddess
-// /character yuki
-// /character nega
-// /character headmistress
-// /character pragma
-// /character devilgirl
-// /character sergeant
-// /character female slave
-// /character male slave
-// /character crowd
-
-
-// --- Music ---
-// /music goddess
-// /music yuki
-// /music nega
-// /music headmistress
-// /music pragma
-// /music devilgirl
-// /music sergeant
-
-
-// --- Game Jumps ---
-// -> DONE
-// -> exit
-// -> entry_hub
-// -> demo_end
-// -> game_intro
-// -> game_intro_again
-
-
-// --- Goddess Jumps ---
-// -> goddess_hub
-// -> goddess_intro
-// -> goddess_monitoring
-// -> goddess_monitoring_intro
-
-
-
-// --- Yuki Jumps ---
-// -> yuki_hub
-// -> yuki_intro
-// -> yuki_task_puppyplay
-// -> yuki_task_puppyplay_intro
-// -> yuki_task_puppyplay_learn
-// -> yuki_task_puppyplay_practice
-//  -> yuki_reward_puppyplay_milking
-// -> yuki_punishment_puppyplay_spanking
-// -> yuki_punishment_puppyplay_cage
-// -> yuki_punishment_edging
-
-
-// --- Nega Jumps ---
-// -> nega_hub
-// -> nega_intro
-// -> nega_reward_dice
-// -> nega_reward_tease
-// -> nega_reward_forcedsex
-// -> nega_punishment_camera_shoot
-// -> nega_punishment_genital_torture
-
-
-// --- Headmistress Jumps ---
-// -> headmistress_hub
-// -> headmistress_intro
-// -> headmistress_task_handsignals
-// -> headmistress_task_handsignals_basics
-// -> headmistress_punishment_spanking
-// -> headmistress_punishment_spanking
-// -> headmistress_reward_exhibitionism
-
-
-// --- Devilgirl Jumps ---
-// -> devil_girl_hub
-// -> devil_girl_care
-// -> devil_girl_intro
-// -> devil_girl_promo
-
-
-// --- Pragma Jumps ---
-// -> pragma_hub
-// -> pragma_intro
-
-
-// --- Drill Sergeant ---
-// -> drill_sergeant_hub
-// -> drill_sergeant_intro
-
-
-
-/log Returning from debug.
 
 ->->
+
+
+=== skip_to_full_loop ===
+
+~ setDeviation(full_game)
+~ inTutorial = false
+-> entry_hub
 
 
 === test_marks ===
@@ -140,22 +243,38 @@
     + add reward
         ~ addReward()
     + remove reward
-        ~ removeReward()
+        ~ removeReward(-> entry_hub)
 
 - /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
 -> test_marks
 
 
  === test_audio ===
-
-+ [Goddess Music] /music Goddess
-+ [Entry Music] /music entry
++ [ Music] /music
++ [ Angel Music] /music angel
++ [Caliste Music] /music caliste
++ [Furia Music] /music furia
++ [Goddess Music] /music goddess
 + [Headmistress Music] /music headmistress
++ [Headmistress Music] /music headmistress-punishment
++ [Nega Music] /music nega
++ [Nega Music] /music nega2
++ [Nega Music] /music nega-punishment
++ [Nega Music] /music nega-reward
++ [Nega Music] /music nega-reward-forced-sex-mini-1
++ [Nega Music] /music nega-reward-forced-sex-mini-3
++ [Pragma Music] /music pragma
++ [Treat Music] /music treat
++ [Treat Music] /music care-01
++ [Treat Music] /music care-02
++ [Yuki Music] /music yuki
 + [Music Off] /music off
 + [Orgy Audio] /ambient orgy
 + [Rain Audio] /ambient rain
 + [Crowd Audio] /ambient crowd
++ [Entry Music] /music entry
 + [Audio Off] /ambient off
++ [ Music] /music
 
 - -> test_audio
 

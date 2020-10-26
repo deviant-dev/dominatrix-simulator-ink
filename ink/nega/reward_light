@@ -1,6 +1,352 @@
 === nega_reward_light ===
+~ setScene(reward_scene, Nega, "nega_reward_light", -> nega_reward_light)
 
-/notify title="Scene coming soon!" text="Insert light reward scene here." #note06
+{shuffle:
+    - -> tease_edging
 
-/wait 3 
--> exit
+}
+
+= tease_edging
+
+/scene attic.chair
+/music nega-reward
+/ambient off
+/character Nega
+~ edged = true
+
+
+-/perform sex_chair_crosslegs_idle_left amused 70
+This won't take long. (wicked laugh) #04
+
+-> Nega_Kneel.Sex_Chair ->
+
+~ tries = 0
+- (boots)
+~ tries ++
+/perform sex_chair_crosslegs_left_present amused 55
+Tell me {isBoy: dog|{isGirl: bitch|maggot}},  #45
+does the sight of my boots turn you on? #46
+
++ [yes]
+    /perform sex_chair_crosslegs_idle_tease excited 75
+    Ha! You're such a skank, you know that? #47
+
+    ++ [yes]
+        /perform sex_chair_crosslegs_idle_left disgusted 70
+        That was a rhetorical question, dumbfuck! #48
+        -> after_observe_boots
+
+    ++ [no]
+        /perform sex_chair_crosslegs_tease aroused 60
+        I don't think you'll hold onto that self-esteem for very long here, slave. #49
+        -> after_observe_boots
+
+    ++ [timeout] -> after_observe_boots
+
++ [no]
+    /perform sex_chair_crosslegs_idle_left sad 55
+    Not a foot fetishist, huh?  #50
+
+    /perform sex_chair_crosslegs_idle_tease excited 70
+    That'll only make what I'm about to do to you all the more satisfying. #51
+
++ { tries < 2 } [timeout] -> Nega_Timeout.Sex_Chair -> boots
+
++ { tries >= 2 } [timeout]
+    ~ addDisobey()
+    -> Nega_CheckIfInterested.Sex_Chair
+    -> boots
+
+- (after_observe_boots)
+/perform sex_chair_crosslegs_switch amused 65
+We're going to make sure the sight of my boots #52
+makes you want to cream your pants. #53
+
+{shuffle:
+    -/emotion amused 60
+    You're going to masturbate for me until you want to cum your brains out. #54
+
+    -/emotion aroused 80
+    I'm going to taunt you until you can't take anymore. #55
+
+    -/emotion excited 75
+    I better see you quaking with the need to {hasPenis: explode|squirt}. #56
+}
+
+/perform sex_chair_crosslegs_grind angry 80
+When you're about to fucking burst, #57
+shake your head "no". #58
+
+~ tries = 0
+- (understand)
+~ tries ++
+/perform sex_chair_openlegs_idle skeptical 70
+Got that, whore? #59
+
++ [yes]
+    Delish! #60
+    -> start
++ [no]
+    /perform sex_chair_crosslegs_idle_left angry 75
+    It's not that fucking complicated. #61
+    Do you want to edge for me or not? #62
+
+    ++ [yes]
+        /emotion disgusted 60
+        'Bout fucking time. #63
+        -> start
+
+    ++[no]
+        -> Nega_CheckIfInterested.Sex_Chair ->
+
++ { tries < 2 } [timeout] -> Nega_Timeout.Sex_Chair -> understand
+
++ { tries >= 2 } [timeout]
+     ~ addDisobey()
+     -> Nega_CheckIfInterested.Sex_Chair ->
+     -> understand
+
++ [distracted] -> Nega_PayAttention.Sex_Chair ->
+
+
+- (start)
+
+
+TODO: VO needs a cough removed -Taco
+Get going! #65
+
+-> Nega_prepare_masturbate.Sex_Chair ->
+
++ [wait 2]
+
+--> Nega_GoodJob.Sex_Chair ->
+
++ [wait 2]
+
+//shuffles through a variable number of comments and different duration times between each
+//comment followed by mintimes, maxtimes, minwait, maxwait
+-> edging_comment ->
+
+- (edge_boots)
+/perform sex_chair_openlegs_masturbate aroused 75
+
+-> RandomCommentLoopWithNo(-> masturbation_comment, -> no_more, 3, 5, 2, 5) ->
+
+-> Nega_GoodJob.Sex_Chair ->
+
+/perform sex_chair_openlegs_idle excited 75
+You really are a foot whore! #66
+
+-> enjoy
+
+= enjoy
+
+/perform sex_chair_crosslegs_left_present
+
+{shuffle:
+    - /emotion aroused 45
+    You're oozing at the sight of my boots, aren't you whore? #01
+
+    - /emotion excited 65
+    Do you enjoy being my foot slut? #02
+
+    - /emotion amused 45
+    You love edging to my boots, don't you {isBoy: dog|bitch}? #03
+}
+
++ [yes]
+    /perform sex_chair_crosslegs_snap_right_fingers
+
+    {shuffle:
+        - /emotion happy 40
+        That's my dirty little cunt. #05
+
+        - /emotion excited 65
+        Haha! I knew it. #06
+
+        - /emotion angry 50
+        You don't deserve to be so close to them! #07
+
+        - /emotion amused 65
+        It amuses me to watch you debase yourself. #08
+    }
+
+    -> edge_boots
+
++ [no]
+    /perform sex_chair_openlegs_idle_tease skeptical 75
+    -> Nega_Unhappy.Sex_Chair ->
+    -- (secret)
+    You secretly love being demeaned like this. #09
+    {hasPenis: Jerking off|Grinding one out} at the mere sight of my boots. #10
+    Isn't that right? #11
+
+    ++ [yes]
+        /perform sex_chair_openlegs_lean_forward amused 65
+        That's just what I thought. #85
+        Keep going! #12
+        -> edge_boots
+
+    ++ [no]
+        /perform sex_chair_openlegs_lean_forward angry 80
+        -> Nega_Insult.Sex_Chair ->
+        /perform sex_chair_crosslegs_snap_right_fingers angry 65
+        I'm done with you. #13
+        Get out! #14
+        -> exit
+
+    ++ [timeout] -> Nega_Timeout.Sex_Chair -> secret
+
+    ++ [distracted] -> Nega_PayAttention.Sex_Chair -> secret
+
++ [timeout] -> Nega_Timeout.Sex_Chair -> enjoy
+
++ [distracted] -> Nega_PayAttention.Sex_Chair -> enjoy
+
+= no_more
+
+/perform sex_chair_openlegs_idle_tease
+
+{shuffle:
+    - /emotion excited 50
+    Stop! #67
+
+    - /emotion amused 65
+    Hands off! #68
+
+    - /emotion angry 70
+    Stop friggen yourself, idiot! #69
+}
+
+-> Nega_Insult.Sex_Chair ->
+
+/perform sex_chair_crosslegs_idle_right disgusted 75
+You should be able to last longer than that. #70
+
+{shuffle:
+    - /emotion angry 50
+    Better catch your goddam breath. #71
+
+    - /perform sex_chair_crosslegs_idle_right excited 60
+    That should keep you sufficiently horny!    #91
+    Get out of here. #92
+    -> exit
+
+    - /emotion skeptical 60
+    Rest for a minute, worm. #72
+
+    - /emotion disgusted 55
+    Fine. Rest. You don't deserve the pleasure of release. #73
+}
+
++ [wait 3]
+
+- (question)
+
+/perform sex_chair_crosslegs_switch
+
+{shuffle:
+    - /emotion skeptical 45
+    Can you take more, my dirty little cumbucket? #74
+
+    - /emotion excited 65
+    Wanna keep going? #75
+
+    - /emotion amused 45
+    You want to keep frigging yourself, don't you? #76
+}
+
++ [yes]
+    /perform sex_chair_crosslegs_grind
+
+    {shuffle:
+        - /emotion happy 40
+        Good. Then keep going. #77
+
+        - /emotion excited 65
+        You're a cheeky one, aren't you! Keep going! #78
+
+        - /emotion angry 50
+        Back to masturbating then, maggot! #79
+
+        - /emotion amused 65
+        Quit being cheeky! Keep going!  #80
+    }
+
+    Don't forget to shake your head "no" when you wanna explode. #81
+    -> edge_boots
+
++ [no]
+    /perform sex_chair_openlegs_idle_tease skeptical 75
+    I think you're lying. #82
+    -- (more)
+    I think you want a lot more. #83
+    Don't you? #84
+
+    ++ [yes]
+        /perform sex_chair_openlegs_lean_forward amused 65
+        That's just what I thought. #85
+        Too fucking bad. #86
+        You can't have it. #87
+        -> exit
+
+    ++ [no]
+        /perform sex_chair_openlegs_lean_forward angry 80
+        Fine. Then consider your fucking tease over. #88
+        /perform sex_chair_crosslegs_snap_right_fingers angry 65
+        I'm bored now. #89
+        Leave. #90
+        -> exit
+
+    ++ [timeout] -> Nega_Timeout.Sex_Chair -> more
+
+    ++ [distracted] -> Nega_PayAttention.Sex_Chair -> more
+
++ [timeout] -> Nega_Timeout.Sex_Chair -> question
+
++ [distracted] -> Nega_PayAttention.Sex_Chair -> question
+
+
+= masturbation_comment
+
+{ shuffle:
+    - -> Nega_Masturbation_Comments.Sex_Chair ->
+    - -> edging_comment ->
+    - -> Nega_Aroused.Sex_Chair ->
+    - -> Nega_GoodJob.Sex_Chair ->
+}
+
+->->
+
+= edging_comment
+
+{shuffle:
+    - /emotion skeptical 75
+    Don't you take your fucking eyes off my boots.  #93
+
+    - /emotion angry 65
+    Worship my boots, fuckup! #94
+
+    - /emotion scared 55
+    It's a privilege just to look at my filthy boots. #95
+
+    - /emotion disgusted 70
+    You're just worthless dirt under my feet! #96
+
+    - /emotion aroused 50
+    You will learn to love groveling at my feet. #97
+
+    - /emotion disgusted 70
+    One day, these boots are going to trample such a filthy slut.  #98
+
+    - /emotion happy 55
+    Your place is beneath my boots. #99
+
+    - /emotion excited 60
+    One of these days, I'm gonna shove one of these boots right up your ass. #100
+
+    - /emotion amused 45
+    I know you wish you were rubbing your {hasPenis:cock|pussy} on my boot right now. #101
+}
+
+->->

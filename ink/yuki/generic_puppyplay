@@ -1,12 +1,37 @@
 
 TODO: add emotions and performances to swipe a Bloodstone
 
+=== Yuki_Puppy_Intro ===
+
+{shuffle:
+    - Time for you to be a puppy! #01
+    - I want my puppy for this one. #02
+    - You don't get to be a human anymore. #03
+    - Who's my good puppy? #05
+    - Yay! More puppy time. #06
+    - I'm so excited to make you my puppy again. #07
+}
+
+-(sit)
+/perform do_point_down happy 55
+<b>"Sit"</b>, {player_name}. #04
+
++ [pose:puppy_sit] 
+    ~addObey()
+
++ [timeout] 
+    ~addDisobey()
+    -> Yuki_Interested 
+    -> sit
+
+-->->
+
 === Yuki_Puppyplay_Reward_Earned ===
 
 {shuffle:
-    - /perform idle_sassy
-    - /perform idle_pleased
-    - /perform do_bouncing_big
+    - /perform idle_sassy excited 65
+    - /perform idle_pleased happy 55
+    - /perform do_bouncing_big excited 75
 }
 
 {shuffle:
@@ -24,15 +49,16 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ addReward()
 
 {shuffle:
-    - /perform talk_lean_forward
-    - /perform idle_yuki
-    - /perform wave4_yuki
+    - /perform talk_lean_forward happy 75
+    - /perform idle_yuki excited 65
+    - /perform do_wave_small amused 55
 }
 
 {shuffle:
     - Come back and see me soon! #183
     - I really hope you come see me again soon. #192
     - Bye-bye cutie! #193
+    - I hope you come back soon! #128
 }
 
 ->->
@@ -58,12 +84,10 @@ TODO: add emotions and performances to swipe a Bloodstone
     - Time to remove one Bloodstone reward.  #05
 }
 
-~ removeReward()
-
 {shuffle:
-    - /perform talk_lean_forward
-    - /perform idle_yuki
-    - /perform wave3_yuki
+    - /perform talk_lean_forward happy 45
+    - /perform idle_yuki amused 65
+    - /perform do_wave_big happy 55
 }
 
 {shuffle:
@@ -77,9 +101,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Puppyplay_Punishment_Earned ===
 
 {shuffle:
-    - /perform react_sad_kick_foot_yuki
-    - /perform idle_bored
-    - /perform react_shrug_long
+    - /perform react_sad_kick_foot_yuki sad 65
+    - /perform idle_bored scared 75
+    - /perform react_shrug_long sad 55
 }
 
 {shuffle:
@@ -97,9 +121,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ addPunishment()
 
 {shuffle:
-    - /perform talk_lean_forward
-    - /perform idle_yuki
-    - /perform do_you_leave
+    - /perform talk_lean_forward skeptical 45
+    - /perform idle_yuki skeptical 65
+    - /perform do_you_leave angry 75
 }
 
 {shuffle:
@@ -113,9 +137,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Puppyplay_Punishment_Complete ===
 
 {shuffle:
-    - /perform react_sad_kick_foot_yuki
-    - /perform idle_bored
-    - /perform react_shrug_long
+    - /perform react_sad_kick_foot_yuki sad 65
+    - /perform idle_bored skeptical 75
+    - /perform react_shrug_long angry 60
 }
 
 {shuffle:
@@ -132,9 +156,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ removePunishment()
 
 {shuffle:
-    - /perform talk_lean_forward
-    - /perform idle_yuki
-    - /perform do_you_leave
+    - /perform talk_lean_forward sad 75
+    - /perform idle_yuki skeptical 55
+    - /perform do_you_leave angry 60
 }
 
 {shuffle:
@@ -145,6 +169,35 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 
 ->->
+
+=== Yuki_PuppyPlay_UsePaws ===
+
+//don't use performances
+{shuffle:
+    - Oh my gosh silly, answer with your paws! #01
+    - You're a puppy! Use your paws. #02
+    - Puppies use their paws! #03
+    - You're hopeless puppy. Talk with your paws! #04
+    - Paws, please. #05
+    - I don't understand you. Try your paws. #06
+}
+
+->->
+
+=== Yuki_PuppyPlay_Punishment_UsePaws ===
+//don't use performances
+
+{shuffle:
+    - What a dumb puppy. Answer with your paws! #01
+    - Your paws, dummy! #02
+    - Ugh. Use your paws to answer. #03
+    - So disappointing. Talk with your paws. #04
+    - Paws. Now! #05
+    - You're a puppy! Use your paws! #06
+}
+
+->->
+
 === Yuki_Puppyplay_GoodSpank ===
 
 {shuffle:
@@ -157,8 +210,6 @@ TODO: add emotions and performances to swipe a Bloodstone
     - I think I'm getting wet! #07
     - I'm so sad I have to do this! #09
     - Hang in there! #10
-    -
-    -
     -
     -
     -
@@ -188,8 +239,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 ->->
 
 === Yuki_Player_Masturbate ===
+/character yuki
 
-/perform tease_pinup aroused 65
+/perform tease_pinup aroused 45
 Are you {hasPenis: hard|wet} already? #01
 
 + [yes]
@@ -201,16 +253,15 @@ Are you {hasPenis: hard|wet} already? #01
 + [no]
     ~ addDisobey()
 
-    /perform tease_bend_over aroused 65
+    /perform tease_bend_over aroused 50
     That's okay. #04
     You can warm yourself up first. #05
 
 - (masturbate)
-/character yuki tease_rubbing_crotch aroused  80
+/character yuki tease_rubbing_crotch aroused  60
 {hasPenis: Grab your little cock and start stroking|Reach down and start rubbing your pussy.}  #06
 
-
-/wait 2
+/emotion aroused 80
 That's it. #07
 //shuffles through a variable number of comments and different duration times between each
 //comment followed by mintimes, maxtimes, minwait, maxwait
@@ -256,36 +307,85 @@ TODO: Rewrite for Yuki
 
 
 === Yuki_masturbation_comments ===
-TODO: rewrite
-// { shuffle:
-// - A fine demonstration {isBoy:toad|strumpet}. #01
-// - We have a little whore, guests! #02
-// - Do you think {isBoy:he|she} is enjoying {isBoy:himself|herself}? #03
-//   /character crowd cheers
-// - Exhibit control lest your arm tire. #04
-//   /character headmistress do_smooth_skirt
-// - Cumming without permission is expressly forbidden. #05
-// - What a fine display. #06
-// - Look at those deft fingers. #07
-// - Show some restraint, you painted Jezebel!#08
-// - A {hasPenis:hard shaft|wet slit} is a pleasing {hasPenis:shaft|slit}. #09
-// - Proper performance for guests is a requirement {isBoy:toad|strumpet}. #10
-// - One must be proud to display their arousal. #11
-// - You please our guests with your performance. #12
-// - You have earned this small pleasure. #13
-// - /character crowd oos
-// - You are a divine {isBoy:reprobate|harlot}. #15
-// - -> Headmistress_GoodJob ->
-// - -> Headmistress_GoodJob ->
-// - -> Headmistress_GoodJob ->
-// - -> Headmistress_GoodJob ->
-// - -> Headmistress_GoodJob ->
-// - -> Headmistress_GoodJob ->
-// - -> Headmistress_GoodJob ->
-// }
 
-/character Yuki
+{shuffle:
+- Show me what an obedient little pet you are. #01
+- Perform for me, pet. Really put on a show! #02
+- I bet it feels good to touch yourself for me. #03
+- Oh my. You're so good at this! #04
+- Don't be sloppy, pet. Make me proud! #05
+- I want to hear how hard those fingers are working! #06
+- So red and swollen! #07
+- You're just throbbing, pet! #08
+- -> slow_down ->
+- -> speed_up ->
+- -> right_speed ->
+}
+
 ->->
+
+= slow_down
+{shuffle:
+    - Take your time {hasPenis: stroking|rubbing} yourself. #09
+    - Don't rush, pet. Draw it out. #10
+    - Slow down, pet. Breathe and relax. #11
+}
+
+->->
+
+= speed_up
+{shuffle:
+  - Mmmm. Let me see how fast you can {hasPenis: stroke|rub}. #12
+  - Pick up the pace. Work that {hasPenis: shaft|slit}. #13
+  - Faster now. You can do it! #14
+}
+
+->->
+
+= right_speed
+{shuffle:
+    - That's just the right speed, pet! #15
+    - That's the perfect speed! #16
+    - Just like that. Don't change your speed! #17
+}
+
+->->
+
+
+=== Yuki_milking_comments ===
+
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= Sex_Chair
+-> DoComment(true)
+
+= DoComment(inPosition)
+
+{shuffle:
+    - {inPosition: /emotion amused 65 | /perform talk_consider aroused 45} 
+    I bet my special little {isBoy: boy|{isGirl: girl|pet}} is enjoying this. #01
+    - {inPosition: /emotion aroused 65 | /perform tease_caress_breasts aroused 65}
+    Such a {hasPenis: hard little cock|wet little pussy}. #02
+    - {inPosition: /emotion happy 55 | /perform talk_lean_forward happy 55}
+    What a good little cum pet. #03
+    - {inPosition: /emotion excited 50 | /perform idle_sassy excited 50}
+    Ooo. Your cheeks are growing so flushed! #04
+    - {inPosition: /emotion excited 65 | /perform tease_caress_breast_left excited 45}
+    You're oozing, pet! #05
+    - {inPosition: /emotion excited 40 | /perform talk_consider excited 40}
+    What an adorable slut you are. #06
+    - {inPosition: /emotion happy 60 | /perform idle_pleased happy 60 }
+    You're so {hasPenis: thick|tight}. #07
+    - {inPosition: /emotion amused 45 | /perform react_thankful amused 45}- 
+    I love how soft your flesh is! #08
+}
+
+->->
+
+
 
 // Break Option 1
 

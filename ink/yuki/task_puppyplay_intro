@@ -1,7 +1,6 @@
 
 === yuki_task_puppyplay_intro ===
 
-~ setScene(task_scene, Yuki)
 
 - (intro_again)
 /perform idle_pleased happy 45
@@ -64,7 +63,7 @@ I love having new puppies to play with. #57
 /perform talk_lean_forward aroused 65
 <i>Good</i> puppies. #58
 
-/perform idle_yuki do_shake_finger amused 45
+/perform do_shake_finger amused 45
 And you can't be a good puppy until you learn how to behave like one. #59
 
 /perform idle_clasp_hands excited 55
@@ -91,7 +90,6 @@ Okay? #65
 
 + [yes]
     /perform react_nod_little happy 45
-    /wait
     We'll find out how well you do later. #66
 
 + [no]
@@ -130,14 +128,15 @@ Ready to learn to <b>"sit"</b>? #71
 Get down on your knees, sit back on your heels, #72
 
 /perform idle_unhappy happy 60
-And rest your hands on the floor between your thighs. #73
-/wait 1
+and rest your hands on the floor between your thighs. #73
 
 /perform idle_unhappy_stomp sad 55
 Look forward, not down! #74
 
 
 + [pose:puppy_sit]
+
++ [timeout] -> Yuki_Timeout -> puppy_sit
 
 - (understand_sit)
 
@@ -177,7 +176,7 @@ Now... #82
 /perform talk_lean_forward happy 60
 Puppies don't nod and shake their head like <i>people</i> do. #83
 
-/perform do_consider aroused 75
+/perform talk_consider aroused 75
 And you're a cute little puppy, aren't you? #84
 
 - (puppy_yes_intro)
@@ -187,14 +186,17 @@ To say <b>"yes"</b>, raise your right hand... Er, <i>paw</i>... #85
 Just an eensy, weensy bit. #86
 
 + [pose:puppy_yes] -> Yuki_GoodJob ->
++ [timeout] -> Yuki_Timeout -> puppy_yes_intro
 
 - /perform talk_one_finger excited 45
 You're not a boring, old human anymore, are you? #87
 
+- (puppy_no_intro)
 /perform talk_question amused 65
 Raise your left paw slightly to say <b>"no"</b>. #88
 
 + [pose:puppy_no] -> Yuki_GoodJob ->
++ [timeout] -> Yuki_Timeout -> puppy_no_intro
 
 - /perform idle_eager happy 75
 Whenever you visit me as a puppy, #89
@@ -208,6 +210,16 @@ Won't that be so much fun? #92
 
 /perform idle_swaying amused 65
 Remember to answer like a proper puppy would. #93
+
+- (use_paws)
+
++ [yes]
+    -> Yuki_PuppyPlay_UsePaws ->
+    -> use_paws
+
++ [no]
+    -> Yuki_PuppyPlay_UsePaws ->
+    -> use_paws
 
 + [pose:puppy_yes]
     /perform do_bouncing_big excited 55
@@ -243,6 +255,11 @@ And puppy punishments are <i>not</i> as fun as puppy rewards. #103
 
 /perform do_bouncing_little excited 50
 But I'm sure you'll do super well! #104
+
+And just to encourage you to try hard, #107
+I'm going to give you a reward today #108
+just for being my puppy! #109
+~ addReward()
 
 /perform do_smooth_skirt happy 45
 That's it for today, puppy. #105

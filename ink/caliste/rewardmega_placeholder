@@ -1,0 +1,30 @@
+=== caliste_rewardmega_placeholder ===
+-> select_gender_check ->
+~ setScene(reward_scene, Caliste, "caliste_rewardmega_placeholder", -> caliste_rewardmega_placeholder)
+-> scene_setup ->
+
+/notify title="Priestess Caliste's Mega-Reward Confirmation" text="This is a placeholder big reward. Do you want to spend 10 bloodstones?"
+
++ [yes]
+    ~ removeBigReward(-> load_gave_reward)
+    /notify title="Priestess Caliste's Mega-Reward Paid" text="You turn over ten Bloodstones."
+    -> gave_reward
++ [no] -> exit
+
+
+= scene_setup
+/scene CalistesRoom.Ready
+/music caliste
+/ambient caliste
+/character caliste
+->->
+
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+
+= gave_reward
+/notify title="Priestess Caliste's Placeholder Mega-Reward" text="You received your big reward. Returning to entry."
+/wait 5
+-> exit

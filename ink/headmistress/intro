@@ -4,18 +4,18 @@
 ~ punishments = 1
 ~ rewards = 1
 ~ tutorial_step = at_hm_intro
-~ setScene(intro_scene, Headmistress)
+~ setScene(intro_scene, Headmistress, "headmistress_intro", -> headmistress_intro)
 
 - (jump_start)
 /scene Theatre.Intro1
-/music headmistress
+/music headmistress-intro
 /ambient female-crying
-/character slave all_fours
+/character slave_f all_fours
 /lookat none
 /character headmistress idle
-/lookat slave
+/lookat slave_f
 
-{ isWeb():
+{ web:
     <blockquote><i>You are disoriented for a moment as everything turns black and the scene around you changes.</i></blockquote>
 
     <blockquote><i>You stand inside a spacious Victorian office with a large wooden desk, several sets of bookshelves, and walls lined with curtains. Before you stands a lean and lengthy woman with dark skin and an ample bosom forcefully spanking a young slave. Her face is stern and her eyes placid...</i></blockquote>
@@ -27,7 +27,7 @@
 
 = start
 /character headmistress
-
+/wait 0.4
 /perform do_spank_x2 disgusted 100
 You are an unruly, undisciplined, low-born miscreant. #01
 
@@ -35,7 +35,7 @@ You are an unruly, undisciplined, low-born miscreant. #01
 I <i>will</i> not abide by your disobedience. #02
 /perform idle_clasp_hands disgusted 100
 
-/character slave
+/character slave_f
 I'm sorry, Headmistress. #05
 
 /character headmistress do_spank_x3 angry 100
@@ -45,7 +45,7 @@ You <i>will</i> behave according to your station #03
 or find yourself unable to rest on your backside for a <i>week.</i> #04
 /perform idle_clasp_hands disgusted 100
 
-/character slave
+/character slave_f
 Please, Headmistress! #07
 
 /character headmistress do_spank_x2 amused 100
@@ -54,19 +54,22 @@ Please, Headmistress! #07
 
 -
 /perform idle_clasp_hands disgusted 100
-/character slave
+/character slave_f
 I'll be good. I promise! #06
 
 /character headmistress
 /perform do_smooth_skirt happy 100
 That will be sufficient for today. #08
 
-/character slave
+/scene Theatre.Intro2
+/ambient none
+
+/character slave_f idle_slave
 /perform idle_clasp_hands
 /lookat headmistress
 
 /character headmistress
-/lookat slave
+/lookat slave_f
 /perform talk_one_finger aroused 100
 Remember this lesson, flawed one. #09
 
@@ -74,20 +77,24 @@ Remember this lesson, flawed one. #09
 Depart with grace and pride #11
 
 /perform react_thankful happy 100
-As befits an adornment of this house. #12
+as befits an adornment of this house. #12
 /perform idle_clasp_hands neutral 100
 
 /ambient off
 
-/character slave
+/character slave_f
 /lookat headmistress
 /perform do_quick_bow
 Yes, Headmistress. #13
 /perform idle_clasp_hands
 Thank you for guiding me, Headmistress. #14
 
-- /scene Theatre.Intro3
-/music headmistress
+-> continue ->
+
+/scene None
+/wait
+/scene Theatre.Intro3
+/music headmistress-intro-2
 
 /character headmistress idle_unhappy skeptical 65
 What do we have here? #15
@@ -99,7 +106,7 @@ Another new procurement, I see. #16
 And once again, I have not been appropriately notified #17
 
 /perform react_shake_head_disbelief disgusted 60
-Of an addition to Her collection. #18
+of an addition to Her collection. #18
 
 /perform react_disappointed angry 55
 Another careless oversight in Yuki's fervent attempts to please, no doubt. #19
@@ -142,7 +149,7 @@ Do you know who I am? #22
 As the Headmistress, I oversee the training #29
 
 /perform talk_lean_forward aroused 45
-And correction of all slaves in <i>this</i> house. #30
+and correction of all slaves in <i>this</i> house. #30
 
 /perform idle_unhappy skeptical 50
 Understood? #31
@@ -183,10 +190,10 @@ Present yourself for consideration, {isBoy: oaf|moppet}, that I may observe your
 
     /perform talk_lean_forward sad 45
     Present them before you #40
-    So that I may confirm your measure. #41
+    so that I may confirm your measure. #41
     ~ addDisobey()
 
-    /perform do_present_wrists disgusted 65
+    /perform idle_present_wrists disgusted 65
     Like so, foolish {player_name}. #42
     -> Headmistress_NoAction -> present_retry
 
@@ -224,7 +231,7 @@ This must be immediate. #47
 
 /perform talk_one_finger skeptical 65
 It must be firm, swift, and leave an indelible mark  #120
-Upon the body and soul.  #121
+upon the body and soul.  #121
 
 /perform talk_lean_forward amused 45
 You will be punished. #51

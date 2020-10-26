@@ -1,0 +1,13 @@
+=== treat_session_placeholder ===
+-> select_gender_check ->
+~ setScene(session_scene, Treat, "treat_session_placeholder", -> treat_session_placeholder)
+/scene Hell.Ready
+/music treat
+/ambient treat
+/character treat
+
+/notify title="Ms. Treatment's Session Scene" text="Insert placeholder session scene here."
+~ increaseRegard()
+
+- /wait 5
+-> exit

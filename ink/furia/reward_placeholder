@@ -1,0 +1,31 @@
+=== furia_reward_placeholder ===
+-> select_gender_check ->
+~ setScene(reward_scene, Furia, "furia_reward_placeholder", -> furia_reward_placeholder)
+-> scene_setup ->
+
+/notify title="Enforcer Furia's Reward Confirmation" text="This is a placeholder reward. Do you want to spend a bloodstone?"
+
++ [yes]
+    ~ removeReward(-> load_gave_reward)
+    /notify title="Enforcer Furia's Reward Paid" text="You turn over one Bloodstone."
+    -> gave_reward
+    
++ [no] -> exit
+
+
+= scene_setup
+/scene FuriasRoom.Ready
+/music furia
+/ambient furia
+/character furia
+->->
+
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+
+= gave_reward
+/notify title="Enforcer Furia's Placeholder Reward" text="You have been rewarded. Returning to entry."
+/wait 5
+-> exit

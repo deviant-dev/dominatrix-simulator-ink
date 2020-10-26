@@ -1,14 +1,22 @@
 === yuki_intro ===
+-> load_scene -> start
+
+
+= load_scene
 -> select_gender_check ->
 
 ~ punishments = 1
 ~ rewards = 1
 ~ tutorial_step = at_yuki_intro
-~ setScene(intro_scene, Yuki)
+~ setScene(intro_scene, Yuki, "yuki_intro", -> yuki_intro)
 
 /scene entry.intro2
 /music yuki
 /ambient rain
+->->
+
+
+= start
 /character yuki idle_yuki neutral
 // /equip feather_duster
 
@@ -25,10 +33,10 @@ I'm Mistress Yuki-Onna. #03
 It's my job to make sure all new arrivals   #04
 
 /perform idle_pleased happy 35
-Are taught how to behave  #05
+are taught how to behave  #05
 
 /perform talk_one_finger happy 45
-While you're a guest in Goddess's home. #06
+while you're a guest in Goddess's home. #06
 
 /perform talk_behold excited 69
 First things first. #07
@@ -72,7 +80,7 @@ Do you know why you're here? #11
     Well, let's go through the basics anyways,  #14
 
     /perform do_smooth_skirt happy 50
-    To make sure you have the right information.  #15
+    to make sure you have the right information.  #15
 
 
 + [no]
@@ -88,7 +96,7 @@ Do you know why you're here? #11
 
 + [timeout]
     /perform react_dumb amused 50
-    Hello-o #19
+    Hello-o! #19
 
     /perform idle_unhappy_stomp sad 55
     Anybody home? #20
@@ -310,7 +318,7 @@ Do you like being a good {player_name}? #42
 Oh please! You're always such a good girl, Yuki, #46
 
 /perform react_dismissive angry 65
-Never having any fun. #47
+never having any fun. #47
 
 /perform tease_dance_slow amused 40
 Don't you want to live a little? #48
@@ -351,12 +359,12 @@ I really want the Goddess to be pleased with me. #57
 /character nega react_dumb angry 60
 Ugh. You're such a goody two-shoes. #58
 
-/character yuki react_resigned amused 50
+/character yuki idle_unhappy_stomp amused 50
 
 /character nega talk_behold amused 60
 You'd have so much more fun if you bent the rules now and then. #59
 
-/character yuki idle_fake_annoyed angry 55
+/character yuki idle_unhappy_arms_crossed angry 55
 /lookat nega
 
 - (new_one)
@@ -401,13 +409,13 @@ So. You're the new one, huh? #60
 I bet Yuki's been having so much fun #67
 
 /perform react_scoffs angry 55
-Explaining the rules to you  #68
+explaining the rules to you  #68
 
 /perform react_thankful disgusted 60
-And telling you how to be a good {player_name}, #69
+and telling you how to be a good {player_name}, #69
 
 /perform idle_skeptical angry 30
-Hasn't she? #70
+hasn't she? #70
 
 
 + [yes]
@@ -433,7 +441,9 @@ Hasn't she? #70
 
 + [distracted] -> Nega_PayAttention -> nega_ask_rules
 
--/character nega idle_cocks_head_to_left aroused 60
+- /character yuki idle_unhappy disgusted 40
+
+/character nega idle_cocks_head_to_left aroused 60
 //her eyes bug out here. is lookat player messing her eyes up?
 /lookat player
 Don't let her fool you.  #74
@@ -456,10 +466,10 @@ I bet you like it rough. #187
 /character yuki idle_fake_annoyed angry 65
 /lookat nega
 
-/character nega idle_skeptical excited 70
+/character nega do_fist_pump excited 70
 Let's find out how rough, shall we? #188
 
-
+/character nega idle_skeptical excited 50
 
 + [yes]
     -> nega_slap
@@ -474,7 +484,7 @@ Let's find out how rough, shall we? #188
 + [distracted] -> Nega_PayAttention -> rough
 
 - (nega_slap)
-/perform talk_one_finger aroused 40
+/perform talk_behold aroused 40
 I'm going to show you both how slaves ought to be trained. #190
 
 /perform tease_caress_breast_left aroused 80
@@ -495,7 +505,7 @@ Ready? #194
     /perform do_fist_pump aroused 30
     That's right, bitch. #195
 
-    /perform talk_one_finger amused 40
+    /perform react_point_at_player_angry amused 40
     You'll take this like a good little cunt. #196
     -> try_slap
 
@@ -524,13 +534,6 @@ Do you want to change your mind and take a slap? #200
     ~ addDisobey()
     /character yuki idle_unhappy sad 60
 
-    /character nega idle_sassy excited 40
-    Ahhhh. Sweet music to my ears! #201
-
-    /perform react_point_at_player_angry amused 70
-    When I swing my hand, you better fucking jerk your head. #193
-    -> try_slap
-
 + [no]
     ~ addObey()
     /character yuki do_bouncing_little excited 50
@@ -548,13 +551,19 @@ Do you want to change your mind and take a slap? #200
 
 //need to add slap training
 
+- (start_slap)
+/character nega idle_sassy excited 40
+Ahhhh. Sweet music to my ears! #201
+
+/perform react_point_at_player_angry amused 70
+When I swing my hand, you better fucking jerk your head. #193
+
 - (try_slap)
-/perform do_slap excited 65
+/character nega do_slap excited 65
 
 + [react-success]
-     /perform talk_consider amused 55
-     Not too bad. You have potential. #61
-    // -> Nega_GoodJob ->
+    -> Nega_GoodJob ->
+    
 + [react-fail]
     /perform talk_annoyed angry 70
     That was pathetic. Try again. #203
@@ -609,11 +618,7 @@ Have you figured out what's going on here yet? #76
 
 
 + [timeout]
-    /perform talk_annoyed disgusted 70
-    Are you stupid, or something? #86
-
-    /perform talk_serious angry 70
-    I asked you if you're new here? #87
+    -> Nega_Timeout ->
     -> going_on
 
 + [distracted] -> Nega_PayAttention -> going_on
@@ -657,7 +662,8 @@ Let's find out. Shall we? #89
 
 + [distracted] -> Nega_PayAttention -> genitals
 
-- /character yuki react_disappointed angry 60
+- (caress_test)
+/character yuki react_disappointed angry 60
 /lookat nega
 Behave, Nega!  #93
 /perform idle_unhappy angry 70
@@ -669,11 +675,10 @@ That's it... #94
 /emotion aroused 70
 Let me feel your {hasPenis:cock swell|pussy drip}. #95
 
-/perform do_inspect amused 65
+/emotion amused 65
 Mmmm. Just as I thought. #96
 
-//Does this animation work?
-/perform caress_question aroused 75
+/emotion aroused 75
 You want to be my little fuck toy, don't you? #97
 
 - (caress_genitals)
@@ -685,8 +690,7 @@ You want to be my little fuck toy, don't you? #97
     /emotion amused 55
     I feel how {hasPenis:hard|wet} you are. #99
 
-    //does this animation work?
-    /perform caress_question amused 75
+    /emotion amused 75
     Do you want to be my fuck toy? #100
 
     ++ [yes]
@@ -712,14 +716,14 @@ You want to be my little fuck toy, don't you? #97
 
 + [no]
     ~ addObey()
-    /perform react_whatever disgusted 70
+    /perform react_scoffs disgusted 70
     What a prude. You'll change your mind soon enough. #106
 
     /perform react_head_toss_casual
     They always do. #107
 
 + [timeout]
-    /perform talk_question angry 40
+    /emotion angry 40
     Well, do you want to be used and abused? #108
     -> caress_genitals
 
@@ -728,13 +732,12 @@ You want to be my little fuck toy, don't you? #97
 The Mistresses will have so much fun #109
 
 /emotion amused 65
-Tearing up that ass of yours. #110
+tearing up that ass of yours. #110
 
 /perform talk_lean_forward aroused 60
-//nega whispers
 <i>Tick tock little mouse.</i> #111
 
-/perform do_you_leave amused 55
+/perform do_mocking amused 55
 <i>You might want to run.</i> #112
 
 /perform talk_behold amused 65
@@ -849,7 +852,7 @@ The Headmistress doesn't like to be kept waiting. #135
 /perform react_point_at_player_angry scared 80
 And stay away from that awful Nega-Yuki! #136
 
-/perform react_disappointed disgusted 80
+/perform react_disappointed disgusted 50
 She's a bad seed! #137
 
 /perform talk_lean_forward scared 70
@@ -874,19 +877,19 @@ You'll get a punishment if you get caught coming out of her room. #138
 Run off, little Yuki,  #142
 
 /perform idle_skeptical disgusted 55
-And tell the Headmistress all about  #143
+and tell the Headmistress all about  #143
 
 /perform react_whatever disgusted 70
-How naughty I've been. #144
+how naughty I've been. #144
 
 /perform tease_ass_caress aroused 50
 She thought she could shove down #145
 
 /perform tease_caress_breast_left aroused 75
-All her dirty thoughts  #146
+all her dirty thoughts  #146
 
 /perform tease_caress_breasts aroused 85
-By casting me aside... #147
+by casting me aside... #147
 
 /perform talk_behold happy 65
 But here I am! #148
@@ -901,7 +904,7 @@ Now we can really have some fun! #149
 Shall I rub your poor aching {hasPenis: cock|cunt} again #150
 
 /perform idle_tease excited 65
-While I do? #151
+while I do? #151
 
 + [yes]
     /perform caress_genitals aroused 40
@@ -911,7 +914,7 @@ While I do? #151
     We're going to find out just how naughty  #153
 
     /emotion aroused 65
-    You like to be. #154
+    you like to be. #154
     ++ [wait 5]
 
 + [no]
@@ -919,7 +922,7 @@ While I do? #151
     Don't tell me I've made a mistake in  #155
 
     /emotion angry 70
-    Paying attention to you. #156
+    paying attention to you. #156
 
 + [timeout] -> Nega_Timeout -> caress_again
 
@@ -931,16 +934,16 @@ While I do? #151
 Be a good {player_name}, do what you're told, and  #157
 
 /emotion aroused 60
-That little {hasPenis: cock|cunt} of yours is going to #158
+that little {hasPenis: cock|cunt} of yours is going to #158
 
-/emotion 75
-Have so much fun when you come see me. #159
+/emotion excited 75
+have so much fun when you come see me. #159
 
 /perform talk_threaten disgusted 65
 But, if you decide to be a little {isBoy: prick|bitch}  #160
 
 /perform idle_unhappy angry 75
-And not visit me... #161
+and not visit me... #161
 
 /emotion angry 80
 Well, I won't take kindly to being ignored. #162
@@ -952,7 +955,7 @@ Well, I won't take kindly to being ignored. #162
 The best part is you can't collect any rewards  #163
 
 /emotion excited 50
-Until you've paid off all your punishments. #164
+until you've paid off all your punishments. #164
 
 /perform react_disappointed disgusted 40
 I'm bored with you.  #165

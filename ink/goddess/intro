@@ -1,17 +1,17 @@
 === goddess_intro ===
 -> select_gender_check ->
 
+~ setScene(intro_scene, Goddess, "goddess_intro", -> goddess_intro)
 ~ punishments = 0
 ~ rewards = 0
 ~ tutorial_step = at_goddess_intro
 ~ goddess_shortcut = true
-~ setScene(intro_scene, Goddess)
 
 - (flash_scenes)
 
 - (flash_1)
 /scene bedroom.flash1
-/music goddess
+/music goddess-intro-1
 /ambient orgy
 
 + [wait:3]
@@ -26,18 +26,21 @@
 
 + [wait:4]
 
-/scene none
+- /scene none
 /wait 2
 
 - (debug_jump)
 
 /scene bedroom.intro
 /ambient rain
+/music goddess-intro-2
 /character goddess idle_sassy angry 70
 
-
 - Oh... How rude. #01
-~ addPunishment()
+
+-> continue ->
+
+~ addPunishmentWithPath(-> load_at_interview)
 
 /perform react_disappointed angry 50
 And I was having so much fun. #02
@@ -45,72 +48,74 @@ And I was having so much fun. #02
 /emotion amused 60
 Ah, well... #03
 
+-> interview
+
+
+= load_at_interview
+/scene bedroom.intro
+/ambient rain
+/music goddess-intro-2
+-> interview
+
+
+= interview
+
 /perform talk_question amused 60
 How did you get in here? #04
 
+~ tries = 0
 /perform idle_sassy angry 70
 Did Mistress Yuki-Onna let you in? #05
 
-
 - (ask_entry)
+~ tries++
+
 + [yes]
     /perform talk_annoyed angry 50
     I've told that girl not to interrupt me #06
     when I'm playing with my toys. #07
+    -> stay
+    
 + [no]
     /perform idle_sassy amused 60
     No? Another curious guest, then. #08
-+ (ask_entry2)[timeout]
-
- { cycle:
-
-    - /perform react_nod_big disgusted 60
+    -> stay
+    
++ { tries  <=1 } [timeout] 
+     /perform react_nod_big disgusted 60
     It's a simple question. Nod your head for yes. #09
     /perform react_head_toss_casual disgusted 60
     Shake your head for no. #10
     //Attempting to get the goddess to shake her head in time with the lines
     /wait 1
+    -> ask_again
 
-    - /perform idle_clasp_hands angry 45
-    I asked you a question. #11
-    /wait 1
++ {tries >=2 } [timeout] 
+    -> Goddess_Timeout -> 
+    /wait
+    -> ask_again
 
-    - /perform talk_emphatic_one_hand angry 55
-    Hurry up. I'm waiting. #12
-    /wait 1
++ [distracted] -> Goddess_PayAttention -> ask_again
 
-    - /perform talk_lean_forward skeptical 35
-    I don't like it when people make me wait. #13
-    /wait 1
-
-    - /perform idle_unhappy_stomp angry 65
-    What makes you think you can ignore me? Answer me. #14
-    /wait 1
- }
-
-// Added in waits, as the lines felt rushed when transitioning
+= ask_again
 
 { shuffle:
 
     - /perform talk_lean_forward amused 35
     Did my Yuki let you in? #15
-    /wait 1
 
     - /perform react_scoffs amused 35
     Did that naughty little maid let you in? #16
-    /wait 1
 
     - /perform talk_consider amused 35
     Did an overly enthusiastic maid bring you to me? #17
-    /wait 1
 
     - /perform talk_annoyed amused 35
     Yuki-Onna is disobeying me again. She let you in, didn't she? #18
-    /wait 1
 }
     -> ask_entry
-+ [distracted] -> Goddess_PayAttention -> ask_entry2
 
+= stay  
 - /perform talk_consider amused 35
 Well, you can't stay here. #19
 
@@ -174,10 +179,6 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 
 + [distracted] -> Goddess_PayAttention -> ask_spying_again
 
-- (ask_spying2)
-
-
-
 
 - (ask_spying_done)
 /perform do_inspect aroused 50
@@ -221,9 +222,9 @@ And you won't be going anywhere for quite a while. #45
 /perform talk_consider happy 45
 That means I'll have to give you a name. #46
 
+- (name)
 /perform idle_tease amused 70
 Would you like that? #47
-
 
 +[yes]
     /emotion happy 50
@@ -242,6 +243,8 @@ Would you like that? #47
     ++[no] -> DemandApology ->
         /perform do_inspect skeptical 50
         Now... as for a name. #52
+        
+    ++ [timeout] -> Goddess_Timeout -> name
 
 + [no]
     /perform idle_fake_annoyed disgusted 65
@@ -258,15 +261,12 @@ I will name you... "{player_name}". #57
 
 /perform talk_lean_forward aroused 60
 I expect you to respond to "{player_name}" from now on. #58
-//re-record this VO line
-//Until someone gives you a new name, that is.
+
 /perform idle_unhappy aroused 45
 Until you earn a new name, that is. #59
 
 /perform idle_fake_annoyed aroused 30
 Do you understand? #60
-
-
 
 + [yes]
     -> Goddess_GoodJob ->
@@ -327,7 +327,8 @@ But first, let me have a good look at you. #71
 + { tries >= 3 } [timeout]
     -> CheckIfInterested -> inspection
 
-- /perform idle_fake_annoyed amused 30
+- /music goddess-intro-3
+/perform idle_fake_annoyed amused 30
 I'm always curious about our new guests. #75
 
 /perform do_inspect aroused 50
@@ -357,15 +358,13 @@ You don't mind, do you? #79
 - (stand_straight)
 ~ tries++
 
-
-
 { shuffle:
     - Stand up straight. #84
     - Come on. Lift that head a bit for me. #85
     - Chin up, little one. Let me inspect you. #86
 }
 
-  /perform idle_sassy aroused 25
+/perform idle_sassy aroused 25
 
 + [pose:raised_chin]
 + { tries < 3 } [timeout] -> stand_straight
@@ -375,14 +374,16 @@ You don't mind, do you? #79
 - -> Goddess_GoodJob ->
 
 // /perform circle_player
-/perform idle_sassy aroused 60
-That's it. #87
 
 /emotion excited 45
 Push your shoulders back and arch that lovely spine. #88
+/wait
 
 /perform talk_lean_forward amused 45
 Stick that pretty little ass out where I can see it. #89
+
+/perform idle_sassy aroused 60
+That's it. #87
 
 ///wait for:circle_player
 /perform idle_sassy amused 75
@@ -423,10 +424,23 @@ You'll need to be flexible, as well. #96
 /emotion aroused 70
 Oh yes... There is much here we can work with. #97
 
-~ addReward()
-~ tries = 0
+-> continue ->
+~ addRewardWithPath(-> load_at_present_self)
+-> present_self
 
-- (present_self)
+
+= load_at_present_self
+
+/scene bedroom.close
+/ambient rain
+/music goddess-intro-3
+
+-> present_self
+
+
+= present_self
+~ tries = 0
+- (present_self_again)
 ~ tries++
 
 /perform idle_unhappy amused 45
@@ -440,10 +454,10 @@ I want to see you present yourself more fully to me. #100
 
 
 + [pose:present_kneel]
-+ { tries < 2 } [timeout] -> present_self
++ { tries < 2 } [timeout] -> present_self_again
 //+ { tries >= 2 } [timeout]
-+ { tries >= 2 } [timeout] -> CheckIfInterested -> present_self
-// + [no] -> CheckIfInterested -> present_self
++ { tries >= 2 } [timeout] -> CheckIfInterested -> present_self_again
+// + [no] -> CheckIfInterested -> present_self_again
 
 - -> Goddess_GoodJob ->
 
@@ -463,7 +477,7 @@ You may bow before me and kiss my feet. #104
 - (kiss_feet)
 ~ tries++
 
-/perform do_present_foot amused 60
+/perform idle_present_foot amused 60
 
 Bow down, kiss, then back to your pose like a good little {player_name}. #105
 

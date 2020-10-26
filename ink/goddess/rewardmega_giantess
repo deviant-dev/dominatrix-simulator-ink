@@ -1,0 +1,32 @@
+=== goddess_rewardmega_giantess ===
+~ setScene(reward_scene, Goddess, "goddess_rewardmega_giantess", -> goddess_rewardmega_giantess)
+-> select_gender_check ->
+-> scene_setup ->
+
+/notify title="The Goddess' Mega-Reward Confirmation" text="This is a placeholder big reward. Do you want to spend 10 bloodstones?"
+
++ [yes]
+    ~ removeBigReward(-> load_gave_reward)
+    /notify title="The Goddess' Mega-Reward Paid" text="You turn over ten Bloodstones."
+    -> gave_reward
++ [no] -> exit
+
+
+= scene_setup
+/scene Huge.InHand
+/music goddess
+/ambient huge-space
+/character goddess
+->->
+
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+
+= gave_reward
+
+/notify title="The Goddess' Placeholder Mega-Reward" text="You received your big reward. Returning to entry."
+/wait 10
+
+-> exit

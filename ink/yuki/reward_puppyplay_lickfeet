@@ -25,7 +25,7 @@ Do you want to worship my feet, puppy? #185
 
 +[timeout] -> Yuki_Timeout ->
 
-- /perform do_present_foot excited 55
+- /perform idle_present_foot excited 55
 Come here puppy! #189
 
 
@@ -37,7 +37,7 @@ Come here puppy! #189
 + { tries < 2 } [timeout] -> lick_feet
 + { tries >= 2 } [timeout]
 
-- /wait 5
+- (lickfeetcomplete)
 
 -> Yuki_Puppyplay_Reward_Complete ->->
 

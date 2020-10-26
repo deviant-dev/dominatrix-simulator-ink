@@ -1,0 +1,30 @@
+=== headmistress_rewardmega_placeholder ===
+-> select_gender_check ->
+~ setScene(reward_scene, Headmistress, "headmistress_rewardmega_placeholder", -> headmistress_rewardmega_placeholder)
+-> scene_setup ->
+
+/notify title="The Headmistress' Mega-Reward Confirmation" text="This is a placeholder big reward. Do you want to spend 10 bloodstones?"
+
++ [yes]
+    ~ removeBigReward(-> load_gave_reward)
+    /notify title="The Headmistress' Mega-Reward Paid" text="You turn over ten Bloodstones."
+    -> gave_reward
++ [no] -> exit
+
+
+= scene_setup
+/scene TheatreOpen.Ready
+/music headmistress
+/ambient crowd
+/character headmistress
+->->
+
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+
+= gave_reward
+/notify title="The Headmistress' Mega-Reward" text="ou received your big reward. Returning to entry."
+/wait 10
+-> exit

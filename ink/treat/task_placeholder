@@ -1,0 +1,24 @@
+=== treat_task_placeholder ===
+-> select_gender_check ->
+~ setScene(task_scene, Treat, "treat_task_placeholder", -> treat_task_placeholder)
+/scene Hell.Ready
+/music treat
+/ambient treat
+/character treat
+
+/notify title="Ms. Treatment's Task Check" text="This is a placeholder task check. Do you want to do the task?"
+
++ [yes]
++ [no] -> exit
+
+- /notify title="Ms. Treatment's Task Test" text="This is a placeholder task scene. Do you complete your task?"
+
++ [yes]
+    ~addReward()
+    /notify title="Ms. Treatment's Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
++ [no]
+    ~addPunishment()
+    /notify title="Ms. Treatment's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+
+- /wait 5
+-> exit
