@@ -327,7 +327,7 @@
 }
 
 {web:
-    <b>{mistressName} {type}</b>
+    <b>{mistressName} {type}</b> #CLEAR
 	<i>{getSummaryText()}</i>
 - else:
     /log Scene: {name} / {getSummaryText()}

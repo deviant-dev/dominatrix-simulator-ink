@@ -6,6 +6,11 @@
     ~ setDeviation(full_game)
     -> game_intro_web
 
++ <b>DomSim: Threshold - Main Entry Loop</b>
+    ~ setDeviation(full_game)
+    ~ unlockAll()
+    -> entry_hub
+
 + <b>DomSim: Threshold Demo</b>
     ~ setDeviation(demo)
     -> game_intro_web
