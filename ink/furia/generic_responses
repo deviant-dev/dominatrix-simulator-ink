@@ -327,42 +327,6 @@
 
 
 
-=== Furia_GoodSpank ===
-/character furia
-
-{ shuffle:
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-}
-
-/character furia
-->->
-
-=== Furia_BadSpank ===
-~ furia_spanking_mistakes++
-/character furia
-{ shuffle:
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-}
-
-/character furia
-->->
-
 
 === Furia_player_masturbate ===
 

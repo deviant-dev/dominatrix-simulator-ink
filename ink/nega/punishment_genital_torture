@@ -224,7 +224,10 @@ Got it? #48
 ~ task_count++
 /wait 1 
 
+/action trigger_react
+
 -> SayNumber(task_count) ->
+
 
 + [react-success]
 + [react-fail]
@@ -252,7 +255,7 @@ Got it? #48
 /perform idle_fake_annoyed excited 50
 I just love counting out your pain!
 
-Time for my pathetic little whore to flick {isBoy: his|{isGirl: her|their}} {hasPenis: tip|clit}. #52
+Time for my pathetic little whore to flick that {hasPenis: tip|clit}. #52
 
 /perform do_flick_air amused
 One flick for each count. #54
@@ -282,6 +285,7 @@ Understood? #53
 - -> set_task_count ->
 
 - (try_flick_genitals)
+/perform idle_fake_annoyed amused
 
 ~ task_count = 0
 
@@ -291,7 +295,10 @@ Understood? #53
 ~ task_count++
 /wait 1 
 
+/action trigger_react
+
 -> SayNumber(task_count) ->
+
 
 + [react-success]
 + [react-fail]
@@ -320,9 +327,11 @@ Understood? #53
 /perform idle_fake_annoyed disgusted 50
 I bet your floppy {hasPenis: sac stretches|pussy lips stretch} really far!
 
+/perform do_yank_air amused 75
 I wanna see yank hard on {hasPenis: that filthy sac|those skanky lips}.
 
 - (handle)
+/perform idle_fake_annoyed skeptical 60
 Can you handle it, little piggy? #61
 
 +[yes]
@@ -352,6 +361,10 @@ Now grab that {hasPenis: pathetic limp dick|ragged pussy} of yours
 and show me how bad it hurts by jerking your head up.
 
 - (react)
+
+/action trigger_react
+
+Go!
 
 + [react-success]
 + [react-fail]
@@ -398,14 +411,19 @@ Let's count you down. #63
 /perform idle_fake_annoyed aroused 50
 Now. I wanna hear you whine.
 
+/perform do_pinch_air excited 75
 Grab that {hasPenis: tiny pecker of yours and pinch the head hard|fat clit of yours and pinch it hard}. #68
 
 - (try_pinch_genitals)
-/perform do_pinch_air excited 75
+/perform react_excited aroused
 Make it hard enough to hurt so I can see it! #69
 
 /perform idle_fake_annoyed amused
 And don't stop until I tell you to. #70
+
+/action trigger_react
+
+Go!
 
 + [react-success]
      -> Nega_GoodJob ->
@@ -427,10 +445,12 @@ And don't stop until I tell you to. #70
 /perform idle_fake_annoyed disgusted 50
 Time to watch you wince in pain!
 
+/perform do_scratch_air angry 30
 You're going to dig your nails into that 
 pathetic {hasPenis: cock|pussy} of yours.
 
 - (ready)
+/perform idle_tease aroused
 Aren't you excited to suffer for me, meatbag?
 
 +[yes]
@@ -445,21 +465,26 @@ Aren't you excited to suffer for me, meatbag?
 + [distracted] -> Nega_PayAttention -> ready
 
 - 
+/perform do_scratch_air excited 40
 Dig your nails in each time I count.
+
+/perform react_point_at_player_angry disgusted 50
 I wanna see you react each time!
 
+/idle idle_fake_annoyed
 Since I know this once is really going to hurt,
 I'll count backwards just to be nice.
 
 -> set_task_count ->
-
-- (try_nails_genitals)
 
 {shuffle:
     - ~ task_goal = 4
     - ~ task_goal = 6
     - ~ task_goal = 10
 }
+
+- (try_nails_genitals)
+
 ~ task_count = task_goal
 
 /log Goal = {task_goal}
@@ -467,6 +492,8 @@ I'll count backwards just to be nice.
 - (try_nails_react)
 
 /wait {RANDOM(1,3)} 
+
+/action trigger_react
 
 -> SayNumber(task_count) ->
 

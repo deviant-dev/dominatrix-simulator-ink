@@ -117,7 +117,8 @@ Pay attention! #165
 -> test_next_pose ->
 
 ~ task_count++
-/log Progress = {task_count} / {task_goal}
+/log Progress = {task_count} / {task_goal} (attempts: {task_attempts})
+~ obeyed()
 {task_count < task_goal: -> Practice_Loop}
 
 {task_attempts == task_goal:
@@ -162,7 +163,7 @@ Pay attention! #165
 -> prompt ->
 ~ tries++
 ~ task_attempts++
-+ [pose:{pose}] -> Yuki_GoodJob ->->
++ [pose:{pose} {yuki_puppy_difficulty > 1:no_assist}] -> Yuki_GoodJob ->->
 + { tries < 2 } [timeout] -> retry
 
 

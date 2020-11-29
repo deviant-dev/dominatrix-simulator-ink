@@ -530,8 +530,6 @@ Ahhhh. Now, don't you feel better, {player_name}? #128
 
 + [timeout] -> Headmistress_Timeout -> feel_better
 
-+ [distracted] -> Headmistress_PayAttention -> feel_better
-
 - /perform talk_behold happy 55
 Your ass has blossomed into an objet d'art. #133
 

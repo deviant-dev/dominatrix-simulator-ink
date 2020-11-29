@@ -162,7 +162,7 @@ You can't fucking hide from me. #27
 You came here with that puny little reward of yours. #29
 For what? #30
 
-{shuffle:
+{cycle:
     - -> lucky ->
     - -> slut ->
     - -> piece_of_shit ->

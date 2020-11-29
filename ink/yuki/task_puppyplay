@@ -7,7 +7,7 @@
 - (start)
 
 /scene atrium.close
-/music yuki
+/music yuki-puppy
 /ambient none
 /character yuki idle_yuki
 
@@ -20,15 +20,6 @@
     - -> yuki_task_puppyplay_learn.session2 ->
     - -> yuki_task_puppyplay_learn.session3 ->
     - -> yuki_task_puppyplay_practice ->
-}
-
-- {obeyed(): 
-    ~addReward()
-    -> Yuki_Puppyplay_Reward_Earned -> 
-    
-    - else:
-    ~addPunishment()
-    -> Yuki_Puppyplay_Punishment_Earned ->
 }
 
 - -> exit

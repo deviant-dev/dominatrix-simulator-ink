@@ -74,7 +74,7 @@ Are you hungry, thirsty, playful, or tired? #10
 + [pose:puppy_playful] -> playful
 + [pose:puppy_tired]  -> tired
 + [pose:puppy_no] -> just_milked
-+ [timeout] -> Yuki_Timeout -> mood
++ [timeout:15] -> Yuki_Timeout -> mood
 
 = hungry
 /perform idle_yuki excited 55
@@ -143,7 +143,7 @@ Go lay down in your cage for a while. #25
 //Yuki points to the side
 + [move:cage]
 
-- /wait 5
+- /wait 10
 
 Much better. Now come back to me, puppy. #26
 
@@ -246,16 +246,18 @@ I want you to <b>"beg"</b> me to milk you. #42
 
 + { tries < 2 } [timeout] -> beg
 
+- /notify title="<color=red>Pro Tip!</color>" text="Grab a pillow to support your head. You're going to want to have a good view for this scene!<br/><br/>Understood?" #note07
+
++ [yes]
+
 - (back)
+
 /perform tease_bend_over aroused 45
 Roll onto your back like a good little puppy. #166
 
 Hands and legs in the air, just like a real puppy. #167
 
 + [pose:puppy_back]
-
-+ [timeout] -> Yuki_Timeout -> back
-
 
 - /perform yuki_kneel aroused 70
 
@@ -313,10 +315,10 @@ Are you ready, puppy? #48
         Come back later. #32
         -> exit
 
-    ++ [timeout] -> Yuki_Timeout -> more_time
+    ++ [timeout] -> Yuki_Timeout.Kneeling -> more_time
 
 
-+ [timeout] -> Yuki_Timeout -> cum
++ [timeout] -> Yuki_Timeout.Kneeling -> cum
 
 - (milking)
 /perform yuki_milk_puppy_{hasPenis:penis|vagina}
@@ -457,16 +459,13 @@ I treat my puppies well, don't I? #177
 + [pose:puppy_back_no]
     -- (stop)
 
-   Do you want to stop, puppy? #58
+// replace VO line to stop confusing players who keep answering 'yes' because they think the question is a 'yes' answer to continue
+//   Do you want to stop, puppy? #58
+   Do you want to keep going, puppy?
 
     ++ [pose:puppy_back_yes]
-        /perform react_shrug_short sad 45
-        Well, okay. If that's what you want. #59
-        -> exit
-
-    ++ [pose:puppy_back_no]
-
-        {shuffle:
+    
+    {shuffle:
             - /emotion happy 45
             Really? #60
 
@@ -481,10 +480,15 @@ I treat my puppies well, don't I? #177
 
         }
         ->->
+       
+    ++ [pose:puppy_back_no]
+        /perform react_shrug_short sad 45
+        Well, okay. If that's what you want. #59
+        -> exit
+        
+    ++ [timeout] -> Yuki_Timeout.Kneeling -> stop
 
-    ++ [timeout] -> Yuki_Timeout -> stop
-
-+ [timeout] -> Yuki_Timeout -> question
++ [timeout] -> Yuki_Timeout.Kneeling -> question
 
 
 = puppy_comment

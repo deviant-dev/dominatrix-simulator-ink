@@ -74,6 +74,8 @@ Give it a try. #09
 
 
 /perform idle_skeptical happy 50
+/action show_instructions
+
 {inVR: 
     Use the 'X' or 'menu' buttons on your controller. #10
 - else: 
@@ -87,6 +89,7 @@ Give it a try. #09
 /perform do_arm_raise happy
 Perfect! #12
 
+/action hide_instructions
 /perform talk_thoughtful amused 50
 Now... #13
 If you want the most authentic experience, #14

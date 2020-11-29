@@ -1,21 +1,13 @@
-VAR yuki_spanking_target_count = 5
-VAR yuki_kneel_spanking_count = 0
-VAR yuki_spanking_break_count = 0
-VAR yuki_spanking_mistakes = 0
-VAR yuki_spanking_count = 0
-VAR yuki_spanking_fails = 0
-
 === yuki_punishment_puppyplay_spanking ===
 
 //this scene has the player crawl over to the couch and lay across it with their butt out. They get a spanking similiar to the Headmistress scene
 
 {shuffle:
-- ~ yuki_spanking_target_count = 5
-- ~ yuki_spanking_target_count = 10
+- ~ yuki_spanking_goal = 5
+- ~ yuki_spanking_goal = 10
 }
 
 ~ setScene(punishment_scene, Yuki, "yuki_punishment_puppyplay_spanking", -> yuki_punishment_puppyplay_spanking)
-~ yuki_spanking_count = 0
 ~ yuki_spanking_fails = 0
 ~ yuki_spanking_mistakes = 0
 
@@ -130,9 +122,9 @@ Don't you remember those rules, puppy? #11
 
 // 5, 10
 - {
-- yuki_spanking_target_count == 5:
+- yuki_spanking_goal == 5:
     You're going to get five, big swats, puppy! #16
-- yuki_spanking_target_count == 10:
+- yuki_spanking_goal == 10:
     You're going to get ten, big swats, puppy! #40
 - else:
     /log bad swat count found
@@ -188,53 +180,74 @@ Are you ready puppy? #54
     
 + [timeout] -> Yuki_Timeout -> ready
 
-- (spank)
+- (try_spank)
+
+~ yuki_spanking_count = 0
+
+/log Goal = {yuki_spanking_goal}
+
+- (try_spank_react)
+/wait 1 
 /character yuki do_spank_player
-TODO: create new 'spank_puppy' anim
+~ yuki_spanking_count++
+
+-> SayNumber(yuki_spanking_count) ->
 
 + [react-success]
-    ~ yuki_spanking_count++
-    -> Yuki_Puppyplay_GoodSpank ->
+    {yuki_spanking_count < yuki_spanking_goal:-> Yuki_Puppyplay_GoodSpank ->}
     
-
-    {yuki_spanking_count < yuki_spanking_target_count: -> spank}
-
-    -> spank_success
-
 + [react-fail]
-    ~yuki_spanking_count = 0
     ~yuki_spanking_fails++
+     -> Yuki_Puppyplay_BadSpank ->
+    {yuki_spanking_fails == 1: -> perfect ->}
     {yuki_spanking_fails > 2: -> spank_failout}
+    -> start_over ->
+    -> try_spank
 
-    {shuffle:
+- /log Progress = {yuki_spanking_count} / {yuki_spanking_goal}
+
+{yuki_spanking_count < yuki_spanking_goal: -> try_spank_react}
+
+-> spank_success
+
+
+ = start_over
+
+{shuffle:
     - Now you have to start over! #20
     - Are you even trying? #41
     Start back at one. #21
     - I thought the Headmistress trained you to take a spanking?  #22
     Time to start again. #23
     }
+->->   
 
-    Listen puppy. #42
-    You have to perform every spanking perfectly to finish your punishment. #24
-    -- (spank_ready)
-    Ready? #25
+= perfect
 
-    ++ [yes] 
-        -> Yuki_PuppyPlay_Punishment_UsePaws ->
-        -> spank_ready
+Listen puppy. #42
+
+You have to perform every spanking perfectly to finish your punishment. #24
+- (spank_ready)
+Ready? #25
+
++ [yes] 
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> spank_ready
         
-    ++ [no]
-        -> Yuki_PuppyPlay_Punishment_UsePaws ->
-        -> spank_ready
++ [no]
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> spank_ready
     
-    ++ [pose:puppy_yes]
-    -> spank
-
-    ++ [pose:puppy_no]
++ [pose:puppy_yes]
+    -> try_spank
+    
++ [pose:puppy_no]
     -> Yuki_CheckIfInterested -> spank_ready
 
-    ++ [timeout] -> Yuki_Timeout -> spank_ready
++ [timeout] -> Yuki_Timeout -> spank_ready
     
+->->
+
 = spank_failout
 
 /perform react_disappointed sad 50
@@ -243,6 +256,7 @@ TODO: create new 'spank_puppy' anim
 Leave and don't come back until you're sorry! #26
 
 -> exit
+
 
 = spank_success
 
@@ -317,8 +331,13 @@ Are you proud of yourself, puppy?  #27
     
 + { tries > 1} [timeout] -> cage
 
+- / wait 5
+/perform idle_yuki skeptical 50 
+-> Yuki_Sit_Up ->
+
 - (sorry_ask_again)
 /perform idle_unhappy
+
 Are you sorry for breaking the rules, puppy? #34
 
 + [yes] 
@@ -346,7 +365,7 @@ Are you sorry for breaking the rules, puppy? #34
 //punishment marker will not be removed
 
 + [timeout] -> Yuki_Timeout -> sorry_ask_again
-+ [distracted] -> Yuki_PayAttention -> sorry_ask_again
+
 
 -
 -> exit
@@ -377,4 +396,31 @@ Someone will let you out, eventually. #72
 
 -> exit
 
+= SayNumber(n)
+// NOTE: Keep these on separate lines for the subtitle system. -deviant
+{
+    - n == 1: 
+        One.
+    - n == 2:
+        Two.
+    - n == 3:
+        Three.
+    - n == 4:
+        Four.
+    - n == 5:
+        Five. 
+    - n == 6:
+        Six.
+    - n == 7:
+        Seven.
+    - n == 8:
+        Eight.
+    - n == 9:
+        Nine.
+    - n == 10:
+        Ten. 
+    - else:
+        /logError Can't say number '{n}'.
+}
+->->
 

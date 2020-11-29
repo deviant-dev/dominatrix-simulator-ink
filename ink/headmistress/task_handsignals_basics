@@ -322,6 +322,7 @@ Face me, foible. #66
 /character headmistress react_shrug_long sad 40
 -> Headmistress_Unhappy ->
 I have misjudged your readiness. #06
+~ addPunishment()
 /perform do_you_leave skeptical 30
 Return when you are further molded. #07
 -> exit
@@ -690,7 +691,7 @@ Rise and face your audience. #137
 - ->->
 
  = GoodEndingHard
-//earn favor with HM
+//favor with HM is earned
 /character crowd cheers_loud
 /character headmistress talk_behold excited 35
 I am awed to behold such exquisite grace. #138
@@ -706,7 +707,7 @@ You have my permission to depart. #141
 - -> exit
 
 = BadEndingHard
-//lose favor with HM
+//Favor with HM is lost
 /character crowd angry_crowd
 /character headmistress react_point_at_player_angry angry 65
 Your cheeks should be flush with shame, stain. #142

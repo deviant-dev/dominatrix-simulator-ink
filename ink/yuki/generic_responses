@@ -1,43 +1,50 @@
 
 //response to player distraction
 === Yuki_PayAttention ===
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inPosition)
+
 /character yuki
 
 { cycle:
-    - /perform react_shrug_short sad 45
+    - {inPosition:/emotion|/perform react_shrug_short} sad 45
     You're not very good at this yet, are you? #01
 
-      /perform react_shake_head_disbelief happy 50
+    {inPosition:/emotion|/perform react_shake_head_disbelief} happy 50
     You're supposed to look at me when I'm talking. #02
 
-    - /perform idle_unhappy_stomp sad 55
+    - {inPosition:/emotion|/perform idle_unhappy_stomp} sad 55
     Bad {player_name}! You should look at me when I'm speaking to you. #03
 
-    - /perform talk_annoyed amused 65
+    - {inPosition:/emotion|/perform talk_annoyed} amused 65
     Oh, gee. You need a lot of training. Look at me. #04
 
-    - /perform react_dumb skeptical 60
+    - {inPosition:/emotion|/perform react_dumb} skeptical 60
     Didn't anyone ever teach you to look at people when they're speaking to you? #05
 
-    - /perform react_disappointed angry 65
+    - {inPosition:/emotion|/perform react_disappointed} angry 65
     It's very rude to not look at me when I'm speaking to you. #06
 
-    - /perform do_snap_fingers amused 50
+    - {inPosition:/emotion|/perform do_snap_fingers} amused 50
     Over here, silly.#07
 }
 
 + [pay-attention]
     { cycle:
-        - /perform talk_consider skeptical 45
+        - {inPosition:/emotion|/perform talk_consider} skeptical 45
         Now... what was I saying? Oh right... #08
 
-        - /perform react_thankful happy 50
+        - {inPosition:/emotion|/perform react_thankful} happy 50
         Much better. Ahem. #09
 
-        - /perform idle_clasp_hands aroused 60
+        - {inPosition:/emotion|/perform idle_clasp_hands} aroused 60
         Good {player_name}. You might be teachable after all. #10
 
-        - /perform do_smooth_skirt happy 50
+        - {inPosition:/emotion|/perform do_smooth_skirt} happy 50
         Now back to your instructions. #11
     }
     ->->
@@ -46,35 +53,42 @@
 
 //Response to timeouts to questions
 === Yuki_Timeout ===
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inPosition)
+
 /character yuki
 
 {cycle:
 
-    - /perform react_dumb angry 45
+    - {inPosition:/emotion|/perform react_dumb} angry 45
     Hellooo? I'm talking to you! #01
 
-    - /perform idle_unhappy_stomp sad 50
+    - {inPosition:/emotion|/perform idle_unhappy_stomp} sad 50
     Don't ignore me! #02
 
-    - /perform talk_annoyed scared 45
+    - {inPosition:/emotion|/perform talk_annoyed} scared 45
     Would you answer me already? #03
 
-    - /perform talk_lean_forward amused 65
+    - {inPosition:/emotion|/perform talk_lean_forward} amused 65
     Hey doofus, I'm speaking to you. #04
 
-    - /perform react_whatever angry 80
+    - {inPosition:/emotion|/perform react_whatever} angry 80
     Am I talking to a wall right now? #05
 
-    - /perform react_crazy_gesture excited 40
+    - {inPosition:/emotion|/perform react_crazy_gesture} excited 40
     Hey {player_name}, I'm not talking to myself you know! #06
 
-    - /perform do_snap_fingers amused 60
+    - {inPosition:/emotion|/perform do_snap_fingers} amused 60
     Answer me, {player_name}! #07
 
-    - /perform react_disappointed scared 65
+    - {inPosition:/emotion|/perform react_disappointed} scared 65
     Are you even listening? #08
 
-    - /perform react_point_at_player_angry angry 50
+    - {inPosition:/emotion|/perform react_point_at_player_angry} angry 50
     Focus, {player_name}.  #09
 }
 
@@ -82,232 +96,243 @@
 
 //Response to timeouts to actions
 === Yuki_Interested ===
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inPosition)
+
 /character yuki
 
 {cycle:
 
-    - /perform talk_lean_forward skeptical 45
+    - {inPosition:/emotion|/perform talk_lean_forward} skeptical 45
     I asked you to do something. #01
 
-    - /perform talk_annoyed angry 55
+    - {inPosition:/emotion|/perform talk_annoyed} angry 55
     Are you going to follow directions? #02
 
-    - /perform talk_consider amused 60
+    - {inPosition:/emotion|/perform talk_consider} amused 60
     It's time to move, slave. #03
 
-    - /perform talk_question amused 55
+    - {inPosition:/emotion|/perform talk_question} amused 55
     Are you stuck? #04
 
-    - /perform talk_one_finger skeptical 60
+    - {inPosition:/emotion|/perform talk_one_finger} skeptical 60
     Come on, hurry up! #05
 
-    - /perform react_dumb angry 45
+    - {inPosition:/emotion|/perform react_dumb} angry 45
     What's taking so long? #06
 
-    - /perform do_snap_fingers angry 45
+    - {inPosition:/emotion|/perform do_snap_fingers} angry 45
     Move it, {player_name}! #07
 }
 
 ->->
 
 === Yuki_GoodJob ===
-/character yuki
-
 -> DoComment(false)
 
 = Kneeling
 -> DoComment(true)
 
-= DoComment(inKneel)
+= DoComment(inPosition)
 
+/character yuki
 
 {cycle:
 
-    -{inKneel: /emotion excited 55|/perform do_bouncing_little excited 55}
+    -{inPosition: /emotion excited 55|/perform do_bouncing_little excited 55}
     I'm so proud of you! #01
 
-    -{inKneel: /emotion happy 55|/perform talk_lean_forward happy 55}
+    -{inPosition: /emotion happy 55|/perform talk_lean_forward happy 55}
     What a good {player_name}! #02
 
-    -{inKneel: /emotion excited 75|/perform do_bouncing_big excited 75}
+    -{inPosition: /emotion excited 75|/perform do_bouncing_big excited 75}
     You're so cute! #03
 
-    -{inKneel: /emotion amused 50|/perform talk_consider amused 50}
+    -{inPosition: /emotion amused 50|/perform talk_consider amused 50}
     I like you! #04
 
-    -{inKneel: /emotion aroused 65|/perform idle_pleased aroused 65}
+    -{inPosition: /emotion aroused 65|/perform idle_pleased aroused 65}
     Good job. #05
 
-    -{inKneel: /emotion excited 75|/perform do_bouncing_little excited 75}
+    -{inPosition: /emotion excited 75|/perform do_bouncing_little excited 75}
     Wow! You're doing so well! #06
 
-    -{inKneel: /emotion happy 55|/perform do_bouncing_big happy 55}
+    -{inPosition: /emotion happy 55|/perform do_bouncing_big happy 55}
     I'm so impressed! #07
 
-    -{inKneel: /emotion excited 75|/perform talk_lean_forward excited 75}
+    -{inPosition: /emotion excited 75|/perform talk_lean_forward excited 75}
     Who's a good {player_name}? You are! #08
 
-    -{inKneel: /emotion amused 60|/perform idle_eager amused 60}
+    -{inPosition: /emotion amused 60|/perform idle_eager amused 60}
     Keep up the good work! #09
 
-    -{inKneel: /emotion amused 50|/perform do_bouncing_big amused 50}
+    -{inPosition: /emotion amused 50|/perform do_bouncing_big amused 50}
     You're so much fun! #10
 
-    -{inKneel: /emotion happy 55|/perform do_bouncing_little happy 55}
+    -{inPosition: /emotion happy 55|/perform do_bouncing_little happy 55}
     What a fast learner you are! #11
 
-    -{inKneel: /emotion aroused 65|/perform do_inspect aroused 65}
+    -{inPosition: /emotion aroused 65|/perform do_inspect aroused 65}
     Ooo! That's nice. #12
 
-    -{inKneel: /emotion excited 60|/perform idle_eager excited 60}
+    -{inPosition: /emotion excited 60|/perform idle_eager excited 60}
     Keep it up! #13
 
-    -{inKneel: /emotion happy 55|/perform idle_pleased happy 55}
+    -{inPosition: /emotion happy 55|/perform idle_pleased happy 55}
     You're so good. #14
 
-    -{inKneel: /emotion amused 50|/perform talk_lean_forward amused 50}
+    -{inPosition: /emotion amused 50|/perform talk_lean_forward amused 50}
     Such a good {player_name}. #15
 
-    -{inKneel: /emotion excited 75|/perform do_bouncing_little excited 75}
+    -{inPosition: /emotion excited 75|/perform do_bouncing_little excited 75}
     You're doing so well! #16
     }
 
 ->->
 
 === Yuki_AcknowledgeYes ===
-/character yuki
-
 -> DoComment(false)
 
 = Kneeling
 -> DoComment(true)
 
-= DoComment(inKneel)
+= DoComment(inPosition)
 
+/character yuki
 
 {cycle:
 
-    -{inKneel: /emotion happy 65|/perform idle_clasp_hands happy 65}
+    -{inPosition: /emotion happy 65|/perform idle_clasp_hands happy 65}
     I like that answer. #01
 
-    -{inKneel: /emotion excited 55|/perform idle_pleased excited 55}
+    -{inPosition: /emotion excited 55|/perform idle_pleased excited 55}
     That makes me happy. #02
 
-    -{inKneel: /emotion happy 70|/perform do_bouncing_little happy 70}
+    -{inPosition: /emotion happy 70|/perform do_bouncing_little happy 70}
     Yay! #03
 
-    -{inKneel: /emotion aroused 65|/perform react_excited aroused 65}
+    -{inPosition: /emotion aroused 65|/perform react_excited aroused 65}
     Oh, goody!  #04
 
-    -{inKneel: /emotion excited 55|/perform idle_clasp_hands excited 55}
+    -{inPosition: /emotion excited 55|/perform idle_clasp_hands excited 55}
     Okay! #05
 
-    -{inKneel: /emotion amused 55|/perform do_inspect amused 55}
+    -{inPosition: /emotion amused 55|/perform do_inspect amused 55}
     Perfect. #06
 
-    -{inKneel: /emotion aroused 75|/perform talk_lean_forward aroused 75}
+    -{inPosition: /emotion aroused 75|/perform talk_lean_forward aroused 75}
     Mmmmhmmm! #07
 
-    -{inKneel: /emotion excited 60|/perform do_bouncing_little excited 60}
+    -{inPosition: /emotion excited 60|/perform do_bouncing_little excited 60}
     Hooray! #08
     }
 
 ->->
 
 === Yuki_AcknowledgeNo ===
-/character yuki
-
 -> DoComment(false)
 
 = Kneeling
 -> DoComment(true)
 
-= DoComment(inKneel)
+= DoComment(inPosition)
 
+/character yuki
 
 {cycle:
 
-    -{inKneel: /emotion sad 40|/perform react_shrug_short sad 40}
+    -{inPosition: /emotion sad 40|/perform react_shrug_short sad 40}
     Huh. #01
 
-    -{inKneel: /emotion disgust 30|/perform idle_unhappy disgust 30}
+    -{inPosition: /emotion disgust 30|/perform idle_unhappy disgust 30}
     That's disappointing. #02
 
-    -{inKneel: /emotion sad 60|/perform react_sad_kick_foot_yuki sad 60}
+    -{inPosition: /emotion sad 60|/perform react_sad_kick_foot_yuki sad 60}
     What a shame. #03
 
-    -{inKneel: /emotion skeptical 65|/perform react_whatever skeptical 65}
+    -{inPosition: /emotion skeptical 65|/perform react_whatever skeptical 65}
     Really? #04
 
-    -{inKneel: /emotion disgusted 25|/perform react_oh_darn_yuki disgusted 25}
+    -{inPosition: /emotion disgusted 25|/perform react_oh_darn_yuki disgusted 25}
     Oh come on. #05
 
-    -{inKneel: /emotion amused 30|/perform do_inspect amused 30}
+    -{inPosition: /emotion amused 30|/perform do_inspect amused 30}
     Well, okay. #06
 
-    -{inKneel: /emotion disgusted 30|/perform talk_lean_forward disgusted 30}
+    -{inPosition: /emotion disgusted 30|/perform talk_lean_forward disgusted 30}
     No? #07
 
-    -{inKneel: /emotion angry 35|/perform react_shake_head_disbelief angry 35}
+    -{inPosition: /emotion angry 35|/perform react_shake_head_disbelief angry 35}
     That's too bad. #08
     }
 
 ->->
 
 === Yuki_Badjob ===
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inPosition)
+
 /character yuki
 
 {cycle:
 
-    - /perform talk_annoyed angry 35
+    - {inPosition:/emotion|/perform talk_annoyed5} angry 35
     I thought you knew better. #01
 
-    - /perform talk_behold skeptical 45
+    - {inPosition:/emotion|/perform talk_behold5} skeptical 45
     Oh geez, slave. #02
 
-    - /perform talk_lean_forward sad 45
+    - {inPosition:/emotion|/perform talk_lean_forward5} sad 45
     I know you know better. #03
 
-    - /perform idle_unhappy_stomp angry 50
+    - {inPosition:/emotion|/perform idle_unhappy_stomp5} angry 50
     Would you just behave for me? #04
 
-    - /perform talk_lean_forward skeptical 75
+    - {inPosition:/emotion|/perform talk_lean_forward5} skeptical 75
     Why do you have to be such a problem? #05
 
-    - /perform do_snap_fingers angry 40
+    - {inPosition:/emotion|/perform do_snap_fingers5} angry 40
     Can't you just do as I want? #06
 
-    - /perform talk_one_finger sad 65
+    - {inPosition:/emotion|/perform talk_one_finger5} sad 65
     Sometimes I have too much patience. #07
 
-    - /perform idle_pleased sad 75
+    - {inPosition:/emotion|/perform idle_pleased5} sad 75
     Please just meet your expectations. For me? #08
 
-    - /perform do_shake_finger_stern angry 45
+    - {inPosition:/emotion|/perform do_shake_finger_stern5} angry 45
     You are so naughty! #09
 
-    - /perform react_dumb scared 55
+    - {inPosition:/emotion|/perform react_dumb5} scared 55
     That was terrible! #10
 
-    - /perform do_smooth_skirt skeptical 65
+    - {inPosition:/emotion|/perform do_smooth_skirt5} skeptical 65
     Very bad, {player_name}. #11
 
-    - /perform idle_unhappy_arms_crossed scared 55
+    - {inPosition:/emotion|/perform idle_unhappy_arms_crossed5} scared 55
     The Goddess won't like that. #12
 
-    - /perform react_point_at_player_angry angry 45
+    - {inPosition:/emotion|/perform react_point_at_player_angry5} angry 45
     Try harder. #13
 
-    - /perform react_dismissive sad 55
+    - {inPosition:/emotion|/perform react_dismissive5} sad 55
     Tsk. Tsk.  #14
 
-    - /perform react_scoffs sad 50
+    - {inPosition:/emotion|/perform react_scoffs5} sad 50
     What a shame! #15
 
-    - /perform react_disappointed disgusted 60
+    - {inPosition:/emotion|/perform react_disappointed5} disgusted 60
     Yuck. #16
 
-    - /perform talk_lean_forward disgusted 45
+    - {inPosition:/emotion|/perform talk_lean_forward5} disgusted 45
     That was awful. #17
 }
 
@@ -399,33 +424,33 @@
 = Kneeling
 -> DoComment(true)
 
-= DoComment(inKneel)
+= DoComment(inPosition)
 
 
 {shuffle:
 
-    -{inKneel: /emotion excited 65|/perform talk_lean_forward excited 65}
+    -{inPosition: /emotion excited 65|/perform talk_lean_forward excited 65}
     Is my good {player_name} close? #01
 
-    -{inKneel: /emotion aroused 85| /perform tease_caress_breast_left aroused 85}
+    -{inPosition: /emotion aroused 85| /perform tease_caress_breast_left aroused 85}
     Are you almost there slave? #02
 
-    -{inKneel: /emotion aroused 55 | /perform tease_dance_slow aroused 55}
+    -{inPosition: /emotion aroused 55 | /perform tease_dance_slow aroused 55}
     I can feel you getting close. #03
 
     -/emotion happy 55
     Your {hasPenis:cock|pussy} is throbbing in my hand. #04
 
-    -{inKneel: /emotion excited 75 | /perform do_inspect excited 75}
+    -{inPosition: /emotion excited 75 | /perform do_inspect excited 75}
     You're riding the edge. #05
 
-    -{inKneel: /emotion aroused 65 | /perform tease_caress_breast_left aroused 65}
+    -{inPosition: /emotion aroused 65 | /perform tease_caress_breast_left aroused 65}
     You're so close to exploding for me slave. #06
 
-    -{inKneel: /emotion excited 65 |/perform talk_one_finger excited 65}
+    -{inPosition: /emotion excited 65 |/perform talk_one_finger excited 65}
     Just a little more. #07
 
-    -{inKneel: /emotion aroused 85 | /perform tease_caress_breast_left aroused 85}
+    -{inPosition: /emotion aroused 85 | /perform tease_caress_breast_left aroused 85}
     Are you going to cum? #08
 }
 

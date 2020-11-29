@@ -116,5 +116,5 @@ I hope I see you again soon. #19
 
 /scene EntryDark.EndScreen2
 
-+ [button-continue] -> entry_hub
++ [move] -> entry_hub
 

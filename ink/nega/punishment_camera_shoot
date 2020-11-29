@@ -3,77 +3,232 @@
 ~ posed = true
 //punishment_light
 
-/scene attic.Ready
+/scene atticphotoshoot.ready
 /music nega-punishment
 /ambient howling-wind
-/character nega idle_bored
-
+/character nega idle_bored skeptical
 
 - 
-I want to inspect you. 
+I want to get a <i>good</i> look at you.
 
 -   (stand_at_attention) 
-Stand at attention, whore! Hands behind your head!
+/perform idle_skeptical skeptical 40
+Stand at attention, whore! 
+
+/perform react_point_at_player_angry angry 40
+Hands behind your back!
+
+/perform idle_skeptical disgusted 30
 
 + [pose:raised_chin]
 + { tries < 3 } [timeout] 
-    Not good enough! Try again! 
+    -> Nega_BadJob ->
     -> stand_at_attention
 + { tries >= 3 } [timeout] -> Nega_CheckIfInterested -> stand_at_attention
 + [no] -> Nega_CheckIfInterested -> stand_at_attention
 
-    
-    -> stand_at_attention
 
-- (stand_at_attention_success)
+- 
+-> Nega_Insult ->
+
+Look at you standing there,
+just begging for me to pay attention to you.
+
+- (attention)
 /perform talk_question skeptical
+That's what you want, isn't it?
+For me to give you some special attention?
 
-So, what do we have here?
-Were you hoping to get lucky with me?
+/perform nega idle_bored
 
-//Nega spits on the player's face
-/perform react_point_at_player_angry amused
-Ha! Well it's not your lucky day!
+  +[yes]
+    /perform react_point_at_player_angry amused
+    Don't worry.
+    I'll give you some <i>very</i> special attention today.
+    
+  +[no]
+    -> Nega_Unhappy ->
+    /perform react_scoffs skeptical
+    Yes you do.
+    That's why you always come back.
+        
+ + [timeout] -> Nega_Timeout -> attention
+ + [distracted] -> Nega_PayAttention -> attention
 
 //Nega leans in and whispers in the player's ear
 
-{shuffle:
-    - I'll bet you're really horny. 
-      I'm going to make sure you stay that way! 
-    - No release for you today!
-    // - Today I'm going to hurt you, and I'm going to enjoy it!
-    - You are insignificant. 
-      I will use you as I see fit.
-    }
-    
-/wait 
+- /perform react_excited amused 75
+Have you ever been the star of your own photo shoot?
 
-- (present_ass) 
+  +[yes]
+    /perform do_rub_hands_together excited 80
+    Not like this, you haven't.
+    
+  +[no]
+    /perform do_rub_hands_together excited 80
+    Then you're in for a real treat!
+        
+ + [timeout] -> Nega_Timeout -> attention
+ + [distracted] -> Nega_PayAttention -> attention
+
+- /perform idle_camera_shoot amused
+
+Time to smile for the camera!
+
+Say cheese!
+
+-> Nega_GoodJob ->
+
+~task_count = 0
+- (camera_repeat)
+~task_count++
+/perform idle_camera happy 50
+
+{cycle:
+    - I have a few more poses in mind before I'm threw with you.
+    - Let's try another pose.
+    - It's so sad...
+    We're almost finished with our photo shoot!
+}
+
+{shuffle:
+    - -> titties ->
+    - -> ass ->
+    - -> crotch ->
+}
+
+{task_count<3: -> camera_repeat}
+
+-> finish
+
+= titties
+
+/perform idle_skeptical happy 50
+Show me those titties.
+
+- (squeeze)
+/perform tease_caress_breast_right amused 75
+Reach up and give 'em a <i>good</i> squeeze!
+
++ [pose:present_chest]
++ [timeout] -> Nega_PayAttention -> squeeze
+
+- /perform idle_camera_shoot excited 75
+{shuffle:
+    - Look how tiny they are!
+    - Only whores show off their bodies so eagerly!
+}
+//nega laugh
+
+-> Nega_GoodJob.Photo ->
+
+-> photo_comment ->
+
+->->
+
+= ass
+/perform idle_camera digusted 35
 Now, turn around, bend over and present your ass to me!
 
-+ [pose:present_ass]
++ [pose:present_ass_reverse]
 + { tries < 2 } [timeout] 
     That's not right! Try again!
-    -> present_ass
+    -> ass
 + { tries >= 2 } [timeout] 
      -> Nega_CheckIfInterested 
-     -> present_ass
-+ [distracted] -> Nega_PayAttention -> present_ass
-    
+     -> ass
 
-
-- (present_ass_success)
+- /perform idle_camera amused 40
 //Nega laughs
 You look ridiculous, worm!
+
 Hold that pose for a bit.
 
-/Wait 5
-//Nega pulls out a camera (could be a phone)
+In fact...
+- (spread)
+reach back and spread those ass cheeks nice and wide.
 
-//Camera shutter noise
++ [pose:present_ass_reverse_spread]
++ [timeout] -> spread
+
+- -> Nega_GoodJob ->
+
+/perform idle_camera_shoot
+Time to snap a few more poses.
+
+{shuffle:
+    - I'm not sure you cleaned that ass well enough.
+    Tsk. Tsk. Tsk.
+    - Such a gaping fuck hole!
+}
+
+- /perform idle_camera amused
+
+Turn around.
+
+-> photo_comment ->
+->->
+
+= crotch
+
+/perform do_point_down 
+
+-> Nega_Kneel ->
+
+- (open)
+Spread your knees.
+Hands behind your head.
+
+Let me see that filthy {hasPenis: cock|pussy}.
+
++ [pose:present_kneel]
++ [timeout] -> Nega_PayAttention -> open
+
+- /perform idle_camera_shoot amused
+
+{shuffle:
+     - It's just so {hasPenis: tiny|flappy}!
+     - Just further proof what a desperate fucktoy you are!
+ }
+//nega laughs
+
+-> Nega_GoodJob.Photo ->
+
+-> photo_comment ->
+
+->->
+
+= finish
+/perform idle_camera happy
 There we go! 
+/emotion amused
 It's always good to have a little blackmail material! 
-Don't cross me, or who knows where that picture might end up!
-Alright, wretch! You are allowed to face me again. 
+
+/perform idle_skeptical disgusted 50
+Don't cross me, or who knows where these pictures might end up!
+
+/perform do_shoo_player amused
+See ya later {isBoy: scum|{isGirl: whore|maggot}}.
+
 
 -> exit
+
+= photo_comment
+
+{shuffle:
+    - Someone will pay handsomely in Bloodsones for these!
+    - I might just keep these in my personal collection.
+    - I bet the Headmistress' audience will love this one. 
+    - Won't poor Yuki be so upset when I show these to her!
+    - Uh oh. The Goddess will be <i>so disappointed</i> in you.
+    - Furia's gonna laugh her ass off when I show her these.
+    - These will give Pragma all the evidence 
+    she needs to <i>improve</i> you. 
+    - Hmm. I'm sure the Headmistress will find plenty 
+    wrong your performance.
+    - You're just the kind of fuck slut Angelica loves to torment.
+    - I'm sure Caliste will find some use for these in her rituals.
+    - Better see Treat after this humiliation.
+}
+
+->->

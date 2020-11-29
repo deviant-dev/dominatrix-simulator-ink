@@ -71,6 +71,7 @@ INCLUDE angel/rewardmega_placeholder
 
 INCLUDE furia/hub
 INCLUDE furia/intro
+INCLUDE furia/generic_responses
 INCLUDE furia/task_placeholder
 INCLUDE furia/punishment_placeholder
 INCLUDE furia/reward_placeholder
@@ -116,7 +117,7 @@ INCLUDE yuki/rewardmega_placeholder
 INCLUDE yuki/task_fanning
 // INCLUDE yuki/task_teaservice
 INCLUDE yuki/train_spanking
-//INCLUDE furia/task_gloryhole_training
+INCLUDE furia/task_gloryhole_training
 
 
 
@@ -237,7 +238,7 @@ VAR inVR = false
         -> pragma_hub
 }
 
--> pause(3) ->
+-> pause(1) ->
 
 {inTutorial or current_mistress == Goddess or just_changed == none:
     /log Skipping monitoring

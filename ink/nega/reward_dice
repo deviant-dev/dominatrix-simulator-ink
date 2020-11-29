@@ -66,7 +66,7 @@
     - -> Nega_GoodJob ->
 }
 
-{shuffle:
+{cycle:
 
     - /perform do_rub_hands_together excited 65
     You're my bitch now. #03
@@ -174,10 +174,10 @@ That does <i>not</i> happen often. #19
 /lookat player
 /perform squat
 
-{shuffle:
+{cycle:
     - I suppose I have to give you something very special, then, don't I? #20
     - Not the kind of result I really wanted you to get, #73
-    but this will still be /fun/! #74
+    but this will still be <i>fun</i>! #74
 }
 
 -> check_consent ->
@@ -195,7 +195,7 @@ That does <i>not</i> happen often. #19
 /perform squat_forward
 Two cups and a blank, hmm? Not bad. #21
 
-{shuffle:
+{cycle:
     - I suppose you deserve a little something for that. #26
     - Let's get this over with so I can go find some /real/ fun. #75
     -/perform react_resigned angry 45
@@ -229,7 +229,7 @@ Two cups and a blank, hmm? Not bad. #21
 /perform
 Not bad. But not great. #25
 
-{shuffle:
+{cycle:
     - Time for a playful bit of teasing! #76
 
     -/emotion aroused 60
@@ -274,7 +274,7 @@ Well look at that. Skull and cup cancel each other out. #31
 Nothing for you today. #16
 -> Nega_Insult ->
 
-{shuffle:
+{cycle:
     - And you thought you were going to get lucky! #17
     - Better luck next time, bitch. #32
     - Come back when you're a little richer. #63
@@ -302,7 +302,7 @@ Nothing for you today. #16
 /lookat player
 /perform squat
 
-{shuffle:
+{cycle:
     - I suppose I can't go too hard on you, #36
     /perform squat_forward
     but I bet I can still make you squirm. #37
@@ -328,7 +328,7 @@ Nothing for you today. #16
 /perform squat_forward
 Ooo, two skulls. #38
 
-{shuffle:
+{cycle:
     - It's so hard to resist the urge to crush you. #79
     - You've only earned a little pain for that roll, {isBoy: worm|{isGirl:cunt|wretch}}. #80
     - That means your ass is mine. #39
@@ -336,7 +336,7 @@ Ooo, two skulls. #38
 
 -> check_consent ->
 
-{shuffle:
+{cycle:
      - -> nega_punishment_boot_lick
      - -> nega_punishment_camera_shoot
 }
@@ -348,7 +348,7 @@ Ooo, two skulls. #38
 /perform squat_forward
 Mmmm, look at that. #40
 
-{shuffle:
+{cycle:
     - Three skulls. I'm going to enjoy <i>this</i>. #41
     - Skulls across the board! I'm going to hook you like a fish. #81
     - I hope you're well rested and fed. #82
@@ -395,7 +395,7 @@ You're gonna love getting rewards from me. #49
 
 = check_consent
 //these may need adjusting - you wouldn't say I'm going to use your hard if you only get a light tease
-{shuffle:
+{cycle:
     - It's not too late to back out, {hasPenis: worm|slit}. #50
     - You can still change your mind. #52
     - I wonder if you can handle me.  #53
@@ -403,7 +403,7 @@ You're gonna love getting rewards from me. #49
 
 - (check_consent_again)
 
-{shuffle:
+{cycle:
     - Are you ready? #54
     - Shall I use you? #55
     - Ready for what's next? #56
@@ -422,7 +422,7 @@ You're gonna love getting rewards from me. #49
 
 = come_again
 
-- {shuffle:
+- {cycle:
 
     -/perform idle_skeptical amused 45
     Come visit me again, cunt. #59

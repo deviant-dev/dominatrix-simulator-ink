@@ -228,6 +228,7 @@ Time to kiss my ass. Literally. #31
     - -> sniff_crotch
     - -> sniff_armpit
 }
+
 - (sniff_ass)
 /perform idle_present_ass aroused 75
 Stick your face in my ass and give it a good sniff. #32
@@ -342,6 +343,10 @@ Slap that filthy {hasPenis: prick|cunt} of yours. #41
 It better be hard enough to make you jump. #42
 /wait 
 
+/action trigger_react
+
+Go!
+
 + [react-success]
      -> Nega_GoodJob ->
 + [react-fail]
@@ -352,3 +357,12 @@ It better be hard enough to make you jump. #42
 - /wait 2
 
 ->->
+
+// {shuffle:
+//     - I'll bet you're really horny. 
+//       I'm going to make sure you stay that way! 
+//     - No release for you today!
+//     - You are insignificant. 
+//       I will use you as I see fit.
+//     }
+    

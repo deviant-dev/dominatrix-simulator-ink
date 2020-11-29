@@ -100,6 +100,7 @@
 }
 
 ~ punishments++
+~ total_punishments_earned++
 ~ just_changed = punishment_added
 ~ decreaseRegard()
 ~ save(path)
@@ -166,6 +167,7 @@
 }
 
 ~ rewards++
+~ total_rewards_earned++
 ~ just_changed = reward_added
 ~ increaseRegard()
 ~ save(load)
@@ -208,7 +210,7 @@
 }
 
 ~ rewards -= 10
-~just_changed = reward_removed
+~ just_changed = reward_removed
 ~ increaseRegard()
 ~ save(load)
 

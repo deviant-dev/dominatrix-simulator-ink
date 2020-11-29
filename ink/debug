@@ -6,14 +6,14 @@
 ~SEED_RANDOM(5)
 
 // --- Force a different deviation ---
-//   ~ setDeviation(demo)
-//   ~ setDeviation(tutorial)
-  ~ setDeviation(full_game)
-//   ~ setDeviation(treat)
-//   ~ setDeviation(puppyplay)
-//   ~ setDeviation(nega_dice)
-//   ~ setDeviation(hand_signals)
-//   ~ setDeviation(exhibitionism)
+// ~ setDeviation(demo)
+// ~ setDeviation(tutorial)
+// ~ setDeviation(full_game)
+// ~ setDeviation(treat)
+// ~ setDeviation(puppyplay)
+// ~ setDeviation(nega_dice)
+// ~ setDeviation(hand_signals)
+// ~ setDeviation(exhibitionism)
 
 
 
@@ -24,8 +24,8 @@
 
 
 // --- Punish and Reward ---
-//   ~ punishments =
-  ~ rewards = 1
+~ punishments = 1
+~ rewards = 1
 
 
 
@@ -126,10 +126,17 @@
 // -> headmistress_intro
 // -> headmistress_punishment_flogging
 // -> headmistress_punishment_spanking
--> headmistress_punishment_spanking.spank_test
+// -> headmistress_punishment_spanking.spank_test
 // -> headmistress_reward_cunnilingus
 // -> headmistress_reward_exhibitionism
-// -> headmistress_reward_spanking
+
+// /scene TheatreOpen.Ready
+// /music headmistress
+// /ambient crowd
+// -> headmistress_reward_exhibitionism.masturbate
+
+
+// -> headmistress_reward_exhibitionism
 // -> headmistress_rewardmega_placeholder
 // -> headmistress_task_flogging
 // -> headmistress_task_handsignals
@@ -141,10 +148,10 @@
 
 
 // --- Nega Scene Jumps ---
-//  -> nega_hub
+// -> nega_hub
 // -> nega_intro
 // -> nega_punishment_boot_lick
-// -> nega_punishment_camera_shoot
+-> nega_punishment_camera_shoot
 // -> nega_punishment_genital_torture
 // -> nega_punishment_light
 // -> nega_punishment_tease
@@ -196,7 +203,7 @@
 // -> yuki_reward_puppyplay_milking
 // -> yuki_rewardmega_placeholder
 // -> yuki_task_fanning
-// -> yuki_task_puppyplay
+-> yuki_task_puppyplay
 // -> yuki_task_puppyplay_intro
 // -> yuki_task_puppyplay_learn
 // -> yuki_task_puppyplay_practice

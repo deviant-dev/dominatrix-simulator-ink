@@ -7,6 +7,9 @@
 = Sex_Chair
 -> DoComment(true)
 
+= Photo 
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 
@@ -123,8 +126,11 @@
     - {inPosition: /emotion sad 65 | /perform idle_cocks_head_to_left sad 65}
     Waste of time. #14
 
-    - {inPosition: /emotion disgusted 65 | /perform react_resigned skeptical 35}
+    - {inPosition: /emotion disgusted 40 | /perform react_resigned disgusted 40}
     I don't know why I bother. #15
+    
+    - {inPosition: /emotion angry 40 | /perform react_point_at_player_angry angry 40}
+    Not good enough!
 }
 
 ->->
