@@ -55,7 +55,7 @@ Bad behavior will not be tolerated.
 -> DONE
 
 // /scene entry.hub
-// /notify title="Not Allowed" text="Keep your hands to yourself."
+// /notify title="Not Allowed" text="Keep your hands to yourself." #note10
 // /wait 5
 // -> exit
 
@@ -64,7 +64,7 @@ Bad behavior will not be tolerated.
 /scene none
 /sound slap
 /scene entry.hub
-/notify title="Not Allowed" text="Keep your hands to yourself."
+/notify title="Not Allowed" text="Keep your hands to yourself." #note10
 /wait 5
 -> exit
 
@@ -73,7 +73,7 @@ Bad behavior will not be tolerated.
 /scene none
 /sound slap
 /scene entry.hub
-/notify title="Not Allowed" text="Keep your hands to yourself."
+/notify title="Not Allowed" text="Keep your hands to yourself." #note10
 /wait 5
 -> exit
 
@@ -82,7 +82,7 @@ Bad behavior will not be tolerated.
 /scene none
 /sound slap
 /scene entry.hub
-/notify title="Not Allowed" text="Keep your hands to yourself."
+/notify title="Not Allowed" text="Keep your hands to yourself." #note10
 /wait 5
 -> exit
 
@@ -90,6 +90,6 @@ Bad behavior will not be tolerated.
 = generic
 /scene entry.hub
 /sound slap
-/notify title="Not Allowed" text="Keep your hands to yourself."
+/notify title="Not Allowed" text="Keep your hands to yourself." #note10
 /wait 5
 -> exit

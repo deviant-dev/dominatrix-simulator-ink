@@ -6,6 +6,9 @@
 = Kneeling
 -> DoComment(true)
 
+= Couch
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 /character yuki
@@ -58,6 +61,9 @@
 = Kneeling
 -> DoComment(true)
 
+= Couch
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 /character yuki
@@ -101,6 +107,9 @@
 = Kneeling
 -> DoComment(true)
 
+= Couch
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 /character yuki
@@ -135,6 +144,9 @@
 -> DoComment(false)
 
 = Kneeling
+-> DoComment(true)
+
+= Couch
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -200,6 +212,9 @@
 = Kneeling
 -> DoComment(true)
 
+= Couch
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 /character yuki
@@ -237,6 +252,9 @@
 -> DoComment(false)
 
 = Kneeling
+-> DoComment(true)
+
+= Couch
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -278,61 +296,64 @@
 = Kneeling
 -> DoComment(true)
 
+= Couch
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 /character yuki
 
 {cycle:
 
-    - {inPosition:/emotion|/perform talk_annoyed5} angry 35
+    - {inPosition:/emotion|/perform talk_annoyed} angry 35
     I thought you knew better. #01
 
-    - {inPosition:/emotion|/perform talk_behold5} skeptical 45
+    - {inPosition:/emotion|/perform talk_behold} skeptical 45
     Oh geez, slave. #02
 
-    - {inPosition:/emotion|/perform talk_lean_forward5} sad 45
+    - {inPosition:/emotion|/perform talk_lean_forward} sad 45
     I know you know better. #03
 
-    - {inPosition:/emotion|/perform idle_unhappy_stomp5} angry 50
+    - {inPosition:/emotion|/perform idle_unhappy_stomp} angry 50
     Would you just behave for me? #04
 
-    - {inPosition:/emotion|/perform talk_lean_forward5} skeptical 75
+    - {inPosition:/emotion|/perform talk_lean_forward} skeptical 75
     Why do you have to be such a problem? #05
 
-    - {inPosition:/emotion|/perform do_snap_fingers5} angry 40
+    - {inPosition:/emotion|/perform do_snap_fingers} angry 40
     Can't you just do as I want? #06
 
-    - {inPosition:/emotion|/perform talk_one_finger5} sad 65
+    - {inPosition:/emotion|/perform talk_one_finger} sad 65
     Sometimes I have too much patience. #07
 
-    - {inPosition:/emotion|/perform idle_pleased5} sad 75
+    - {inPosition:/emotion|/perform idle_pleased} sad 75
     Please just meet your expectations. For me? #08
 
-    - {inPosition:/emotion|/perform do_shake_finger_stern5} angry 45
+    - {inPosition:/emotion|/perform do_shake_finger_stern} angry 45
     You are so naughty! #09
 
-    - {inPosition:/emotion|/perform react_dumb5} scared 55
+    - {inPosition:/emotion|/perform react_dumb} scared 55
     That was terrible! #10
 
-    - {inPosition:/emotion|/perform do_smooth_skirt5} skeptical 65
+    - {inPosition:/emotion|/perform do_smooth_skirt} skeptical 65
     Very bad, {player_name}. #11
 
-    - {inPosition:/emotion|/perform idle_unhappy_arms_crossed5} scared 55
+    - {inPosition:/emotion|/perform idle_unhappy_arms_crossed} scared 55
     The Goddess won't like that. #12
 
-    - {inPosition:/emotion|/perform react_point_at_player_angry5} angry 45
+    - {inPosition:/emotion|/perform react_point_at_player_angry} angry 45
     Try harder. #13
 
-    - {inPosition:/emotion|/perform react_dismissive5} sad 55
+    - {inPosition:/emotion|/perform react_dismissive} sad 55
     Tsk. Tsk.  #14
 
-    - {inPosition:/emotion|/perform react_scoffs5} sad 50
+    - {inPosition:/emotion|/perform react_scoffs} sad 50
     What a shame! #15
 
-    - {inPosition:/emotion|/perform react_disappointed5} disgusted 60
+    - {inPosition:/emotion|/perform react_disappointed} disgusted 60
     Yuck. #16
 
-    - {inPosition:/emotion|/perform talk_lean_forward5} disgusted 45
+    - {inPosition:/emotion|/perform talk_lean_forward} disgusted 45
     That was awful. #17
 }
 
@@ -344,6 +365,9 @@
 -> DoComment(false)
 
 = Kneeling
+-> DoComment(true)
+
+= Couch
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -422,6 +446,9 @@
 -> DoComment(false)
 
 = Kneeling
+-> DoComment(true)
+
+= Couch
 -> DoComment(true)
 
 = DoComment(inPosition)

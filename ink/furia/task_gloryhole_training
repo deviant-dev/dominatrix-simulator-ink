@@ -1,11 +1,12 @@
 === furia_task_gloryhole_training ===
 
 -> select_gender_check ->
-~ setScene(task_scene, Furia, "furia_task_placeholder", -> furia_task_placeholder)
-/scene FuriasRoom.Ready
+~ setScene(task_scene, Furia, "furia_task_gloryhole_training", -> furia_task_gloryhole_training)
+/scene FuriasRoom.Gloryhole
 /music Furia
 /ambient Furia
 /character Furia
+
 
 //this scene will get progressively more challenging for the player
 //First level training -
@@ -20,347 +21,476 @@
 
 //scene with one slave laying down on the mattress in one of the cells.
 
--> intro -> begin_glory_training -> player_inspection
 
-
-
-
-
-= intro
-
-
-~ tries = 0
--(cell)
-~ tries ++
-
-/perform do_snap_fingers angry 50
-Take your spot in that cell.
-
-/perform do_point_left angry 75
-By the wall.
 
 //Furia points to the empty cell with the gloryholes. Cell door is open.
 //there is a move point available to the player to teleport into the room
 
-/perform do_point_down amused 50
-On your knees with your mouth positioned before the hole.
+- (take_spot)
+/perform do_point_left amused 50
+Take your spot in that cell.
 
-+ [pose: kneeling ]
-+ { tries < 2 } [timeout] -> cell
-+ { tries >= 2 } [timeout]
-     ~ addDisobey()
-     -> Furia_CheckIfInterested
-     -> cell
+/perform idle_skeptical amused 65
+By the wall.
 
-+ [distracted] -> Furia_PayAttention -> cell
++ [move]
+
+/scene FuriasRoom.Gloryhole_Position
+/music Furia
+/ambient Furia
+/character Furia
 
 
+-> begin -> minigame_glory -> finish
 
+= begin
 
--(near_hole)
-// check pose - kneeling
+/perform idle_unhappy angry 50
+Be warned, I expect swift action from you.
+
+/perform talk_lean_forward skeptical 70
+If you are not quick to respond to my commands,
+you will have to repeat your service.
+
+/perform react_scoffs angry 55
+Again and again, until I am satisfied.
+
+/perform idle_unhappy_stomp angry 75
+Do you understand, perro sucio?
+
+  + [yes]
+  -> Furia_AcknowledgeYes ->
+
+  + [no]
+      /perform react_disappointed angry 70
+      Then we cannot continue,
+      as I demand strict obedience from my subjects.
+
+      /perform do_shoo_player angry 55
+      Leave me, you pathetic stain.
+      -> exit
+
+  + [timeout]
+      -> Furia_NoAction -> release
+
+-(intro_dialogue)
+
 //intro dialogue for 'first time' through the scene
+{ furia_intro_complete == false:
 ~ addObey()
 /perform idle_tease amused 75
 Your first lesson is to serve with your mouth.
 
-I want to see how skilled you already are.
+/perform talk_gesture aroused 65
+You will learn to be the perfect cum vessel
+for the cock in front of you.
 
-/perform idle_pleased excited 70
-If you choose to submit to my re-programming,
-then you will become the perfect cum vessel.
+}
 //end of intro dialogue
-->->
 
 
 
-= begin_glory_training
+~ tries = 0
+- (cell)
+~ tries ++
+/perform do_point_down amused 60
+On your knees with your mouth positioned before the hole.
 
--(on_hole)
+/perform idle_fake_annoyed angry 65
+It is eager for your attention.
 
-/perform talk_threaten angry 65
-Open your mouth.
-
-TODO create mouth_hole pose recognition
-+ [pose: mouth_hole ]
-+ { tries < 2 } [timeout] -> on_hole
++ [pose:kneel]
++ { tries < 2 } [timeout]
+    -> Furia_NoAction -> cell
 + { tries >= 2 } [timeout]
      ~ addDisobey()
-     -> Furia_CheckIfInterested
-     -> on_hole
+     -> Furia_CheckIfInterested -> cell
 
-+ [distracted] -> Furia_PayAttention -> on_hole
+
+
+
+
+- (release)
+
+/perform talk_lean_forward excited 55
+Open your mouth.
+
+/perform talk_gesture amused 65
+You will not move from this position until I command you.
+
+/perform idle_hand_on_hip skeptical 55
+Understood?
+
++ [yes]
+    -> Furia_AcknowledgeYes ->
+
++ [no]
+    Then why are you here?
+    -> Furia_CheckIfInterested ->
+
++ [timeout]
+    -> Furia_NoAction -> release
+
+
 
 //make a random comment loop that provides instructions
 //on the players 'first time' it will say the line below
 
+-(furia_intro_check_consent)
+{furia_intro_complete == false:
 
--(swallow)
-~ addObey()
+/perform idle_fake_annoyed amused 65
+  {shuffle:
 
-/perform idle_skeptical amused 70
-I expect you to swallow the seed of
-whatever cock comes out of that hole.
+    -You will please every cock presented to you,
+    until I am satisfied with your obedience.
+    Only then will I let you rest.
 
-/perform talk_one_finger excited 60
-You will not move from this position until I release you.
+    -Your training begins now, {isBoy: perro. | {isGirl: puta. | gusano. }}
+     Do not disappoint me.
 
-/perform react_point_at_player_angry angry 70
-Understood?
+    -Now you shall start to be molded, shaped, and trained.
+     Your former inclinations shall be disregarded.
 
 
-~ tries = 0
+  }
+
+
+}
+
+
 -(consent)
-~ tries++
 
-+[yes]
--> Furia_AcknowledgeYes ->
-Good.
+/perform talk_question angry 70
+Are you ready?
 
-+[no]
-/perform talk_question skeptical 75
-You hestitate. Are you ready for this level of training?
++ [yes]
+    -> Furia_AcknowledgeYes ->
+    We begin.
 
-    { cycle:
-
-          -/perform talk_question amused 75
-          I'm sure you're just aching to impress me
-
-          -/perform talk_consider sad 65
-          Or are you too scared to find out
-          how much of an eager cum dumpster you really are?
-    }
++ [no]
+    /perform idle_looming skeptical 75
+    You hestitate.
 
     -- (consent_check)
+    /perform idle_unhappy angry 75
+    Do you not wish to find out what a true
+    cum slut must do?
 
+    ++ [yes]
+        -> Furia_AcknowledgeYes
 
-
-    ++[yes]
-    -> Furia_AcknowledgeYes ->
-    Good, I will watch you, very closely
-
-
-    ++[no]
-
-    /perform do_now_leave
-    Then get out of my sight, you wretch
-    -> exit
-
+    ++ [no]
+        /perform do_now_leave angry 75
+        You disappoint me, lowly vermin.
+        Leave, and consider your actions more thoroughly next time.
+        -> exit
 
     ++ [timeout] -> Furia_Timeout -> consent_check
-    ++ [distracted] -> Furia_PayAttention -> consent_check
+    //++ [distracted] -> Furia_PayAttention -> consent_check
 
-+ { tries < 2 } [timeout] -> consent
-+ { tries >= 2 } [timeout]
-    ~ addDisobey()
-    -> Furia_CheckIfInterested
-    -> consent
-+ [distracted] -> Furia_PayAttention -> consent
++ [timeout] -> Furia_NoAction -> consent
 
+//+ [distracted] -> Furia_PayAttention -> consent
 
--(glory_ready)
-/scene FuriasRoom.Gloryhole
-/ambient
-/music
-
-
-Are you ready?
+-
+->->
 //1 cock pops through the hole
 //this scene will eventually have a a random number of cocks or vaginas from 1-5, but for the first time, it will only be one.
 
-Suck that cock. Now!
 
--> minigame_glory
+
 
 //mini game to have player slide their head forward and back over cock until progress 'halo' is fulfilled
 //ambient track of moans, grunts, sighs of Pleasure
 //cock twitches and orgasm sound
 
+= minigame_glory
+/perform do_snap_fingers excited 65
+{shuffle:
+    - Take that strange cock into your mouth.
+    - Suck that cock. Now!
+    - Your task has arrived, slave.
+      Get to it!
+    - Suck that polla!
+    - I better see saliva dripping down your chin, {isBoy:cabrón|{isGirl:puta|estúpide}}.
+}
+
+
+-(round_1)
+
+  -> RandomCommentLoop (-> glory_comments, 2, 4, 2, 5) ->
+
+  -> break1 ->
+
+-(round_2)
+
+  -> RandomCommentLoop (-> glory_comments, 4, 5, 3, 5) ->
+
+  -> break2 ->
+
+-(round_3)
+
+  -> RandomCommentLoop (-> glory_comments, 4, 6, 3, 5) ->
+
+  -> break3 ->
+
+->->
+
+
+
+= finish
+
+-(glory_train_orgasm)
+//orgasm loop
+{cycle:
+
+    -/perform talk_gesture angry 55
+    Faster.
+
+    -/perform do_snap_fingers angry 65
+    Suck the seed out of that cock.
+
+    -/perform talk_lean_forward excited 75
+    It is close. Keep going!
+
+    -/perform react_point_at_player_angry excited 50
+    Beg for their orgasm.
+
+    -/perform tease_caress_breasts_large aroused 55
+    Can you hear and feel their need to release?
+
+
+    - -> receive_load
+}
+
+/wait 3
+-> glory_train_orgasm
+
 -(receive_load)
 
-    That's enough for today.
-    Just a tease to show you what's in store for you.
-    Let me see that mouth of yours. Turn around.
+{shuffle:
+    -/perform talk_lean_forward excited 55
+    Ahhh! Yes!
+    Swallow every drop!
 
--> player_inspection
+    -/perform react_point_at_player_angry excited 75
+    Swallow, cunt.
+    Don't you dare waste a drop.
 
+    -/perform talk_behold happy 65
+    Use your mouth to absorb their essense,
+    revel in it.
+}
+
+/wait 4
+
+{ shuffle:
+    -/perform idle_unhappy_stomp skeptical 65
+    I expect to hear more suction,
+    and gagging next time.
+
+    -/perform idle_fake_annoyed happy 55
+    Excellent job.
+    Make sure to clean their member
+    of any residual seed and spit.
+
+    -/perform idle_sassy amused 45
+    Kiss them.
+    Show them your gratitude for the opportunity to service them.
+
+}
+/wait 4
+
+{disobey == 0:
+That's enough for today.
+Just a tease to show you what's in store for you.
+}
 
 //player must turn to left while on Knees
-= player_inspection
+- (player_inspection)
+/perform do_hand_out excited 55
+Let me see that mouth of yours.
+Turn to me, and open wide.
 //Furia cups the player jaw and leans forward - can we make the player have to turn their head left and right?
-TODO make animation of mistress cupping the players jaw
--(inspection)
+TODO: make animation of mistress cupping the players jaw
 
-+ [pose: head_inspection ]
-+ { tries < 2 } [timeout] -> inspection
+
++ [pose: stand ]
++ { tries < 2 } [timeout] -> player_inspection
 + { tries >= 2 } [timeout]
      ~ addDisobey()
      -> Furia_CheckIfInterested
-     -> inspection
+     -> player_inspection
 
-+ [distracted] -> Furia_PayAttention -> inspection
++ [distracted] -> Furia_PayAttention -> player_inspection
+
 
 - (performance_evaluation)
 
-- {obeyed():
-    ~addReward()
-    Not bad.
+//If the player does't move into position fast enough
+//they repeat the entire training
+{ disobey >= 1: -> unsatisfied | -> satisfied }
 
-  - else:
-    ~addPunishment()
-    You are a disgrace.
-}
 
+
+-(unsatisfied)
+    ~ resetObeyed()
+    /perform talk_annoyed disgusted 55
+    You are a disgrace,
+    I expect better from you.
+
+    /perform react_point_at_player_angry disgusted 75
+    You will be here for a long while,
+    if you do not perform well enough.
+
+    /perform idle_tease amused 55
+    I did warn you, that you would not leave here
+    until I was satisfied with your obedience.
+
+    ~ tries = 0
+    - (again)
+    ~ tries ++
+    /perform idle_fake_annoyed angry 65
+    Back down on your knees, and be snappy about it!
+
+    + [pose:kneel]
+    + { tries < 2 } [timeout]
+        -> Furia_NoAction -> again
+    + { tries >= 2 } [timeout]
+         ~ addDisobey()
+         -> Furia_CheckIfInterested -> again
+
+
+-(satisfied)
+    /perform do_inspect happy 75
+    ~ addReward()
+    Well done!
+    You have pleased me, for now.
+
+/perform idle_skeptical excited 70
 Come back again and we will continue your training.
+We have much work ahead of us.
+
 
 - /wait 5
 -> exit
 
 
 
-= minigame_glory
-
-//phase one
-
-  ->Furia_glory_comments.glory_train_tease
-
-  ->break1 ->
-
-//phase two
-
-  ->Furia_glory_comments.glory_train_entice
-
-  ->break2 ->
-
-//phase three
-
-  ->Furia_glory_comments.glory_train_orgasm
-
-  ->break3 ->
-
-->->
 
 
--(break1)
-->Furia_GoodJob ->
+//Breaks
+= break1
+-> Furia_GoodJob ->
 /perform do_snap_fingers amused 75
-Rest for a moment, you whore
+Rest for a moment, puta.
 /wait 4
 
-Resume the servicing, I want to see more spit on those lips
+/perform talk_question happy 65
+Are you enjoying yourself, (slut)?
+
++ [yes]
+    -> Furia_GoodJob -> end_break_1
+
++ [no]
+    -> Furia_Unhappy ->
+
+    Perhaps it is too soon for you.
+    Do you desire to leave?
+
+    ++ [yes]
+        /perform do_shoo_player angry 55
+        Then leave my sight.
+        -> exit
+
+    ++ [no]
+        -> Furia_GoodJob ->
+        Now...
+
+-(end_break_1)
+
+/perform talk_consider amused 65
+Now, get back to it!
+I want to see more spit dripping down your chest.
+
+/wait 2
 
 ->->
 
 
--(break2)
-->Furia_GoodJob ->
+= break2
+-> Furia_GoodJob ->
 /perform idle_pleased happy 75
 
-Catch your breath, can't have you passing out just yet
-You are doing well, we shall make a proper cumslut from your flesh
+Catch your breath.
+We can't have you passing out just yet.
+/wait 3
+
+/perform react_thankful aroused 55
+You are doing well.
+We shall make a proper cumslut from your flesh.
+
 /wait 4
 
-Get back on that dick, you aren't finished yet
+/perform do_snap_fingers excited 65
+Now then,
+get back on that dick!
+You aren't finished yet.
+
+/wait 2
 
 ->->
 
--(break3)
-->Furia_GoodJob ->
+= break3
+-> Furia_GoodJob ->
 /perform do_inspect excited 65
+I am impressed with your perseverance,
+you will please me yet.
 
-Well done! You have pleased me, for now.
-Take a moment to make sure you swallowed all that cum,
-don't you dare waste a drop
+Rest a moment.
+/wait 3
+
+/perform idle_fake_annoyed excited 60
+Now you will finish what you started.
+
+And, you will not leave here
+until I am satisfied with your performance.
 
 /wait 4
 
+Well, snap to it!
+
+/wait 2
+
 ->->
 
 
 
-= Furia_glory_comments
 
--(glory_train_tease)
-//Comment loop
+//Comments
+= glory_comments
 
+/perform idle_skeptical amused 55
 {shuffle:
-
-    -/perform
-    That's it.
-
-    -/perform
-    Use your tongue.
-
-    -/perform
-    You are not allowed to touch yourself.
-
-    -/perform
-    Your pleasure is irrelevant.
-
-    -/perform
-    No teeth.
-
-    -/perform
-    Suckle like a baby as you serve.
-
-    -/perform
-    Look at how you slobber on yourself.
-
-    -/perform
-    Slow and steady.
-
-    -/perform
-    Keep that mouth nice and wide.
-
-    -/perform
-    If you earn my regard, mayble you'll be allowed to touch yourself.
-
-}
-
-->->
-
-
--(glory_train_entice)
-//comment loop
-{shuffle:
-
-    -/perform
-    Such a dirty little slut.
-
-    -/perform
-    Right where you belong. On your knees.
-
-    -/perform
-    This is just the beginning.
-
-    -/perform
-    Your belly will swell with seed.
-
-    -/perform
-    Wallow in serving.
-
-}
-
-->->
-
-
--(glory_train_orgasm)
-//orgasm loop
-{cycle:
-
-    -/perform talk_lean_forward excited 75
-    He / she / They are close. Keep going.
-
-    -/perform  talk_gesture angry 55
-    Faster.
-
-    -/perform do_snap_fingers angry 65
-    Suck the seed out of that cock.
-
-    -/perform react_point_at_player_angry excited 50
-    You're going to swallow every drop.
-
-    - -> receive_load
+    - That's it.
+    - Use more tongue.
+    - You are not allowed to touch yourself.
+    - Your pleasure is irrelevant.
+    - No teeth.
+    - Suckle like a baby as you serve.
+    - Look at how you slobber on yourself.
+    - Slow and steady.
+    - Keep that mouth nice and wide.
+    - If you earn my regard, maybe you'll be allowed to touch yourself.
+    - You seem eager to impress!
+      I am pleased with your obedience thus far.
+    - Such a dirty little slut.
+    - Right where you belong.
+      On your knees, in service of others.
+    - This is just the beginning.
+    - Your belly will swell with seed.
+    - Wallow in serving.
 }
 
 ->->

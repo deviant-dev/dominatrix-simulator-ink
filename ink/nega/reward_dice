@@ -139,14 +139,7 @@ Go ahead. Roll them bones. #06
 = post_roll
 ~ temp result = nega_die_1 + nega_die_2 + nega_die_3
 
-/notify title="Dice Roll Results" delay=10 text="<> #note04
-~ rollToText(nega_die_1)
-<> + <>
-~ rollToText(nega_die_2)
-<> + <>
-~ rollToText(nega_die_3)
-<>"
-
+/notify title="Dice Roll Results" delay=10 text="{rollToText(nega_die_1)} + {rollToText(nega_die_2)} + {rollToText(nega_die_3)}" #note04
 
 {
     - inTutorial && result > 0: -> intro_reward

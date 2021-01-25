@@ -1,43 +1,41 @@
 === Debug ===
 // --- Set gender here to skip gender selection step ---
 // ~ setGender("m")
-~setGender("f")
+~ setGender("f")
 
-~SEED_RANDOM(5)
+//~SEED_RANDOM(5)
 
 // --- Force a different deviation ---
-// ~ setDeviation(demo)
-// ~ setDeviation(tutorial)
 // ~ setDeviation(full_game)
-// ~ setDeviation(treat)
-// ~ setDeviation(puppyplay)
-// ~ setDeviation(nega_dice)
-// ~ setDeviation(hand_signals)
+// ~ setDeviation(tutorial)
+// ~ setDeviation(demo)
 // ~ setDeviation(exhibitionism)
-
+// ~ setDeviation(hand_signals)
+~ setDeviation(nega_dice)
+// ~ setDeviation(puppyplay)
+// ~ setDeviation(treat)
+// ~ setDeviation(furia)
 
 
 // --- Unlocks ---
- ~ unlockAll()
+// ~ unlockAll()
 //  ~ unlockShortcuts()
 
 
-
 // --- Punish and Reward ---
-~ punishments = 1
-~ rewards = 1
-
+//  ~ punishments = 1
+// ~ rewards = 1
 
 
 // --- Tutorial ---
-// ~ inTutorial = 
+// ~ inTutorial =
 
 
 // --- Regard ---
 // ~ angel_regard =
 // ~ caliste_regard =
 // ~ furia_regard =
-// ~ goddess_regard =
+// ~ goddess_regard=
 // ~ headmistress_regard =
 // ~ nega_regard =
 // ~ pragma_regard =
@@ -86,7 +84,7 @@
 // -> angel_reward_placeholder
 // -> angel_rewardmega_placeholder
 // -> angel_task_placeholder
- 
+
 
 
 // --- Caliste Scene Jumps ---
@@ -102,10 +100,12 @@
 // --- Furia Scene Jumps ---
 // -> furia_hub
 // -> furia_intro
+// -> furia_intro_wip
 // -> furia_punishment_placeholder
 // -> furia_reward_placeholder
 // -> furia_rewardmega_placeholder
 // -> furia_task_placeholder
+// -> furia_task_gloryhole_training
 
 
 
@@ -119,6 +119,8 @@
 // -> goddess_rewardmega_giantess
 // -> goddess_task_placeholder
 // -> goddess_intro.load_at_interview
+// -> goddess_rewardmega_giantess
+// -> giantess_temp
 
 
 // --- Headmistress Scene Jumps ---
@@ -184,6 +186,7 @@
 // -> treat_rewardmega_placeholder
 // -> treat_session_placeholder
 // -> treat_task_placeholder
+-> treat_monitoring
 
 
 
@@ -203,13 +206,13 @@
 // -> yuki_reward_puppyplay_milking
 // -> yuki_rewardmega_placeholder
 // -> yuki_task_fanning
--> yuki_task_puppyplay
+// -> yuki_task_puppyplay
 // -> yuki_task_puppyplay_intro
 // -> yuki_task_puppyplay_learn
 // -> yuki_task_puppyplay_practice
 // -> yuki_task_teaservice
 // -> yuki_train_spanking
- 
+
 
 
 // --- Game Jumps ---
@@ -221,7 +224,7 @@
 // -> game_intro_again
 // -> game_outro
 // -> skip_to_full_loop
- 
+
 
 
 // --- Tests ---
@@ -230,6 +233,7 @@
 // -> test_marks
 // -> test_multiple_poses
 // -> test_crowd_reactions
+// -> test_notification_ui
 
 
 ->->
@@ -241,6 +245,20 @@
 ~ inTutorial = false
 -> entry_hub
 
+=== test_notification_ui ===
+
+/scene Entry.Em
+
+- (again)
+{cycle:
+    - /notify title="Notification UI" text="Want to see another one?"
+    - /notify text="Here is another one. Text only.<br/><br/>Another?"
+    - /notify title="Title Only"
+    - /notify title="Localized Notification" text="Test localized notification text." #note00
+}
+
++ [yes] -> again
++ [no] ->->
 
 === test_marks ===
     + add punishment

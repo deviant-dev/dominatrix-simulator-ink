@@ -10,8 +10,269 @@
 
 + [move]
 
+--> treat_intro_temp 
+
 -/notify title="Ms. Treatment's Intro Completed." text="Returning to the entry."
 /wait 5
 
 ~ treat_intro_complete = true
 -> exit
+
+//the players first encounter her after they finish the Tutorial 
+// She comments on how hard and confusing things must be and lets them know she's there to keep an eye on their mental health
+// She indicates where her room is and lets the player know that she expects them to vist her every now and then 
+// If they don't, she might have to assign a mandatory therapy session
+// The intro scene should give them some hint to the type of things they can do with her and also comment on them being in chastity
+// She invites the player to visit her now - if they agree, they are teleported to her room
+
+
+
+=== treat_intro_temp ===
+
+//check to see if player went through Nega or Headmistress reward
+
+{goddess_monitoring_intro.angry: 
+    I see you have failed your first test.
+    But you have been given another chance 
+    to prove yourself.
+    
+    - else:
+    I see you have passed your first test. 
+    You've pleased the Goddess so much,
+    <i>She</i> has given you your next challenge.
+}
+
+- You'll need to earn a full wrist of rewards, 
+10 Bloodstones,
+to come out of chastity.
+
+- (challenge)
+Are you ready for this challenge?
+
++ [yes]
+    -> Treat_AcknowledgeYes ->
+    I believe in you.
+    
++ [no]
+    -> Treat_Unhappy ->
+    It will stay on until you choose to remove it.
+    
++ [timeout] -> Treat_Timeout -> challenge   
+
++ [distracted] -> Treat_PayAttention -> challenge
+
+- I <i>know</i> things can get a little intense around here.
+Don't give up.
+I promise it will be worth your while.
+As you know, you have so much potential.
+
+/wait
+
+Let me have a good look at you.
+
+- (present)
+Put your arms behind your head and spread your legs.
+
++ [pose:present_stand]
+    It's good to see how quickly you comply.
+    
++ [timeout] -> Treat_Timeout -> present
+
+
+- (confuse)
+Tell me, does this place confuse you?
+
++ [yes]
+    Not surprising.
+    Things will become more clear in time.
+    --(enjoy)
+    Have you enjoyed yourself, at least?
+    
+        ++ [yes]
+            Good.
+            There is so much pleasure to experience here.
+            
+            
+        ++ [no]
+            That is concerning.
+            We must be doing something wrong.
+        
+        ++ [timeout] -> Treat_Timeout -> enjoy
+        
+        ++ [distracted] -> Treat_PayAttention -> enjoy
+
++ [no]
+    I hope it stays that way.
+    Things are not always as they seem.
+    
++ [timeout] -> Treat_Timeout -> confuse
+
++ [distracted] -> Treat_PayAttention -> confuse
+
+- From now on, things will only get more demanding.
+Much will be asked of you.
+And, at times, you will struggle.
+
+This is where I come in.
+I'm here to keep an eye on your mental health.
+
+To make sure everything... 
+And I mean <i>everything</i>...
+Stays in good working order.
+
+The mind is key.
+It dictates to us what is pleasure and what is pain.
+
+{hasPenis: Cup your cock|Spread your pussy} and present it to me.
+ 
+- (sore)
+Is it sore?
+
++ [yes]
+    I thought so.
+    Well, you had better get used to the feeling.
+    It's going to be used <i>a lot</i>.
+
++ [no]
+    Good.
+    Because it's going to be used <i>a lot</i>.
+
++ [timeout] -> Treat_Timeout -> sore
+  
++ [distracted] -> Treat_PayAttention -> sore
+
+-
+
+I know you're ass has not been tested yet.
+But it will.
+
+- (ass)
+Let me see it. Turn around and spread your ass.
+
++ [pose: present_ass_reverse_spread]
++ [timeout] -> Treat_Timeout -> ass
+
+
+- Yes. Very nice.
+I can tell already that it will be very popular around here.
+
+- (play)
+Do you enjoy having your ass played with?
+
++ [yes]
+    I wonder if you will continue to feel that way.
+    Time will tell.
+        
++ [no]
+    Then you had better speak up when a Mistress 
+    asks you if you want it to be used.
+        
++ [timeout] -> Treat_Timeout -> play
+
++ [distracted] -> Treat_PayAttention -> play
+        
+- (chest)
+Turn back around and show me your chest.
+
++ [pose: present_chest]
++ [timeout] -> Treat_Timeout -> chest
+
+
+- Very pleasing.
+I'm sure those tight nubs will be toyed with often.
+
+- (excite)
+Does that idea excite you?
+
++ [yes]
+    Mmmm.
+    -- (pleasure)
+    Do you enjoy teasing them when you pleasure yourself?
+    
+    ++ [yes]
+        What a naughty, little minx.
+        
+    ++ [no]
+        No?
+        You should try it sometime.
+        
+    ++ [timeout] -> Treat_Timeout -> pleasure
+    
+    ++ [distracted] -> Treat_PayAttention -> pleasure
+        
++ [no]        
+    Well, you're going to have to decide
+    how much you can handle.
+ 
++ [timeout] -> Treat_Timeout -> excite
+
++ [distracted] -> Treat_PayAttention -> excite
+
+- Remember.
+The more you serve,
+the more valuable you are.
+
+- (relax)
+Relax.
+
++ [pose:stand]
++ [timeout] -> Treat_Timeout -> relax
+
+- (serve)
+Do you find it hard to serve?
+
++ [yes]
+    -> Treat_Unhappy ->
+    Then make sure you visit me often.
+    I can help with that.
+    
++ [no]
+    -> Treat_AcknowledgeYes ->
+    If you find it easy,
+    you may not need to come see me that often.
+    Nevertheless...
+ 
++ [timeout] -> Treat_Timeout -> serve
+
++ [distracted] -> Treat_PayAttention -> serve
+  
+- 
+My office is just up the stairs to the right.
+
+- (office)
+Will you make sure to come see me?
+
++ [yes]
+    -> Treat_AcknowledgeYes ->
+    I will keep track of how often you visit.
+
++ [no]
+    -> Treat_Unhappy ->
+    If you neglect your mental health, 
+    I may have to make visits mandatory.
+
++ [timeout] -> Treat_Timeout -> office
+
++ [distracted] -> Treat_PayAttention -> office
+
+- Now... I'm sure you are expected elsewhere.
+You can come see me anytime you need someone to take care of you.
+I can help you relax,
+get into the right headspace,
+or soothe you after a hard session.
+
+- (visit)
+Do you want to visit me now?
+
++ [yes]
+    Come to my office then.
+    -> treat_hub.choose_session
+    
++ [no]
+    That's fine.
+    Visit me when you are ready.
+    -> exit
+
++ [timeout] -> Treat_Timeout -> visit
+
++ [distracted] -> Treat_PayAttention -> visit

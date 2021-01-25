@@ -101,7 +101,7 @@ INCLUDE yuki/intro
 INCLUDE yuki/lore
 INCLUDE yuki/generic_responses
 INCLUDE yuki/generic_puppyplay
-// INCLUDE yuki/punishment_edging
+INCLUDE yuki/punishment_edging
 INCLUDE yuki/task_puppyplay
 INCLUDE yuki/task_puppyplay_intro
 INCLUDE yuki/task_puppyplay_learn
@@ -118,6 +118,10 @@ INCLUDE yuki/task_fanning
 // INCLUDE yuki/task_teaservice
 INCLUDE yuki/train_spanking
 INCLUDE furia/task_gloryhole_training
+INCLUDE treat/generic_responses
+INCLUDE treat/monitoring
+
+
 
 
 
@@ -128,13 +132,11 @@ INCLUDE furia/task_gloryhole_training
 
 
 // Flow Variables
+LIST deviation = (full_game), tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia
 
 VAR debug = false
 VAR web = true
 VAR inVR = false
-
-
--> set_deviation ->
 
 // Debug Jump
 // (must be in-editor and have 'Debug' checked on Settings object)
@@ -144,22 +146,8 @@ VAR inVR = false
     /log Exiting ink debug.
 }
 
+~ setDeviation(deviation)
 -> game_start
-
-
-=== set_deviation ===
-// Redirects the story flow to focus on a specific kink or game mode
-
- ~ setDeviation(full_game)
-// ~ setDeviation(tutorial)
-// ~ setDeviation(demo)
-// ~ setDeviation(hand_signals)
-// ~ setDeviation(puppyplay)
-// ~ setDeviation(exhibitionism)
-// ~ setDeviation(treat)
-// ~ setDeviation(nega_dice)
-// ~ setDeviation(pragma)
-->->
 
 
 === game_start ===
@@ -178,6 +166,8 @@ VAR inVR = false
         -> nega_hub
     - deviation == pragma:
         -> pragma_hub
+    - deviation == furia:
+        -> furia_hub
     - inTutorial == false:
         -> entry_hub
     - else:
@@ -188,7 +178,8 @@ VAR inVR = false
 === game_restart ===
 // Make sure deviation is set in case the story state was reset
 // via 'RestartStory()' in StoryTeller.
--> set_deviation -> game_start
+~ setDeviation(deviation)
+-> game_start
 
 
 === load_game ===
@@ -215,6 +206,14 @@ VAR inVR = false
 // {web: -> table_of_contents}
 {just_changed != none:
     ~ profile_scene_count++
+    {current_mistress != Treat:
+        ~ treat_scenes_since_last_session ++
+        
+    - else:
+        
+        ~ treat_scenes_since_last_session = 0
+    }
+    
 }
 
 {
@@ -236,20 +235,23 @@ VAR inVR = false
         -> nega_hub
     - deviation == pragma:
         -> pragma_hub
+    - deviation == furia:
+        -> furia_hub
 }
 
 -> pause(1) ->
 
-{inTutorial or current_mistress == Goddess or just_changed == none:
+{inTutorial or current_mistress == Goddess or current_mistress == Treat or just_changed == none:
     /log Skipping monitoring
     -> entry_hub
 - else:
     {shuffle:
         - -> goddess_monitoring
+        - -> treat_monitoring
         - -> entry_hub
         - -> entry_hub
         - -> entry_hub
-        - -> entry_hub
-        - -> entry_hub
+        // - -> entry_hub
+        // - -> entry_hub
     }
 }

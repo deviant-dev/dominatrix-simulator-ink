@@ -38,7 +38,6 @@
         You require correction. Go get your punishments and perhaps we'll talk. #01
         -> exit
     - rewards >= 10 && inChastity: -> chastity_release
-    - rewards >= 10: -> check_reward_mega
     - inChastity: -> chastity_rejection
     - punishments >= 10: -> chastity_offer
     - punishments > 0: -> check_punishment
@@ -116,9 +115,8 @@ Now leave. #09
 
 = check_reward_mega
 
-<< Full band of rewards, huh? >>
-
-
+Well, well. 
+Looks like our little mouse has a full band of Bloodstones.
             
 {goddess_regard < 10:
     << It's too bad you haven't pleased me more or I might have something special for you. >>
@@ -131,9 +129,9 @@ Now leave. #09
     -> check_reward
 }
 
-<< And you've pleased me quite a lot. >>
-<< Give me all 10 and I'll see you get something very special indeed. >>
-<< Would you like that? >>
+This pleases me greatly.
+You have earned the priviledge of spending them with me.
+Would you like that?
 
 + [yes] -> choose_reward_mega
 + [no] -> check_reward
@@ -187,7 +185,8 @@ My, you have been good. Here for your reward? #02
 
 = choose_reward_mega
 
-<< Let's get intimate. >>
+//goddess waves her hand over player's wrist
+Give them here.
 
 {shuffle:
     - -> goddess_rewardmega_giantess

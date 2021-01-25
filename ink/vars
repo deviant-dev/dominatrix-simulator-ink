@@ -16,7 +16,6 @@ VAR inChastity = false
 VAR has_learned_spanking = false
 
 // Lists
-LIST deviation = full_game, tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma
 LIST move_status = hidden = 0, locked, unlocked, early_access, under_construction
 LIST scene_type = hub_scene, intro_scene, punishment_scene, reward_scene, task_scene, session_scene
 LIST current_mistress = (None), Goddess, Headmistress, Yuki, Nega, Treat, Pragma, Angel, Furia, Caliste
@@ -112,6 +111,8 @@ VAR pragma_regard = 0
 // Ms Treatment Variables
 VAR treat_intro_complete = false
 VAR treat_regard = 0
+VAR treat_session_reminders = 0
+VAR treat_scenes_since_last_session = 0
 
 // Angelica Variables
 VAR angel_intro_complete = false

@@ -21,14 +21,8 @@
     -{inPosition: /emotion excited 50 | /perform idle_unhappy excited 50}
     Just like that. #02
 
-    -{inPosition: /emotion amused 50 | /perform do_inspect amused 55}
-    Maybe you aren't a waste of time. #03
-
-    -{inPosition: /emotion disgusted 45 | /perform react_dismissive disgusted 45}
+    -{inPosition: /emotion disgusted 45 | /perform react_shrug_short disgusted 45}
     Not bad. #04
-
-    -{inPosition: /emotion skeptical 50 | /perform talk_consider skeptical 75}
-    Huh. Maybe I will get to have a little fun after all. #05
 
     -{inPosition: /emotion excited 65 | /perform tease_caress_breast_left excited 45}
     You're making my pussy wet. #06
@@ -68,6 +62,7 @@
 }
 
 ->->
+
 
 
 === Nega_BadJob ===
@@ -130,11 +125,30 @@
     I don't know why I bother. #15
     
     - {inPosition: /emotion angry 40 | /perform react_point_at_player_angry angry 40}
-    Not good enough!
+    Not good enough! #16
 }
 
 ->->
 
+=== Nega_AcknowledgeYes ===
+
+-> DoComment(false)
+
+= Kneeling
+-> DoComment(true)
+
+= DoComment(inPosition)
+
+/character nega
+
+{shuffle:
+    -{inPosition: /emotion skeptical 50 | /perform talk_consider skeptical 75}
+    Huh. Maybe I will get to have a little fun after all. #05
+    -{inPosition: /emotion amused 50 | /perform do_inspect amused 55}
+    Maybe you aren't a waste of time. #03
+}
+
+->->
 
 === Nega_Unhappy ===
 -> DoComment(false)
@@ -232,6 +246,49 @@
 
     - /emotion sad 75
     You're an ugly, little wretch. #14
+    
+     -{inPosition: /emotion disgusted 60 | /perform react_scoffs disgusted 60}
+    Filthy bag of fuck holes. #15
+    //Does this make sense if the player is the one penetrating?
+}
+
+->->
+
+=== Nega_Objectify ===
+-> DoComment(false)
+
+= Squatting
+-> DoComment(true)
+
+= Sex_Chair
+-> DoComment(true)
+
+= DoComment(inPosition)
+
+{shuffle:
+
+    -{inPosition: /emotion disgusted 65 | /perform talk_lean_forward disgusted 65}
+    That's all you're good for, cunt, being used. #19
+
+    -{inPosition: /emotion aroused 65 | /perform tease_caress_breast_left aroused 65}
+    I enjoy watching you be a little whore for my attention. #21
+
+    -{inPosition: /emotion excited 55 | /perform idle_skeptical excited 55}
+    You're just a filthy cum bucket to be used and abused. #01
+    //Does this make sense if the player is the one penetrating?
+
+    -{inPosition: /emotion amused 55 | /perform react_chuckle amused 55}
+    What a {hasPenis: tiny little pecker|gaping hole} you have. #02
+
+    -{inPosition: /emotion angry 45 | /perform react_point_at_player_angry angry 45}
+    Good thing this House keeps you fucking firm. #03
+
+    -{inPosition: /emotion aroused 55 | /perform do_inspect aroused 55}
+    Oooo... look at the little sex doll. #05
+
+    -{inPosition: /emotion aroused 60 | /perform talk_one_finger aroused 60}
+    Such a fucking cum dump.  #06
+    //Does this make sense if the player is the one penetrating?
 }
 
 ->->
@@ -248,15 +305,15 @@
 = DoComment(inPosition)
 
 {shuffle:
-    - Keep going!
-    - Don't stop!
-    - More!
-    - Continue.
-    - I wanna see more of that.
-    - Again!
-    - Do it again.
-    - Keep it up. 
-    - That's it. Keep going! 
+    - Keep going! #01
+    - Don't stop! #02
+    - More! #03
+    - Continue. #04
+    - I wanna see more of that. #05
+    - Again! #06
+    - Do it again. #07
+    - Keep it up. #08
+    - That's it. Keep going! #09
 }
 
 ->->
@@ -673,48 +730,7 @@ Does that feel good whore? #04
 
 ->->
 
-=== Nega_Objectify ===
--> DoComment(false)
 
-= Squatting
--> DoComment(true)
-
-= Sex_Chair
--> DoComment(true)
-
-= DoComment(inPosition)
-
-{shuffle:
-
-    -{inPosition: /emotion disgusted 65 | /perform talk_lean_forward disgusted 65}
-    That's all you're good for, cunt, being used. #19
-
-    -{inPosition: /emotion aroused 65 | /perform tease_caress_breast_left aroused 65}
-    I enjoy watching you be a little whore for my attention. #21
-
-    -{inPosition: /emotion excited 55 | /perform idle_skeptical excited 55}
-    You're just a filthy cum bucket to be used and abused. #01
-    //Does this make sense if the player is the one penetrating?
-
-    -{inPosition: /emotion amused 55 | /perform react_chuckle amused 55}
-    What a {hasPenis: tiny little pecker|gaping hole} you have. #02
-
-    -{inPosition: /emotion angry 45 | /perform react_point_at_player_angry angry 45}
-    Good thing this House keeps you fucking firm. #03
-
-    -{inPosition: /emotion disgusted 60 | /perform react_dismissive disgusted 60}
-    Filthy bag of fuck holes. #04
-    //Does this make sense if the player is the one penetrating?
-
-    -{inPosition: /emotion aroused 55 | /perform do_inspect aroused 55}
-    Oooo... look at the little sex doll. #05
-
-    -{inPosition: /emotion aroused 60 | /perform talk_one_finger aroused 60}
-    Such a fucking cum dump.  #06
-    //Does this make sense if the player is the one penetrating?
-}
-
-->->
 
 === Nega_Give_Reward ===
 //This isn't being used anywhere.

@@ -275,6 +275,7 @@ Are they not fortunate to have one such as you to observe? #69
 + [distracted] -> Headmistress_PayAttention -> fortunate
 
 - /perform idle_sassy amused 50
+Friends and students... #72
 As always, purrs, moans, and words of encouragement #73
 are permitted during the punishment lesson. #74
 
@@ -671,7 +672,7 @@ Stand at attention! #257
     Resume your spanking position, slave. #255
 
     -/perform talk_question excited 40
-    Present your ass, {isBoy: runt|strumpet}. #256
+    Present your ass, {isBoy: runt|{isGirl:strumpet|runt}}. #256
 }
 
 + [pose:hands_and_knees]
@@ -840,7 +841,7 @@ Would you enjoy that, {player_name}? #189
 
 /perform talk_lean_forward happy 55
 Perhaps our little foible here needs a carrot #193
-dangled in front of {isBoy: him|her}. #194
+dangled in front of {isBoy: him|{isGirl:her|them}}. #194
 
 /character crowd murmur
 /character headmistress talk_behold excited 50

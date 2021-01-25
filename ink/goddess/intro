@@ -163,6 +163,10 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 
     /perform tease_bend_over aroused 80
     Perhaps you'd like to be one some day? #31
+    
+    /perform idle_bored skeptical 40
+    Well, too bad. #11
+    You haven't earned that priviledge yet. #12
 
 + [no]
     /perform talk_thoughtful disgusted 40

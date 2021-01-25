@@ -42,12 +42,12 @@
 
 + [character-choice:male]
     ~ setGender("m")
-    /notify text="<i>You now appear masculine.</i>" delay=10
+    /notify text="<i>You now appear masculine.</i>" delay=10 #note08
     -> options
 
 + [character-choice:female]
     ~ setGender("f")
-    /notify text="<i>You now appear feminine.</i>" delay=10
+    /notify text="<i>You now appear feminine.</i>" delay=10 #note09
     -> options
 
 + {hasChosen()} [move]
@@ -231,38 +231,47 @@
 ~ changeRegard(-1)
 
 === function changeRegard(amount) ===
-~ changeRegardTo(current_mistress, amount)
+~ changeRegardOf(current_mistress, amount)
 
 === function increaseRegardTo(mistress) ===
-~ changeRegardTo(mistress, 1)
+~ changeRegardOf(mistress, 1)
 
 === function decreaseRegardTo(mistress) ===
-~ changeRegardTo(mistress, -1)
+~ changeRegardOf(mistress, -1)
 
-=== function changeRegardTo(mistress, amount) ===
+=== function changeRegardOf(mistress, amount) ===
 {
     - mistress == Goddess:
-        ~ goddess_regard += amount
+        ~ goddess_regard = MinMaxRegard(goddess_regard + amount)
     - mistress == Headmistress:
-        ~ headmistress_regard += amount
+        ~ headmistress_regard = MinMaxRegard(headmistress_regard + amount)
     - mistress == Nega:
-        ~ nega_regard += amount
+        ~ nega_regard = MinMaxRegard(nega_regard + amount)
     - mistress == Yuki:
-        ~ yuki_regard += amount
+        ~ yuki_regard = MinMaxRegard(yuki_regard + amount)
     - mistress == Pragma:
-        ~ pragma_regard += amount
+        ~ pragma_regard = MinMaxRegard(pragma_regard + amount)
     - mistress == Angel:
-        ~ angel_regard += amount
+        ~ angel_regard = MinMaxRegard(angel_regard + amount)
     - mistress == Caliste:
-        ~ caliste_regard += amount
+        ~ caliste_regard = MinMaxRegard(caliste_regard + amount)
     - mistress == Furia:
-        ~ furia_regard += amount
+        ~ furia_regard = MinMaxRegard(furia_regard + amount)
     - mistress == Treat:
-        ~ treat_regard += amount
+        ~ treat_regard = MinMaxRegard(treat_regard + amount)
     - else:
         /logError Can't change {mistress}'s regard.
 }
 
+=== function MinMaxRegard(amount)
+~ return MinMax(amount, 0, 10)
+
+=== function MinMax(amount, min, max)
+{
+    - amount < min: ~ return min
+    - amount > max: ~ return max
+    - else: ~ return amount
+}
 
 // Fallback for getNegaDie1/2/3() external function
 === function getNegaDie1() ===
@@ -278,18 +287,19 @@
 
 
 === function getNegaDie() ===
-~ temp roll = 0
+~ temp roll = RANDOM(1, 6)
 
-{shuffle:
-    - ~roll = -1
-    - ~roll = -1
-    - ~roll = -1
-    - ~roll = 0
-    - ~roll = 1
-    - ~roll = 1
+{
+    - roll == 1: ~ return -1
+    - roll == 2: ~ return -1
+    - roll == 3: ~ return -1
+    - roll == 4: ~ return 0
+    - roll == 5: ~ return 1
+    - roll == 6: ~ return 1
+    - else:
+        /logError Roll out of range (1-6): {roll}
+        ~ return 0
 }
-
-~ return roll
 
 
 === function rollToText(roll) ===
@@ -453,5 +463,18 @@
 + [pose:puppy_back_yes] -> yesTunnel
 - ~ count++
 { count < max: -> repeat | ->-> }
+
+
+
+
+=== take_photo ===
+
+{shuffle:
+    - /perform do_camera_shoot_1
+    - /perform do_camera_shoot_2
+    - /perform do_camera_shoot_3
+}
+
+->->
 
 

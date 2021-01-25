@@ -30,3 +30,88 @@
 /wait 10
 
 -> exit
+
+=== giantess_temp ===
+For those stones, 
+I'm going to grant you a <i>Giant</i> reward.
+
+Tell me, little mouse...
+
+- (size)
+Shall I shrink you down to fit in my hand?
+
++ [yes]
+    -> Goddess_AcknowledgeYes ->
+    -> shrink
+
++ [no]
+    Perhaps you'd prefer I grow instead?
+    
+    ++ [yes]
+        -> grow
+        
+    ++ [no]
+        -> Goddess_Unhappy ->
+        That is all I can offer you today.
+        Would you like to reconsider?
+        
+        +++ [yes]
+            -> Goddess_AcknowledgeYes ->
+            -> size
+            
+        +++ [no]
+        Then go away, {isBoy:boy|{isGirl:girl|slave}}.
+        You bore me.
+        -> exit
+
+
+= shrink
+Time to show you how puny you really are.
+
+/perform do_snap_fingers amused
+
+You're so little it's pathetic.
+//player's view should lower down to the floor as if they have shrunken
+
+-> tease
+
+= grow 
+Be careful, little mouse, or you might get crushed.
+
+/perform do_snap_fingers skeptical
+
+I just love towering over my puny playthings.
+-> tease
+
+
+= tease 
+
+Let's see...
+How shall I pleasure myself with you today?
+
+{shuffle:
+    - -> dildo
+    - -> lollipop
+    - -> nipple
+}
+
+->->
+
+= dildo 
+I think you'll fill my pussy quite nicely.
+
+
+-> finish
+
+= lollipop
+You'll make an excellent lollipop for me to lick.
+-> finish
+
+= nipple
+You're just the right size to caress my nipple.
+-> finish
+
+= finish
+Did you being my tiny little mouse, {isBoy:boy|{isGirl:girl|slave}}?
+
+->->

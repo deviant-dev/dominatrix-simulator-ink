@@ -594,7 +594,7 @@ Have you figured out what's going on here yet? #76
 
     /perform idle_unhappy disgusted 70
     /lookat yuki
-    I think I should tell {isBoy:him|her}. #81
+    I think I should tell {isBoy:him|{isGirl:her|them}}. #81
     /perform idle_cocks_head_to_left amused 70
 
     /character yuki talk_one_finger disgusted 40
@@ -614,7 +614,7 @@ Have you figured out what's going on here yet? #76
 
     /character nega talk_lean_forward aroused 60
     /lookat player
-    I guess I'll just make {isBoy:him|her} my fuck toy instead. #85
+    I guess I'll just make {isBoy:him|{isGirl:her|them}} my fuck toy instead. #85
 
 
 + [timeout]
@@ -647,7 +647,7 @@ Let's find out. Shall we? #89
 + [yes]
     ~ addDisobey()
     /perform idle_eager amused 80
-    Ooo. I'm going to like this one. {isBoy: He|She} likes to be naughty. #90
+    Ooo. I'm going to like this one. {isBoy: He likes|{isGirl:She likes|They like}} to be naughty. #90
 
 + (caress_skipped) [no]
     ~ addObey()

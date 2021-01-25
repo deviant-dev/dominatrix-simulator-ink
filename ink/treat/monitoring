@@ -1,0 +1,138 @@
+=== treat_monitoring ===
+-> select_gender_check ->
+
+//skip the monitoring if player has been visiting her
+//if they haven't, then she reminds them to come see her
+
+{treat_session_reminders <2:
+    //reminder to have a treatment
+    -> monitor
+    
+    - else:
+    
+    -> treat_hub.choose_session
+}
+
+= monitor
+~treat_session_reminders++
+
+/scene 
+/music treat
+/ambient 
+/character treat
+
+
+//greet player
+{ shuffle:
+    - Hello {player_name}. 
+    - Hello there.
+    - Ah. There you are.
+}
+
+//check for type of scene
+{
+    - just_changed == reward_removed: -> reward_monitor
+    - just_changed == punishment_removed: -> punishment_monitor
+    - else: -> task_monitor
+}
+
+//comment on reward
+= reward_monitor
+{ shuffle:
+    - Rewards are delightful...
+    But they are much more enjoyable 
+    when your mind is in the right place!
+    - I see you've been pleasing to the Mistresses. 
+    That's good. 
+    But you musn't neglect your mind. 
+    - You may have received a reward, 
+    but you must also complete your therapy.
+}
+
+-> reminder
+
+//comment on punishment
+= punishment_monitor
+{ shuffle:
+    - Getting in trouble I see. 
+        We must work on your mindset.
+    - I'm disappointed to see you are getting into trouble.
+        Therapy will help you overcome that.
+    - Being punished will take it's toll on you. 
+        We must keep your mind healthy.
+}
+
+-> reminder
+
+
+//comment on task
+= task_monitor
+{ shuffle:
+    - I see you are keeping busy fulfulling tasks.
+    - Serving the Mistresses is an important duty.
+}
+
+{shuffle:
+    - But...
+    - Nevertheless...
+    - However...
+}
+
+//comment on importance of mental health
+{shuffle:
+    - We must keep your mind sharp, as well!
+    - We must maintain your mental hygiene!
+    - Your mental health must be maintained!
+}
+
+    
+-> reminder
+
+= reminder
+
+//comment that she's been waiting 
+{ shuffle:
+    - I've been waiting for you to come see me.
+    - It's time for you to have a session. 
+    - It's important you visit me regularly.
+    - I expect you to come to your sessions.
+}
+
+- (visit)
+Do you want to visit me now?
+
++ [yes]
+    -> Treat_AcknowledgeYes ->
+    Come to my office.
+    -> treat_hub.choose_session
+    
++ [no]
+    -> Treat_Unhappy ->
+    -> warning
+
++ [timeout] -> Treat_Timeout -> visit
+
++ [distracted] -> Treat_PayAttention -> visit
+
+
+= warning
+
+{shuffle:
+    - If you don't come see me on your own,
+    then I will have to force you to. 
+    - Eventually, I will require you come see me. 
+    - I will give you a little more time. 
+    And then I will summon you.
+}
+
+//say Goodbye
+{ shuffle:
+    - Remember what I've said.
+    You may go.
+    - Goodbye {player_name}. 
+    You may continue what you were doing.
+}
+
+-> entry_hub
+
+->->

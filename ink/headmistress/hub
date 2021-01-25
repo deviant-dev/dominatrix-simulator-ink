@@ -37,7 +37,7 @@
 - else:
     {shuffle:
         - /perform talk_behold amused 45
-        Greetings, {isBoy: peon|moppet}. #02
+        Greetings, {isBoy: peon|{isGirl:moppet|peon}}. #02
 
         - /perform talk_one_hand skeptical 75
         Welcome back, flawed one. #03

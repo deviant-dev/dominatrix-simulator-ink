@@ -14,3 +14,10 @@
 /wait 5
 ~ pragma_intro_complete = true
 -> exit
+
+=== intro_temp ===
+
+//Player enters scene in one of the statue cubbies around the outer edge of the room
+//Pragma has a slave on a table on the main platform
+
+-> exit

@@ -297,7 +297,7 @@ Pay attention! #165
 { cycle:
 
     - /perform talk_lean_forward excited 55
-    Sometimes, I want my puppy on {isBoy:his|her} <b>"back"</b>. #36
+    Sometimes, I want my puppy on {isBoy:his|{isGirl:her|their}} <b>"back"</b>. #36
 
     - /perform do_point_down amused 50
     Show me how a good puppy lays on their <b>"back"</b>. #37

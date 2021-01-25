@@ -94,7 +94,7 @@ Okay? #65
 
 + [no]
     /perform do_shake_finger_stern angry 25
-    Then you're going to have a hard time later {isBoy:mister|missy}. #67
+    Then you're going to have a hard time later {isBoy:mister|{isGirl:missy|pet}}. #67
     -> Yuki_CheckIfInterested ->
 
 + [timeout] -> Yuki_Timeout -> remember_pose

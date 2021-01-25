@@ -10,4 +10,6 @@
 ~ increaseRegard()
 
 - /wait 5
+
+~ treat_session_reminders = 0
 -> exit

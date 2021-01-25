@@ -6,95 +6,174 @@
 /scene atticphotoshoot.ready
 /music nega-punishment
 /ambient howling-wind
-/character nega idle_bored skeptical
+/character nega idle_camera amused 75
 
-- 
-I want to get a <i>good</i> look at you.
+-  I want to get a <i>good</i> look at you. #01
 
--   (stand_at_attention) 
-/perform idle_skeptical skeptical 40
-Stand at attention, whore! 
+- (present)
+/perform react_point_at_player_angry angry 65
+Present yourself, whore! #02
 
-/perform react_point_at_player_angry angry 40
-Hands behind your back!
+/perform tease_pinup amused 70
+Hands behind your head! #03
 
-/perform idle_skeptical disgusted 30
+/perform idle_swaying aroused 60
 
-+ [pose:raised_chin]
-+ { tries < 3 } [timeout] 
++ [pose:present_stand]
++ { tries < 3 } [timeout]
     -> Nega_BadJob ->
-    -> stand_at_attention
-+ { tries >= 3 } [timeout] -> Nega_CheckIfInterested -> stand_at_attention
-+ [no] -> Nega_CheckIfInterested -> stand_at_attention
+    -> present
++ { tries >= 3 } [timeout] -> Nega_CheckIfInterested -> present
++ [no] -> Nega_CheckIfInterested -> present
 
 
-- 
+-
 -> Nega_Insult ->
+/perform talk_behold amused 60
+Look at you standing there, #04
 
-Look at you standing there,
-just begging for me to pay attention to you.
+/perform do_mocking excited 75
+just begging for me to pay attention to you. #05
 
 - (attention)
-/perform talk_question skeptical
-That's what you want, isn't it?
-For me to give you some special attention?
+/perform talk_question angry 70
+That's what you want, isn't it? #06
 
-/perform nega idle_bored
+/perform idle_tease amused 65
+For me to give you some special attention? #07
 
   +[yes]
-    /perform react_point_at_player_angry amused
-    Don't worry.
-    I'll give you some <i>very</i> special attention today.
-    
+    /perform do_shake_finger amused 70
+    Don't worry. #08
+
+    /perform tease_caress_breast_right aroused 65
+    I'll give you some <i>very</i> special attention today. #09
+
   +[no]
     -> Nega_Unhappy ->
-    /perform react_scoffs skeptical
-    Yes you do.
-    That's why you always come back.
-        
+    /perform react_dismissive skeptical 65
+    Yes you do. #10
+
+    /perform react_point_at_player_angry disgusted 55
+    That's why you always come back. #11
+
  + [timeout] -> Nega_Timeout -> attention
  + [distracted] -> Nega_PayAttention -> attention
 
 //Nega leans in and whispers in the player's ear
 
-- /perform react_excited amused 75
-Have you ever been the star of your own photo shoot?
+- {nega_punishment_camera_shoot > 1: -> camera}
+
+/perform react_excited amused 75
+Have you ever been the star of your own photo shoot? #12
+
+/perform idle_swaying excited 55
 
   +[yes]
-    /perform do_rub_hands_together excited 80
-    Not like this, you haven't.
-    
+    /perform react_scoffs skeptical 80
+    Not like this, you haven't. #13
+
   +[no]
-    /perform do_rub_hands_together excited 80
-    Then you're in for a real treat!
-        
+    /perform do_fist_pump excited 80
+    Then you're in for a real treat! #14
+
  + [timeout] -> Nega_Timeout -> attention
  + [distracted] -> Nega_PayAttention -> attention
 
-- /perform idle_camera_shoot amused
-
-Time to smile for the camera!
-
-Say cheese!
-
--> Nega_GoodJob ->
-
-~task_count = 0
-- (camera_repeat)
-~task_count++
-/perform idle_camera happy 50
-
-{cycle:
-    - I have a few more poses in mind before I'm threw with you.
-    - Let's try another pose.
-    - It's so sad...
-    We're almost finished with our photo shoot!
+- (camera)
+ /perform idle_camera happy 50
+{shuffle:
+    - Time to smile for the camera, bitch! #15
+    - I need more photos for my collection. #16
+    - Time for my little camera slut to shine! #17
 }
 
+/emotion amused 55
+-> take_photo ->
+{shuffle:
+    - Say cheese, little whore! #18
+    - Time to work that body, {hasPenis: prick|cunt}. #19
+    - And don't fuck it up! #20
+}
+
+/wait
+-> Nega_GoodJob ->
+-> Nega_Objectify ->
+
+
+- /perform idle_camera excited 55
+How did that feel? #21
+
+/perform talk_behold amused 60
+Showing the camera what an eager little attention slut you are. #22
+
+- (enjoy)
+/perform idle_camera happy 75
+Did you enjoy it? #23
+
++ [yes]
+    /perform idle_tease aroused 75
+    Oh goody! #24
+
++ [no]
+    /perform talk_threaten angry 75
+    No? #25
+
+    /perform react_resigned disgusted 75
+    Well, then maybe you better run away #26
+
+    /perform talk_lean_forward angry 50
+    and hide in Yuki's skirts. #27
+
+    /perform idle_nega sad 70
+    Are you a pathetic bitch who wants to leave? #28
+
+    ++ [yes]
+        /perform idle_unhappy_stomp disgusted 75
+        Fine. #29
+
+        /perform do_get_the_fuck_out angry 75
+        Then get the fuck out! #30
+        -> exit
+
+    ++ [no]
+        /perform react_point_at_player_angry angry 30
+        Good. #31
+
+        /perform talk_threaten angry 75
+        Then fucking do what you're told! #32
+
+ + [timeout] -> Nega_Timeout -> enjoy
+ + [distracted] -> Nega_PayAttention -> enjoy
+
+
+- /perform idle_nega
+You're going to be my little camera bitch. #33
+
+- ~task_count = 0
+- (camera_repeat)
+~task_count++
+{cycle:
+    - /perform idle_camera amused excited 70
+    Let's see how much the camera loves you! #34
+
+    - /perform idle_fake_annoyed happy 55
+    Let's try another pose. #35
+
+    - /perform talk_behold sad 75
+    It's so sad... #36
+    We're almost finished with our photo shoot! #37
+}
+
+- (positions)
 {shuffle:
     - -> titties ->
     - -> ass ->
     - -> crotch ->
+    - {yuki_task_puppyplay_learn.pose_horny: -> dog ->|-> positions}
+    - -> humble ->
+    - -> fuckdoll ->
+    - -> slave ->
 }
 
 {task_count<3: -> camera_repeat}
@@ -104,131 +183,339 @@ Say cheese!
 = titties
 
 /perform idle_skeptical happy 50
-Show me those titties.
+Show me those titties. #38
 
 - (squeeze)
 /perform tease_caress_breast_right amused 75
-Reach up and give 'em a <i>good</i> squeeze!
+Reach up and give 'em a <i>good</i> squeeze! #39
 
 + [pose:present_chest]
 + [timeout] -> Nega_PayAttention -> squeeze
 
-- /perform idle_camera_shoot excited 75
+-/wait
+/emotion excited 75
+-> take_photo ->
+/wait
+-> photo_comment ->
+
+/perform idle_camera amused 50
 {shuffle:
-    - Look how tiny they are!
-    - Only whores show off their bodies so eagerly!
+    - Look how tiny they are! #40
+    - Only whores show off their bodies so eagerly! #41
 }
 //nega laugh
-
--> Nega_GoodJob.Photo ->
-
+/emotion aroused 55
+-> take_photo ->
 -> photo_comment ->
 
 ->->
 
 = ass
 /perform idle_camera digusted 35
-Now, turn around, bend over and present your ass to me!
+Turn around, bend over and present your ass to me! #42
 
 + [pose:present_ass_reverse]
-+ { tries < 2 } [timeout] 
-    That's not right! Try again!
++ { tries < 2 } [timeout]
+    That's not right! Try again! #43
     -> ass
-+ { tries >= 2 } [timeout] 
-     -> Nega_CheckIfInterested 
++ { tries >= 2 } [timeout]
+     -> Nega_CheckIfInterested
      -> ass
 
-- /perform idle_camera amused 40
+- /emotion amused 40
+-> take_photo ->
+
 //Nega laughs
-You look ridiculous, worm!
+You look ridiculous, {isBoy:worm|cunt}! #44
 
-Hold that pose for a bit.
+Hold that pose for a bit. #45
 
-In fact...
+/perform idle_camera amused 60
+In fact... #46
 - (spread)
-reach back and spread those ass cheeks nice and wide.
+reach back and spread those ass cheeks nice and wide. #47
 
 + [pose:present_ass_reverse_spread]
 + [timeout] -> spread
 
-- -> Nega_GoodJob ->
-
-/perform idle_camera_shoot
-Time to snap a few more poses.
+- Yum! #48
+/emotion excited 75
+-> take_photo ->
+-> photo_comment ->
+/wait
 
 {shuffle:
-    - I'm not sure you cleaned that ass well enough.
-    Tsk. Tsk. Tsk.
-    - Such a gaping fuck hole!
+    - I'm not sure you cleaned that ass well enough. #49
+    Tsk. Tsk. Tsk. #50
+    - Your ass is such a gaping fuck hole! #51
 }
 
-- /perform idle_camera amused
+/wait
 
-Turn around.
+- (around)
+/perform idle_camera amused 55
 
+Turn around. #52
+
++ [pose:raised_chin]
++ { tries < 3 } [timeout]
+    -> Nega_BadJob ->
+    -> around
++ { tries >= 3 } [timeout] -> Nega_CheckIfInterested -> around
++ [no] -> Nega_CheckIfInterested -> around
+
+- -> Nega_GoodJob ->
+/emotion aroused 60
+-> take_photo ->
 -> photo_comment ->
+
+/perform idle amused 55
 ->->
 
 = crotch
 
-/perform do_point_down 
+/perform do_point_down
 
 -> Nega_Kneel ->
 
 - (open)
-Spread your knees.
-Hands behind your head.
+/perform idle_camera disgusted 40
+Spread your knees. #53
+Hands behind your head. #54
 
-Let me see that filthy {hasPenis: cock|pussy}.
+/perform talk_lean_forward amused 40
+Let me see that filthy {hasPenis: cock|pussy} of yours. #55
 
 + [pose:present_kneel]
 + [timeout] -> Nega_PayAttention -> open
 
-- /perform idle_camera_shoot amused
+- -> Nega_GoodJob ->
+/emotion amused
+-> take_photo ->
+/wait
+-> photo_comment ->
+
+/wait
 
 {shuffle:
-     - It's just so {hasPenis: tiny|flappy}!
-     - Just further proof what a desperate fucktoy you are!
+     - It's just so {hasPenis: tiny|flappy}! #56
+     - Just further proof what a desperate fucktoy you are! #57
  }
 //nega laughs
-
+/perform idle_camera amused
 -> Nega_GoodJob.Photo ->
 
+/emotion disgusted 50
+-> take_photo ->
+
+-> photo_comment ->
+
+->->
+
+= dog
+
+/perform talk_one_finger amused
+You like being Yuki's little puppy... #58
+
+/perform do_point_down disgusted 75
+So get on your fucking knees #59
+like the filthy dog you are. #60
+
+- (horny)
+/perform talk_lean_forward amused 40
+Show me that delicious horny pose. #61
+That will be perfect for photos! #62
+
++ [pose:puppy_horny]
++ [timeout] -> Nega_PayAttention -> horny
+
+- -> Nega_GoodJob ->
+/emotion amused
+-> take_photo ->
+/wait
+-> photo_comment ->
+
+/wait
+
+{shuffle:
+     - What a bitch in heat! #63
+     - You'll take a fucking in any position I tell you to. #64
+ }
+//nega laughs
+/perform idle_camera amused
+-> Nega_GoodJob.Photo ->
+
+/emotion disgusted 50
+-> take_photo ->
+-> photo_comment ->
+
+->->
+
+= fuckdoll
+
+/perform talk_one_finger amused
+You're always begging to be my fuckdoll. #65
+
+/perform do_point_down disgusted 75
+So let's see it! #66
+
+- (spread)
+/perform talk_lean_forward amused 40
+On your back with your legs and arms in the air. #67
+Spread those knees! #68
+
++ [pose:fuck_doll]
++ [timeout] -> Nega_PayAttention -> spread
+
+- -> Nega_GoodJob ->
+/emotion amused
+-> take_photo ->
+/wait
+-> photo_comment ->
+
+/wait
+
+{shuffle:
+     - You're only good enough for me to wipe my boots on. #69
+     - So many delicious holes to fuck up! #70
+ }
+//nega laughs
+/perform idle_camera amused
+-> Nega_GoodJob.Photo ->
+
+/emotion disgusted 50
+-> take_photo ->
+-> photo_comment ->
+
+->->
+
+= humble
+
+/perform talk_one_finger amused
+Show me what a simpering slave you are. #71
+
+/perform do_point_down disgusted 75
+-> Nega_Kneel ->
+
+- (abase)
+/perform talk_lean_forward amused 40
+Abase yourself before me like #72
+the pathetic wretch you are. #73
+
++ [pose:humble]
++ [timeout] -> Nega_Timeout -> abase
+
+
+- -> Nega_GoodJob ->
+/emotion amused
+-> take_photo ->
+/wait
+-> photo_comment ->
+
+/wait
+
+{shuffle:
+     - What a perfect position for shoving my foot up your ass. #74
+     - So worthless! Your face belongs on the ground. #75
+ }
+
+//nega laughs
+/perform idle_camera amused
+-> Nega_GoodJob.Photo ->
+
+/emotion disgusted 50
+-> take_photo ->
+-> photo_comment ->
+
+->->
+
+= slave
+
+/perform talk_one_finger amused
+Beg to be my sex slave. #76
+
+/perform do_point_down disgusted 75
+-> Nega_Kneel ->
+
+- (wrists)
+/perform talk_lean_forward amused 40
+Wrists out in front of you... #77
+Eager for the bite of my rope. #78
+
++ [pose:hands_raised]
++ [timeout] -> Nega_PayAttention -> spread
+
+- -> Nega_GoodJob ->
+/emotion amused
+-> take_photo ->
+/wait
+-> photo_comment ->
+
+/wait
+
+{shuffle:
+     - Imagine your wrists branded with the coils of my rope. #79
+     - So eager to be a lowly slave! #80
+ }
+//nega laughs
+/perform idle_camera amused
+-> Nega_GoodJob.Photo ->
+
+/emotion disgusted 50
+-> take_photo ->
 -> photo_comment ->
 
 ->->
 
 = finish
 /perform idle_camera happy
-There we go! 
-/emotion amused
-It's always good to have a little blackmail material! 
 
-/perform idle_skeptical disgusted 50
-Don't cross me, or who knows where these pictures might end up!
-
-/perform do_shoo_player amused
-See ya later {isBoy: scum|{isGirl: whore|maggot}}.
+{shuffle:
+    - All done! #81
+    - That's enough for now. #82
+    - I've got what I need. #83
+}
 
 
--> exit
+{shuffle:
+    - /perform react_shrug_long amused 60
+    It's always good to have a little blackmail material! #84
+
+    - /perform idle_skeptical angry 75
+    Don't cross me, or who knows where these pictures might end up! #85
+
+    - /perform idle_tease amused 70
+    I'll tuck these away for a special occasion. #86
+
+    - /perform idle_swaying sad 55
+    Poor little baby. #87
+    You've got no control over what I do with these. #88
+}
+
+/perform do_blow_kiss amused 70
+See ya later {isBoy: scum|{isGirl: whore|maggot}}. #89
+/perform idle amused 60
+
+
+- {debug: -> Debug -> exit |-> exit}
 
 = photo_comment
 
 {shuffle:
-    - Someone will pay handsomely in Bloodsones for these!
-    - I might just keep these in my personal collection.
-    - I bet the Headmistress' audience will love this one. 
-    - Won't poor Yuki be so upset when I show these to her!
-    - Uh oh. The Goddess will be <i>so disappointed</i> in you.
-    - Furia's gonna laugh her ass off when I show her these.
-    - These will give Pragma all the evidence 
-    she needs to <i>improve</i> you. 
-    - Hmm. I'm sure the Headmistress will find plenty 
-    wrong your performance.
-    - You're just the kind of fuck slut Angelica loves to torment.
-    - I'm sure Caliste will find some use for these in her rituals.
-    - Better see Treat after this humiliation.
+    - Someone will pay handsomely in Bloodstones for these! #90
+    - I might just keep these in my personal collection. #91
+    - I bet the Headmistress' audience would love to see you like this. #92
+    - Won't poor Yuki be so upset when I show these to her! #93
+    - Uh oh. The Goddess will be <i>so disappointed</i> in you. #94
+    - Furia's gonna laugh her ass off when I show her these. #95
+    - These will give Pragma all the evidence #96
+    she needs to <i>improve</i> you. #97
+    - Oh yeah. #98
+    I'm sure the Headmistress will find plenty wrong with your performance. #99
+    - You're just the kind of fuck slut Angelica loves to torment. #100
+    - I'm sure Caliste will find some use for these in her rituals. #101
+    - Better see Treat after this humiliation. #102
+    - Sluts like you can't lie to the camera! #103
 }
 
 ->->

@@ -150,7 +150,7 @@ Does your poor tushy sting? #23
     ~ addDisobey()
 
     /perform talk_consider aroused 50
-    Oh, a tough {isBoy:guy|girl}, huh? #25
+    Oh, a tough {isBoy:guy|{isGirl:girl|piggy}}, huh? #25
 
     /perform do_fist_pump excited 65
     Nice. #26

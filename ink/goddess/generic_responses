@@ -41,6 +41,27 @@
 
 ->->
 
+=== Goddess_AcknowledgeYes ===
+
+{shuffle:
+    - How delightful.
+    - Very well.
+    - So be it.
+    - Alright then.
+}
+
+->->
+
+=== Goddess_Unhappy ===
+
+{shuffle:
+- How disappointing.
+- Really?
+- I see.
+}
+
+->->
+
 === Goddess_Timeout ===
 
 { shuffle:
@@ -53,7 +74,7 @@
     - /perform talk_lean_forward skeptical 35
     I don't like it when people make me wait. #13
 
-    - /perform idle_unhappy_stomp angry 65
+    - /perform idle_skeptical angry 65
     What makes you think you can ignore me? Answer me. #14
  }
  
@@ -63,7 +84,7 @@
 
 
 { cycle:
-    - /perform do_shake_finger_stern angry 80
+    - /perform idle_skeptical angry 80
     Look at me when I'm speaking to you, {player_name}. #125
     /wait 1
 
@@ -76,7 +97,7 @@
     Did I give you permission to look elsewhere? #128
     /wait 1
 
-    - /perform react_dumb angry 80
+    - /perform talk_behold angry 80
     Didn't anyone ever teach you to look at people #129
     when they're speaking to you? #130
     /wait 1
@@ -85,11 +106,11 @@
     Pay attention to me when you're in my presence. #131
     /wait 1
 
-    - /perform idle_unhappy_stomp angry 80
+    - /perform idle_skeptical angry 80
     You're trying my patience. Pay attention. #132
     /wait 1
 
-    - /perform talk_threaten angry 80
+    - /perform idle skeptical 80
     Eyes on me, {player_name}. #133
     /wait 1
 }

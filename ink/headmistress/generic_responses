@@ -271,16 +271,16 @@
     Allowing yourself to be distracted #02
 
     /perform talk_annoyed sad 40
-    is a trait we must cure you of, {isBoy:toad|hussy}! #03
+    is a trait we must cure you of, {isBoy:toad|{isGirl:hussy|heathen}}! #03
 
     -/perform talk_lean_forward angry 40
     Eyes on me, immediately, slave! #04
 
     -/perform react_dumb disgusted 45
-    Am I tedious, {isBoy:oaf|strumpet}? #05
+    Am I tedious, {isBoy:oaf|{isGirl:strumpet|oaf}}? #05
 
     -/perform talk_one_finger scared 55
-    A proper slave maintains focus on {isBoy:his|her} instruction. #06
+    A proper slave maintains focus on {isBoy:his|{isGirl:her|their}} instruction. #06
 
     -/perform talk_lean_forward aroused 75
     I require your unwavering attention. #07
@@ -358,6 +358,9 @@
 
     -/perform talk_lean_forward amused 65
     Ahhh. I am pleased! #243
+    
+    - /perform react_nod_big happy 40
+    Very good. #23
 }
 
 ->->
@@ -585,6 +588,7 @@ TODO: Change this to an 'Mmmm' VO line. -Deviant
 TODO: decide whether to keep these lines
 === Headmistress_player_masturbate ===
 
+//this line is used in headmistress_reward_exhibitionism
 // {hasPenis: Wrap your hand around your rod|Slip your fingers between your nether lips} and entertain them. #02
 
 
@@ -671,7 +675,7 @@ TODO: decide whether to keep these lines
     We have a little whore, guests! #02
 
     -/perform talk_behold aroused 75
-    Do you think {isBoy:he|she} is enjoying {isBoy:himself|herself}? #03
+    Do you think {isBoy:he is|{isGirl:she is|they are}} enjoying {isBoy:himself|{isGirl:herself|themself}}? #03
      /character crowd cheers
      /character headmistress
 
@@ -694,7 +698,7 @@ TODO: decide whether to keep these lines
     A {hasPenis:hard shaft|wet slit} is a pleasing {hasPenis:shaft|slit}. #09
 
     -/perform do_shake_finger angry 65
-    Proper performance for guests is a requirement {isBoy:toad|strumpet}. #10
+    Proper performance for guests is a requirement {isBoy:toad|{isGirl:strumpet|heathen}}. #10
 
     -/perform talk_behold aroused 75
     One must be proud to display their arousal. #11

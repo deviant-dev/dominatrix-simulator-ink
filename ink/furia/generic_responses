@@ -4,64 +4,19 @@
 
 { shuffle:
 
-    -/perform
+    -/perform idle_fake_annoyed amused 65
+    Very good.
+
+    -/perform talk_consider aroused 85
+    Muy bien.
+
+    -/perform idle_pleased amused 65
+    Excellent.
+
+    -/perform do_inspect excited 60
+    Excellente.
 
 
-    -/perform
-
-
-    -/perform
-
-
-    -/perform
-
-
-    -/perform
-
-
-    -/perform
-
-
-    -/perform
-
-
-    // GoodJob with audience.
-    - {furia_has_audience:
-            /perform
-
-        - else:
-            -> Furia_GoodJob
-      }
-    - {furia_has_audience:
-            /perform
-
-        - else:
-            -> Furia_GoodJob
-      }
-    - {furia_has_audience:
-            /perform
-            A rousing performance. #10
-        - else:
-            -> Furia_GoodJob
-      }
-    - {furia_has_audience:
-            /perform
-            I take such joy in my role. #15
-        - else:
-            -> Furia_GoodJob
-      }
-    - {furia_has_audience:
-            /perform
-            Such a delight to behold! #16
-        - else:
-            -> Furia_GoodJob
-      }
-    - {furia_has_audience:
-            /perform
-            I am overwhelmed with satisfaction. #17
-        - else:
-            -> Furia_GoodJob
-      }
 }
 
 ->->
@@ -71,44 +26,20 @@
 
 { shuffle:
 
-  -/perform
+  -/perform talk_annoyed disgusted 80
+  Terrible.
 
+  -/perform react_dismissive scared 80
+  No, no no no
 
-  -/perform
+  -/perform react_whatever scared 80
+  That was awful!
 
+  -/perform talk_one_finger angry 80
+  Most embarrasing for you
 
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-
-    // BadJob with audience
-    - {furia_has_audience:
-            /perform
-        - else:
-            -> Furia_BadJob
-      }
-    - {furia_has_audience:
-            /perform
-        - else:
-            -> Furia_BadJob
-      }
-    - {furia_has_audience:
-            /perform
-        - else:
-            -> Furia_BadJob
-      }
-    - {furia_has_audience:
-            /perform
-        - else:
-            -> Furia_BadJob
-      }
-
+  -/perform talk_lean_forward angry 80
+  You call that effort?!
 }
 
 ->->
@@ -118,21 +49,18 @@
 
 { shuffle:
 
-    -/perform
+    -/perform react_dumb skeptical 70
+    I do not believe you.
 
 
-    -/perform
+    -/perform react_point_at_player_angry disgusted 55
+    Do not lie to me.
 
+    -/perform react_dismissive angry 65
+    I have no time for fools.
 
-    -/perform
-
-
-    -/perform
-
-
-    -/perform
-
-
+    -/perform react_shake_head_disbelief sad 50
+    Disappointing.
 }
 
 ->->
@@ -142,17 +70,17 @@
 
 { shuffle:
 
-  -/perform
+  -/perform idle_bored disgusted 65
+  Move, you {isBoy: mongrel | {isGirl: slut | maggot}}!
 
+  -/perform talk_one_finger sad 65
+  Are you even listening to me?
 
-  -/perform
+  -/perform react_resigned sad 70
+  I can't believe you'd act like this...
 
-
-  -/perform
-
-
-  -/perform
-
+  -/perform idle_skeptical skeptical 55
+  Are you trying to piss me off?
 }
 
 ->->
@@ -162,60 +90,41 @@
 
 { shuffle:
 
-  -/perform
+  -/perform talk_lean_forward angry 75
+  ¡Responde, esclavo!
 
+  -/perform talk_one_finger sad 65
+  I am waiting...
 
-  -/perform
+  -/perform react_scoffs scared 75
+  Perhaps you think I am patient.
+  I am not.
 
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
 
 }
 
 ->->
 
 === Furia_PayAttention ===
+/perform do_snap_fingers
 { shuffle:
 
-    -/perform
+    -Attention, whore!
 
-    -/perform
+    -Are you listening to me?
 
 }
 
 + [pay-attention]
-+ [timeout] -> Furia_PayAttention ->->
++ [timeout] -> Furia_PayAttention ->
 
-/perform
+/perform react_thankful amused 65
 
--
-{ shuffle:
+- { shuffle:
 
-    -/perform
+    -Good, let us move on
 
-    -/perform
-
-
-    -/perform
-
-
-    -/perform
-
+    -You better keep it that way
 
 }
 
@@ -227,25 +136,20 @@
 
 { shuffle:
 
-   -/perform
+   -/perform react_thankful excited 55
+    Excellente!
 
+    -/perform talk_behold amused 70
+    Magnifica!
 
-   -/perform
+    -/perform react_nod_big skeptical 65
+    Bien.
 
+    -/perform talk_thoughtful happy 45
+    Excellent.
 
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
+    -/perform idle_sassy aroused 55
+    Magnificent.
 
 
 }
@@ -259,25 +163,22 @@
 
 { shuffle:
 
-   -/perform
+   -/perform talk_consider skeptical 75
+   We shall carry on, then
 
+   -/perform talk_question amused 75
+   I suppose you will need more training
+   after this session
 
-   -/perform
+   -/perform talk_thoughtful aroused 65
+   Chop chop, worm!
+   We haven't got all day
 
+   -/perform react_thankful sad 80
+  Let's continue, now that you're paying attention
 
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
+   -/perform react_point_at_player_angry angry 80
+   You had better keep yourself in check!
 
 }
 
@@ -290,108 +191,21 @@
 
 { shuffle:
 
-   -/perform
+   -/perform talk_annoyed disgusted 65
+    'sighs' Let's continue, your disobedience needs to be extinguished
 
 
-   -/perform
+   -/perform react_thankful amused 65
+   Now, we return to the problem at hand: your lack of discipline
 
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
-
-   -/perform
-
+   -/perform talk_lean_forward disgusted 65
+   I do enjoy a good struggle,
+   but you are making this more trouble
+   than it is worth
 
 
 }
 
-->->
-
-
-
-
-=== Furia_player_masturbate ===
-
-
-
-
-->->
-
-=== Furia_masturbation_punishment ===
-/character furia
-
-{ shuffle:
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-    - -> Furia_BadJob ->
-    - -> Furia_BadJob ->
-    - -> Furia_BadJob ->
-    - -> Furia_BadJob ->
-}
-
-/character furia
-->->
-
-
-=== Furia_masturbation_comments ===
-/character furia
-
-{ shuffle:
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-  -/perform
-
-
-    - -> Furia_GoodJob ->
-    - -> Furia_GoodJob ->
-    - -> Furia_GoodJob ->
-    - -> Furia_GoodJob ->
-}
-
-/perform idle_clasp_hands amused 55
 ->->
 
 === Furia_CheckIfInterested ===
@@ -402,31 +216,43 @@
 
 {
     - scene_type == punishment_scene:
-    /perform
+    /perform talk_lean_forward angry 65
         {shuffle:
-            -/perform
+            -Slave, you are venturing into dangerous territory
+            You do not want to anger me, I assure you
+            Will you comply with my instructions?
 
 
-            -/perform
+
+            -You are a disgrace!
+            I do not understand
+            How you managed to catch the attention of the goddess
+            Do you wish to please me?
 
         }
 
     - scene_type == reward_scene:
-    /perform
+    /perform idle_cocks_head_to_left skeptical 70
         {shuffle:
-          -/perform
+          -I see your attention is waning,
+          should we continue?
 
-          -/perform
 
+          -Your enthusiasm has evaporated,
+          as water in the hot sun.
+          Are you wishing to proceed with your reward?
         }
 
     - else:
-    /perform
-
+    /perform idle_unhappy sad 65
         {shuffle:
-          -/perform
+          -You insolent wretch!
+          How dare you let your attention wander!
+          Will you do as I ask of you?
 
-          -/perform
+          -I can not believe this.
+          Keep up this behavior, and you will be cast out!
+          Now, will you obey?
 
         }
 }
@@ -434,8 +260,6 @@
 
 
 - (check_again)
-
-/perform idle
 
 + [yes] -> check_yes
 + [no]
@@ -445,62 +269,67 @@
 
 {
     - scene_type == punishment_scene:
-    /perform
+    /perform talk_annoyed angry 75
         {shuffle:
-          -/perform
+            - You disappoint me.
+              Are you going to listen or not?
 
-
-          -/perform
-
+            - Will you respond to my commands?
         }
 
     - scene_type == reward_scene:
-    /perform talk_behold
+    /perform talk_question skeptical 70
         {shuffle:
-          -/perform
+            - You were so excited when we started
+              Won't you play nice?
 
-
-          -/perform
-
+            - This interruption is a waste of time
+              Shall we continue?
         }
 
     - else:
-    /perform idle_cocks_head_to_left
-    I have no patience for fools. A punishment will be yours! #16
+    /perform idle_cocks_head_to_left angry 50
+    I have little patience for those that do not obey
         {shuffle:
-          -/perform
-
-
-          -/perform
-
+            - Will you comply with my demands?
+            - Can you muster the courage to carry on?
         }
 }
+
+
 
 + [yes] -> check_yes
 + [no]
 
-- /perform
+- /perform idle_unhappy_stomp
+You pathetic whelp!
+Undeserving of any attention.
 
--> out_
+-> out_vermin
+
 
 - (check_yes) -> Furia_AcknowledgeYes ->
-/perform
+/perform idle_cocks_head_to_left skeptical 65
 {shuffle:
-  -/perform
+  -I am satisfied with that answer
+  Let us carry on
+
+  -You are learning {isBoy:pequeño|{isGirl:pequeña|pequeñe}}.
+  Do not test my patience again
+  Or you will be sorry
 
 
-  -/perform
-
-
-  -/perform
+  -Fine then,
+  I will keep a close watch on your from now on
 
 }
 
 ->->
 
 
-= out_
+= out_vermin
 
-/character furia
+/perform do_get_the_fuck_out angry 65
+/wait 4
 
 -> exit

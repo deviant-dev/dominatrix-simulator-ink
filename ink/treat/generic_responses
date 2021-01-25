@@ -1,0 +1,146 @@
+=== Treat_GoodJob ===
+
+{ shuffle:
+    - /perform idle_yuki happy 50
+    There's a good {player_name}. 
+
+    - /perform idle_tease aroused 65
+    What a good little {player_name}. 
+
+    - /perform idle_clasp_hands happy 50
+    You're doing so well.
+
+    - /perform talk_consider happy 50
+    Very nice!
+
+    - /perform react_thankful happy 45
+    Keep up the good work! 
+
+    - /perform idle_sassy aroused 65
+    Most pleasing.
+
+    - /perform react_thankful happy 50
+    Someone is being a good {player_name}.
+
+    - /perform idle_tease aroused 40
+    Nicely done.
+
+    - /perform do_inspect aroused 60
+    Impressive.
+}
+
+->->
+
+=== Treat_AcknowledgeYes ===
+
+{shuffle:
+    - How delightful.
+    - Very well.
+    - So be it.
+    - Alright then.
+    - Good.
+}
+
+->->
+
+=== Treat_Unhappy ===
+
+{shuffle:
+- How disappointing.
+- Really?
+- I see.
+- How unfortunate.
+}
+
+->->
+
+=== Treat_Timeout ===
+
+{ shuffle:
+    - /perform idle_clasp_hands amused 45
+    I asked you a question. 
+
+    - /perform talk_emphatic_one_hand angry 55
+    Hurry up. I'm waiting. 
+
+    - /perform talk_lean_forward skeptical 35
+    Come now. Don't be rude.
+
+    - /perform do_shielding_eyes skeptical 65
+    Hello? Are you still there?
+    
+    -/perform talk_question sad 65
+    Are you going to answer me?
+ }
+ 
+->->
+
+=== Treat_PayAttention ===
+
+
+{ cycle:
+    - /perform do_shake_finger_stern angry 80
+    Look at me when I'm speaking to you, {player_name}.
+    /wait 1
+
+    - /perform do_shake_finger skeptical 65
+    Tsk. Tsk. Pay attention!
+    /wait 1
+
+    - /perform react_dumb angry 40
+    I'm over here. Stop looking around.
+    /wait 1
+
+    - /perform talk_one_finger angry 40
+    I expect you to pay attention when I'm speaking.
+    /wait 1
+
+    - /perform idle_unhappy skeptical 60
+    Therapy requires attentiveness.
+    /wait 1
+}
+
+// Added in waits, as the lines felt rushed when transitioning
+
++ [pay-attention]
++ [timeout] -> Treat_PayAttention
+
+// TODO: Make # of cycle elements equal or change to cycle/shuffle
+- { cycle:
+    - /perform talk_consider happy 60
+    Where was I? Oh yes... 
+    /wait 1
+
+    - /perform react_scoffs amused 60
+    That's better. Let's continue. 
+    /wait 1
+
+    - /perform idle_clasp_hands happy 40
+    Good {player_name}. 
+    /wait 1
+
+    - /perform talk_annoyed amused 30
+    Let's try that again. 
+    /wait 1
+
+    - /perform idle_unhappy amused 30
+    As I was saying... 
+    /wait 1
+ }
+
+->->
+
+
+=== Treat_BadJob ===
+
+/emotion angry 50
+
+// { shuffle:
+//     - I'm disappointed.
+//     - I know you can do better.
+//     - That's not quite right.
+//     - Tiresome.
+//     - I expect more.
+// }
+
+->->

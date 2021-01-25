@@ -262,7 +262,7 @@ Your job is to make me cum, got it?! #44
 +[no]
     /perform sex_squat_thrust_single angry 50
     ~ addDisobey()
-    -> Nega_BadJob.Squatting
+    -> Nega_BadJob.Squatting ->
 
 + [timeout] -> Nega_Timeout.Squatting ->  make_cum
 - /perform sex_squat_writhe amused 75
