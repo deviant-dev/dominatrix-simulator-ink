@@ -1,7 +1,7 @@
 
-=== yuki_reward_puppyplay_lickfeet
+=== yuki_reward_puppyplay_lickfeet ===
 
-~ setScene(reward_scene, Yuki)
+~ setScene(reward_scene, Yuki, "yuki_reward_puppyplay_lickfeet", -> yuki_reward_puppyplay_lickfeet)
 
 //Foot licking
 

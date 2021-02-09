@@ -10,6 +10,29 @@ INCLUDE game_outro
 INCLUDE entry_hub
 INCLUDE general/bad_touch
 
+INCLUDE angel/hub
+INCLUDE angel/intro
+INCLUDE angel/task_placeholder
+INCLUDE angel/punishment_placeholder
+INCLUDE angel/reward_placeholder
+INCLUDE angel/rewardmega_placeholder
+
+INCLUDE caliste/hub
+INCLUDE caliste/intro
+INCLUDE caliste/task_placeholder
+INCLUDE caliste/punishment_placeholder
+INCLUDE caliste/reward_placeholder
+INCLUDE caliste/rewardmega_placeholder
+
+INCLUDE furia/hub
+INCLUDE furia/intro
+INCLUDE furia/generic_responses
+INCLUDE furia/task_gloryhole_training
+INCLUDE furia/task_placeholder
+INCLUDE furia/punishment_placeholder
+INCLUDE furia/reward_placeholder
+INCLUDE furia/rewardmega_placeholder
+
 INCLUDE goddess/hub
 INCLUDE goddess/intro
 INCLUDE goddess/lore
@@ -30,16 +53,16 @@ INCLUDE headmistress/crowd_responses
 INCLUDE headmistress/apologize
 INCLUDE headmistress/task_handsignals
 INCLUDE headmistress/task_handsignals_basics
-// INCLUDE headmistress/punishment_flogging
+INCLUDE headmistress/task_handsignals_endurance
+INCLUDE headmistress/task_handsignals_furniture
 INCLUDE headmistress/punishment_spanking
 INCLUDE headmistress/train_spanking
-// INCLUDE headmistress/reward_cunnilingus
+INCLUDE headmistress/reward_cunnilingus
 INCLUDE headmistress/reward_exhibitionism
+INCLUDE headmistress/reward_spanking
 INCLUDE headmistress/rewardmega_placeholder
-// INCLUDE headmistress/reward_spanking
-// INCLUDE headmistress/task_flogging
-// INCLUDE headmistress/task_handsignals_endurance
-// INCLUDE headmistress/task_handsignals_furniture
+
+
 
 INCLUDE nega/hub
 INCLUDE nega/intro
@@ -47,13 +70,13 @@ INCLUDE nega/lore
 INCLUDE nega/generic_responses
 INCLUDE nega/reward_dice
 INCLUDE nega/reward_tease
-INCLUDE nega/reward_light
-INCLUDE nega/reward_forcedsex
+INCLUDE nega/reward_light_edging
+INCLUDE nega/reward_hard_forcedsex
 INCLUDE nega/punishment_tease
-INCLUDE nega/punishment_boot_lick
-INCLUDE nega/punishment_camera_shoot
-INCLUDE nega/punishment_genital_torture
-// INCLUDE nega/punishment_trampling
+INCLUDE nega/punishment_light_bootlick
+INCLUDE nega/punishment_light_camerashoot
+INCLUDE nega/punishment_hard_genitaltorture
+INCLUDE nega/punishment_hard_trampling
 
 INCLUDE pragma/hub
 INCLUDE pragma/intro
@@ -62,30 +85,10 @@ INCLUDE pragma/punishment_placeholder
 INCLUDE pragma/reward_placeholder
 INCLUDE pragma/rewardmega_placeholder
 
-INCLUDE angel/hub
-INCLUDE angel/intro
-INCLUDE angel/task_placeholder
-INCLUDE angel/punishment_placeholder
-INCLUDE angel/reward_placeholder
-INCLUDE angel/rewardmega_placeholder
-
-INCLUDE furia/hub
-INCLUDE furia/intro
-INCLUDE furia/generic_responses
-INCLUDE furia/task_placeholder
-INCLUDE furia/punishment_placeholder
-INCLUDE furia/reward_placeholder
-INCLUDE furia/rewardmega_placeholder
-
-INCLUDE caliste/hub
-INCLUDE caliste/intro
-INCLUDE caliste/task_placeholder
-INCLUDE caliste/punishment_placeholder
-INCLUDE caliste/reward_placeholder
-INCLUDE caliste/rewardmega_placeholder
-
 INCLUDE treat/hub
 INCLUDE treat/intro
+INCLUDE treat/generic_responses
+INCLUDE treat/monitoring
 INCLUDE treat/session_placeholder
 INCLUDE treat/task_placeholder
 INCLUDE treat/punishment_placeholder
@@ -101,25 +104,24 @@ INCLUDE yuki/intro
 INCLUDE yuki/lore
 INCLUDE yuki/generic_responses
 INCLUDE yuki/generic_puppyplay
-INCLUDE yuki/punishment_edging
+INCLUDE yuki/task_fanning
 INCLUDE yuki/task_puppyplay
 INCLUDE yuki/task_puppyplay_intro
 INCLUDE yuki/task_puppyplay_learn
 INCLUDE yuki/task_puppyplay_practice
+INCLUDE yuki/task_teaservice
+INCLUDE yuki/punishment_edging
+INCLUDE yuki/punishment_puppyplay_cage
 INCLUDE yuki/punishment_puppyplay_spanking
-// INCLUDE yuki/punishment_puppyplay_cage
-// INCLUDE yuki/review
-// INCLUDE yuki/reward_bathe
-// INCLUDE yuki/reward_massage
+INCLUDE yuki/reward_massage
+INCLUDE yuki/reward_puppyplay_lickfeet
 INCLUDE yuki/reward_puppyplay_milking
-// INCLUDE yuki/reward_puppyplay_lickfeet
 INCLUDE yuki/rewardmega_placeholder
-INCLUDE yuki/task_fanning
-// INCLUDE yuki/task_teaservice
-INCLUDE yuki/train_spanking
-INCLUDE furia/task_gloryhole_training
-INCLUDE treat/generic_responses
-INCLUDE treat/monitoring
+
+
+// INCLUDE yuki/train_spanking
+
+
 
 
 

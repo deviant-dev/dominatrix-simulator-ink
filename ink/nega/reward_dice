@@ -176,7 +176,7 @@ That does <i>not</i> happen often. #19
 -> check_consent ->
 
 {shuffle:
-    - -> nega_reward_forcedsex
+    - -> nega_reward_hard_forcedsex
 }
 
 
@@ -198,7 +198,7 @@ Two cups and a blank, hmm? Not bad. #21
 -> check_consent ->
 
 {shuffle:
-    - -> nega_reward_light
+    - -> nega_reward_light_edging
 }
 
 
@@ -330,8 +330,8 @@ Ooo, two skulls. #38
 -> check_consent ->
 
 {cycle:
-     - -> nega_punishment_boot_lick
-     - -> nega_punishment_camera_shoot
+     - -> nega_punishment_light_bootlick
+     - -> nega_punishment_light_camerashoot
 }
 
 
@@ -352,7 +352,7 @@ Mmmm, look at that. #40
 -> check_consent ->
 
 {shuffle:
-    - -> nega_punishment_genital_torture
+    - -> nega_punishment_hard_genitaltorture
 }
 
 = intro_change_dice
@@ -368,7 +368,7 @@ Just this once. #45
 
 /action force_dice
 TODO: Remove this and actually force the dice in-game.
--> nega_reward_forcedsex
+-> nega_reward_hard_forcedsex
 
 
 = intro_reward
@@ -383,7 +383,7 @@ Someone just got lucky! #47
 Oh goody! This is gonna be so much fun! #48
 You're gonna love getting rewards from me. #49
 
--> nega_reward_forcedsex
+-> nega_reward_hard_forcedsex
 
 
 = check_consent

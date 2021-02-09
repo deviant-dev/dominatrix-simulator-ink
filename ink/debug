@@ -6,12 +6,12 @@
 //~SEED_RANDOM(5)
 
 // --- Force a different deviation ---
-// ~ setDeviation(full_game)
+~ setDeviation(full_game)
 // ~ setDeviation(tutorial)
 // ~ setDeviation(demo)
 // ~ setDeviation(exhibitionism)
 // ~ setDeviation(hand_signals)
-~ setDeviation(nega_dice)
+// ~ setDeviation(nega_dice)
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(treat)
 // ~ setDeviation(furia)
@@ -152,17 +152,15 @@
 // --- Nega Scene Jumps ---
 // -> nega_hub
 // -> nega_intro
-// -> nega_punishment_boot_lick
--> nega_punishment_camera_shoot
-// -> nega_punishment_genital_torture
-// -> nega_punishment_light
+// -> nega_punishment_light_bootlick
+// -> nega_punishment_light_camerashoot
+// -> nega_punishment_hard_genital_torture
 // -> nega_punishment_tease
-// -> nega_punishment_trampling
+// -> nega_punishment_hard_trampling
 // -> nega_reward_dice
-// -> nega_reward_forcedsex
-// -> nega_reward_light
+// -> nega_reward_hard_forcedsex
+// -> nega_reward_light_edging
 // -> nega_reward_tease
-// -> nega_trample
 
 
 
@@ -184,9 +182,9 @@
 // -> treat_punishment_placeholder
 // -> treat_reward_placeholder
 // -> treat_rewardmega_placeholder
-// -> treat_session_placeholder
+-> treat_session_placeholder
 // -> treat_task_placeholder
--> treat_monitoring
+// -> treat_monitoring
 
 
 

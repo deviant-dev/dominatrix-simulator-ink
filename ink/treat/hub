@@ -1,3 +1,14 @@
+//ms. treatment's sessions are her tasks
+//players who complete an entire session earn a reward
+// players who exit a session early earn a punishment
+
+//when players come to visit her, she asks them what type of session they are there fore 
+//UI on the screen displays their options: sex therapy, aftercare, hyponosis, meditation or a task
+//Medition = therapeutic domming sessions and any new ones created
+//Tasks = cleaning her office, rubbing her feet, etc.
+//Sex Therapy = displayers UI options for type of help they want: how to pleasure a woman, how to pleasure a man, anal stretching, etc 
+//Aftercare = head stroked, cuddled, or otherwise comforted and praised
+
 === treat_hub ===
 
 -> select_gender_check ->

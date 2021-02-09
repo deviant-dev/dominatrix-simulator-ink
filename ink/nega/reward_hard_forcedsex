@@ -1,7 +1,7 @@
- === nega_reward_forcedsex ===
+ === nega_reward_hard_forcedsex ===
  -> select_gender_check ->
 //reward_hard
-~ setScene(reward_scene, Nega, "nega_reward_forcedsex", -> nega_reward_forcedsex)
+~ setScene(reward_scene, Nega, "nega_reward_hard_forcedsex", -> nega_reward_hard_forcedsex)
 
 /scene attic.Ready
 /music nega-reward

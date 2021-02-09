@@ -6,10 +6,168 @@
 /ambient treat
 /character treat
 
-/notify title="Ms. Treatment's Session Scene" text="Insert placeholder session scene here."
 ~ increaseRegard()
-
-- /wait 5
-
 ~ treat_session_reminders = 0
+
+//first time the player comes to a session
+
+Welcome, {isBoy:boy|{isGirl:girl|pet}}!
+I'm so pleased to see you!
+
+For your first official therapy session,
+I'd think we should help you get into 
+the right headspace.
+
+There's nothing quite like dropping you 
+into subspace to really enhance our pleasure.
+
+Would you like that, {isBoy:boy|{isGirl:girl|pet}}?
+
++ [yes]
+    -> Treat_AcknowledgeYes ->
+    
++ [no]
+    Hrm.
+    Are you sure you want to be here?
+    
+    ++ [yes]
+        Then you are willing to continue?
+        
+        +++ [yes]
+            -> Treat_AcknowledgeYes ->
+            
+        +++ [no]
+            -> Treat_Unhappy ->
+            Come back when you are ready.
+            -> exit
+    ++ [no]
+        Very well.
+        I suggest you return another time.
+        -> exit
+            
+- Have you ever experience subspace before?
+
++ [yes]
+    Then I will be curious to know
+    whether this session works for you.
+    
++ [no]
+    Then I have my work cut out for me!
+    We will evaluate how well this works
+    when we are finished.
+    
+ 
+- /notify title="<color=red>Pro Tip!</color>" text="For a more intimate and vulnerable experience, play this scene naked, if you're not already that way. ;)<br/><br/>Understood?" #note11
+
++ [yes]
+
+- Before we begin,
+close your eyes 
+and take a deep cleansing breath.
+
+//inhale and exhale audio
+
+Again.
+
+//inhale and exhale audio
+
+Feel the solid ground beneath your feet.
+Let your arms hang loosely at your sides.
+
+Now.
+Breathe in deeply as you raise your shoulders up to your ears,
+then exhale as you let your shoulders sink down.
+
+-> Treat_GoodJob ->
+
+Open your eyes.
+Look at me.
+Do not take your eyes off me 
+until I tell you to do so.
+
+Understand?
+
++ [yes]
+    -> Treat_GoodJob ->
+
++ [no]
+    If you choose to defy my instructions,
+    then you will get no benefit from this session.
+    
+    Will you keep your eyes on me?
+    
+    ++ [yes]
+        -> Treat_AcknowledgeYes ->
+        
+    ++ [no]
+        -> Treat_Unhappy ->
+        Very well.
+        I suggest you return another time.
+        -> exit
+
+- I see you.
+In your eyes, I see a soul who yearns for a place.
+For a home.
+To belong.
+
+I see you.
+
+Kneel, {isBoy:boy|{isGirl:girl|pet}}.
+
++ [pose:kneel]
+
++ [timeout]
+
+- Right now,
+in this moment,
+you are with me.
+
+I see you.
+
+I see the gentle curve of your head.
+The soft swell of your lips.
+The {isBoy:smooth lines of your chest|succulent ripeness of your breasts.}
+
+Do you feel my eyes on you, {isBoy:boy|{isGirl:girl|pet}}?
+
++ [yes]
+    -> Treat_GoodJob ->
+
++ [no]
+    You will.
+    
+- Breathe, {isBoy:boy|{isGirl:girl|pet}}.
+In and out.
+
+//inhale and exhale sound
+
+-> Treat_GoodJob ->
+
+Just like that.
+
+Keep your eyes on mine, little one.
+
+I see the sumptuous fall of your belly.
+The strong lines of your thighs.
+The delicate bend of your fingers.
+
+I see you.
+
+Raise your arms above your head.
+Expose yourself to me, little one.
+
++ [pose:present_kneel]
++ [timeout]
+
+- -> Treat_GoodJob ->
+
+So beautiful.
+So perfect.
+Just where I want you.
+
+Breathe, little one.
+
+//inhale and exhale sound
+- 
+
 -> exit

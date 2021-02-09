@@ -5,15 +5,15 @@ VAR Break2 = false
 VAR Unattractive = false
 VAR massage_count = 0
 
-~ setScene(reward_scene, Yuki)
+~ setScene(reward_scene, Yuki, "yuki_reward_massage", -> yuki_reward_massage)
 
 /scene ?
 
 /character yuki
 
 /equip feather_duster
-
-{nega_reward_forcedsex: 
+TODO: fix this dialogue to not reference going through the Headmistress on your first visit, reference something else instead
+{nega_reward_hard_forcedsex: 
 ->NormalVisit
 - else: 
 ->FirstReward

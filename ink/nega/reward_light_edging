@@ -1,5 +1,5 @@
-=== nega_reward_light ===
-~ setScene(reward_scene, Nega, "nega_reward_light", -> nega_reward_light)
+=== nega_reward_light_edging ===
+~ setScene(reward_scene, Nega, "nega_reward_light_edging", -> nega_reward_light_edging)
 
 {shuffle:
     - -> tease_edging

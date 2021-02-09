@@ -1,11 +1,23 @@
 === headmistress_reward_cunnilingus ===
 
-~ setScene(reward_scene, Headmistress)
+~ setScene(reward_scene, Headmistress, "headmistress_reward_cunnilingus", -> headmistress_reward_cunnilingus)
 
 
 << Insert cunnilingus reward here. >>
 
-~ removeReward()
+~ removeReward(-> load_gave_reward ) 
+
+-> exit
+
+= load_gave_reward
+/scene TheatreOpen.Ready
+/music headmistress
+/ambient crowd
+-> prepare
+
+= prepare
+
+->->
 
 ->->
 

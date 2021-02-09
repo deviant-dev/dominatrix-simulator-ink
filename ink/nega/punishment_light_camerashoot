@@ -1,5 +1,5 @@
-=== nega_punishment_camera_shoot ===
-~ setScene(punishment_scene, Nega, "nega_punishment_camera_shoot", -> nega_punishment_camera_shoot)
+=== nega_punishment_light_camerashoot ===
+~ setScene(punishment_scene, Nega, "nega_punishment_light_camerashoot", -> nega_punishment_light_camerashoot)
 ~ posed = true
 //punishment_light
 
@@ -62,7 +62,7 @@ For me to give you some special attention? #07
 
 //Nega leans in and whispers in the player's ear
 
-- {nega_punishment_camera_shoot > 1: -> camera}
+- {nega_punishment_light_camerashoot > 1: -> camera}
 
 /perform react_excited amused 75
 Have you ever been the star of your own photo shoot? #12

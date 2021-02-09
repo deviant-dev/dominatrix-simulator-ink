@@ -4,7 +4,7 @@ TODO: rewrite
 
  -> select_gender_check ->
 
-~ setScene(punishment_scene, Yuki)
+~ setScene(punishment_scene, Yuki, "yuki_punishment_puppyplay_cage", -> yuki_punishment_puppyplay_cage)
  
 /scene atrium.punishment
 /music yuki

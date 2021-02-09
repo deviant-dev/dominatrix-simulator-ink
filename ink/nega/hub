@@ -30,7 +30,7 @@ VAR demerits = 0
 + [move: Nega]
 
 {deviation == nega_dice:
-    -> nega_punishment_camera_shoot
+    -> nega_punishment_light_camerashoot
 }
 
 - (hub)

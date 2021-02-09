@@ -83,7 +83,7 @@ Did Mistress Yuki-Onna let you in? #05
     
 + { tries  <=1 } [timeout] 
      /perform react_nod_big disgusted 60
-    It's a simple question. Nod your head for yes. #09
+    It's a simple question. Nod your head for yes./ #09
     /perform react_head_toss_casual disgusted 60
     Shake your head for no. #10
     //Attempting to get the goddess to shake her head in time with the lines
