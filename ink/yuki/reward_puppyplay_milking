@@ -46,7 +46,7 @@ Would you like that, {player_name}? #04
 
 = scene_setup
 /scene atrium.close
-/music yuki
+/music yuki-reward
 /ambient off
 /character yuki
 ->->
@@ -276,7 +276,7 @@ Now, spread your knees. #168
 /perform yuki_kneel aroused 65
 Since this is a reward, I'm going to let you finish. #45
 I'm going to watch you really closely #46
-so I know when you're you're about to cum. #47
+so I know when you're about to cum. #47
 
 - (cum)
 Are you ready, puppy? #48
@@ -461,7 +461,7 @@ I treat my puppies well, don't I? #177
 
 // replace VO line to stop confusing players who keep answering 'yes' because they think the question is a 'yes' answer to continue
 //   Do you want to stop, puppy? #58
-   Do you want to keep going, puppy?
+   Do you want to keep going, puppy? #71
 
     ++ [pose:puppy_back_yes]
     

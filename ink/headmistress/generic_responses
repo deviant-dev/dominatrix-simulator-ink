@@ -627,7 +627,7 @@ TODO: decide whether to keep these lines
     {hasPenis:Bounce your shaft|Spread your nether lips} for us. #05
 
     -/perform idle_pleased aroused 75
-    We enjoy your suffering {player_name}. #06
+    We enjoy your suffering, {player_name}. #06
 
     -/perform tease_bend_over amused 75
     Harder, that you may suffer more fully. #07
@@ -669,7 +669,7 @@ TODO: decide whether to keep these lines
 { shuffle:
 
     -/perform talk_one_finger excited 55
-    A fine demonstration {isBoy:toad|strumpet}. #01
+    A fine demonstration, {isBoy:toad|strumpet}. #01
 
     -/perform react_thankful amused 65
     We have a little whore, guests! #02

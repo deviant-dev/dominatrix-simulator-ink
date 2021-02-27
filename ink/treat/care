@@ -10,6 +10,8 @@
 
 // NOTE: Care selection UI is built into the scene.
 
++ [Session] -> treat_session_placeholder
+
 + [Comfort] -> comfort
 
 + [Grief] -> grief

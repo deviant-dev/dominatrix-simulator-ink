@@ -3,6 +3,18 @@ TODO: add logic for mega-reward
 === yuki_hub ===
 -> select_gender_check ->
 
+
+~ setHub(Yuki, "yuki_hub", -> yuki_hub)
+
+-(hub)
+/scene atrium.hub
+/music yuki
+/ambient none
+/character yuki
+/perform idle_pleased happy 65
+
++ [move:Yuki]
+
 {inTutorial:
     /character yuki react_whatever sad 55
     What are you doing back here!? #01
@@ -21,17 +33,6 @@ TODO: add logic for mega-reward
 
     -> exit
 }
-
-~ setHub(Yuki, "yuki_hub", -> yuki_hub)
-
--(hub)
-/scene atrium.hub
-/music yuki
-/ambient none
-/character yuki
-/perform idle_pleased happy 65
-
-+ [move:Yuki]
 
 { hub == 1:
     Hello! #06

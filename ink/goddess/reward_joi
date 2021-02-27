@@ -1,0 +1,224 @@
+=== goddess_reward_joi ===
+
+-> select_gender_check ->
+~ setScene(reward_scene, Goddess, "goddess_reward_joi", -> goddess_reward_joi)
+-> scene_setup -> start
+
+= scene_setup
+/scene bedroom.hub
+/music goddess
+/ambient none
+/character goddess
+->->
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+= start
+//this is where the player is asked if they want to give up their reward stone
+
+
+{shuffle:
+    - Perhaps I should let you cum for me.
+    - I'm curious how well you can orgasm for me. 
+    - I'm thinking about letting you cum for me. 
+}
+
+- (choice)
+{shuffle:
+    - Would you like to show me, {player_name}?
+    - Is this something you want?
+    - Shall I grant you this?
+}
+
++ [yes]
+    -> Goddess_AcknowledgeYes ->
+    ~ removeReward(-> load_gave_reward)
+    -> gave_reward
+    
++ [no]
+    -> Goddess_Unhappy ->
+    Then begone.
+    -> exit
+
++ [timeout] -> Goddess_Timeout -> choice 
+
++ [distracted] -> Goddess_PayAttention -> choice 
+
+-> gave_reward
+
+
+= gave_reward
+//this is where the actual scene happens
+
+
+
+{shuffle:
+    - I expect you to follow my every instruction.
+    - You will obey my every instruction.
+    - I'm going to tell you exactly how to cum.
+}
+
+{shuffle:
+    - Do you understand?
+    - Will you obey?
+    - Are you ready to obey?
+}
+
++ [yes]
+    -> Goddess_AcknowledgeYes ->
+
++ [no]
+    I will tolerate this preference.
+    
+- {shuffle:
+    - I'm feeling generous.
+    - I'm a good mood today.
+    - I find you entertaining.
+}
+
+So, I will consider your preferences.
+
+Did you bring a toy with you?
+
++ [yes]
+    Is it for your mouth?
+    
+    ++ [yes] 
+        Good.
+        You may use it when I tell you to.
+        
+    ++ [no] 
+        Is it for your ass?
+        
+        +++ [yes]
+        
+        Good.
+        You may use it when I tell you to.
+        
+        +++ [No]
+    
+            Then we won't need that toy today.
+    
++ [no]
+    A toy is not required,
+    but in the future, 
+    I may give you this option again.
+    
+    
+- Tell me, {player_name}...
+
+{shuffle:
+    - Do you enjoy eating your own cum?
+    - Would you like to eat your cum for me?
+    - Does the thought of eating your own cum excite you?
+}
+
++ [yes]
+    -> Goddess_AcknowledgeYes ->
+     set variable to trigger CEI 
+     -> begin
+
++ [no]
+    Interesting.
+    Shall I make you do it anyway?
+    
+    ++ [yes]
+        How intriguing.
+        Set variable to trigger CEI and embarassed
+        -> begin
+        
+    ++ [no]
+        Very well.
+        I will tolerate this preference.
+        skip CEI
+        -> begin
+
+
+= begin
+
+// Don’t touch your cock until I say you can, I want to talk to you first.
+
+// So, you want to fuck me?
+
+// Okay grab your cock for me, does that feel good? Is it hard for me?
+
+// Now I never just start, I lube you up first, so grab your lube and put it all on your cock. As much as you like, get it nice and wet.
+
+// Start massaging up and down your shaft and running your hands all over your cock for me. Making sure it’s coated in the cool liquid.
+
+// Grip your cock with your hand, slowly move your hand up and down.
+
+// Now, start going a bit quicker. Up and down, keep a good rhythm for me.
+
+// Bring yourself to the point of orgasm, but don’t you dare cum, if a man I’m with cums at this point I get mad, I want to play with you for a bit longer.
+
+// Time for a little game to see if you’re really ready for me.
+
+// I want you to bring yourself to the point of orgasm as many times as you can, but if you cum, you fail.
+
+// You will be feeling so sexually frustrated by the time you make it to the 12th denied orgasm, your cock will be pulsating, your balls bulging and that’s the way I like it. Know how turned on I am as you do this, my pussy gets wetter with each orgasm that has been denied. It feels powerful to me.
+
+// I’d usually let you rest your cock in my mouth as you did this.
+
+// I wouldn’t do anything silly, to begin with, like move my tongue or mouth, I’d just let you enjoy the inside of my smooth warm mouth.
+
+// Maybe every now and then I’d slowly sink your whole cock to the back of my throat, letting you enjoy my mouth a little.
+
+// But don’t you dare cum. That is forbidden.
+
+// It turns me on so much feeling a cock that wants to cum inside of me, it leaks cum from the tip, but it’s not quite ready yet.
+
+// Get both your hands and stroke up your cock and towards yourself, run one hand over your whole cock and then have the other following closing behind. Keep on doing this, really working yourself up.
+
+// //instructions for how to touch themselves
+// include blocks for the head, shaft, and balls
+// include instructions for slow, medium, and fast speed 
+// include instructions for where to cum
+// check on the size of their dick and comment on it (does this fit the Goddess?)
+// include comments of what they should fantasize about or imagine (touching pussy, breasts, tasting them, pressing flesh against me, feeling the touch of my hand on you, watching me play with my slaves, i wonder how you taste, you'll just have to appreciate me from afar, show me how much you adore me, imagine my pussy wrapped around you)
+// include a couple of breaks (have them spread their ass and show off their balls/folds, put their hands behind their head and threaten to not let them cum)
+// include option to put something in their ass (can ask if they have a toy at the beginning of the scene)
+// include option of sucking on dildo / wearing gag
+// remind them they can't cum without permission
+// include cum countdown
+// have them take different positions
+// Ask if they want to cum - tell them no and keep going
+// Use timers for how long they should stroke and then give new instructions
+// add some story and conversation into it, these talking points will change depending on what other kinks might be involved, if there are no other kinks specified I tend to discuss how they need to be taught how to wank correctly and how to not cum too quickly.
+
+// Grab your cock with two fingers.
+// Start sliding them up and down your shaft.
+
+// Cup your balls with your other hand.
+
+// Grab your cock with your full hand.
+// Stroke faster.
+
+// Give me 10 / 20 / 30 excrutiating slow strokes
+
+
+-> exit
+
+    
+//for other Mistresses
+//stuff your underwear in your mouth
+//40 medium strokes
+//beta boy
+//20 slow strokes
+//stop stroking. all you get to do is stare at me for a while as your cock/pussy throbs
+//slap your balls 5 times
+//lick your precum
+//suck on your index finger
+//work your finger into your ass like a good little, boy/girl/pet
+//5 / 10 / 20 thrusts with your finger
+//little betas with clits (small penis)
+
+// Nega / Furia - SPH (Small Penis Humiliation)—It says it all in the title; laugh at it, make jokes about it, show your disgust and tell them how disappointing it is.
+// Nega / Furia / Goddess - CEI (Cum Eating Instructions)—Yes, make them eat their own cum, feel free to get creative with this and make them drink it out of shot glasses, their hands or a bowl of the floor (bring in some pet play and further humiliation).
+// Yuki / Nega / Treatment - Edging—Bring him to the edge of orgasm over and over and over but don't let him cum, not yet at least, soon... maybe, if they behave themselves and do as instructed.
+// Yuki / Treatment - GFE (Girlfriend Experience)—For the less dominant customers and models this is a good go to when it comes to JOI it doesn't necessarily have to be a full girlfriend experience but make the scene more of a "come and relax and let me help you pleasure yourself" then your typical dominant JOI scene.
+
+//Yuki / Treatment -  ask if they're enjoying it and most importantly, ensure you do not humiliate them in anyway. Instead offer them kindness, comfort and an escape from their day to day routine; play the long distance girlfriend who misses them, the girl next door with a devilish streak or maybe even the naughty school girl. 
+
+tell them what to do, tell them what to touch and not to touch, how fast or slow to go, when to stop and when to start, tell them to grab their balls at the same time or even bring other body parts into it.

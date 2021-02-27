@@ -1,12 +1,13 @@
 === Debug ===
 // --- Set gender here to skip gender selection step ---
 // ~ setGender("m")
-~ setGender("f")
+// ~ setGender("f")
+~ setGender("p")
 
 //~SEED_RANDOM(5)
 
 // --- Force a different deviation ---
-~ setDeviation(full_game)
+// ~ setDeviation(full_game)
 // ~ setDeviation(tutorial)
 // ~ setDeviation(demo)
 // ~ setDeviation(exhibitionism)
@@ -15,7 +16,6 @@
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(treat)
 // ~ setDeviation(furia)
-
 
 // --- Unlocks ---
 // ~ unlockAll()
@@ -120,6 +120,7 @@
 // -> goddess_task_placeholder
 // -> goddess_intro.load_at_interview
 // -> goddess_rewardmega_giantess
+-> goddess_reward_joi
 // -> giantess_temp
 
 
@@ -154,7 +155,7 @@
 // -> nega_intro
 // -> nega_punishment_light_bootlick
 // -> nega_punishment_light_camerashoot
-// -> nega_punishment_hard_genital_torture
+//-> nega_punishment_hard_genitaltorture
 // -> nega_punishment_tease
 // -> nega_punishment_hard_trampling
 // -> nega_reward_dice
@@ -182,7 +183,7 @@
 // -> treat_punishment_placeholder
 // -> treat_reward_placeholder
 // -> treat_rewardmega_placeholder
--> treat_session_placeholder
+// -> treat_session_placeholder
 // -> treat_task_placeholder
 // -> treat_monitoring
 
@@ -210,6 +211,8 @@
 // -> yuki_task_puppyplay_practice
 // -> yuki_task_teaservice
 // -> yuki_train_spanking
+
+//-> yuki_punishment_puppyplay_spanking.spank_success_test
 
 
 

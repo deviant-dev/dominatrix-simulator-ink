@@ -329,7 +329,7 @@ But first, let me have a good look at you. #71
 + { tries < 3 } [timeout]
     -> inspection
 + { tries >= 3 } [timeout]
-    -> CheckIfInterested -> inspection
+    -> Goddess_CheckIfInterested -> inspection
 
 - /music goddess-intro-3
 /perform idle_fake_annoyed amused 30
@@ -372,8 +372,8 @@ You don't mind, do you? #79
 
 + [pose:raised_chin]
 + { tries < 3 } [timeout] -> stand_straight
-+ { tries >= 3 } [timeout] -> CheckIfInterested -> stand_straight
-// + [no] -> CheckIfInterested -> stand_straight
++ { tries >= 3 } [timeout] -> Goddess_CheckIfInterested -> stand_straight
+// + [no] -> Goddess_CheckIfInterested -> stand_straight
 
 - -> Goddess_GoodJob ->
 
@@ -411,8 +411,8 @@ Now then... #90
 
 + [pose:kneel]
 + { tries < 3 } [timeout] -> kneel
-+ { tries >= 3 } [timeout] -> CheckIfInterested -> kneel
-// + [no] -> CheckIfInterested -> kneel
++ { tries >= 3 } [timeout] -> Goddess_CheckIfInterested -> kneel
+// + [no] -> Goddess_CheckIfInterested -> kneel
 
 - -> Goddess_GoodJob ->
 
@@ -460,8 +460,8 @@ I want to see you present yourself more fully to me. #100
 + [pose:present_kneel]
 + { tries < 2 } [timeout] -> present_self_again
 //+ { tries >= 2 } [timeout]
-+ { tries >= 2 } [timeout] -> CheckIfInterested -> present_self_again
-// + [no] -> CheckIfInterested -> present_self_again
++ { tries >= 2 } [timeout] -> Goddess_CheckIfInterested -> present_self_again
+// + [no] -> Goddess_CheckIfInterested -> present_self_again
 
 - -> Goddess_GoodJob ->
 
@@ -527,7 +527,7 @@ I'm sure she can show you the ropes, so to speak. #112
 
 - (video_jump)
 
--> ByeForNow ->
+-> Goddess_ByeForNow ->
 
 - ~ yuki_shortcut = true
 ~ tutorial_step = at_yuki_intro
@@ -569,7 +569,7 @@ You will apologize this instant. #144
 Tell me: Do you beg for my forgiveness? #145
 
 + [yes] -> Goddess_GoodJob ->
-+ [no] -> CheckIfInterested ->
++ [no] -> Goddess_CheckIfInterested ->
 
 - /perform idle_skeptical angry 45
 You are forgiven. #146
@@ -579,75 +579,3 @@ Don't let it happen again. #147
 ->->
 
 
-= CheckIfInterested
-
-{CheckIfInterested > 1: -> check_terse}
-
-/perform idle_unhappy disgusted
-
-These are the sorts of tasks demanded of you here. #148
-- (check_again)
-
-/perform talk_behold skeptical
-
-Are you willing to simply do as I say like a good {player_name}? #149
-
-/perform idle
-
-+ [yes] -> IsInterested
-+ [no]
-+ [timeout] -> check_again
-
-- (check_terse)
-
-/emotion skeptical
-
-Really? #150
-
-/emotion angry 50
-
-We will need to be rid of you if you can't perform. #151
-
-Your willingness to serve is, after all, why you are here. #152
-
-/perform talk_annoyed neutral
-
-So I'll ask one last time: #153
-
-/perform talk_lean_forward angry 50
-Are you willing to perform for your goddess? #154
-
-+ [yes] -> IsInterested
-+ [no] -> NotInterested
-
-
-= IsInterested
-
--> Goddess_GoodJob ->
-/perform react_shrug_long skeptical
-There is hope for you yet. #157
-
-->->
-
-
-= NotInterested
-
-/perform talk_annoyed disgusted
-Then away with you. #155
-Perhaps another time when you are ready to learn your place. #156
-
--> ByeForNow -> game_outro
-
-
-= ByeForNow
-
-/perform do_snap_fingers
-
-/scene bedroombroken.pissed
-
-+ [wait 1.5]
-
-- /character goddess idle_looming_huge angry 50
-
-Bye for now, {player_name}. #113
-+ [wait:5] ->->

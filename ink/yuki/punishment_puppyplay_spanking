@@ -287,7 +287,7 @@ Are you proud of yourself, puppy?  #27
 
 
 
-- /scene atrium.punishment_spanking_2
+- (spank_success_test) /scene atrium.punishment_spanking_2
 /perform idle_yuki 
 
 {cycle:
@@ -400,25 +400,25 @@ Someone will let you out, eventually. #72
 // NOTE: Keep these on separate lines for the subtitle system. -deviant
 {
     - n == 1: 
-        One.
+        One. #73
     - n == 2:
-        Two.
+        Two. #74
     - n == 3:
-        Three.
+        Three. #75
     - n == 4:
-        Four.
+        Four. #76
     - n == 5:
-        Five. 
+        Five. #77
     - n == 6:
-        Six.
+        Six. #78
     - n == 7:
-        Seven.
+        Seven. #79
     - n == 8:
-        Eight.
+        Eight. #80
     - n == 9:
-        Nine.
+        Nine. #81
     - n == 10:
-        Ten. 
+        Ten. #82
     - else:
         /logError Can't say number '{n}'.
 }

@@ -2,6 +2,10 @@
 
 === table_of_contents ===
 
++ <b>Test: Ms. Treatment Session</b>
+    ~ setDeviation(treat)
+    -> treat_session_placeholder
+
 + <b>DomSim: Threshold</b>
     ~ setDeviation(full_game)
     -> game_intro_web

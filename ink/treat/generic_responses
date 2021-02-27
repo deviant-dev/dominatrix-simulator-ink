@@ -27,6 +27,8 @@
 
     - /perform do_inspect aroused 60
     Impressive.
+    
+    - That's it.
 }
 
 ->->
@@ -35,10 +37,12 @@
 
 {shuffle:
     - How delightful.
-    - Very well.
-    - So be it.
+    - Very good.
     - Alright then.
     - Good.
+    - Splendid.
+    - Wonderful.
+    - Lovely.
 }
 
 ->->
@@ -46,10 +50,12 @@
 === Treat_Unhappy ===
 
 {shuffle:
-- How disappointing.
-- Really?
-- I see.
-- How unfortunate.
+    - How disappointing.
+    - Really?
+    - I see.
+    - How unfortunate.
+    - So be it.
+    - Very well.
 }
 
 ->->
@@ -76,7 +82,6 @@
 ->->
 
 === Treat_PayAttention ===
-
 
 { cycle:
     - /perform do_shake_finger_stern angry 80
@@ -135,12 +140,76 @@
 
 /emotion angry 50
 
-// { shuffle:
-//     - I'm disappointed.
-//     - I know you can do better.
-//     - That's not quite right.
-//     - Tiresome.
-//     - I expect more.
-// }
+{ shuffle:
+    - I'm disappointed.
+    - I know you can do better.
+    - That's not quite right.
+    - You are testing me.
+    - I expect more.
+}
 
 ->->
+
+=== Treat_CheckIfInterested ===
+
+{checked_if_interested: -> check_terse}
+
+~checked_if_interested = true
+
+/perform idle_unhappy sad
+
+You are the one who came to see me.
+- (check_again)
+
+/perform talk_behold skeptical
+
+Are you willing to continue?
+
+/perform idle
+
++ [yes] -> IsInterested
++ [no]
++ [timeout] -> check_again
+
+- (check_terse)
+
+/emotion skeptical
+
+Really? 
+
+/emotion angry 50
+
+If you are unwilling to continue you, 
+then you should leave.
+
+My time is precious, after all.
+
+/perform talk_annoyed neutral
+
+So I'll ask one last time.
+
+/perform talk_lean_forward angry 50
+Do you want to continue?
+
++ [yes] -> IsInterested
++ [no] -> NotInterested
+
+
+= IsInterested
+
+-> Treat_GoodJob ->
+/perform idle happy
+Excellent.
+Let's stop wasting time, then.
+
+->->
+
+
+= NotInterested
+
+/perform talk_annoyed angry
+Then you must leave.
+Return to me when you are ready.
+
+-> exit
+

@@ -39,13 +39,13 @@ Now, wiggle your little puppy tail for me! #209
     -> Yuki_GoodJob -> 
     Keep wiggling!
     ++ [wiggle-success:5]
-        That's enough.  #35
-        Turn back around and present yourself.  #36
+        That's enough.  
+        Turn back around and present yourself.  
          ~ addObey()
  + [wiggle-timeout]
    -> Nega_BadJob ->
     ~ addDisobey()
-    Did I tell you to stop? #37
+    Did I tell you to stop? 
     -> wiggle
  + [no] -> Nega_CheckIfInterested -> wiggle
 
@@ -57,67 +57,5 @@ Mmmm! Much better! #210
 
 
 
-{shuffle:
-    - Fucking dice... spoiling my fun.
-    - It's so hard to resist the urge to crush you.
-    - I'm going to taunt you with what a worse roll gets you.
-    - I'm going to hook you like a fish.
-    - Let's get this over with so I can go find some /real/ fun.
-}
-  
-
-/perform idle_unhappy_stomp
-{shuffle:
-    - You're a disgusting stain.
-    - You're a nasty pile of shit.
-    - You're a vomit inducing waste of time.
-    - You're a boring, simpering drain on my energy.
-    - You're a ugly, little wretch.
-}
-//spanking
-//text below is a placeholder to remind me of what code I can use in scene
-- /perform react_excited
-Mmm, I love watching my puppies perform well! #184
-
-/perform talk_lean_forward
-Do you want to worship my feet, puppy? #185
-
-+[pose:puppy_yes]
-    /perform do_bouncing_big    
-    Yippy! #186
-
-+[pose:puppy_no]
-    /perform react_shrug_long
-    That's fine. #187
-    We can do something else. #188
-    -> yuki_reward_puppyplay_milking
-
-+[timeout] -> Yuki_Timeout ->
-
-- /perform do_point_down 
-Come here puppy! #189
-/perform idle_present_foot
-
-~ tries = 0
-- (lick_feet)
-~ tries++
-
-+ [pose:kiss_feet] -> Foot_Licking_Responses ->
-+ { tries < 2 } [timeout] -> lick_feet
-+ { tries >= 2 } [timeout]
-
-- /wait 5
-
--> Yuki_Puppyplay_Punishment_Complete ->->
-
-
-= Foot_Licking_Responses
-
-{cycle:
-    - Gooood puppy! Clean my whole foot. #213
-    - Mmmm, lick me just like that. #214
-    - Yes puppy, yes! Your tongue feels so good on my toes. #215
-    - What a good puppy cleaning my toes with your tongue. #216
-}
 
 ->->

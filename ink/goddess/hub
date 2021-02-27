@@ -140,8 +140,12 @@ Would you like that?
 = check_reward
 
 /character goddess
-
-My, you have been good. Here for your reward? #02
+{shuffle:
+    - My, you have been good. Here for your reward? #02
+    - I'm impressed. Here to collect your reward?
+    - Do you want the honor of receiving a reward from me?  
+    - I find giving rewards so satiating. Are you here for one?
+}
         + [yes] -> choose_reward
         + [no]
 

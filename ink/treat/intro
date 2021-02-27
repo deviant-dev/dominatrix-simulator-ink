@@ -10,7 +10,6 @@
 
 + [move]
 
---> treat_intro_temp 
 
 -/notify title="Ms. Treatment's Intro Completed." text="Returning to the entry."
 /wait 5
@@ -18,124 +17,118 @@
 ~ treat_intro_complete = true
 -> exit
 
-//the players first encounter her after they finish the Tutorial 
-// She comments on how hard and confusing things must be and lets them know she's there to keep an eye on their mental health
-// She indicates where her room is and lets the player know that she expects them to vist her every now and then 
-// If they don't, she might have to assign a mandatory therapy session
-// The intro scene should give them some hint to the type of things they can do with her and also comment on them being in chastity
-// She invites the player to visit her now - if they agree, they are teleported to her room
-
 
 
 === treat_intro_temp ===
 
 //check to see if player went through Nega or Headmistress reward
++ [move]
 
-{goddess_monitoring_intro.angry: 
-    I see you have failed your first test.
-    But you have been given another chance 
-    to prove yourself.
+- {goddess_monitoring_intro.angry: 
+    I see you have failed your first test. #01
+    But the Goddess has given you another chance #02
+    to prove yourself. #03
     
     - else:
-    I see you have passed your first test. 
-    You've pleased the Goddess so much,
-    <i>She</i> has given you your next challenge.
+    I see you have passed your first test. #04
+    You've pleased the Goddess so much, #05
+    <i>She</i> has given you your next challenge. #06
 }
 
-- You'll need to earn a full wrist of rewards, 
-10 Bloodstones,
-to come out of chastity.
+- You'll need to earn a full wrist of rewards, #07
+10 Bloodstones, #08
+to come out of chastity. #09
 
 - (challenge)
-Are you ready for this challenge?
+Are you ready for this challenge? #10
 
 + [yes]
     -> Treat_AcknowledgeYes ->
-    I believe in you.
+    I believe in you. #11
     
 + [no]
     -> Treat_Unhappy ->
-    It will stay on until you choose to remove it.
+    It will stay on until you choose to remove it. #12
     
 + [timeout] -> Treat_Timeout -> challenge   
 
 + [distracted] -> Treat_PayAttention -> challenge
 
-- I <i>know</i> things can get a little intense around here.
-Don't give up.
-I promise it will be worth your while.
-As you know, you have so much potential.
+- I <i>know</i> things can get a little intense around here. #13
+Don't give up. #14
+I promise it will be worth your while. #15
+As you know, you have so much potential. #16
 
 /wait
 
-Let me have a good look at you.
+Let me have a good look at you. #17
 
 - (present)
-Put your arms behind your head and spread your legs.
+Put your arms behind your head and spread your legs. #18
 
 + [pose:present_stand]
-    It's good to see how quickly you comply.
+    It's good to see how quickly you comply. #19
     
 + [timeout] -> Treat_Timeout -> present
 
 
 - (confuse)
-Tell me, does this place confuse you?
+Tell me, does this place confuse you? #20
 
 + [yes]
-    Not surprising.
-    Things will become more clear in time.
+    Not surprising. #21
+    Things will become more clear in time. #22
     --(enjoy)
-    Have you enjoyed yourself, at least?
+    Have you enjoyed yourself, at least? #23
     
         ++ [yes]
-            Good.
-            There is so much pleasure to experience here.
+            Good. #24
+            There is so much pleasure to experience here. #25
             
             
         ++ [no]
-            That is concerning.
-            We must be doing something wrong.
+            That is concerning. #26
+            We must be doing something wrong. #27
         
         ++ [timeout] -> Treat_Timeout -> enjoy
         
         ++ [distracted] -> Treat_PayAttention -> enjoy
 
 + [no]
-    I hope it stays that way.
-    Things are not always as they seem.
+    I hope it stays that way. #28
+    Things are not always as they seem. #29
     
 + [timeout] -> Treat_Timeout -> confuse
 
 + [distracted] -> Treat_PayAttention -> confuse
 
-- From now on, things will only get more demanding.
-Much will be asked of you.
-And, at times, you will struggle.
+- From now on, things will only get more demanding. #30
+Much will be asked of you. #31
+And, at times, you will struggle. #32
 
-This is where I come in.
-I'm here to keep an eye on your mental health.
+This is where I come in. #33
+I'm here to keep an eye on your mental health. #34
 
-To make sure everything... 
-And I mean <i>everything</i>...
-Stays in good working order.
+To make sure everything... #35
+And I mean <i>everything</i>... #36
+Stays in good working order. #37
 
-The mind is key.
-It dictates to us what is pleasure and what is pain.
+The mind is key. #38
+It dictates to us what is pleasure and what is pain. #39
 
-{hasPenis: Cup your cock|Spread your pussy} and present it to me.
+{hasPenis: Cup your cock|Spread your pussy} and present it to me. #40
  
 - (sore)
-Is it sore?
+Is it sore? #41
 
 + [yes]
-    I thought so.
-    Well, you had better get used to the feeling.
-    It's going to be used <i>a lot</i>.
+    I thought so. #42
+    Well, you had better get used to the feeling. #43
+    It's going to be used <i>a lot</i>. #44
 
 + [no]
-    Good.
-    Because it's going to be used <i>a lot</i>.
+    Good. #45
+    Because it's going to be used <i>a lot</i>. #46
 
 + [timeout] -> Treat_Timeout -> sore
   
@@ -143,134 +136,134 @@ Is it sore?
 
 -
 
-I know you're ass has not been tested yet.
-But it will.
+I know you're ass has not been tested yet. #47
+But it will. #48
 
 - (ass)
-Let me see it. Turn around and spread your ass.
+Let me see it. Turn around and spread your ass. #49
 
 + [pose: present_ass_reverse_spread]
 + [timeout] -> Treat_Timeout -> ass
 
 
-- Yes. Very nice.
-I can tell already that it will be very popular around here.
+- Yes. Very nice. #50
+I can tell already that it will be very popular around here. #51
 
 - (play)
-Do you enjoy having your ass played with?
+Do you enjoy having your ass played with? #52
 
 + [yes]
-    I wonder if you will continue to feel that way.
-    Time will tell.
+    I wonder if you will continue to feel that way. #53
+    Time will tell. #54
         
 + [no]
-    Then you had better speak up when a Mistress 
-    asks you if you want it to be used.
+    Then you had better speak up when a Mistress #55
+    asks you if you want it to be used. #56
         
 + [timeout] -> Treat_Timeout -> play
 
-+ [distracted] -> Treat_PayAttention -> play
         
 - (chest)
-Turn back around and show me your chest.
+Turn back around and show me your chest. #57
 
 + [pose: present_chest]
 + [timeout] -> Treat_Timeout -> chest
 
 
-- Very pleasing.
-I'm sure those tight nubs will be toyed with often.
+- Very pleasing. #58
+I'm sure those tight nubs will be toyed with often. #59
 
 - (excite)
-Does that idea excite you?
+Does that idea excite you? #60
 
 + [yes]
-    Mmmm.
+    Mmmm. #61
     -- (pleasure)
-    Do you enjoy teasing them when you pleasure yourself?
+    Do you enjoy teasing them when you pleasure yourself? #62
     
     ++ [yes]
-        What a naughty, little minx.
+        What a naughty, little minx. #63
         
     ++ [no]
-        No?
-        You should try it sometime.
+        No? #64
+        You should try it sometime. #65
         
     ++ [timeout] -> Treat_Timeout -> pleasure
     
     ++ [distracted] -> Treat_PayAttention -> pleasure
         
 + [no]        
-    Well, you're going to have to decide
-    how much you can handle.
+    Well, you're going to have to decide #66
+    how much you can handle. #67
  
 + [timeout] -> Treat_Timeout -> excite
 
 + [distracted] -> Treat_PayAttention -> excite
 
-- Remember.
-The more you serve,
-the more valuable you are.
+- Remember. #68
+The more you serve, #69
+the more valuable you are. #70
 
 - (relax)
-Relax.
+Relax. #71
 
 + [pose:stand]
 + [timeout] -> Treat_Timeout -> relax
 
 - (serve)
-Do you find it hard to serve?
+Do you find it hard to serve? #72
 
 + [yes]
     -> Treat_Unhappy ->
-    Then make sure you visit me often.
-    I can help with that.
+    Then make sure you visit me often. #73
+    I can help with that. #74
     
 + [no]
     -> Treat_AcknowledgeYes ->
-    If you find it easy,
-    you may not need to come see me that often.
-    Nevertheless...
+    If you find it easy, #75
+    you may not need to come see me that often. #76
+    Nevertheless... #77
  
 + [timeout] -> Treat_Timeout -> serve
 
 + [distracted] -> Treat_PayAttention -> serve
   
 - 
-My office is just up the stairs to the right.
+My office is just up the stairs to the right. #78
 
 - (office)
-Will you make sure to come see me?
+Will you make sure to come see me? #79
 
 + [yes]
     -> Treat_AcknowledgeYes ->
-    I will keep track of how often you visit.
+    I will keep track of how often you visit. #80
 
 + [no]
     -> Treat_Unhappy ->
-    If you neglect your mental health, 
-    I may have to make visits mandatory.
+    If you neglect your mental health, #81
+    I may have to make visits mandatory. #82
 
 + [timeout] -> Treat_Timeout -> office
 
 + [distracted] -> Treat_PayAttention -> office
 
-- Now... I'm sure you are expected elsewhere.
-You can come see me anytime you need someone to take care of you.
-I can help you relax,
-get into the right headspace,
-or soothe you after a hard session.
+- Now... I'm sure you are expected elsewhere. #83
+You can come see me anytime you need someone to take care of you. #84
+I can help you relax, #85
+get into the right headspace, #86
+or soothe you after a hard session. #87
 
 - (visit)
-Do you want to visit me now?
+Will you visit me soon? #88
 
 + [yes]
-    Come to my office then.
-    -> treat_hub.choose_session
+    I look forward to it. #89
+    Come to my room when you are ready. #90
+    -> exit
     
 + [no]
-    That's fine.
-    Visit me when you are ready.
+    That's a shame. #91
+    I'll be here when you need me. #92
     -> exit
 
 + [timeout] -> Treat_Timeout -> visit

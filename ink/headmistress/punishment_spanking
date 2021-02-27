@@ -685,7 +685,7 @@ Stand at attention! #257
 = break01
 
 /perform talk_thoughtful
-Have you been keeping count {isBoy: toad|strumpet}? #10
+Have you been keeping count, {isBoy: toad|strumpet}? #10
 
 +[yes]
  ~ addObey()

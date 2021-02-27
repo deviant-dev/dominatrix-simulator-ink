@@ -12,7 +12,7 @@
 // tease_slapping
 // TODO: Player has to endure slapping while kneeling. This scene will focus on Nega telling the player they don't get to be touched nicely. They aren't worthy of it. She will slap them and get them to slap their genitals / nipples.
 
-// Genital torture mixed with humiliation scene 
+// Genital torture mixed with humiliation scene
 // Slapping balls / pussy
 // Pulling / pinching
 // Squeeze it
@@ -21,7 +21,7 @@
 // Rubbing it
 
 // Mocked
-// Suffer for her 
+// Suffer for her
 // They want to suffer, don't they?
 // Insult
 // shuffle type of suffering
@@ -54,7 +54,7 @@ Aren't you? #17
     + [yes]
         ~ addObey()
         Of course you are. #18
-      
+
     + [no]
         ~ addDisobey()
         {shuffle:
@@ -82,29 +82,29 @@ to prove what a pathetic fleshbag you really are? #25
     ~ addObey()
     -> Nega_Insult ->
     I'm going to make sure you suffer for it. #26
-      
+
     + [no]
         ~ addDisobey()
         {shuffle:
             - -> Nega_Unhappy ->
             - I don't believe you. #27
         }
-        
+
         -- (confirm_consent)
-            I know you're a dirty whore like you wants to torture yourself for me. #28
+            I know you're a dirty whore who wants to torture yourself for me. #28
             Don't you? #29
-        
+
         ++ [yes]
             That's what I fucking thought! #30
-            
+
         ++ [no]
             Goddamnit. #31
             Get the fuck out of here! #32
             -> exit
-            
+
         ++ [timeout] -> Nega_Timeout -> confirm_consent
         ++ [distracted] -> Nega_PayAttention -> confirm_consent
-        
+
 + [timeout] -> Nega_Timeout -> consent
 + [distracted] -> Nega_PayAttention -> consent
 
@@ -147,7 +147,7 @@ to prove what a pathetic fleshbag you really are? #25
 // /perform do_twist_fingers
 // /perform do_rub_nipple
 
-{ scene_count < scene_goal: 
+{ scene_count < scene_goal:
     {shuffle:
         - Enough of that one. #33
         - Okay, stop! #34
@@ -158,13 +158,13 @@ to prove what a pathetic fleshbag you really are? #25
         - Let's try something different. #37
         - Now, let's get creative. #38
     }
-    
+
     {shuffle:
         - I really want to fuck you up! #39
         - Let's make piggy squeal! #40
         - Time to experiment with more pain! #41
     }
-    
+
 -> torture_repeat
 
 }
@@ -222,7 +222,7 @@ Got it? #48
 
 - (try_slap_react)
 ~ task_count++
-/wait 1 
+/wait 1
 
 /action trigger_react
 
@@ -253,7 +253,7 @@ Got it? #48
 
 = flick_genitals
 /perform idle_fake_annoyed excited 50
-I just love counting out your pain!
+I just love counting out your pain! #109
 
 Time for my pathetic little whore to flick that {hasPenis: tip|clit}. #52
 
@@ -261,7 +261,7 @@ Time for my pathetic little whore to flick that {hasPenis: tip|clit}. #52
 One flick for each count. #54
 
 /perform do_rub_hands_together excited 75
-This is really going to hurt!
+This is really going to hurt! #110
 
 /perform idle_unhappy angry 50
 I wanna hear you whimper when you jerk your head. #56
@@ -293,7 +293,7 @@ Understood? #53
 
 - (try_flick_react)
 ~ task_count++
-/wait 1 
+/wait 1
 
 /action trigger_react
 
@@ -306,7 +306,7 @@ Understood? #53
     -> start_over ->
     -> try_flick_genitals
 
-- 
+-
 /log Progress = {task_count} / {task_goal}
 
 {
@@ -325,23 +325,23 @@ Understood? #53
 
 = yank_genitals
 /perform idle_fake_annoyed disgusted 50
-I bet your floppy {hasPenis: sac stretches|pussy lips stretch} really far!
+I bet your floppy {hasPenis: sac stretches|pussy lips stretch} really far! #111
 
 /perform do_yank_air amused 75
-I wanna see yank hard on {hasPenis: that filthy sac|those skanky lips}.
+I wanna see yank hard on {hasPenis: that filthy sac|those skanky lips}. #112
 
 - (handle)
 /perform idle_fake_annoyed skeptical 60
 Can you handle it, little piggy? #61
 
 +[yes]
-    Good.
+    Good. #113
     ~ addObey()
 
 +[no]
      ~ addDisobey()
      -- -> check_ready
-   
+
 + [timeout] -> Nega_Timeout -> handle
 + [distracted] -> Nega_PayAttention -> handle
 
@@ -357,19 +357,19 @@ Can you handle it, little piggy? #61
 
 /log timer = {task_goal}
 /perform do_yank_air angry 50
-Now grab that {hasPenis: pathetic limp dick|ragged pussy} of yours
-and show me how bad it hurts by jerking your head up.
+Now grab that {hasPenis: pathetic limp dick|ragged pussy} of yours #114
+and show me how bad it hurts by jerking your head up. #115
 
 - (react)
 
 /action trigger_react
 
-Go!
+Go! #116
 
 + [react-success]
 + [react-fail]
     -> Nega_BadJob ->
-    I said grab it and show me how much it hurts!
+    I said grab it and show me how much it hurts! #117
     -> react
 
 - Don't stop pulling until I tell you to. #62
@@ -377,7 +377,7 @@ Go!
 Let's count you down. #63
 
 // 3, 5, 10
-{ 
+{
     - task_goal < 5:
         We'll keep this short. #64
     - task_goal == 5:
@@ -409,7 +409,7 @@ Let's count you down. #63
 
 = pinch_genitals
 /perform idle_fake_annoyed aroused 50
-Now. I wanna hear you whine.
+Now. I wanna hear you whine. #89
 
 /perform do_pinch_air excited 75
 Grab that {hasPenis: tiny pecker of yours and pinch the head hard|fat clit of yours and pinch it hard}. #68
@@ -423,7 +423,7 @@ And don't stop until I tell you to. #70
 
 /action trigger_react
 
-Go!
+Go! #90
 
 + [react-success]
      -> Nega_GoodJob ->
@@ -443,37 +443,37 @@ Go!
 
 = nails_genitals
 /perform idle_fake_annoyed disgusted 50
-Time to watch you wince in pain!
+Time to watch you wince in pain! #91
 
 /perform do_scratch_air angry 30
-You're going to dig your nails into that 
-pathetic {hasPenis: cock|pussy} of yours.
+You're going to dig your nails into that #92
+pathetic {hasPenis: cock|pussy} of yours. #93
 
 - (ready)
 /perform idle_tease aroused
-Aren't you excited to suffer for me, meatbag?
+Aren't you excited to suffer for me, meatbag? #94
 
 +[yes]
-    My little pain slut.
+    My little pain slut. #95
     ~ addObey()
 
 +[no]
      ~ addDisobey()
      -- -> check_ready
-   
+
 + [timeout] -> Nega_Timeout -> ready
 + [distracted] -> Nega_PayAttention -> ready
 
-- 
+-
 /perform do_scratch_air excited 40
-Dig your nails in each time I count.
+Dig your nails in each time I count. #96
 
 /perform react_point_at_player_angry disgusted 50
-I wanna see you react each time!
+I wanna see you react each time! #97
 
 /idle idle_fake_annoyed
-Since I know this once is really going to hurt,
-I'll count backwards just to be nice.
+Since I know this once is really going to hurt, #98
+I'll count backwards just to be nice. #99
 
 -> set_task_count ->
 
@@ -491,7 +491,7 @@ I'll count backwards just to be nice.
 
 - (try_nails_react)
 
-/wait {RANDOM(1,3)} 
+/wait {RANDOM(1,3)}
 
 /action trigger_react
 
@@ -519,27 +519,27 @@ I'll count backwards just to be nice.
 
 ->->
 
-= warning 
+= warning
 
 /perform react_scoffs skeptical
 
 { shuffle:
-    - Fuck up and I start over.
-    - Better not fuck up. 
-    - One mistake and I restart.
-    - Don't mess up or I'll start counting all over again.
-    - Make a mistake, so I can start recounting!
+    - Fuck up and I start over. #100
+    - Better not fuck up. #101
+    - One mistake and I restart. #102
+    - Don't mess up or I'll start counting all over again. #103
+    - Make a mistake, so I can start recounting! #104
 }
 
 ->->
 
 = start_over
 
-{shuffle: 
+{shuffle:
     - Looks like we have to start all over. #58
-    - Time to start again!
-    - Wooo! Time for a recount!
-    - Poor little {isBoy:worm|cunt}. Time to start over.
+    - Time to start again! #105
+    - Wooo! Time for a recount! #106
+    - Poor little  {isBoy: worm |{isGirl: cunt | piggy}}. Time to start over. #107
 }
 
 ->->
@@ -576,18 +576,18 @@ I'll count backwards just to be nice.
 
 = check_ready
 Are you a fucking wimp who can't take a little torture? #83
-      
+
         ++ [yes]
             Then get the fuck out! #84
             -> exit
-            
+
         ++ [no]
             Good. #85
             Then get to it! #86
             -> try_slap_genitals
-            
+
         ++ [timeout] -> Nega_Timeout -> check_ready
-        ++ [distracted] -> Nega_PayAttention -> check_ready 
+        ++ [distracted] -> Nega_PayAttention -> check_ready
 ->->
 
 = torture_end
@@ -604,7 +604,7 @@ Get out. #88
 = SayNumber(n)
 // NOTE: Keep these on separate lines for the subtitle system. -deviant
 {
-    - n == 1: 
+    - n == 1:
         One. #1
     - n == 2:
         Two. #2
@@ -613,7 +613,7 @@ Get out. #88
     - n == 4:
         Four. #4
     - n == 5:
-        Five. #5 
+        Five. #5
     - n == 6:
         Six. #6
     - n == 7:
@@ -628,4 +628,3 @@ Get out. #88
         /logError Can't say number '{n}'.
 }
 ->->
-

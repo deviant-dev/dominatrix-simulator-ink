@@ -34,7 +34,7 @@ Stand up straight, {isBoy: maggot|skank}, and present yourself. #102
 + [distracted] -> Nega_PayAttention -> present
 
 -/perform react_point_at_player_angry angry 65
-Don't you fucking move unless I give you permission. #103
+Don't you fucking move unless I give permission. #103
 
 
 - (hold_still)

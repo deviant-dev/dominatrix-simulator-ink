@@ -128,7 +128,7 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 {shuffle:
     - Try and do better next time, puppy! #212
-    - I expect much more out of you next time {player_name}. #202
+    - I expect much more out of you next time, {player_name}. #202
     - Now shoo! Shoo! #203
 }
 
@@ -241,11 +241,11 @@ TODO: add emotions and performances to swipe a Bloodstone
 === Yuki_Sit_Up ===
 
 {shuffle:
-    - Sit back up, puppy. 
-    - Back to sitting.
-    - Return to sit pose, puppy. 
-    - Sit up, puppy. 
-    - Sit up and look at me, puppy. 
+    - Sit back up, puppy. #01
+    - Back to sitting. #02
+    - Return to sit pose, puppy. #03
+    - Sit up, puppy. #04
+    - Sit up and look at me, puppy. #05
 }
 
 ->->

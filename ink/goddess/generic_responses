@@ -2,7 +2,7 @@
 
 { shuffle:
 
-    - /perform idle_yuki happy 50
+    - /perform idle happy 50
     There's a good {player_name}. #114
 
     - /perform idle_tease aroused 65
@@ -48,6 +48,7 @@
     - Very well.
     - So be it.
     - Alright then.
+    - Excellent.
 }
 
 ->->
@@ -166,3 +167,79 @@
 // }
 
 ->->
+
+=== Goddess_CheckIfInterested ===
+
+{checked_if_interested: -> check_terse}
+
+~checked_if_interested = true
+
+/perform idle_unhappy disgusted
+
+These are the sorts of tasks demanded of you here. #148
+- (check_again)
+
+/perform talk_behold skeptical
+
+Are you willing to simply do as I say like a good {player_name}? #149
+
+/perform idle
+
++ [yes] -> IsInterested
++ [no]
++ [timeout] -> check_again
+
+- (check_terse)
+
+/emotion skeptical
+
+Really? #150
+
+/emotion angry 50
+
+We will need to be rid of you if you can't perform. #151
+
+Your willingness to serve is, after all, why you are here. #152
+
+/perform talk_annoyed neutral
+
+So I'll ask one last time: #153
+
+/perform talk_lean_forward angry 50
+Are you willing to perform for your goddess? #154
+
++ [yes] -> IsInterested
++ [no] -> NotInterested
+
+
+= IsInterested
+
+-> Goddess_GoodJob ->
+/perform react_shrug_long skeptical
+There is hope for you yet. #157
+
+->->
+
+
+= NotInterested
+
+/perform talk_annoyed disgusted
+Then away with you. #155
+Perhaps another time when you are ready to learn your place. #156
+
+-> Goddess_ByeForNow -> game_outro
+
+
+=== Goddess_ByeForNow ===
+
+/perform do_snap_fingers
+
+/scene bedroombroken.pissed
+
++ [wait 1.5]
+
+- /character goddess idle_looming_huge angry 50
+
+Bye for now, {player_name}. #113
++ [wait:5] ->->
+

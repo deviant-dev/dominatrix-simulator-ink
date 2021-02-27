@@ -117,9 +117,10 @@ INCLUDE yuki/reward_massage
 INCLUDE yuki/reward_puppyplay_lickfeet
 INCLUDE yuki/reward_puppyplay_milking
 INCLUDE yuki/rewardmega_placeholder
+INCLUDE goddess/reward_joi
 
 
-// INCLUDE yuki/train_spanking
+
 
 
 
@@ -210,12 +211,12 @@ VAR inVR = false
     ~ profile_scene_count++
     {current_mistress != Treat:
         ~ treat_scenes_since_last_session ++
-        
+
     - else:
-        
+
         ~ treat_scenes_since_last_session = 0
     }
-    
+
 }
 
 {

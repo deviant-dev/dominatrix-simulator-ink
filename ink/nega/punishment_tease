@@ -15,10 +15,10 @@
 
 
 /perform idle_swaying excited 75
-Looks like this visit won't be a waste after all. #01
+Looks like this visit won't be a waste after all.
 
 /perform talk_lean_forward amused 75
-Poor {isBoy: fuckup|stain}. #02
+Poor {isBoy: fuckup|stain}.
 
 - (insult)
 /perform idle_unhappy_stomp
@@ -26,11 +26,11 @@ Poor {isBoy: fuckup|stain}. #02
   
 //this is the place in the script I copied from reward tease and still needs to be rewritten
 
-- Isn't that right? #03
+- Isn't that right?
 
     +[yes]
-        That's right. #04
-        Just a rotten little bitch I should crush under my boot. #05
+        That's right.
+        Just a rotten little bitch I should crush under my boot.
     +[no]
         -> Nega_Unhappy ->
         
@@ -39,9 +39,9 @@ Poor {isBoy: fuckup|stain}. #02
 
 - /perform talk_behold
 {shuffle:
-    - You're just a rotten little bitch I should crush under my boot. #16
-    - A wretched little slut who just wants to be used. #17
-    - A horny piece of meat waiting to be devoured. #18
+    - You're just a rotten little bitch I should crush under my boot.
+    - A wretched little slut who just wants to be used.
+    - A horny piece of meat waiting to be devoured.
     }
     
 -  
@@ -50,10 +50,10 @@ Poor {isBoy: fuckup|stain}. #02
 ~ tries++
 
 {shuffle:
-    - On your hands and knees, dog! #06
-    - Get down on the fucking floor. Hands and knees. #07
-    - Hands and knees, cunt. #08
-    - Down! I want you on your hands and knees. #09
+    - On your hands and knees, dog!
+    - Get down on the fucking floor. Hands and knees.
+    - Hands and knees, cunt.
+    - Down! I want you on your hands and knees.
     }
 
 + [pose:kneel]
@@ -63,38 +63,38 @@ Poor {isBoy: fuckup|stain}. #02
 - -> Nega_GoodJob ->
 
 /perform idle_unhappy_stomp
-You can't fucking hide from me. #10
-I see what you are. #11
+You can't fucking hide from me.
+I see what you are.
 
 -> Nega_Insult ->
 
 /perform talk_lean_forward
-You just can't stay away, can you? #12
+You just can't stay away, can you?
 
 + [yes]
-    Then what the fuck are you doing here? #13
+    Then what the fuck are you doing here?
 + [no]
-    Too curious for your own good. #14
-    That's perfect. I like abusing stupid little pricks. #15
+    Too curious for your own good.
+    That's perfect. I like abusing stupid little pricks.
 
 - (nega_apologize)
-Apologize for pretending to be anything else. #19
-Lick the ground! #20
+Apologize for pretending to be anything else.
+Lick the ground!
 
 + [pose:kiss_feet]
 + [timeout] -> Nega_BadJob -> nega_apologize
 
-- Keep going until I tell you to stop. #21
+- Keep going until I tell you to stop.
 
 + [pose:kiss_feet]
 
-- That's it, little bitch. #22
-Show me how sorry you are. #23
+- That's it, little bitch.
+Show me how sorry you are.
 
 + [pose:kiss_feet]
 
-- Don't fucking lie to me again. #24
-Now get back up on your knees. #25
+- Don't fucking lie to me again.
+Now get back up on your knees.
 
 + [pose:kneel]
 
