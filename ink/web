@@ -53,6 +53,40 @@
     -> yuki_task_puppyplay
 
 
+=== select_gender_web ===
+
+- (options)
+
+Gender Settings:<br/><>#CLEAR
+Designation: {player_name}<br/><>
+Genitals: {hasPenis:penis|vagina}
+
++ {player_name != "boy"}[Select designation: 'boy']
+    ~ player_name = "boy"
+    ~ isBoy = true
+    ~ isGirl = false
+
++ {player_name != "girl"}[Select designation: 'girl']
+    ~ player_name = "girl"
+    ~ isBoy = false
+    ~ isGirl = true
+
++ {player_name != "pet"}[Select designation: 'pet']
+    ~ player_name = "pet"
+    ~ isBoy = false
+    ~ isGirl = false
+
++ {not hasPenis}[Swap to penis]
+    ~ hasPenis = true
+
++ {hasPenis}[Swap to vagina]
+    ~ hasPenis = false
+
++ {hasChosen()} [move]
+    ->->
+
+- -> options
+
 
 === game_intro_web ===
 

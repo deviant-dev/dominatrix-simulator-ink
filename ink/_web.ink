@@ -129,6 +129,7 @@ INCLUDE goddess/reward_joi
 
 
 
+
 // EXTERNAL getNegaDie1()
 // EXTERNAL getNegaDie2()
 // EXTERNAL getNegaDie3()

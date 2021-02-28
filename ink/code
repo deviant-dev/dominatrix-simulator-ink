@@ -31,7 +31,11 @@
 
 === select_gender_check ===
 {hasChosen(): ->->}
--> select_gender ->->
+{web:
+    -> select_gender_web ->->
+- else:
+    -> select_gender ->->
+}
 
 === select_gender ===
 /scene entrydark.genderchoice
