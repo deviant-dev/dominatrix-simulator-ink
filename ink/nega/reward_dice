@@ -100,6 +100,8 @@ Get down here. #09
 
 
 - (test_dice)
+
+// This animation creates dice in Nega's hand.
 /perform squat_dice_give amused 35
 /music nega-ambient-2
 Time to play a little game. #10
@@ -127,8 +129,20 @@ Go ahead. Roll them bones. #06
 ~ nega_die_2 = getNegaDie2()
 ~ nega_die_3 = getNegaDie3()
 
-~ save(-> load_post_roll)
+~ temp result = nega_die_1 + nega_die_2 + nega_die_3
 
+/notify title="Dice Roll Results" delay=10 text="{rollToText(nega_die_1)} + {rollToText(nega_die_2)} + {rollToText(nega_die_3)}" #note04
+
+{result == nega_last_result:
+    Aaaw, look at that. No fun. #42
+    That's the same as last time.
+    // This re-gathers the dice to Nega's hand
+    /perform squat_dice_give amused 35
+    Boring! Do it better, fuckwit.
+    -> hold
+}
+
+~ save(-> load_post_roll)
 -> post_roll
 
 
@@ -138,8 +152,7 @@ Go ahead. Roll them bones. #06
 
 = post_roll
 ~ temp result = nega_die_1 + nega_die_2 + nega_die_3
-
-/notify title="Dice Roll Results" delay=10 text="{rollToText(nega_die_1)} + {rollToText(nega_die_2)} + {rollToText(nega_die_3)}" #note04
+~ nega_last_result = result
 
 {
     - inTutorial && result > 0: -> intro_reward

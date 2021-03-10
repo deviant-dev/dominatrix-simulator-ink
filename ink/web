@@ -4,7 +4,7 @@
 
 + <b>Test: Ms. Treatment Session</b>
     ~ setDeviation(treat)
-    -> treat_session_placeholder
+    -> treat_session_subdrop
 
 + <b>DomSim: Threshold</b>
     ~ setDeviation(full_game)
@@ -59,7 +59,7 @@
 
 Gender Settings:<br/><>#CLEAR
 Designation: {player_name}<br/><>
-Genitals: {hasPenis:penis|vagina}
+Genitals: {hasPenis:penis|vulva}
 
 + {player_name != "boy"}[Select designation: 'boy']
     ~ player_name = "boy"
@@ -79,7 +79,7 @@ Genitals: {hasPenis:penis|vagina}
 + {not hasPenis}[Swap to penis]
     ~ hasPenis = true
 
-+ {hasPenis}[Swap to vagina]
++ {hasPenis}[Swap to vulva]
     ~ hasPenis = false
 
 + {hasChosen()} [move]

@@ -10,7 +10,7 @@
 
 // NOTE: Care selection UI is built into the scene.
 
-+ [Session] -> treat_session_placeholder
++ [Session] -> treat_session_subdrop
 
 + [Comfort] -> comfort
 

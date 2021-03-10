@@ -26,7 +26,8 @@
 
 + [wait:4]
 
-- /scene none
+- /ambient none
+/scene none
 /wait 2
 
 - (debug_jump)
@@ -145,7 +146,8 @@ Are you? #22
     Perhaps I will give you a chance to prove your worth. #26
     /wait
 
-+ (ask_exceptional_again)[timeout]
++ (ask_exceptional_again)[timeout:15]
+    -> Goddess_Timeout ->
     /perform idle_cocks_head_to_left disgusted 50
     Do you think you're exceptional? #27
     -> ask_exceptional
@@ -352,7 +354,7 @@ You don't mind, do you? #79
     Honestly, I don't even know why I bother asking. #81
 + [no]
     /perform talk_one_finger skeptical 30
-    Mmm... I think someone might be enjoying this. #82
+    I think someone might be enjoying this. #82
 + [timeout]
     /perform react_scoffs amused 60
     That's alright. It's not like you have a choice anyway. #83

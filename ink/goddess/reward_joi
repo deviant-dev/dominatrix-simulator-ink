@@ -17,11 +17,18 @@
 = start
 //this is where the player is asked if they want to give up their reward stone
 
-
 {shuffle:
-    - Perhaps I should let you cum for me.
+    - I enjoy watching slaves cum for me.
     - I'm curious how well you can orgasm for me. 
     - I'm thinking about letting you cum for me. 
+}
+
+
+{shuffle:
+    - Demonstrating to you so precisely how your
+    pleasure is mine to grant. 
+    - Controlling your every motion so that your exquisite release
+    is a tribute to my attentiveness.
 }
 
 - (choice)
@@ -51,6 +58,8 @@
 = gave_reward
 //this is where the actual scene happens
 
+Get down on your knees.
+Sit down and spread your legs.
 
 
 {shuffle:
@@ -71,42 +80,80 @@
 + [no]
     I will tolerate this preference.
     
++ [timeout] -> Goddess_Timeout -> gave_reward 
+
++ [distracted] -> Goddess_PayAttention -> gave_reward 
+    
 - {shuffle:
     - I'm feeling generous.
-    - I'm a good mood today.
+    - I'm in a good mood today.
     - I find you entertaining.
 }
 
 So, I will consider your preferences.
 
-Did you bring a toy with you?
+Would you like to plug your ass for me first?
 
 + [yes]
-    Is it for your mouth?
+    -> Goddess_AcknowledgeYes ->
+    Go prepare yourself.
+    Choose the plug you believe will please me most.
+    -- (prepare)
+    <b>Nod</b> your head when you are ready.
     
-    ++ [yes] 
-        Good.
-        You may use it when I tell you to.
-        
-    ++ [no] 
-        Is it for your ass?
-        
-        +++ [yes]
-        
-        Good.
-        You may use it when I tell you to.
-        
-        +++ [No]
-    
-            Then we won't need that toy today.
+    ++ [yes] -> plug
     
 + [no]
-    A toy is not required,
-    but in the future, 
-    I may give you this option again.
+    This is not required today,
+    but in the future I may insist.
+    -> joi
+   
+= plug 
+
+Welcome back, {player_name}.
+I want to see what you have picked out for me.
+
+Turn around and present your ass.
+
++ [pose: present_ass_reverse_spread]
+
+- 
+{shuffle:
+    - I approve of your selection.
+    - Your choice pleases me. 
+    - -> Goddess_GoodJob ->
+}
+
+- (wiggle)
+That is my ass, {player_name}.
+That plug is mine.
+When I tell you to,
+you will wiggle it for me.
+
+Understood?
+
++ [yes] 
+    -> Goddess_GoodJob ->
+    -> joi
+
++ [no]
+    Your answer displeases me.
+    You put the toy in.
+    You will wiggle it when I say so.
     
+    Will you obey?
     
-- Tell me, {player_name}...
+    ++ [yes]
+        Excellent.
+        Then we shall continue.
+        -> joi
+        
+    ++ [no]
+        -> Goddess_CheckIfInterested ->
+        -> wiggle
+    
+= joi
+Tell me, {player_name}...
 
 {shuffle:
     - Do you enjoy eating your own cum?

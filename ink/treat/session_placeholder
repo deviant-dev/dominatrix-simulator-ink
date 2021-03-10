@@ -1,6 +1,6 @@
-=== treat_session_placeholder ===
+=== treat_session_subdrop ===
 -> select_gender_check ->
-~ setScene(session_scene, Treat, "treat_session_placeholder", -> treat_session_placeholder)
+~ setScene(session_scene, Treat, "treat_session_subdrop", -> treat_session_subdrop)
 /scene Hell.Ready
 /music treat
 /ambient treat
@@ -11,56 +11,56 @@
 
 //first time the player comes to a session
 
-{treat_session_placeholder == 1:
-    Welcome, {player_name}!
-    I'm so pleased to see you!
+{treat_session_subdrop == 1:
+    Welcome, {player_name}! #01
+    I'm so pleased to see you! #02
 
-    For your first official therapy session...
+    For your first official therapy session... #03
 }
 
-I think we should get you into the right headspace.
+I think we should get you into the right headspace. #04
 
-There's nothing quite like dropping you 
-into subspace to really enhance our pleasure.
+There's nothing quite like dropping you #05
+into a submissive headspace to really enhance our pleasure. #06
 
-Would you like that, {player_name}?
+Would you like that, {player_name}? #07
 
 + [yes]
     -> Treat_AcknowledgeYes ->
     
 + [no]
-    Hrm.
-    Are you sure you want to be here?
+    Hrm. #08
+    Are you sure you want to be here? #09
     
     ++ [yes]
-        Then you are willing to continue?
+        Then you are willing to continue? #10
         
         +++ [yes]
             -> Treat_AcknowledgeYes ->
             
         +++ [no]
             -> Treat_Unhappy ->
-            Come back when you are ready.
+            Come back when you are ready. #11
             -> exit
     ++ [no]
-        Very well.
-        I suggest you return another time.
+        Very well. #12
+        I suggest you return another time. #13
         -> exit
         
 + [timeout] -> Treat_Timeout ->
 
 + [distracted] -> Treat_PayAttention ->
             
-- Have you ever experience subspace before?
+- Have you ever lost yourself in a Mistress before? #14
 
 + [yes]
-    Then I will be curious to know
-    whether this session works for you.
+    Then I will be curious to know #15
+    whether this session works for you. #16
     
 + [no]
-    Then I have my work cut out for me!
-    We will evaluate how well this works
-    when we are finished.
+    Then I have my work cut out for me! #17
+    We will evaluate how well this works #18
+    when we are finished. #19
     
 + [timeout] -> Treat_Timeout ->
  
@@ -68,76 +68,76 @@ Would you like that, {player_name}?
 
 + [yes]
 
-- Before we begin,
-close your eyes 
-and take a deep cleansing breath.
+- Before we begin, #20
+close your eyes #21
+and take a deep cleansing breath. #22
 
 //inhale and exhale audio
 
-Again.
+Again. #23
 
 //inhale and exhale audio
 
-Feel the solid ground beneath your feet.
-Let your arms hang loosely at your sides.
+Feel the solid ground beneath your feet. #24
+Let your arms hang loosely at your sides. #25
 
-Now.
-Breathe in deeply as you raise your shoulders up to your ears,
-then exhale as you let your shoulders sink down.
+Now. #26
+Breathe in deeply as you raise your shoulders up to your ears, #27
+then exhale as you let your shoulders sink down. #28
 
 -> Treat_GoodJob ->
 
 - (here)
-Are you here with me, little one?
+Are you here with me, little one? #29
 
 + [yes]
     -> Treat_AcknowledgeYes ->
 
 + [no]
-    Empty your mind, {player_name}.
+    Empty your mind, {player_name}. #30
     
 + [timeout] -> here
 
-- Listen to the sound of my voice.
-Feel my words surround you like a warm, soothing blanket.
+- Listen to the sound of my voice. #31
+Feel my words surround you like a warm, soothing blanket. #32
 
-Holding my words to you like an anchor...
-Take a slow, deep breath.
+Holding my words to you like an anchor... #33
+Take a slow, deep breath. #34
 
 // inhale and exhale audio
 
-I am here.
-And you are with me.
+I am here. #35
+And you are with me. #36
 
 // inhale and exhale audio
 
 -> Treat_GoodJob ->
 
-Open your eyes.
+Open your eyes. #37
 - (eyes)
 
-Look at me.
-Do not take your eyes off me 
-until I tell you to do so.
+Look at me. #38
+Do not take your eyes off me #39
+until I tell you to do so. #40
 
-Understand?
+Understand? #41
 
 + [yes]
     -> Treat_GoodJob ->
 
 + [no]
-    If you choose to defy my instructions,
-    then you will get no benefit from this session.
+    If you choose to defy my instructions, #42
+    then you will get no benefit from this session. #43
     
     -- (eyes2)
-    Will you keep your eyes on me?
+    Will you keep your eyes on me? #44
     
     ++ [yes]
         -> Treat_AcknowledgeYes ->
         
     ++ [no]
         -> Treat_Unhappy ->
-        I suggest you return another time.
+        I suggest you return another time. #45
         -> exit
         
     ++ [timeout] -> eyes2
@@ -145,32 +145,32 @@ Understand?
 + [timeout] -> eyes
 - 
 
-I see you.
-In your eyes, I see a soul who yearns for a place.
-For a home.
-To belong.
+I see you. #46
+In your eyes, I see a soul who yearns for a place. #47
+For a home. #48
+To belong. #49
 
-Breathe.
+Breathe. #50
 
 //inhale and exhale audio
 
-I see you.
+I see you. #51
 
 /wait
 
-Kneel, {player_name}.
+Kneel, {player_name}. #52
 
 + [pose:kneel] -> Treat_GoodJob ->
 
 + [timeout]
 
-- Right now,
-in this moment,
-you are with me.
+- Right now, #53
+in this moment, #54
+you are with me. #55
 
 /wait 
 
-I see you.
+I see you. #56
 
 /wait
 
@@ -179,115 +179,122 @@ I see you.
 = see_you 
 
 {shuffle:
-    - -> upper_body ->
-    - -> lower_body ->
-    - -> genitals ->
-    - -> heart ->
-}
-
-- 
-{shuffle:
-    - Breathe, {player_name}.
-    In and out.
-    - Breathe, little one. 
-    - Take a slow, deep breath.
+    - Breathe, {player_name}. #57
+    In and out. #58
+    - Breathe, little one. #59
+    - Take a slow, deep breath. #60
 }
 //inhale and exhale sound
 
 -> Treat_GoodJob ->
 
 {shuffle:
-    - Just like that.
-    - Perfect.
-    - Good. 
+    - Just like that. #61
+    - Perfect. #62
+    - Good. #63
 }
 
 {shuffle:
-    - Keep your eyes on mine, little one.
-    - Don't look away from my eyes. 
-    - Lose yourself in my eyes, {player_name}.
+    - Keep your eyes on mine, little one. #64
+    - Don't look away from my eyes. #65
+    - Lose yourself in my eyes, {player_name}. #66
+}
+TODO: have cycle reset @deviant
+{cycle:
+    - -> upper_body ->
+    - -> lower_body ->
+    - -> genitals ->
+    - -> heart ->
 }
 
 -> see_you
 
 = upper_body
-I see the gentle curve of your head.
-The soft swell of your lips.
-The {isBoy:smooth lines of your chest|succulent ripeness of your breasts}.
+I see the gentle curve of your head. #67
+The soft swell of your lips. #68
+The {isBoy:smooth lines of your chest|succulent ripeness of your breasts}. #69
 
 - (on_you)
-Do you feel my eyes on you, {player_name}?
+Do you feel my eyes on you, {player_name}? #70
 
 + [yes]
     -> Treat_AcknowledgeYes ->
     -> ready 
 
 + [no]
-    You will.
+    You will. #71
 
 + [timeout]
-    Concentrate, {player_name}.
+    Concentrate, {player_name}. #72
     -> on_you
  
 - ->->
  
 = lower_body
-I see the sumptuous fall of your belly.
-The strong lines of your thighs.
-The delicate bend of your fingers.
+I see the sumptuous fall of your belly. #73
+The strong lines of your thighs. #74
+The delicate bend of your fingers. #75
 
-I see you.
+I see you. #76
 
 - (expose) 
-Raise your arms above your head.
-Expose yourself to me, little one.
+Raise your arms above your head. #77
+Expose yourself to me, little one. #78
 
 + [pose:present_kneel]
 
 + [timeout] 
-    Let's try this again.
+    Let's try this again. #79
     -> expose
 
 - -> Treat_GoodJob ->
 
-So beautiful.
-So perfect.
-Just where I want you.
+So beautiful. #80
+So perfect. #81
+Just where I want you. #82
 
 -> ready 
 
 = genitals
-I sense your yearning, little one.
-I see the soft swelling of your {hasPenis: shaft|folds}.
-The moisture glistens.
+I sense your yearning, little one. #83
+I see the soft swelling of your {hasPenis: shaft|folds}. #84
+The moisture glistens. #85
 
 - (attention)
-You need this attention, don't you?
+You need this attention, don't you? #86
 
 + [yes]
-    Of course you do.
+    Of course you do. #87
     -> ready
     
 + [no]
-    A part of you is compelled else you would not be here.
+    A part of you is compelled else you would not be here. #88
     
 + [timeout] -> attention
 
 - ->->
 
 = heart
-I know you yearn to belong.
-To be owned.
-To be cared for.
-Your soul cries out for it.
+I know you yearn to belong. #89
+To be owned. #90
+To be cared for. #91
+Your soul cries out for it. #92
 
-Come here, little one.
-Rest at my feet.
+Come here, little one. #93
+Rest at my feet. #94
 
 + [move]
 
-- I will be here anytime you are worried or need soothing.
-Your service is a gift.
+- 
+-> Treat_GoodJob ->
+//performance to pet the player's hair
+
+Just relax. #95
+Let go. #96
+You were made to serve. #97
+Your service is a gift. #98
+
+I will be here anytime you need to be taken care of. #99
 
 -> ready
 
@@ -295,44 +302,47 @@ Your service is a gift.
 = ready
 
 {shuffle:
-    - Have you let go of your ego?
-    - Do you feel little?
-    - Have you dropped into submission?
+    - Have you let go of your ego? #100
+    - Do you feel little? #101
+    - Have you dropped into submission? #102
+    - Have you let the world drop away so that only I exist? #103
 }
 
 + [yes]
-    You please me, little one.
+    You please me, little one. #104
     
 + [no] 
-    That's alright.
+    That's alright. #105
     -> see_you
  
  + [timeout] -> ready
  
 -  (serve)
-Are you ready to serve?
+Are you ready to serve? #106
 
 + [yes]
-    I am proud of you.
+    I am proud of you. #107
     /wait
-    Your service will be cherished.
+    Your service will be cherished. #108
     /wait
     
 + [no]
-    A little more time then.
+    A little more time then. #109
     -> see_you
     
 + [timeout] -> serve
     
-- Now stand.
+- Now stand. #110
 
-Take another cleansing breath.
++ [pose: stand]
+
+Take another cleansing breath. #111
 
 //inhale and exhale sounds
 
-To me, you are perfect in your submission.
-It is time to demonstrate what you were born to do.
+To me, you are perfect in your submission. #112
+It is time to demonstrate what you were born to do. #113
 
-Go and present yourself to one of the Mistresses.
+Go and present yourself to one of the Mistresses. #114
 
 -> exit   

@@ -24,9 +24,9 @@
 
 //greet player
 { shuffle:
-    - Hello {player_name}. 
-    - Hello there.
-    - Ah. There you are.
+    - Hello {player_name}. #01
+    - Hello there. #02
+    - Ah. There you are. #03
 }
 
 //check for type of scene
@@ -39,14 +39,14 @@
 //comment on reward
 = reward_monitor
 { shuffle:
-    - Rewards are delightful...
-    But they are much more enjoyable 
-    when your mind is in the right place!
-    - I see you've been pleasing to the Mistresses. 
-    That's good. 
-    But you musn't neglect your mind. 
-    - You may have received a reward, 
-    but you must also complete your therapy.
+    - Rewards are delightful... #04
+    But they are much more enjoyable #05
+    when your mind is in the right place! #06
+    - I see you've been pleasing to the Mistresses. #07
+    That's good. #08
+    But you musn't neglect your mind. #09
+    - You may have received a reward, #10
+    but you must also complete your therapy. #11
 }
 
 -> reminder
@@ -54,12 +54,12 @@
 //comment on punishment
 = punishment_monitor
 { shuffle:
-    - Getting in trouble I see. 
-        We must work on your mindset.
-    - I'm disappointed to see you are getting into trouble.
-        Therapy will help you overcome that.
-    - Being punished will take it's toll on you. 
-        We must keep your mind healthy.
+    - Getting in trouble I see. #12
+        We must work on your mindset. #13
+    - I'm disappointed to see you are getting into trouble. #14
+        Therapy will help you overcome that. #15
+    - Being punished will take it's toll on you. #16
+        We must keep your mind healthy. #17
 }
 
 -> reminder
@@ -68,21 +68,21 @@
 //comment on task
 = task_monitor
 { shuffle:
-    - I see you are keeping busy fulfulling tasks.
-    - Serving the Mistresses is an important duty.
+    - I see you are keeping busy fulfulling tasks. #18
+    - Serving the Mistresses is an important duty. #19
 }
 
 {shuffle:
-    - But...
-    - Nevertheless...
-    - However...
+    - But... #20
+    - Nevertheless... #21
+    - However... #22
 }
 
 //comment on importance of mental health
 {shuffle:
-    - We must keep your mind sharp, as well!
-    - We must maintain your mental hygiene!
-    - Your mental health must be maintained!
+    - We must keep your mind sharp, as well! #23
+    - We must maintain your mental hygiene! #24
+    - Your mental health must be maintained! #25
 }
 
     
@@ -92,18 +92,18 @@
 
 //comment that she's been waiting 
 { shuffle:
-    - I've been waiting for you to come see me.
-    - It's time for you to have a session. 
-    - It's important you visit me regularly.
-    - I expect you to come to your sessions.
+    - I've been waiting for you to come see me. #26
+    - It's time for you to have a session. #27
+    - It's important you visit me regularly. #28
+    - I expect you to come to your sessions. #29
 }
 
 - (visit)
-Do you want to visit me now?
+Do you want to visit me now? #30
 
 + [yes]
     -> Treat_AcknowledgeYes ->
-    Come to my office.
+    Come to my office. #31
     -> treat_hub.choose_session
     
 + [no]
@@ -118,19 +118,19 @@ Do you want to visit me now?
 = warning
 
 {shuffle:
-    - If you don't come see me on your own,
-    then I will have to force you to. 
-    - Eventually, I will require you come see me. 
-    - I will give you a little more time. 
-    And then I will summon you.
+    - If you don't come see me on your own, #32
+    then I will have to force you to. #33
+    - Eventually, I will require you come see me. #34
+    - I will give you a little more time. #35
+    And then I will summon you. #36
 }
 
 //say Goodbye
 { shuffle:
-    - Remember what I've said.
-    You may go.
-    - Goodbye {player_name}. 
-    You may continue what you were doing.
+    - Remember what I've said. #37
+    You may go. #38
+    - Goodbye {player_name}. #39
+    You may continue what you were doing. #40
 }
 
 -> entry_hub

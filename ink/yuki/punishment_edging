@@ -56,7 +56,7 @@
 
 -
 /perform do_point_down skeptical 65
-  Now, be a good {isBoy:boy|{isGirl:girl|pet}},
+  Now, be a good {player_name},
   and grovel for my amusement.
 
 

@@ -175,7 +175,7 @@
 
 << Time for your treatment. >>
 { shuffle:
-    - -> treat_session_placeholder
+    - -> treat_session_subdrop
 }
 
 

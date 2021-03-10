@@ -4,128 +4,318 @@
 ~ licked_boots = true
 
 
-/scene attic.Ready
+/scene attic.chair
 /music nega-punishment
 /ambient howling-wind
-/character nega idle_bored
+/character nega sex_chair_openlegs_wide
 
-- (hands_and_knees_timeout)
-/perform talk_consider
 
-Get down on all fours like the dog you are, maggot!
+{yuki_task_puppyplay_intro == 1: 
+    -> dog
+    - else:
+    -> start
+}
+
+= dog
+You like being Yuki's little pup, don't you? #01
+
++ [yes]
+    Well, now you can be my little bitch. #02
+    A dirty, little dog for me to use and abuse. #03
+    -> start
+    
++ [no]
+    -> Nega_Unhappy.Sex_Chair ->
+    -> start
+
+= start
+Get down on all fours like the dog you are, maggot! #04
 
 + [pose:hands_and_knees]
 
++ [timeout] -> Nega_Timeout.Sex_Chair -> start
 
---> Nega_GoodJob ->
+- That's right. #05
+
+- (please)
+/perform sex_chair_crosslegs_tease
+You're a dirty horndog... #06
+
+Willing to do anything to please me. #07
+
+Isn't that right? #08
+
++ [yes]
+    That's what I thought. #09
+    Let's make you prove it! #10
+    
++ [no]
+    -> Nega_Unhappy.Sex_Chair ->
+    I'm going to teach you your place. #11
+    
++ [timeout] -> Nega_Timeout.Sex_Chair -> please
+
++ [distracted] -> Nega_PayAttention.Sex_Chair -> please
+
+- (personal)
+/perform sex_chair_crosslegs_left_present
+You're going to get up close and personal #12
+with the bottom of my boots. #13
+
+Got it, dog? #14
+
++ [yes]
+    Good. #15
+    
++ [no]
+    -> Nega_CheckIfInterested.Sex_Chair ->
+    
++ [timeout] -> Nega_Timeout.Sex_Chair -> personal
+
++ [distracted] -> Nega_PayAttention.Sex_Chair -> personal
+
 
 - (kiss_feet)
-/perform idle_present_foot
-Come here and kiss my boot, worm!
+Before I give you the pleasure of cleaning my boot, #16
+you will thank me for the priviledge. #17
+
+/perform sex_chair_crosslegs_snap_right_fingers
+Come here and kiss my boot, bitch! #18
 
 + [pose:kiss_feet]
-+ { tries < 3 } [timeout] -> kiss_feet
-+ { tries >= 3 } [timeout]
-+ [no] No?! 
-Then get the fuck out! 
-And take a punishment with you.
-~ addPunishment()
--> exit
+   -> Nega_GoodJob.Sex_Chair ->
+    
++ [no] 
+    No?! #19
+    -> Nega_CheckIfInterested.Sex_Chair ->
 
-- Very good.
-Accept your place beneath me. 
-Embrace that which will hurt you!
++ [timeout] -> kiss_feet
 
+
+- (sit)
+/perform sex_chair_crosslegs_tease
+Sit up, dog. #20
+
++ [pose:puppy_sit]
+
++ [timeout] -> Nega_Timeout.Sex_Chair -> personal
+
+
+-
+This is where you belong. #21
+At my feet. #22
+Accept your place beneath me. #23
+
+
+- (worthy)
+/perform sex_chair_openlegs_idle_tease
+You're not worthy of being anything more than a dog in my presence. #24
+
+Are you? #25
+
++ [yes]
+    If I say you're not worthy. #26
+    Then you're not fucking worthy. #27
+    Got it, bitch? #28
+    
+        ++ [yes]
+            Good. #29
+            Don't fucking forget it! #30
+            
+        ++ [no]
+            You've obviously forgotten who you're talking to. #31
+            
+        ++ [timeout] -> Nega_PayAttention.Sex_Chair -> worthy
+    
++ [no]
+    -> Nega_AcknowledgeYes.Sex_Chair ->
+    
++ [timeout] -> Nega_Timeout.Sex_Chair -> personal
+
++ [distracted] -> Nega_PayAttention.Sex_Chair -> personal
+
+
+- 
+/perform sex_chair_crosslegs_idle_left
+Let's make you prove your loyalty to me, bitch. #32
+
+I stepped outside earlier and got the bottoms of my boots dirty. #33
 
 ~ tries = 0
 - (ask_clean_boot) 
 ~ tries++
 
-I stepped outside earlier and got the bottoms of my boots dirty.
-
 {cycle:
-    - Would you be a dear and clean that up for me with your tongue?
-    - Now, are you going to clean my boot?
+    - Would you be a dear and clean that up for me with your tongue? #34
+    - Now, are you going to clean my boot? #35
 }
     
-+ [Yes]
-    You're such a dirty whore! I love it! Now get busy!
++ [yes]
+    You're such a dirty dog! #36
+    I love it! #37
+    Now get busy! #38
     -> accept_boot_lick
     
-+ [No]
-    You ungrateful loser! 
-    Here's a piece of Obsidian. 
++ [no]
+    {shuffle:
+        - You ungrateful loser! #39
+        - You're trying my patience. #40
+    }
+    
+    {shuffle: 
+        - Here's a piece of Obsidian. #41
+        - You'll take a punishment for that. #42
+    }
+    
     ~ addPunishment()
-    { tries < 12:
+    { tries < 2:
         -> ask_clean_boot
     - else:
         -> deny_boot_lick
     }
 
-- (accept_boot_lick)
-//The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. It would be really tool if there was actually dirt on the boot that disappeared/fell off as the player "licked"
++ [timeout] -> Nega_Timeout.Sex_Chair -> ask_clean_boot
 
++ [distracted] -> Nega_PayAttention.Sex_Chair -> ask_clean_boot
+
+- (accept_boot_lick)
+//The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. It would be really cool if there was actually dirt on the boot that disappeared/fell off as the player "licked"
+
+TODO: Replace with headmovement mini-game eventually
 - (lick_1) 
 //Player must move head up and down near the bottom of the boot.
 
-    +   [Successful Lick]
-    Very good, maggot! Just like that. 
-    -> lick_2
-    
-    +   [Unsuccessful]
-    That's not right, cunt! Try again! 
-    -> lick_1
-    
-- (lick_2) You're so disgusting. Keep going!
-    +   [Successful Lick]
-    Can you believe how lowly you are, worm? 
-    You're less important than the dirt beneath my heels. 
-    -> switch_feet
-    
-    +   [Unsuccessful]
-    You should know how to do this by now, cunt! Again! 
-    - ~ demerits++ 
-    -> lick_2
-    
-- (switch_feet) //Nega switches feet, so the other boot is now in front of the player.
+~ temp lickCount = RANDOM(3,5)
 
-- (lick_3) 
+- (lick_again)
+~ lickCount--
+
++ [pose:lick_foot]
+    -> lick_comment ->
+    {lickCount == 0: -> licks_done}
+    
++ [timeout] -> bad_lick ->
+
+- 
 {shuffle:
-    - Now, for the other boot, scum!
-    - Lick it, worm!
-    }
+    - Lick it. #43
+    - Again. #44
+    - Lick. #45
+    - Use that tongue. #46
+    - Again! #47
+    - Keep going! #48
+}
+
+-> lick_again
+
+- (licks_done)
+Good job. #49
+
+- (beg)
+/perform sex_chair_openlegs_idle
+Get up on your knees and beg me to let you clean my other boot. #50
+Beg like the filthy dog you are. #51
+
++ [pose:puppy_beg]
+
++ [timeout] -> Nega_PayAttention.Sex_Chair -> beg 
+
+
+- 
+/perform sex_chair_openlegs_idle_tease
+Hrmm. #52
+I'm not convinced. #53
+
+I want to see you show me you're horny for my filthy boots. #54
+
+Get into your horny pose, bitch. #55
+
++ [pose:puppy_horny]
+
++ [timeout] -> Nega_PayAttention.Sex_Chair -> beg 
+
+- 
+/perform sex_chair_openlegs_wide
+That's it. #56
+You're a horny little bitch just begging to clean my boots. #57
+
+- (switch_feet) 
+/perform sex_chair_crosslegs_idle_right
+
+{shuffle:
+    - Now, for the other boot, dog! #58
+    - My other boot deserves the same attention as the first #59
+}
+
+~ temp lickCount2 = RANDOM(3,5)
+
+- (lick_again2)
+~ lickCount2--
+
++ [pose:lick_foot]
+    -> lick_comment ->
+    {lickCount2 == 0: -> licks_done2}
     
-    +   [Successful Lick]
-    You make a good shoe polisher! 
-    Perhaps I'll have you clean out up my shoe closet one of these days. 
-    -> lick_4
-    
-    +   [Unsuccessful]
-    My other boot deserves the same attention as the first, bitch! Again! 
-    - ~ demerits++ 
-    -> lick_3
-    
-- (lick_4) 
++ [timeout] -> bad_lick ->
+
+- 
 {cycle:
-    - Keep licking, whore!
-    - Don't disappoing me now, cunt!
-    }
-    
-    Very nice! All clean! -> inspect
-    
-    +   [Unsuccessful]
-    You're worthless! 
-    - ~ demerits++ 
-    -> lick_4
+    - Lick it. #60
+    - Again. #61
+    - Don't dissapoint me now, dog. #62
+    - Lick. #63
+    - Use that tongue. #64
+    - Again! #65
+    - Keep going! #66
+    - Keep licking, bitch! #67
+}
+
+-> lick_again2
+
+- (licks_done2)
+Very nice! All clean! #68
+
 
 - (inspect) //Nega inspects the bottoms of her boots.
-If your tongue is this thorough, 
-I'll bet it would be useful for other things as well...
-
-
+/perform sex_chair_crosslegs_grind
+If your tongue is this thorough, #69
+I'll bet it would be useful for other things as well... #70
 
 - (deny_boot_lick)
-
-Alright, maggot, playtime's over!
+/perform sex_chair_crosslegs_snap_right_fingers
+Too bad. #71
+Stand up. #72
+Playtime's over, bitch! #73
 
 - -> exit
+
+= lick_comment
+
+{shuffle:
+    - Such a dirty dog. #74
+    - You're so disgusting! #75
+    - Can you believe how lowly you are, dog? #76
+    - You're less important than the dirt beneath my heels. #77
+    - You make a good shoe polisher! #78
+    - Perhaps I'll have you clean up my shoe closet one of these days. #79
+    - Get all that dirt! #80
+    - Don't you miss a spot! #81
+    - What a filthy bitch. #82
+    - You belong at the bottom of my feet. #83
+}
+
+->->
+
+= bad_lick
+
+{shuffle:
+    - -> Nega_BadJob.Sex_Chair ->
+    - -> Nega_BadJob.Sex_Chair ->
+    - -> Nega_BadJob.Sex_Chair ->
+    - -> Nega_BadJob.Sex_Chair ->
+    - You should know how to do this by now, bitch! #84
+    - It's not that hard. Use your tongue! #85
+    - I'm not convinced you want to serve me. #86
+}
+
+->->

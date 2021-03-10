@@ -322,7 +322,7 @@ Are you proud of yourself, puppy?  #27
     - Bow your head, puppy, and show me you're sorry. #196
     - Show me you're sorry, puppy.  #32
     - I want to see you show me you're sorry! #33
-    }
+}
 
 + [pose:puppy_sorry]
 + { tries <= 1 } [timeout] 
@@ -331,7 +331,7 @@ Are you proud of yourself, puppy?  #27
     
 + { tries > 1} [timeout] -> cage
 
-- / wait 5
+- /wait 5
 /perform idle_yuki skeptical 50 
 -> Yuki_Sit_Up ->
 

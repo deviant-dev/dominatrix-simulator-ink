@@ -24,26 +24,52 @@ Poor {isBoy: fuckup|stain}.
 /perform idle_unhappy_stomp
 -> Nega_Insult ->
   
-//this is the place in the script I copied from reward tease and still needs to be rewritten
+
+/perform idle_skeptical skeptical 70
+Aren't you? #13
+
++ [yes]
+    ~ addObey()
+    /perform talk_one_finger happy 70
+    Yes. You are.
+
++ [no]
+    ~ addDisobey()
+    {shuffle:
+        - Then I guess it's time I teach you your place. #15
+        - -> Nega_Unhappy ->
+    }
+
++ [timeout] -> Nega_Timeout -> insult
++ [distracted] -> Nega_PayAttention -> insult
+
+- /perform talk_behold amused 45
+-> Nega_Insult ->
+I see what you are. #28
+You can't fucking hide from me. #27
+
+{shuffle:
+    -/perform do_inspect aroused 45
+    You're just a rotten little bitch I should crush under my boot. #16
+
+    -/perform idle_sassy amused 70
+    A wretched little slut who just wants to be used. #17
+
+    -/perform tease_caress_breasts aroused 75
+    A horny piece of meat waiting to be devoured. #18
+}
 
 - Isn't that right?
 
     +[yes]
-        That's right.
-        Just a rotten little bitch I should crush under my boot.
+        It's good you know your worth.
+        
     +[no]
         -> Nega_Unhappy ->
         
  + [timeout] -> Nega_Timeout -> insult
  + [distracted] -> Nega_PayAttention -> insult      
 
-- /perform talk_behold
-{shuffle:
-    - You're just a rotten little bitch I should crush under my boot.
-    - A wretched little slut who just wants to be used.
-    - A horny piece of meat waiting to be devoured.
-    }
-    
 -  
 ~ tries = 0
 - (kneel_tease)
@@ -62,47 +88,188 @@ Poor {isBoy: fuckup|stain}.
 
 - -> Nega_GoodJob ->
 
-/perform idle_unhappy_stomp
-You can't fucking hide from me.
-I see what you are.
-
--> Nega_Insult ->
-
-/perform talk_lean_forward
-You just can't stay away, can you?
+- (stay_away)
+/perform idle_skeptical aroused 75
+You just can't stay away, can you? #23
 
 + [yes]
-    Then what the fuck are you doing here?
+    ~ addDisobey()
+    -> Nega_Unhappy ->
+    /perform talk_question skeptical 70
+   That bloodstone you just added to my pile says different. #24
+
+
 + [no]
-    Too curious for your own good.
-    That's perfect. I like abusing stupid little pricks.
+    ~ addObey()
+    /perform talk_lean_forward skeptical 75
+    Too curious for your own good. #25
 
-- (nega_apologize)
-Apologize for pretending to be anything else.
-Lick the ground!
+    /perform do_rub_hands_together excited 65
+    That's perfect. I like abusing stupid little {isBoy: pricks|{isGirl: bitches|maggots}}. #26
 
-+ [pose:kiss_feet]
-+ [timeout] -> Nega_BadJob -> nega_apologize
++ [timeout] -> Nega_Timeout -> stay_away
++ [distracted] -> Nega_PayAttention -> stay_away
 
-- Keep going until I tell you to stop.
+- /perform idle_tease aroused 55
+You came here with that puny little reward of yours. #29
+For what? #30
 
-+ [pose:kiss_feet]
+{cycle:
+    - -> lucky ->
+    - -> slut ->
+    - -> piece_of_shit ->
+}
 
-- That's it, little bitch.
-Show me how sorry you are.
+-> Nega_Kneel ->
 
-+ [pose:kiss_feet]
+-> grovel
 
-- Don't fucking lie to me again.
-Now get back up on your knees.
 
-+ [pose:kneel]
+= lucky
+/perform talk_question skeptical 45
+Hoping you'd get lucky? #111
+
+/perform idle_sassy amused 55
+Maybe get to be a slutty little fucktoy? #112
+
++ [yes]
+    ~ addDisobey()
+    /perform react_dismissive angry 60
+    Too fucking bad. #86
+
++ [no]
+    ~ addObey()
+    /perform talk_one_finger disgusted 80
+    No, you didn't. #113
+
+ + [timeout] -> Nega_Timeout -> lucky
+ + [distracted] -> Nega_PayAttention -> lucky
+
+-
+->->
+
+
+= slut
+/perform react_shrug_long angry 75
+You don't deserve to be my slut. #114
+
+/perform tease_caress_breast_left aroused 65
+To be fucked and enjoyed. #115
+
+/perform idle_unhappy disgusted 60
+Do you? #116
+
++ [yes]
+    ~ addDisobey()
+    -> Nega_Unhappy ->
+
++ [no]
+    ~ addObey()
+    /perform react_point_at_player_angry angry 75
+    That's right. You don't. #117
+
++ [timeout] -> Nega_Timeout -> slut
++ [distracted] -> Nega_PayAttention -> slut
+
+- ->->
+
+
+= piece_of_shit
+
+/perform talk_gesture disgusted 45
+You're just dying to be treated like the piece of shit you are. #32
+
+/perform idle_skeptical disgusted 75
+Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
+
++[yes]
+    ~ addObey()
+    /perform react_thankful amused 65
+    Of course you are! #34
+
++[no]
+     ~ addDisobey()
+    -> Nega_Unhappy ->
+    /perform talk_annoyed angry 80
+    Playing all shy and innocent. #35
+
++ [timeout] -> Nega_Timeout -> piece_of_shit
+
++ [distracted] -> Nega_PayAttention -> piece_of_shit
+
+- ->->
+
+
+= grovel
+
+/perform talk_question amused 75
+I know what you really came here for. #118
+
+/perform talk_consider amused 80
+Hoping you'd be mistreated. That's what. #31
 
 {shuffle:
+    -/perform react_point_at_player_angry disgusted 75
+    Apologize for pretending to be anything else. #36
+
+    -/perform talk_behold amused 65
+    Thank me for seeing the real you. #37
+
+    -/perform idle_unhappy_stomp angry 65
+    Grovel at my feet! #38
+}
+
+
+{ shuffle:
+    -/perform do_point_down angry 75
+    Kiss the ground I walk on. #39
+
+    -/perform talk_threaten disgusted 65
+    Cheek on the floor. #40
+
+    -/perform react_point_at_player_angry angry 70
+    Lick the ground! #41
+}
+
+
+/perform idle_skeptical angry 55
+
++ [pose:grovel]
++ [timeout]
+     ~ addDisobey()
+     -> Nega_BadJob -> grovel
+
+- -> Nega_GoodJob ->
+~ addObey()
+
+// - /perform talk_emphatic_one_hand excited 65
+// I'm going to make you wallow in depravity. #42
+
+// /perform talk_gesture aroused 75
+// You will beg for more when I'm through with you. #43
+
+- (stand)
+/perform idle_unhappy angry 50
+I'm satisfied.
+For now.
+Stand back up.
+
++ [pose:stand]
+
++ [timeout] -> Nega_Timeout -> stand
+
+- -> Nega_GoodJob ->
+~ addObey()
+
+- {shuffle:
     - -> tease_spitting ->
     - -> tease_puppy_horny ->
     - -> tease_kiss_floor ->
 }
+
+I'm done teasing you.
+Now get the fuck away from me. #51
+
 
 - -> exit
 

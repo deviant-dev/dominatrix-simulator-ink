@@ -2,33 +2,33 @@
 
 { shuffle:
     - /perform idle_yuki happy 50
-    There's a good {player_name}. 
+    There's a good {player_name}. #01
 
     - /perform idle_tease aroused 65
-    What a good little {player_name}. 
+    What a good little {player_name}. #02
 
     - /perform idle_clasp_hands happy 50
-    You're doing so well.
+    You're doing so well. #03
 
     - /perform talk_consider happy 50
-    Very nice!
+    Very nice! #04
 
     - /perform react_thankful happy 45
-    Keep up the good work! 
+    Keep up the good work! #05
 
     - /perform idle_sassy aroused 65
-    Most pleasing.
+    Most pleasing. #06
 
     - /perform react_thankful happy 50
-    Someone is being a good {player_name}.
+    Someone is being a good {player_name}. #07
 
     - /perform idle_tease aroused 40
-    Nicely done.
+    Nicely done. #08
 
     - /perform do_inspect aroused 60
-    Impressive.
+    Impressive. #09
     
-    - That's it.
+    - That's it. #10
 }
 
 ->->
@@ -36,13 +36,13 @@
 === Treat_AcknowledgeYes ===
 
 {shuffle:
-    - How delightful.
-    - Very good.
-    - Alright then.
-    - Good.
-    - Splendid.
-    - Wonderful.
-    - Lovely.
+    - How delightful. #01
+    - Very good. #02
+    - Alright then. #03
+    - Good. #04
+    - Splendid. #05
+    - Wonderful. #06
+    - Lovely. #07
 }
 
 ->->
@@ -50,12 +50,12 @@
 === Treat_Unhappy ===
 
 {shuffle:
-    - How disappointing.
-    - Really?
-    - I see.
-    - How unfortunate.
-    - So be it.
-    - Very well.
+    - How disappointing. #01
+    - Really? #02
+    - I see. #03
+    - How unfortunate. #04
+    - So be it. #05
+    - Very well. #06
 }
 
 ->->
@@ -64,19 +64,19 @@
 
 { shuffle:
     - /perform idle_clasp_hands amused 45
-    I asked you a question. 
+    I asked you a question. #01
 
     - /perform talk_emphatic_one_hand angry 55
-    Hurry up. I'm waiting. 
+    Hurry up. I'm waiting. #02
 
     - /perform talk_lean_forward skeptical 35
-    Come now. Don't be rude.
+    Come now. Don't be rude. #03
 
     - /perform do_shielding_eyes skeptical 65
-    Hello? Are you still there?
+    Hello? Are you still there? #04
     
     -/perform talk_question sad 65
-    Are you going to answer me?
+    Are you going to answer me? #05
  }
  
 ->->
@@ -85,23 +85,23 @@
 
 { cycle:
     - /perform do_shake_finger_stern angry 80
-    Look at me when I'm speaking to you, {player_name}.
+    Look at me when I'm speaking to you, {player_name}. #01
     /wait 1
 
     - /perform do_shake_finger skeptical 65
-    Tsk. Tsk. Pay attention!
+    Tsk. Tsk. Pay attention! #02
     /wait 1
 
     - /perform react_dumb angry 40
-    I'm over here. Stop looking around.
+    I'm over here. Stop looking around. #03
     /wait 1
 
     - /perform talk_one_finger angry 40
-    I expect you to pay attention when I'm speaking.
+    I expect you to pay attention when I'm speaking. #04
     /wait 1
 
     - /perform idle_unhappy skeptical 60
-    Therapy requires attentiveness.
+    Therapy requires attentiveness. #05
     /wait 1
 }
 
@@ -113,23 +113,23 @@
 // TODO: Make # of cycle elements equal or change to cycle/shuffle
 - { cycle:
     - /perform talk_consider happy 60
-    Where was I? Oh yes... 
+    Where was I? Oh yes... #06
     /wait 1
 
     - /perform react_scoffs amused 60
-    That's better. Let's continue. 
+    That's better. Let's continue. #07
     /wait 1
 
     - /perform idle_clasp_hands happy 40
-    Good {player_name}. 
+    Good {player_name}. #08
     /wait 1
 
     - /perform talk_annoyed amused 30
-    Let's try that again. 
+    Let's try that again. #09
     /wait 1
 
     - /perform idle_unhappy amused 30
-    As I was saying... 
+    As I was saying... #10
     /wait 1
  }
 
@@ -141,11 +141,11 @@
 /emotion angry 50
 
 { shuffle:
-    - I'm disappointed.
-    - I know you can do better.
-    - That's not quite right.
-    - You are testing me.
-    - I expect more.
+    - I'm disappointed. #01
+    - I know you can do better. #02
+    - That's not quite right. #03
+    - You are testing me. #04
+    - I expect more. #05
 }
 
 ->->
@@ -158,12 +158,12 @@
 
 /perform idle_unhappy sad
 
-You are the one who came to see me.
+You are the one who came to see me. #01
 - (check_again)
 
 /perform talk_behold skeptical
 
-Are you willing to continue?
+Are you willing to continue? #02
 
 /perform idle
 
@@ -175,21 +175,21 @@ Are you willing to continue?
 
 /emotion skeptical
 
-Really? 
+Really? #03
 
 /emotion angry 50
 
-If you are unwilling to continue you, 
-then you should leave.
+If you are unwilling to continue you, #04
+then you should leave. #05
 
-My time is precious, after all.
+My time is precious, after all. #06
 
 /perform talk_annoyed neutral
 
-So I'll ask one last time.
+So I'll ask one last time. #07
 
 /perform talk_lean_forward angry 50
-Do you want to continue?
+Do you want to continue? #08
 
 + [yes] -> IsInterested
 + [no] -> NotInterested
@@ -199,8 +199,8 @@ Do you want to continue?
 
 -> Treat_GoodJob ->
 /perform idle happy
-Excellent.
-Let's stop wasting time, then.
+Excellent. #09
+Let's stop wasting time, then. #10
 
 ->->
 
@@ -208,8 +208,8 @@ Let's stop wasting time, then.
 = NotInterested
 
 /perform talk_annoyed angry
-Then you must leave.
-Return to me when you are ready.
+Then you must leave. #11
+Return to me when you are ready. #12
 
 -> exit
 

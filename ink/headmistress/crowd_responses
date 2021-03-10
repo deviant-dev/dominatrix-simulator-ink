@@ -121,7 +121,7 @@
     - Oh yes. #03
     - Mmmm. #04
     - {isBoy:His|{isGirl:Her|Their}} owner must be proud. #05
-    - Such a good {isBoy:boy|{isGirl:girl|pet}}. #06
+    - Such a good {player_name}. #06
     - Magnificent! #07
     - Delightful. #08
     - Mmm, that’s it. #09
@@ -142,7 +142,7 @@
     - {isBoy:Is he|{isGirl:Is she|Are they}} even trying? #02
     - Pitiful. #03
     - {isBoy:He|{isGirl:She|They}} should be ashamed. #04
-    - Naughty {isBoy:boy|{isGirl:girl|pet}}. #05
+    - Naughty {player_name}. #05
     - Why do we even bother? #06
     - I feel sorry for {isBoy:his|{isGirl:her|their}} owner. #07
     - What a waste. #08

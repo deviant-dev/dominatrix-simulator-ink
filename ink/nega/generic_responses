@@ -71,7 +71,13 @@
 = Squatting
 -> DoComment(true)
 
+= Kneeling
+-> DoComment(true)
+
 = Sex_Chair
+-> DoComment(true)
+
+= Photo 
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -126,6 +132,8 @@
     
     - {inPosition: /emotion angry 40 | /perform react_point_at_player_angry angry 40}
     Not good enough! #16
+    
+    // - That's not right, dog! Try again! 
 }
 
 ->->
@@ -137,6 +145,15 @@
 = Kneeling
 -> DoComment(true)
 
+= Sex_Chair
+-> DoComment(true)
+
+= Squatting
+-> DoComment(true)
+
+= Photo 
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 /character nega
@@ -144,8 +161,22 @@
 {shuffle:
     -{inPosition: /emotion skeptical 50 | /perform talk_consider skeptical 75}
     Huh. Maybe I will get to have a little fun after all. #05
+
     -{inPosition: /emotion amused 50 | /perform do_inspect amused 55}
     Maybe you aren't a waste of time. #03
+
+    // - Good.
+
+    // - That's right.
+
+    // - I thought so.
+
+    // - Of course you'd say that.
+
+    // - Duh.
+
+    // - Oh yah.
+
 }
 
 ->->
@@ -157,6 +188,9 @@
 -> DoComment(true)
 
 = Sex_Chair
+-> DoComment(true)
+
+= Photo 
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -193,7 +227,7 @@
 
 ->->
 
-
+TODO: add 'inposition' to generic response dialogue
 === Nega_Insult ===
 -> DoComment(false)
 
@@ -201,6 +235,9 @@
 -> DoComment(true)
 
 = Sex_Chair
+-> DoComment(true)
+
+= Photo 
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -247,9 +284,24 @@
     - /emotion sad 75
     You're an ugly, little wretch. #14
     
-     -{inPosition: /emotion disgusted 60 | /perform react_scoffs disgusted 60}
+    -{inPosition: /emotion disgusted 60 | /perform react_scoffs disgusted 60}
     Filthy bag of fuck holes. #15
-    //Does this make sense if the player is the one penetrating?
+    
+    -{inPosition: /emotion angry 65 | /perform talk_lean_forward angry 65}
+    You're a worthless slut. #16
+
+    -{inPosition: /emotion disgusted 75 | /perform react_shrug_long disgusted 75}
+    You're a pathetic worm. #17
+
+    -{inPosition: /emotion amused 45 | /perform talk_one_finger amused 45}
+    You're a dirty little whore. #18
+
+    -{inPosition: /emotion excited 60 | /perform idle_tease excited 60}
+    You're a slutty fleshbag. #19
+
+    -{inPosition: /emotion angry 55 | /perform talk_annoyed angry 55}
+    You're a useless meatbag. #20
+    
 }
 
 ->->
@@ -261,6 +313,9 @@
 -> DoComment(true)
 
 = Sex_Chair
+-> DoComment(true)
+
+= Photo 
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -302,6 +357,9 @@
 = Sex_Chair
 -> DoComment(true)
 
+= Photo 
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 {shuffle:
@@ -326,6 +384,9 @@
 -> DoComment(true)
 
 = Sex_Chair
+-> DoComment(true)
+
+= Photo 
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -369,13 +430,17 @@
 
 === Nega_Apologize ===
 
+{shuffle:
+    - -> apology1
+    // - -> apology2
+}
 
--(repeat)
+= apology1
 Apologize for being a fuck up. #01
 Kiss the ground! #02
 
 + [pose:kiss_feet]
-+ [timeout] -> Nega_BadJob -> repeat
++ [timeout] -> Nega_BadJob -> apology1
 
 - Keep going until I tell you to stop. #03
 
@@ -393,6 +458,31 @@ Now get back up on your knees. #07
 
 ->->
 
+// = apology2 
+
+// -> Nega_Insult ->
+// Apologize for pretending to be anything but a cunt.
+// Lick the ground!
+
+// + [pose:lick_ground]
+// + [timeout] -> Nega_BadJob -> apology2
+
+// - Keep going until I tell you to stop.
+
+// + [pose:lick_ground]
+
+// - That's it, worm.
+// Beg for my forgiveness.
+
+// + [pose:lick_ground]
+
+// - Don't fucking pretend with me again.
+// Back on your knees
+
+// + [pose:kneel]
+
+->->
+
 //response to timeouts to questions
 === Nega_Timeout ===
 -> DoComment(false)
@@ -401,6 +491,9 @@ Now get back up on your knees. #07
 -> DoComment(true)
 
 = Sex_Chair
+-> DoComment(true)
+
+= Photo 
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -452,6 +545,9 @@ Now get back up on your knees. #07
 -> DoComment(false)
 
 = Sex_Chair
+-> DoComment(true)
+
+= Photo 
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -514,6 +610,9 @@ Now get back up on your knees. #07
 = Sex_Chair
 -> DoComment(true)
 
+= Photo 
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 {inPosition: /emotion angry 75 | /perform idle_unhappy angry 75 }
@@ -552,6 +651,9 @@ Are you going to behave and give me what I want? #02
 = Sex_Chair
 -> DoComment(true)
 
+= Photo 
+-> DoComment(true)
+
 = DoComment(inPosition)
 
 {shuffle:
@@ -576,6 +678,9 @@ Are you going to behave and give me what I want? #02
 -> DoComment(true)
 
 = Sex_Chair
+-> DoComment(true)
+
+= Photo 
 -> DoComment(true)
 
 = DoComment(inPosition)
@@ -703,6 +808,9 @@ Does that feel good whore? #04
 -> DoComment(false)
 
 = Sex_Chair
+-> DoComment(true)
+
+= Photo 
 -> DoComment(true)
 
 = DoComment(inPosition)

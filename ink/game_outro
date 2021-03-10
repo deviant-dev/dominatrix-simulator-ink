@@ -47,7 +47,7 @@ Would you like to see more? #06
 + [no] -> sorry
 
 - /perform talk_behold aroused 50
-What a good little {isBoy:boy|{isGirl:girl|pet}} you are. #07
+What a good little {player_name} you are. #07
 /perform idle_tease aroused
 I've got so much more I want to do to you, #08
 but you're going to have to convince me it's worth my time. #09

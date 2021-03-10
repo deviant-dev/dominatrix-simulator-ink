@@ -90,6 +90,7 @@ VAR headmistress_masturbated_for_crowd = false
 
 // Nega Variables
 VAR nega_regard = 0
+VAR nega_last_result = -100
 VAR nega_die_1 = 0
 VAR nega_die_2 = 0
 VAR nega_die_3 = 0

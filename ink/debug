@@ -24,7 +24,7 @@
 
 // --- Punish and Reward ---
 //  ~ punishments = 1
-// ~ rewards = 1
+~ rewards = 1
 
 
 // --- Tutorial ---
@@ -110,8 +110,9 @@
 
 
 // --- Goddess Scene Jumps ---
-// -> goddess_hub
+// -> goddess_hub.hello
 // -> goddess_intro
+// -> goddess_intro.video_jump
 // -> goddess_monitoring
 // -> goddess_monitoring_intro
 // -> goddess_punishment_placeholder
@@ -120,7 +121,7 @@
 // -> goddess_task_placeholder
 // -> goddess_intro.load_at_interview
 // -> goddess_rewardmega_giantess
--> goddess_reward_joi
+// -> goddess_reward_joi
 // -> giantess_temp
 
 
@@ -161,7 +162,7 @@
 // -> nega_reward_dice
 // -> nega_reward_hard_forcedsex
 // -> nega_reward_light_edging
-// -> nega_reward_tease
+-> nega_reward_tease
 
 
 
@@ -235,6 +236,8 @@
 // -> test_multiple_poses
 // -> test_crowd_reactions
 // -> test_notification_ui
+// -> test_nega_dice
+-> test_yes_no
 
 
 ->->
@@ -245,6 +248,16 @@
 ~ setDeviation(full_game)
 ~ inTutorial = false
 -> entry_hub
+
+
+=== test_yes_no ===
+/scene EntryDark.Empty
+
+- (again)
+
++ [yes] -> again
++ [no] -> again
+
 
 === test_notification_ui ===
 
@@ -273,6 +286,12 @@
 
 - /notify title="Punishments: {punishments} <br/> Rewards: {rewards}"
 -> test_marks
+
+
+=== test_nega_dice ===
+~ setGender("p")
+~ setScene(reward_scene, Nega, "nega_reward_dice", -> nega_reward_dice)
+-> nega_reward_dice.scene_setup -> nega_reward_dice.test_dice
 
 
  === test_audio ===

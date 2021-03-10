@@ -2,12 +2,13 @@
 # theme: dark
 
 INCLUDE debug
-INCLUDE vars
 INCLUDE code
+INCLUDE vars
 INCLUDE web
 INCLUDE game_intro
 INCLUDE game_outro
 INCLUDE entry_hub
+
 INCLUDE general/bad_touch
 
 INCLUDE angel/hub
@@ -41,6 +42,7 @@ INCLUDE goddess/monitoring
 INCLUDE goddess/monitoring_intro
 INCLUDE goddess/task_placeholder
 INCLUDE goddess/punishment_placeholder
+INCLUDE goddess/reward_joi
 INCLUDE goddess/reward_placeholder
 INCLUDE goddess/rewardmega_giantess
 
@@ -61,8 +63,6 @@ INCLUDE headmistress/reward_cunnilingus
 INCLUDE headmistress/reward_exhibitionism
 INCLUDE headmistress/reward_spanking
 INCLUDE headmistress/rewardmega_placeholder
-
-
 
 INCLUDE nega/hub
 INCLUDE nega/intro
@@ -117,17 +117,6 @@ INCLUDE yuki/reward_massage
 INCLUDE yuki/reward_puppyplay_lickfeet
 INCLUDE yuki/reward_puppyplay_milking
 INCLUDE yuki/rewardmega_placeholder
-INCLUDE goddess/reward_joi
-
-
-
-
-
-
-
-
-
-
 
 
 // EXTERNAL getNegaDie1()

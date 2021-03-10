@@ -214,7 +214,7 @@ Are you willing to perform for your goddess? #154
 
 = IsInterested
 
--> Goddess_GoodJob ->
+// -> Goddess_GoodJob ->
 /perform react_shrug_long skeptical
 There is hope for you yet. #157
 
@@ -236,10 +236,18 @@ Perhaps another time when you are ready to learn your place. #156
 
 /scene bedroombroken.pissed
 
+
 + [wait 1.5]
 
-- /character goddess idle_looming_huge angry 50
+- (again)
+/character goddess idle_looming_huge angry 50
 
 Bye for now, {player_name}. #113
-+ [wait:5] ->->
++ [wait:5]
+    // {debug: -> again | ->->}
+    ->->
+
+
+
+
 

@@ -44,12 +44,12 @@
 
 - (options)
 
-+ [character-choice:male]
++ [choose-gender-male]
     ~ setGender("m")
     /notify text="<i>You now appear masculine.</i>" delay=10 #note08
     -> options
 
-+ [character-choice:female]
++ [choose-gender-female]
     ~ setGender("f")
     /notify text="<i>You now appear feminine.</i>" delay=10 #note09
     -> options
@@ -114,6 +114,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Punishment Added: {getSummaryText()}
+    /notify title="Punishment Earned" text="{getName(current_mistress)}'s regard for you has <color=red>decreased</color>." delay = 3
 }
 
 ~ return true
@@ -135,6 +136,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Punishment Removed: {getSummaryText()}
+    /notify title="Punishment Paid" text="{getName(current_mistress)}'s regard for you has increased." delay = 3
 }
 
 ~ return true
@@ -156,6 +158,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Punishment x10 Removed: {getSummaryText()}
+    /notify title="Punishment x10 Paid" text="{getName(current_mistress)}'s regard for you has increased." delay = 3
 }
 
 ~ return true
@@ -181,6 +184,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Reward Added: {getSummaryText()}
+    /notify title="Reward Earned" text="{getName(current_mistress)}'s regard for you has increased." delay = 3
 }
 
 ~ return
@@ -202,6 +206,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Reward Removed: {getSummaryText()}
+    /notify title="Reward Paid" text="{getName(current_mistress)}'s regard for you has increased." delay = 3
 }
 
 ~ return true
@@ -223,6 +228,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Reward x10 Removed: {getSummaryText()}
+    /notify title="Reward x10 Paid" text="{getName(current_mistress)}'s regard for you has increased greatly." delay = 3
 }
 
 ~ return true
@@ -383,6 +389,33 @@
 }
 
 ~ return  "Punishments: {punishments} / Rewards: {rewards} {regardText} {deviationText}"
+
+
+=== function getName(mistress) ===
+{
+    - current_mistress == Goddess:
+        ~ return "The Goddess"
+    - current_mistress == Headmistress:
+        ~ return "The Headmistress"
+    - current_mistress == Yuki:
+        ~ return "Mistress Yuki"
+    - current_mistress == Nega:
+        ~ return "Mistress Nega"
+    - current_mistress == Treat:
+        ~ return "Ms Treatment"
+    - current_mistress == Pragma:
+        ~ return "Divine Engine Pragma"
+    - current_mistress == Caliste:
+        ~ return "Priestess Caliste"
+    - current_mistress == Furia:
+        ~ return "Enforcer Furia"
+    - current_mistress == Angel:
+        ~ return "Lady Angelica"
+    - else:
+        /logWarning Mistess not found: {mistress}
+        ~ return "Mistress Unknown"
+}
+
 
 
 === function obeyed() ===

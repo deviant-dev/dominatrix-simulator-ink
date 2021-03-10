@@ -15,7 +15,16 @@
 /scene EntryDark.VerifyAge
 
 + [yes] -> instructions
-+ [no] -> game_outro
++ [no]
+
+- /scene EntryDark.Empty
+/notify text="Sorry. No children allowed." #note11
+    
++ [move]
++ [wait:20]
+
+- /quit
+-> END
 
 
 = instructions
@@ -36,6 +45,11 @@ Hello. #01
 
 Would you like to play a little game? #02
 
+
++ [yes] -> lets_play
++ [no] -> answer_no
++ [continue]
+
 - (nod_info)
 
 /perform react_yes happy 50
@@ -47,6 +61,7 @@ Shake your head for "no." #04
 
 + [yes!] -> lets_play
 + [no!]
+    -- (answer_no)
     No?! #27
     But I'm just certain you'll enjoy it. #28
     Let's try this again. #29
@@ -110,11 +125,13 @@ Don't worry. I'll wait for you. #19
 /emotion amused 50
 Are you ready? #20
 
-+ [yes] -> ready
-+[no]
++ [yes!] -> ready
++ [no]
+    /emotion none
     I'll wait. #23
     <b>Nod</b> your head when you're ready #24
     or come back later. #25
+    /wait 5
     -> check_ready
 + [timeout] 
     Don't forget to <b>nod</b> your head for "yes". #26

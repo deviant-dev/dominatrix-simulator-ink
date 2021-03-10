@@ -199,10 +199,20 @@ Give them here.
 
 = choose_reward
 
-<< Time to reward you, then. >>
+-> Goddess_AcknowledgeYes ->
 
 {shuffle:
-    - -> goddess_reward_placeholder
+    - You are a possession.
+    A mouse I keep around to amuse and satisfy me.
+    Even receiving your reward is at my whim.
+
+    - Your pleasure belongs to me.
+    I will grant you a reward 
+    in the manner most satisfying to me.
+}
+
+{shuffle:
+    - -> goddess_reward_joi
 }
 
 
