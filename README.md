@@ -7,7 +7,7 @@ We've also created a [Dominatrix Simulator Guide to Ink Script](https://docs.goo
 ## DomSim Script Override
 
 To override DomSim's ink scripts:
-1. Make changes to the `_web.ink` file and it's included files using [Inky](https://github.com/deviant-dev/dominatrix-simulator-ink/tree/master/Inky)
+1. Make changes to the `_web.ink` file in the [ink directory](https://github.com/deviant-dev/dominatrix-simulator-ink/tree/master/ink/). Open and edit this file using the included [Inky editor](https://github.com/deviant-dev/dominatrix-simulator-ink/tree/master/Inky).
 2. Export it as `_game.json` using `File > Export to JSON...`
 3. Save your exported JSON file to: `%USERPROFILE%\AppData\LocalLow\deviant_tech\Dominatrix Simulator\_game.json`<br/>
 (You should see a file named `override instructions.txt` in that folder.)
