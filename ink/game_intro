@@ -113,7 +113,13 @@ strip naked and begin with no clothes on. #15
 
 /perform idle_tease aroused
 Wouldn't you just love to do that for me? #16
-I promise you won't regret it. #17
+
+// Give player ability to answer, but continue either way.
++ [yes]
++ [no]
++ [continue]
+
+- I promise you won't regret it. #17
 And, I promise to watch while you do. #18
 
 /perform idle_skeptical amused

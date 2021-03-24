@@ -135,10 +135,10 @@ Go ahead. Roll them bones. #06
 
 {result == nega_last_result:
     Aaaw, look at that. No fun. #42
-    That's the same as last time.
+    That's the same as last time. #84
     // This re-gathers the dice to Nega's hand
     /perform squat_dice_give amused 35
-    Boring! Do it better, fuckwit.
+    Boring! Do it better, fuckwit. #85
     -> hold
 }
 

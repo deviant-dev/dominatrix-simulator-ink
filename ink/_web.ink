@@ -89,7 +89,7 @@ INCLUDE treat/hub
 INCLUDE treat/intro
 INCLUDE treat/generic_responses
 INCLUDE treat/monitoring
-INCLUDE treat/session_placeholder
+INCLUDE treat/session_subdrop
 INCLUDE treat/task_placeholder
 INCLUDE treat/punishment_placeholder
 INCLUDE treat/reward_placeholder

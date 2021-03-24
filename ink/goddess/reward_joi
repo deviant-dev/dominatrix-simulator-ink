@@ -1,5 +1,7 @@
 === goddess_reward_joi ===
 
+TODO: set variables on scene to be generic or specific instructions by gentital so that players can get customization for their sexual identity preferences
+
 -> select_gender_check ->
 ~ setScene(reward_scene, Goddess, "goddess_reward_joi", -> goddess_reward_joi)
 -> scene_setup -> start
@@ -52,45 +54,34 @@
 
 + [distracted] -> Goddess_PayAttention -> choice 
 
--> gave_reward
-
+--> gave_reward
 
 = gave_reward
-//this is where the actual scene happens
-
-Get down on your knees.
-Sit down and spread your legs.
-
 
 {shuffle:
-    - I expect you to follow my every instruction.
-    - You will obey my every instruction.
-    - I'm going to tell you exactly how to cum.
+    - -> toy
+    - -> toy
+    - -> begin
+    - -> begin
 }
+
+= toy
 
 {shuffle:
-    - Do you understand?
-    - Will you obey?
-    - Are you ready to obey?
-}
-
-+ [yes]
-    -> Goddess_AcknowledgeYes ->
-
-+ [no]
-    I will tolerate this preference.
-    
-+ [timeout] -> Goddess_Timeout -> gave_reward 
-
-+ [distracted] -> Goddess_PayAttention -> gave_reward 
-    
-- {shuffle:
     - I'm feeling generous.
     - I'm in a good mood today.
     - I find you entertaining.
 }
 
 So, I will consider your preferences.
+
+{shuffle:
+    - -> ass
+    - -> mouth 
+    - -> cei 
+}
+
+= ass
 
 Would you like to plug your ass for me first?
 
@@ -106,8 +97,26 @@ Would you like to plug your ass for me first?
 + [no]
     This is not required today,
     but in the future I may insist.
-    -> joi
-   
+    -> begin
+
+= mouth
+
+Would you like to wear a gag for me, {player_name}?
+
++ [yes]
+    -> Goddess_AcknowledgeYes ->
+    Then go get it.
+    If you have more than one, choose your preference.
+    -- (prepare)
+    <b>Nod</b> your head when you are ready.
+    
+    ++ [yes] -> gag
+    
++ [no]
+    This is not required today,
+    but in the future I may insist.
+    -> begin
+    
 = plug 
 
 Welcome back, {player_name}.
@@ -134,7 +143,7 @@ Understood?
 
 + [yes] 
     -> Goddess_GoodJob ->
-    -> joi
+    -> begin
 
 + [no]
     Your answer displeases me.
@@ -146,13 +155,35 @@ Understood?
     ++ [yes]
         Excellent.
         Then we shall continue.
-        -> joi
+        -> begin
         
     ++ [no]
         -> Goddess_CheckIfInterested ->
         -> wiggle
     
-= joi
+= gag
+
+Hello again, {player_name}.
+
+Let me get a good look at you.
+
+Turn your head side to side.
+Nice and slow.
+
+TODO: add in poses to turn head left, turn head right
+
++ [pose: turn_head_right]
+
+- -> Goddess_GoodJob ->
+
++ [pose:turn_head_left]
+
+- -> Goddess_GoodJob ->
+
+-> begin
+
+
+= cei
 Tell me, {player_name}...
 
 {shuffle:
@@ -172,7 +203,7 @@ Tell me, {player_name}...
     
     ++ [yes]
         How intriguing.
-        Set variable to trigger CEI and embarassed
+        Set variable to trigger CEI and embarrassed
         -> begin
         
     ++ [no]
@@ -183,8 +214,73 @@ Tell me, {player_name}...
 
 
 = begin
+//this is where the actual scene happens
 
-// Don’t touch your cock until I say you can, I want to talk to you first.
+Get comfortable, {player_name}.
+I want you nice and relaxed.
+
+/wait
+
+Are you ready?
+
++ [yes]
+    -> Goddess_AcknowledgeYes->
+
++ [no]
+    Do you wish to conintue?
+    
+    ++ [yes]
+        -> Goddess_AcknowledgeYes->
+        
+    ++ [no]
+        Very well.
+        Goodbye.
+        -> exit
+    
+    ++ [timeout] -> Goddess_PayAttention -> begin
+
++ [timeout] -> Goddess_PayAttention -> 
+
++ [distracted]
+
+-
+
+{shuffle:
+    - I expect you to follow my every instruction.
+    - You will obey my every instruction.
+    - I'm going to tell you exactly how to cum.
+}
+
+{shuffle:
+    - Do you understand?
+    - Will you obey?
+    - Are you ready to obey?
+}
+
++ [yes]
+    -> Goddess_AcknowledgeYes ->
+
++ [no]
+    -> Goddess_CheckIfInterested->
+    
++ [timeout] -> Goddess_Timeout -> gave_reward 
+
++ [distracted] -> Goddess_PayAttention -> gave_reward 
+    
+- -> loop
+
+= loop
+
+
+
+{shuffle:
+    - Your body belongs to me.
+    - Your pleasure is mine to give.
+    - I will use you as I see fit.
+}
+
+Isn't that right, {player_name}?
+
 
 // So, you want to fuck me?
 

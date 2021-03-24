@@ -73,7 +73,7 @@
 ->->
 
 === Headmistress_Crowd_Embarrassed ===
-//These comments occur during reward scenes when the player has indicated they are embarassed to perform.
+//These comments occur during reward scenes when the player has indicated they are embarrassed to perform.
 /character crowd
 {shuffle:
     - Surely, {isBoy:he|{isGirl:she|they}} could put on more of a performance. #01

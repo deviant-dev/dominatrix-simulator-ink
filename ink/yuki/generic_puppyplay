@@ -21,7 +21,7 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 + [timeout] 
     ~addDisobey()
-    -> Yuki_Interested 
+    -> Yuki_Interested ->
     -> sit
 
 -->->

@@ -1,8 +1,6 @@
   === nega_reward_tease ===
 -> select_gender_check ->
 
-TODO: the series of questions are a little repetitive. Would be good to pull at least one of them out and put it into the punishment_tease scene.
-
 ~ setScene(reward_scene, Nega, "nega_reward_tease", -> nega_reward_tease)
 
 /scene attic.Ready
@@ -81,11 +79,11 @@ Got it, {isBoy: prick|cunt}? #104
 
 - (games)
 
-You're not too bad, you know.
+You're not too bad, you know. #08
 
-I rather enjoy our little games.
+I rather enjoy our little games. #09
 
-Don't you?
+Don't you? #10
 
 + [yes]
 
@@ -95,24 +93,16 @@ Don't you?
 
 + [distracted] -> Nega_PayAttention -> games
 
-- There's just so many naughty things I can do to you!
-
-Present your {hasPenis: cock|pussy} to me.
-Let's see how turned on you are.
-
-+ [pose: present_genitals]
-
-+ [timeout]
 
 - (object) 
-Oh yah!
+Oh yah! #11
 
-You like it when I make you my little sex object,
-don't you?
+You like it when I make you my little sex object, #12
+don't you? #13
 
 + [yes]
-    Of course you do.
-    -> Nega_Objectify ->
+    Of course you do. #14
+    -> Nega_GoodJob ->
 
 + [no]
     -> Nega_Unhappy ->
@@ -121,21 +111,38 @@ don't you?
 
 + [distracted] -> Nega_PayAttention -> object
 
+- There's just so many naughty things I can do to you! #15
+
+- (aroused)
+Present your {hasPenis: cock|pussy} to me. #16
+Let's see how turned on you are. #17
+
++ [pose: present_genitals] 
+
++ [timeout] -> Nega_Timeout -> aroused
+
+- Mmmm. #18
+I don't think you're quite {hasPenis: aroused|wet} enough yet. #23
+
+Rub that little {hasPenis:dick|clit} for me, toy. #24
+
 
 - (thrill)
-When you go out of your way to please me, I get a little thrill!
+When you go out of your way to please me, I get a little thrill! #25
 
-Did you know that?
+Did you know that? #26
 
 + [yes]
-    It's so satisfying watching you debase yourself.
+    It's so satisfying watching you debase yourself. #27
 
 + [no]
-    Well, try not to be an idiot and forget.
+    Well, try not to be an idiot and forget. #28
 
 + [timeout] -> Nega_Timeout -> thrill
 
 + [distracted] -> Nega_PayAttention -> thrill
+
+- Don't stop rubbing. #29
 
 -> Nega_Kneel ->
 
@@ -145,13 +152,28 @@ Did you know that?
     - -> tease_kiss_feet ->
 }
 
-Oh! That's right!
-This is just a tease.
-No more time for you, little toy.
+- (stand)
+Stand back up. #30
 
-Stand up.
++ [pose:stand]
++ [timeout] -> Nega_PayAttention -> stand
+
+- {shuffle:
+    - Let me think... what else I can do... #31
+    - Now... what else should I do to you... #32
+    - Let me think of something else for you to do... #33
+}
+
+/wait
+/perform react_chuckle amused 
+Oh! That's right! #34
+This is just a tease. #35
+/perform react_scoffs amused
+No more time for you, little toy. #36
+
+/perform do_shoo_player skeptical
 I'm done with you. #52
-Bye-bye!
+Bye-bye! #37
 - -> exit
 
 
@@ -162,16 +184,20 @@ Now don't you move while I get more comfortable. #44
 /scene attic.chair
 /perform sex_chair_openlegs_wide amused 70
 
+- (sniff)
 {shuffle:
     - Get over here and give my panties a good whiff. #01
     - Stick that pathetic face of yours into my crotch. #02
     And breathe in deep! #03
     - Bring your ass over here and drink in smell of my cunt! #04
-    
+
 }
 
++ [pose: sniff_crotch_chair]
++ [timeout] -> Nega_Timeout -> sniff
+
 /wait 
--> Nega_GoodJob.Sex_Chair ->
+--> Nega_GoodJob.Sex_Chair ->
 
 {shuffle:
     - Breathe in nice and deep. #05
@@ -200,7 +226,7 @@ This is where you belong, isn't it {isBoy: piggy|bitch}? #21
 
 + [distracted] -> Nega_PayAttention.Sex_Chair  -> belong
 
-- 
+-
 {shuffle:
     - That's all your good for. #46
     - You're not worth anything else. #47
@@ -208,142 +234,140 @@ This is where you belong, isn't it {isBoy: piggy|bitch}? #21
     - You're an insignificant toy for me to play with. #49
 }
 
-No more pussy for you.
+That's enough! #50
 
--> Nega_Kneel ->
-
-Let me think... what else could I do...
-
-// That's enough! #50
-
+No more pussy for you. #38
 // Now get the fuck away from me. #51
 
+/scene attic.Ready
 
 ->->
 
 
 = tease_worship_ass
-TODO: create 'worship_ass' performance. Mistress turns around and pushes their ass out toward player. This scene will focus on humiliating the player for being an ass slut who's happy just smelling and nuzzling her ass.
 /perform tease_ass_caress
 
+- (ass)
 {shuffle:
-    - I know you're dying to soak up the smell of my sweaty ass.
-    - I bet you can't wait to bury your face in my ass.
-    - Time to worship my ass, little bitch.
+    - I know you're dying to soak up the smell of my sweaty ass. #39
+    - I bet you can't wait to bury your face in my ass. #40
+    - Time to worship my ass, little bitch. #41
 }
 
 /perform idle_present_ass
 
-Get over here!
+Get over here! #42
 
 /wait
++ [pose:sniff_ass]
++ [timeout] -> Nega_Timeout -> ass
 
+
+-
 {shuffle:
-    - Oh yah! Fill your nose with my filthy smell.
-    - Breathe deep and really get in there.
-    - I want to feel that nose touch my asshole!
+    - Oh yah! Fill your nose with my filthy smell. #43
+    - Breathe deep and really get in there. #51
+    - I want to feel that nose touch my asshole! #53
 }
 
-/wait 
+/wait
 -> Nega_GoodJob->
 
 /wait
 - (good)
-Feel good {isBoy: piggy|bitch}? 
+Feel good {isBoy: piggy|bitch}? #54
 
 +[yes]
     ~ addObey()
     /emotion amused 65
-    Of course it does.
+    Of course it does. #55
 
 +[no]
      ~ addDisobey()
     -> Nega_Unhappy  ->
     /perform talk_annoyed angry 80
-    Too bad. 
-    You rolled a tease.
+    Too bad. #56
+    You rolled a tease. #57
 
 + [timeout] -> Nega_Timeout -> good
 
 + [distracted] -> Nega_PayAttention  -> good
 
-- 
+-
 {shuffle:
-    - This is where you belong.
-    - Your worth is measured by how well you please me.
-    - I'll always remind you what a slut you are.
+    - This is where you belong. #58
+    - Your worth is measured by how well you please me. #59
+    - I'll always remind you what a slut you are. #60
 }
 
--> Nega_Kneel ->
+That's enough! #50
 
-/perform talk_thoughtful
+Enough ass for now. #61
 
-Now... what else should I do to you...
 
 ->->
 
 
 //consider putting in for Yuki instead
 = tease_kiss_feet
-TODO: Player kisses her feet for a set amount of time. Dialogue will focus on mocking them for being so eager to kiss her feet.
 
 /perform idle_present_foot
 
 {shuffle:
-    - Mmm. My toes need some attention.
-    - I bet you're dying to worship my feet.
-    - I know you want to be my little foot bitch.
+    - Mmm. My toes need some attention. #62
+    - I bet you're dying to worship my feet. #63
+    - I know you want to be my little foot bitch. #64
 }
 
-Come worship them.
+- (worship)
+Come worship them. #65
 
 /wait
 
 {shuffle:
-    - That's right. Cover them with kisses.
-    - Nuzzle your cheek against my foot.
-    - Bury your nose in my foot and breathe deep.
+    - That's right. Cover them with kisses. #66
+    - Nuzzle your cheek against my foot. #67
+    - Bury your nose in my foot and breathe deep. #68
 }
+
++ [pose:kiss_feet]
+
++ [timeout] -> Nega_PayAttention  -> worship
 
 /wait 
 -> Nega_GoodJob->
 
 /wait
 - (feet)
-You like that, don't you {isBoy: piggy|bitch}? 
+You like that, don't you {isBoy: piggy|bitch}? #69
 
 +[yes]
     ~ addObey()
     /emotion amused 65
-    Yah, you do!
+    Yah, you do! #70
 
 +[no]
      ~ addDisobey()
     -> Nega_Unhappy  ->
     /perform talk_annoyed angry 80
-    Too bad. 
-    You rolled a tease.
+    Too bad. #71
+    You rolled a tease. #72
 
 + [timeout] -> Nega_Timeout -> feet
 
 + [distracted] -> Nega_PayAttention  -> feet
 
-- 
+-
 {shuffle:
-    - Your place is at my feet.
-    - You're only as good as the ground I walk on.
-    - Such a cute little foot slut.
+    - Your place is at my feet. #73
+    - You're only as good as the ground I walk on. #74
+    - Such a cute little foot slut. #75
 }
 
--> Nega_Kneel ->
+That's enough! #50
+My feet are too good for you. #76
 
-That's enough.
-Let me think of something else for you to do...
-
-
-/perform talk_thoughtful
 
 ->->
 
-
-
+->->

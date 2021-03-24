@@ -1,267 +1,360 @@
 === treat_intro ===
 ~ setScene(intro_scene, Treat, "treat_intro", -> treat_intro)
 
-/scene Hell.Hub
+//TODO make scene for treat to encounter player in entry, after tutorial
+/scene Entry.TMonitoring
 /music treat
 /ambient treat
-/character treat
+/character treat idle_clasp_hands amused 65
 
--/notify title="Ms. Treatment's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Hypnotherapy<br/>Sex Therapist<br/>Aftercare"
-
-+ [move]
-
-
--/notify title="Ms. Treatment's Intro Completed." text="Returning to the entry."
-/wait 5
-
-~ treat_intro_complete = true
--> exit
-
-
-
-=== treat_intro_temp ===
 
 //check to see if player went through Nega or Headmistress reward
-+ [move]
 
-- {goddess_monitoring_intro.angry: 
+- {goddess_monitoring_intro.angry:
+    /perform react_point_at_player_angry disgusted 55
     I see you have failed your first test. #01
+
+    /perform do_smooth_skirt skeptical 65
     But the Goddess has given you another chance #02
     to prove yourself. #03
-    
+
     - else:
+    /perform do_smooth_skirt amused 65
     I see you have passed your first test. #04
+
+    /perform talk_behold excited 55
     You've pleased the Goddess so much, #05
     <i>She</i> has given you your next challenge. #06
 }
 
-- You'll need to earn a full wrist of rewards, #07
+-/perform do_tap_wrist happy 50
+You'll need to earn a full wrist of rewards, #07
+
+/perform react_excited amused 70
 10 Bloodstones, #08
 to come out of chastity. #09
 
 - (challenge)
+/perform talk_question skeptical 60
 Are you ready for this challenge? #10
 
 + [yes]
     -> Treat_AcknowledgeYes ->
     I believe in you. #11
-    
+
 + [no]
     -> Treat_Unhappy ->
     It will stay on until you choose to remove it. #12
-    
-+ [timeout] -> Treat_Timeout -> challenge   
+
++ [timeout] -> Treat_Timeout -> challenge
 
 + [distracted] -> Treat_PayAttention -> challenge
 
-- I <i>know</i> things can get a little intense around here. #13
+- /perform talk_thoughtful sad 55
+I <i>know</i> things can get a little intense around here. #13
+
+/perform talk_gesture happy 55
 Don't give up. #14
+
+/perform react_thankful excited 65
 I promise it will be worth your while. #15
+
+/perform do_inspect amused 70
 As you know, you have so much potential. #16
 
 /wait
 
+/perform talk_question skeptical 65
 Let me have a good look at you. #17
 
 - (present)
+/perform idle_sassy amused 55
 Put your arms behind your head and spread your legs. #18
 
 + [pose:present_stand]
+    /perform react_thankful happy 60
     It's good to see how quickly you comply. #19
-    
+
 + [timeout] -> Treat_Timeout -> present
 
 
 - (confuse)
+
+/perform idle_skeptical amused 75
 Tell me, does this place confuse you? #20
 
 + [yes]
+    /perform react_chuckle happy 70
     Not surprising. #21
+
+    /perform talk_one_finger happy 75
     Things will become more clear in time. #22
     --(enjoy)
+    /perform idle_swaying skeptical 45
     Have you enjoyed yourself, at least? #23
-    
+
         ++ [yes]
+            /perform talk_consider happy 45
             Good. #24
             There is so much pleasure to experience here. #25
-            
-            
+
+
         ++ [no]
+            /perform react_whatever sad 55
             That is concerning. #26
+
+            /perform talk_annoyed angry 70
             We must be doing something wrong. #27
-        
+
         ++ [timeout] -> Treat_Timeout -> enjoy
-        
+
         ++ [distracted] -> Treat_PayAttention -> enjoy
 
 + [no]
+    /perform react_thankful happy 55
     I hope it stays that way. #28
+
+    /perform talk_lean_forward amused 75
     Things are not always as they seem. #29
-    
+
 + [timeout] -> Treat_Timeout -> confuse
 
 + [distracted] -> Treat_PayAttention -> confuse
 
-- From now on, things will only get more demanding. #30
+- /perform react_point_at_player_angry skeptical 60
+From now on, things will only get more demanding. #30
+
+/perform react_excited aroused 55
 Much will be asked of you. #31
+
+/perform do_shake_finger sad 45
 And, at times, you will struggle. #32
 
+/perform react_thankful excited 55
 This is where I come in. #33
+
+/perform do_arm_raise happy 60
 I'm here to keep an eye on your mental health. #34
 
+/perform do_inspect amused 55
 To make sure everything... #35
+
+/perform talk_lean_forward skeptical 75
 And I mean <i>everything</i>... #36
+
+/perform talk_consider amused 60
 Stays in good working order. #37
 
+/perform react_dumb skeptical 60
 The mind is key. #38
+
+/perform talk_gesture aroused 60
 It dictates to us what is pleasure and what is pain. #39
 
+/perform idle_hand_on_hip aroused 75
 {hasPenis: Cup your cock|Spread your pussy} and present it to me. #40
- 
+
 - (sore)
+/perform idle_skeptical amused 55
 Is it sore? #41
 
 + [yes]
+    /perform do_smooth_skirt amused 65
     I thought so. #42
+
+    /perform react_laugh amused 45
     Well, you had better get used to the feeling. #43
+
+    /perform do_snap_fingers excited 55
     It's going to be used <i>a lot</i>. #44
 
 + [no]
+    /perform react_chuckle amused 55
     Good. #45
+
+    /perform do_snap_fingers excited 65
     Because it's going to be used <i>a lot</i>. #46
 
 + [timeout] -> Treat_Timeout -> sore
-  
+
 + [distracted] -> Treat_PayAttention -> sore
 
 -
-
-I know you're ass has not been tested yet. #47
+/perform idle_skeptical happy 65
+I know your ass has not been tested yet. #47
 But it will. #48
 
 - (ass)
+/perform talk_question amused 55
 Let me see it. Turn around and spread your ass. #49
 
 + [pose: present_ass_reverse_spread]
 + [timeout] -> Treat_Timeout -> ass
 
 
-- Yes. Very nice. #50
+- /perform talk_lean_forward excited 55
+Yes. Very nice. #50
+
+/perform react_thankful excited 75
 I can tell already that it will be very popular around here. #51
 
 - (play)
+/perform idle_clasp_hands happy 65
 Do you enjoy having your ass played with? #52
 
 + [yes]
+    /perform do_inspect skeptical 55
     I wonder if you will continue to feel that way. #53
+
+    /perform react_chuckle amused 55
     Time will tell. #54
-        
+
 + [no]
+    /perform react_point_at_player_angry sad 60
     Then you had better speak up when a Mistress #55
+
+    /perform idle_skeptical sad 70
     asks you if you want it to be used. #56
-        
+
 + [timeout] -> Treat_Timeout -> play
 
-        
+
 - (chest)
+/perform do_snap_fingers excited 65
 Turn back around and show me your chest. #57
 
 + [pose: present_chest]
 + [timeout] -> Treat_Timeout -> chest
 
 
-- Very pleasing. #58
+- /perform react_thankful aroused 45
+Very pleasing. #58
+
+/perform tease_caress_breasts aroused 75
 I'm sure those tight nubs will be toyed with often. #59
 
 - (excite)
+/perform react_excited excited 75
 Does that idea excite you? #60
 
 + [yes]
+    /perform react_yes aroused 55
     Mmmm. #61
+
     -- (pleasure)
+    /perform talk_question skeptical 65
     Do you enjoy teasing them when you pleasure yourself? #62
-    
+
     ++ [yes]
+        /perform react_laugh aroused 75
         What a naughty, little minx. #63
-        
+
     ++ [no]
+        /perform react_disappointed sad 65
         No? #64
+
+        /perform tease_caress_breast_right aroused 75
         You should try it sometime. #65
-        
+
     ++ [timeout] -> Treat_Timeout -> pleasure
-    
+
     ++ [distracted] -> Treat_PayAttention -> pleasure
-        
-+ [no]        
+
++ [no]
+    /perform idle_unhappy angry 45
     Well, you're going to have to decide #66
     how much you can handle. #67
- 
+
 + [timeout] -> Treat_Timeout -> excite
 
 + [distracted] -> Treat_PayAttention -> excite
 
-- Remember. #68
+- /perform talk_behold happy 70
+Remember. #68
 The more you serve, #69
 the more valuable you are. #70
 
 - (relax)
+/perform idle_swaying happy 55
 Relax. #71
 
 + [pose:stand]
 + [timeout] -> Treat_Timeout -> relax
 
 - (serve)
+/perform talk_question skeptical 65
 Do you find it hard to serve? #72
 
 + [yes]
     -> Treat_Unhappy ->
+
+    /perform talk_thoughtful sad 55
     Then make sure you visit me often. #73
     I can help with that. #74
-    
+
 + [no]
     -> Treat_AcknowledgeYes ->
+
+    /perform idle_clasp_hands skeptical 75
     If you find it easy, #75
     you may not need to come see me that often. #76
+
+    /perform talk_consider skeptical 75
     Nevertheless... #77
- 
+
 + [timeout] -> Treat_Timeout -> serve
 
 + [distracted] -> Treat_PayAttention -> serve
-  
-- 
+
+-/perform do_point_right happy 55
 My office is just up the stairs to the right. #78
 
 - (office)
+/perform talk_question skeptical 55
 Will you make sure to come see me? #79
 
 + [yes]
     -> Treat_AcknowledgeYes ->
+    /perform talk_one_finger amused 55
     I will keep track of how often you visit. #80
 
 + [no]
     -> Treat_Unhappy ->
+    /perform do_snap_fingers angry 65
     If you neglect your mental health, #81
+
+    /perform talk_lean_forward skeptical 75
     I may have to make visits mandatory. #82
 
 + [timeout] -> Treat_Timeout -> office
 
 + [distracted] -> Treat_PayAttention -> office
 
-- Now... I'm sure you are expected elsewhere. #83
+-/perform do_smooth_skirt amused 65
+Now... I'm sure you are expected elsewhere. #83
+
+/perform do_blow_kiss happy 75
 You can come see me anytime you need someone to take care of you. #84
+
+/perform idle_swaying aroused 65
 I can help you relax, #85
 get into the right headspace, #86
 or soothe you after a hard session. #87
 
 - (visit)
+/perform talk_one_finger skeptical 55
 Will you visit me soon? #88
 
 + [yes]
+    /perform react_thankful happy 65
     I look forward to it. #89
+
+    /perform talk_thoughtful excited 65
     Come to my room when you are ready. #90
     -> exit
-    
+
 + [no]
+    /perform idle_unhappy_arms_crossed disgusted 65
     That's a shame. #91
     I'll be here when you need me. #92
     -> exit
@@ -269,3 +362,5 @@ Will you visit me soon? #88
 + [timeout] -> Treat_Timeout -> visit
 
 + [distracted] -> Treat_PayAttention -> visit
+
+//TODO complete and hook uo entry.explore

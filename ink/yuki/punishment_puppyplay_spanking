@@ -49,9 +49,9 @@ Haven't you? #45
     Don't you lie to me, you bad {isBoy: boy|{isGirl:girl|thing}}. #48
     I know you've been naughty! #49
     
-+ [timeout] -> Yuki_Timeout ->
++ [timeout] -> Yuki_Timeout -> intro_puppy_spanking
 
-+ [distracted] -> Yuki_PayAttention ->
++ [distracted] -> Yuki_PayAttention -> intro_puppy_spanking
 
 - 
 /perform idle_unhappy_stomp sad 30

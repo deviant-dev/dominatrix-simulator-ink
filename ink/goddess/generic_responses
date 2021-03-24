@@ -44,11 +44,11 @@
 === Goddess_AcknowledgeYes ===
 
 {shuffle:
-    - How delightful.
-    - Very well.
-    - So be it.
-    - Alright then.
-    - Excellent.
+    - How delightful. #01
+    - Very well. #02
+    - So be it. #03
+    - Alright then. #04
+    - Excellent. #05
 }
 
 ->->
@@ -56,9 +56,9 @@
 === Goddess_Unhappy ===
 
 {shuffle:
-- How disappointing.
-- Really?
-- I see.
+- How disappointing. #01
+- Really? #02
+- I see. #03
 }
 
 ->->

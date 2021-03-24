@@ -27,8 +27,9 @@
 
     - /perform do_inspect aroused 60
     Impressive. #09
-    
-    - That's it. #10
+
+    - /perform talk_consider amused 55
+    That's it. #10
 }
 
 ->->
@@ -36,13 +37,26 @@
 === Treat_AcknowledgeYes ===
 
 {shuffle:
-    - How delightful. #01
-    - Very good. #02
-    - Alright then. #03
-    - Good. #04
-    - Splendid. #05
-    - Wonderful. #06
-    - Lovely. #07
+    - /perform react_excited excited 45
+    How delightful. #01
+
+    - /perform react_nod_little excited 40
+    Very good. #02
+
+    - /perform react_yes amused 55
+    Alright then. #03
+
+    - /perform react_chuckle happy 55
+    Good. #04
+
+    - /perform react_thankful amused 50
+    Splendid. #05
+
+    - /perform do_arm_raise happy 65
+    Wonderful. #06
+
+    - /perform react_thankful happy 55
+    Lovely. #07
 }
 
 ->->
@@ -50,12 +64,23 @@
 === Treat_Unhappy ===
 
 {shuffle:
-    - How disappointing. #01
-    - Really? #02
-    - I see. #03
-    - How unfortunate. #04
-    - So be it. #05
-    - Very well. #06
+    - /perform react_disappointed sad 65
+    How disappointing. #01
+
+    - /perform react_whatever angry 50
+    Really? #02
+
+    - /perform talk_annoyed sad 65
+    I see. #03
+
+    - /perform react_resigned sad 55
+    How unfortunate. #04
+
+    - /perform react_dismissive skeptical 70
+    So be it. #05
+
+    - /perform react_scoffs angry 40
+    Very well. #06
 }
 
 ->->
@@ -74,11 +99,11 @@
 
     - /perform do_shielding_eyes skeptical 65
     Hello? Are you still there? #04
-    
+
     -/perform talk_question sad 65
     Are you going to answer me? #05
  }
- 
+
 ->->
 
 === Treat_PayAttention ===
@@ -141,11 +166,20 @@
 /emotion angry 50
 
 { shuffle:
-    - I'm disappointed. #01
-    - I know you can do better. #02
-    - That's not quite right. #03
-    - You are testing me. #04
-    - I expect more. #05
+    - /perform react_disappointed sad 65
+    I'm disappointed. #01
+
+    - /perform do_shake_finger_stern angry 55
+    I know you can do better. #02
+
+    - /perform talk_consider skeptical 70
+    That's not quite right. #03
+
+    -/perform react_scoffs angry 45
+    You are testing me. #04
+
+    - /perform talk_annoyed sad 70
+    I expect more. #05
 }
 
 ->->
@@ -184,7 +218,7 @@ then you should leave. #05
 
 My time is precious, after all. #06
 
-/perform talk_annoyed neutral
+/perform talk_annoyed skeptical 65
 
 So I'll ask one last time. #07
 
@@ -198,7 +232,7 @@ Do you want to continue? #08
 = IsInterested
 
 -> Treat_GoodJob ->
-/perform idle happy
+/perform idle happy 70
 Excellent. #09
 Let's stop wasting time, then. #10
 
@@ -207,9 +241,8 @@ Let's stop wasting time, then. #10
 
 = NotInterested
 
-/perform talk_annoyed angry
+/perform talk_annoyed angry 65
 Then you must leave. #11
 Return to me when you are ready. #12
 
 -> exit
-

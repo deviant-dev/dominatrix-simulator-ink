@@ -7,26 +7,32 @@
 {treat_session_reminders <2:
     //reminder to have a treatment
     -> monitor
-    
+
     - else:
-    
+
     -> treat_hub.choose_session
 }
 
 = monitor
 ~treat_session_reminders++
 
-/scene 
+/scene Entry.TMonitoring
 /music treat
-/ambient 
+/ambient
 /character treat
-
 
 //greet player
 { shuffle:
-    - Hello {player_name}. #01
-    - Hello there. #02
-    - Ah. There you are. #03
+
+    -/perform do_wave_hello happy 60
+    Hello {player_name}. #01
+
+    -/perform do_wave_small happy 65
+    Hello there. #02
+    //General Kenobi, you are a bold one
+
+    -/perform react_thankful excited 55
+    Ah. There you are. #03
 }
 
 //check for type of scene
@@ -39,13 +45,27 @@
 //comment on reward
 = reward_monitor
 { shuffle:
-    - Rewards are delightful... #04
+
+    -/perform talk_one_finger happy 65
+    Rewards are delightful... #04
+
+    /perform talk_behold excited 70
     But they are much more enjoyable #05
     when your mind is in the right place! #06
-    - I see you've been pleasing to the Mistresses. #07
+
+    -/perform talk_one_hand happy 65
+    I see you've been pleasing to the Mistresses. #07
+
+    /perform react_thankful aroused 60
     That's good. #08
+
+    /perform talk_one_finger amused 70
     But you musn't neglect your mind. #09
-    - You may have received a reward, #10
+
+    -/perform talk_one_finger amused 60
+    You may have received a reward, #10
+
+    /perform talk_lean_forward skeptical 70
     but you must also complete your therapy. #11
 }
 
@@ -54,12 +74,24 @@
 //comment on punishment
 = punishment_monitor
 { shuffle:
-    - Getting in trouble I see. #12
-        We must work on your mindset. #13
-    - I'm disappointed to see you are getting into trouble. #14
-        Therapy will help you overcome that. #15
-    - Being punished will take it's toll on you. #16
-        We must keep your mind healthy. #17
+
+    -/perform talk_lean_forward skeptical 55
+    Getting in trouble I see. #12
+
+    /perform talk_one_finger scared 60
+    We must work on your mindset. #13
+
+    -/perform talk_lean_forward skeptical 55
+    I'm disappointed to see you are getting into trouble. #14
+
+    /perform talk_one_finger scared 60
+    Therapy will help you overcome that. #15
+
+    -/perform talk_lean_forward skeptical 55
+    Being punished will take it's toll on you. #16
+
+    /perform talk_one_finger scared 60
+    We must keep your mind healthy. #17
 }
 
 -> reminder
@@ -68,44 +100,72 @@
 //comment on task
 = task_monitor
 { shuffle:
-    - I see you are keeping busy fulfulling tasks. #18
-    - Serving the Mistresses is an important duty. #19
+
+    -/perform talk_emphatic_one_hand happy 65
+    I see you are keeping busy fulfulling tasks. #18
+
+    -/perform talk_behold excited 60
+    Serving the Mistresses is an important duty. #19
 }
 
 {shuffle:
-    - But... #20
-    - Nevertheless... #21
-    - However... #22
+
+    -/perform do_snap_fingers skeptical 65
+    But... #20
+
+    -/perform talk_gesture amused 60
+    Nevertheless... #21
+
+    -/perform talk_thoughtful aroused 55
+    However... #22
 }
 
 //comment on importance of mental health
 {shuffle:
-    - We must keep your mind sharp, as well! #23
-    - We must maintain your mental hygiene! #24
-    - Your mental health must be maintained! #25
+
+    -/perform do_arm_raise excited 70
+    We must keep your mind sharp, as well! #23
+
+    -/perform do_shake_finger skeptical 65
+    We must maintain your mental hygiene! #24
+
+    -/perform do_shake_finger_stern excited 65
+    Your mental health must be maintained! #25
 }
 
-    
+
 -> reminder
 
 = reminder
 
-//comment that she's been waiting 
+//comment that she's been waiting
 { shuffle:
-    - I've been waiting for you to come see me. #26
-    - It's time for you to have a session. #27
-    - It's important you visit me regularly. #28
-    - I expect you to come to your sessions. #29
+
+    -/perform react_thankful amused 65
+    I've been waiting for you to come see me. #26
+
+    -/perform do_summon_player happy 55
+    It's time for you to have a session. #27
+
+    -/perform talk_behold excited 65
+    It's important you visit me regularly. #28
+
+    -/perform talk_consider skeptical 60
+    I expect you to come to your sessions. #29
 }
 
 - (visit)
+
+/perform idle_sassy amused 70
 Do you want to visit me now? #30
 
 + [yes]
     -> Treat_AcknowledgeYes ->
+
+    /perform do_stand_to_right happy 65
     Come to my office. #31
     -> treat_hub.choose_session
-    
+
 + [no]
     -> Treat_Unhappy ->
     -> warning
@@ -118,21 +178,36 @@ Do you want to visit me now? #30
 = warning
 
 {shuffle:
-    - If you don't come see me on your own, #32
+
+    -/perform idle_unhappy_stomp sad 55
+    If you don't come see me on your own, #32
     then I will have to force you to. #33
-    - Eventually, I will require you come see me. #34
-    - I will give you a little more time. #35
+
+    -/perform idle_unhappy_arms_crossed sad 50
+    Eventually, I will require you come see me. #34
+
+    -/perform idle_bored skeptical 65
+    I will give you a little more time. #35
     And then I will summon you. #36
 }
 
 //say Goodbye
 { shuffle:
-    - Remember what I've said. #37
+
+    -/perform do_smooth_skirt skeptical 45
+    Remember what I've said. #37
+
+    /perform do_shoo_player skeptical 65
     You may go. #38
-    - Goodbye {player_name}. #39
+
+    -/perform do_blow_kiss amused 55
+    Goodbye {player_name}. #39
+
+    /perform idle_sassy amused 65
     You may continue what you were doing. #40
 }
 
 -> entry_hub
+//TODO complete and hook up entry.explore
 
 ->->

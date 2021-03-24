@@ -1,4 +1,4 @@
-VAR embarassed = false
+VAR embarrassed = false
 
 === headmistress_reward_exhibitionism ===
 -> select_gender_check ->
@@ -73,14 +73,14 @@ Are you excited to be rewarded in this way, {isBoy: heathen|harlot}? #16
 = nervous_consent_check
 
 /perform react_shrug_long amused 75
-Do you tremble with nervous embarassment, foible? #20
+Do you tremble with nervous embarrassment, foible? #20
 
 /perform idle neutral
 
 + [yes]
     /character crowd jeers
     /character headmistress react_thankful amused 
-    ~ embarassed = true
+    ~ embarrassed = true
     Ahhh. Such delicate sensibilities. #21
     
     /character headmistress idle neutral
@@ -151,14 +151,14 @@ Do you tremble with nervous embarassment, foible? #20
 = nervous_tease
 
 /perform react_shrug_long amused 75
-Do you tremble with nervous embarassment, foible? #20
+Do you tremble with nervous embarrassment, foible? #20
  
 /perform idle neutral
  
 +[yes]
     /character crowd cheers_short
     /character headmistress react_thankful aroused 75
-     ~ embarassed = true
+     ~ embarrassed = true
     How utterly delightful! #33
     /perform talk_behold
     This will quench <i>our</i> refreshment even moreso. #34
@@ -268,9 +268,9 @@ Do you understand, {isBoy: simpleton|ninny}? #47
 + [distracted] -> Headmistress_PayAttention -> instructions
 
 - (tease)
-//check to see if they are embarassed or not. select tease text for their 'state'
-{embarassed: 
-    -> tease_embarassed
+//check to see if they are embarrassed or not. select tease text for their 'state'
+{embarrassed: 
+    -> tease_embarrassed
     - else: 
     -> tease_slut
 }
@@ -284,7 +284,7 @@ Do you understand, {isBoy: simpleton|ninny}? #47
     - Show us your finest exhibitionist frigging, {isBoy: muttonmonger|trollop}! #58
 }
 
-- (tease_embarassed)
+- (tease_embarrassed)
 /wait
 /character headmistress tease_caress_breasts_large aroused 75
 {shuffle:
@@ -503,7 +503,7 @@ I give you leave to depart. #87
 
 /wait 2
 
-{embarassed:
+{embarrassed:
     /perform idle_tease amused 50
     {shuffle:
         - Are you mortified to perform before your fans, slave? #88
@@ -526,7 +526,7 @@ I give you leave to depart. #87
     /character headmistress react_nod_little
     -> Headmistress_AcknowledgeYes ->
 
-    {embarassed:
+    {embarrassed:
         /perform talk_one_hand happy 30
          {shuffle:
             - We can tell, little one. #94
@@ -635,11 +635,11 @@ Does it feel good to be put on display, foible? #109
 
 + [yes]
     /perform talk_behold amused 50
-    {embarassed:
+    {embarrassed:
         How hard this must be for you then, slut.  #110
         To enjoy being seen even as you flush with shame. #111
-       - else: 
-            As it should for one who enjoys whoring themself before an audience. #112
+    - else: 
+        As it should for one who enjoys whoring themself before an audience. #112
     }
     
 
@@ -658,10 +658,10 @@ Does it feel good to be put on display, foible? #109
 
 TODO: replace Headmistress crowdcomment (obsolete) with general
 
-{embarassed:
+{embarrassed:
     { shuffle:
         - -> Headmistress_masturbation_comments ->
-        - -> embarassment_comment ->
+        - -> embarrassment_comment ->
         - -> Headmistress_Crowd_Embarrassed ->
         - -> Headmistress_Crowd_General ->
     }
@@ -676,7 +676,7 @@ TODO: replace Headmistress crowdcomment (obsolete) with general
 
 ->->
 
-= embarassment_comment
+= embarrassment_comment
 
 {shuffle:
     - /perform talk_one_finger excited 50

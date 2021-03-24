@@ -12,72 +12,89 @@
 //first time the player comes to a session
 
 {treat_session_subdrop == 1:
+    /perform idle_eager happy 65
     Welcome, {player_name}! #01
     I'm so pleased to see you! #02
 
+    /perform talk_behold excited 70
     For your first official therapy session... #03
 }
 
+/perform talk_consider aroused 65
 I think we should get you into the right headspace. #04
 
+/perform idle_tease aroused 70
 There's nothing quite like dropping you #05
 into a submissive headspace to really enhance our pleasure. #06
 
+/perform talk_question skeptical 55
 Would you like that, {player_name}? #07
 
 + [yes]
     -> Treat_AcknowledgeYes ->
-    
+
 + [no]
+
+    /perform do_inspect skeptical 50
     Hrm. #08
     Are you sure you want to be here? #09
-    
+
     ++ [yes]
+        /perform talk_question skeptical 60
         Then you are willing to continue? #10
-        
+
         +++ [yes]
             -> Treat_AcknowledgeYes ->
-            
+
         +++ [no]
             -> Treat_Unhappy ->
             Come back when you are ready. #11
             -> exit
     ++ [no]
+        /perform talk_annoyed angry 55
         Very well. #12
+
+        /perform do_you_leave sad 65
         I suggest you return another time. #13
         -> exit
-        
+
 + [timeout] -> Treat_Timeout ->
 
 + [distracted] -> Treat_PayAttention ->
-            
-- Have you ever lost yourself in a Mistress before? #14
+
+-/perform do_arm_raise excited 70
+Have you ever lost yourself in a Mistress before? #14
 
 + [yes]
+    /perform idle_hand_on_hip skeptical 70
     Then I will be curious to know #15
     whether this session works for you. #16
-    
+
 + [no]
+    /perform idle_fake_annoyed excited 65
     Then I have my work cut out for me! #17
+
+    /perform talk_lean_forward amused 70
     We will evaluate how well this works #18
     when we are finished. #19
-    
+
 + [timeout] -> Treat_Timeout ->
- 
+
 - /notify title="<color=red>Pro Tip!</color>" text="For a more intimate and vulnerable experience, play this scene naked, if you're not already that way. ;)<br/><br/>Understood?" #note11
 
 + [yes]
 
-- Before we begin, #20
+- /perform idle_clasp_hands happy 55
+Before we begin, #20
 close your eyes #21
 and take a deep cleansing breath. #22
 
 //inhale and exhale audio
 
+/perform do_walk_circle skeptical 65
 Again. #23
 
 //inhale and exhale audio
-
 Feel the solid ground beneath your feet. #24
 Let your arms hang loosely at your sides. #25
 
@@ -95,7 +112,7 @@ Are you here with me, little one? #29
 
 + [no]
     Empty your mind, {player_name}. #30
-    
+
 + [timeout] -> here
 
 - Listen to the sound of my voice. #31
@@ -116,35 +133,40 @@ And you are with me. #36
 Open your eyes. #37
 - (eyes)
 
+//TODO make pointing at eyes animation
 Look at me. #38
 Do not take your eyes off me #39
 until I tell you to do so. #40
 
+/perform talk_question aroused 45
 Understand? #41
 
 + [yes]
     -> Treat_GoodJob ->
 
 + [no]
+    /perform talk_one_finger skeptical 55
     If you choose to defy my instructions, #42
     then you will get no benefit from this session. #43
-    
+
     -- (eyes2)
+    //TODO pointing at eyes animation
     Will you keep your eyes on me? #44
-    
+
     ++ [yes]
         -> Treat_AcknowledgeYes ->
-        
+
     ++ [no]
         -> Treat_Unhappy ->
         I suggest you return another time. #45
         -> exit
-        
+
     ++ [timeout] -> eyes2
 
 + [timeout] -> eyes
-- 
+-
 
+//TODO make an animation that make her eyes glow a tiny bit
 I see you. #46
 In your eyes, I see a soul who yearns for a place. #47
 For a home. #48
@@ -158,17 +180,19 @@ I see you. #51
 
 /wait
 
+/perform do_point_down aroused 65
 Kneel, {player_name}. #52
 
 + [pose:kneel] -> Treat_GoodJob ->
 
 + [timeout]
 
-- Right now, #53
+-//TODO point at eyes animation
+Right now, #53
 in this moment, #54
 you are with me. #55
 
-/wait 
+/wait
 
 I see you. #56
 
@@ -176,8 +200,9 @@ I see you. #56
 
 -> see_you
 
-= see_you 
+= see_you
 
+//TODO make animation of Ms T moving hands up/down torso
 {shuffle:
     - Breathe, {player_name}. #57
     In and out. #58
@@ -210,6 +235,7 @@ TODO: have cycle reset @deviant
 -> see_you
 
 = upper_body
+//TODO walking around player animation
 I see the gentle curve of your head. #67
 The soft swell of your lips. #68
 The {isBoy:smooth lines of your chest|succulent ripeness of your breasts}. #69
@@ -219,7 +245,7 @@ Do you feel my eyes on you, {player_name}? #70
 
 + [yes]
     -> Treat_AcknowledgeYes ->
-    -> ready 
+    -> ready
 
 + [no]
     You will. #71
@@ -227,33 +253,37 @@ Do you feel my eyes on you, {player_name}? #70
 + [timeout]
     Concentrate, {player_name}. #72
     -> on_you
- 
+
 - ->->
- 
+
 = lower_body
+//TODO lean over and inspect player animation
 I see the sumptuous fall of your belly. #73
 The strong lines of your thighs. #74
 The delicate bend of your fingers. #75
 
 I see you. #76
 
-- (expose) 
+- (expose)
+
+/perform do_arm_raise excited 45
 Raise your arms above your head. #77
 Expose yourself to me, little one. #78
 
 + [pose:present_kneel]
 
-+ [timeout] 
++ [timeout]
     Let's try this again. #79
     -> expose
 
 - -> Treat_GoodJob ->
 
+//TODO walking around player animation
 So beautiful. #80
 So perfect. #81
 Just where I want you. #82
 
--> ready 
+-> ready
 
 = genitals
 I sense your yearning, little one. #83
@@ -266,15 +296,16 @@ You need this attention, don't you? #86
 + [yes]
     Of course you do. #87
     -> ready
-    
+
 + [no]
     A part of you is compelled else you would not be here. #88
-    
+
 + [timeout] -> attention
 
 - ->->
 
 = heart
+//TODO make animation of her walking over and sitting down in chair
 I know you yearn to belong. #89
 To be owned. #90
 To be cared for. #91
@@ -285,9 +316,10 @@ Rest at my feet. #94
 
 + [move]
 
-- 
+-
 -> Treat_GoodJob ->
-//performance to pet the player's hair
+//TODO performance to pet the player's hair
+//TODO pose recognition?
 
 Just relax. #95
 Let go. #96
@@ -301,22 +333,28 @@ I will be here anytime you need to be taken care of. #99
 
 = ready
 
+//TODO chair talking animations
 {shuffle:
     - Have you let go of your ego? #100
+
+
     - Do you feel little? #101
+    // This is being played as Treat_AcknowledgeYes somehow, wtf
+
+
     - Have you dropped into submission? #102
     - Have you let the world drop away so that only I exist? #103
 }
 
 + [yes]
     You please me, little one. #104
-    
-+ [no] 
+
++ [no]
     That's alright. #105
     -> see_you
- 
+
  + [timeout] -> ready
- 
+
 -  (serve)
 Are you ready to serve? #106
 
@@ -325,13 +363,13 @@ Are you ready to serve? #106
     /wait
     Your service will be cherished. #108
     /wait
-    
+
 + [no]
     A little more time then. #109
     -> see_you
-    
+
 + [timeout] -> serve
-    
+
 - Now stand. #110
 
 + [pose: stand]
@@ -345,4 +383,4 @@ It is time to demonstrate what you were born to do. #113
 
 Go and present yourself to one of the Mistresses. #114
 
--> exit   
+-> exit
