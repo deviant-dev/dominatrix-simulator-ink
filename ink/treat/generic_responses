@@ -1,7 +1,7 @@
 === Treat_GoodJob ===
 
 { shuffle:
-    - /perform idle_yuki happy 50
+    - /perform idle_sassy happy 50
     There's a good {player_name}. #01
 
     - /perform idle_tease aroused 65
@@ -19,44 +19,32 @@
     - /perform idle_sassy aroused 65
     Most pleasing. #06
 
-    - /perform react_thankful happy 50
+    - /perform idle_tease happy 50
     Someone is being a good {player_name}. #07
 
-    - /perform idle_tease aroused 40
-    Nicely done. #08
+    //- /perform react_thankful  aroused 40
+    //Nicely done. #08
 
     - /perform do_inspect aroused 60
     Impressive. #09
 
-    - /perform talk_consider amused 55
-    That's it. #10
+    //- /perform talk_consider amused 55
+    //That's it. #10
 }
 
 ->->
 
 === Treat_AcknowledgeYes ===
 
+/perform react_nod_little amused 55
 {shuffle:
-    - /perform react_excited excited 45
-    How delightful. #01
-
-    - /perform react_nod_little excited 40
-    Very good. #02
-
-    - /perform react_yes amused 55
-    Alright then. #03
-
-    - /perform react_chuckle happy 55
-    Good. #04
-
-    - /perform react_thankful amused 50
-    Splendid. #05
-
-    - /perform do_arm_raise happy 65
-    Wonderful. #06
-
-    - /perform react_thankful happy 55
-    Lovely. #07
+    - How delightful. #01
+    - Very good. #02
+    - Alright then. #03
+    - Good. #04
+    - Splendid. #05
+    - Wonderful. #06
+    - Lovely. #07
 }
 
 ->->

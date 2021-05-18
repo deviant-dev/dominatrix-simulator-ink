@@ -41,7 +41,7 @@
 
 {
     - tutorial_step == at_yuki_intro: -> move_yuki_intro
-    - tutorial_step == at_hm_intro: -> move_headmistress_or_yuki
+    - tutorial_step == at_hm_intro: -> move_headmistress
     - tutorial_step == at_nega_intro || tutorial_step == at_hm_bonus: -> move_headmistress_or_nega
     - tutorial_step == at_goddess_outro: -> game_outro
     - else:
@@ -71,20 +71,22 @@
 + [move: Yuki] -> yuki_intro
 
 
-= move_headmistress_or_yuki
+= move_headmistress
 
 ~ punishments = 1
 ~ rewards = 1
 ~ hm_shortcut = true
 
-/scene entry.TutorialHMOrYuki
+/scene entry.TutorialHM
 /music entry
 /ambient rain
 
 + [move: Headmistress]
     {headmistress_intro: -> headmistress_hub | -> headmistress_intro }
-+ [move: Yuki]
-    -> yuki_hub
++ [move: YukiIntro]
+    -> yuki_hub.go_to_headmistress -> 
+    /scene none
+    -> move_headmistress
 
 = move_headmistress_or_nega
 

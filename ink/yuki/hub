@@ -7,34 +7,23 @@ TODO: add logic for mega-reward
 ~ setHub(Yuki, "yuki_hub", -> yuki_hub)
 
 -(hub)
+
 /scene atrium.hub
 /music yuki
 /ambient none
 /character yuki
 /perform idle_pleased happy 65
 
-+ [move:Yuki]
++ [move:Exit] -> exit
++ [move:Approach]
 
 {inTutorial:
-    /character yuki react_whatever sad 55
-    What are you doing back here!? #01
-
-    /perform react_chuckle amused 65
-    You still have a punishment! #02
-
-    /perform do_you_leave skeptical 60
-    Go back to the headmistress #03
-    and get your punishment training, #04
-
-    /perform react_chuckle amused 70
-    Silly {player_name}. #05
-
-    /wait
-
-    -> exit
+    -> go_to_headmistress -> exit
 }
 
-{ hub == 1:
+- (hub_visit)
+
+{ hub_visit == 1:
     Hello! #06
 - else:
     Welcome back! #07
@@ -49,6 +38,24 @@ TODO: add logic for mega-reward
 { punishments > 0 : -> check_punishment}
 { punishments == 0 && rewards > 0 : -> check_reward}
 { punishments == 0 && rewards == 0 : -> no_punish_reward}
+
+
+= go_to_headmistress
+
+/character yuki react_whatever sad 55
+What are you doing back here!? #01
+
+You still have a punishment! #02
+
+/perform do_you_leave_left skeptical 60
+Go back to the headmistress #03
+and get your punishment training, #04
+
+silly {player_name}. #05
+
+/wait
+
+->->
 
 = check_punishment
     -> Yuki_Punishment_Response ->

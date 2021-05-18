@@ -351,7 +351,7 @@ Shall we appease them? #59
 Rub yourself until your {hasPenis: shaft is hard|slit is wet}. #227
 -> Headmistress_Crowd_Slut ->
 
-+ [wait:3]
++ [wait 3]
 
 - -> Headmistress_masturbation_comments ->
 
@@ -359,11 +359,11 @@ Rub yourself until your {hasPenis: shaft is hard|slit is wet}. #227
 
 -Pray continue. #228
 
-+ [wait:3]
++ [wait 3]
 
 - -> Headmistress_masturbation_comments ->
 
-+ [wait:3]
++ [wait 3]
 
 - -> Headmistress_masturbation_comments ->
 
@@ -372,17 +372,17 @@ Rub yourself until your {hasPenis: shaft is hard|slit is wet}. #227
 -/perform do_inspect amused 70
 A little more, I think. #229
 
-+ [wait:3]
++ [wait 3]
 
 - -> Headmistress_masturbation_comments ->
 
 - (accept_punishment)
 
 + [continue]
+    -> Headmistress_Crowd_GoodJob ->
 
 - (please)
 
--> Headmistress_Crowd_GoodJob ->
 /character headmistress
 {cycle:
     - /perform talk_behold excited 40
@@ -760,6 +760,8 @@ Reach down and stroke your {hasPenis: shaft|folds}. #178
 /perform idle_sassy aroused 50
 Punishments must be associated with sensual excitation. #179
 
+- (repeat)
+
 Does it feel good to touch yourself, {isBoy: toad|strumpet}? #180
 //need moans or some other sexual sound during this scene
 +[yes]
@@ -773,9 +775,9 @@ Does it feel good to touch yourself, {isBoy: toad|strumpet}? #180
     /perform react_scoffs skeptical 70
     What a shame. Do it anyways. #183
 
-+ [timeout] -> Headmistress_Timeout -> break02
++ [timeout] -> Headmistress_Timeout -> repeat
 
-+ [distracted] -> Headmistress_PayAttention -> break02
++ [distracted] -> Headmistress_PayAttention -> repeat
 
 - /perform idle_tease aroused 45
 +[wait:5]
@@ -814,6 +816,8 @@ and should be titillated as much as possible. #186
 The tantalizing drag of fingers on welted skin #187
 regularly sends shivers through the subject. #188
 
+- (repeat)
+
 /perform idle_sassy excited 56
 Would you enjoy that, {player_name}? #189
 
@@ -828,9 +832,9 @@ Would you enjoy that, {player_name}? #189
     Good. Then you will be pleased to know that #191
     such kind treatment is reserved for reward spankings only! #192
 
-+ [timeout] -> Headmistress_Timeout -> break03
++ [timeout] -> Headmistress_Timeout -> repeat
 
-+ [distracted] -> Headmistress_PayAttention -> break03
++ [distracted] -> Headmistress_PayAttention -> repeat
 
 - -> Headmistress_punishment_resumes ->
 

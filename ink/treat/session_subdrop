@@ -3,16 +3,15 @@
 ~ setScene(session_scene, Treat, "treat_session_subdrop", -> treat_session_subdrop)
 /scene Hell.Ready
 /music treat
-/ambient treat
+//ambient treat
 /character treat
 
 ~ increaseRegard()
-~ treat_session_reminders = 0
 
 //first time the player comes to a session
 
 {treat_session_subdrop == 1:
-    /perform idle_eager happy 65
+    /perform idle_pleased happy 65
     Welcome, {player_name}! #01
     I'm so pleased to see you! #02
 
@@ -54,7 +53,7 @@ Would you like that, {player_name}? #07
         /perform talk_annoyed angry 55
         Very well. #12
 
-        /perform do_you_leave sad 65
+        /perform do_you_leave_right sad 65
         I suggest you return another time. #13
         -> exit
 
@@ -62,11 +61,11 @@ Would you like that, {player_name}? #07
 
 + [distracted] -> Treat_PayAttention ->
 
--/perform do_arm_raise excited 70
+-/perform idle_hand_on_hip skeptical 60
 Have you ever lost yourself in a Mistress before? #14
 
 + [yes]
-    /perform idle_hand_on_hip skeptical 70
+    /perform talk_one_hand skeptical 70
     Then I will be curious to know #15
     whether this session works for you. #16
 
@@ -80,7 +79,7 @@ Have you ever lost yourself in a Mistress before? #14
 
 + [timeout] -> Treat_Timeout ->
 
-- /notify title="<color=red>Pro Tip!</color>" text="For a more intimate and vulnerable experience, play this scene naked, if you're not already that way. ;)<br/><br/>Understood?" #note11
+- /notify title="<color=red>Pro Tip!</color>" text="For a more intimate and vulnerable experience, play this scene naked, if you're not already that way. ;)<br/><br/>Understood?" #note13
 
 + [yes]
 
@@ -89,22 +88,31 @@ Before we begin, #20
 close your eyes #21
 and take a deep cleansing breath. #22
 
-//inhale and exhale audio
+[Deep Breath] #115
 
-/perform do_walk_circle skeptical 65
+/perform do_smooth_skirt amused 65
 Again. #23
 
-//inhale and exhale audio
+[Deep Breath] #115
+
+/perform idle_clasp_hands happy 30
 Feel the solid ground beneath your feet. #24
 Let your arms hang loosely at your sides. #25
+TODO: talk_breathe_cycle
+
+[Deep Breath] #115
 
 Now. #26
+/perform idle_clasp_hands skeptical 35
 Breathe in deeply as you raise your shoulders up to your ears, #27
 then exhale as you let your shoulders sink down. #28
+
+/wait
 
 -> Treat_GoodJob ->
 
 - (here)
+/perform idle_pleased amused 55
 Are you here with me, little one? #29
 
 + [yes]
@@ -115,25 +123,28 @@ Are you here with me, little one? #29
 
 + [timeout] -> here
 
-- Listen to the sound of my voice. #31
+-/perform idle_clasp_hands happy 55
+Listen to the sound of my voice. #31
 Feel my words surround you like a warm, soothing blanket. #32
 
+/perform idle_hand_on_hip happy 65
 Holding my words to you like an anchor... #33
 Take a slow, deep breath. #34
 
-// inhale and exhale audio
+[Deep Breath] #115
 
+/perform idle_clasp_hands happy 45
 I am here. #35
 And you are with me. #36
 
-// inhale and exhale audio
+[Deep Breath] #115
 
 -> Treat_GoodJob ->
 
 Open your eyes. #37
 - (eyes)
 
-//TODO make pointing at eyes animation
+/perform do_point_eyes_standing aroused 65
 Look at me. #38
 Do not take your eyes off me #39
 until I tell you to do so. #40
@@ -150,9 +161,8 @@ Understand? #41
     then you will get no benefit from this session. #43
 
     -- (eyes2)
-    //TODO pointing at eyes animation
-    Will you keep your eyes on me? #44
 
+    Will you keep your eyes on me? #44
     ++ [yes]
         -> Treat_AcknowledgeYes ->
 
@@ -167,6 +177,8 @@ Understand? #41
 -
 
 //TODO make an animation that make her eyes glow a tiny bit
+
+/perform idle_skeptical amused 55
 I see you. #46
 In your eyes, I see a soul who yearns for a place. #47
 For a home. #48
@@ -174,20 +186,21 @@ To belong. #49
 
 Breathe. #50
 
-//inhale and exhale audio
+[Deep Breath] #115
 
 I see you. #51
 
 /wait
 
+-(moment)
 /perform do_point_down aroused 65
 Kneel, {player_name}. #52
 
 + [pose:kneel] -> Treat_GoodJob ->
 
-+ [timeout]
++ [timeout] -> moment
 
--//TODO point at eyes animation
+-/perform idle_pleased happy 45
 Right now, #53
 in this moment, #54
 you are with me. #55
@@ -202,14 +215,14 @@ I see you. #56
 
 = see_you
 
-//TODO make animation of Ms T moving hands up/down torso
+//TODO talk_breathe_cycle
 {shuffle:
     - Breathe, {player_name}. #57
     In and out. #58
     - Breathe, little one. #59
     - Take a slow, deep breath. #60
 }
-//inhale and exhale sound
+[Deep Breath] #115
 
 -> Treat_GoodJob ->
 
@@ -235,7 +248,8 @@ TODO: have cycle reset @deviant
 -> see_you
 
 = upper_body
-//TODO walking around player animation
+//TODO do_admire_upper?
+/perform react_thankful aroused 50
 I see the gentle curve of your head. #67
 The soft swell of your lips. #68
 The {isBoy:smooth lines of your chest|succulent ripeness of your breasts}. #69
@@ -257,7 +271,8 @@ Do you feel my eyes on you, {player_name}? #70
 - ->->
 
 = lower_body
-//TODO lean over and inspect player animation
+//TODO do_admire_lower
+/perform do_inspect aroused 65
 I see the sumptuous fall of your belly. #73
 The strong lines of your thighs. #74
 The delicate bend of your fingers. #75
@@ -286,6 +301,7 @@ Just where I want you. #82
 -> ready
 
 = genitals
+/perform idle_hand_on_hip skeptical 55
 I sense your yearning, little one. #83
 I see the soft swelling of your {hasPenis: shaft|folds}. #84
 The moisture glistens. #85
@@ -298,6 +314,7 @@ You need this attention, don't you? #86
     -> ready
 
 + [no]
+/perform do_shake_finger angry 35
     A part of you is compelled else you would not be here. #88
 
 + [timeout] -> attention
@@ -305,22 +322,27 @@ You need this attention, don't you? #86
 - ->->
 
 = heart
-//TODO make animation of her walking over and sitting down in chair
+//TODO make animation of her walking over and sitting down in chair?
+/perform idle_hand_on_hip skeptical 55
 I know you yearn to belong. #89
 To be owned. #90
 To be cared for. #91
 Your soul cries out for it. #92
 
+/perform do_point_down happy 45
 Come here, little one. #93
+
+/perform idle_hand_on_hip amused 35
 Rest at my feet. #94
 
 + [move]
 
 -
 -> Treat_GoodJob ->
-//TODO performance to pet the player's hair
+//TODO performance to pet the player's hair?
 //TODO pose recognition?
 
+/perform idle_pleased amused 35
 Just relax. #95
 Let go. #96
 You were made to serve. #97
@@ -333,21 +355,18 @@ I will be here anytime you need to be taken care of. #99
 
 = ready
 
-//TODO chair talking animations
+//TODO chair talking animations?
+/perform idle_skeptical amused  45
 {shuffle:
-    - Have you let go of your ego? #100
-
-
+    - Have you let your ego go? #100
     - Do you feel little? #101
-    // This is being played as Treat_AcknowledgeYes somehow, wtf
-
-
     - Have you dropped into submission? #102
     - Have you let the world drop away so that only I exist? #103
 }
 
 + [yes]
-    You please me, little one. #104
+    /perform react_thankful happy 35
+        You please me, little one. #104
 
 + [no]
     That's alright. #105
@@ -356,31 +375,36 @@ I will be here anytime you need to be taken care of. #99
  + [timeout] -> ready
 
 -  (serve)
+/perform idle_skeptical skeptical 55
 Are you ready to serve? #106
 
 + [yes]
+/emotion aroused 65
     I am proud of you. #107
-    /wait
     Your service will be cherished. #108
-    /wait
 
 + [no]
+    /perform do_shake_finger amused 45
     A little more time then. #109
     -> see_you
 
 + [timeout] -> serve
 
-- Now stand. #110
+- /perform do_summon_player amused 55
+ Now stand. #110
 
 + [pose: stand]
 
+/perform idle_hand_on_hip skeptical 35
 Take another cleansing breath. #111
 
-//inhale and exhale sounds
+[Deep Breath] #115
 
+/perform idle_clasp_hands happy 35
 To me, you are perfect in your submission. #112
 It is time to demonstrate what you were born to do. #113
 
+/perform do_shoo_player excited 40
 Go and present yourself to one of the Mistresses. #114
 
 -> exit

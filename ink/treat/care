@@ -1,35 +1,32 @@
 === treat_care ===
 
--> start_scene
 
-= start_scene
+TODO: create session choice scene that lets players choose what type of session and asks if they want to continue
+= start_scene_therapy
 /scene TreatsRoom.CareIntro
+/perform couch_lounge_back
 /character Treat
 /music care-01
-/perform couch_lounge_back
-
-// NOTE: Care selection UI is built into the scene.
-
-+ [Session] -> treat_session_subdrop
 
 + [Comfort] -> comfort
-
 + [Grief] -> grief
-
 + [Inner Strength] -> inner_strength
-
 + [Self Care] -> self_care
+
 
 = comfort
 
-/scene TreatsBed.Treat
+{deviation == treat: 
+    /scene TreatsBed.Treat
+    - else:
+    /scene HellBed.Ready
+}
 /character Treat prone_lounge_right
 /notify title="Instructions." text="Sit or lay down to begin. Stand to leave." #note05
 
-+[pose:sit] -> comfort_begin
-
-+[pose:lay_down_left] -> comfort_begin
-
++ [pose:sit] -> comfort_begin
++ [pose:lay_down_left] -> comfort_begin
++ [move:exit] -> end_scene
 
 - (comfort_begin)
 
@@ -68,8 +65,8 @@
 }
 
 + [wait: 1] -> comfort_loop_intro
-
 + [pose:stand no_feedback no_assist] -> end_scene
++ [move:exit] -> end_scene
 
 - (comfort_loop)
 
@@ -162,7 +159,7 @@
     - Maybe you need to be strong when you're around other people #80
     - Maybe you just can't let go right now #81
     - But with me #82
-    - Tt's okay #83
+    - It's okay #83
     - [Deep breath] #119
     - It's going to be okay #84
     - I'm glad that you're here #02
@@ -359,21 +356,24 @@
 }
 
 + [wait: {delay}] -> comfort_loop
-
 + [pose:stand no_feedback no_assist] -> end_scene
++ [move:exit] -> end_scene
 
 
 
 = grief
 
-/scene TreatsBed.Treat
+{deviation == treat: 
+    /scene TreatsBed.Treat
+    - else:
+    /scene HellBed.Ready
+}
 /character Treat prone_lounge_right
 /notify title="Instructions." text="Sit or lay down to begin. Stand to leave." #note05
 
-+[pose:sit] -> grief_begin
-
-+[pose:lay_down_left] -> grief_begin
-
++ [pose:sit] -> grief_begin
++ [pose:lay_down_left] -> grief_begin
++ [move:exit] -> end_scene
 
 - (grief_begin)
 
@@ -420,8 +420,8 @@
 }
 
 + [wait: 1] -> grief_loop_intro
-
 + [pose:stand no_feedback no_assist] -> end_scene
++ [move:exit] -> end_scene
 
 - (grief_loop)
 
@@ -628,19 +628,23 @@
 }
 
 + [wait: {delay}] -> grief_loop
-
 + [pose:stand no_feedback no_assist] -> end_scene
++ [move:exit] -> end_scene
 
 
 = inner_strength
 
-/scene TreatsBed.Treat
+{deviation == treat: 
+    /scene TreatsBed.Treat
+    - else:
+    /scene HellBed.Ready
+}
 /character Treat prone_lounge_right
 /notify title="Instructions." text="Sit or lay down to begin. Stand to leave." #note05
 
-+[pose:sit] -> inner_strength_begin
-
-+[pose:lay_down_left] -> inner_strength_begin
++ [pose:sit] -> inner_strength_begin
++ [pose:lay_down_left] -> inner_strength_begin
++ [move:exit] -> end_scene
 
 
 - (inner_strength_begin)
@@ -693,8 +697,8 @@
 }
 
 + [wait: 1] -> inner_strength_loop_intro
-
 + [pose:stand no_feedback no_assist] -> end_scene
++ [move:exit] -> end_scene
 
 
 - (inner_strength_loop)
@@ -905,7 +909,7 @@
     - Whenever you're ready #625
     - You can go back to being whatever you need to be #626
     - For everyone else #627
-    - Whenever you're ready to let go, and say goodby to this space #628
+    - Whenever you're ready to let go, and say goodbye to this space #628
     - Just do that #629
     //- Stay here, stay with me, for as long as you need #630
     //- Stay here, for as long as you need #631
@@ -934,20 +938,25 @@
 }
 
 + [wait: {delay}] -> inner_strength_loop
-
 + [pose:stand no_feedback no_assist] -> end_scene
++ [move:exit] -> end_scene
 
 
 
 = self_care
 
-/scene TreatsBed.Treat
+{deviation == treat: 
+    /scene TreatsBed.Treat
+    - else:
+    /scene HellBed.Ready
+}
+
 /character Treat prone_lounge_right
 /notify title="Instructions." text="Sit or lay down to begin. Stand to leave." #note05
 
-+[pose:sit] -> self_care_begin
-
-+[pose:lay_down_left] -> self_care_begin
++ [pose:sit] -> self_care_begin
++ [pose:lay_down_left] -> self_care_begin
++ [move:exit] -> end_scene
 
 
 - (self_care_begin)
@@ -1229,11 +1238,13 @@
 }
 
 + [wait: {delay}] -> self_care_loop
-
 + [pose:stand no_feedback no_assist] -> end_scene
++ [move:exit] -> end_scene
 
 
 = end_scene
+
+{deviation != treat: -> exit}
 
 /scene TreatsRoom.Care
 /character Treat

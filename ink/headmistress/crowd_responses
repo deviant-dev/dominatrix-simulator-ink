@@ -1,19 +1,8 @@
 
-=== Headmistress_CrowdComment ===
-
-{shuffle:
-    - /perform talk_one_finger excited 50
-    - /perform do_arm_raise happy 50
-    - /perform react_shrug_long skeptical 50
-    - /perform idle_clasp_hands amused 50
-    - /perform idle_tease aroused 50
-}
-
-->->
-
 === Headmistress_Crowd_Punishment ===
 //These comments are made when the player is being punished (eg, spanked, masturbating without being allowed to orgasm).
 /character crowd
+
 {shuffle:
     - This one needs a lot of work. #01
     - I wonder what they did to deserve this. #02

@@ -471,7 +471,7 @@ Dig your nails in each time I count. #96
 /perform react_point_at_player_angry disgusted 50
 I wanna see you react each time! #97
 
-/idle idle_fake_annoyed
+/perform idle_fake_annoyed
 Since I know this once is really going to hurt, #98
 I'll count backwards just to be nice. #99
 

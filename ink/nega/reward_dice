@@ -93,7 +93,7 @@ Let's see what you're going to get #04
 /perform idle_tease aroused 45
 for this pretty little gift. #05
 
-/perform squat excited 35
+/perform squat disgusted 35
 Get down here. #09
 
 + [pose:kneel]
@@ -379,8 +379,11 @@ Since it's your first time,  #43
 perhaps I'll make it rain for you. #44
 Just this once. #45
 
-/action force_dice
 TODO: Remove this and actually force the dice in-game.
+/action force_dice
+Now, that's what I'm talking about. #86
+Stand up, {player_name}. #87
+
 -> nega_reward_hard_forcedsex
 
 

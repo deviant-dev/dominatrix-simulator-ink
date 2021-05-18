@@ -9,6 +9,7 @@ INCLUDE game_intro
 INCLUDE game_outro
 INCLUDE entry_hub
 
+INCLUDE deviation/unspeakable_toy
 INCLUDE general/bad_touch
 
 INCLUDE angel/hub
@@ -113,10 +114,14 @@ INCLUDE yuki/task_teaservice
 INCLUDE yuki/punishment_edging
 INCLUDE yuki/punishment_puppyplay_cage
 INCLUDE yuki/punishment_puppyplay_spanking
+INCLUDE yuki/reward_cunnilingus
 INCLUDE yuki/reward_massage
 INCLUDE yuki/reward_puppyplay_lickfeet
 INCLUDE yuki/reward_puppyplay_milking
 INCLUDE yuki/rewardmega_placeholder
+INCLUDE goddess/reward_serviced
+
+
 
 
 // EXTERNAL getNegaDie1()
@@ -125,7 +130,7 @@ INCLUDE yuki/rewardmega_placeholder
 
 
 // Flow Variables
-LIST deviation = (full_game), tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia
+LIST deviation = full_game, tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia, (unspeakable_toy)
 
 VAR debug = false
 VAR web = true
@@ -139,6 +144,8 @@ VAR inVR = false
     /log Exiting ink debug.
 }
 
+/log Starting game from the beginning.
+
 ~ setDeviation(deviation)
 -> game_start
 
@@ -149,6 +156,8 @@ VAR inVR = false
 
 // -> exit has the logic for module starting locations
 {
+    - deviation == unspeakable_toy:
+        -> deviation_unspeakable_toy
     - deviation == puppyplay:
         -> yuki_hub
     - deviation == hand_signals:

@@ -1,0 +1,46 @@
+=== deviation_unspeakable_toy ===
+
+/scene bedroom.hub
+/music goddess
+/ambient none
+/character goddess
+
++ [move:Approach]
+
+Hello there!
+
+Welcome to the Unspeakable Dominatrix Simulator Toy Experience.
+
+I designed this just to showcase what we can make your 
+naughty little, bluetooth sex toys do to you.
+
+Would you like to find out?
+
++ [yes]
+
+- Fantastic!
+
+This proof of concept build will work 
+with any buttplug.io compatible toy 
+for a vagina, a clit, a penis, or an anus.
+
+But, unfortunately, we only have starting animations
+for a penis and vagina. 
+We will add the other two soon!
+
+Go grab your toy,
+and when you're ready,
+come back and nod your head.
+
++  [yes]
+
+Delicious.
+
+Now, choose which Mistress you'd like to experience this with:
+
+TODO: UI with character choices
+
+You're in for a treat!
+Let's begin.
+
+-> goddess_reward_serviced

@@ -8,9 +8,12 @@
 
 -/notify title="Enforcer Furia's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Interrogation<br/>Electro Play<br/>Degradation"
 
-+ [move]
++ [move:Exit] -> exit
++ [move:Approach]
 
--/notify title="Enforcer Furia's Intro Completed." text="Returning to the entry."
+- (start)
+
+/notify title="Enforcer Furia's Intro Completed." text="Returning to the entry."
 /wait 5
 
 ~ furia_intro_complete = true

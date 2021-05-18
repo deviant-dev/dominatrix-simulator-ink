@@ -110,11 +110,6 @@ Put your wrists above your head! #14
 - /perform idle_tease amused 40
 Don't you fucking move, slut! #18
 
-/perform idle_looming amused 80
-I want to get off on some deep dicking. #12
-
-// Handle cockification for female players.
-
 /perform tease_caress_breasts aroused 45
 Fuck! I'm soaking my panties. #16
 
@@ -143,6 +138,13 @@ Now... time for me to get more comfortable. #20
 /scene attic.reward_forcedsex2
 /character nega
 
+/perform idle_tease aroused 75
+Mmmm. So much better. #112
+
+/wait 
+/perform idle_looming amused 80
+I want to get off on some deep dicking. #12
+
 {not hasPenis:
     /perform do_snap_fingers amused 75
     I've got a strap-on right here for you, slut. #13
@@ -159,10 +161,8 @@ Look at you. Such a pathetic fleshbag. #21
 
 - (pussy_wet)
 
-/perform talk_behold aroused 50
+/perform tease_rubbing_crotch aroused 50
 I bet you're just dying to find out  #22
-
-/perform idle_fake_annoyed aroused 60
 how wet my pussy feels against you. #23
 
 /perform idle_tease aroused 70
@@ -234,8 +234,6 @@ Ahhhh! That's it! #41
 
 /perform sex_squat_thrust happy 50
 Your stiff dick is just what I needed! #42
-//Alternate line for strap-on?
-
 
 VAR thrusts = 0
 VAR nega_thrust_mistakes = 0
@@ -255,7 +253,8 @@ Your job is to make me cum, got it?! #44
 
 +[yes]
     /perform sex_squat_thrust_single amused 50
-    Good. Now fucking show me how you thrust. #45
+    -> Nega_AcknowledgeYes ->
+    // Good. Now fucking show me how you thrust. #45
     ~ addObey()
 
 
@@ -358,7 +357,7 @@ Decent. Let's pick up the pace, huh? #51
 = masturbation_comment
 
 {shuffle:
-        - -> Nega_Objectify.Squatting ->
+        - -> Nega_Aroused.Squatting ->
         - -> forced_sex_comment->
         - -> Nega_GoodJob.Squatting ->
 }
@@ -709,10 +708,12 @@ Go! #89
 
     }
 
-/perform sex_squat_tease disgusted 45
+/emotion disgusted 50
 Now, breathe bitch! #95
 
-/emotion amused 50
+/wait 
+
+/perform sex_squat_tease amused 50
 Impressive! #94
 
 ->->
@@ -772,7 +773,7 @@ Impressive! #94
     //My pussy is so hungry! #93
     //Feels like a cheesy delivery
 
-    -/emotion amused 45
+    -/perform sex_squat_tease amused 45
     I bet you wish you could bury your face in my tits. #140
 
     -/emotion angry 55

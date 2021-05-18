@@ -161,7 +161,7 @@ Understand? #76
         /perform react_disappointed angry 75
         Maybe we should try this some other time. #80
 
-        /perform do_you_leave angry 45
+        /perform do_you_leave_right angry 45
         Come back later. #81
         -> exit
     ++ [distracted] -> Yuki_PayAttention -> ask_sit_again

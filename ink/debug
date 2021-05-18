@@ -1,8 +1,8 @@
 === Debug ===
 // --- Set gender here to skip gender selection step ---
-// ~ setGender("m")
+ ~ setGender("m")
 // ~ setGender("f")
-~ setGender("p")
+// ~ setGender("p")
 
 //~SEED_RANDOM(5)
 
@@ -16,19 +16,22 @@
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(treat)
 // ~ setDeviation(furia)
+~ setDeviation(unspeakable_toy)
+// -> deviation_unspeakable_toy
+-> goddess_reward_serviced.ready
 
 // --- Unlocks ---
 // ~ unlockAll()
-//  ~ unlockShortcuts()
+// ~ unlockShortcuts()
 
 
 // --- Punish and Reward ---
-//  ~ punishments = 1
-~ rewards = 1
+// ~ punishments = 1
+// ~ rewards = 1
 
 
 // --- Tutorial ---
-// ~ inTutorial =
+// ~ inTutorial = false
 
 
 // --- Regard ---
@@ -39,7 +42,7 @@
 // ~ headmistress_regard =
 // ~ nega_regard =
 // ~ pragma_regard =
-// ~ treat_regard =
+// ~ treat_regard = 10
 // ~ yuki_regard =
 
 
@@ -121,7 +124,7 @@
 // -> goddess_task_placeholder
 // -> goddess_intro.load_at_interview
 // -> goddess_rewardmega_giantess
--> goddess_reward_joi
+// -> goddess_reward_joi
 // -> giantess_temp
 
 
@@ -156,7 +159,7 @@
 // -> nega_intro
 // -> nega_punishment_light_bootlick
 // -> nega_punishment_light_camerashoot
-//-> nega_punishment_hard_genitaltorture
+// -> nega_punishment_hard_genitaltorture
 // -> nega_punishment_tease
 // -> nega_punishment_hard_trampling
 // -> nega_reward_dice
@@ -179,12 +182,12 @@
 // --- Treat Scene Jumps ---
 // -> treat_care
 // -> treat_hub
-//  -> treat_intro
+// -> treat_intro
 // -> treat_promo
 // -> treat_punishment_placeholder
 // -> treat_reward_placeholder
 // -> treat_rewardmega_placeholder
-// -> treat_session_placeholder
+// -> treat_session_subdrop
 // -> treat_task_placeholder
 // -> treat_monitoring
 
@@ -193,6 +196,8 @@
 // --- Yuki Scene Jumps ---
 // -> yuki_hub
 // -> yuki_intro
+// -> yuki_reward_cunnilingus
+
 
 // /scene entry.intro3
 // -> yuki_intro.start_slap
@@ -222,6 +227,8 @@
 // -> DONE
 // -> exit
 // -> entry_hub
+// ~ tutorial_step = at_hm_intro
+// -> entry_hub.move_headmistress
 // -> game_intro
 // -> game_intro_again
 // -> game_outro
@@ -237,7 +244,7 @@
 // -> test_crowd_reactions
 // -> test_notification_ui
 // -> test_nega_dice
--> test_yes_no
+// -> test_yes_no
 
 
 ->->
@@ -324,34 +331,56 @@
 - -> test_audio
 
 
-=== test_crowd_reaction ===
+=== test_crowd_reactions ===
 
 /scene TheatreOpen.Ready
 /music headmistress
 /ambient crowd
-/character headmistress idle_tease amused 75
+/character headmistress idle_clasp_hands amused 75
 
-- (loop)
-{cycle:
-    - /character crowd oos
-    - /character crowd cheers
-    - /character crowd boos
-    - /character crowd murmur
-    - /character crowd gasps
-    - /character crowd jeers
-    - /character crowd angry_crowd
-    - /character crowd cheers_loud
-    - /character crowd cheers_short
-}
+- (menu)
 
-/wait 5
-
--> Headmistress_CrowdComment ->
-
-+ [wait] -> loop
++ [Test Reactions] -> reactions_menu
++ [Test Comments] -> comment_menu
 
 
+= reactions_menu
+~ temp reaction = "oos"
 
++ [oos!]
+    ~reaction = "oos"
++ [cheers!]
+    ~reaction = "cheers"
++ [boos!]
+    ~reaction = "boos"
++ [murmur!]
+    ~reaction = "murmur"
++ [gasps!]
+    ~reaction = "gasps"
++ [jeers!]
+    ~reaction = "jeers"
++ [cheers_loud!]
+    ~reaction = "cheers_loud"
++ [cheers_short!]
+    ~reaction = "cheers_short"
++ [Menu!] -> menu
+
+- /character crowd {reaction}
+-> reactions_menu
+
+
+= comment_menu
+
++ [Punishment!] -> Headmistress_Crowd_Punishment ->
++ [Reward!] -> Headmistress_Crowd_Reward ->
++ [General!] -> Headmistress_Crowd_General ->
++ [Embarrassed!] -> Headmistress_Crowd_Embarrassed ->
++ [Slut!] -> Headmistress_Crowd_Slut ->
++ [GoodJob!] -> Headmistress_Crowd_GoodJob ->
++ [BadJob!] -> Headmistress_Crowd_BadJob ->
++ [Menu!] -> menu
+
+- -> comment_menu
 
 
 === test_multiple_poses ===

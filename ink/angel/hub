@@ -2,7 +2,7 @@
 
 -> select_gender_check ->
 
-{angel_intro == false: -> angel_intro }
+{angel_intro.start == false: -> angel_intro }
 
 ~ setHub(Angel, "angel_hub", -> angel_hub)
 /scene none
@@ -13,7 +13,8 @@
 
 - /notify title="Lady Angelica's Hub" text="This is a placeholder. You negotiate a scene with the Mistress here.<br/><br/>Kinks:<br/>High School Bitch<br/>Forced Feminization<br/>Cuckholding"
 
-+ [move] -> apology_check(-> hello, -> exit)
++ [move:Exit] -> exit
++ [move:Approach] -> apology_check(-> hello, -> exit)
 
 
 = hello

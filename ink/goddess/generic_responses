@@ -156,15 +156,15 @@
 
 /emotion angry 50
 
-// { shuffle:
-//     - You dissapoint.
-//     - Perhaps you do not belong here, after all.
-//     - I tire of your presence.
-//     - Try harder, little one.
-//     - That's not quite right.
-//     - Tiresome.
-//     - I expect more.
-// }
+{ shuffle:
+    - How disappointing. #01
+    - Perhaps you do not belong here, after all. #02
+    - I tire of your presence. #03
+    - Try harder, little one. #04
+    - That's not quite right. #05
+    - Tiresome. #06
+    - I expect more. #07
+}
 
 ->->
 

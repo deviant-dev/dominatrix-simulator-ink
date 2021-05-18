@@ -42,6 +42,8 @@
 /ambient rain
 /music entry
 
+/log Showing gender choices.
+
 - (options)
 
 + [choose-gender-male]
@@ -114,7 +116,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Punishment Added: {getSummaryText()}
-    /notify title="Punishment Earned" text="{getName(current_mistress)}'s regard for you has <color=red>decreased</color>." delay = 3
+    /notify title="<color=red>Punishment</color> Earned" text="{getName(current_mistress)}'s regard for you has <color=red>decreased</color>." delay = 3
 }
 
 ~ return true
@@ -136,7 +138,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Punishment Removed: {getSummaryText()}
-    /notify title="Punishment Paid" text="{getName(current_mistress)}'s regard for you has increased." delay = 3
+    /notify title="Punishment Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3
 }
 
 ~ return true
@@ -158,7 +160,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Punishment x10 Removed: {getSummaryText()}
-    /notify title="Punishment x10 Paid" text="{getName(current_mistress)}'s regard for you has increased." delay = 3
+    /notify title="Punishment x10 Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3
 }
 
 ~ return true
@@ -184,7 +186,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Reward Added: {getSummaryText()}
-    /notify title="Reward Earned" text="{getName(current_mistress)}'s regard for you has increased." delay = 3
+    /notify title="Reward Earned" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3
 }
 
 ~ return
@@ -206,7 +208,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Reward Removed: {getSummaryText()}
-    /notify title="Reward Paid" text="{getName(current_mistress)}'s regard for you has increased." delay = 3
+    /notify title="Reward Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3
 }
 
 ~ return true
@@ -228,7 +230,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Reward x10 Removed: {getSummaryText()}
-    /notify title="Reward x10 Paid" text="{getName(current_mistress)}'s regard for you has increased greatly." delay = 3
+    /notify title="Reward x10 Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased greatly</color>." delay = 3
 }
 
 ~ return true

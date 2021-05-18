@@ -1,45 +1,52 @@
 === treat_monitoring ===
 -> select_gender_check ->
 
-//skip the monitoring if player has been visiting her
-//if they haven't, then she reminds them to come see her
-
-{treat_session_reminders <2:
-    //reminder to have a treatment
-    -> monitor
-
-    - else:
-
-    -> treat_hub.choose_session
-}
-
-= monitor
-~treat_session_reminders++
-
 /scene Entry.TMonitoring
 /music treat
-/ambient
 /character treat
+
++ [move:Approach]
+
+-
 
 //greet player
 { shuffle:
 
-    -/perform do_wave_hello happy 60
+    -/perform do_inspect happy 60
     Hello {player_name}. #01
 
     -/perform do_wave_small happy 65
     Hello there. #02
     //General Kenobi, you are a bold one
 
-    -/perform react_thankful excited 55
+    -/perform react_thankful amused 55
     Ah. There you are. #03
 }
 
+//skip the monitoring if player has been visiting her
+//if they haven't, then she reminds them to come see her
+
+//reminder to have a treatment
+{treat_session_reminders < 2:
+    ~ treat_session_reminders++
+    -> monitor
+- else:
+    ~ treat_session_reminders = 0
+    -> force_yes
+}
+
+= monitor
+
 //check for type of scene
 {
-    - just_changed == reward_removed: -> reward_monitor
-    - just_changed == punishment_removed: -> punishment_monitor
-    - else: -> task_monitor
+    - just_changed == reward_removed:
+     -> reward_monitor
+
+    - just_changed == punishment_removed:
+     -> punishment_monitor
+
+    - else:
+     -> task_monitor
 }
 
 //comment on reward
@@ -49,7 +56,7 @@
     -/perform talk_one_finger happy 65
     Rewards are delightful... #04
 
-    /perform talk_behold excited 70
+    /perform talk_behold aroused 70
     But they are much more enjoyable #05
     when your mind is in the right place! #06
 
@@ -101,10 +108,10 @@
 = task_monitor
 { shuffle:
 
-    -/perform talk_emphatic_one_hand happy 65
+    -/perform do_smooth_skirt amused 65
     I see you are keeping busy fulfulling tasks. #18
 
-    -/perform talk_behold excited 60
+    -/perform talk_behold aroused 60
     Serving the Mistresses is an important duty. #19
 }
 
@@ -123,13 +130,13 @@
 //comment on importance of mental health
 {shuffle:
 
-    -/perform do_arm_raise excited 70
+    -/perform do_arm_raise amused 70
     We must keep your mind sharp, as well! #23
 
     -/perform do_shake_finger skeptical 65
     We must maintain your mental hygiene! #24
 
-    -/perform do_shake_finger_stern excited 65
+    -/perform do_shake_finger_stern sad 30
     Your mental health must be maintained! #25
 }
 
@@ -147,10 +154,10 @@
     -/perform do_summon_player happy 55
     It's time for you to have a session. #27
 
-    -/perform talk_behold excited 65
+    -/perform talk_behold skeptical 65
     It's important you visit me regularly. #28
 
-    -/perform talk_consider skeptical 60
+    -/perform react_thankful skeptical 60
     I expect you to come to your sessions. #29
 }
 
@@ -162,9 +169,10 @@ Do you want to visit me now? #30
 + [yes]
     -> Treat_AcknowledgeYes ->
 
+    -- (force_yes)
     /perform do_stand_to_right happy 65
     Come to my office. #31
-    -> treat_hub.choose_session
+    -> treat_hub.choose_task
 
 + [no]
     -> Treat_Unhappy ->

@@ -19,12 +19,16 @@
 // Wait a moment for the player to aclimate to their new surroundings.
 + [wait:3]
 
+- Stand up straight, for me.
+
++ [pose:raised_chin]
+
 - I'm so proud of you for playing my naughty, little game! #01
 
 /perform idle_skeptical happy 50
 {
-    - deviation == tutorial:
-        That was my early access tutorial. #02
+    // - deviation == tutorial:
+    //     That was my early access tutorial. #02
 
     - deviation == demo:
         You've just had a taste of the Dominatrix Simulator world. #03
@@ -98,14 +102,21 @@ How disappointing. Tell me what went wrong. #20
 = credits
 
 /character Treat idle_skeptical aroused
-I hope I see you again soon. #19
+Now... your journey has just begun.
+When you're ready...
+
+// I hope I see you again soon. #19
 
 -> continue ->
 
 /perform do_stand_to_right
+Just continue to explore.
+I plan to see you again, real soon.
 
 + [move:Credits] -> credits_end
 + [wait:2]
+
+
 
 - /perform idle_stand_to_right
 
@@ -116,5 +127,5 @@ I hope I see you again soon. #19
 
 /scene EntryDark.EndScreen2
 
-+ [move] -> entry_hub
++ [move] -> treat_intro
 

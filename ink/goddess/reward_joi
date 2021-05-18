@@ -27,7 +27,7 @@ TODO: set variables on scene to be generic or specific instructions by gentital 
 
 
 {shuffle:
-    - Demonstrating to you so precisely how your
+    - Demonstrating to you precisely how your
     pleasure is mine to grant. 
     - Controlling your every motion so that your exquisite release
     is a tribute to my attentiveness.
@@ -99,14 +99,18 @@ Would you like to plug your ass for me first?
     but in the future I may insist.
     -> begin
 
++ [timeout] -> Goddess_Timeout -> ass 
+
++ [distracted] -> Goddess_PayAttention -> ass
+
 = mouth
 
 Would you like to wear a gag for me, {player_name}?
 
 + [yes]
-    -> Goddess_AcknowledgeYes ->
+    Excellent.
     Then go get it.
-    If you have more than one, choose your preference.
+    If you have more than one, choose your favorite.
     -- (prepare)
     <b>Nod</b> your head when you are ready.
     
@@ -117,6 +121,10 @@ Would you like to wear a gag for me, {player_name}?
     but in the future I may insist.
     -> begin
     
++ [timeout] -> Goddess_Timeout -> mouth 
+
++ [distracted] -> Goddess_PayAttention -> mouth
+
 = plug 
 
 Welcome back, {player_name}.
@@ -161,6 +169,10 @@ Understood?
         -> Goddess_CheckIfInterested ->
         -> wiggle
     
++ [timeout] -> Goddess_Timeout -> plug 
+
++ [distracted] -> Goddess_PayAttention -> plug
+
 = gag
 
 Hello again, {player_name}.
@@ -172,13 +184,16 @@ Nice and slow.
 
 TODO: add in poses to turn head left, turn head right
 
-+ [pose: turn_head_right]
++ [pose:turn_head_right]
 
 - -> Goddess_GoodJob ->
 
 + [pose:turn_head_left]
 
 - -> Goddess_GoodJob ->
+
+An excellent choice.
+Your lips bulge beautifully around it.
 
 -> begin
 
@@ -193,8 +208,9 @@ Tell me, {player_name}...
 }
 
 + [yes]
-    -> Goddess_AcknowledgeYes ->
-     set variable to trigger CEI 
+    Eager to please, I see.
+    You will clean every last drop for me.
+         set variable to trigger CEI 
      -> begin
 
 + [no]
@@ -212,6 +228,9 @@ Tell me, {player_name}...
         skip CEI
         -> begin
 
++ [timeout] -> Goddess_Timeout -> cei 
+
++ [distracted] -> Goddess_PayAttention -> cei
 
 = begin
 //this is where the actual scene happens
@@ -220,6 +239,7 @@ Get comfortable, {player_name}.
 I want you nice and relaxed.
 
 /wait
+- (ready)
 
 Are you ready?
 
@@ -237,13 +257,13 @@ Are you ready?
         Goodbye.
         -> exit
     
-    ++ [timeout] -> Goddess_PayAttention -> begin
+    ++ [timeout] -> Goddess_Timeout -> ready
 
-+ [timeout] -> Goddess_PayAttention -> 
++ [timeout] -> Goddess_Timeout -> ready
 
-+ [distracted]
++ [distracted] -> Goddess_PayAttention -> ready
 
--
+- (understand) 
 
 {shuffle:
     - I expect you to follow my every instruction.
@@ -258,20 +278,114 @@ Are you ready?
 }
 
 + [yes]
-    -> Goddess_AcknowledgeYes ->
+    Very pleasing.
 
 + [no]
     -> Goddess_CheckIfInterested->
     
-+ [timeout] -> Goddess_Timeout -> gave_reward 
++ [timeout] -> Goddess_Timeout -> understand 
 
-+ [distracted] -> Goddess_PayAttention -> gave_reward 
++ [distracted] -> Goddess_PayAttention -> understand 
+
+- (hold)
+
+{hasPenis: Grab hold of yourself and start gently stroking.|Cup yourself and start gently rubbing.}
+
+Is it {hasPenis: hard|throbbing} for me?
+
++ [yes]
+    -> Goddess_GoodJob ->
+    Let's make sure it stays that way.
+
++ [no]
+    -> Goddess_Unhappy ->
+    Performance anxiety, perhaps?
+    
++ [timeout] -> Goddess_Timeout -> hold 
+
++ [distracted] -> Goddess_PayAttention -> hold 
     
 - -> loop
 
 = loop
 
+-> instructions ->
+-> question ->
+-> orgasm 
 
+
+= instructions
+
+{shuffle:
+    - -> slow ->
+    - -> fast ->
+    // - squeeze 
+}
+
+->->
+
+= slow
+
+Now, take it nice and slow.
+
+{shuffle:
+    - Slide your hand {hasPenis:up and down|back and forth} 5 teasing times. 
+    - Gently caress your fingers along your smooth skin. 
+    - Use your whole hand and give me 10 firm {hasPenis:strokes|rubs}. 
+      Count them out. 
+    - I want you to show me 20 excrutiatingly slow {hasPenis:strokes|circles}.
+  }
+
+- ->->
+
+= fast 
+
+Start going a bit quicker. 
+
+{shuffle:
+    - Move your hand up and down.
+      Keep a good rhythm for me.
+    - Rub as fast as you can as you count to 10 for me. 
+    - Give me 20 quick and hard {hasPenis:strokes|circles}.
+    - I want 5 rapid {hasPenis:jerks|wiggles}.
+}
+
+- ->->
+
+= squeeze
+
+Pause for a moment.
+
+{shuffle:
+    - Give it a gentle squeeze for me. 
+    - Grab hold of it and squeeze it firmly. 
+    - Give it several gentle squeezes.
+    - Squeeze firmly as I count to three.
+    One. Two. Three.
+    - Squeeze hard for me, little mouse.
+    
+}
+
+Now release.
+
+->->
+
+= medium
+
+
+->->
+
+= question
+
+{shuffle:
+    - -> pleasure ->
+    - -> hungry ->
+    - -> eager ->
+}
+
+- ->->
+
+= pleasure
 
 {shuffle:
     - Your body belongs to me.
@@ -281,6 +395,129 @@ Are you ready?
 
 Isn't that right, {player_name}?
 
++ [yes]
+    Such a smart little {player_name}.
+
++ [no]
+    -> Goddess_Unhappy ->
+    Do you wish to conintue?
+    
+    ++ [yes]
+        -> Goddess_AcknowledgeYes->
+        
+    ++ [no]
+        Very well.
+        Goodbye.
+        -> exit
+    
+    ++ [timeout] -> Goddess_Timeout -> pleasure
+
++ [timeout] -> Goddess_Timeout -> pleasure
+
++ [distracted] -> Goddess_PayAttention -> pleasure
+
+- ->->
+
+= hungry
+
+{shuffle:
+    - You're eager to be used.
+    - You're desperate for my attention.
+    - I see how hungry you are for release.
+}
+
+Aren't you?
+
++ [yes]
+    Such a slutty little {player_name}.
+
++ [no]
+    -> Goddess_Unhappy ->
+    Do you wish to conintue?
+    
+    ++ [yes]
+        -> Goddess_AcknowledgeYes->
+        
+    ++ [no]
+        Very well.
+        Goodbye.
+        -> exit
+    
+    ++ [timeout] -> Goddess_Timeout -> hungry
+
++ [timeout] -> Goddess_Timeout -> hungry
+
++ [distracted] -> Goddess_PayAttention -> hungry
+
+- ->->
+
+= eager 
+
+{shuffle:
+    - You're eager to cum for me. 
+    - You're pent up with the need to release.
+    - I see how desperate you are to cum for me. 
+}
+
+Aren't you?
+
++ [yes]
+    What a delicious little treat you are, {player_name}.
+
++ [no]
+    -> Goddess_Unhappy ->
+    Do you wish to conintue?
+    
+    ++ [yes]
+        -> Goddess_AcknowledgeYes->
+        
+    ++ [no]
+        Very well.
+        Goodbye.
+        -> exit
+    
+    ++ [timeout] -> Goddess_Timeout -> eager
+
++ [timeout] -> Goddess_Timeout -> eager
+
++ [distracted] -> Goddess_PayAttention -> eager
+
+- ->->
+
+= orgasm
+
+It's time, little one.
+
+I want that throbbing orgasm of yours released.
+
+-> exit
+
+= joi_comments 
+
+{shuffle:
+    - Imagine how a warm, wet mouth would feel on you right now.
+    - I get so much pleasure from watching slaves give themself to me. 
+    - My pussy is warm and wet right now. 
+      Imagine if you could taste it. 
+    - My breasts are so heavy and soft.
+      How would they feel on your face?
+    - Think about drawing my thick nipples into your mouth.
+    - Imagine burrying your face in my firm ass as I smother you.
+    - How would my warm, oiled flesh feel sliding up and down your body?
+    - Imagine my hands caressing your body, your hair, and your sex.
+    - Perhaps one day I'll let you fuck my slaves for me. 
+      Bring them to pleasure over and over again to worship me. 
+    - I wonder how you taste.
+      Perhaps I'll sample you someday. 
+    - Show me how much you adore me. 
+    - Strain your body for me to give me your pleasure. 
+    - Moan for me, little {player_name}.
+    - I want to see you dripping with desire.
+    - Don't you dare cum. That is forbidden.
+    - You will not cum without permission.
+}
+
+->->
 
 // So, you want to fuck me?
 
@@ -340,8 +577,6 @@ Isn't that right, {player_name}?
 
 // Give me 10 / 20 / 30 excrutiating slow strokes
 
-
--> exit
 
     
 //for other Mistresses

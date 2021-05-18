@@ -7,9 +7,11 @@
 
 -/notify title="Lady Angelica's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>High School Bitch<br/>Forced Feminization<br/>Cuckholding"
 
-+ [move]
++ [move:Exit] -> exit
++ [move:Approach]
 
--/notify title="Lady Angelica's Intro Completed." text="Returning to the entry."
+- (start)
+/notify title="Lady Angelica's Intro Completed." text="Returning to the entry."
 /wait 5
 
 ~ angel_intro_complete = true

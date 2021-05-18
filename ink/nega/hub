@@ -19,21 +19,20 @@ VAR demerits = 0
     -> nega_intro
 }
 
-//we don't have an attic.hub like we do with the other players
+- (hub)
 
-/scene Attic.Approach
+/scene Attic.Hub
 /music nega2
 /ambient howling-wind
 /character Nega
 
 
-+ [move: Nega]
++ [move:Exit] -> exit
++ [move:Approach]
 
 {deviation == nega_dice:
     -> nega_punishment_light_camerashoot
 }
-
-- (hub)
 
 /scene Attic.Ready
 
@@ -338,7 +337,7 @@ I want to smack it. #39
 ->->
 
 - (slap_genitals)
-/perform idle_nega amused 75
+/perform idle_skeptical amused 75
 Slap that filthy {hasPenis: prick|cunt} of yours. #41
 It better be hard enough to make you jump. #42
 /wait

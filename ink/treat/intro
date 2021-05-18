@@ -7,6 +7,7 @@
 /ambient treat
 /character treat idle_clasp_hands amused 65
 
++ [move:Approach]
 
 //check to see if player went through Nega or Headmistress reward
 
@@ -19,10 +20,10 @@
     to prove yourself. #03
 
     - else:
-    /perform do_smooth_skirt amused 65
+    /perform idle_clasp_hands amused 65
     I see you have passed your first test. #04
 
-    /perform talk_behold excited 55
+    /perform talk_behold happy 55
     You've pleased the Goddess so much, #05
     <i>She</i> has given you your next challenge. #06
 }
@@ -30,7 +31,7 @@
 -/perform do_tap_wrist happy 50
 You'll need to earn a full wrist of rewards, #07
 
-/perform react_excited amused 70
+/perform talk_lean_forward amused 70
 10 Bloodstones, #08
 to come out of chastity. #09
 
@@ -56,7 +57,7 @@ I <i>know</i> things can get a little intense around here. #13
 /perform talk_gesture happy 55
 Don't give up. #14
 
-/perform react_thankful excited 65
+/perform react_thankful aroused 65
 I promise it will be worth your while. #15
 
 /perform do_inspect amused 70
@@ -80,17 +81,17 @@ Put your arms behind your head and spread your legs. #18
 
 - (confuse)
 
-/perform idle_skeptical amused 75
+/perform idle_skeptical skeptical 55
 Tell me, does this place confuse you? #20
 
 + [yes]
-    /perform react_chuckle happy 70
+    /emotion amused 60
     Not surprising. #21
 
-    /perform talk_one_finger happy 75
+    /perform talk_one_finger angry 25
     Things will become more clear in time. #22
     --(enjoy)
-    /perform idle_swaying skeptical 45
+    /perform idle_skeptical skeptical 45
     Have you enjoyed yourself, at least? #23
 
         ++ [yes]
@@ -124,13 +125,13 @@ Tell me, does this place confuse you? #20
 - /perform react_point_at_player_angry skeptical 60
 From now on, things will only get more demanding. #30
 
-/perform react_excited aroused 55
+/perform react_point_at_player_angry aroused 55
 Much will be asked of you. #31
 
 /perform do_shake_finger sad 45
 And, at times, you will struggle. #32
 
-/perform react_thankful excited 55
+/perform react_thankful happy 55
 This is where I come in. #33
 
 /perform do_arm_raise happy 60
@@ -151,8 +152,13 @@ The mind is key. #38
 /perform talk_gesture aroused 60
 It dictates to us what is pleasure and what is pain. #39
 
+-(genitals)
 /perform idle_hand_on_hip aroused 75
 {hasPenis: Cup your cock|Spread your pussy} and present it to me. #40
+
++ [pose:present_genitals] -> Treat_GoodJob ->
++ [timeout] -> Treat_Timeout -> genitals
+
 
 - (sore)
 /perform idle_skeptical amused 55
@@ -162,17 +168,17 @@ Is it sore? #41
     /perform do_smooth_skirt amused 65
     I thought so. #42
 
-    /perform react_laugh amused 45
+    /perform talk_one_finger amused 45
     Well, you had better get used to the feeling. #43
 
-    /perform do_snap_fingers excited 55
+    /perform do_snap_fingers aroused 55
     It's going to be used <i>a lot</i>. #44
 
 + [no]
     /perform react_chuckle amused 55
     Good. #45
 
-    /perform do_snap_fingers excited 65
+    /perform do_snap_fingers aroused 65
     Because it's going to be used <i>a lot</i>. #46
 
 + [timeout] -> Treat_Timeout -> sore
@@ -182,6 +188,8 @@ Is it sore? #41
 -
 /perform idle_skeptical happy 65
 I know your ass has not been tested yet. #47
+
+/perform talk_lean_forward aroused 80
 But it will. #48
 
 - (ass)
@@ -192,10 +200,10 @@ Let me see it. Turn around and spread your ass. #49
 + [timeout] -> Treat_Timeout -> ass
 
 
-- /perform talk_lean_forward excited 55
+- /perform talk_lean_forward amused 55
 Yes. Very nice. #50
 
-/perform react_thankful excited 75
+/perform react_thankful aroused 75
 I can tell already that it will be very popular around here. #51
 
 - (play)
@@ -220,7 +228,7 @@ Do you enjoy having your ass played with? #52
 
 
 - (chest)
-/perform do_snap_fingers excited 65
+/perform do_snap_fingers amused 65
 Turn back around and show me your chest. #57
 
 + [pose: present_chest]
@@ -234,7 +242,7 @@ Very pleasing. #58
 I'm sure those tight nubs will be toyed with often. #59
 
 - (excite)
-/perform react_excited excited 75
+/perform talk_consider skeptical 75
 Does that idea excite you? #60
 
 + [yes]
@@ -336,9 +344,11 @@ Now... I'm sure you are expected elsewhere. #83
 /perform do_blow_kiss happy 75
 You can come see me anytime you need someone to take care of you. #84
 
-/perform idle_swaying aroused 65
+/perform idle_swaying amused 65
 I can help you relax, #85
 get into the right headspace, #86
+
+/perform tease_caress_breasts aroused 75
 or soothe you after a hard session. #87
 
 - (visit)
@@ -349,7 +359,7 @@ Will you visit me soon? #88
     /perform react_thankful happy 65
     I look forward to it. #89
 
-    /perform talk_thoughtful excited 65
+    /perform talk_thoughtful aroused 65
     Come to my room when you are ready. #90
     -> exit
 

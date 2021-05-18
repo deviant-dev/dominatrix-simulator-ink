@@ -8,6 +8,8 @@
 /music entry
 /ambient none
 
+/log Starting game intro.
+
 + [wait:6] -> verify_age
 
 

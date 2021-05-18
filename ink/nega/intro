@@ -21,11 +21,11 @@
 ~ temp cameFromHub = current_mistress == None
 ~ setScene(intro_scene, Nega, "nega_intro", -> nega_intro)
 
-/scene Attic.Approach
+/scene Attic.Hub
 /music nega
 /ambient howling-wind
 
-+ [move: Nega]
++ [move:Approach]
 
 - /scene Attic.Ready
 /character nega
@@ -55,7 +55,7 @@
 //play some kind of dischordant sound when the player enters?
 = start
 
-/perform idle_bored amused 45
+/perform idle_skeptical amused 45
 Don't worry, pretty {player_name}. #01
 Expect that to happen once in a while. #02
 
@@ -74,7 +74,7 @@ You could think of them as ... #05
 /perform react_dismissive skeptical 75
 You'll get used to it. #07
 
-- /perform idle_bored aroused 70
+- /perform idle_skeptical aroused 70
 I pulled in a little favor to make sure #08
 that kiss-ass Yuki wasn't paying attention. #09
 
@@ -222,7 +222,7 @@ TODO: Support 'wiggle' action
 // + [no] -> CheckIfInterested -> stand_straight
 
 - (check_reward)
-/perform talk_question amused 35
+/perform do_tap_wrist amused 35
 Now. You have something I want. #38
 
 /perform talk_one_finger happy 45
@@ -254,7 +254,7 @@ Do you want to try your luck? #45
     /perform do_fist_pump excited 65
     That's right. #46
 
-    /perform do_tap_wrist happy 40
+    /perform react_point_at_player_angry happy 40
     You're going to give me that lovely little Bloodstone. #47
 
     /perform talk_lean_forward aroused 75

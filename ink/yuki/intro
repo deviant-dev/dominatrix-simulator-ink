@@ -372,7 +372,7 @@ You'd have so much more fun if you bent the rules now and then. #59
 /character nega
 /lookat player
 
-/perform idle_bored amused 40
+/perform idle_skeptical amused 40
 So. You're the new one, huh? #60
 
 -(nega_ask_again)
@@ -609,7 +609,7 @@ Have you figured out what's going on here yet? #76
     /lookat yuki
     Oh fine, party pooper! #84
 
-    /character yuki do_throat_cut angry 90
+    /character yuki idle_unhappy angry 90
     /lookat nega
 
     /character nega talk_lean_forward aroused 60
@@ -668,8 +668,12 @@ Let's find out. Shall we? #89
 Behave, Nega!  #93
 /perform idle_unhappy angry 70
 
-/character nega caress_genitals aroused 50
+TODO Test this in Unity. Nega stops caressing fro some reason here.
+
+/character nega
 /lookat player
+/perform caress_genitals aroused 50
+
 That's it... #94
 
 /emotion aroused 70
@@ -821,6 +825,8 @@ You already have a punishment for sneaking into the Goddess's bed chambers. #126
 /perform react_chuckle amused 60
 Naughty {player_name}. #127
 
+/wait
+
 /perform do_bouncing_little aroused 65
 The Headmistress will take care of that! #128
 
@@ -846,7 +852,7 @@ Okay! That's all I have for now. #133
 /perform do_snap_fingers excited 55
 Hurry up!  #134
 
-/perform do_you_leave happy 65
+/perform do_you_leave_right happy 65
 The Headmistress doesn't like to be kept waiting. #135
 
 /perform react_point_at_player_angry scared 80
@@ -966,7 +972,7 @@ Time to get a taste of your first punishment. #166
 /emotion amused 50 40
 Better get your ass to the Headmistress. #167
 
-/perform do_you_leave angry 50
+/perform do_you_leave_right angry 50
 She doesn't like to be kept waiting. #168
 
 ~ tutorial_step = at_hm_intro

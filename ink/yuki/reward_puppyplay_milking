@@ -46,7 +46,7 @@ Would you like that, {player_name}? #04
 
 = scene_setup
 /scene atrium.close
-/music yuki-reward
+/music yuki-reward-prelude
 /ambient off
 /character yuki
 ->->
@@ -230,7 +230,7 @@ Are you uncomfortable having me masturbate you? #33
 
 
 = begin
-
+/music yuki-reward
 I think puppy might just be ready for the best part! #40
 
 But, before I give it to you... #41
@@ -394,6 +394,7 @@ Time to cum for me. #173
 /wait 3
 
 /perform yuki_kneel happy 65
+/music yuki-reward-climax
 Such a good {player_name}. #175
 /wait 2
 Take some nice deep breaths and relax. #54

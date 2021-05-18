@@ -2,18 +2,16 @@
 //players who complete an entire session earn a reward
 // players who exit a session early earn a punishment
 
-//when players come to visit her, she asks them what type of session they are there fore 
+//when players come to visit her, she asks them what type of session they are there fore
 //UI on the screen displays their options: sex therapy, aftercare, hyponosis, meditation or a task
-//Medition = therapeutic domming sessions and any new ones created
-//Tasks = cleaning her office, rubbing her feet, etc.
-//Sex Therapy = displayers UI options for type of help they want: how to pleasure a woman, how to pleasure a man, anal stretching, etc 
+//Meditation = therapeutic domming sessions and any new ones created
+//Service = cleaning her office, rubbing her feet, etc.
+//Sex Therapy = displayers UI options for type of help they want: how to pleasure a woman, how to pleasure a man, anal stretching, etc
 //Aftercare = head stroked, cuddled, or otherwise comforted and praised
 
 === treat_hub ===
 
 -> select_gender_check ->
-
-{treat_intro == false: -> treat_intro }
 
 ~ setHub(Treat, "treat_hub", -> treat_hub)
 /scene none
@@ -22,9 +20,8 @@
 /ambient treat
 /character treat
 
-- /notify title="Ms. Treatment's Hub" text="This is a placeholder. You negotiate a scene with the Mistress here.<br/><br/>Kinks:<br/>Hypnotherapy<br/>Sex Therapist<br/>Aftercare" 
-
-+ [move] -> apology_check(-> hello, -> exit)
++ [move:Exit] -> exit
++ [move:Approach] -> apology_check(-> hello, -> exit)
 
 
 = hello
@@ -32,33 +29,22 @@
 /wait
 
 { treat_regard >= 10:
-    << Hello favored subject. >>
+  /perform react_thankful happy 65
+    It's nice to see you again, {player_name}. #01
 - else:
-    << Hello subject. >>
+  /perform talk_consider skeptical 55
+    Come in, {player_name}. #02
+}
+
+/perform talk_behold happy 45
+{shuffle:
+    - This is a safe space. #03
+    - Welcome to my sanctum of healing. #04
+    - Your mental well-being is my priority. #05
 }
 
 {
-    - treat_regard < 10: -> check_session
-    - punishments > 0: -> check_punishment
-    - rewards >= 10: -> check_reward_mega
-    - rewards > 0 : -> check_reward
-    - else: -> check_task
-}
-
-
-= check_session
-
-<< Are you here for a session? >>
-
-+ [yes] -> choose_session
-+ [no]
-
-- << That's a shame. >>
-
-{
-    - treat_regard < 10:
-        << Perhaps if you visit me more often, we could do more. >>
-        -> goodbye
+    - treat_regard < 10: -> check_task
     - punishments > 0: -> check_punishment
     - rewards >= 10: -> check_reward_mega
     - rewards > 0 : -> check_reward
@@ -69,34 +55,66 @@
 = check_punishment
 
 /character treat
-<< Are you here to pay your punishment? >>
+
+{shuffle:
+
+
+- /perform talk_one_finger skeptical 55
+I see you've been getting into trouble. #42
+   We all struggle, now and then. #43
+
+   /perform do_inspect amused 45
+   I know you'll do better. #44
+
+- /perform do_tap_wrist skeptical 55
+  It looks like you have a punishment to pay off. #55
+
+  /perform talk_annoyed sad 55
+  It is unfortunate; but they help you learn from your mistakes. #56
+}
+
+/perform idle_unhappy skeptical 65
+Are you here to pay your punishment? #06
 + [yes] -> choose_punishment
 + [no]
 
-- << No? >>
+- /perform talk_lean_forward angry 70
+No? #40
 
 {
     - punishments < 10 && rewards < 10:
         -> check_task
     - punishments >= 10:
-        << You have too many punishments for a task, I'm afraid. >>
+        /perform react_disappointed sad 55
+        You have too many punishments for a task, I'm afraid. #07
     - rewards >= 10:
-        << You have too many rewards for a task, I'm afraid. >>
+        /perform react_disappointed sad 55
+        You have too many rewards for a task, I'm afraid. #08
         {punishments > 1:
-            << Pay off those punishments and you might get a big reward. >>
+            /perform do_inspect skeptical 65
+            Pay off those punishments and you might get a big reward. #09
         - else:
-            << Pay off that punishment and you might get a big reward. >>
+           /perform do_tap_wrist amused 45
+          {shuffle:
+            -  Pay off that punishment and you might get a big reward. #10
+            -  Pay off that punishment and you could get a big reward. #58
+          }
         }
 }
 
-- << Don't you want to pay off a punishment? >>
+/perform idle_pleased happy 65
+{shuffle:
+-  Don't you want to pay off a punishment? #41
+-  Don't you want to pay off that punishment? #11
+}
 
 + [yes] -> choose_punishment
 + [no]
 
 -
 {inChastity == false:
-    << FYI: The Goddess can remove all of those punishments if you go into chastity. >>
+    /perform talk_thoughtful amused 45
+    The Goddess can remove all of those punishments if you go into chastity. #12
 }
 
 -> goodbye
@@ -105,23 +123,44 @@
 
 = check_reward_mega
 
-<< Full band of rewards, huh? >>
+/perform idle_pleased excited 80
+{shuffle:
+-  You have earned a full band of rewards, I see. #13
+-  You've shown such restraint, saving up all those bloodstones. #45
+}
 
+- /perform idle_sassy amused 65
+What a good {player_name} you are. #46
+I'm so proud of you, for behaving so well. #47
 
 {treat_regard < 10:
-    << It's too bad you haven't pleased me more or I might have something special for you. >>
-    << But I can still give you a reward if you spend just one. >>
+  /perform idle_bored sad 45
+    {shuffle:
+    -  It's too bad you haven't pleased me more, or I might have something special for you. #14
+    -  It's too bad you haven't pleased me more, I have something special waiting for you. #48
+  }
+
+    /perform talk_lean_forward happy 65
+    But I can still give you a reward if you spend just one. #15
     -> check_reward
 }
 
 {inChastity:
-    << Too bad you are in chastity or we could truly enjoy ourselves. >>
+    /perform talk_lean_forward sad 75
+    Too bad you are in chastity or we could truly enjoy ourselves. #16
     -> check_reward
 }
 
-<< And you've pleased me quite a lot. >>
-<< Give me all 10 and I'll see you get something very special indeed. >>
-<< Would you like that? >>
+/perform do_smooth_skirt amused 60
+And you've pleased me quite a lot. #17
+
+/perform do_hand_out excited 45
+{shuffle:
+-  Give me all 10 and I'll see you get something very special indeed. #18
+-  If you turn in all 10, I will give you something very special. #49
+}
+/perform idle_pleased excited 65
+Would you like that? #19
 
 + [yes] -> choose_reward_mega
 + [no] -> check_reward
@@ -129,30 +168,50 @@
 
 = check_reward
 
-/character treat
-<< Are you here to receive your reward? >>
+/perform talk_consider happy 45
+I can see that you're behaving yourself! #50
+
+/perform do_arm_raise happy 50
+That's excellent! #51
+
+/perform idle_clasp_hands happy 55
+Are you here to receive your reward? #20
 
 + [yes] -> choose_reward
 + [no]
 
-- << No? >>
+- /perform talk_lean_forward angry 70
+No? #40
 
 {
     - rewards < 10:
         -> check_task
 
     - rewards >= 10:
-        << You have too many rewards for a task. >>
-        << Indulge yourself before performing any more tasks. >>
+    /perform react_disappointed sad 55
+        -  You have too many rewards for a task. #21
+}
+/perform do_shoo_player angry 35
+{shuffle:
+        -  Indulge yourself before performing any more tasks. #22
+        -  You should go induldge yourself, before performing any more tasks. #59
 }
 
-<< Would you like to indulge yourself? >>
+/perform idle_hand_on_hip amused 45
+Would you like to indulge yourself? #23
 + [yes] -> choose_reward
 + [no]
 
-- << Perhaps you are saving those for someone special. >>
+/perform do_inspect skeptical 65
+{shuffle:
+- Perhaps you are saving those for someone special. #24
+- Perhaps you are saving those for someone special? #60
+}
+
+
 { inChastity:
-    << FYI: See the Goddess about having that chastity device. >>
+  /perform talk_gesture amused 45
+    To enjoy pleasure, see the Goddess about having that chastity device removed. #25
 }
 
 -> goodbye
@@ -160,28 +219,64 @@
 
 = check_task
 
-{ punishments == 0 && rewards == 0:
-    << No rewards or punishments, huh? >>
-    << You must be here to do a task. >>
+{ punishments == 0 && rewards == 0 && treat_regard >= 10:
+
+/perform talk_consider amused 5
+{shuffle:
+    -  So, a clean slate. #52
+       No rewards or punishments? #53
+
+    -  You have no rewards or punishments. #26
+
+}
+
+/perform talk_question skeptical 55
+{shuffle:
+
+  -  Are you here for a session, then? #54
+
+  //- You must be here for a session? #27
+
+}
+
 - else:
-    << Shall I give you a task then? >>
+  /perform react_thankful skeptical 60
+    Would you like to have a session with me? #28
 }
 
-+ [yes] -> choose_task
-+ [no] -> goodbye
+/perform idle_hand_on_hip skeptical 40
+
++ [yes]
+    -> Treat_AcknowledgeYes ->
+    -> choose_task
++ [no]
 
 
-= choose_session
+- /react_whatever sad 45
+That's a shame. #29
 
-<< Time for your treatment. >>
-{ shuffle:
-    - -> treat_session_subdrop
+{ treat_regard < 10:
+  /perform talk_lean_forward skeptical 50
+    Perhaps if you visit me more often, we could do more. #30
 }
 
+-> goodbye
+
+
+= choose_task
+
+/perform do_snap_fingers happy 50
+{shuffle:
+  - Then let's get started. #31
+  - Let's get started then. #36
+}
+
+-> select_session
 
 = choose_punishment
 
-<< Time to punish you, then. >>
+- /perform do_smooth_skirt angry 50
+Time to punish you, then. #32
 
 { shuffle:
     - -> treat_punishment_placeholder
@@ -189,8 +284,10 @@
 
 
 = choose_reward_mega
-
-<< Let's get intimate. >>
+- /perform talk_emphatic_one_hand excited 35
+I am very excited for you, {player_name}. #33
+//We are going to enjoy some intimacy. #34
+We get to have some special one-on-one time. #57
 
 {shuffle:
     - -> treat_rewardmega_placeholder
@@ -199,25 +296,60 @@
 
 = choose_reward
 
-<< Time to reward you, then. >>
+- /perform react_thankful happy 45
+I enjoy rewarding you, {player_name}. #35
 
 {shuffle:
     - -> treat_reward_placeholder
 }
 
 
-= choose_task
-
-{ shuffle:
-    - -> treat_task_placeholder
-}
-
-
 = goodbye
-<< I have nothing for you. >>
-<< You may go. >>
+- /perform do_shake_finger_stern sad 45
+I have nothing for you today. #37
+You may go. #38
 /wait
 -> exit
+
+
+= select_session
+/scene Hell.SessionSelect
+/perform talk_behold
+/character Treat
+/music treat
+
+// NOTE: Care selection UI is built into the scene.
+- /perform idle_hand_on_hip skeptical 35
+What type of session would you enjoy? #39
+
++ [Submissive Headspace]
+    ~ treat_session_reminders = 0
+    -> treat_session_subdrop
+
++ [Meditation] -> meditation_session
+
++ [Service]
+    ~ treat_session_reminders = 0
+    -> treat_task_placeholder
+
+= meditation_session
+
++ [Comfort]
+    ~ treat_session_reminders = 0
+    -> treat_care.comfort
+
++ [Grief]
+    ~ treat_session_reminders = 0
+    -> treat_care.grief
+
++ [Inner Strength]
+    ~ treat_session_reminders = 0
+    -> treat_care.inner_strength
+
++ [Self Care]
+    ~ treat_session_reminders = 0
+    -> treat_care.self_care
+
 
 
 

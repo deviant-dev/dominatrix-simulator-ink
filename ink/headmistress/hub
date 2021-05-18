@@ -24,7 +24,8 @@
 /ambient none
 /character headmistress idle_clasp_hands amused 45
 
-+ [move] -> apology_check(-> hello, -> exit)
++ [move:Exit] -> exit
++ [move:Approach] -> apology_check(-> hello, -> exit)
 
 
 = hello
@@ -240,7 +241,7 @@ How restrained. #11
 /character headmistress react_resigned sad 70
 Then I have nothing for you. #18
 
-/perform do_you_leave disgusted 65
+/perform do_you_leave_right disgusted 65
 Begone. #19
 /wait 1
 

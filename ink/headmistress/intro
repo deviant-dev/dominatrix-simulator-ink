@@ -107,7 +107,7 @@ Another new procurement, I see. #16
 And once again, I have not been appropriately notified #17
 
 /perform react_shake_head_disbelief disgusted 60
-of an addition to Her collection. #18
+of an addition to <i>Her</i> collection. #18
 
 /perform react_disappointed angry 55
 Another careless oversight in Yuki's fervent attempts to please, no doubt. #19
@@ -149,7 +149,7 @@ Do you know who I am? #22
 As the Headmistress, I oversee the training #29
 
 /perform talk_lean_forward aroused 45
-and correction of all slaves in <i>this</i> house. #30
+and correction of all slaves in <i>this</i> House. #30
 
 /perform idle_unhappy skeptical 50
 Understood? #31
@@ -228,7 +228,7 @@ Stand at attention! #57
 /perform talk_emphatic_one_hand angry 40
 Atonement and adjustment are required. #46
 
-/perform react_point_at_player_angry angry 50
+/perform talk_one_finger angry 50
 This must be immediate. #47
 
 /perform talk_one_finger skeptical 65

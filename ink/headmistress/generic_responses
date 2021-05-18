@@ -43,7 +43,7 @@
     // GoodJob with audience.
     - {headmistress_has_audience:
             /perform idle_skeptical amused 45
-            Slaves in this House must be pleasing to Her. #03
+            Slaves in this House must be pleasing to <i>Her</i>. #03
         - else:
             -> Headmistress_GoodJob
       }
@@ -828,6 +828,6 @@ I have no time for your shenanigans. #222
 
 = out_heathen
 
-/character headmistress do_you_leave angry 80
+/character headmistress do_you_leave_right angry 80
 
 -> exit

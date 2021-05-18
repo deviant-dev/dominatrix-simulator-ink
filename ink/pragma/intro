@@ -7,9 +7,11 @@
 
 -/notify title="The Divine Engine Pragma's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Dehumanization<br/>Mind Games<br/>Fucking Machines"
 
-+ [move]
++ [move:Exit] -> exit
++ [move:Approach]
 
--/notify title="The Divine Engine Pragma's Intro Completed." text="Returning to the entry."
+- (start)
+/notify title="The Divine Engine Pragma's Intro Completed." text="Returning to the entry."
 
 /wait 5
 ~ pragma_intro_complete = true

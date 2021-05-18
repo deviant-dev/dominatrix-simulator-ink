@@ -1,0 +1,26 @@
+=== yuki_reward_cunnilingus ===
+-> select_gender_check ->
+~ setScene(reward_scene, Yuki, "yuki_reward_cunnilingus", -> yuki_reward_cunnilingus)
+-> scene_setup ->
+
+/perform cun_couch_idle
+
++ [minigame:success] -> exit
+
+
+= scene_setup
+/scene atrium.cunnilingus
+/music yuki-reward
+/ambient none
+/character yuki
+->->
+
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+
+= gave_reward
+/notify title="Mistress Yuki-Onna's Mega-Reward" text="ou received your big reward. Returning to entry."
+/wait 5
+-> exit

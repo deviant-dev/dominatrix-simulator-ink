@@ -6,9 +6,11 @@
 /ambient caliste
 /character caliste
 
--/notify title="Priestess Caliste's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Ritualism<br/>Dark Magic<br/>Tantric Sex"
+- (start)
+/notify title="Priestess Caliste's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Ritualism<br/>Dark Magic<br/>Tantric Sex"
 
-+ [move]
++ [move:Exit] -> exit
++ [move:Approach]
 
 -/notify title="Priestess Caliste's Intro Completed." text="Returning to the entry."
 /wait 5

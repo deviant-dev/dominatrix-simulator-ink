@@ -5,6 +5,8 @@
 
 = intro
 
+/music headmistress-hand-signals-intro
+
 - (intro_again)
 /perform talk_behold excited 65
 The time has come to accelerate your performance, heathen. #01
@@ -59,6 +61,8 @@ Come hither. #09
 
 TODO: This line is repetative "the time has come". Would be good to redo this VO line with a different beginning.
 - /scene TheatreOpen.Ready
+/music headmistress-hand-signals-kneel
+
 /perform talk_behold excited 50
 The time has come to train you to respond to commands without words. #10
 
@@ -323,7 +327,7 @@ Face me, foible. #66
 -> Headmistress_Unhappy ->
 I have misjudged your readiness. #06
 ~ addPunishment()
-/perform do_you_leave skeptical 30
+/perform do_you_leave_right skeptical 30
 Return when you are further molded. #07
 -> exit
 

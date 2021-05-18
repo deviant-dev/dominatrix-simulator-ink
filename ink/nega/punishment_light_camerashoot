@@ -125,7 +125,7 @@ Did you enjoy it? #23
     /perform talk_lean_forward angry 50
     and hide in Yuki's skirts. #27
 
-    /perform idle_nega sad 70
+    /perform idle_skeptical sad 70
     Are you a pathetic bitch who wants to leave? #28
 
     ++ [yes]
@@ -147,7 +147,7 @@ Did you enjoy it? #23
  + [distracted] -> Nega_PayAttention -> enjoy
 
 
-- /perform idle_nega
+- /perform idle_skeptical
 You're going to be my little camera bitch. #33
 
 - ~task_count = 0
@@ -211,7 +211,7 @@ Reach up and give 'em a <i>good</i> squeeze! #39
 ->->
 
 = ass
-/perform idle_camera digusted 35
+/perform idle_camera disgusted 35
 Turn around, bend over and present your ass to me! #42
 
 + [pose:present_ass_reverse]

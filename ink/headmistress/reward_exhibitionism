@@ -15,6 +15,7 @@ VAR embarrassed = false
     - You will have the reward of masturbating for your audience, {isBoy: runt|moppet}. #03
 }
 /perform do_arm_raise
+/music headmistress-reward-prelude
 /character crowd cheers_loud
 ~ Headmistress_RaiseCurtains()
 
@@ -176,13 +177,56 @@ Do you tremble with nervous embarrassment, foible? #20
 + [timeout] -> Headmistress_Timeout -> nervous_tease
 + [distracted] -> Headmistress_PayAttention -> nervous_tease
 
+= ready
+
+/wait 
+/character headmistress talk_behold happy 50
+Are you ready, {isBoy: toad|strumpet}? #62
+
+/perform idle neutral
+
++ [yes]
+    /character crowd cheers_short
+    /character headmistress react_head_toss_casual
+    Exquisite. #63
+    
+    
++ [no]
+    /character crowd gasps
+    /character headmistress talk_question skeptical 50
+    We have a delay! #64
+    
+    -> Headmistress_CheckIfInterested -> ready
+    
++ [timeout] -> Headmistress_Timeout -> ready
++ [distracted] -> Headmistress_PayAttention -> ready
+
+- (give_reward)
+
+/character Headmistress do_hand_out neutral
+{shuffle:
+    - Time to turn over your Bloodstone, speck. #65
+    - Present your wrist that I may remove your Bloodstone. #66
+    - Thrust your wrist forward to spend one of your Bloodstones. #67
+}
+
+/perform idle neutral
+
++ [pose:present_wrist_reward]
++ [no] -> Headmistress_CheckIfInterested -> give_reward
++ [timeout] -> Headmistress_NoAction -> give_reward
++ [distracted] -> Headmistress_PayAttention -> give_reward
+
+- /perform do_swipe_hand happy 50
+-> Headmistress_AcknowledgeYes->
+~ removeReward(-> load_gave_reward)
+--> prepare
 
 = load_gave_reward
 /scene TheatreOpen.Ready
-/music headmistress
+/music headmistress-reward-prelude
 /ambient crowd
 -> prepare
-
 
 = prepare
 
@@ -296,50 +340,6 @@ Do you understand, {isBoy: simpleton|ninny}? #47
 
 -> begin
 
-= ready
-
-/wait 
-/character headmistress talk_behold happy 50
-Are you ready, {isBoy: toad|strumpet}? #62
-
-/perform idle neutral
-
-+ [yes]
-    /character crowd cheers_short
-    /character headmistress react_head_toss_casual
-    Exquisite. #63
-    
-    
-+ [no]
-    /character crowd gasps
-    /character headmistress talk_question skeptical 50
-    We have a delay! #64
-    
-    -> Headmistress_CheckIfInterested -> ready
-    
-+ [timeout] -> Headmistress_Timeout -> ready
-+ [distracted] -> Headmistress_PayAttention -> ready
-
-- (give_reward)
-
-/character Headmistress do_hand_out neutral
-{shuffle:
-    - Time to turn over your Bloodstone, speck. #65
-    - Present your wrist that I may remove your Bloodstone. #66
-    - Thrust your wrist forward to spend one of your Bloodstones. #67
-}
-
-/perform idle neutral
-
-+ [pose:present_wrist_reward]
-+ [no] -> Headmistress_CheckIfInterested -> give_reward
-+ [timeout] -> Headmistress_NoAction -> give_reward
-+ [distracted] -> Headmistress_PayAttention -> give_reward
-
-- /perform do_swipe_hand happy 50
--> Headmistress_AcknowledgeYes->
-~ removeReward(-> load_gave_reward)
---> prepare
 
 
 = begin
@@ -348,8 +348,10 @@ Are you ready, {isBoy: toad|strumpet}? #62
 
 + [yes]
 
-- /character headmistress idle_clasp_hands neutral
--> Headmistress_AcknowledgeYes ->
+- 
+/music headmistress-reward
+/character headmistress idle_clasp_hands neutral
+
 
 You may {hasPenis: wrap your hand around your rod|slip your fingers between your nether lips} and reward yourself. #68
 
@@ -455,6 +457,7 @@ You may {hasPenis: wrap your hand around your rod|slip your fingers between your
 + [timeout] -> reminder
 
 - (praise)
+/music headmistress-reward-prelude
 /character headmistress talk_behold happy 75
 - {shuffle:
     - Such a bold performance, foible! #79
@@ -488,12 +491,12 @@ Did you enjoy yourself? #81
     
 -
 {inTutorial: 
-    /perform do_you_leave neutral
+    /perform do_you_leave_right neutral
     I give you leave to... #86
     -> surprise_interrupt
 }
 
-/perform do_you_leave neutral
+/perform do_you_leave_right neutral
 I give you leave to depart. #87
 /character crowd cheers
 

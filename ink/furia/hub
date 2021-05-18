@@ -2,7 +2,7 @@
 
 -> select_gender_check ->
 
-{furia_intro == false: -> furia_intro }
+{furia_intro.start == false: -> furia_intro }
 
 ~ setHub(Furia, "furia_hub", -> furia_hub)
 /scene none
@@ -14,7 +14,8 @@
 
 - /notify title="Enforcer Furia's Hub" text="This is a placeholder. You negotiate a scene with the Mistress here.<br/><br/>Kinks:<br/>Interrogation<br/>Electro Play<br/>Degradation"
 
-+ [move] -> apology_check(-> hello, -> exit)
++ [move:Exit] -> exit
++ [move:Approach] -> apology_check(-> hello, -> exit)
 
 
 = hello

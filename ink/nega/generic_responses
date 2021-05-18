@@ -165,17 +165,23 @@
     -{inPosition: /emotion amused 50 | /perform do_inspect amused 55}
     Maybe you aren't a waste of time. #03
 
-    // - Good.
+    - /emotion happy 50
+    Good. #01
 
-    // - That's right.
+    - /emotion happy 50
+    That's right. #02
 
-    // - I thought so.
+    - /emotion aroused 50
+    I thought so. #04
 
-    // - Of course you'd say that.
+    - /emotion amused 50
+    Of course you'd say that. #06
 
-    // - Duh.
+    - /emotion amused 50
+    Duh. #07
 
-    // - Oh yah.
+    - /emotion amused 50
+    Oh yah. #08
 
 }
 
@@ -811,6 +817,9 @@ Does that feel good whore? #04
 -> DoComment(true)
 
 = Photo 
+-> DoComment(true)
+
+= Squatting
 -> DoComment(true)
 
 = DoComment(inPosition)
