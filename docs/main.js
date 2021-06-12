@@ -143,6 +143,11 @@
             // Create paragraph element (initially hidden)
             var paragraphElement = document.createElement('p');
             paragraphElement.innerHTML = paragraphText;
+
+            if (paragraphText.startsWith("/"))
+                paragraphElement.classList.add("command");
+
+
             storyContainer.appendChild(paragraphElement);
 
             // Add any custom classes derived from ink tags
@@ -151,7 +156,7 @@
 
             // Fade in paragraph after a short delay
             showAfter(delay, paragraphElement);
-            delay += 200.0;
+            delay += delay > 4000 ? 50 : 200.0;
         }
 
         // Create HTML choices from ink choices

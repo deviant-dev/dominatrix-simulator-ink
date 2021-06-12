@@ -37,6 +37,10 @@ h2 {
     padding-bottom: 3em;
 }
 
+.command {
+    color: #DDD;
+}
+
 /*
   Built-in class:
     # author: Name
@@ -259,4 +263,8 @@ body.dark {
 
 .dark #controls {
     background: black;
+}
+
+.dark .command {
+    color: #222
 }
