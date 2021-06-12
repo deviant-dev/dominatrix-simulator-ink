@@ -39,6 +39,9 @@ h2 {
 
 .command {
     color: #DDD;
+    margin: 0;
+    padding: 0;
+    font-family: 'Consolas', monospace;
 }
 
 /*
@@ -266,5 +269,5 @@ body.dark {
 }
 
 .dark .command {
-    color: #222
+    color: #333
 }
