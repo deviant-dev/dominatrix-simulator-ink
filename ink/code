@@ -343,6 +343,9 @@
 ~ scene_name = name
 ~ checked_if_interested = false
 ~ resetObeyed()
+~ has_plug = false
+~ has_gag = false
+~ wants_cei = false
 
 ~ temp mistressName = "{mistress}"
 

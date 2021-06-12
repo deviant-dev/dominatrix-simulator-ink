@@ -63,10 +63,10 @@ VAR demerits = 0
 { rewards > 0:
     -> reward
 
-    - else:
-        /perform react_scoffs disgusted 75
-        No Bloodstone treats for me, hmm? Not interested. #07
-        -> exit
+- else:
+    /perform react_scoffs disgusted 75
+    No Bloodstone treats for me, hmm? Not interested. #07
+    -> exit
 }
 
 = reward

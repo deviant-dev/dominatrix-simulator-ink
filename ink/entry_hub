@@ -35,6 +35,7 @@
 + [move: Angel] -> angel_hub
 + [move: Treat] -> treat_hub
 + [move: Caliste] -> caliste_hub
++ [move: Credits] -> game_outro
 
 
 = tutorial_entry
@@ -43,10 +44,10 @@
     - tutorial_step == at_yuki_intro: -> move_yuki_intro
     - tutorial_step == at_hm_intro: -> move_headmistress
     - tutorial_step == at_nega_intro || tutorial_step == at_hm_bonus: -> move_headmistress_or_nega
-    - tutorial_step == at_goddess_outro: -> game_outro
+    - tutorial_step == at_goddess_outro: -> normal_entry
     - else:
         /logError Shouldn't be in the entry at this point. Skipping to entry.
-        -> game_outro
+        -> normal_entry
 }
 
 

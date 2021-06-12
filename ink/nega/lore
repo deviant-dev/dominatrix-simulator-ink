@@ -2,8 +2,9 @@
 === nega_lore ===
 
 // If we've heard the last lore, then don't say anything else here.
-{negaLoreEmpty(): ->->}
+{negaLoreEmpty(): -> exit }
 
+/perform idle_fake_annoyed
 Since you've been so good, I'll tell you a little bit about the House. #01
 { once:
     - -> lore01 ->
@@ -11,13 +12,14 @@ Since you've been so good, I'll tell you a little bit about the House. #01
     - -> lore03 ->
 }
 
-->->
+-> exit
 
 = lore01
+
 /perform react_scoffs angry 75
 Those fucking bitches thought they could keep me away forever. #02
 
-/perform idle_sassy disgusted
+/perform idle_sassy amused 50
 But jokes on them. #03
 /emotion happy 50
 I've got a new ally now. #04
@@ -36,36 +38,39 @@ And you're a good little piggy who wants to please me. #08
 Isn't that right? #09
 
  +[yes]
-  ~ addObey()
+    ~ addObey()
     /perform do_rub_hands_together happy 75
     Good little, piggy. #10
     /emotion disgusted 75
     Don't fucking forget what I want. #12
-    
+    ->->
+
 + [no]
-    ~ addObey()
+    ~ addDisobey()
     /perform react_shake_head_disbelief angry 50
-   --> Nega_Unhappy ->
+   -> Nega_Unhappy ->
    You're here, aren't you? #13
    No more pretty little Bloodstone on your wrist. #14
    So, try again. #15
-   
-    
+   -> piggy
+
 + [timeout] 
     /perform talk_question disgusted 75
     Well? #11
     -> piggy
 
- + [distracted] -> Nega_PayAttention -> piggy
- 
-->->
++ [distracted] -> Nega_PayAttention -> piggy
+
+- ->->
 
 = lore02
-<< Inster Lore01 Here >>
+<< Insert Lore01 Here >>
+/wait 3
 ->->
 
 = lore03
-<< Inster Lore01 Here >>
+<< Insert Lore01 Here >>
+/wait 3
 ->->
 
      

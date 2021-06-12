@@ -1,38 +1,336 @@
+TODO: all animations have been imported from another scene. They all need to be changed to sex_chair animations.
+
 === goddess_reward_serviced ===
 
-/scene bedroom.hub
+/scene Bedroom.UnspeakableIntro
 /music goddess
 /ambient none
 /character goddess
 
-+ [move:Approach]
+- /notify title="Player Avatar" text="For this prototype, you will be female with a vagina. Do you consent?"
 
-- /scene Bedroom.UnspeakableIntro
++ [yes]
 
-I want to watch my slave pleasure you.
+-
+/emotion amused 50
+Hello, little mouse. #01
+You've been good. #02
+I have a reward for you. #03
 
-<<< I want my slave here to play with you. Do you accept? >>>
+/emotion aroused 50
+I want to watch my slave service you. #04
 
-+ [yes] -> ready
+/perform idle_tease aroused
+If you please me with your responsiveness, #05
+I will let you watch me pleasure myself. #06
 
+/emotion amused 75
+Would you enjoy that, {player_name}? #07
+
++ [yes]
+    -> Goddess_AcknowledgeYes ->
+
+- /perform do_point_down skeptical 50
+Lay down before me. #08
+/perform idle_tease aroused 25
+Get into the proper position. #09
+
+- /notify title="<color=red>Pro Tip!</color>" text="For a more comfortable experience, grab a pillow to support your head! Your Goddess is watching you; the least you can do, is return the gesture." #note08
+
++ [yes]
+
++ [pose:lay_down_bent_knees]
+
+- Close your eyes and take a deep breath. #10
+
+-> ready
 
 = ready
 
 /scene Bedroom.UnspeakableReady
-<<< Lay back so I can watch my slave pleasure you. Ready? >>>
+/character goddess sex_chair_crosslegs_idle_left happy 50
+
+Very nice, {player_name}. #11
+I enjoy seeing you sprawled out before me. #12
+
+/emotion skeptical 25
+Open your eyes. #13
+
+/emotion aroused 25
+
+This slave is prized by me. #14
+/emotion aroused 50
+She is specially trained #15
+to manipulate your body. #16
+
+/emotion amused 50
+She will continue until you can stand no more. #17
+
+Are you ready, {player_name}? #18
 
 + [yes]
+    -> Goddess_AcknowledgeYes.Sex_Chair ->
 
-- /character slave yuki_milk_puppy_vagina
-<<< Ready to go faster? >>>
+- Begin girl. #19
+
+/character slave serviced_vagina_slow
+
+/character goddess sex_chair_crosslegs_idle_tease aroused 50
+I want to see that {hasPenis:rod|flower} grow nice and {hasPenis: firm|wet}. #20
+
+/emotion skeptical 50
+When you are close to orgasm, #21
+nod your head to ask for permission to cum. #22
+
+- (handjob)
+/emotion aroused 50
+-> RandomCommentLoopWithYes(-> serviced_comment, -> cum, 4, 6, 3, 5) ->
+
+-> Goddess_GoodJob.Sex_Chair ->
+
+-{shuffle:
+    --> question ->
+    --> command ->
+    }
+
+-{stopping:
+    - /character slave serviced_vagina_slow
+    - /character slave serviced_vagina_medium
+      /character goddess sex_chair_crosslegs_grind aroused 75
+    - /character slave serviced_vagina_fast
+      /character goddess sex_chair_openlegs_masturbate aroused
+    - {shuffle:
+        - /character slave serviced_vagina_slow
+        /character goddess sex_chair_openlegs_masturbate_fast
+        - /character slave serviced_vagina_medium
+        /character goddess sex_chair_openlegs_masturbate_fast
+        - /character slave serviced_vagina_fast
+        /character goddess sex_chair_openlegs_masturbate_fast
+    }
+}
+
+/character goddess
+
+-> handjob
+
+= cum
+/wait 3
+
+- {shuffle:
+    - Do you desire release, mouse? #23
+    - Are you pulsing with the need to orgasm, {player_name}? #24
+}
 
 + [yes]
+     -> orgasm
 
-- /character slave yuki_milk_puppy_vagina_fast
-<<< Say 'yes' to restart the scene and test again. >>>
++ [no]
+    What a tease. #25
+    She will continue #26
+    -> handjob
 
++ [timeout] -> Goddess_Timeout.Sex_Chair -> cum
 
-+ [yes] -> deviation_unspeakable_toy
+= orgasm
+
+/wait 2
+Ah yes! #27
+
+{shuffle:
+    - Let yourself go, little mouse. #28
+    - I give you leave to cum, {player_name}. #29
+}
+
+I will join you. #30
+/character goddess sex_chair_openlegs_orgasm
+
+//adjust wait for VO orgasm length
+- /wait 6
+
+/character goddess sex_chair_openlegs aroused 50
+Ripples of pleasure consume me, little mouse. #31
+// [heavy breathing]
+
+/wait 2
+
+- (finish)
+
+{stopping:
+    - Are you spent, {player_name}? #32
+    - Have you finished releasing, little mouse? #33
+}
+
++ [yes]
+   -> Goddess_AcknowledgeYes.Sex_Chair ->
+
++ [no]
+    A few moments more. #34
+     -- (reminder)
+    "Nod" your head when you are spent. #35
+
+    ++ [yes]
+    -> Goddess_AcknowledgeYes.Sex_Chair ->
+    --> praise
+
+    ++ [timeout 10] -> reminder
+
++ [timeout] -> reminder
+
+- (praise)
+/character slave serviced_idle
+/character goddess sex_chair_openlegs_idle_tease happy 75
+- {shuffle:
+    - I am quite pleased, {player_name}. #36
+    - A delightful performance, little mouse. #37
+}
+
+- (enjoy)
+Did you enjoy my girl's attentions? #38
+
++ [yes]
+    Mmm. You demonstrated quite the appreciation. #39
+
++ [no]
+    A pity. #40
+    Rewards should be enjoyed. #41
+
++ [timeout] -> Goddess_Timeout.Sex_Chair -> enjoy
+
 
 -
+/perform sex_chair_crosslegs_snap_right_fingers happy 25
+Your reward is over, little mouse. #42
+
+{deviation == unspeakable_toy:
+    One reward has been deducted from your wrist. #43
+    ~removeReward(-> entry_hub)
+}
+
+You may go. #44
+
 -> exit
+
+= question
+
+/wait 2
+/character goddess
+{shuffle:
+    - Do her fingers feel good, little mouse? #45
+    - I am a generous Goddess, am I not? #46
+    - Are you quivering with enjoyment, {player_name}? #47
+    - Do you like how my prized slave touches you? #48
+}
+
++ [yes]
+    -> Goddess_AcknowledgeYes.Sex_Chair ->
+
++ [no]
+    -> Goddess_Unhappy.Sex_Chair ->
+
++ [timeout] -> Goddess_Timeout.Sex_Chair -> question
+
+-->->
+
+= command
+/wait 2
+/character goddess
+{shuffle:
+    - Rock your hips with the motions, little mouse. #49
+    - Caress your body for me. #50
+    - Let me hear you moan in pleasure, {player_name}. #51
+    - Suck on your finger, little mouse. #52
+    - Rub and tease your nipples. #53
+    - Arch your back for me, little mouse. #54
+}
+
+->->
+
+= serviced_comment
+/character goddess
+{hasPenis:
+    { shuffle:
+        - -> pleasure_comments ->
+        - -> arousal_comments ->
+        - -> penis_comments ->
+    }
+    - else:
+    { shuffle:
+        - -> pleasure_comments ->
+        - -> arousal_comments ->
+        - -> vagina_comments ->
+    }
+}
+
+->->
+
+= pleasure_comments
+/character goddess
+{shuffle:
+    - That's it, little mouse. Wallow in it. #55
+    - She is so good at this. #56
+    - She's such a pleasure to watch work. #57
+    I'll have to enjoy her later. #58
+    - I do so love my little performances. #59
+    - There is nothing as satisfying as a House full of slaves. #60
+    - This is what you were made for, {player_name}. #61
+    - You belong to this House. #62
+    - Your body is mine, little mouse. #63
+    - You are a delight to behold. #64
+    - Pleasure becomes you. #65
+    - Maybe one of these days, #66
+    it will be me between those legs. #67
+    - I bet you wish those fingers were mine. #68
+    - -> Goddess_GoodJob.Sex_Chair ->
+    - -> Goddess_GoodJob.Sex_Chair ->
+    - -> Goddess_GoodJob.Sex_Chair ->
+    - -> Goddess_GoodJob.Sex_Chair ->
+}
+
+->->
+
+= arousal_comments
+/character goddess
+{shuffle:
+    - Oh. I am enjoying this. #69
+    - My skin tingles at the smell of sex in the air. #70
+    - Yes. Yes! #71
+    - Feed me, little mouse. #72
+    - Mmm. I can almost taste you on the air. #73
+    - The sight of you warms me. #74
+    - I love the feel of my hands on my own body. #75
+    - My nipples are so taut. #76
+    - My womb throbs with arousal. #77
+    - I can feel my juices running down my thighs. #78
+    - I know exactly how those fingers feel, little mouse. #79
+    - Become favored, little mouse, #80
+    and you can take her place. #81
+    - Impress me often and I will grant you a taste of me. #82
+}
+
+->->
+
+= vagina_comments
+/character goddess
+{shuffle:
+    - Those folds look delicious. #83
+    - Such a ripe peach being plucked. #84
+    - Your warm canal sucks tightly at her fingers. #85
+    - I can smell you from here, little mouse. #86
+    - So juicy. #87
+    - Your moist petals open to her. #88
+}
+
+->->
+
+= penis_comments
+/character goddess
+{shuffle:
+    - Your hot shaft must ache in her hand. #89
+    - Such a spear of pleasure. #90
+    - What a delightfully rigid shaft. #91
+    - The tip is oozing, little mouse. #92
+    - Your musk coats the air. #93
+    - Your firm rod yields to her. #94
+}
+
+->->

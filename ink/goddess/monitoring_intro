@@ -48,6 +48,7 @@ Ten Obsidians worth of punishments will do. #09
 /wait 3
 /emotion angry 25
 You will pay them all now! #10
+/wait
 
 /emotion aroused 35
 Pleasure will be denied to you until you have proved your worth. #11
@@ -65,14 +66,13 @@ Ten Bloodstones will unlock you from your imprisonment. #12
 Now go and fail me no further, {player_name}. #13
 
 ~ inTutorial = false
-
 ~ tutorial_goddess_outro_angry_complete = true
 
-// {deviation == tutorial:
+{deviation == tutorial:
     -> game_outro
-// - else:
-//     -> entry_hub
-// }
+- else:
+    -> treat_intro
+}
 
 
 = pleased
@@ -115,8 +115,8 @@ Go forth and please me, {player_name}. #25
 ~ inTutorial = false
 ~ tutorial_goddess_outro_happy_complete = true
 
-// {deviation == tutorial:
+{deviation == tutorial:
     -> game_outro
-// - else:
-//     -> entry_hub
-// }
+- else:
+    -> treat_intro
+}

@@ -1,6 +1,8 @@
+
 === goddess_reward_joi ===
 
 TODO: set variables on scene to be generic or specific instructions by gentital so that players can get customization for their sexual identity preferences
+
 
 -> select_gender_check ->
 ~ setScene(reward_scene, Goddess, "goddess_reward_joi", -> goddess_reward_joi)
@@ -127,6 +129,8 @@ Would you like to wear a gag for me, {player_name}?
 
 = plug 
 
+~ has_plug = true
+
 Welcome back, {player_name}.
 I want to see what you have picked out for me.
 
@@ -174,7 +178,7 @@ Understood?
 + [distracted] -> Goddess_PayAttention -> plug
 
 = gag
-
+~ has_gag = true
 Hello again, {player_name}.
 
 Let me get a good look at you.
@@ -210,7 +214,7 @@ Tell me, {player_name}...
 + [yes]
     Eager to please, I see.
     You will clean every last drop for me.
-         set variable to trigger CEI 
+    ~ wants_cei = true
      -> begin
 
 + [no]
@@ -291,10 +295,12 @@ Are you ready?
 
 {hasPenis: Grab hold of yourself and start gently stroking.|Cup yourself and start gently rubbing.}
 
+/wait 2
+
 Is it {hasPenis: hard|throbbing} for me?
 
 + [yes]
-    -> Goddess_GoodJob ->
+    Excellent.
     Let's make sure it stays that way.
 
 + [no]
@@ -305,22 +311,77 @@ Is it {hasPenis: hard|throbbing} for me?
 
 + [distracted] -> Goddess_PayAttention -> hold 
     
-- -> loop
+- Let's see how well you can obey instructions.
+-> loop
+
 
 = loop
 
--> instructions ->
--> question ->
+// RandomCommentLoopWithNo(-> commentTunnel, -> noTunnel, minTimes, maxTimes, minWait, maxWait)
+-> RandomCommentLoopWithNo (-> instructions_and_questions, -> orgasm, 3, 6, 2, 4) ->
+
+
 -> orgasm 
 
+= no_orgasm
+
+Stop!
+You are not allowed to cum.
+
+Catch your breath.
+
+Can you keep continue without orgasming?
+
++ [yes]
+    -> Goddess_GoodJob ->
+    -> loop
+    
++ [no]
+    I am disappointed.
+    But this is your reward...
+    You may finish... without my help.
+    -> orgasm_no_help
+
+= instructions_and_questions
+
+-> instructions ->
+
+{shuffle:
+    -
+    - -> joi_comments ->
+}
+
+
+{shuffle:
+    -
+    -
+    -
+    - -> question ->
+    - -> question ->
+    - -> question ->
+}
+
+
+{shuffle:
+    -
+    - -> joi_comments ->
+}
+
+->->
+
+= comments
+
+->->
 
 = instructions
 
 {shuffle:
     - -> slow ->
     - -> fast ->
-    // - squeeze 
+    - -> squeeze ->
+    - -> steady ->
 }
+
 
 ->->
 
@@ -330,10 +391,32 @@ Now, take it nice and slow.
 
 {shuffle:
     - Slide your hand {hasPenis:up and down|back and forth} 5 teasing times. 
+    -> Goddess_SayNumberRangeSlow(1, 3, 1) ->
+    -> random_comments ->
+    -> Goddess_SayNumberRangeSlow(4, 5, 2) ->
+    
     - Gently caress your fingers along your smooth skin. 
+    /wait 3
+    -> random_comments ->
+    
     - Use your whole hand and give me 10 firm {hasPenis:strokes|rubs}. 
-      Count them out. 
+    -> Goddess_SayNumberRangeSlow(1, 4, 1) -> 
+    -> random_comments ->
+    -> Goddess_SayNumberRangeSlow(5, 7, 1) ->
+    -> random_comments ->
+    -> Goddess_SayNumberRangeSlow(8, 10, 2) ->
+    -> random_comments ->
+    
     - I want you to show me 20 excrutiatingly slow {hasPenis:strokes|circles}.
+    One. Two. Three. Four. Five.
+    -> random_comments ->
+    Six. Seven. Eight.
+    -> random_comments ->
+    Nine. Ten. Eleven. Twelve.
+    -> random_comments ->
+    Thirteen. Fourteen. Fifteen.  
+    -> random_comments ->
+    Sixteen. Sevent. Eighteen. Nineteen. Twenty.
   }
 
 - ->->
@@ -343,9 +426,17 @@ Now, take it nice and slow.
 Start going a bit quicker. 
 
 {shuffle:
-    - Move your hand up and down.
+    - Move your hand rapidly {hasPenis:up and down|back and forth}.
       Keep a good rhythm for me.
-    - Rub as fast as you can as you count to 10 for me. 
+      /wait 5 
+      
+    - Rub as fast as you can as I count to ten.
+     One. Two. Three. Four. Five.
+    -> random_comments ->
+    Six. Seven. Eight.
+    -> random_comments ->
+    Nine. Ten. Eleven. Twelve.
+    -> random_comments ->
     - Give me 20 quick and hard {hasPenis:strokes|circles}.
     - I want 5 rapid {hasPenis:jerks|wiggles}.
 }
@@ -363,15 +454,23 @@ Pause for a moment.
     - Squeeze firmly as I count to three.
     One. Two. Three.
     - Squeeze hard for me, little mouse.
-    
 }
 
 Now release.
 
 ->->
 
-= medium
+= steady
 
+I want you to stay at a nice, steady pace.
+
+{shuffle:
+    - Keep your motions even.
+    - Count the rythm in your head. 
+    One... two... three... four...
+    - Keep going like that.
+    - Feel how good it is to just keep {hasPenis: stroking|rubbing}.
+}
 
 ->->
 
@@ -404,6 +503,7 @@ Isn't that right, {player_name}?
     
     ++ [yes]
         -> Goddess_AcknowledgeYes->
+        -> loop
         
     ++ [no]
         Very well.
@@ -437,6 +537,7 @@ Aren't you?
     
     ++ [yes]
         -> Goddess_AcknowledgeYes->
+        -> loop
         
     ++ [no]
         Very well.
@@ -470,6 +571,7 @@ Aren't you?
     
     ++ [yes]
         -> Goddess_AcknowledgeYes->
+        -> loop
         
     ++ [no]
         Very well.
@@ -492,7 +594,52 @@ I want that throbbing orgasm of yours released.
 
 -> exit
 
-= joi_comments 
+= orgasm_no_help
+
+Nod your head when you are finished.
+
++ [yes]
+    Very well.
+    One reward token has been removed.
+
+-> exit
+
+
+= random_comments
+
+{shuffle:
+    - -> joi_comments ->
+    - -> joi_comments ->
+    -
+}
+->->
+
+= joi_comments
+
+{shuffle:
+    - You're such a good little toy. 
+    - How tasty.
+    - So naughty.
+    - I'm enjoying this. 
+    - That's it. 
+    - -> Goddess_GoodJob ->
+    - -> Goddess_GoodJob ->
+    - Delicious.
+    - Mmmm.
+    - So good. 
+    - What a good little slut.
+    - You serve me. 
+    - I can do whatever I want with you. 
+    - This is where you belong.
+    - What a treat. 
+    - I bet that feels good. 
+    - My little performer.
+}
+
+->->
+
+
+= tease_comments 
 
 {shuffle:
     - Imagine how a warm, wet mouth would feel on you right now.
@@ -502,7 +649,7 @@ I want that throbbing orgasm of yours released.
     - My breasts are so heavy and soft.
       How would they feel on your face?
     - Think about drawing my thick nipples into your mouth.
-    - Imagine burrying your face in my firm ass as I smother you.
+    - Imagine burying your face in my firm ass as I smother you.
     - How would my warm, oiled flesh feel sliding up and down your body?
     - Imagine my hands caressing your body, your hair, and your sex.
     - Perhaps one day I'll let you fuck my slaves for me. 
@@ -519,6 +666,79 @@ I want that throbbing orgasm of yours released.
 
 ->->
 
+// A (few) random modifier(s) might be selected e.g. non-dominant hand, stand, kneel, sit, etc.
+
+// Player may be asked to touch themself in a certain way. Some kind of hand motion or audio beat will allow the player to track their strokes.
+// Player may be asked to strike themself in a certain way. Hand motion or audio beat will show them how often to slap/spank/etc.
+// Random modifiers may change. i.e. You must kneel now.
+// Player may be asked to use the prop they said they had ready. i.e. Put on the cock ring.
+// (Only near the middle to end of a session) Player may be asked to edge.
+// The mistress will now instruct you how to finish: Any combination of full or ruined / normal or eaten.
+
+// Preparation:
+// Randomly set the rules for this session:
+// - normal jerk off and cum or
+// - jerk off and don’t cum/blue balls or
+// - jerk off and ruined cum or
+// - jerk off and delayed cum or
+// - jerk off and cum eating or
+// - jerk off and edging or
+// - stop and go jerk off
+
+// Randomly set special rules for this session:
+// - none/no special or
+// - light ass play or
+// - heavy ass play (insert finger or jerk with plug inside) – make this optional, if sub doesn’t want that, stop the session and give him a blue crystal for punishment or
+// - play time (let sub interact with mistress between jerksessions)
+
+// Randomly set the length of the jerk session:
+// one session could be a part of 5 minutes times a random number from 2-10, to create a 10-50 minutes jerk session
+
+// Randomly set the help for this session:
+// - none, must jerk to fully clothed mistress in her environment
+// - mistress shows parts of her body (breats, ass, pussy), sub always has to worship
+// - mistress brings in another naked slave from other sex as sub, let slave go to different poses to help sub jerk off
+// - mistress brings in another naked slave from same sex as sub, let slave go to different poses to help (or make it harder)
+
+// Randomly set mistress character (changing some of her lines in the jerk-parts) and maybe give a bonus on this roll to neutral or encouraging, if the mistress is happy with the sub):
+// - neutral/normal
+// - encouraging
+// - humiliating
+
+
+
+// Start Session with INTRO:
+// (2-3 minutes), let sub jerk to make his dick hard, explain the rules (always jerk as hard and fast as told, don’t cum without permission, shake head no if sub is about to cum (to give him/her a 10-20 second break (and maybe punish him, depending of mistress character and how often it has already happened in this session)), ect.). If ass play instruct to put plug in or if light ass play instruct to caress the asshole
+
+// JERK SESSION:
+// (5 minutes), in these sessions, sub has to follow orders like faster, slow down, harder, lighter strokes and maybe gets encouraged or humiliated, and gets the help from mistress or the other slave.
+
+// AFTER JERK SESSION:
+// - if rule is edging, let sub edge 2-3mins without cuming
+// - if rule is stop and go, sub has to stop for 30s to 2 minutes, and put his/her hands away
+// - if special rule is light ass play, let sub jerk and remind sub to play with ass
+// - if special rule is heavy ass play, let sub jerk and play with his/her ass (insert finger or put plug out and in again)
+// - if special rule is play time, the sub has to play a game against mistress, e.g. rock paper scissors or so. Sub wins and gets a 2-3min edge, sub loses and has to stop jerking or even gets punished, if mistress character is humiliating
+
+// Goto JERK SESSION again until random repeat number is reached. If last JERK SESSION is complete, skip AFTER JERK SESSION and go to ENDING.
+
+// ENDING:
+// Let sub edge for 2-3min and explain the rules for cuming. Give a Countdown and instruct sub to go “over the edge” at 2 but don’t cum until 0.
+// - if rule is normal jerk and cum, or edging, or stop and go, let sub go over the edge at 2 and let him cum at 0
+// - if rule is blue balls, stop countdown at 5 and stop session without AFTER CARE
+// - if rule is ruined cum, let sub go over the edge at 2 and instruct sub to cum at 0 without hands
+// - if rule is delayed cum, let sub go over the edge at 2 and delay the 0, maybe 2-5 seconds, sub has to jerk but have to hold it until 0 is called by mistress
+// - if rule is cum eating, let sub go over the edge at 2 and instruct him to cum in/on hand, let sub eat it
+// - if special rule is play time, let sub play against mistress, if sub wins, he gets his release, if not, stop session without AFTER CARE
+
+//  AFTER CARE:
+// - if special rule was heavy ass play, instruct to take out plug
+// - if mistress character is “normal”, instruct to clean the mess, present to mistress and get out
+// - if mistress is encouraging, let sub caress his genitals a bit to get down, encouraging words, instruct to clean the mess, present to mistress and get out
+// - if mistress is humiliating, randomly set after care to:
+// o humiliating words, instruct to clean the mess, and get the f. out or
+// o punish sub (e.g. let sub slap the now sensitive genitals), instruct to clean the mess, and get the f. out or
+// o let sub jerk again (post orgasm torture) hard and fast for 2-3 minutes, instruct to clean the mess and get the f. out
 // So, you want to fuck me?
 
 // Okay grab your cock for me, does that feel good? Is it hard for me?

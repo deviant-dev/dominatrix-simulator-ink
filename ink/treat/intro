@@ -10,9 +10,9 @@
 + [move:Approach]
 
 //check to see if player went through Nega or Headmistress reward
-
-- {goddess_monitoring_intro.angry:
-    /perform react_point_at_player_angry disgusted 55
+- /wait 
+-{goddess_monitoring_intro.angry:
+    /perform talk_consider disgusted 55
     I see you have failed your first test. #01
 
     /perform do_smooth_skirt skeptical 65
@@ -122,10 +122,8 @@ Tell me, does this place confuse you? #20
 
 + [distracted] -> Treat_PayAttention -> confuse
 
-- /perform react_point_at_player_angry skeptical 60
+- /perform talk_behold skeptical 60
 From now on, things will only get more demanding. #30
-
-/perform react_point_at_player_angry aroused 55
 Much will be asked of you. #31
 
 /perform do_shake_finger sad 45
@@ -140,13 +138,13 @@ I'm here to keep an eye on your mental health. #34
 /perform do_inspect amused 55
 To make sure everything... #35
 
-/perform talk_lean_forward skeptical 75
+/perform talk_lean_forward amused
 And I mean <i>everything</i>... #36
 
 /perform talk_consider amused 60
 Stays in good working order. #37
 
-/perform react_dumb skeptical 60
+/perform talk_thoughtful skeptical 60
 The mind is key. #38
 
 /perform talk_gesture aroused 60
@@ -175,7 +173,7 @@ Is it sore? #41
     It's going to be used <i>a lot</i>. #44
 
 + [no]
-    /perform react_chuckle amused 55
+    /perform react_nod_big amused 55
     Good. #45
 
     /perform do_snap_fingers aroused 65
@@ -218,10 +216,8 @@ Do you enjoy having your ass played with? #52
     Time will tell. #54
 
 + [no]
-    /perform react_point_at_player_angry sad 60
+    /perform do_shake_finger sad 60
     Then you had better speak up when a Mistress #55
-
-    /perform idle_skeptical sad 70
     asks you if you want it to be used. #56
 
 + [timeout] -> Treat_Timeout -> play
@@ -238,11 +234,11 @@ Turn back around and show me your chest. #57
 - /perform react_thankful aroused 45
 Very pleasing. #58
 
-/perform tease_caress_breasts aroused 75
+/perform tease_caress_breasts_large aroused 75
 I'm sure those tight nubs will be toyed with often. #59
 
 - (excite)
-/perform talk_consider skeptical 75
+/perform talk_consider happy 50
 Does that idea excite you? #60
 
 + [yes]
@@ -250,11 +246,11 @@ Does that idea excite you? #60
     Mmmm. #61
 
     -- (pleasure)
-    /perform talk_question skeptical 65
+    /perform idle_tease aroused 65
     Do you enjoy teasing them when you pleasure yourself? #62
 
     ++ [yes]
-        /perform react_laugh aroused 75
+        /perform talk_one_finger aroused 75
         What a naughty, little minx. #63
 
     ++ [no]
@@ -293,6 +289,8 @@ Relax. #71
 /perform talk_question skeptical 65
 Do you find it hard to serve? #72
 
+/perform idle_skeptical skeptical 50
+
 + [yes]
     -> Treat_Unhappy ->
 
@@ -303,7 +301,7 @@ Do you find it hard to serve? #72
 + [no]
     -> Treat_AcknowledgeYes ->
 
-    /perform idle_clasp_hands skeptical 75
+    /perform idle_clasp_hands happy 50
     If you find it easy, #75
     you may not need to come see me that often. #76
 
@@ -318,8 +316,9 @@ Do you find it hard to serve? #72
 My office is just up the stairs to the right. #78
 
 - (office)
-/perform talk_question skeptical 55
+/perform talk_question amused 50
 Will you make sure to come see me? #79
+/perform idle_skeptical 
 
 + [yes]
     -> Treat_AcknowledgeYes ->
@@ -341,14 +340,14 @@ Will you make sure to come see me? #79
 -/perform do_smooth_skirt amused 65
 Now... I'm sure you are expected elsewhere. #83
 
-/perform do_blow_kiss happy 75
+/perform talk_gesture  happy 75
 You can come see me anytime you need someone to take care of you. #84
 
 /perform idle_swaying amused 65
 I can help you relax, #85
 get into the right headspace, #86
 
-/perform tease_caress_breasts aroused 75
+/perform tease_caress_breasts_large aroused 75
 or soothe you after a hard session. #87
 
 - (visit)

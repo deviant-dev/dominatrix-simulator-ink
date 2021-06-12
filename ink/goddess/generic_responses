@@ -1,84 +1,128 @@
 === Goddess_GoodJob ===
+-> DoComment(false)
+
+= Sex_Chair
+-> DoComment(true)
+
+= DoComment(inPosition)
+
+
+
 
 { shuffle:
 
-    - /perform idle happy 50
+    -{inPosition: /emotion happy 50 | /perform idle happy 50 }
     There's a good {player_name}. #114
 
-    - /perform idle_tease aroused 65
+    -{inPosition: /emotion aroused 65 | /perform idle_tease aroused 65 }
     What a good little {player_name}. #115
 
-    - /perform talk_lean_forward amused 55
+    -{inPosition: /emotion amused 55 | /perform talk_lean_forward amused 55 }
     That's my {player_name}. #116
 
-    - /perform idle_clasp_hands happy 50
+    -{inPosition: /emotion happy 50 | /perform idle_clasp_hands happy 50 }
     Aren't you the sweetest little thing? #117
 
-    - /perform talk_consider happy 50
+    -{inPosition: /emotion happy 50 | /perform talk_consider happy 50 }
     Very nice. #118
 
-    - /perform react_thankful happy 45
+    -{inPosition: /emotion happy 45 | /perform react_thankful happy 45 }
     That will do just fine. #119
 
-    - /perform do_inspect happy 40
+    -{inPosition: /emotion happy 40 | /perform do_inspect happy 40 }
     Quite satisfying. #120
 
-    - /perform idle_sassy aroused 65
+    -{inPosition: /emotion aroused 65 | /perform idle_sassy aroused 65 }
     Mmmm. I like that. #121
 
-    - /perform react_thankful happy 50
+    -{inPosition: /emotion happy 50 | /perform react_thankful happy 50 }
     Someone is being a good {player_name}. #122
 
-    - /perform talk_consider happy 50
+    -{inPosition: /emotion happy 50 | /perform talk_consider happy 50 }
     Well done. #123
 
-    - /perform idle_tease aroused 40
+    -{inPosition: /emotion aroused 40 | /perform idle_tease aroused 40 }
     That's very pleasing. #124
 
-    - /perform do_inspect aroused 60
+    -{inPosition: /emotion aroused 60 | /perform do_inspect aroused 60 }
     I am pleased. #61
 }
 
 ->->
 
 === Goddess_AcknowledgeYes ===
+-> DoComment(false)
+
+= Sex_Chair
+-> DoComment(true)
+
+= DoComment(inPosition)
+
 
 {shuffle:
-    - How delightful. #01
-    - Very well. #02
-    - So be it. #03
-    - Alright then. #04
-    - Excellent. #05
+    -{inPosition: /emotion aroused 65 | /perform idle_sassy aroused 65 }
+    How delightful. #01
+
+    -{inPosition: /emotion happy 50 | /perform talk_consider happy 50 }
+    Very well. #02
+
+    -{inPosition: /emotion happy 50 | /perform idle_clasp_hands happy 50 }
+    So be it. #03
+
+    -{inPosition: /emotion amused 60 | /perform talk_one_finger amused 60 }
+    Alright then. #04
+
+    -{inPosition: /emotion happy 50 | /perform do_inspect happy 50 }
+    Excellent. #05
 }
 
 ->->
 
 === Goddess_Unhappy ===
+-> DoComment(false)
+
+= Sex_Chair
+-> DoComment(true)
+
+= DoComment(inPosition)
+
 
 {shuffle:
-- How disappointing. #01
-- Really? #02
-- I see. #03
+    -{inPosition: /emotion sad 55 | /perform idle_bored sad 55 }
+    How disappointing. #01
+
+    -{inPosition: /emotion skeptical 65 | /perform react_shake_head_disbelief skeptical 65 }
+    Really? #02
+
+    -{inPosition: /emotion disgusted 60 | /perform idle_unhappy disgusted 60 }
+    I see. #03
 }
 
 ->->
 
 === Goddess_Timeout ===
+-> DoComment(false)
+
+= Sex_Chair
+-> DoComment(true)
+
+= DoComment(inPosition)
+
 
 { shuffle:
-    - /perform idle_clasp_hands angry 45
+    -{inPosition: /emotion angry 45 | /perform idle_clasp_hands angry 45 }
     I asked you a question. #11
 
-    - /perform talk_emphatic_one_hand angry 55
+    -{inPosition: /emotion angry 55 | /perform talk_emphatic_one_hand angry 55 }
     Hurry up. I'm waiting. #12
 
-    - /perform talk_lean_forward skeptical 35
+    -{inPosition: /emotion skeptical 35 | /perform talk_lean_forward skeptical 35 }
     I don't like it when people make me wait. #13
 
-    - /perform idle_skeptical angry 65
+    -{inPosition: /emotion angry 65 | /perform idle_skeptical angry 65 }
     What makes you think you can ignore me? Answer me. #14
  }
- 
+
 ->->
 
 === Goddess_PayAttention ===
@@ -246,8 +290,177 @@ Bye for now, {player_name}. #113
 + [wait:5]
     // {debug: -> again | ->->}
     ->->
+    
+    
+=== Goddess_SayNumberRangeOfType(-> sayNumber, start, end, wait) ===
+~ temp current = start
+
+- (loop)
+-> sayNumber(current) ->
+
+{
+    - current == end:
+        ->->
+    - current < end:
+        ~ current++
+    - current > end:
+        ~ current--
+}
+
+/wait {wait}
+// /log {current}/{end}
+-> loop
+
+=== Goddess_SayNumberRange(start, end, wait) ===
+-> Goddess_SayNumberRangeOfType(-> Goddess_SayNumber, start, end, wait) ->->
+
+=== Goddess_SayNumberRangeSlow(start, end, wait) ===
+-> Goddess_SayNumberRangeOfType(-> Goddess_SayNumberSlow, start, end, wait) ->->
+
+=== Goddess_SayNumberRangeFast(start, end, wait) ===
+-> Goddess_SayNumberRangeOfType(-> Goddess_SayNumberFast, start, end, wait) ->->
 
 
+=== Goddess_SayNumber(n) ===
+// NOTE: Keep these on separate lines for the subtitle system. -deviant
+{
+    - n == 1:
+        One. #1
+    - n == 2:
+        Two. #2
+    - n == 3:
+        Three. #3
+    - n == 4:
+        Four. #4
+    - n == 5:
+        Five. #5
+    - n == 6:
+        Six. #6
+    - n == 7:
+        Seven. #7
+    - n == 8:
+        Eight. #8
+    - n == 9:
+        Nine. #9
+    - n == 10:
+        Ten. #10
+    - n == 11:
+        Eleven. #11
+    - n == 12:
+        Twelve. #12
+    - n == 13:
+        Thirteen. #13
+    - n == 14:
+        Fourteen. #14
+    - n == 15:
+        Fifteen. #15
+    - n == 16:
+        Sixteen. #16
+    - n == 17:
+        Seventeen. #17
+    - n == 18:
+        Eighteen. #18
+    - n == 19:
+        Nineteen. #19
+    - n == 20:
+        Twenty. #20
+    - else:
+        /logError Can't say number '{n}'.
+}
+->->
 
+=== Goddess_SayNumberFast(n) ===
+// NOTE: Keep these on separate lines for the subtitle system. -deviant
+{
+    - n == 1:
+        One. #1
+    - n == 2:
+        Two. #2
+    - n == 3:
+        Three. #3
+    - n == 4:
+        Four. #4
+    - n == 5:
+        Five. #5
+    - n == 6:
+        Six. #6
+    - n == 7:
+        Seven. #7
+    - n == 8:
+        Eight. #8
+    - n == 9:
+        Nine. #9
+    - n == 10:
+        Ten. #10
+    - n == 11:
+        Eleven. #11
+    - n == 12:
+        Twelve. #12
+    - n == 13:
+        Thirteen. #13
+    - n == 14:
+        Fourteen. #14
+    - n == 15:
+        Fifteen. #15
+    - n == 16:
+        Sixteen. #16
+    - n == 17:
+        Seventeen. #17
+    - n == 18:
+        Eighteen. #18
+    - n == 19:
+        Nineteen. #19
+    - n == 20:
+        Twenty. #20
+    - else:
+        /logError Can't say number '{n}'.
+}
+->->
 
-
+=== Goddess_SayNumberSlow(n) ===
+// NOTE: Keep these on separate lines for the subtitle system. -deviant
+{
+    - n == 1:
+        One. #1
+    - n == 2:
+        Two. #2
+    - n == 3:
+        Three. #3
+    - n == 4:
+        Four. #4
+    - n == 5:
+        Five. #5
+    - n == 6:
+        Six. #6
+    - n == 7:
+        Seven. #7
+    - n == 8:
+        Eight. #8
+    - n == 9:
+        Nine. #9
+    - n == 10:
+        Ten. #10
+    - n == 11:
+        Eleven. #11
+    - n == 12:
+        Twelve. #12
+    - n == 13:
+        Thirteen. #13
+    - n == 14:
+        Fourteen. #14
+    - n == 15:
+        Fifteen. #15
+    - n == 16:
+        Sixteen. #16
+    - n == 17:
+        Seventeen. #17
+    - n == 18:
+        Eighteen. #18
+    - n == 19:
+        Nineteen. #19
+    - n == 20:
+        Twenty. #20
+    - else:
+        /logError Can't say number '{n}'.
+}
+->->

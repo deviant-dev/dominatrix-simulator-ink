@@ -1,13 +1,14 @@
 === Debug ===
 // --- Set gender here to skip gender selection step ---
- ~ setGender("m")
-// ~ setGender("f")
+//~ setGender("m")
+~ setGender("f")
 // ~ setGender("p")
 
 //~SEED_RANDOM(5)
 
 // --- Force a different deviation ---
 // ~ setDeviation(full_game)
+// -> game_intro.instructions
 // ~ setDeviation(tutorial)
 // ~ setDeviation(demo)
 // ~ setDeviation(exhibitionism)
@@ -16,9 +17,10 @@
 // ~ setDeviation(puppyplay)
 // ~ setDeviation(treat)
 // ~ setDeviation(furia)
-~ setDeviation(unspeakable_toy)
-// -> deviation_unspeakable_toy
--> goddess_reward_serviced.ready
+// ~ setDeviation(unspeakable_toy)
+//  -> deviation_unspeakable_toy
+//-> deviation_unspeakable_toy.test
+// -> goddess_reward_serviced
 
 // --- Unlocks ---
 // ~ unlockAll()
@@ -26,8 +28,8 @@
 
 
 // --- Punish and Reward ---
-// ~ punishments = 1
-// ~ rewards = 1
+~ punishments = 1
+~ rewards = 1
 
 
 // --- Tutorial ---
@@ -225,13 +227,13 @@
 // --- Game Jumps ---
 // -> demo_end
 // -> DONE
-// -> exit
+// -> exit 
 // -> entry_hub
 // ~ tutorial_step = at_hm_intro
 // -> entry_hub.move_headmistress
 // -> game_intro
 // -> game_intro_again
-// -> game_outro
+-> game_outro
 // -> skip_to_full_loop
 
 

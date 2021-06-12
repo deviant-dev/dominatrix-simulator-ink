@@ -127,5 +127,5 @@ I plan to see you again, real soon.
 
 /scene EntryDark.EndScreen2
 
-+ [move] -> treat_intro
++ [move] -> exit
 

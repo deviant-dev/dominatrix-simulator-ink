@@ -11,6 +11,7 @@ VAR total_punishments_earned = 0
 VAR inTutorial = true
 VAR load_path = -> game_start
 VAR inChastity = false
+VAR enableButtplug = false
 
 // Kink Lessons
 VAR has_learned_spanking = false
@@ -73,6 +74,9 @@ VAR task_attempts = 0
 VAR task_goal = 0
 VAR scene_goal = 0 
 VAR scene_count = 0 
+VAR has_plug = false
+VAR has_gag = false 
+VAR wants_cei = false
 
 // Goddess Variables
 VAR goddess_regard = 0 

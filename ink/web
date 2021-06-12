@@ -2,9 +2,9 @@
 
 === table_of_contents ===
 
-+ <b>Test: Ms. Treatment Session</b>
-    ~ setDeviation(treat)
-    -> treat_session_subdrop
++ <b>Test: Goddess JOI</b>
+    ~ setDeviation(full_game)
+    -> goddess_reward_joi
 
 + <b>DomSim: Threshold</b>
     ~ setDeviation(full_game)
@@ -51,6 +51,10 @@
     ~ setDeviation(puppyplay)
     ~  unlockAll()
     -> yuki_task_puppyplay
+
++ Ms. Treatment Sessions
+    ~ setDeviation(treat)
+    -> treat_session_subdrop
 
 
 === select_gender_web ===

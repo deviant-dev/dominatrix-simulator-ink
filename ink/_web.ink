@@ -45,6 +45,7 @@ INCLUDE goddess/task_placeholder
 INCLUDE goddess/punishment_placeholder
 INCLUDE goddess/reward_joi
 INCLUDE goddess/reward_placeholder
+INCLUDE goddess/reward_serviced
 INCLUDE goddess/rewardmega_giantess
 
 INCLUDE headmistress/hub
@@ -72,6 +73,7 @@ INCLUDE nega/generic_responses
 INCLUDE nega/reward_dice
 INCLUDE nega/reward_tease
 INCLUDE nega/reward_light_edging
+INCLUDE nega/reward_hard_cunnilingus
 INCLUDE nega/reward_hard_forcedsex
 INCLUDE nega/punishment_tease
 INCLUDE nega/punishment_light_bootlick
@@ -119,7 +121,6 @@ INCLUDE yuki/reward_massage
 INCLUDE yuki/reward_puppyplay_lickfeet
 INCLUDE yuki/reward_puppyplay_milking
 INCLUDE yuki/rewardmega_placeholder
-INCLUDE goddess/reward_serviced
 
 
 
@@ -130,7 +131,7 @@ INCLUDE goddess/reward_serviced
 
 
 // Flow Variables
-LIST deviation = full_game, tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia, (unspeakable_toy)
+LIST deviation = (full_game), tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia, unspeakable_toy
 
 VAR debug = false
 VAR web = true
@@ -219,6 +220,8 @@ VAR inVR = false
 }
 
 {
+    - deviation == unspeakable_toy:
+        -> deviation_unspeakable_toy
     - deviation == hand_signals:
         /scene none
         -> headmistress_hub

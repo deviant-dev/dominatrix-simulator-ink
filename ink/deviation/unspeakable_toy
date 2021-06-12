@@ -1,4 +1,72 @@
 === deviation_unspeakable_toy ===
+~ setGender("f")
+~ enableButtplug = true
+
+/scene EntryDark.Instructions
+/character Treat
+/music entry
+/ambient none
+
+/perform do_walk_up amused 50
+/wait 4
+/perform idle_skeptical amused 50
+
+Hello there! #01
+
+/perform talk_behold
+Welcome to the Dominatrix Simulator: Unspeakable Toy Experience. #02
+
+/perform idle_tease amused 75
+I specially designed this #03
+to showcase what we can make your #04
+naughty little, bluetooth sex toys do to you. #05
+
+/perform talk_consider skeptical 50
+Would you like to find out? #06
+
++ [yes]
+
+- /perform react_thankful excited 75
+Fantastic! #07
+
+/perform talk_gesture happy 50
+This should work with any buttplug.io compatible toy. #08
+It will also work with an Xbox controller. #09
+Even if you don't have a toy, #10
+you can still play along manually. #11
+
+/perform react_scoffs amused 50
+It's a work in progress, #12
+so keep your eye out for updates #13
+and share with us your feedback. #14
+
+/perform talk_question happy 50
+Go grab your toy, #15
+/perform idle_skeptical amused 75
+connect it to your computer, #16
+and when you're ready, #17
+come back and nod your head. #18
+
++  [yes]
+
+- /perform idle happy 50
+Delicious. #19
+
+//Please choose which Mistress you'd like to experience this with: #20
+TODO: UI with character choices
+
+/perform do_arm_raise excited 75
+{shuffle:
+    - You're in for a treat! #21
+    - This will be stimulating! #22
+    - Get ready for a wild ride. #23
+}
+
+/perform do_snap_fingers amused
+Let's begin. #24
+-> start
+
+= start
 
 /scene bedroom.hub
 /music goddess
@@ -7,40 +75,54 @@
 
 + [move:Approach]
 
-Hello there!
+--> goddess_reward_serviced
 
-Welcome to the Unspeakable Dominatrix Simulator Toy Experience.
 
-I designed this just to showcase what we can make your 
-naughty little, bluetooth sex toys do to you.
 
-Would you like to find out?
+= test
+/scene Bedroom.UnspeakableReady
 
-+ [yes]
+- (next)
 
-- Fantastic!
+{cycle:
+    - /character slave serviced_idle
+    serviced_idle
 
-This proof of concept build will work 
-with any buttplug.io compatible toy 
-for a vagina, a clit, a penis, or an anus.
+    - /character slave serviced_anal_idle
+    serviced_anal_idle
+    - /character slave serviced_anal_slow
+    serviced_anal_slow
+    - /character slave serviced_anal_medium
+    serviced_anal_medium
+    - /character slave serviced_anal_fast
+    serviced_anal_fast
 
-But, unfortunately, we only have starting animations
-for a penis and vagina. 
-We will add the other two soon!
+    - /character slave serviced_clit_idle
+    serviced_clit_idle
+    - /character slave serviced_clit_slow
+    serviced_clit_slow
+    - /character slave serviced_clit_medium
+    serviced_clit_medium
+    - /character slave serviced_clit_fast
+    serviced_clit_fast
 
-Go grab your toy,
-and when you're ready,
-come back and nod your head.
+    - /character slave serviced_penis_idle
+    serviced_penis_idle
+    - /character slave serviced_penis_slow
+    serviced_penis_slow
+    - /character slave serviced_penis_medium
+    serviced_penis_medium
+    - /character slave serviced_penis_fast
+    serviced_penis_fast
 
-+  [yes]
+    - /character slave serviced_vagina_idle
+    serviced_vagina_idle
+    - /character slave serviced_vagina_slow
+    serviced_vagina_slow
+    - /character slave serviced_vagina_medium
+    serviced_vagina_medium
+    - /character slave serviced_vagina_fast
+    serviced_vagina_fast
+}
 
-Delicious.
-
-Now, choose which Mistress you'd like to experience this with:
-
-TODO: UI with character choices
-
-You're in for a treat!
-Let's begin.
-
--> goddess_reward_serviced
++ [yes] -> next
