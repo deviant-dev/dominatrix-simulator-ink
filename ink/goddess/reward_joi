@@ -586,7 +586,7 @@ Tell me, {player_name}...
 
 = orgasm_cei    
 
-You're going to show me how much of a cumslut you really are, by cleaning every last drop.
+    You're going to prove your dedication to me, by cleaning every single drop.
 
 ->cei_instructions->
 
@@ -615,27 +615,29 @@ Nod your head when you are ready.
 
 = orgasm
 
+/wait 2
+
 It's time, little one.
 
 I want that throbbing orgasm of yours released.
 
-Keep jerking your cock until you are ready to explode.
+Keep pleasuring yourself until you are close to completion.
 -> cum_countdown
 
 = cei_countdown
 
 
- Now keep jerking right up until the point of ejaculation.
+ Now keep stroking right up until the point of ejaculation.
  /wait
  
- Nod your head when your cute little cock is ready to burst.
+ Nod your head when your little vessel is ready to cum.
     
 +[yes]
 
     ->tease_comments->
     
     
-    Since I am the one who shall allow your release, I want that load at the count of three.
+    Since I am the one who shall allow your release, I want you to ejaculate at the count of three.
     
     One....
     
@@ -649,15 +651,17 @@ Keep jerking your cock until you are ready to explode.
     
    ->cum_comments->
    
-   Now eat your fresh hot load like the good slut you are.
+   Now swallow your cum.
    
-   Such a good little {player_name}. I bet eating your own cum made you feel warm inside, didn't it?
+   /wait 3 
+   
+   Such a good little {player_name}. Consuming ones own seed often makes them feel warm and satisfied, do you feel that way slave?
    
    ++[yes] 
     Great. Now begone slut.
     ->exit 
    ++[no]
-    Shame, maybe next time i'll teach you how to swallow cum and enjoy it.
+    Shame, consider yourself lucky I granted you a release. 
     ->exit
    
 + [no]
@@ -677,14 +681,14 @@ Keep jerking your cock until you are ready to explode.
 
 = cum_countdown
 
-    Nod your head when your cute little cock is ready to burst.
+    Nod your head when your little vessel is ready to cum.
     
 + [yes]
 
     ->tease_comments->
     
     
-    Since I am the one who shall allow your release, I want that load at the count of three.
+    Since I am the one who shall allow your release, I want you to ejaculate at the count of three.
     
     One....
     
@@ -698,7 +702,7 @@ Keep jerking your cock until you are ready to explode.
     
    ->cum_comments->
    
-   Now clean up and begone.
+   Now clean yourself up and begone.
     
     ->exit
 
@@ -779,20 +783,20 @@ Nod your head when you are finished.
 = cum_comments
     {shuffle:
     - Such a big {player_name}!
-    - Watching my slaves cum always gets me so fucking wet.
+    - The scene of a slaves ejaculation always warms my nether regions.
     - Good job little one.
-    - What a big load from such a small cock.
-    - Mmmm... impressive
-    - I'm almost tempted to go over there and clean you up myself... Maybe one day.
+    - Such an impreesive load from one so puny.
+    - Mmmm... impressive.
+    - I'm almost tempted to go over there and clean you up myself... Perhaps one day.
 }
 
 ->->
 
 = cei_instructions
 {shuffle:
-   - Go get a small cup to fill when I order you to cum.
-   - I want you to shoot that load into your hand and lick it all up when I order you to cum.
-   - Now go get a spoon to fill with your hot load when I tell you to cum.
+   - Fetch a small vessel. You will fill it when I order you to cum.
+   - I want you to shoot your load into the palm of your hand and lick it all up after I order you to cum.
+   - Now retrieve a spoon to fill with your hot semen when I command you to cum.
 }
 
 ->->
