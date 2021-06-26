@@ -154,6 +154,9 @@ Go ahead. Roll them bones. #06
 ~ temp result = nega_die_1 + nega_die_2 + nega_die_3
 ~ nega_last_result = result
 
+// Temporarily force all blanks
+// {debug: -> result_all_blank}
+
 {
     - inTutorial && result > 0: -> intro_reward
     - inTutorial: -> intro_change_dice

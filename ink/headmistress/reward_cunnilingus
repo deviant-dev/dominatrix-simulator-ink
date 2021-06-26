@@ -45,12 +45,124 @@ consent Check
 
 Instructions
 
+//start instructions should indicate to go slow and speed up and slow down when she tells you Too
+
+//minigame
 Slow, Medium, fast
+
+//asking the player to change speed
+= go_slower
+
+{shuffle:
+    - I want it nice and slow.
+    - Time to slow it down.
+    - Take your time now and go slow.
+    - Let's see how slow you can go. 
+}
+
+->->
+
+= go_faster
+
+{shuffle:
+    - Time to speed it up, pet. 
+    - I want you to go a little faster.
+    - A little faster. 
+}
+->->
+
+
+//correcting the player for going the wrong speed, lost arousal level
+= too_fast
+//record non-verbal sounds to indicate disappointment at too fast
+
+{shuffle:
+    - Slow down! That's too fast.
+    - Woah. Slow it down.
+}
+->->
+
+= too_slow
+//record non-verbal sounds to indicate disappointment at too slow
+{shuffle:
+    - That's too slow. Go faster.
+    - You're not trying hard enough. Speed it up.
+}
+->->
+
+//comments about speed delivered at different arousal levels keeping her voice pitch at the right arousal level
+= just_right_low_arousal
+
+{shuffle:
+    - That's it. 
+    - Just like that.
+    - Perfect.
+    - Oh yes. 
+    - Right there.
+}
+
+->->
+
+= just_right_medium_arousal
+
+{shuffle:
+    - That's it. 
+    - Just like that.
+    - Perfect.
+    - Oh yes. 
+    - Right there.
+}
+
+->->
+
+= just_right_high_arousal
+
+{shuffle:
+    - That's it. 
+    - Just like that.
+    - Perfect.
+    - Fuck yah.
+    - Right there.
+}
+
+->->
+
+//
+= low_arousal_comment
+
+{shuffle:
+    - So relaxing. 
+    - Your tongue is so soft.
+}
+
+->->
+
+= medium_arousal_comment
+
+{shuffle:
+    - Ahhhh. I'm so wet.
+}
+->->
+
+= high_arousal_comment
+
+{shuffle:
+    - You make such a good cunt slut.
+}
+->->
+
+= orgasm
+
+->->
+
+
+
+
 
 Comment loop
 
 orgasm
-
+//
 check to see if player enjoyed themselves
 
 use teasing questions to reward them

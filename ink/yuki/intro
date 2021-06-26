@@ -563,7 +563,7 @@ When I swing my hand, you better fucking jerk your head. #193
 
 + [react-success]
     -> Nega_GoodJob ->
-    
+
 + [react-fail]
     /perform talk_annoyed angry 70
     That was pathetic. Try again. #203
@@ -852,7 +852,7 @@ Okay! That's all I have for now. #133
 /perform do_snap_fingers excited 55
 Hurry up!  #134
 
-/perform do_you_leave_right happy 65
+/perform do_you_leave_left happy 65
 The Headmistress doesn't like to be kept waiting. #135
 
 /perform react_point_at_player_angry scared 80
@@ -972,7 +972,7 @@ Time to get a taste of your first punishment. #166
 /emotion amused 50 40
 Better get your ass to the Headmistress. #167
 
-/perform do_you_leave_right angry 50
+/perform do_you_leave_left angry 50
 She doesn't like to be kept waiting. #168
 
 ~ tutorial_step = at_hm_intro

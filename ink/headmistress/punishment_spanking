@@ -56,16 +56,16 @@ Do you accept that you must be punished? #92
     /character headmistress react_thankful happy 60
     Your acceptance is most becoming. #93
     -> get_on_desk
-   
+
 + [no]
     ~ addDisobey()
    /character headmistress idle_skeptical angry 75
     Foolish, little slave. #94
 
     It will be over quickly and your compliance will please the Goddess. #95
-    
+
     /perform idle_clasp_hands angry 45
-    
+
     -- (continue_punishment)
     Shall we continue with your punishment? #96
 
@@ -91,7 +91,7 @@ Do you accept that you must be punished? #92
             ~ addPunishment()
             ~ headmistress_apologize = true
         }
-        
+
         /perform do_get_the_fuck_out angry 100
         Now leave. #102
         -> exit
@@ -141,7 +141,7 @@ Alight forthwith! #08
 + [move:get_on_desk]
     /perform idle_clasp_hands happy 70
     Pleasingly executed. #09
-    
+
 + [timeout]
     -- (get_on_desk_timed_out)
     /perform talk_one_finger sad 65
@@ -150,7 +150,7 @@ Alight forthwith! #08
 
 + [distracted]
   -> Headmistress_PayAttention -> prompt
-  
+
 - (kneel)
 /perform do_point_down aroused 60
  Now, kneel, slave. #225
@@ -645,6 +645,7 @@ Stand at attention! #257
 + { tries >= 2 } [timeout] -> Headmistress_NoAction -> SpankBreak
 
 -
+/wait 3
 {inTutorial:
     { cycle:
         // - -> break01 ->

@@ -8,7 +8,7 @@
 /music nega-punishment
 /ambient howling-wind
 /character nega sex_chair_openlegs_wide
-
+TODO: add variation so sometimes the player can touch themselves and other times they can't. No orgasm
 
 {yuki_task_puppyplay_intro == 1: 
     -> dog

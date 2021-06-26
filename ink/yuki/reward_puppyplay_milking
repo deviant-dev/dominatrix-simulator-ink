@@ -33,6 +33,7 @@ Would you like that, {player_name}? #04
 
 + [pose:puppy_yes]
     ~ removeReward(-> load_gave_reward)
+    /perform do_bouncing_little happy 65
     Oh goody! We're going to have so much fun together. #05
     -> gave_reward
 
@@ -54,7 +55,6 @@ Would you like that, {player_name}? #04
 
 = load_gave_reward
 -> scene_setup -> gave_reward
-
 
 = gave_reward
 
@@ -457,15 +457,15 @@ I treat my puppies well, don't I? #177
 + [pose:puppy_back_yes]
     -> Yuki_AcknowledgeYes.Kneeling -> stop
 
-+ [pose:puppy_back_no]
-    -- (stop)
++ (stop) [pose:puppy_back_no]
 
-// replace VO line to stop confusing players who keep answering 'yes' because they think the question is a 'yes' answer to continue
-//   Do you want to stop, puppy? #58
+   /perform yuki_kneel
    Do you want to keep going, puppy? #71
 
-    ++ [pose:puppy_back_yes]
-    
+    ++ [yes] -> stop_cancel
+    ++ [no] -> stop_really
+    ++ (stop_cancel) [pose:puppy_back_yes]
+
     {shuffle:
             - /emotion happy 45
             Really? #60
@@ -481,12 +481,12 @@ I treat my puppies well, don't I? #177
 
         }
         ->->
-       
-    ++ [pose:puppy_back_no]
+
+    ++ (stop_really) [pose:puppy_back_no]
         /perform react_shrug_short sad 45
         Well, okay. If that's what you want. #59
         -> exit
-        
+
     ++ [timeout] -> Yuki_Timeout.Kneeling -> stop
 
 + [timeout] -> Yuki_Timeout.Kneeling -> question

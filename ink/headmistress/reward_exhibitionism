@@ -218,6 +218,7 @@ Are you ready, {isBoy: toad|strumpet}? #62
 + [distracted] -> Headmistress_PayAttention -> give_reward
 
 - /perform do_swipe_hand happy 50
+/wait 2
 -> Headmistress_AcknowledgeYes->
 ~ removeReward(-> load_gave_reward)
 --> prepare

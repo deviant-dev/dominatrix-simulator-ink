@@ -259,13 +259,17 @@ Are you ready?
 
 {hasPenis: Grab hold of yourself and start gently stroking.|Cup yourself and start gently rubbing.}
 
+//check to see if controller is low 
+
+-> tease_comments ->
+
 /wait 2
 
-Is it {hasPenis: hard|throbbing} for me?
+Are {hasPenis: hard|throbbing} for me, little mouse?
 
 + [yes]
     Excellent.
-    It better stay that way.
+    I want to keep you that way.
 
 + [no]
     -> Goddess_Unhappy ->
