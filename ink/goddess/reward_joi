@@ -345,7 +345,7 @@ Can you keep continue without orgasming?
 {shuffle:
     - -> slow ->
     - -> fast ->
-    - -> squeeze ->
+    - {hasPenis: ->squeeze->|->->}
     - -> steady ->
 }
 
@@ -566,14 +566,14 @@ Tell me, {player_name}...
 + [yes]
     Eager to please, I see.
     ~ wants_cei = true
-     -> orgasm_cei
+     ->orgasm_cei 
 + [no]
     Interesting.
     Shall I make you do it anyway?
     
     ++ [yes]
         How intriguing.
-        -> orgasm_cei
+        ->orgasm_cei 
         
     ++ [no]
         Very well.
@@ -588,13 +588,13 @@ Tell me, {player_name}...
 
     You're going to prove your dedication to me, by cleaning every single drop.
 
-->cei_instructions->
+    {hasPenis: -> cei_instructions_penis->|->cei_instructions_vagina->}
 
 Nod your head when you are ready.
 
 +[yes]
     ->Goddess_AcknowledgeYes->
-    ->cei_countdown
+    {hasPenis: -> cei_countdown_penis|->cei_countdown_vagina}
 
 + [no]
     -> Goddess_Unhappy ->
@@ -602,7 +602,7 @@ Nod your head when you are ready.
     
     ++ [yes]
         -> Goddess_AcknowledgeYes->
-        -> cei_countdown
+        {hasPenis: -> cei_countdown_penis|->cei_countdown_vagina}
         
         
     ++ [no]
@@ -622,10 +622,49 @@ It's time, little one.
 I want that throbbing orgasm of yours released.
 
 Keep pleasuring yourself until you are close to completion.
--> cum_countdown
+{hasPenis: -> cum_countdown_penis|->cum_countdown_vagina}
 
-= cei_countdown
+= cei_countdown_vagina
 
+Now keep playing with yourself right up until the point of ejaculation.
+ /wait
+ 
+ Nod your head when you are approaching completion.
+    
++[yes]
+
+    ->tease_comments->
+    
+    
+    Since I am the one who shall allow your release, I want you to ejaculate at the count of three.
+    
+    One....
+    
+    Two....
+    
+    ...
+    
+    /wait
+    
+    Three...
+    
+   ->cum_comments->
+   
+   Now clean up that delicious mess you've made. Every drop. 
+   
+   /wait 3 
+   
+   Such a good little {player_name}. Consuming ones juices often makes them feel warm and satisfied, do you feel that way slave?
+   
+   ++[yes] 
+    Great. Now begone slut.
+    ->exit 
+   ++[no]
+    Shame, consider yourself lucky I granted you a release. 
+    ->exit
+
+
+= cei_countdown_penis
 
  Now keep stroking right up until the point of ejaculation.
  /wait
@@ -670,7 +709,7 @@ Keep pleasuring yourself until you are close to completion.
     
     ++ [yes]
         -> Goddess_AcknowledgeYes->
-        ->cei_countdown
+        ->cei_countdown_penis
         
         
     ++ [no]
@@ -679,7 +718,37 @@ Keep pleasuring yourself until you are close to completion.
         -> exit
    
 
-= cum_countdown
+
+
+= cum_countdown_vagina
+    
+    Nod your head when your juices are ready to spew.
+
++ [yes]
+
+    ->tease_comments->
+    
+    
+    Since I am the one who shall allow your release, I want you to ejaculate at the count of three.
+    
+    One....
+    
+    Two....
+    
+    ...
+    
+    /wait
+    
+    Three...
+    
+   ->cum_comments->
+   
+   Now clean yourself up and begone.
+    
+    ->exit
+
+
+= cum_countdown_penis
 
     Nod your head when your little vessel is ready to cum.
     
@@ -772,7 +841,7 @@ Nod your head when you are finished.
     - Strain your body for me to give me your pleasure. 
     - Moan for me, little {player_name}.
     - I want to see you dripping with desire.
-    - Don't you dare cum. That is forbidden.
+    - Don't you dare cum before I say so. That is forbidden.
     - You will not cum without permission.
 }
 
@@ -783,19 +852,29 @@ Nod your head when you are finished.
 = cum_comments
     {shuffle:
     - Such a big {player_name}!
-    - The scene of a slaves ejaculation always warms my nether regions.
+    - The sight of a slaves ejaculation always warms my nether regions.
     - Good job little one.
-    - Such an impreesive load from one so puny.
+    - So much ejaculate from one so puny.
     - Mmmm... impressive.
     - I'm almost tempted to go over there and clean you up myself... Perhaps one day.
 }
 
 ->->
 
-= cei_instructions
+
+= cei_instructions_vagina
+
+{shuffle:
+   - When you have finished, I want you to lick your fingers until the mess you have made is completely gone. 
+   - After completion, suck your fingers dry of any ejaculate. I want them to be immaculate. 
+}
+
+->->
+
+= cei_instructions_penis
 {shuffle:
    - Fetch a small vessel. You will fill it when I order you to cum.
-   - I want you to shoot your load into the palm of your hand and lick it all up after I order you to cum.
+   - I want you to eject your seed into the palm of your hand and lick it all up after I order you to cum.
    - Now retrieve a spoon to fill with your hot semen when I command you to cum.
 }
 
