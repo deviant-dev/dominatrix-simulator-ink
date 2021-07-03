@@ -110,7 +110,7 @@ Would you like to wear a gag for me, {player_name}?
 
 + [yes]
     Excellent.
-    Then go get it.
+    Then go retrieve it.
     If you have more than one, choose your favorite.
     -- (prepare)
     <b>Nod</b> your head when you are ready.
@@ -131,7 +131,7 @@ Would you like to wear a gag for me, {player_name}?
 ~ has_plug = true
 
 Welcome back, {player_name}.
-I want to see what you have picked out for me.
+Let me gaze upon your choice of plug.
 
 Turn around and present your ass.
 
@@ -374,7 +374,7 @@ Now, take it nice and slow.
     -> Goddess_SayNumberRangeSlow(8, 10, 2) ->
     -> random_comments ->
     
-    - I want you to show me 20 excrutiatingly slow {hasPenis:strokes|circles}.
+    - I want you to show me 20 excrutiating, slow {hasPenis:strokes|circles}.
     One. Two. Three. Four. Five.
     -> random_comments ->
     Six. Seven. Eight.
@@ -436,7 +436,7 @@ I want you to stay at a nice, steady pace.
     - Count the rythm in your head. 
     One... two... three... four...
     - Keep going like that.
-    - Feel how good it is to just keep {hasPenis: stroking|rubbing}.
+    - Feel how good it is to continously {hasPenis: stroke|rub}.
 }
 
 ->->
@@ -524,7 +524,8 @@ Aren't you?
 {shuffle:
     - I can see that you're eager to cum for me. 
     - You're pent up with the need to release.
-    - You are desperate to cum for me. 
+    - You are desperate to cum for me. \
+    - You are willing to do anything for me to grant you a sweet release.
 }
 
 Aren't you?
@@ -561,6 +562,7 @@ Tell me, {player_name}...
     - Do you enjoy eating your own cum?
     - Would you like to eat your cum for me?
     - Does the thought of eating your own cum excite you?
+    - Does the taste of your own cum fill you with a rush of tingling pleasure?
 }
 
 + [yes]
@@ -832,6 +834,7 @@ Nod your head when you are finished.
     - What a treat. 
     - I bet that feels good. 
     - My little performer.
+    - You were made for this.
 }
 
 ->->
