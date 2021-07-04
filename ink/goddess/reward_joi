@@ -80,6 +80,7 @@ So, I will consider your preferences.
 {shuffle:
     - -> ass
     - -> mouth 
+    - -> lube
 }
 
 = ass
@@ -116,6 +117,25 @@ Would you like to wear a gag for me, {player_name}?
     <b>Nod</b> your head when you are ready.
     
     ++ [yes] -> gag
+    
++ [no]
+    This is not required today,
+    but in the future I may insist.
+    -> begin
+    
++ [timeout] -> Goddess_Timeout -> mouth 
+
++ [distracted] -> Goddess_PayAttention -> mouth
+
+= lube
+
+Now, would you like to pleasure yourself with lubrication?
+
++ [yes]
+    Splendid.
+    Then go retrieve your favorite lube.
+    
+    ++ [yes] -> mess
     
 + [no]
     This is not required today,
@@ -199,6 +219,26 @@ An excellent choice.
 Your lips bulge beautifully around it.
 
 -> begin
+
+= mess
+
+Hello again, {player_name}.
+
+Now pour a generous amount of lube on your throbbing genitals.
+
+/wait3 
+
+{shuffle:
+    - That's it, make yourself nice and messy for me.
+    - Such a beautiful mess you're making.
+    - -> Goddess_GoodJob ->
+}
+
+
+-> begin
+
+
+
 
 = begin
 //this is where the actual scene happens
@@ -345,7 +385,7 @@ Can you keep continue without orgasming?
 {shuffle:
     - -> slow ->
     - -> fast ->
-    - {hasPenis: ->squeeze->|->->}
+    - {hasPenis: ->squeeze->|->squeeze_vagina->}
     - -> steady ->
 }
 
@@ -409,6 +449,20 @@ Start going a bit quicker.
 }
 
 - ->->
+
+= squeeze_vagina
+
+Pause for a moment.
+
+{shuffle:
+    - Now cup your soft breasts and squeeze them for me. 
+    - Let me see you give your pussy lips a long, gentle squeeze. 
+    - Grab your beautiful ass and squeeze it.
+}
+
+Now release.
+
+->->
 
 = squeeze
 
