@@ -2,12 +2,12 @@
 # theme: dark
 
 INCLUDE debug
+INCLUDE credits
 INCLUDE code
+INCLUDE entry_hub
+INCLUDE game_intro
 INCLUDE vars
 INCLUDE web
-INCLUDE game_intro
-INCLUDE game_outro
-INCLUDE entry_hub
 
 INCLUDE deviation/unspeakable_toy
 INCLUDE general/bad_touch
@@ -145,118 +145,5 @@ VAR inVR = false
     /log Exiting ink debug.
 }
 
-/log Starting game from the beginning.
-
 ~ setDeviation(deviation)
 -> game_start
-
-
-=== game_start ===
-
-{ web: -> table_of_contents }
-
-// -> exit has the logic for module starting locations
-{
-    - deviation == unspeakable_toy:
-        -> deviation_unspeakable_toy
-    - deviation == puppyplay:
-        -> yuki_hub
-    - deviation == hand_signals:
-        -> headmistress_hub
-    - deviation == treat:
-        -> treat_care
-    - deviation == nega_dice:
-        -> nega_hub
-    - deviation == pragma:
-        -> pragma_hub
-    - deviation == furia:
-        -> furia_hub
-    - inTutorial == false:
-        -> entry_hub
-    - else:
-        -> game_intro
-}
-
-
-=== game_restart ===
-// Make sure deviation is set in case the story state was reset
-// via 'RestartStory()' in StoryTeller.
-~ setDeviation(deviation)
--> game_start
-
-
-=== load_game ===
--> load_path
-
-
-// For deviations that start after the main game intro's gender check.
-=== post_intro_deviation_check ===
-{
-    - deviation == puppyplay:
-        -> yuki_hub
-    - deviation == hand_signals:
-        -> headmistress_hub
-    - deviation == exhibitionism:
-        -> headmistress_hub
-    - else:
-        -> goddess_intro
-}
-
-
-=== exit ===
-/scene None
-
-// {web: -> table_of_contents}
-{just_changed != none:
-    ~ profile_scene_count++
-    {current_mistress != Treat:
-        ~ treat_scenes_since_last_session ++
-
-    - else:
-
-        ~ treat_scenes_since_last_session = 0
-    }
-
-}
-
-{
-    - deviation == unspeakable_toy:
-        -> deviation_unspeakable_toy
-    - deviation == hand_signals:
-        /scene none
-        -> headmistress_hub
-    - deviation == exhibitionism:
-        /scene none
-        -> headmistress_hub
-    - deviation == puppyplay:
-        /scene none
-        -> yuki_hub
-    - deviation == demo:
-        -> pause(3) ->
-        -> game_outro
-    - deviation == treat:
-        -> treat_care
-    - deviation == nega_dice:
-        -> nega_hub
-    - deviation == pragma:
-        -> pragma_hub
-    - deviation == furia:
-        -> furia_hub
-}
-
--> pause(1) ->
-
-{inTutorial or current_mistress == Goddess or current_mistress == Treat or just_changed == none:
-    /log Skipping monitoring
-    -> entry_hub
-- else:
-    {shuffle:
-        - -> goddess_monitoring
-        - -> treat_monitoring
-        - -> entry_hub
-        - -> entry_hub
-        - -> entry_hub
-        // - -> entry_hub
-        // - -> entry_hub
-    }
-}

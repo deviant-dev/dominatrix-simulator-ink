@@ -559,3 +559,114 @@ Come back when you're ready to follow the rules. #06
 It's so much better when you decide to follow the rules and behave. #07
 
 ->->
+
+
+=== Yuki_Cunnilingus_Comments ===
+
+
+//asking the player to change speed
+= change_to_slower
+
+{shuffle:
+    - I want it nice and slow.
+    - Time to slow it down.
+    - Take your time now and go slow.
+    - Let's see how slow you can go. 
+}
+
+->->
+
+= change_to_faster
+
+{shuffle:
+    - Time to speed it up, pet. 
+    - I want you to go a little faster.
+    - A little faster. 
+}
+->->
+
+
+//correcting the player for going the wrong speed, lost arousal level
+= too_fast
+//record non-verbal sounds to indicate disappointment at too fast
+
+{shuffle:
+    - Slow down! That's too fast.
+    - Woah. Slow it down.
+}
+->->
+
+= too_slow
+//record non-verbal sounds to indicate disappointment at too slow
+{shuffle:
+    - That's too slow. Go faster.
+    - You're not trying hard enough. Speed it up.
+}
+->->
+
+//comments about speed delivered at different arousal levels keeping her voice pitch at the right arousal level
+= just_right_arousal_low
+
+{shuffle:
+    - That's it. 
+    - Just like that.
+    - Perfect.
+    - Oh yes. 
+    - Right there.
+}
+
+->->
+
+= just_right_arousal_medium
+
+{shuffle:
+    - That's it. 
+    - Just like that.
+    - Perfect.
+    - Oh yes. 
+    - Right there.
+}
+
+->->
+
+= just_right_arousal_high
+
+{shuffle:
+    - That's it. 
+    - Just like that.
+    - Perfect.
+    - Fuck yah.
+    - Right there.
+}
+
+->->
+
+//
+= continue_arousal_low
+
+{shuffle:
+    - So relaxing. 
+    - Your tongue is so soft.
+}
+
+->->
+
+= continue_arousal_medium
+
+{shuffle:
+    - Ahhhh. I'm so wet.
+}
+->->
+
+= continue_arousal_high
+
+{shuffle:
+    - You make such a good cunt slut.
+}
+->->
+
+= orgasming
+{shuffle:
+    - Yes! I'm cumming!
+}
+->->

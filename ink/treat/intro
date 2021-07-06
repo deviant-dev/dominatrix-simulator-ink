@@ -360,16 +360,20 @@ Will you visit me soon? #88
 
     /perform talk_thoughtful aroused 65
     Come to my room when you are ready. #90
-    -> exit
 
 + [no]
     /perform idle_unhappy_arms_crossed disgusted 65
     That's a shame. #91
     I'll be here when you need me. #92
-    -> exit
 
 + [timeout] -> Treat_Timeout -> visit
 
 + [distracted] -> Treat_PayAttention -> visit
 
-//TODO complete and hook uo entry.explore
+
+- ~ treat_intro_complete = true
+-> exit
+
+
+
+
