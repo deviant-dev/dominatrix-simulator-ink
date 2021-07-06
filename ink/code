@@ -70,7 +70,7 @@
         -> yuki_hub
     - deviation == demo:
         -> pause(3) ->
-        -> credits
+        -> game_outro
     - deviation == treat:
         -> treat_care
     - deviation == nega_dice:

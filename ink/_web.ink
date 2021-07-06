@@ -2,12 +2,12 @@
 # theme: dark
 
 INCLUDE debug
-INCLUDE credits
 INCLUDE code
-INCLUDE entry_hub
-INCLUDE game_intro
 INCLUDE vars
 INCLUDE web
+INCLUDE game_intro
+INCLUDE game_outro
+INCLUDE entry_hub
 
 INCLUDE deviation/unspeakable_toy
 INCLUDE general/bad_touch
@@ -125,16 +125,16 @@ INCLUDE yuki/rewardmega_placeholder
 
 
 
-// EXTERNAL getNegaDie1()
-// EXTERNAL getNegaDie2()
-// EXTERNAL getNegaDie3()
+EXTERNAL getNegaDie1()
+EXTERNAL getNegaDie2()
+EXTERNAL getNegaDie3()
 
 
 // Flow Variables
 LIST deviation = (full_game), tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia, unspeakable_toy
 
-VAR debug = false
-VAR web = true
+VAR debug = true
+VAR web = false
 VAR inVR = false
 
 // Debug Jump

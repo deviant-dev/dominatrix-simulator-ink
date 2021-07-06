@@ -69,7 +69,7 @@ Now go and fail me no further, {player_name}. #13
 ~ tutorial_goddess_outro_angry_complete = true
 
 {deviation == tutorial:
-    -> credits
+    -> game_outro
 - else:
     -> tutorial_end
 }
@@ -116,7 +116,7 @@ Go forth and please me, {player_name}. #25
 ~ tutorial_goddess_outro_happy_complete = true
 
 {deviation == tutorial:
-    -> credits
+    -> game_outro
 - else:
     -> tutorial_end
 }

@@ -11,7 +11,7 @@
 ~ setHub(None, "entry_hub", -> entry_hub)
 
 { inTutorial: -> tutorial_entry }
-{ deviation == tutorial || deviation == demo: -> credits}
+{ deviation == tutorial || deviation == demo: -> game_outro}
 
 -> normal_entry
 
@@ -35,7 +35,7 @@
 + [move: Angel] -> angel_hub
 + [move: Treat] -> treat_hub
 + [move: Caliste] -> caliste_hub
-+ [move: Credits] -> credits
++ [move: Credits] -> game_outro
 
 
 = tutorial_entry

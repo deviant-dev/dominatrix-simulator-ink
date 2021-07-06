@@ -541,7 +541,7 @@ I'm sure she can show you the ropes, so to speak. #112
 
 // If this is the demo with just the Goddess, end the demo.
 {deviation == demo:
-    -> credits
+    -> game_outro
 - else:
     -> exit
 }
