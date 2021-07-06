@@ -2,59 +2,23 @@
 
 === table_of_contents ===
 
-+ <b>Test: Goddess JOI</b>
++ <b>Test: Goddess JOI Reward</b>
     ~ setDeviation(full_game)
     -> goddess_reward_joi
 
-+ <b>DomSim: Threshold</b>
++ <b>Test: Goddess Unspeakable Toy Reward</b>
+    ~setDeviation(unspeakable_toy)
+    -> deviation_unspeakable_toy
+    
++ <b>DomSim: Threshold (with tutorial)</b>
     ~ setDeviation(full_game)
     -> game_intro_web
 
-+ <b>DomSim: Threshold - Main Entry Loop</b>
++ <b>DomSim: Threshold (post tutorial)</b>
     ~ setDeviation(full_game)
     ~ unlockAll()
     -> entry_hub
 
-+ <b>DomSim: Threshold Demo</b>
-    ~ setDeviation(demo)
-    -> game_intro_web
-
-+ Headmistress Punishment - Spanking
-    ~  unlockAll()
-    -> headmistress_punishment_spanking
-
-+ Headmistress Task - Hand Signals
-    ~ setDeviation(hand_signals)
-    ~  unlockAll()
-    -> headmistress_task_handsignals
-
-+ Headmistress Reward - Exhibitionism
-    ~ setDeviation(exhibitionism)
-    ~ rewards = 1
-    ~  unlockAll()
-    -> headmistress_reward_exhibitionism
-
-+ Nega Reward - Forced Sex
-    ~  unlockAll()
-    -> nega_reward_hard_forcedsex
-
-+ Nega Reward - Tease
-    ~  unlockAll()
-    -> nega_reward_tease
-
-+ Yuki Punishment - Puppy Play Spanking
-    ~ setDeviation(puppyplay)
-    ~  unlockAll()
-    -> yuki_punishment_puppyplay_spanking
-
-+ Yuki Task - Puppy Play
-    ~ setDeviation(puppyplay)
-    ~  unlockAll()
-    -> yuki_task_puppyplay
-
-+ Ms. Treatment Sessions
-    ~ setDeviation(treat)
-    -> treat_session_subdrop
 
 
 === select_gender_web ===
