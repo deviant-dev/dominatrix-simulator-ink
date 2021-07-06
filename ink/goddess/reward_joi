@@ -646,7 +646,7 @@ Tell me, {player_name}...
 
     {hasPenis: -> cei_instructions_penis->|->cei_instructions_vagina->}
 
-Nod your head when you are ready.
+Would that please you {player_name}?
 
 +[yes]
     ->Goddess_AcknowledgeYes->
@@ -881,7 +881,7 @@ Nod your head when you are finished.
     - Delicious.
     - Mmmm.
     - So good. 
-    - What a good little slut.
+    - What a good little {player_name}.
     - You serve me. 
     - I can do whatever I want with you. 
     - This is where you belong.
