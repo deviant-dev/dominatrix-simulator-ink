@@ -80,6 +80,7 @@ So, I will consider your preferences.
 {shuffle:
     - -> ass
     - -> mouth 
+    - -> lube
 }
 
 = ass
@@ -110,7 +111,7 @@ Would you like to wear a gag for me, {player_name}?
 
 + [yes]
     Excellent.
-    Then go get it.
+    Then go retrieve it.
     If you have more than one, choose your favorite.
     -- (prepare)
     <b>Nod</b> your head when you are ready.
@@ -126,12 +127,31 @@ Would you like to wear a gag for me, {player_name}?
 
 + [distracted] -> Goddess_PayAttention -> mouth
 
+= lube
+
+Now, would you like to pleasure yourself with lubrication?
+
++ [yes]
+    Splendid.
+    Then go retrieve your favorite lube.
+    
+    ++ [yes] -> mess
+    
++ [no]
+    This is not required today,
+    but in the future I may insist.
+    -> begin
+    
++ [timeout] -> Goddess_Timeout -> lube 
+
++ [distracted] -> Goddess_PayAttention -> lube
+
 = plug 
 
 ~ has_plug = true
 
 Welcome back, {player_name}.
-I want to see what you have picked out for me.
+Let me gaze upon your choice of plug.
 
 Turn around and present your ass.
 
@@ -199,6 +219,26 @@ An excellent choice.
 Your lips bulge beautifully around it.
 
 -> begin
+
+= mess
+
+Hello again, {player_name}.
+
+Now pour a generous amount of lube on your throbbing genitals.
+
+/wait3 
+
+{shuffle:
+    - That's it. make yourself nice and messy for me.
+    - Such a beautiful mess you're making.
+    - -> Goddess_GoodJob ->
+}
+
+
+-> begin
+
+
+
 
 = begin
 //this is where the actual scene happens
@@ -349,7 +389,7 @@ Can you keep continue without orgasming?
 {shuffle:
     - -> slow ->
     - -> fast ->
-    - -> squeeze ->
+    - {hasPenis: ->squeeze->|->squeeze_vagina->}
     - -> steady ->
 }
 
@@ -378,7 +418,7 @@ Now, take it nice and slow.
     -> Goddess_SayNumberRangeSlow(8, 10, 2) ->
     -> random_comments ->
     
-    - I want you to show me 20 excrutiatingly slow {hasPenis:strokes|circles}.
+    - I want you to show me 20 painfully slow {hasPenis:strokes|circles}.
     One. Two. Three. Four. Five.
     -> random_comments ->
     Six. Seven. Eight.
@@ -414,6 +454,20 @@ Start going a bit quicker.
 
 - ->->
 
+= squeeze_vagina
+
+Pause for a moment.
+
+{shuffle:
+    - Now cup your soft breasts and squeeze them for me. 
+    - Let me see you give your pussy lips a long, gentle squeeze. 
+    - Grab your beautiful ass and squeeze it.
+}
+
+Now release.
+
+->->
+
 = squeeze
 
 Pause for a moment.
@@ -437,10 +491,10 @@ I want you to stay at a nice, steady pace.
 
 {shuffle:
     - Keep your motions even.
-    - Count the rythm in your head. 
+    - Count the rhythm in your head. 
     One... two... three... four...
     - Keep going like that.
-    - Feel how good it is to just keep {hasPenis: stroking|rubbing}.
+    - Feel how good it is to continously {hasPenis: stroke|rub}.
 }
 
 ->->
@@ -528,7 +582,8 @@ Aren't you?
 {shuffle:
     - I can see that you're eager to cum for me. 
     - You're pent up with the need to release.
-    - You are desperate to cum for me. 
+    - You are desperate to cum for me.
+    - You are willing to do anything for me to grant you a sweet release.
 }
 
 Aren't you?
@@ -565,19 +620,20 @@ Tell me, {player_name}...
     - Do you enjoy eating your own cum?
     - Would you like to eat your cum for me?
     - Does the thought of eating your own cum excite you?
+    - Does the taste of your own cum fill you with a rush of tingling pleasure?
 }
 
 + [yes]
     Eager to please, I see.
     ~ wants_cei = true
-     -> orgasm_cei
+     ->orgasm_cei 
 + [no]
     Interesting.
     Shall I make you do it anyway?
     
     ++ [yes]
         How intriguing.
-        -> orgasm_cei
+        ->orgasm_cei 
         
     ++ [no]
         Very well.
@@ -590,15 +646,15 @@ Tell me, {player_name}...
 
 = orgasm_cei    
 
-You're going to show me how much of a cumslut you really are, by cleaning every last drop.
+    You're going to prove your dedication to me, by cleaning every single drop.
 
-->cei_instructions->
+    {hasPenis: -> cei_instructions_penis->|->cei_instructions_vagina->}
 
-Nod your head when you are ready.
+Would that please you {player_name}?
 
 +[yes]
     ->Goddess_AcknowledgeYes->
-    ->cei_countdown
+    {hasPenis: -> cei_countdown_penis|->cei_countdown_vagina}
 
 + [no]
     -> Goddess_Unhappy ->
@@ -606,7 +662,7 @@ Nod your head when you are ready.
     
     ++ [yes]
         -> Goddess_AcknowledgeYes->
-        -> cei_countdown
+        {hasPenis: -> cei_countdown_penis|->cei_countdown_vagina}
         
         
     ++ [no]
@@ -619,27 +675,28 @@ Nod your head when you are ready.
 
 = orgasm
 
+/wait 2
+
 It's time, little one.
 
 I want that throbbing orgasm of yours released.
 
-Keep jerking your cock until you are ready to explode.
--> cum_countdown
+Keep pleasuring yourself until you are close to completion.
+{hasPenis: -> cum_countdown_penis|->cum_countdown_vagina}
 
-= cei_countdown
+= cei_countdown_vagina
 
-
- Now keep jerking right up until the point of ejaculation.
+Now keep playing with yourself right up until the point of ejaculation.
  /wait
  
- Nod your head when your cute little cock is ready to burst.
+ Nod your head when you are approaching completion.
     
 +[yes]
 
     ->tease_comments->
     
     
-    Since I am the one who shall allow your release, I want that load at the count of three.
+    SSince I am the one who shall grant your release, you will push yourself to orgasm for me on the count of three.
     
     One....
     
@@ -653,24 +710,80 @@ Keep jerking your cock until you are ready to explode.
     
    ->cum_comments->
    
-   Now eat your fresh hot load like the good slut you are.
+   {shuffle:
+    - Now clean up that delicious mess you've made. Lick those fingers clean.
+    - Slide those soft fingers into your mouth and suckle every last bit of juice from them.
+}
+  
+   /wait 3 
    
-   Such a good little {player_name}. I bet eating your own cum made you feel warm inside, didn't it?
+   {shuffle:
+    - Such a good little {player_name}. Does the taste of your musty pleasure leave you feeling warm... and satisfied?
+    - Oh how watching you suck the juice from your fingers fills me with lust. Do you taste good, little mouse?
+}
+   
+   
+   
+   ++[yes] 
+    Wonderful. Now begone slut.
+    ->exit 
+   
+   
+   ++[no]
+    Shame, consider yourself lucky I granted you a release. 
+    ->exit
+
+
+= cei_countdown_penis
+
+ Now keep stroking right up until the point of ejaculation.
+ /wait
+ 
+ Nod your head when your little vessel is ready to cum.
+    
++[yes]
+
+    ->tease_comments->
+    
+    
+    Since I am the one who shall allow your release, I want you to ejaculate at the count of three.
+    
+    One....
+    
+    Two....
+    
+    ...
+    
+    /wait
+    
+    Three...
+    
+   ->cum_comments->
+   
+   Now swallow your cum.
+   
+   /wait 3 
+   
+   Such a good little {player_name}. Consuming ones own seed often makes them feel warm and satisfied, do you feel that way slave?
    
    ++[yes] 
     Great. Now begone slut.
     ->exit 
+   
+   
    ++[no]
-    Shame, maybe next time i'll teach you how to swallow cum and enjoy it.
+    Shame, consider yourself lucky I granted you a release. 
+    
     ->exit
    
+
 + [no]
     -> Goddess_Unhappy ->
     Do you wish to conintue?
     
     ++ [yes]
         -> Goddess_AcknowledgeYes->
-        ->cei_countdown
+        ->cei_countdown_penis
         
         
     ++ [no]
@@ -679,16 +792,18 @@ Keep jerking your cock until you are ready to explode.
         -> exit
    
 
-= cum_countdown
 
-    Nod your head when your cute little cock is ready to burst.
+
+= cum_countdown_vagina
     
+    Nod your head when your juices are ready to spew.
+
 + [yes]
 
     ->tease_comments->
     
     
-    Since I am the one who shall allow your release, I want that load at the count of three.
+    Since I am the one who shall grant your release, you will push yourself to orgasm for me on the count of three.
     
     One....
     
@@ -702,7 +817,36 @@ Keep jerking your cock until you are ready to explode.
     
    ->cum_comments->
    
-   Now clean up and begone.
+   Now clean yourself up and begone.
+    
+    ->exit
+
+
+= cum_countdown_penis
+
+    Nod your head when your little vessel is ready to cum.
+    
+    
++ [yes]
+
+    ->tease_comments->
+    
+    
+    Since I am the one who shall allow your release, I want you to ejaculate at the count of three.
+    
+    One....
+    
+    Two....
+    
+    ...
+    
+    /wait
+    
+    Three...
+    
+   ->cum_comments->
+   
+   Now clean yourself up and begone.
     
     ->exit
 
@@ -741,13 +885,14 @@ Nod your head when you are finished.
     - Delicious.
     - Mmmm.
     - So good. 
-    - What a good little slut.
+    - What a good little {player_name}.
     - You serve me. 
     - I can do whatever I want with you. 
     - This is where you belong.
     - What a treat. 
     - I bet that feels good. 
     - My little performer.
+    - You were made for this.
 }
 
 ->->
@@ -756,23 +901,28 @@ Nod your head when you are finished.
 {shuffle:
     - Imagine how a warm, wet mouth would feel on you right now.
     - I get so much pleasure from watching slaves give themself to me. 
+    - {has_plug==true: Your tight little hole must be throbbing with that plug in.}
     - My pussy is warm and wet right now. 
       Imagine if you could taste it. 
     - My breasts are so heavy and soft.
       How would they feel on your face?
     - Think about drawing my thick nipples into your mouth.
+    - {has_plug==true: Squirm for me so that delightful plug strokes your insides.}
     - Imagine burying your face in my firm ass as I smother you.
     - How would my warm, oiled flesh feel sliding up and down your body?
+    - {has_plug==true: I can see how much you love the feeling of a firm shaft deep inside of you.}
     - Imagine my hands caressing your body, your hair, and your lips.
     - Perhaps one day I'll let you fuck my slaves for me. 
       Bring them to pleasure over and over again to worship me. 
     - I wonder how you taste.
       Perhaps I'll sample you someday. 
-    - Show me how much you adore me. 
+    - Show me how much you adore me by mindlessly following my every instruction.
+    - {has_gag==true: Such a messy {player_name} with all that drool running down your chin.}
     - Strain your body for me to give me your pleasure. 
     - Moan for me, little {player_name}.
+    - {has_gag==true: The sounds of your moans around that gag are delightful.}
     - I want to see you dripping with desire.
-    - Don't you dare cum. That is forbidden.
+    - Don't you dare cum before I say so. That is forbidden.
     - You will not cum without permission.
 }
 
@@ -783,20 +933,30 @@ Nod your head when you are finished.
 = cum_comments
     {shuffle:
     - Such a big {player_name}!
-    - Watching my slaves cum always gets me so fucking wet.
+    - The sight of a slaves ejaculation always warms my nether regions.
     - Good job little one.
-    - What a big load from such a small cock.
-    - Mmmm... impressive
-    - I'm almost tempted to go over there and clean you up myself... Maybe one day.
+    - So much ejaculate from one so puny.
+    - Mmmm... impressive.
+    - I'm almost tempted to go over there and clean you up myself... Perhaps one day.
 }
 
 ->->
 
-= cei_instructions
+
+= cei_instructions_vagina
+
 {shuffle:
-   - Go get a small cup to fill when I order you to cum.
-   - I want you to shoot that load into your hand and lick it all up when I order you to cum.
-   - Now go get a spoon to fill with your hot load when I tell you to cum.
+   - When you have finished, I want you to lick your fingers until the mess you have made is completely gone. 
+   - After completion, suck your fingers dry of any ejaculate. I want them to be immaculate. 
+}
+
+->->
+
+= cei_instructions_penis
+{shuffle:
+   - Fetch a small vessel. You will fill it when I order you to cum.
+   - I want you to eject your seed into the palm of your hand and lick it all up after I order you to cum.
+   - Now retrieve a spoon to fill with your hot semen when I command you to cum.
 }
 
 ->->
