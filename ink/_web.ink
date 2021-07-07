@@ -123,18 +123,16 @@ INCLUDE yuki/reward_puppyplay_milking
 INCLUDE yuki/rewardmega_placeholder
 
 
-
-
-EXTERNAL getNegaDie1()
-EXTERNAL getNegaDie2()
-EXTERNAL getNegaDie3()
+// EXTERNAL getNegaDie1()
+// EXTERNAL getNegaDie2()
+// EXTERNAL getNegaDie3()
 
 
 // Flow Variables
 LIST deviation = (full_game), tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia, unspeakable_toy
 
-VAR debug = true
-VAR web = false
+VAR debug = false
+VAR web = true
 VAR inVR = false
 
 // Debug Jump
