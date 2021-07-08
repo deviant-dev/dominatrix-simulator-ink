@@ -133,8 +133,8 @@ INCLUDE yuki/rewardmega_placeholder
 // Flow Variables
 LIST deviation = (full_game), tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia, unspeakable_toy
 
-VAR debug = false
-VAR web = true
+VAR debug = true
+VAR web = false
 VAR inVR = false
 
 // Debug Jump
