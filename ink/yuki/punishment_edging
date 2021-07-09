@@ -9,11 +9,57 @@
 -> start
 
 = start
-//rewriting for tone and flow, add check for puppy status before continuing/rewrite for puppy status. 
+//could add puppy status variable here, currently if puppy not chosen the scene ends. 
 
+
+- (puppy_question)
+/perform placeholder
+    Now, before you get started working off that obsidian,  
+- (puppy_check)
+    Do you accept being my puppy for this punishment? 
+    
+
+
++ [pose:puppy_yes]
+    I'm glad you're starting to behave, puppy! 
+    
+    /perform do_point_down
+    Then, sit, and listen.
+
++ [pose:puppy_no]
+    Are you trying to mess with me? 
+    That's your puppy pose for 'no'.
+    
+    So which is it, smarty-pants? 
+    Try again. 
+    ->puppy_check
+
++ [Yes]
+    I'm glad you're starting to behave, puppy! 
+    
+    /perform do_point_down
+    Then, sit, and listen.
+
+
++ [No]
+    Oh what am I going to do with you...
+    -> exit
+    
+    
+    
++ [timeout]
+  -> Yuki_Timeout->
+  -> puppy_check
+
++ [distracted]
+  -> Yuki_PayAttention->
+  -> puppy_check
+    
+
+-
 
 /perform talk_one_finger angry 65
-  Don't think just because I'm not as mean as the other mistresses,
+  Now, don't think just because I'm not as mean as the other mistresses,
   that I can't be good at punishing you!
 
 - (explained_rules)
@@ -68,30 +114,6 @@
 
 //Prompt and set for puppy variable status here, will adjust all dialogue and potentially some pose prompts for yes/no at minimum. Will add a lot of complexity in line choice. Will be rewriting all lines to default to "puppy status" being set to true since it's most in line with Yuki's character and tone. 
 
-- (puppy_check)
-/perform placeholder
-    Do you want to be a puppy for this punishment? 
-
-
-+ [Yes]
-    I'm glad you're starting to behave, puppy! 
-    
-    Then, show me your puppy sit. 
-    :dopose puppy:
-
-+ [No]
-    Oh what am I going to do with you...
-    
-    
-+ [timeout]
-  -> Yuki_Timeout->
-  -> puppy_check
-
-+ [distracted]
-  -> Yuki_PayAttention->
-  -> puppy_check
-    
-    
     
 -
 /perform do_point_down skeptical 65
@@ -153,7 +175,7 @@
 -(commandhands)
 
 /perform talk_threaten angry 65
-  Your paws stay up until I say otherwise.
+  Your paws stay up until I say otherwise or unless you're answering me.
 
 /perform idle_skeptical skeptical 75
   Got that? You may answer now. 
@@ -270,7 +292,7 @@
 /wait 3
 
 /perform do_summon_player excited 35
-  Stand up for me. Like a good little {isBoy: boy | {isGirl: girl | pet}}.
+  Stand up for me. Like a good little {isBoy: boy| {isGirl: girl| pet}}.
 
 -(standup)
 
@@ -325,6 +347,9 @@
   /perform idle_skeptical skeptical 55
     Earlier, I was a bit apprehensive about punishing you this way;
     but I think I'm getting through that silly puppy head of yours.
+    
+    
+    //I hope this punishment keeps you out of trouble! 
 
 +[pose:puppy_no]
   /perform talk_behold angry 65
@@ -357,7 +382,7 @@
   What do you think;
   have you had enough teasing yet?
 
-+ [Yes]
++ [pose:puppy_yes]
   /perform react_crazy_gesture skeptical 65
     Already? Poor puppy, 
     
@@ -367,7 +392,7 @@
   ~ addDisobey()
     I think we have a long way to go still. Keep being good! 
 
-+ [No]
++ [pose:puppy_no]
   /perform talk_one_finger amused 60
     Good answer!
 
@@ -376,7 +401,9 @@
     to release this time, though.
 
   /perform do_shake_finger_stern angry 55
-    Not until I say so, anyways!
+    Not until I say so, anyways! 
+    
+    And I don't think it will be this time. 
 
 + [timeout]
   -> Yuki_Timeout ->
@@ -391,9 +418,9 @@
   I'm going to relax on the sofa now, and watch my puppy;
   there's just so much of you to take in.
 
-TODO Yuki model w/ no shoes/socks
+TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a hold-up on the model w/no shoes or socks
 /perform idle_swaying amused 65
-  I've also been wanting to take my socks and shoes off,
+  And I've been wanting to take my socks and shoes off,
   it's getting so <i>steamy</i> in here, teehee!
 
 ->edging_3
@@ -406,16 +433,19 @@ TODO Yuki model w/ no shoes/socks
 /character yuki prone_lounge_right aroused 55
 
 /perform
-  Come over here, silly.
+  Come over here, silly puppy. Remember to stay down. 
   You're too far away.
 
 +[move]
 
 /perform
-  Now this time, you <i>are</i> allowed to touch yourself.
+  Now this time, I want to see you <i>really</i> get into it. I know you were holding back.
+  
+  //could make a mention of Yuki watching the player with a different mistress here?
+  
 
 /perform
-  I am a kind and generous mistress, and I want to see my good puppy make the most of it. 
+  I am a kind and generous mistress, and even though this is still a punishment, I want to see my good puppy make the most of it. 
   
   I can see you need it. 
   
@@ -426,8 +456,8 @@ TODO Yuki model w/ no shoes/socks
 ~ tries ++
 
 /perform
-  Kneel in front of me. I want a frontrow seat 
-  while I contemplate how to <i>really</i> make this a memorable punishment.
+  Kneel in front of me. 
+  I want a frontrow seat while I contemplate how to <i>really</i> make this a memorable punishment.
 
 +[pose:kneel]
 + { tries < 2 } [timeout] -> frontseat
@@ -441,12 +471,12 @@ TODO Yuki model w/ no shoes/socks
     You still are not allowed to cum, no matter how badly you want to!
     You got that, puppy?
 
-+[yes]
++[pose:puppy_yes]
   /perform
     Good! Now work yourself over for me, 
     you slutty puppy! 
 
-+[no]
++[pose:puppy_no]
   /perform
     Oh really? That's too bad.
     Don't you dare cum without my permission while I'm letting you touch yourself. 
@@ -459,7 +489,7 @@ TODO Yuki model w/ no shoes/socks
   -> Yuki_PayAttention.Couch ->
   -> memorable
 
-- -> RandomCommentLoop(-> tease_bank_couch, 4, 5, 4, 5)
+- -> RandomCommentLoop(-> tease_bank_couch, 4, 5, 4, 5) ->
 
 /perform
   Ahh, what a wonderful trick those paws can do;
@@ -470,13 +500,13 @@ TODO Yuki model w/ no shoes/socks
   You're still learning, and you have quite a few rough edges that need smoothing out.
 
 /perform
-  I can't help you unless you listen to me. 
+  But I can't help you unless you listen to me. 
   
 /perform
   I try my best to be a good mistress and train you right. 
 
 /perform
-  I can see that you make an effort sometimes, even if you screw up!
+  And I can see that you make an effort, even if you screw up sometimes!
 
 -(together)
 /perform
@@ -515,12 +545,12 @@ TODO Yuki model w/ no shoes/socks
   So, how are you feeling, you naughty puppy?
   Are you having fun, being my little plaything?
 
-+[Yes]
++[pose:puppy_yes]
   /perform
   ~ addObey()
     Heeheehee, I know, I can see it in your eyes!
 
-+[No]
++[pose:puppy_no]
   /perform
   ~ addDisobey()
     Aww, poor muffin! Sucks to be you!
@@ -571,7 +601,6 @@ TODO Yuki model w/ no shoes/socks
 /perform
   Suck on my toes perhaps?
   I know that your silly little puppy mind has thought about it, no sense in denying it.
-  I see right through you.
 
 /perform
   Ah well, not that you'll get a chance anytime soon;
@@ -579,7 +608,9 @@ TODO Yuki model w/ no shoes/socks
 
 /perform
   But don't worry, I'll make sure that you're trained properly.
-  We have no use for misbehaving pets like you around here.
+  I know deep down you want to behave. 
+  
+  //And some of the other mistresses have no use for misbehaving pets. 
 
 /perform
   Soon, you'll learn to love our time together, to sink down into being my good puppy. 
@@ -593,22 +624,22 @@ TODO Yuki model w/ no shoes/socks
   /perform
   ~ addObey()
   --(feelbetter)
-  Because I make you feel good, right?
+  Because you like being my puppy, right?
 
   ++[pose:puppy_yes]
     ~ addObey()
-    Excellent!
+    That makes me so happy!
     I hope that you have learned something from this punishment! 
     
-    Bad puppies are left waiting. 
+    Remember, bad puppies are left waiting, like right now. 
     
+    /perform seductive/aroused?
     Good puppies are <i>very</i> well taken care of. 
 
   ++[pose:puppy_no]
     ~ addDisobey()
-    Oh come on! How can you say that?
-    I'm trying my best here,
-    the least you can do is respond positively.
+    Oh come on! How can you say that? 
+    You're so cute when you're my puppy!
 
   ++[timeout]
     -> Yuki_Timeout.Couch ->
@@ -621,9 +652,9 @@ TODO Yuki model w/ no shoes/socks
 + [pose:puppy_no]
   /perform
   ~ addDisobey()
-    Mmph. That's not very nice to say to the mistress in charge here.
+    Hmmmph. That's not very nice to say to the mistress in charge here.
     Maybe you'll change your mind;
-    for your sake, that is.
+    for your own sake.
 
 + [timeout]
   ->Yuki_Timeout.Couch ->
@@ -633,10 +664,17 @@ TODO Yuki model w/ no shoes/socks
   -> Yuki_PayAttention.Couch ->
   -> comeback
 
-Now, I'll take that punishment marker from you. 
 
-Off with you puppy, and you better remember to behave! 
 
+- (end_yuki_edging_punishment)
+
+    //actually find command to remove punishment from player here
+
+    /perform 
+    Now, I'll take that punishment marker from you. 
+
+    /perform 
+    Off with you puppy, and you better remember to behave! 
 
 ->exit
 
@@ -716,10 +754,12 @@ Off with you puppy, and you better remember to behave!
 
 { shuffle:
 
-  - Mmmm, I can hardly wait to see where your breaking point is.
-  - Are you going to cum for me today?
-  - You must so close to bursting!
+  - Mmmm, I can hardly wait to see how desperate you get. 
+  - Do you still think you're going to cum for me? Hah!
+  - You must be so close to bursting!
+  - You look like you're in heat, puppy! 
   - Hahah, this is so much fun!
+  - I can't believe you misbehaved. I hope this aching reminds you to be good! 
   - Goodness, I think there's a little something leaking out of you;
     it's practically begging to get out of you.
   - Can you keep yourself contained for now, hmm?
@@ -744,12 +784,11 @@ Off with you puppy, and you better remember to behave!
 
 { shuffle:
 
-  - Wow, look at that face!
-    That body!
-  - I <i>love</i> seeing you touching yourself,
-    while kneeling before me.
-  - Oh, it's been so long since I've had such a new slave,
-    that's so eager to entertain me!
+  - Wow, look at that face, 
+    you're <i>so</i> gone hm? 
+  - Those cute little paws are a blur! 
+  - I <i>love</i> seeing you touch yourself while kneeling before me.
+  - Oh, it's been so long since I've had a new puppy that's so eager to entertain me!
   - I want you to carefully get close to orgasming,
     like walking a long, thin tightrope.
   - Oh my, I can smell your musk from here.
@@ -774,8 +813,8 @@ Off with you puppy, and you better remember to behave!
 {cycle:
     - I bet you're right on the edge, aren't you?
     - How do you feel? Are you close to cumming?
-    - Is my little slave going to explode soon?
-    - Mmm, I can feel you touching yourself so frantically
+    - Is my little puppy going to explode soon?
+    - Mmm, I can see you touching yourself so frantically
     - You're not gonna last much longer, are you?
     - Do you feel like your {hasPenis: cock|cunt} is going to burst?
 }
