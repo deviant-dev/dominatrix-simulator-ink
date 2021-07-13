@@ -19,7 +19,6 @@
     Do you accept being my puppy for this punishment? 
     
 
-
 + [pose:puppy_yes]
     I'm glad you're starting to behave, puppy! 
     
@@ -43,6 +42,8 @@
 
 + [No]
     Oh what am I going to do with you...
+    
+    Get out then if you don't want to behave! 
     -> exit
     
     
@@ -64,7 +65,7 @@
 
 - (explained_rules)
 /perform talk_consider skeptical 70
-  But I don't quite understand <i>why</i> you need to be punished.
+  But I don't quite understand <i>why</i> you misbehaved.
 
 /perform idle_skeptical sad 55
   I explained the rules to you, didn't I?
@@ -89,14 +90,14 @@
     Bad puppy! Now that's just not true, and you know it!
 
   /perform talk_lean_forward angry 70
-    Why would you even attempt to lie to me?
+    Why would you try to lie to me?
 
   /perform idle_unhappy disgusted 65
     You should be ashamed of yourself.
     Lying counts as being disobedient too.
 
   /perform react_point_at_player_angry angry 80
-    For your total lack of respect towards me, and this house;
+    For your total lack of respect towards me and this house,
 
   /perform do_tap_wrist angry 70
   ~ addPunishment()
@@ -112,7 +113,7 @@
   -> explained_rules
 
 
-//Prompt and set for puppy variable status here, will adjust all dialogue and potentially some pose prompts for yes/no at minimum. Will add a lot of complexity in line choice. Will be rewriting all lines to default to "puppy status" being set to true since it's most in line with Yuki's character and tone. 
+//Prompt and set for puppy variable status, will adjust all dialogue and potentially some pose prompts for yes/no at minimum. Will add a lot of complexity in line choice. 
 
     
 -
@@ -175,7 +176,7 @@
 -(commandhands)
 
 /perform talk_threaten angry 65
-  Your paws stay up until I say otherwise or unless you're answering me.
+  Now, your paws stay up until I say otherwise or unless you're answering me.
 
 /perform idle_skeptical skeptical 75
   Got that? You may answer now. 
@@ -207,20 +208,20 @@
 
 - (edging_explanation)
 /perform idle_tease aroused 55
-  For your punishment today, you're going to edge for me, but you're not going to be allowed to cum. 
+  For your punishment today, you're going to touch yourself for me, until you're aching, 
+  
+  and then, even though it's going to pain me, I'll have to leave you wanting this time. 
+  
+  This is a punishment, remember?
+  
 
-
-//double-check expression here
 /perform idle_tease aroused 70
-  I'm going to teaaaseee you,
-  and tauuunnnt you;
+  So I'm going to <i>tease</i> you,
+  and <i>taunt</i> you,
   and there's <i>nothing</i> you can do about it.
-
-  //add consent Check
-  //need some kind of starting instructions to tell the player to begin
   
   Are you ready to be a good {player_name} and accept your punishment?  
-  
+  TODO logic loop back to the question instead of the whole spiel
   
 + [yes] 
     -> Yuki_PuppyPlay_Punishment_UsePaws ->
@@ -234,7 +235,6 @@
 +[pose:puppy_yes]
     /perform HAPPY
     Good pup! Now get those paws busy on your {hasPenis: cock|pussy}!
-    //check if selection is correct method
     
     //flow into edging_1
     ->edging_1
@@ -261,13 +261,21 @@
 +[pose:puppy_yes]
   /perform react_laugh amused 60
   ~ addObey()
-    You're not supposed to enjoy it thaaat much!
+    Goodie! But remember, no cumming.
 
 +[pose:puppy_No]
   /perform
   ~ addDisobey()
-    -> Yuki_AcknowledgeNo
+    -> Yuki_AcknowledgeNo -> 
+    
+    //change to a shuffle and add lines
     Well maybe next time you shouldn't be such a naughty little puppy, hmmm?
+    
+    Maybe you should move those paws a little better then? 
+    
+    Good, you're being punished after all. 
+    
+    -> edging_break_1
 
 +[timeout]
   -> Yuki_Timeout->
@@ -282,8 +290,8 @@
 = edging_break_1
 
 /perform idle_tease excited 50
-  Mmm, oh goodie;
-  I can see that your {hasPenis: cock is nice and hard|pussy is nice and wet}, now!
+  Mmm, oh goodie!
+  I can see that your {hasPenis: cock is nice and hard|pussy is nice and wet} now!
 
 /perform idle_swaying aroused 65
   But we're just getting started.
@@ -292,6 +300,7 @@
 /wait 3
 
 /perform do_summon_player excited 35
+TODO change to player name
   Stand up for me. Like a good little {isBoy: boy| {isGirl: girl| pet}}.
 
 -(standup)
@@ -313,10 +322,10 @@
 
 -
 /perform react_chuckle amused 55
-  Hehehe, I love making my puppies stand up on their hind legs;
-  it's very entertaining, like you're a person.
+  Hehehe, I love making my puppies stand up on their hind legs.
+  It's very entertaining, like you're a person.
   
-  But remember, you're just my puppy right now, and you're being punished. 
+  But remember, you're just my puppy right now and you're being punished. 
 
 /perform idle_tease aroused 45
   Let's continue with your punishment.
@@ -345,11 +354,8 @@
     Ooooh! That means that I'm being a good mistress!
 
   /perform idle_skeptical skeptical 55
-    Earlier, I was a bit apprehensive about punishing you this way;
+    I was a bit apprehensive about punishing you this way,
     but I think I'm getting through that silly puppy head of yours.
-    
-    
-    //I hope this punishment keeps you out of trouble! 
 
 +[pose:puppy_no]
   /perform talk_behold angry 65
@@ -379,7 +385,7 @@
 
 -(enough)
 /perform idle_cocks_head_to_left amused 55
-  What do you think;
+  What do you think,
   have you had enough teasing yet?
 
 + [pose:puppy_yes]
@@ -415,13 +421,8 @@
 
 -
 /perform do_inspect excited 70
-  I'm going to relax on the sofa now, and watch my puppy;
-  there's just so much of you to take in.
+  I'm going to relax on the sofa now and watch my good puppy.
 
-TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a hold-up on the model w/no shoes or socks
-/perform idle_swaying amused 65
-  And I've been wanting to take my socks and shoes off,
-  it's getting so <i>steamy</i> in here, teehee!
 
 ->edging_3
 
@@ -433,22 +434,20 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 /character yuki prone_lounge_right aroused 55
 
 /perform
-  Come over here, silly puppy. Remember to stay down. 
   You're too far away.
+  Come over here, silly puppy. Remember to stay down. 
 
 +[move]
 
 /perform
   Now this time, I want to see you <i>really</i> get into it. I know you were holding back.
   
-  //could make a mention of Yuki watching the player with a different mistress here?
-  
+  TODO make a mention of Yuki watching the player with a different mistress here?
 
 /perform
   I am a kind and generous mistress, and even though this is still a punishment, I want to see my good puppy make the most of it. 
   
   I can see you need it. 
-  
   
 
 ~ tries = 0
@@ -492,7 +491,7 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 - -> RandomCommentLoop(-> tease_bank_couch, 4, 5, 4, 5) ->
 
 /perform
-  Ahh, what a wonderful trick those paws can do;
+  Ahh, what a wonderful trick those paws can do--
   I love watching you touch yourself. 
 
 /perform
@@ -516,7 +515,7 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 +[pose:puppy_yes]
   ~ addObey()
   /perform
-    Goodie! I'm glad that you're on my side.
+    Goodie! I'm so glad to hear that.
 
 +[pose:puppy_no]
   ~ addDisobey()
@@ -577,44 +576,38 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 /perform
   Alright, paws off!
   We can't have you having too much fun, that defeats the point of a punishment!
-
+  
+TODO add question for whether player came or notified
+//Now, were you good? Did you save your treat for later?
+//If no:
+//Oh no! You're hopeless!
+//No, that's not right, I'm sure we can figure this out.
+//But you'll have to try very hard!
+//You've been naughty again, which means you get another obsidian stone.
+//Be sure to come back to me so I can teach you how to be a good puppy!
+//if yes (below)
+ 
+TODO make this block the result of yes: behavhed 
 /perform
-  That was an amusing performance to watch,
-  although your technique was a <i>little</i> sloppy.
+  Yes, that's a good {player_name}!
+  I'm so proud of you for taking your punishment like a good {player_name}!
+  I hope you know that even when I punish you, you're still my cutie puppy.
+  This is all to help you!
 
-/perform
-  We can improve your handiwork later;
-  if you're able to keep your nose out of trouble, that is.
 
+TODO flow to here whether the player behaved or not
 /perform
   You'll have to work diligently to get back into our good graces, but I know you can do it.
-  Provided that you stop being so naughty! Ughh.
-
-/perform
-  Oooh! Maybe, if you earn enough rewards,
-  you can take care of my feet one day!
-
-/perform
-  Massage my dainty little soles with oil,
-  trim and paint my toenails, even.
-
-/perform
-  Suck on my toes perhaps?
-  I know that your silly little puppy mind has thought about it, no sense in denying it.
-
-/perform
-  Ah well, not that you'll get a chance anytime soon;
-  not unless you start behaving around here!
+  If you stop being so naughty! Ugh.
 
 /perform
   But don't worry, I'll make sure that you're trained properly.
   I know deep down you want to behave. 
-  
-  //And some of the other mistresses have no use for misbehaving pets. 
 
 /perform
   Soon, you'll learn to love our time together, to sink down into being my good puppy. 
-  We can have so much fun together when you behave and trust me, and I know that will keep you coming back to sit at my feet.
+  We can have so much fun together when you behave and trust me, 
+  and I know that will keep you coming back to sit at my feet.
 
 - (comeback)
 /perform
@@ -668,10 +661,11 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 
 - (end_yuki_edging_punishment)
 
-    //actually find command to remove punishment from player here
-
+    
     /perform 
     Now, I'll take that punishment marker from you. 
+
+~ removePunishment()
 
     /perform 
     Off with you puppy, and you better remember to behave! 
@@ -699,18 +693,15 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 }
 
 { shuffle:
-  - Mmm, it's been so long since I've danced.
-    Feels nice to move so... smoothly.
   - I can tell you're getting turned on by this!
   - This punishment is juuuuust what you need!
   - Like what you see?
-    Trick question, silly;
+    Trick question, silly--
     of course you do!
-  - What do you like best about my body?
-    I bet it's my feet, they're so soft and delicate.
-  - Aw, am I too much for you to handle already?
-  - Don't enjoy yourself too much;
-    you're going to need all the stamina you have!
+  - Be sure to get yourself nice and excited!
+  - Oh, I love to see you use your paws!
+  - Now <i>that</i> is what your paws are for, not for misbehaving!
+  - Does my puppy like to be petted? I know you do!
 }
 
 ->->
@@ -728,12 +719,13 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 }
 
 { shuffle:
-  - You should see your face {player_name}, you can't keep your eyes off me!
-  - My, my. Look at you squirm there.
-  - Maybe if you had been a good {player_name}, you could have massaged me instead.
-  - Next time, follow the rules more closely and we can have even more fun!
+  - You should see your cutie face {player_name}, I can't keep my eyes off you!
+  - Maybe if you had been a good {player_name}, we could have played together.
+  - Next time, follow the rules and we can have even more fun!
   - You better not be disobedient anymore, no matter how much this turns you on!
   - Why did you have to be a naughty little puppy and break the rules?
+    It's going to be hard not to give you what you want!
+  - I hope this teaches you to not be such a dummy. You have to behave!
 }
 
 
@@ -754,16 +746,17 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 
 { shuffle:
 
-  - Mmmm, I can hardly wait to see how desperate you get. 
-  - Do you still think you're going to cum for me? Hah!
+//   - Mmmm, I can hardly wait to see how desperate you get. 
+//   - Do you still think you're going to cum for me? Hah!
   - You must be so close to bursting!
   - You look like you're in heat, puppy! 
   - Hahah, this is so much fun!
   - I can't believe you misbehaved. I hope this aching reminds you to be good! 
-  - Goodness, I think there's a little something leaking out of you;
+  - Goodness, I think there's a little something leaking out of you--
     it's practically begging to get out of you.
-  - Can you keep yourself contained for now, hmm?
-    What am I saying, I bet you could stay like this forever!
+  - Can you stay on your leash for now, hmm?
+    // What am I saying, I bet you could stay like this forever!
+  - I'm so disappointed that you misbehaved, it's going to be hard to not let you cum!
 
 }
 
@@ -784,42 +777,47 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 
 { shuffle:
 
-  - Wow, look at that face, 
-    you're <i>so</i> gone hm? 
+//   - Wow, look at that face, 
+//     you're <i>so</i> gone hm? 
   - Those cute little paws are a blur! 
-  - I <i>love</i> seeing you touch yourself while kneeling before me.
-  - Oh, it's been so long since I've had a new puppy that's so eager to entertain me!
-  - I want you to carefully get close to orgasming,
-    like walking a long, thin tightrope.
+  - I <i>love</i> seeing you touch yourself while kneeling for me.
+  - Oh, it's been so long since I've had a puppy that's so eager for me!
+//   - I want you to carefully get close to orgasming,
+//     like walking a long, thin tightrope.
   - Oh my, I can smell your musk from here.
+  - Don't hold out on me, be sure to get really close!
+  - You look so cute like that, puppy!
+    I wish you hadn't been naughty so that I could watch you cum.
+  - This is a punishment, remember? You <i>have</i> to get right to the edge!
+  - You're making it so hard for me to say no to you, puppy.
 
 }
 
 ->->
 
 
-= AboutToCum
+// = AboutToCum
 
-{ shuffle:
-  - /perform
-  - /perform
-  - /perform
-  - /perform
-  - /perform
-  - /perform
-  - /perform
-}
+// { shuffle:
+//   - /perform
+//   - /perform
+//   - /perform
+//   - /perform
+//   - /perform
+//   - /perform
+//   - /perform
+// }
 
-{cycle:
-    - I bet you're right on the edge, aren't you?
-    - How do you feel? Are you close to cumming?
-    - Is my little puppy going to explode soon?
-    - Mmm, I can see you touching yourself so frantically
-    - You're not gonna last much longer, are you?
-    - Do you feel like your {hasPenis: cock|cunt} is going to burst?
-}
+// {cycle:
+//     - I bet you're right on the edge, aren't you?
+//     - How do you feel? Are you close to cumming?
+//     - Is my little puppy going to explode soon?
+//     - Mmm, I can see you touching yourself so frantically
+//     - You're not gonna last much longer, are you?
+//     - Do you feel like your {hasPenis: cock|pussy} is going to burst?
+// }
 
-->->
+// ->->
 
 
 //Saved lines from before reworking
@@ -860,3 +858,26 @@ TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a h
 //I can't wait to see the look on your face when you cum!
 //You better keep rubbing that {hasPenis: cock| pussy} {player_name}.
 //Shake your head if this is too much for your puny mind to take in.
+//   Oooh! Maybe, if you earn enough rewards,
+//   you can take care of my feet one day!
+//   Massage my dainty little soles with oil,
+//   trim and paint my toenails, even.
+//   Suck on my toes perhaps?
+//   I know that your silly little puppy mind has thought about it, no sense in denying it.
+//   Ah well, not that you'll get a chance anytime soon--
+//   not unless you start behaving around here!
+  //- Mmm, it's been so long since I've danced.
+  //  Feels nice to move so... smoothly.
+//   - What do you like best about my body?
+//     I bet it's my feet, they're so soft and delicate.
+//   - Aw, am I too much for you to handle already?
+//   - Don't enjoy yourself too much--
+//     you're going to need all the stamina you have!
+//   - My, my. Look at you squirm there.
+    //I hope this punishment keeps you out of trouble! 
+//   That was an amusing performance to watch,
+//   although your technique was a <i>little</i> sloppy.
+//   We can improve your handiwork later;
+//   if you're able to keep your nose out of trouble, that is.
+  //And some of the other mistresses have no use for misbehaving pets. 
+
