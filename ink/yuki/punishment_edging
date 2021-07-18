@@ -9,9 +9,57 @@
 -> start
 
 = start
+//could add puppy status variable here, currently if puppy not chosen the scene ends. 
+
+
+- (puppy_question)
+/perform placeholder
+    Now, before you get started working off that obsidian,  
+- (puppy_check)
+    Do you accept being my puppy for this punishment? 
+    
+
+
++ [pose:puppy_yes]
+    I'm glad you're starting to behave, puppy! 
+    
+    /perform do_point_down
+    Then, sit, and listen.
+
++ [pose:puppy_no]
+    Are you trying to mess with me? 
+    That's your puppy pose for 'no'.
+    
+    So which is it, smarty-pants? 
+    Try again. 
+    ->puppy_check
+
++ [Yes]
+    I'm glad you're starting to behave, puppy! 
+    
+    /perform do_point_down
+    Then, sit, and listen.
+
+
++ [No]
+    Oh what am I going to do with you...
+    -> exit
+    
+    
+    
++ [timeout]
+  -> Yuki_Timeout->
+  -> puppy_check
+
++ [distracted]
+  -> Yuki_PayAttention->
+  -> puppy_check
+    
+
+-
 
 /perform talk_one_finger angry 65
-  Don't think just because I'm not as mean as the other mistresses,
+  Now, don't think just because I'm not as mean as the other mistresses,
   that I can't be good at punishing you!
 
 - (explained_rules)
@@ -21,22 +69,31 @@
 /perform idle_skeptical sad 55
   I explained the rules to you, didn't I?
 
-+ [Yes]
-  /perform react_shrug_long sad 65
-  ~ addObey()
-  Somebody isn't being a very obedeient slave then.
 
-+ [No]
 
++ [yes] 
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> explained_rules
+
++ [no] 
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> explained_rules
+    
++ [pose:puppy_yes]
+    /perform react_shrug_long sad 65
+    ~ addObey()
+    Somebody isn't being a very obedient puppy then.
+
++ [pose:puppy_no]
   /perform talk_annoyed angry 55
-    Now that's just not true, and you know it!
+    Bad puppy! Now that's just not true, and you know it!
 
   /perform talk_lean_forward angry 70
-    How dare you even attempt to lie to me.
+    Why would you even attempt to lie to me?
 
   /perform idle_unhappy disgusted 65
     You should be ashamed of yourself.
-    Blatant lying counts as being disobedient too.
+    Lying counts as being disobedient too.
 
   /perform react_point_at_player_angry angry 80
     For your total lack of respect towards me, and this house;
@@ -54,16 +111,23 @@
   -> Yuki_PayAttention->
   -> explained_rules
 
+
+//Prompt and set for puppy variable status here, will adjust all dialogue and potentially some pose prompts for yes/no at minimum. Will add a lot of complexity in line choice. Will be rewriting all lines to default to "puppy status" being set to true since it's most in line with Yuki's character and tone. 
+
+    
 -
 /perform do_point_down skeptical 65
-  Now, be a good {player_name},
-  and grovel for my amusement.
+  Now, down {player_name}, where bad, misbehaving puppies belong,
+  and think about what you've done. 
 
-
+//check pose 
 ~ tries = 0
 -(grovelamusement)
 ~ tries ++
 /perform idle_unhappy amused 55
+ //add shuffle of lines
+ 
+
 
 +[pose:grovel]
 +{ tries < 2 } [timeout] -> grovelamusement
@@ -74,8 +138,8 @@
 -(grovel)
 
 /perform idle_unhappy_stomp angry 75
-  I said down, you sniveling {isBoy: whelp | {isGirl: bitch | slut }}!
-  This ain't difficult!
+  I said down, you stubborn puppy!
+  This shouldn't be difficult...
 
 ~ tries = 0
 -(grovelpose)
@@ -87,11 +151,8 @@
 
 -(groveldone)
 /perform talk_consider amused 55
-  Hahaha, look at you.
-  Sooo much work to be done on you.
-
-/perform idle_unhappy amused 45
-  Goollly, you're going to be so much fun to poke and prod today.
+  Did you think about how you've misbehaved? 
+  You still need sooo much training...
 
 /perform react_thankful amused 50
   Ahem, now then.
@@ -104,7 +165,7 @@
   ~ tries ++
 
 /perform idle_sassy
-  Put your hands on your head.
+  Put your paws on your head.
 
 +[pose:present_kneel]
 +{ tries < 2 } [timeout] -> kneeling
@@ -114,18 +175,27 @@
 -(commandhands)
 
 /perform talk_threaten angry 65
-  Your hands stay up until I say otherwise.
+  Your paws stay up until I say otherwise or unless you're answering me.
 
 /perform idle_skeptical skeptical 75
-  Got that?
+  Got that? You may answer now. 
 
-+[yes]
-  /perform react_nod_little happy 65
++ [yes] 
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> commandhands
+
++ [no] 
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> commandhands
+    
++ [pose:puppy_yes]
+    /perform react_nod_little happy 65
     Good.
 
-+[no]
-  /perform react_dismissive angry 55
-    Too bad! Keep your hands up!
++ [pose:puppy_no]
+    /perform react_dismissive angry 55
+    Too bad! Keep your paws up!
+
 
 +[timeout]
   -> Yuki_Timeout ->
@@ -135,20 +205,50 @@
   -> Yuki_PayAttention ->
   -> commandhands
 
--
+- (edging_explanation)
 /perform idle_tease aroused 55
-  For your punishment today, you're going to edge for me.
+  For your punishment today, you're going to edge for me, but you're not going to be allowed to cum. 
 
-/perform
+
+//double-check expression here
+/perform idle_tease aroused 70
   I'm going to teaaaseee you,
   and tauuunnnt you;
   and there's <i>nothing</i> you can do about it.
-  
+
   //add consent Check
-  //need some kind of starting instructions to tell the player to begin 
+  //need some kind of starting instructions to tell the player to begin
+  
+  Are you ready to be a good {player_name} and accept your punishment?  
+  
+  
++ [yes] 
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> edging_explanation
 
-->edging_1
-
++ [no] 
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> edging_explanation
+  
+  
++[pose:puppy_yes]
+    /perform HAPPY
+    Good pup! Now get those paws busy on your {hasPenis: cock|pussy}!
+    //check if selection is correct method
+    
+    //flow into edging_1
+    ->edging_1
+  
++[pose:puppy_no]
+    
+    /perform ANNOYED 
+    Oh puppy... You have to take your punishment somehow...
+    
+    /perform do_point_left 
+    Then I don't have anything else to say to you. Shoo! Out! 
+  
+    //get kicked out to main hall
+    -> exit
 
 = edging_1
 -
@@ -156,18 +256,18 @@
 - (Enjoyment)
 
 /perform idle_tease aroused 45
-  Are you enjoying yourself so far, my slave?
+  Are you enjoying yourself so far, puppy? 
 
-+[Yes]
++[pose:puppy_yes]
   /perform react_laugh amused 60
   ~ addObey()
     You're not supposed to enjoy it thaaat much!
 
-+[No]
++[pose:puppy_No]
   /perform
   ~ addDisobey()
     -> Yuki_AcknowledgeNo
-    Well maybe next time you shouldn't be such a naughty little slave, hmmm?
+    Well maybe next time you shouldn't be such a naughty little puppy, hmmm?
 
 +[timeout]
   -> Yuki_Timeout->
@@ -192,14 +292,14 @@
 /wait 3
 
 /perform do_summon_player excited 35
-  Stand up for me. Like a good little {isBoy: boy | {isGirl: girl | pet}}.
+  Stand up for me. Like a good little {isBoy: boy| {isGirl: girl| pet}}.
 
 -(standup)
 
 /perform idle_swaying happy 60
 {shuffle:
-    - Spread your legs and put your hands behind your back.
-    - Come on, feet apart, hands behind your back.
+    - Spread your legs and put your paws behind your back.
+    - Come on, feet apart, paws behind your back.
     - Stand up niiiice and tall, just like I taught you when we first met.
 }
 
@@ -213,15 +313,17 @@
 
 -
 /perform react_chuckle amused 55
-  Hehehe, I love making you slaves move around so much;
-  it's very entertaining.
+  Hehehe, I love making my puppies stand up on their hind legs;
+  it's very entertaining, like you're a person.
+  
+  But remember, you're just my puppy right now, and you're being punished. 
 
 /perform idle_tease aroused 45
   Let's continue with your punishment.
 
 /perform react_point_at_player_angry skeptical 50
-  And remember, hands nowhere near your crotch!
-  Unless you want to get <i>another</i> punishment marker.
+  And remember, no cumming without permission! 
+  Unless you want to get <i>another</i> Obsidian stone. 
 
 ->edging_2
 
@@ -237,23 +339,26 @@
 /perform idle_sassy aroused 70
   Are you aching as you watch me tease you?
 
-+[Yes]
++[pose:puppy_yes]
   /perform do_bouncing_eager excited 55
   ~ addObey()
     Ooooh! That means that I'm being a good mistress!
 
   /perform idle_skeptical skeptical 55
     Earlier, I was a bit apprehensive about punishing you this way;
-    but I think I'm getting through that thick skull of yours.
+    but I think I'm getting through that silly puppy head of yours.
+    
+    
+    //I hope this punishment keeps you out of trouble! 
 
-+[No]
++[pose:puppy_no]
   /perform talk_behold angry 65
   ~ addDisobey()
-    What do you mean?! Am I not doing a good enough job?
+    You are such a bratty puppy!
 
   /perform talk_lean_forward amused 65
     I think you need some more teasing then,
-    you *clearly* aren't paying enough attention.
+    you clearly aren't paying enough attention.
 
 + [timeout]
   -> Yuki_Timeout ->
@@ -277,25 +382,28 @@
   What do you think;
   have you had enough teasing yet?
 
-+ [Yes]
++ [pose:puppy_yes]
   /perform react_crazy_gesture skeptical 65
-    Are you crazy? You must be.
+    Already? Poor puppy, 
+    
+    but I'm not done with you.
 
   /perform react_shake_head_disbelief
   ~ addDisobey()
-    How dare you not appreciate my efforts,
-    to correct your misbehavior!
+    I think we have a long way to go still. Keep being good! 
 
-+ [No]
++ [pose:puppy_no]
   /perform talk_one_finger amused 60
     Good answer!
 
   /perform
-    I don't think you've earned the privilege,
-    to release quite yet, though.
+    I don't think you've earned the privilege
+    to release this time, though.
 
   /perform do_shake_finger_stern angry 55
-    Not until I say so!
+    Not until I say so, anyways! 
+    
+    And I don't think it will be this time. 
 
 + [timeout]
   -> Yuki_Timeout ->
@@ -307,12 +415,12 @@
 
 -
 /perform do_inspect excited 70
-  I'm going relax on the sofa now, and admire your physique;
+  I'm going to relax on the sofa now, and watch my puppy;
   there's just so much of you to take in.
 
-TODO Yuki model w/ no shoes/socks
+TODO Yuki model w/ no shoes/socks, or could also remove this line to prevent a hold-up on the model w/no shoes or socks
 /perform idle_swaying amused 65
-  I've also been wanting to take my socks and shoes off,
+  And I've been wanting to take my socks and shoes off,
   it's getting so <i>steamy</i> in here, teehee!
 
 ->edging_3
@@ -325,24 +433,31 @@ TODO Yuki model w/ no shoes/socks
 /character yuki prone_lounge_right aroused 55
 
 /perform
-  Come over here, silly.
+  Come over here, silly puppy. Remember to stay down. 
   You're too far away.
 
 +[move]
 
 /perform
-  Now this time, you <i>are</i> allowed to touch yourself.
+  Now this time, I want to see you <i>really</i> get into it. I know you were holding back.
+  
+  //could make a mention of Yuki watching the player with a different mistress here?
+  
 
 /perform
-  I am a kind and generous mistress, after all.
+  I am a kind and generous mistress, and even though this is still a punishment, I want to see my good puppy make the most of it. 
+  
+  I can see you need it. 
+  
+  
 
 ~ tries = 0
 -(frontseat)
 ~ tries ++
 
 /perform
-  Kneel in front of me. I want a front seat view;
-  while I contemplate how to <i>really</i> make this a memorable punishment.
+  Kneel in front of me. 
+  I want a frontrow seat while I contemplate how to <i>really</i> make this a memorable punishment.
 
 +[pose:kneel]
 + { tries < 2 } [timeout] -> frontseat
@@ -353,18 +468,18 @@ TODO Yuki model w/ no shoes/socks
 
 -(memorable)
   /perform
-    You are still forbidden to cum, no matter how badly you want to!
-    You got that?
+    You still are not allowed to cum, no matter how badly you want to!
+    You got that, puppy?
 
-+[yes]
++[pose:puppy_yes]
   /perform
-    Good! now work that body,
-    you {isBoy: tasty piece of meat | {isGirl: delicous slice of pie | refreshing glass of water}}!
+    Good! Now work yourself over for me, 
+    you slutty puppy! 
 
-+[no]
++[pose:puppy_no]
   /perform
-    Oh really? Too bad!
-    Masturbate for me anyways, or risk futher consequences.
+    Oh really? That's too bad.
+    Don't you dare cum without my permission while I'm letting you touch yourself. 
 
 +[timeout]
   -> Yuki_Timeout.Couch ->
@@ -374,60 +489,46 @@ TODO Yuki model w/ no shoes/socks
   -> Yuki_PayAttention.Couch ->
   -> memorable
 
-- -> RandomCommentLoop(-> tease_bank_couch, 4, 5, 4, 5)
+- -> RandomCommentLoop(-> tease_bank_couch, 4, 5, 4, 5) ->
 
 /perform
-  Ahh, what wonderful entertainment;
-  this is marvellous.
+  Ahh, what a wonderful trick those paws can do;
+  I love watching you touch yourself. 
 
 /perform
   I can understand how you got a punishment marker.
-  You're still learning, have quite a few rough edges that need smoothing out.
+  You're still learning, and you have quite a few rough edges that need smoothing out.
 
 /perform
-  Now that I think about it, the other mistresses;
-  they probably intimidate you. You're probably even a little fearful of them.
+  But I can't help you unless you listen to me. 
+  
+/perform
+  I try my best to be a good mistress and train you right. 
 
 /perform
-  I get it; really! No need to say it!
-  Even though I am mistress, I know I'm not like the others.
-
-/perform
-  I'm not super strict like the Headmistress,
-
-/perform
-  I don't have the same magnetism like Nega;
-
-/perform
-  And I am definitely not anything like the Goddess.
-
-/perform
-  But I try my best.
-
-/perform
-  I can see that you make an effort sometimes, even if you fuck up!
+  And I can see that you make an effort, even if you screw up sometimes!
 
 -(together)
 /perform
   So when you think about it,
-  we're kind of in this together; sort of, yeah?
+  we're kind of in this together, isn't that right puppy? 
 
-+[Yes]
++[pose:puppy_yes]
   ~ addObey()
   /perform
     Goodie! I'm glad that you're on my side.
 
-+[No]
++[pose:puppy_no]
   ~ addDisobey()
   /perform
-    You naughty brat!
+    Still being a naughty brat?
 
   /perform
     You're supposed to agree with me, I'm trying to help you here.
 
   /perform
     Punishments are for correcting bad behavior,
-    and bad behavior will make the goddess <i>very</i> angry.
+    and bad behavior will make the Goddess <i>very</i> angry.
 
 + [timeout]
   -> Yuki_Timeout.Couch ->
@@ -441,21 +542,21 @@ TODO Yuki model w/ no shoes/socks
 - (FeelGood)
 
 /perform
-  So, how are you feeling, you naughty {isBoy: prick | {isGirl: slut | pet }}?
+  So, how are you feeling, you naughty puppy?
   Are you having fun, being my little plaything?
 
-+[Yes]
++[pose:puppy_yes]
   /perform
   ~ addObey()
     Heeheehee, I know, I can see it in your eyes!
 
-+[No]
++[pose:puppy_no]
   /perform
   ~ addDisobey()
     Aww, poor muffin! Sucks to be you!
 
   /perform
-    Unless you're one of those weirdos that gets off on being disobedient.
+    Unless you're one of those brats that gets off on being disobedient.
 
   /perform
     I've never quite understood that, even with Nega trying to explain it to me.
@@ -474,7 +575,7 @@ TODO Yuki model w/ no shoes/socks
 = edging_break_3
 -
 /perform
-  Alright, hands off!
+  Alright, paws off!
   We can't have you having too much fun, that defeats the point of a punishment!
 
 /perform
@@ -486,8 +587,8 @@ TODO Yuki model w/ no shoes/socks
   if you're able to keep your nose out of trouble, that is.
 
 /perform
-  You'll have to work diligently to get back into our good graces, but you can do it.
-  Provided that you stop being such a stinkmaker! Uhhg.
+  You'll have to work diligently to get back into our good graces, but I know you can do it.
+  Provided that you stop being so naughty! Ughh.
 
 /perform
   Oooh! Maybe, if you earn enough rewards,
@@ -499,42 +600,46 @@ TODO Yuki model w/ no shoes/socks
 
 /perform
   Suck on my toes perhaps?
-  I know that your filthy little mind has thought about it, no sense in denying it.
-  I see right through you.
+  I know that your silly little puppy mind has thought about it, no sense in denying it.
 
 /perform
   Ah well, not that you'll get a chance anytime soon;
-  not with the paltry amount of favour you currently have.
+  not unless you start behaving around here!
 
 /perform
   But don't worry, I'll make sure that you're trained properly.
-  We have no use for misbehaving toys like you around here.
+  I know deep down you want to behave. 
+  
+  //And some of the other mistresses have no use for misbehaving pets. 
 
 /perform
-  Soon, you'll learn to love my style of punishments.
-  Which will keep you coming back, again and again and again.
+  Soon, you'll learn to love our time together, to sink down into being my good puppy. 
+  We can have so much fun together when you behave and trust me, and I know that will keep you coming back to sit at my feet.
 
 - (comeback)
 /perform
   You <i>do</i> want to come back again, don't you?
 
-+ [Yes]
++ [pose:puppy_yes]
   /perform
   ~ addObey()
   --(feelbetter)
-  Because I make you feel good, right?
+  Because you like being my puppy, right?
 
-  ++[Yes]
+  ++[pose:puppy_yes]
     ~ addObey()
-    Excellent!
-    I hope that you will have learned something,
-    once we're done here.
+    That makes me so happy!
+    I hope that you have learned something from this punishment! 
+    
+    Remember, bad puppies are left waiting, like right now. 
+    
+    /perform seductive/aroused?
+    Good puppies are <i>very</i> well taken care of. 
 
-  ++[No]
+  ++[pose:puppy_no]
     ~ addDisobey()
-    Oh come on! How can you say that?
-    I'm trying my best here,
-    the least you can do is respond positively.
+    Oh come on! How can you say that? 
+    You're so cute when you're my puppy!
 
   ++[timeout]
     -> Yuki_Timeout.Couch ->
@@ -544,12 +649,12 @@ TODO Yuki model w/ no shoes/socks
     -> Yuki_PayAttention.Couch ->
     -> feelbetter
 
-+ [No]
++ [pose:puppy_no]
   /perform
   ~ addDisobey()
-    Mmph. That's not very nice to say to the mistress in charge here.
+    Hmmmph. That's not very nice to say to the mistress in charge here.
     Maybe you'll change your mind;
-    for your sake, that is.
+    for your own sake.
 
 + [timeout]
   ->Yuki_Timeout.Couch ->
@@ -559,801 +664,25 @@ TODO Yuki model w/ no shoes/socks
   -> Yuki_PayAttention.Couch ->
   -> comeback
 
--
-~ tries = 0
--(direction)
-~ tries ++
 
-/perform
-  I really enjoyed the way you were watching me just now, when I was relaxing.
 
-/perform
-  That felt so intimate, and precious.
+- (end_yuki_edging_punishment)
 
-/perform
-  I love being the focus of my slaves as they fufill my wishes!
+    //actually find command to remove punishment from player here
 
-/perform
-  so...Hmmm...OH! I know what we can do now!
-  I'm going to play with you myself!
+    /perform 
+    Now, I'll take that punishment marker from you. 
 
-/perform
-  Lie down on the ground now.
-  Close to the couch, hands above your head.
-  Put yourself in the opposite direction of how I was laying down.
+    /perform 
+    Off with you puppy, and you better remember to behave! 
 
-+[pose:bound_wrists]
-+ { tries < 2 } [timeout] -> direction
-+ { tries >= 2 } [timeout] -> Yuki_Interested.Couch -> direction
+->exit
 
-- ->edging_4
+//end of scene/script is here. 
+//
+//
+//break point here but still need to understand if any other code is tangled, and need to adjust extra quotes from the banks below, and fix puppy pose yes/no's. 
 
-
-= edging_4
-
-/scene atrium.edging_couch_sitting
-/music yuki
-/character yuki sex_chair_openlegs_idle_tease
-
--(Feet)
-/perform
-  All my slaves love my feet.
-  Do you want me to tease you with them?
-
-+ [Yes]
-  /perform
-    ~ addObey()
-    Good {isBoy: boy |{ isGirl: girl | pet }}, you're learning your place!
-    -> GoodFoot
-
-+ [No]
-  /perform
-    ~ addDisobey()
-    Then this is <i>exactly</i> what you deserve for misbehaving in the mansion!
-    -> BadFoot
-
-+ [timeout]
-  -> Yuki_Timeout.Couch ->
-  -> Feet
-
-+ [distracted]
-  -> Yuki_PayAttention.Couch ->
-  -> Feet
-
-- (GoodFoot)
-
-/perform sex_chair_idle_left
-  Mmmm.
-  Don't my feet feel wonderful?
-
-/perform
-  I take extra good care of them.
-
-/perform
-  I like making the good slaves give me pedicures,
-  so that I can edge the naughty slaves like you even better.
-
-/perform
-  I'm very proud of the idea. I came up with it all on my own.
-
--(smart)
-Isn't that so smart of me?
-
-+[Yes]
-  /perform
-  ~ addObey()
-    I know, I'm such a clever Mistress!
-    -> TwoFeet
-
-+[No]
-  /perform
-  ~ addDisobey()
-    Well okay, smarty-pants.
-    That's very rude of you.
-
-+[timeout]
-  -> Yuki_Timeout.Couch ->
-  -> smart
-
-+[distracted]
-  -> Yuki_PayAttention.Couch ->
-  -> smart
-
-- (BadFoot)
-
-/perform gentle_foot_genital_caress
-  Awww, you poor little slave, I can see that you really aren't enjoying this.
-  Well, too bad!
-
-/perform
-
-  Slaves don't get what they want all the time.
-  But we mistresess, we <i>always</i> get what we want.
-
-/perform
-  That's why you're beneath me, and I'm in charge.
-  If I want to tease you with my foot,
-  then that's <i>exactly</i> what's going to happen.
-
-/perform
-  Contemplate this moment, as your most precious parts lie so vulnerable, so exposed.
-  <i>This</i> is why you, my little toy,
-
-/perform
-  don't
-
-/perform
-  break
-
-/perform
-  the
-
-/perform
-  rules.
-
-/perform
-  It's not a difficult concept to understand, I assure you.
-  Even for someone who resists being taught.
-
-/perform
-  Buuuut, I guess if you <i>really</i> don't like it, I don't have to.
-
-/perform
-  But come on, you can't tell me this doesn't feel kiiinda good.
-
-- (Hate)
-/perform
-  Do you really hate this?
-
-+ [Yes]
-  ~ addDisobey()
-  /perform
-    Gee whizz, that's so disappointing.
-
-/perform
-  You see, you seem to have forgotten one of the two rules again!
-
-/perform
-  You're not following commands very well.
-  And I'm commanding you to take a punishment.
-
-/perform
-  We're only finished here, when <i>I</i> say we are; not you.
-
-/perform
-  You're just going to have to deal with it, and go cry to Ms Treatment after.
-
-+ [No]
-  ~ addObey()
-  /perform
-    See, I told you that you would learn to love my punishments!
-    This is so fun; I get to train my new toy,
-    and you get to discover something about yourself!
-
-+ [timeout]
-  -> Yuki_Timeout.Couch ->
-  -> Hate
-
-+ [distracted]
-  -> Yuki_PayAttention.Couch ->
-  -> Hate
-
-- (TwoFeet)
-
-/perform both_feet_masturbation
-
-/perform
-  My feet used to become so worn and ragged, from working around this house.
-  Some days, it felt like my heels were so calloused, they were stone!
-  So I swore I would make them into one of my best features.
-
-/perform
-  Now, I like to make sure my feet are soft, flexible, and clean; at all times.
-  I'm actually kind of jealous of you right now;
-  you get to enjoy them so soon after they were cleaned!
-
-/perform
-  They must feel so delicate, smooth, and warm alllll over that crotch of yours.
-
-/perform
-  My other slaves, just adore my feet.
-  Usually, I get a slave to moisturize them at least twice a day.
-
-/perform
-  Some of them even get into squabbles over who gets to massage them!
-  It's so cute and hilarious at the same time!
-
-/perform
-  I've really worked hard to ensure that even if the other Mistresses are better than me,
-  at least I have my sexy little soles.
-
-/perform
-  Oh, geez! I'm getting distracted, thinking about feet!
-  If I keep this up, you're going to make huge mess!
-
-/perform
-  Sit up now, get on your knees in front of the couch like before.
-
-+[pose:kneel]
-
-/perform
-  Yesss, perfect.
-
-- ->edging_break_4
-
-
-= edging_break_4
-
-- (cum_question)
-
-/perform
-  Now. Do you still want to cum for me today,
-  like the good little {isBoy: whore | {isGirl: slut | pet}} you are?
-
-+[Yes]
-  /perform
-  ~ addObey()
-    I like to hear that.
-    You're not allowed to cum yet, though;
-    I'm not done having fun!
-
-+[No]
-  ~ addDisobey()
-  /perform
-    Aww really?
-
-  /perform
-    That's a shame, I had such a fun idea for an orgasm for you.
-    I guess we'll have to stop for today, then.
-
-  --(punishmentstop)
-  /perform
-    Is that what you really want, to stop this punishment?
-
-
-  ++[yes]
-    /perform
-      Alright then,
-      I guess you'll have to hold on to that obsidian for a while yet.
-
-    /perform
-      Get out! I don't want you here if you're not going to play along.
-
-      -> exit
-
-  ++[no]
-    /perform
-      Good.
-      I would be very disappointed in you,
-      if you did want to stop.
-
-
-  ++[timeout]
-    -> Yuki_Timeout.Couch -> punishmentstop
-
-  ++[distracted]
-    -> Yuki_PayAttention.Couch -> punishmentstop
-
-
-
-+[timeout]
-  -> Yuki_Timeout.Couch ->
-  -> cum_question
-
-+[distracted]
-  -> Yuki_PayAttention.Couch
-  -> cum_question
-
-
-
-
-
-
-- ->finish
-
-
-
-= finish
--
-
-
-/scene atrium.edging_couch_standing
-/music yuki
-/character yuki idle_sassy amused 60
-
-/perform
-  You should feel terrible about breaking the rules.
-  I want you to think about allll the naughty things you did to end up here.
-
-
--(feelbad)
-  You feel bad of course, don't you {player_name}?
-
-+[Yes]
-  ~ addObey()
-  You better mean that, and not be lying to me like a bad {player_name}!
-
-+[No]
-  ~ addDisobey()
-  Heh, I see <i>somebody's</i> still not learning the lesson I'm teaching.
-  What a shame.
-
-+[timeout]
-  ->Yuki_Timeout->
-  -> feelbad
-
-+[distracted]
-  -> Yuki_PayAttention ->
-  -> feelbad
--
-/perform tease_bend_over aroused 65
-  You probably need to cum <i>so</i> badly.
-
-/perform tease_ass_caress aroused 85
-  You probably feel like you need that more than anything else in the whole universe right now.
-
-/perform
- Hey, don't look at me like that.
-
-/perform react_dumb skeptical 70
-  I know how your puny mind works; you slaves are all so similar.
-
-/perform squat_kneel_genital_caress
-  I'll prove it to you, right now.
-
-/perform
-  I'm going to grope you, and feel just how aching you are.
-
-/perform start grope
-  Don't you <i>dare</i> cum while I'm touching you, or you're going to be in a whole heap of trouble!
-
-/perform
-  Oh wow, your {hasPenis:cock | {isGirl: pussy | crotch }} is <i>literally</i> throbbing at this point.
-
-/perform
-  Ehhhhuhuhuh, that must be so uncomfortable!
-
-//perform stop grope
-//  Oops, and I got a litle of your juice on me.
-
-TODO Licking hand animation
-//perform lick_hand
-  //licking sounds
-//  Oh damn. You taste pretty good.
-//  Hmm, good to know for laterrrrrr, anyways..
-
-/perform stand up
-  I knew that you would get all hot and bothered with my teasing, but this is just ridiculous.
-
-/perform
-  Uhhhg!
-  I wouldn't have to punish you if you just obeyed us mistresses!
-  How hard is it to follow the rules?!
-
-/perform
-  Answer questions when you're asked,
-  and follow directions when they're given!
-
-/perform
-  It's only two rules! How could you screw that up!
-
-/perform pacing and muttering
-  Oooohhhh, this is so tough.
-  This is a punishment, so you're not supposed to have any pleasure.
-  But on the other hand, you have been holding yourself in this entire time.
-
-/perform
-  I'm impressed by your stamina, for how untrained you are.
-
-/perform
-  Hmmmmm.....
-
-/perform
-  Oooohhhhh....
-
-/perform
-  What about...no, what if one of the other mistresse's slaves overheard?
-
-/perform
-  Oh, I could just use a gag, and that would....
-  ah fuck, no; all my gags are being cleaned right now.
-
-/perform stop pacing and muttering
-  Wait a min....yeah, that shouuuld work well enough for now.
-  Eh, worth a shot, at this point.
-
-~ tries = 0
--(promise)
-~ tries ++
-
-/perform idle_sassy
-  Hey, can you promise to keep this ending to the session a secret?
-
-+[Yes]
-  /perform
-    Whoops, that was sloppy wording
-
-  ~ tries = 0
-  --(sessionsecret)
-  ~ tries ++
-
-  /perform
-    <i>Do</i> you promise to keep this ending to the session a secret?
-
-  ++[yes]
-  /perform
-    Oh whew. I just feel so bad for you, and you've been so good today.
-    Okay, let's get that pent up pressure out of you!
-    -> RuinedOrgasm
-
-  ++[no]
-  /perform
-    Well, we can't have that now. Then you'd get <i>me</i> in trouble!
-    -> Denial
-
-
-  ++ { tries < 2 } [timeout] -> Yuki_Timeout -> sessionsecret
-  ++ { tries >= 2 } [timeout] -> Denial
-
-
-  ++ { tries < 2 } [distracted] -> Yuki_PayAttention -> sessionsecret
-  ++ { tries >= 2 } [distracted] -> Denial
-
-+[no]
-/perform
-  Really?
-  You can't keep a secret at all?
-
-/perform
-  Ay yi yi, how do we keep getting such lousy slaves lately?
-
-/perform
-  Well, if you can't keep a simple secret,
-  you're going to get into some tough situations real quick around here.
-  -> Denial
-
-+ { tries < 2 } [timeout] -> Yuki_Timeout -> promise
-+ { tries >= 2 } [timeout] ->
-  Hmm, well if cumming matters that little to you.
-  -> Denial
-
-+ { tries < 2 } [distracted] -> Yuki_PayAttention -> promise
-+ { tries >= 2 } [distracted] ->
-  If you're not going to pay attention to me, then I won't pay any more attention to you.
-  Hmmph.
-  -> Denial
-
-- (RuinedOrgasm)
-
-/perform
-  You're going to cum for me. But there's one condition!
-  Well, 2 really.
-
-/perform
-  One, you <i>have</i> to tell me right before you cum, so I can move my legs out of the way.
-
-/perform
-  And two, land on the towel only, or else!
-  A mess will give us away.
-
-/perform
-  I swear, furia's slaves are like bloodhounds;
-  they can smell cum from across the house.
-
-/perform
-  So, I'm going to suffocate you with my tits until you cum.
-  These puppies will certainly muffle your cries when you climax.
-
-/perform
-  It's a bittersweet finish for you;
-  you get to orgasm, but the lack of air will feel so horrible.
-
-/perform
-  This is still a punishment, after all.
-  I have to try my best to still carry out my duties as a mistress.
-
-
-/perform
-  We should be quick, just to be safe.
-  Hah, what am I saying, of course this will be quick.
-
-/perform
-  Are you ready?
-
-+[yes]
-  -> handsoffloop
-
-+[no]
-  --(offtoday)
-  /perform
-    I see. So you don't want to get off today?
-
-  ++[yes]
-  /perform
-    How very odd. I could have sworn there was some fluid I could see,
-    dribbling out of you.
-    Oh well then, no orgasm for you today.
-    -> Denial
-
-
-  ++[no]
-    ---(doublenegative)
-    /perform
-      Ooooh, silly slave, dealing in double negatives.
-      So you <i>do</I> want to have an orgasm?
-
-    +++[yes]
-      /perform
-        Teehee, you're such a silly {isBoy: boy | {isGirl: girl | pet }},
-        you can't make up your mind!
-
-        My goodness, you're getting even further worked up:
-        I can see your cheeks getting red!
-        -> handsoffloop
-
-    +++[no]
-      /perform
-        Hahahah, you're so cute when you get flustered!
-        -> Denial
-
-    +++[distracted]
-      -> Yuki_PayAttention
-      -> doublenegative
-
-    +++[timeout]
-      -> Yuki_Timeout
-      -> doublenegative
-
-  ++[distracted]
-    -> Yuki_PayAttention
-    -> offtoday
-
-  ++[timeout]
-    ->Yuki_Timeout
-    -> offtoday
-
-+[distracted]
-  -> Yuki_PayAttention
-  -> RuinedOrgasm
-
-+[timeout]
-  -> Yuki_Timeout
-  -> RuinedOrgasm
-
-
--(handsoffloop)
-
-/scene atrium.edging_couch_standing_finish
-/music yuki
-/character yuki idle_eager aroused 65
-
-/perform
-  This is so exhilarating for me;
-  I've never let a slave have a happy ending on such a long punishment before!
-
-/perform talk_one_finger excited 70
-  Remember to motorboat my tits <i>before</i> you're about to cum!
-
-/perform tease_bend_over excited 75
-  Now, {hasPenis:stroke your cock|rub your pussy} for me!
-  I want to feel you struggle for breath as you reach climax!
-
--> RandomCommentLoopWithNo (-> AboutToCum, -> handsoff, 3, 5, 4, 6)
-
--(handsoff)
-/perform
-  Hands off, do not move your head an inch!
-//pose recognition for hands to not be near crotch
-
-/perform
-  Oh yessss, the feeling of you trying to breathe, it's....
-  Kinda hot; actually.
-
-/perform
-  <i>Realllly</i> hot.
-  Oh Goddess, that's got something stirring in me.
-
-/perform
-  Yup, definitely going to experiment with this idea again.
-  Mmmmmmmm.
-
-/perform do_smooth_skirt
-  Oh, sorry!
-
-/perform eager
-  I was caught up in the moment, catch your breath.
-
-/perform
-  You came so quickly!
-
-/perform react_chuckle
-  Oh my goodness!
-
-/perform
-  Hahahah, the look on your face!
-
-/perform
-  You silly {player_name}, you didn't think I'd let you have a real orgasm, did you?
-
-/perform idle_tease amused 45
-  Only good slaves get to have a proper orgasm!
-
-/perform talk_one_finger amused 50
-  But naughty slaves only get ruined orgasms.
-
-/perform do_snap_fingers skeptical 50
-  At least I let you release, to get rid of all of that nasty,
-  built up {isBoy: jizz | {isGirl: goop | fluid}}.
-
-/perform talk_behold
-  Oh, now look what you did!
-
-/perform react_point_at_player_angry
-  You didn't motorboat me fast enough!
-
-/perform do_point_down
-  You spewed onto my feet!
-
-/perform idle_looming
-  I was going to spread my legs a bit at the last moment,
-  so that didn't happen!
-
-~ tries = 0
--(startclean)
-~ tries ++
-
-/perform idle_present_foot
-  Clean my feet!
-
-//Journal cllips through floor if paused in this position
-+[pose:grovel]
-+ { tries < 2 } [timeout] -> startclean
-+ { tries >= 2 } [timeout] -> Yuki_Badjob -> startclean
-
-/perform
-  Licking only!
-
-  ~ tries = 0
-  -(lickingfoot)
-  ~ tries ++
-
-/perform
-  If I feel you suckling my foot in any way, you can kiss that punishment being removed goodbye.
-  Only my most favorite slaves are allowed to suck on my toes.
-
-+[pose:grovel]
-+ { tries < 2 } [timeout] -> lickingfoot
-+ { tries >= 2 } [timeout] -> Yuki_Badjob -> lickingfoot
-
-
-~ tries = 0
--(spilled)
-~ tries ++
-
-/perform
-  Make sure to get every drop that you spilled!
-
-+[pose:grovel]
-+ { tries < 2 } [timeout] -> spilled
-+ { tries >= 2 } [timeout] -> Yuki_Badjob -> spilled
-
-~ tries = 0
--(lickingotherfoot)
-~ tries ++
-
-/perform
-  Now the other one; come on, make it snappy.
-  I don't have all day.
-
-+[pose:grovel]
-+ { tries < 2 } [timeout] -> lickingotherfoot
-+ { tries >= 2 } [timeout] -> Yuki_Badjob -> lickingotherfoot
-
-
-~ tries = 0
--(endclean)
-~ tries ++
-
-/perform
-  I have other tasks in mind for my slaves;
-  and cleaning up after your mistakes, is not one of them!
-
-+[pose:grovel]
-+ { tries < 2 } [timeout] -> endclean
-+ { tries >= 2 } [timeout] -> endclean
-
--
-/perform
-  My my, that was a thourough cleaning.
-  I'll have to find some <i>other</i> uses for that tongue of yours, mmmm.
-
-/perform
-  You can sit back up on your knees now.
-
-+[pose:kneel]
-
-/perform
-  You did so well in this punishment session;
-  What a good {isBoy: boy| {isGirl: girl | pet }} you are!
-
-  /perform
-    I am satisfied with your overall performance today.
-    ~ removePunishment()
-    Your punishment marker has been removed.
-
-/perform idle_tease aroused 55
-  Now, if you've paid off all your other punishment markers,
-  this miiight be a good time to redeem a reward.
-
-/perform talk_question amused 70
-  Maybe you'd be able to find a way to have a proper orgasm!
-
-/perform
-  Now get going! And remember, not a word about this. To Anyone.
-
-/perform
-  Byeeeee!
-
-/wait 2
-
--> exit
-
-- (Denial)
-
-/perform
-  Well then, that's where I'm going to leave you for today!
-  And I hope it's one of the worst cases of {hasPenis:blue balls | {isGirl: blue bean | unreleased tension }},
-  you've ever had.
-
-//  You ungrateful filth.
-//  How dare you squander my efforts to better you.
-
-//perform do_point_down amused 45
-//  Now, time to clean up!
-
-//perform talk_one_finger angry 65
-//  It won't take long, seeing as you didn't get any release.
-//  Just a meager amount of essence.
-
-
-//~ tries = 0
-//-(cleansed)
-//~ tries ++
-
-//perform do_point_down
-//  You're not leaving here,
-//  until you've cleansed the floor of your pathetic dribble {isBoy: mister | {isGirl: missy | slave}}.
-
-//+[pose:grovel]
-//+ { tries < 2 } [timeout] -> cleansed
-//+ { tries >= 2 } [timeout] -> Yuki_Interested -> cleansed
-
-
-
-//~ tries = 0
-//-(cleansedfinish)
-//~ tries ++
-
-//perform idle_bored amused 45
-//  Come on now, there's not that much there.
-
-//+[pose:grovel]
-//+ { tries < 2 } [timeout] -> cleansedfinish
-//+ { tries >= 2 } [timeout] -> Yuki_Interested -> cleansedfinish
-
-//-
-//Good {isBoy: mister | {isGirl: missy | slave}}.
-
-/perform
-  Goodbye for now; I hope you remember this lesson for a long time.
-
-/perform
-  Because if you keep getting punishments,
-  your ass is going to be so sore, mark my words.
-
-  /wait 2
-
--> exit
 
 
 
@@ -1404,7 +733,7 @@ TODO Licking hand animation
   - Maybe if you had been a good {player_name}, you could have massaged me instead.
   - Next time, follow the rules more closely and we can have even more fun!
   - You better not be disobedient anymore, no matter how much this turns you on!
-  - Why did you have to be a naughty little slave and break the rules?
+  - Why did you have to be a naughty little puppy and break the rules?
 }
 
 
@@ -1425,12 +754,14 @@ TODO Licking hand animation
 
 { shuffle:
 
-  - Mmmm, I can hardly wait to see where your breaking point is.
-  - Are you going to cum for me today?
-  - You must so close to bursting!
+  - Mmmm, I can hardly wait to see how desperate you get. 
+  - Do you still think you're going to cum for me? Hah!
+  - You must be so close to bursting!
+  - You look like you're in heat, puppy! 
   - Hahah, this is so much fun!
+  - I can't believe you misbehaved. I hope this aching reminds you to be good! 
   - Goodness, I think there's a little something leaking out of you;
-    it's practically begging to get out of your system.
+    it's practically begging to get out of you.
   - Can you keep yourself contained for now, hmm?
     What am I saying, I bet you could stay like this forever!
 
@@ -1453,13 +784,12 @@ TODO Licking hand animation
 
 { shuffle:
 
-  - Wow, look at that face!
-    That body!
-  - I <i>love</i> seeing you touching yourself,
-    while kneeling before me.
-  - Oh, it's been so long since I've had such a new slave,
-    that's so eager to entertain me!
-  - I want you to get carefully get close to orgasming,
+  - Wow, look at that face, 
+    you're <i>so</i> gone hm? 
+  - Those cute little paws are a blur! 
+  - I <i>love</i> seeing you touch yourself while kneeling before me.
+  - Oh, it's been so long since I've had a new puppy that's so eager to entertain me!
+  - I want you to carefully get close to orgasming,
     like walking a long, thin tightrope.
   - Oh my, I can smell your musk from here.
 
@@ -1483,8 +813,8 @@ TODO Licking hand animation
 {cycle:
     - I bet you're right on the edge, aren't you?
     - How do you feel? Are you close to cumming?
-    - Is my little slave going to explode soon?
-    - Mmm, I can feel you touching yourself so frantically
+    - Is my little puppy going to explode soon?
+    - Mmm, I can see you touching yourself so frantically
     - You're not gonna last much longer, are you?
     - Do you feel like your {hasPenis: cock|cunt} is going to burst?
 }
