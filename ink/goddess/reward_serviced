@@ -133,7 +133,9 @@ nod your head to ask for permission to cum. #22
 
 = orgasm
 
+/character slave serviced_vagina_fast
 /wait 2
+/character goddess
 Ah yes! #27
 
 {shuffle:
@@ -201,14 +203,20 @@ Did you enjoy my girl's attentions? #38
 /perform sex_chair_crosslegs_snap_right_fingers happy 25
 Your reward is over, little mouse. #42
 
-{deviation == unspeakable_toy:
+{deviation != unspeakable_toy:
     One reward has been deducted from your wrist. #43
     ~removeReward(-> entry_hub)
 }
 
 You may go. #44
 
--> exit
+{deviation == unspeakable_toy:
+    -> pause(3) ->
+    -> game_outro
+- else:
+    -> exit
+}
+
 
 = question
 

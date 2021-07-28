@@ -274,7 +274,7 @@ You get nothing, of course, but for a roll like that... #28
 }
 
 = result_no_reward
-
+TODO: Put in UI sound or musical sting if the player fails.
 /lookat dice
 /perform squat_forward
 Well look at that. Skull and cup cancel each other out. #31

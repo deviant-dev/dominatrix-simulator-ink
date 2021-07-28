@@ -24,9 +24,12 @@ naughty little, bluetooth sex toys do to you. #05
 /perform talk_consider skeptical 50
 Would you like to find out? #06
 
+/action show_respond_instructions
+
 + [yes]
 
-- /perform react_thankful excited 75
+- /action hide_respond_instructions
+/perform react_thankful excited 75
 Fantastic! #07
 
 /perform talk_gesture happy 50
@@ -62,8 +65,8 @@ TODO: UI with character choices
     - Get ready for a wild ride. #23
 }
 
-/perform do_snap_fingers amused
 Let's begin. #24
+/perform do_snap_fingers amused
 -> start
 
 = start

@@ -187,13 +187,10 @@
 ~ return player_name != "none"
 
 === function save(-> load) ===
-~ setLoadPath(load)
+~ load_path = load
 {not debug:
     /save
 }
-
-=== function setLoadPath(-> path) ===
-~ load_path = path
 
 === function setGender(gender) ===
 {
