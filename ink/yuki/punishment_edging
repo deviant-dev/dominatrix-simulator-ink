@@ -9,8 +9,8 @@
 -> start
 
 = start
-//could add puppy status variable here, currently if puppy not chosen the scene ends. 
-
+//could add discussed puppy status variable here, currently if puppy not chosen the scene ends. 
+TODO Need to add /perform animations across the board basically, but all dialogue and choice logic should be done. :) <3 
 
 - (puppy_question)
 /perform placeholder
@@ -31,7 +31,7 @@
     
     So which is it, smarty-pants? 
     Try again. 
-    ->puppy_check
+    -> puppy_check
 
 + [Yes]
     I'm glad you're starting to behave, puppy! 
@@ -69,7 +69,6 @@
 
 /perform idle_skeptical sad 55
   I explained the rules to you, didn't I?
-
 
 
 + [yes] 
@@ -112,9 +111,6 @@
   -> Yuki_PayAttention->
   -> explained_rules
 
-
-//Prompt and set for puppy variable status, will adjust all dialogue and potentially some pose prompts for yes/no at minimum. Will add a lot of complexity in line choice. 
-
     
 -
 /perform do_point_down skeptical 65
@@ -128,7 +124,7 @@
 /perform idle_unhappy amused 55
  //add shuffle of lines
  
-
+TODO Could add a longer check here to keep the player groveling, should make it feel more like a punishment
 
 +[pose:grovel]
 +{ tries < 2 } [timeout] -> grovelamusement
@@ -220,27 +216,29 @@
   and <i>taunt</i> you,
   and there's <i>nothing</i> you can do about it.
   
+  - (edging_question)
+  
   Are you ready to be a good {player_name} and accept your punishment?  
-  TODO logic loop back to the question instead of the whole spiel
   
 + [yes] 
     -> Yuki_PuppyPlay_Punishment_UsePaws ->
-    -> edging_explanation
+    -> edging_question
 
 + [no] 
     -> Yuki_PuppyPlay_Punishment_UsePaws ->
-    -> edging_explanation
+    -> edging_question
   
   
 +[pose:puppy_yes]
-    /perform HAPPY
+    TODO set perform
+    /perform HAPPY 
     Good pup! Now get those paws busy on your {hasPenis: cock|pussy}!
     
     //flow into edging_1
     ->edging_1
   
 +[pose:puppy_no]
-    
+    TODO set perform
     /perform ANNOYED 
     Oh puppy... You have to take your punishment somehow...
     
@@ -264,6 +262,7 @@
     Goodie! But remember, no cumming.
 
 +[pose:puppy_No]
+TODO set perform
   /perform
   ~ addDisobey()
     -> Yuki_AcknowledgeNo -> 
@@ -354,7 +353,7 @@ TODO change to player name
     Ooooh! That means that I'm being a good mistress!
 
   /perform idle_skeptical skeptical 55
-    I was a bit apprehensive about punishing you this way,
+    I was a bit worried about punishing you this way,
     but I think I'm getting through that silly puppy head of yours.
 
 +[pose:puppy_no]
@@ -395,13 +394,14 @@ TODO change to player name
     but I'm not done with you.
 
   /perform react_shake_head_disbelief
-  ~ addDisobey()
+  
     I think we have a long way to go still. Keep being good! 
 
 + [pose:puppy_no]
   /perform talk_one_finger amused 60
     Good answer!
 
+TODO set perform
   /perform
     I don't think you've earned the privilege
     to release this time, though.
@@ -433,12 +433,13 @@ TODO change to player name
 /music yuki
 /character yuki prone_lounge_right aroused 55
 
+TODO set perform
 /perform
   You're too far away.
   Come over here, silly puppy. Remember to stay down. 
 
 +[move]
-
+TODO set perform
 /perform
   Now this time, I want to see you <i>really</i> get into it. I know you were holding back.
   
@@ -453,7 +454,7 @@ TODO change to player name
 ~ tries = 0
 -(frontseat)
 ~ tries ++
-
+TODO set perform
 /perform
   Kneel in front of me. 
   I want a frontrow seat while I contemplate how to <i>really</i> make this a memorable punishment.
@@ -461,21 +462,24 @@ TODO change to player name
 +[pose:kneel]
 + { tries < 2 } [timeout] -> frontseat
 + { tries >= 2 } [timeout] -> Yuki_Interested.Couch -> frontseat
-
+TODO set perform
 /perform
   But don't get too excited!
 
 -(memorable)
+    TODO set perform
   /perform
     You still are not allowed to cum, no matter how badly you want to!
     You got that, puppy?
 
 +[pose:puppy_yes]
+TODO set perform
   /perform
     Good! Now work yourself over for me, 
     you slutty puppy! 
 
 +[pose:puppy_no]
+TODO set perform
   /perform
     Oh really? That's too bad.
     Don't you dare cum without my permission while I'm letting you touch yourself. 
@@ -489,7 +493,7 @@ TODO change to player name
   -> memorable
 
 - -> RandomCommentLoop(-> tease_bank_couch, 4, 5, 4, 5) ->
-
+TODO set perform for this section
 /perform
   Ahh, what a wonderful trick those paws can do--
   I love watching you touch yourself. 
@@ -500,7 +504,7 @@ TODO change to player name
 
 /perform
   But I can't help you unless you listen to me. 
-  
+
 /perform
   I try my best to be a good mistress and train you right. 
 
@@ -572,30 +576,57 @@ TODO change to player name
 
 
 = edging_break_3
--
+
 /perform
   Alright, paws off!
   We can't have you having too much fun, that defeats the point of a punishment!
   
-TODO add question for whether player came or notified
-//Now, were you good? Did you save your treat for later?
-//If no:
-//Oh no! You're hopeless!
-//No, that's not right, I'm sure we can figure this out.
-//But you'll have to try very hard!
-//You've been naughty again, which means you get another obsidian stone.
-//Be sure to come back to me so I can teach you how to be a good puppy!
-//if yes (below)
- 
-TODO make this block the result of yes: behavhed 
-/perform
+TODO add question for whether player came or notified mistress
+- (orgasm_question) 
+/perform 
+Now, have you been good? Did you save your orgasm for later?
+
++[pose:puppy_yes]
+  ~ addObey()
+  /perform
   Yes, that's a good {player_name}!
+  
   I'm so proud of you for taking your punishment like a good {player_name}!
+  
   I hope you know that even when I punish you, you're still my cutie puppy.
+  
   This is all to help you!
 
++[pose:puppy_no]
+  ~ addDisobey()
+  /perform
+    
+    Oh no! You're hopeless!
+    
+    No, that's not right, I'm sure we can figure this out...
+    
+    But you'll have to try very hard!
+    
+    TODO Need to decide on giving the player another stone or just not getting the initial punishment removed? 
+    ~ addPunishment()
+    You've been naughty again, which means you get another obsidian stone.
+    
+    Be sure to come back to me so I can teach you how to be a good puppy!
+    
+    -> exit
+  
 
-TODO flow to here whether the player behaved or not
++ [timeout]
+  -> Yuki_Timeout.Couch ->
+  -> orgasm_question
+
++ [distracted]
+  -> Yuki_PayAttention.Couch ->
+  -> orgasm_question
+
+- (work)
+
+TODO set perform animations
 /perform
   You'll have to work diligently to get back into our good graces, but I know you can do it.
   If you stop being so naughty! Ugh.
@@ -658,10 +689,8 @@ TODO flow to here whether the player behaved or not
   -> comeback
 
 
-
 - (end_yuki_edging_punishment)
 
-    
     /perform 
     Now, I'll take that punishment marker from you. 
 
