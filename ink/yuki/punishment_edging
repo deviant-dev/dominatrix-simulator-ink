@@ -14,16 +14,16 @@ TODO Need to add /perform animations across the board basically, but all dialogu
 
 - (puppy_question)
 /perform placeholder
-    Now, before you get started working off that obsidian,  
+    Now, before you get started working off that Obsidian...  
 - (puppy_check)
     Do you accept being my puppy for this punishment? 
     
 
 + [pose:puppy_yes]
-    I'm glad you're starting to behave, puppy! 
+    I'm glad you're starting to know your place! 
     
     /perform do_point_down
-    Then, sit, and listen.
+    Time to sit down and listen.
 
 + [pose:puppy_no]
     Are you trying to mess with me? 
@@ -34,10 +34,10 @@ TODO Need to add /perform animations across the board basically, but all dialogu
     -> puppy_check
 
 + [Yes]
-    I'm glad you're starting to behave, puppy! 
+    Well, if that's the case, then answer with your paws.
     
-    /perform do_point_down
-    Then, sit, and listen.
+    Try again, {player_name}.
+    -> puppy_check
 
 
 + [No]
@@ -45,7 +45,6 @@ TODO Need to add /perform animations across the board basically, but all dialogu
     
     Get out then if you don't want to behave! 
     -> exit
-    
     
     
 + [timeout]
@@ -267,7 +266,7 @@ TODO set perform
   ~ addDisobey()
     -> Yuki_AcknowledgeNo -> 
     
-    //change to a shuffle and add lines
+    TODO change to a shuffle and add these lines into it
     Well maybe next time you shouldn't be such a naughty little puppy, hmmm?
     
     Maybe you should move those paws a little better then? 
@@ -299,8 +298,7 @@ TODO set perform
 /wait 3
 
 /perform do_summon_player excited 35
-TODO change to player name
-  Stand up for me. Like a good little {isBoy: boy| {isGirl: girl| pet}}.
+  Stand up for me. Like a good little {player_name}.
 
 -(standup)
 
@@ -321,8 +319,13 @@ TODO change to player name
 
 -
 /perform react_chuckle amused 55
-  Hehehe, I love making my puppies stand up on their hind legs.
-  It's very entertaining, like you're a person.
+  Hehehe.
+  
+  I love making my puppies stand up on their hind legs.
+  
+  It's very entertaining.
+  
+  Like you're a person!
   
   But remember, you're just my puppy right now and you're being punished. 
 
