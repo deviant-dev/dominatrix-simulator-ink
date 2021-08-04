@@ -114,7 +114,7 @@ TODO Need to add /perform animations across the board basically, but all dialogu
 -
 /perform do_point_down skeptical 65
   Now, down {player_name}, where bad, misbehaving puppies belong,
-  and think about what you've done. 
+  and show me how sorry you are. 
 
 //check pose 
 ~ tries = 0
@@ -123,9 +123,9 @@ TODO Need to add /perform animations across the board basically, but all dialogu
 /perform idle_unhappy amused 55
  //add shuffle of lines
  
-TODO Could add a longer check here to keep the player groveling, should make it feel more like a punishment
+TODO Could add a longer check here to keep the player groveling, make it feel more like a punishment, will revisit later
 
-+[pose:grovel]
++[pose:puppy_sorry]
 +{ tries < 2 } [timeout] -> grovelamusement
 +{ tries >= 2 } [timeout] -> grovel
 
@@ -135,13 +135,16 @@ TODO Could add a longer check here to keep the player groveling, should make it 
 
 /perform idle_unhappy_stomp angry 75
   I said down, you stubborn puppy!
+  
+  Show me you're sorry. 
+  
   This shouldn't be difficult...
 
 ~ tries = 0
 -(grovelpose)
 ~ tries ++
 
-+[pose:grovel]
++[pose:puppy_sorry]
 +{ tries < 2 } [timeout] -> grovelpose
 +{ tries >= 2 } [timeout] -> Yuki_Interested -> grovel
 
@@ -250,6 +253,7 @@ TODO Could add a longer check here to keep the player groveling, should make it 
 = edging_1
 -
 -> RandomCommentLoop (-> tease_bank_kneeling, 3, 4, 3, 4) ->
+TODO add call to tease_bank_joi here
 - (Enjoyment)
 
 /perform idle_tease aroused 45
@@ -258,21 +262,20 @@ TODO Could add a longer check here to keep the player groveling, should make it 
 +[pose:puppy_yes]
   /perform react_laugh amused 60
   ~ addObey()
-    Goodie! But remember, no cumming.
+    Good! But remember, no matter how good it feels, you do NOT have permission to cum.
 
 +[pose:puppy_No]
 TODO set perform
   /perform
-  ~ addDisobey()
+  
     -> Yuki_AcknowledgeNo -> 
-    
-    TODO change to a shuffle and add these lines into it
-    Well maybe next time you shouldn't be such a naughty little puppy, hmmm?
-    
-    Maybe you should move those paws a little better then? 
-    
-    Good, you're being punished after all. 
-    
+
+    { shuffle: 
+    - Well maybe next time you shouldn't be such a naughty little puppy, hmmm?
+    - Maybe you should move those paws a little better then? 
+    - Well, you are being punished after all. 
+    }
+
     -> edging_break_1
 
 +[timeout]
@@ -287,8 +290,17 @@ TODO set perform
 
 = edging_break_1
 
+//Now, stop, and show me how aroused you are
+
+//set pose to present kneel 
+
+//add timeout to repeat question
+
+
+
 /perform idle_tease excited 50
   Mmm, oh goodie!
+  
   I can see that your {hasPenis: cock is nice and hard|pussy is nice and wet} now!
 
 /perform idle_swaying aroused 65
@@ -331,18 +343,24 @@ TODO set perform
 
 /perform idle_tease aroused 45
   Let's continue with your punishment.
+  
+  I want to see your paws busy again. 
 
 /perform react_point_at_player_angry skeptical 50
   And remember, no cumming without permission! 
   Unless you want to get <i>another</i> Obsidian stone. 
+  
 
 ->edging_2
 
 
 = edging_2
 
--> RandomCommentLoop(-> tease_bank_standing , 4, 5, 3, 4)  ->
 
+    Start touching yourself again for me, {player_name}.
+
+-> RandomCommentLoop(-> tease_bank_standing , 4, 5, 3, 4)  ->
+TODO add call to tease_bank_joi here
 /perform talk_question amused 55
   How are you feeling?
 
@@ -367,6 +385,9 @@ TODO set perform
   /perform talk_lean_forward amused 65
     I think you need some more teasing then,
     you clearly aren't paying enough attention.
+    
+    TODO test this
+    -> tease_bank_joi -> 
 
 + [timeout]
   -> Yuki_Timeout ->
@@ -378,7 +399,7 @@ TODO set perform
 
 
 - -> RandomCommentLoop(-> tease_bank_aching , 4, 6, 3, 5)  ->
-
+TODO add call to tease_bank_joi here
 
 - ->edging_break_2
 
@@ -386,6 +407,8 @@ TODO set perform
 = edging_break_2
 
 -(enough)
+Let go now! Don't touch.
+
 /perform idle_cocks_head_to_left amused 55
   What do you think,
   have you had enough teasing yet?
@@ -424,7 +447,7 @@ TODO set perform
 
 -
 /perform do_inspect excited 70
-  I'm going to relax on the sofa now and watch my good puppy.
+  I'm going to relax on the sofa now and watch my good puppy edge for me. 
 
 
 ->edging_3
@@ -439,7 +462,9 @@ TODO set perform
 TODO set perform
 /perform
   You're too far away.
-  Come over here, silly puppy. Remember to stay down. 
+  Come over here, silly puppy. 
+  
+  Remember to stay down. 
 
 +[move]
 TODO set perform
@@ -451,13 +476,13 @@ TODO set perform
 /perform
   I am a kind and generous mistress, and even though this is still a punishment, I want to see my good puppy make the most of it. 
   
-  I can see you need it. 
+  I can see you want the pleasure. 
   
 
 ~ tries = 0
 -(frontseat)
 ~ tries ++
-TODO set perform
+TODO change this to puppy_beg and adjust dialogue to have Yuki asking the player to beg for more play time
 /perform
   Kneel in front of me. 
   I want a frontrow seat while I contemplate how to <i>really</i> make this a memorable punishment.
@@ -523,6 +548,8 @@ TODO set perform for this section
   ~ addObey()
   /perform
     Goodie! I'm so glad to hear that.
+    
+    I know that together we can impress the headmistress, and even the Goddess! 
 
 +[pose:puppy_no]
   ~ addDisobey()
@@ -584,7 +611,6 @@ TODO set perform for this section
   Alright, paws off!
   We can't have you having too much fun, that defeats the point of a punishment!
   
-TODO add question for whether player came or notified mistress
 - (orgasm_question) 
 /perform 
 Now, have you been good? Did you save your orgasm for later?
@@ -610,11 +636,12 @@ Now, have you been good? Did you save your orgasm for later?
     
     But you'll have to try very hard!
     
-    TODO Need to decide on giving the player another stone or just not getting the initial punishment removed? 
     ~ addPunishment()
     You've been naughty again, which means you get another obsidian stone.
     
     Be sure to come back to me so I can teach you how to be a good puppy!
+    
+    Now shoo! Shoo!
     
     -> exit
   
@@ -705,9 +732,6 @@ TODO set perform animations
 ->exit
 
 //end of scene/script is here. 
-//
-//
-//break point here but still need to understand if any other code is tangled, and need to adjust extra quotes from the banks below, and fix puppy pose yes/no's. 
 
 
 
@@ -822,6 +846,36 @@ TODO set perform animations
     I wish you hadn't been naughty so that I could watch you cum.
   - This is a punishment, remember? You <i>have</i> to get right to the edge!
   - You're making it so hard for me to say no to you, puppy.
+
+}
+
+->->
+
+TODO add call to tease_bank_joi in each edging segment and add more lines here
+= tease_bank_joi
+
+{ shuffle:
+  - /perform
+  - /perform
+  - /perform
+  - /perform
+  - /perform
+  - /perform
+  - /perform
+}
+
+{ shuffle:
+  - Switch paws for me puppy, and give me ten sloooow strokes.
+  - Give yourself five sloooow strokes, just how you like it.
+  - I want to see you pant while you touch yourself for me! 
+  - I want to see ten fast strokes! 
+  - Go faster, I want to see you moving your hips into it!
+  - Rub {hasPenis: right behind your tip|your clit} for me puppy!  
+  - Play with your {hasPenis: balls|breasts} for me puppy, give them a good squeeze. 
+  - Good {player_name}, slow down those paws.
+  - Good {player_name}, speed up those paws!
+  - Keep a good steady pace as you edge for me...
+  - {hasPenis:Tug yourself slowly | Rub yourself slowly} now. 
 
 }
 
