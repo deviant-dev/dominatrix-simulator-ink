@@ -262,7 +262,7 @@ TODO add call to tease_bank_joi here
 +[pose:puppy_yes]
   /perform react_laugh amused 60
   ~ addObey()
-    Good! But remember, no matter how good it feels, you do NOT have permission to cum.
+    Goodie! But remember, no cumming. 
 
 +[pose:puppy_No]
 TODO set perform
@@ -474,9 +474,11 @@ TODO set perform
   TODO make a mention of Yuki watching the player with a different mistress here?
 
 /perform
-  I am a kind and generous mistress, and even though this is still a punishment, I want to see my good puppy make the most of it. 
+  I am a kind and generous mistress
   
-  I can see you want the pleasure. 
+  and even though this is still a punishment 
+  
+  I want to see my good puppy make the most of it. 
   
 
 ~ tries = 0
@@ -864,18 +866,24 @@ TODO add call to tease_bank_joi in each edging segment and add more lines here
   - /perform
 }
 
+//commenting out more JOI-ish lines to focus on praise 
+
 { shuffle:
-  - Switch paws for me puppy, and give me ten sloooow strokes.
-  - Give yourself five sloooow strokes, just how you like it.
+  //- Switch paws for me puppy, and give me ten sloooow strokes.
+  //- Give yourself five sloooow strokes, just how you like it.
+  //- I want to see ten fast strokes! 
+  //- Play with your {hasPenis: balls|breasts} for me puppy, give them a good squeeze. 
+  //- Good {player_name}, slow down those paws.
+  //- Good {player_name}, speed up those paws!
+  //- {hasPenis:Tug yourself slowly | Rub yourself slowly} now. 
+  //- Rub {hasPenis: right behind your tip|your clit} for me puppy! 
   - I want to see you pant while you touch yourself for me! 
-  - I want to see ten fast strokes! 
   - Go faster, I want to see you moving your hips into it!
-  - Rub {hasPenis: right behind your tip|your clit} for me puppy!  
-  - Play with your {hasPenis: balls|breasts} for me puppy, give them a good squeeze. 
-  - Good {player_name}, slow down those paws.
-  - Good {player_name}, speed up those paws!
   - Keep a good steady pace as you edge for me...
-  - {hasPenis:Tug yourself slowly | Rub yourself slowly} now. 
+  - Watching you squirm is my favorite!
+  - I love watching you try to stay still...
+  - You look so cute touching yourself for me! 
+  - I can't wait to play with you as my good {player_name} later!
 
 }
 
