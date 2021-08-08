@@ -253,7 +253,8 @@ TODO Could add a longer check here to keep the player groveling, make it feel mo
 = edging_1
 -
 -> RandomCommentLoop (-> tease_bank_kneeling, 3, 4, 3, 4) ->
-TODO add call to tease_bank_joi here
+-> tease_bank_joi -> 
+
 - (Enjoyment)
 
 /perform idle_tease aroused 45
@@ -290,29 +291,38 @@ TODO set perform
 
 = edging_break_1
 
-//Now, stop, and show me how aroused you are
-
-//set pose to present kneel 
-
-//add timeout to repeat question
-
-
-
-/perform idle_tease excited 50
-  Mmm, oh goodie!
+- (edging_show)
   
-  I can see that your {hasPenis: cock is nice and hard|pussy is nice and wet} now!
+  /perform
+  Now, stop touching yourself puppy, 
+  
+  and show me how aroused you are.
+  
++ [pose:present_kneel] 
+    
+    /perform idle_tease excited 50
+    Mmm, oh goodie!
+  
+    I can see that your {hasPenis: cock is getting nice and hard|pussy is getting nice and wet} now!
 
 /perform idle_swaying aroused 65
   But we're just getting started.
   You're nowhere near as pent up as I want you to be.
 
++ [timeout] 
+    -> Yuki_Timeout ->
+    -> edging_show
+
++ [distracted]
+  -> Yuki_PayAttention ->
+  -> edging_show
+
+-(standup)
+
 /wait 3
 
 /perform do_summon_player excited 35
   Stand up for me. Like a good little {player_name}.
-
--(standup)
 
 /perform idle_swaying happy 60
 {shuffle:
@@ -340,6 +350,28 @@ TODO set perform
   Like you're a person!
   
   But remember, you're just my puppy right now and you're being punished. 
+  
+-(all_fours)
+  
+  /perform do_point_down
+  { shuffle: 
+  - Get back down on all fours please. 
+  - Sit for me, puppy.
+  }
+  
+    + [pose:puppy_sit]
+  
+    Good {player_name}!
+
+    + [timeout] 
+    -> Yuki_Timeout ->
+    -> all_fours
+
+    + [distracted]
+    -> Yuki_PayAttention ->
+    -> all_fours
+  
+ -
 
 /perform idle_tease aroused 45
   Let's continue with your punishment.
@@ -356,11 +388,11 @@ TODO set perform
 
 = edging_2
 
-
-    Start touching yourself again for me, {player_name}.
+    Start edging yourself again for me, {player_name}.
 
 -> RandomCommentLoop(-> tease_bank_standing , 4, 5, 3, 4)  ->
-TODO add call to tease_bank_joi here
+
+-> tease_bank_joi -> 
 /perform talk_question amused 55
   How are you feeling?
 
@@ -386,8 +418,6 @@ TODO add call to tease_bank_joi here
     I think you need some more teasing then,
     you clearly aren't paying enough attention.
     
-    TODO test this
-    -> tease_bank_joi -> 
 
 + [timeout]
   -> Yuki_Timeout ->
@@ -399,9 +429,9 @@ TODO add call to tease_bank_joi here
 
 
 - -> RandomCommentLoop(-> tease_bank_aching , 4, 6, 3, 5)  ->
-TODO add call to tease_bank_joi here
+-> tease_bank_joi ->
 
-- ->edging_break_2
+->edging_break_2
 
 
 = edging_break_2
@@ -449,9 +479,7 @@ TODO set perform
 /perform do_inspect excited 70
   I'm going to relax on the sofa now and watch my good puppy edge for me. 
 
-
-->edging_3
-
+-> edging_3
 
 = edging_3
 
@@ -464,27 +492,36 @@ TODO set perform
   You're too far away.
   Come over here, silly puppy. 
   
-  Remember to stay down. 
+  Remember to stay down on all fours.
 
 +[move]
 TODO set perform
 /perform
-  Now this time, I want to see you <i>really</i> get into it. I know you were holding back.
+  Now, I want to see you <i>really</i> get into it. 
   
-  TODO make a mention of Yuki watching the player with a different mistress here?
-
+ I know you were holding back.
+  
+ {shuffle: 
+ - Don't think I haven't seen you with Nega. 
+ - I've seen you in the auditorium with the Headmistress. 
+ - Please be good for me now. 
+ }
 /perform
   I am a kind and generous mistress
   
   and even though this is still a punishment 
   
   I want to see my good puppy make the most of it. 
-  
 
 ~ tries = 0
 -(frontseat)
 ~ tries ++
 TODO change this to puppy_beg and adjust dialogue to have Yuki asking the player to beg for more play time
+
+///perform
+   // If you still want to be edged, beg for more puppy, 
+    //and you better look sorry for the misbehaving that earned you this punishment!
+
 /perform
   Kneel in front of me. 
   I want a frontrow seat while I contemplate how to <i>really</i> make this a memorable punishment.
@@ -522,7 +559,9 @@ TODO set perform
   -> Yuki_PayAttention.Couch ->
   -> memorable
 
-- -> RandomCommentLoop(-> tease_bank_couch, 4, 5, 4, 5) ->
+- -> RandomCommentLoop(-> tease_bank_couch, 4, 5, 4, 5) -> 
+-> tease_bank_joi -> 
+
 TODO set perform for this section
 /perform
   Ahh, what a wonderful trick those paws can do--
@@ -604,7 +643,7 @@ TODO set perform for this section
 +[distracted]
   -> Yuki_PayAttention.Couch ->
   -> FeelGood
-- ->edging_break_3
+- -> edging_break_3
 
 
 = edging_break_3
@@ -736,7 +775,8 @@ TODO set perform animations
 //end of scene/script is here. 
 
 
-
+TODO add bank of new timeout lines 
+//things like, "stop touching yourself and answer me, puppy!"
 
 = tease_bank_kneeling
 
@@ -878,8 +918,9 @@ TODO add call to tease_bank_joi in each edging segment and add more lines here
   //- {hasPenis:Tug yourself slowly | Rub yourself slowly} now. 
   //- Rub {hasPenis: right behind your tip|your clit} for me puppy! 
   - I want to see you pant while you touch yourself for me! 
+  - You can drip, but you better not cum! 
   - Go faster, I want to see you moving your hips into it!
-  - Keep a good steady pace as you edge for me...
+  - Keep a good steady pace as you edge for me.
   - Watching you squirm is my favorite!
   - I love watching you try to stay still...
   - You look so cute touching yourself for me! 
