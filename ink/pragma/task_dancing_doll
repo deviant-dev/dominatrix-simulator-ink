@@ -1,0 +1,60 @@
+=== pragma_task_dancing_doll ===
+-> select_gender_check ->
+~ setScene(task_scene, Pragma, "pragma_task_placeholder", -> pragma_task_placeholder)
+/scene PragmasRoom.Ready
+/music pragma
+/ambient pragma
+/character pragma
+-> intro
+
+
+= intro
+
+// consent check
+
+/notify title="The Divine Engine Pragma's Task Check" text="This is a placeholder task check. Do you want to do the task?"
+
++ [yes]
++ [no]
+    << Don't waste my time, then. >>
+    << Go away.>>
+    /wait
+    -> exit
+
+- -> begin
+
+
+= begin
+
+// scene goes here
+//task - headset, hands have to all be moving for set amount of time - player is dancing to make other NPCs hooked up to fucking machines orgasm (they are in the pragma 'perfect form' shape)
+//the more embarassed and uncomfortable a player is, the richer the experiment results and the greater the essence she can extract
+//pragma is already the perfect form - player is given her form to wear when performing task, they get to modify her body (blend shapes for breasts, butt, hair, height, etc)
+
+//pragma will ask the player to select the most pleasing body, using her body as a template, to indicate what is 'most exciting' for sexual arousal and then the player will have to dance to cause a slave to orgasm being fucked by a machine 
+//player is put into a pragma body and can modify the features of the pragma body (breasts, ass, etc) in front of a mirror
+//scene reloads and player is in front of a slave strapped to a fucking machine
+//minigame - player has to move headset and both hands to be sexual enticing to the slave being fucked. as they move, the arousal level goes up and the fucking machine goes faster. If the player stops moving, the arousal level goes down and the fucking machine slows. The slave orgasms when the arousal meter is full and then he player can stop moving
+//scene wraps up with pragma evaluates the performance 
+//good ending - earn a reward, pragma is filled with power and excited to use the passion for her next experiment
+//bad ending - earn a punishment, all is not lost, we can use your pain to our advantage
+
+-> finish
+
+
+= finish
+
+// scene wrap-up goes here
+
+/notify title="The Divine Engine Pragma's Task Test" text="This is a placeholder task scene. Do you complete your task?"
+
++ [yes]
+    ~addReward()
+    /notify title="The Divine Engine Pragma's Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
++ [no]
+    ~addPunishment()
+    /notify title="The Divine Engine Pragma's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+
+- /wait 5
+-> exit
+

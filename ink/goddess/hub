@@ -18,8 +18,6 @@
 /ambient none
 /character goddess
 
-- /notify title="The Goddess' Hub" text="This is a placeholder. You negotiate a scene with the Mistress here."
-
 + [move:Exit] -> exit
 + [move:Approach] -> apology_check(-> hello, -> exit)
 
@@ -29,15 +27,25 @@
 /wait
 
 { goddess_regard >= 10:
-    << Hello favored slave. >>
+    Hello treasured mouse.
 - else:
-    << Hello slave. >>
+    {shuffle: 
+        - Greetings, {player_name}.
+        - Hello, {player_name}.
+    }
+}
+
+{shuffle:
+    - Why are you here?
+    - Why have you come to me?
+    - Why do you seek me out?
 }
 
 { 
     - punishments > 0 && inChastity:
-        You require correction. Go get your punishments and perhaps we'll talk. #01
-        -> exit
+    You are in chastity and...
+    You require correction. Go get your punishments and perhaps we'll talk. #01
+    -> exit
     - rewards >= 10 && inChastity: -> chastity_release
     - inChastity: -> chastity_rejection
     - punishments >= 10: -> chastity_offer
@@ -49,44 +57,102 @@
 
 
 = chastity_rejection
+
+TODO: dialogue suggests you need favor with Mistresses to be released. Is this what we mean?
+
 You are not yet worthy. #04
 Raise your standing with my Mistresses #05
 and save your high marks, #06
 then perhaps I'll entertain your presence #07
-<< and release you from your cage. >>
+and release you from your cage. 
 Ten should suffice. #08
 Now leave. #09
+
 + [yes] -> exit
+
 + [no]
     No? Then take a punishment and leave anyway. #10
     ~ addPunishment()
     -> exit
+    
 + [timeout] -> exit
+
 + [move:exit] -> exit
 
 = chastity_offer
-<< So many punishments. Submit to chastity and I shall remove them. >>
-<< Do you accept? >>
+My, my.
+A full wrist of Obsidian.
+
+Submit to chastity...
+and I shall remove them. 
+
+- (offer)
+Do you accept? 
 
 + [yes]
-+ [no] -> check_punishment
+    What an eager little mouse.
+
++ [no] -> Goddess_AcknowledgeNo -> check_punishment
+
++ [timeout] -> offer
 
 - (accept_chastity)
-/notify title="Chastity Accepted" text="Insert enter chastity dialog here."
+
+{shuffle:
+    - Imprisonment you shall have.
+    - Chastity it is. 
+    - You shall be confined then.
+}
+
+TODO: Some kind of animation and sound should play to give the chastity device
+
+{shuffle:
+    - Look how well it fits you.
+    - There. All locked away.
+    - Awww. 
+    The little mouse is traped in a cage.
+}
+
+{shuffle:
+    - Earn ten Bloodstones to have your freedom.
+    - Return with ten rewards to be set free. 
+}
+
 ~ inChastity = true
 /wait 5
 -> exit
 
 
 = chastity_release
- << All full? Here to be released, then? >>
- 
-+ [yes] 
+
+{shuffle:
+    - I see. Ten rewards.
+    - Ahhh. Ten Bloodstones.
+}
+
+{shuffle:
+    - Here to be released from confinement, then?
+    - Ready to come out of chastity?
+}
+
++ [yes] -> Goddess_AcknowledgeYes ->
 + [no]
-    << I can't play with you when you're in chastity. >>
-   -> exit
-            
-- /notify title="Chastity Release" text="Insert chastity release dialog here. Returning to entry"
+    You cannot serve me while in chastity.
+    
+    Do you want to be released?
+    
+    ++ [yes]
+    Then you shall be free.
+    
+    ++ [no]
+    Then you must go.
+    -> exit
+
+-
+
+Time to come out of your cage, little mouse.
+
+/notify title="Chastity Release" text="Insert chastity release dialog here. Returning to entry"
 ~ inChastity = false
 ~ removeBigReward(-> exit)
 /wait 5
@@ -96,20 +162,28 @@ Now leave. #09
 = check_punishment
 
 /character goddess
-<< Are you here to pay your punishment? >>
+{shuffle:
+    - Tsk tsk. Are you here to pay off a punishment?
+    - My little mouse has been naughty. 
+    Ready to be punished?
+    - Have you come to pay off a punishment?
+    - Are you here to be punished?
+}
+
 + [yes] -> choose_punishment
 + [no]
 
-- << No? >>
+- No? 
 
 {
     - punishments < 10 && rewards < 10:
         -> check_task
     - punishments >= 10:
-        << You have too many punishments for a task, I'm afraid. >>
+        You have too many punishments for a task, I'm afraid. 
+        You'll have to some off first.
     - rewards >= 10:
-        << You have too many rewards for a task, I'm afraid. >>
-        << Pay off those punishments and you might get yourself something nice from me. >>
+        I cannot give you a task when your wrist is full of rewards.
+        Indulge yourself before performing any more tasks.
 }
 
 -> goodbye
@@ -119,15 +193,15 @@ Now leave. #09
 
 Well, well. 
 Looks like our little mouse has a full band of Bloodstones.
-            
+
 {goddess_regard < 10:
-    << It's too bad you haven't pleased me more or I might have something special for you. >>
-    << But I can still give you a reward if you spend just one. >>
+    It's too bad you haven't pleased me more or I might have something special for you. 
+    But I can still give you a reward if you spend just one. 
     -> check_reward
 }
 
 {inChastity:
-    << Too bad you are in chastity or we could truly enjoy ourselves. >>
+    Too bad you are in chastity or I could truly enjoy you.
     -> check_reward
 }
 
@@ -151,15 +225,15 @@ Would you like that?
         + [yes] -> choose_reward
         + [no]
 
-- << No? >>
+- No? 
 
 {
     - rewards < 10:
         -> check_task
 
     - rewards >= 10:
-        << You have too many rewards for a task. >>
-        << Indulge yourself before performing any more tasks. >>
+        I cannot give you a task when your wrist is full of rewards.
+        Indulge yourself before performing any more tasks.
 }
 
 -> goodbye
@@ -182,7 +256,9 @@ Would you like that?
 
 = choose_punishment
 
-<< Time to punish you, then. >>
+{shuffle:
+    - Then a punishment you shall have.
+    }
 
 { shuffle:
     - -> goddess_punishment_placeholder
@@ -192,7 +268,10 @@ Would you like that?
 = choose_reward_mega
 
 //goddess waves her hand over player's wrist
-Give them here.
+{shuffle:
+    - Give them here.
+    - I shall claim them all. 
+}
 
 {shuffle:
     - -> goddess_rewardmega_giantess
@@ -214,8 +293,8 @@ Give them here.
 }
 
 {shuffle:
-    - -> goddess_reward_placeholder
-    // - -> goddess_reward_joi
+    - -> goddess_reward_serviced
+    - -> goddess_reward_joi
 }
 
 

@@ -1,9 +1,3 @@
-VAR chance = 0
-VAR licked_boots = false
-VAR posed = false
-VAR edged = false
-VAR demerits = 0
-
 //slit, maggot, worm, meatbag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cumbucket, skank, pillow biter, tease
 
 === nega_hub ===
@@ -175,8 +169,8 @@ Bow down and kiss the ground I walk on. #29
 + { tries < 2 } [timeout] -> kiss_floor
 + { tries >= 2 } [timeout]
 
-     -> Nega_CheckIfInterested
-     -> kiss_floor
+    -> Nega_CheckIfInterested
+    -> kiss_floor
 
 - /wait 3
 -> Nega_GoodJob ->
@@ -193,8 +187,8 @@ Kiss my dirty boot. #30
 + { tries < 2 } [timeout] -> kiss_boot
 + { tries >= 2 } [timeout]
 
-     -> Nega_CheckIfInterested
-     -> kiss_boot
+    -> Nega_CheckIfInterested
+    -> kiss_boot
 
 - /wait 3
 -> Nega_GoodJob ->
@@ -211,8 +205,8 @@ Time to kiss my ass. Literally. #31
 + { tries < 2 } [timeout] -> kiss_ass
 + { tries >= 2 } [timeout]
 
-     -> Nega_CheckIfInterested
-     -> kiss_ass
+    -> Nega_CheckIfInterested
+    -> kiss_ass
 
 - /wait 3
 -> Nega_GoodJob ->
@@ -237,8 +231,8 @@ Stick your face in my ass and give it a good sniff. #32
 + { tries < 2 } [timeout] -> sniff_ass
 + { tries >= 2 } [timeout]
 
-     -> Nega_CheckIfInterested
-     -> sniff_ass
+    -> Nega_CheckIfInterested
+    -> sniff_ass
 
 - /wait 3
 -> Nega_GoodJob ->
@@ -256,8 +250,8 @@ Suck in that delicious smell, worm. #34
 + { tries < 2 } [timeout] -> sniff_crotch
 + { tries >= 2 } [timeout]
 
-     -> Nega_CheckIfInterested
-     -> sniff_crotch
+    -> Nega_CheckIfInterested
+    -> sniff_crotch
 
 - /wait 3
 -> Nega_GoodJob ->
@@ -274,8 +268,8 @@ Come get a nice big whiff of my armpit, skank. #35
 + { tries < 2 } [timeout] -> sniff_armpit
 + { tries >= 2 } [timeout]
 
-     -> Nega_CheckIfInterested
-     -> sniff_armpit
+    -> Nega_CheckIfInterested
+    -> sniff_armpit
 
 - /wait 3
 -> Nega_GoodJob ->
@@ -300,10 +294,10 @@ Take a slap, bitch, and don't fucking cry either! #36
 /perform do_slap
 
 + [react-success]
-     -> Nega_GoodJob ->
- + [react-fail]
-     -> Nega_BadJob ->
-     You get one more try. #37
+    -> Nega_GoodJob ->
++ [react-fail]
+    -> Nega_BadJob ->
+    You get one more try. #37
     -> try_slap
 
 - /wait 2
@@ -347,10 +341,10 @@ It better be hard enough to make you jump. #42
 Go! #44
 
 + [react-success]
-     -> Nega_GoodJob ->
+    -> Nega_GoodJob ->
 + [react-fail]
-     -> Nega_BadJob ->
-     You get one more try. #43
+    -> Nega_BadJob ->
+    You get one more try. #43
     -> slap_genitals
 
 - /wait 2

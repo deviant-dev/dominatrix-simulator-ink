@@ -29,10 +29,10 @@
 /wait
 
 { treat_regard >= 10:
-  /perform react_thankful happy 65
+/perform react_thankful happy 65
     It's nice to see you again, {player_name}. #01
 - else:
-  /perform talk_consider skeptical 55
+/perform talk_consider skeptical 55
     Come in, {player_name}. #02
 }
 
@@ -44,7 +44,7 @@
 }
 
 {
-    - treat_regard < 10: -> check_task
+    // - treat_regard < 10: -> check_task
     - punishments > 0: -> check_punishment
     - rewards >= 10: -> check_reward_mega
     - rewards > 0 : -> check_reward
@@ -55,22 +55,19 @@
 = check_punishment
 
 /character treat
-
 {shuffle:
+    - /perform talk_one_finger skeptical 55
+    I see you've been getting into trouble. #42
+    We all struggle, now and then. #43
 
+    /perform do_inspect amused 45
+    I know you'll do better. #44
 
-- /perform talk_one_finger skeptical 55
-I see you've been getting into trouble. #42
-   We all struggle, now and then. #43
+    - /perform do_tap_wrist skeptical 55
+    It looks like you have a punishment to pay off. #55
 
-   /perform do_inspect amused 45
-   I know you'll do better. #44
-
-- /perform do_tap_wrist skeptical 55
-  It looks like you have a punishment to pay off. #55
-
-  /perform talk_annoyed sad 55
-  It is unfortunate; but they help you learn from your mistakes. #56
+    /perform talk_annoyed sad 55
+    It is unfortunate; but they help you learn from your mistakes. #56
 }
 
 /perform idle_unhappy skeptical 65
@@ -83,22 +80,24 @@ No? #40
 
 {
     - punishments < 10 && rewards < 10:
-        -> check_task
+    -> check_task
+    
     - punishments >= 10:
-        /perform react_disappointed sad 55
-        You have too many punishments for a task, I'm afraid. #07
+    /perform react_disappointed sad 55
+    You have too many punishments for a task, I'm afraid. #07
+    
     - rewards >= 10:
-        /perform react_disappointed sad 55
-        You have too many rewards for a task, I'm afraid. #08
-        {punishments > 1:
-            /perform do_inspect skeptical 65
-            Pay off those punishments and you might get a big reward. #09
+    /perform react_disappointed sad 55
+    You have too many rewards for a task, I'm afraid. #08
+    {punishments > 1:
+        /perform do_inspect skeptical 65
+        Pay off those punishments and you might get a big reward. #09
         - else:
-           /perform do_tap_wrist amused 45
-          {shuffle:
+        /perform do_tap_wrist amused 45
+        {shuffle:
             -  Pay off that punishment and you might get a big reward. #10
             -  Pay off that punishment and you could get a big reward. #58
-          }
+        }
         }
 }
 
@@ -134,11 +133,11 @@ What a good {player_name} you are. #46
 I'm so proud of you, for behaving so well. #47
 
 {treat_regard < 10:
-  /perform idle_bored sad 45
-    {shuffle:
+/perform idle_bored sad 45
+{shuffle:
     -  It's too bad you haven't pleased me more, or I might have something special for you. #14
     -  It's too bad you haven't pleased me more, I have something special waiting for you. #48
-  }
+}
 
     /perform talk_lean_forward happy 65
     But I can still give you a reward if you spend just one. #15
@@ -154,7 +153,7 @@ I'm so proud of you, for behaving so well. #47
 /perform do_smooth_skirt amused 60
 And you've pleased me quite a lot. #17
 
-/perform do_hand_out excited 45
+/perform idle_hand_out excited 45
 {shuffle:
 -  Give me all 10 and I'll see you get something very special indeed. #18
 -  If you turn in all 10, I will give you something very special. #49
@@ -210,7 +209,7 @@ Would you like to indulge yourself? #23
 
 
 { inChastity:
-  /perform talk_gesture amused 45
+    /perform talk_gesture amused 45
     To enjoy pleasure, see the Goddess about having that chastity device removed. #25
 }
 
@@ -224,7 +223,7 @@ Would you like to indulge yourself? #23
 /perform talk_consider amused 5
 {shuffle:
     -  So, a clean slate. #52
-       No rewards or punishments? #53
+    No rewards or punishments? #53
 
     -  You have no rewards or punishments. #26
 
@@ -233,14 +232,14 @@ Would you like to indulge yourself? #23
 /perform talk_question skeptical 55
 {shuffle:
 
-  -  Are you here for a session, then? #54
+    -  Are you here for a session, then? #54
 
   //- You must be here for a session? #27
 
 }
 
 - else:
-  /perform react_thankful skeptical 60
+    /perform react_thankful skeptical 60
     Would you like to have a session with me? #28
 }
 
@@ -256,7 +255,7 @@ Would you like to indulge yourself? #23
 That's a shame. #29
 
 { treat_regard < 10:
-  /perform talk_lean_forward skeptical 50
+    /perform talk_lean_forward skeptical 50
     Perhaps if you visit me more often, we could do more. #30
 }
 
@@ -267,8 +266,8 @@ That's a shame. #29
 
 /perform do_snap_fingers happy 50
 {shuffle:
-  - Then let's get started. #31
-  - Let's get started then. #36
+    - Then let's get started. #31
+    - Let's get started then. #36
 }
 
 -> select_session
@@ -300,7 +299,7 @@ We get to have some special one-on-one time. #57
 I enjoy rewarding you, {player_name}. #35
 
 {shuffle:
-    - -> treat_reward_placeholder
+    - -> treat_reward_cunnilingus
 }
 
 

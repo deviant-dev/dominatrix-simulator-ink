@@ -315,10 +315,10 @@ Are you ready, puppy? #48
         Come back later. #32
         -> exit
 
-    ++ [timeout] -> Yuki_Timeout.Kneeling -> more_time
+    ++ [timeout] -> Yuki_Timeout.EmoteOnly -> more_time
 
 
-+ [timeout] -> Yuki_Timeout.Kneeling -> cum
++ [timeout] -> Yuki_Timeout.EmoteOnly -> cum
 
 - (milking)
 /perform yuki_milk_puppy_{hasPenis:penis|vagina}
@@ -333,7 +333,7 @@ Oooo. You're so warm. #53
 
 -> RandomCommentLoop(-> milking_comment, 3, 5, 2, 5) ->
 
--> Yuki_GoodJob.Kneeling ->
+-> Yuki_GoodJob.EmoteOnly ->
 
 -> question ->
 
@@ -349,7 +349,7 @@ Just raise your right paw! #171
 
 -> RandomCommentLoopWithPuppyBackYes(-> milking_comment, -> ready, 3, 5, 2, 5) ->
 
--> Yuki_GoodJob.Kneeling ->
+-> Yuki_GoodJob.EmoteOnly ->
 
 -> question -> resume
 
@@ -357,11 +357,11 @@ Just raise your right paw! #171
 
 /perform yuki_milk_puppy_{hasPenis:penis|vagina} aroused 50
 
--> Yuki_PlayerToCum.Kneeling ->
+-> Yuki_PlayerToCum.EmoteOnly ->
 
 /wait 2
 
--> Yuki_PlayerToCum.Kneeling ->
+-> Yuki_PlayerToCum.EmoteOnly ->
 
 -> finish
 
@@ -375,9 +375,9 @@ Just raise your right paw! #171
 /perform yuki_milk_puppy_{hasPenis:penis|vagina} aroused 50
 
 { shuffle:
-    - -> Yuki_milking_comments.Kneeling ->
+    - -> Yuki_milking_comments.EmoteOnly ->
     - -> puppy_comment ->
-    - -> Yuki_Aroused.Kneeling ->
+    - -> Yuki_Aroused.EmoteOnly ->
 
 }
 
@@ -401,7 +401,7 @@ Take some nice deep breaths and relax. #54
 
 /wait 5
 
--> Yuki_GoodJob.Kneeling ->
+-> Yuki_GoodJob.EmoteOnly ->
 
 /perform idle_yuki excited 45
 Sit up again, cutie. #176
@@ -455,7 +455,7 @@ I treat my puppies well, don't I? #177
     -> question
 
 + [pose:puppy_back_yes]
-    -> Yuki_AcknowledgeYes.Kneeling -> stop
+    -> Yuki_AcknowledgeYes.EmoteOnly -> stop
 
 + (stop) [pose:puppy_back_no]
 
@@ -487,9 +487,9 @@ I treat my puppies well, don't I? #177
         Well, okay. If that's what you want. #59
         -> exit
 
-    ++ [timeout] -> Yuki_Timeout.Kneeling -> stop
+    ++ [timeout] -> Yuki_Timeout.EmoteOnly -> stop
 
-+ [timeout] -> Yuki_Timeout.Kneeling -> question
++ [timeout] -> Yuki_Timeout.EmoteOnly -> question
 
 
 = puppy_comment

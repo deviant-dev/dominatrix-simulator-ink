@@ -1,0 +1,265 @@
+=== headmistress_reward_cunnilingus_hm ===
+~ headmistress_cunnilingus_target = headmistress_target_hm
+-> headmistress_generic_reward_cunnilingus
+
+
+
+
+=== headmistress_generic_reward_cunnilingus ===
+-> select_gender_check ->
+~ setScene(reward_scene, Headmistress, "headmistress_reward_cunnilingus_hm", -> headmistress_reward_cunnilingus_hm)
+-> scene_setup -> intro
+
+TODO: create new theatre room with HM sitting on the edge of the desk
+TODO: include the crowd
+//positions: HM sitting on edge of desk (like Yuki on couch)
+
+= scene_setup
+/scene TheatreOpen.Ready
+/music headmistress
+/ambient crowd
+->->
+
+= intro
+For your reward, #01
+
+{shuffle:
+    - you shall demonstrate to your fans #02
+    just how well you can pleasure a Mistress with your mouth. #03
+    - you shall perfect your ability to gratify with your tongue. #04
+}
+
+{shuffle:
+    - If you earn <i>Her</i> favor, you may one day quench the Goddess in this way. #05
+    - Perfection here may afford you the opportunity to suckle our Goddess. #06
+}
+
+- (mouth)
+
+{shuffle:
+    - I expect your tongue to perform exceptionally. #07
+    - The audience will want to see how well you can work that tongue of yours. #08
+    - Your mouth and lips must be exceptional in this! #09
+}
+
+Do you agree to this reward, moppet? #10
+
++ [yes]
+    ~ removeReward(-> load_begin)
+    -> Headmistress_AcknowledgeYes ->
+    -> begin
+    
++ [no] 
+    -> Headmistress_AcknowledgeNo ->
+    If this reward fails to appeal to you, #11
+    then you must leave. #12
+    
+    -- (leave)
+    Do you wish to depart,{isBoy: miscreant|foible}? #13
+    
+    ++ [yes]
+        As you wish. #14
+        You may go. #15
+        -> exit
+    
+    ++ [no]
+        Perhaps you were confused. #16
+        -> Headmistress_Resume ->
+        -> begin
+    
+    ++ [timeout] -> Headmistress_Timeout -> leave
+    
+    ++ [distracted] -> Headmistress_PayAttention -> leave
+
++ [timeout] -> Headmistress_Timeout -> mouth
+
++ [distracted] -> Headmistress_PayAttention -> mouth
+
+-
+
+-> Headmistress_Give_Reward ->
+~ removeReward(-> load_begin)
+
+-> begin     
+
+= load_begin
+-> scene_setup -> begin
+
+
+= begin
+
+-> Headmistress_Reward_Emotion_State ->
+
+
+TODO: change to player presenting themself? They will need to bend over for this position.
+-> kneel
+-
+
+- (kneel)
+
+{shuffle:
+    - Kneel, trinket. #17
+    - On your knees, poppet. #18
+    - Down, harlot. #19
+}
+
++ [pose:kneel]
+
++ [timeout] -> Headmistress_NoAction -> kneel
+
+- -> Headmistress_GoodJob ->
+
+It is imperative that you follow #20
+a Mistress's instructions precisely. #21
+
+At anytime, you may be asked to perform this service. #22
+
+To ensure you become exceptional, #23
+I shall insist you practice this reward #24
+on different subjects. #25
+
+Today, you will demonstrate on... #26
+
+{headmistress_cunnilingus_target:
+    - headmistress_target_hm:
+    me, this time. #27
+    As soon as I am in position, you may begin. #28
+    
+    - headmistress_target_slave:
+    my girl. #29
+    Once she is ready, you may begin. #30
+    
+    - headmistress_target_yuki:
+    Mistress Yuki-Onna. #31
+    Once she is ready, you may begin. #32
+}
+//HM sitting on desk
+//slave on back on floor
+//yuki on all fours on the desk
+
+-> minigame
+
+= minigame
+TODO: create scene
+/scene theatre.cunnilingus
+
+/perform cun_desk_idle
+
++ [minigame:success] -> finish_good
+
++ [minigame:fail] -> finish_bad
+
+
+= finish_good
+~ embarrassed = true
+TODO: only setting the variable to true because it is actually checked for under generic responses. needs to be able to carry over from that secvtion
+
+Breathtaking, moppet! #33
+
+{embarrassed:
+    {shuffle:
+        - You performed exceptionally under pressure. #34
+        - Even discomfitted, you triumphed! #35
+        - <i>She</i> enjoyed your flushed performance. #36
+    }
+    - else:
+    {shuffle:
+        - Your enthusiasm for performing becomes you! #37
+        - I am pleased with your passionate exhibition. #38
+        - <i>She</i> delights in your eagerness. #39
+    }
+}
+
+//check to see if player enjoyed themselves
+
+Your reward is complete. #40
+You may depart. #41
+
+-> exit
+
+= finish_bad
+
+Shocking! #42
+What a layabout! #43
+
+{embarrassed:
+    {shuffle:
+        - Your nervousness overcame you. #44
+        - You must not let your unease spoil your service. #45
+        - Clearly you let your nerves get the best of you. #46
+    }
+    - else:
+    {shuffle:
+        - Your enthuasiasm failed you. #47
+        - Excitation is not enough. #48
+        Skill is required. #49
+        - Your excitedment outweighed your ability. #50
+    }
+}
+
+//do we give a punishment
+
+Go. #51
+
+-> exit
+
+
+
+
+
+// ask teasing questions 
+
+// randomly select position and location for Mistress and player #53
+
+// tease player #54
+
+// summon player #55
+
+// consent Check #56
+
+// Instructions #57
+
+
+
+
+
+
+
+
+// use teasing questions to reward them #58
+
+
+
+
+// options to consider: #59
+
+// wearing a leash #60
+// hands tied behind back #61
+// having to use fingers as well #62
+// what happens if player tries to touch her body with their hands? #63
+// kiss her thighs #64
+// lick her anus #65
+// tongue her anus #66
+// finger in her anus #67
+// let them masturbate at the same time #68
+
+//  You could switch it up between being on your hands and knees; kneeling with them on a chair or some sort of queening stool; and facesitting with you on your back. I would love to be made to keep my hands away (behind my back/off to the sides) by the pose. #69
+//  Sounds-wise, lots of moaning and pleasurable sounds, so you know they are enjoying it, and lots of affirmation and encouragement too. Although it might also be exciting to do it in front of an audience, cheering for you and playing along...! #70
+
+// Maybe some light teasing, where they pull away and make you beg to keep going? And maybe then grasp your head and pull it in, so your vision goes dark for a bit but the sounds get louder... #71
+
+// At least one moment were the Domina is really pushing into you, almost making the screen go black while moaning nicely. #72
+
+// And also the slide in-between dem legs to start, so basically start with the mistress (assuming she is sitting or lying down) having her feet on your shoulder kn a way that keeps you away from her and then she allows you to come closer and you need to kind of slide your head in between her legs to get to where you need to be. #73
+
+// without knowing who this would be for, one thing that comes to mind is teasing that maybe another slave might have the honor and privilege to actually be inside them #74
+
+// It would be interesting if there could also be an option to be observed by another Mistress? Maybe with the Headmistress having it be with the observers? #75
+
+// If you want to make it special, maybe only let the player get The Goddess cunnilingus reward if they have 10 bloodstones or if they do a certain number of tasks. #76
+
+// Forced face sitting would be my preference (maybe while tied up? :sub:). #77
+
+//  please include some anallingus in there! #78
+
+//  Yuki could be more encouraging, Nega more humiliating, Head Mistress more structured and precise with her instruction, and The Goddess more commanding with maybe a little of everything. #79

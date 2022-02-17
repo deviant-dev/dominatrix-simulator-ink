@@ -1,10 +1,3 @@
-VAR headmistress_spanking_target_count = 10
-VAR headmistress_spanking_implement = "hand"
-VAR headmistress_spanking_count = 0
-VAR headmistress_spanking_break_count = 0
-VAR headmistress_spanking_mistakes = 0
-
-
 === headmistress_punishment_spanking ===
 
 ~ setScene(punishment_scene, Headmistress, "headmistress_punishment_spanking", -> headmistress_punishment_spanking)
@@ -17,7 +10,7 @@ TODO: Support shuffling swats and equipment
 {inTutorial:
     ~ headmistress_spanking_target_count = 10
     -else:
-     {shuffle:
+    {shuffle:
     - ~ headmistress_spanking_target_count = 10
     - ~ headmistress_spanking_target_count = 15
     - ~ headmistress_spanking_target_count = 20
@@ -59,7 +52,7 @@ Do you accept that you must be punished? #92
 
 + [no]
     ~ addDisobey()
-   /character headmistress idle_skeptical angry 75
+    /character headmistress idle_skeptical angry 75
     Foolish, little slave. #94
 
     It will be over quickly and your compliance will please the Goddess. #95
@@ -149,11 +142,11 @@ Alight forthwith! #08
     -> prompt
 
 + [distracted]
-  -> Headmistress_PayAttention -> prompt
+    -> Headmistress_PayAttention -> prompt
 
 - (kneel)
 /perform do_point_down aroused 60
- Now, kneel, slave. #225
+Now, kneel, slave. #225
 /wait 1
 /perform idle_clasp_hands aroused 70
 
@@ -167,7 +160,6 @@ Alight forthwith! #08
 
 -{tries == 1:
     ~ addObey()
-
     /perform do_arm_raise excited 65
     Observe the eagerness with which our chattel attempts to comply. #13
     /perform react_nod_little happy 65
@@ -325,23 +317,23 @@ What say you, {isBoy: toad|strumpet}? #79
 + [timeout] -> Headmistress_Timeout -> aroused
 + [distracted] -> Headmistress_PayAttention -> aroused
 
- - /perform talk_question amused 65
- Our guests will relish your punishment so much more if your {hasPenis: rod is rigid|slit is slick}. #03
+- /perform talk_question amused 65
+Our guests will relish your punishment so much more if your {hasPenis: rod is rigid|slit is slick}. #03
 
- - (get_aroused)
+- (get_aroused)
 
 /perform talk_behold excited 55
 Shall we appease them? #59
 
 + [yes]
-   -> Headmistress_AcknowledgeYes ->
-   ~headmistress_masturbated_for_crowd = true
+    -> Headmistress_AcknowledgeYes ->
+    ~headmistress_masturbated_for_crowd = true
 
 + [no]
-   -> Headmistress_Unhappy ->
-   /perform talk_one_finger skeptical 65
-   Sexual excitation makes for a more delightful punishment. #111
-   -> Headmistress_Resume ->
+    -> Headmistress_Unhappy ->
+    /perform talk_one_finger skeptical 65
+    Sexual excitation makes for a more delightful punishment. #111
+    -> Headmistress_Resume ->
 
 + [timeout] -> Headmistress_Timeout -> get_aroused
 
@@ -626,7 +618,7 @@ Stand at attention! #257
 
 - {cycle:
     -/perform talk_question amused 65
-     You may rest back on your heels, slave. #251
+    You may rest back on your heels, slave. #251
 
     -/perform idle_clasp_hands happy 65
     Sit upright for your fans, slave. #252
@@ -689,14 +681,14 @@ Stand at attention! #257
 Have you been keeping count, {isBoy: toad|strumpet}? #10
 
 +[yes]
- ~ addObey()
+    ~ addObey()
     /perform react_nod_little amused 65
     Let's see how well. #18
 
     /perform idle_clasp_hands skeptical 70
     Are we up to seven now? #21
 
-        ++[yes]
+    ++[yes]
         /perform talk_one_finger angry 55
         Tsk. Tsk. #22
 
@@ -711,7 +703,7 @@ Have you been keeping count, {isBoy: toad|strumpet}? #10
         ~ headmistress_spanking_count = 0
         -> spank
 
-        ++[no]
+    ++[no]
         /perform talk_lean_forward amused 65
         Paying attention, are we? #27
         I hope you know we are only at six. #28
@@ -719,7 +711,7 @@ Have you been keeping count, {isBoy: toad|strumpet}? #10
         ->->
 
 +[no]
- ~ addDisobey()
+~ addDisobey()
     /perform talk_behold disgusted 75
     Do you hear that, my students? #31
 
@@ -734,7 +726,7 @@ Have you been keeping count, {isBoy: toad|strumpet}? #10
 
     /perform talk_lean_forward skeptical 55
     This flaw I shall address in the future. #35
-     ~ headmistress_spanking_count = 0
+    ~ headmistress_spanking_count = 0
     -> Headmistress_punishment_resumes ->
     -> spank
 

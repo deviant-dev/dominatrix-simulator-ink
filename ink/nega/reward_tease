@@ -1,4 +1,4 @@
-  === nega_reward_tease ===
+=== nega_reward_tease ===
 -> select_gender_check ->
 
 ~ setScene(reward_scene, Nega, "nega_reward_tease", -> nega_reward_tease)
@@ -74,8 +74,8 @@ Got it, {isBoy: prick|cunt}? #104
     ++ [timeout] -> Nega_Timeout -> understood
     ++ [distracted] -> Nega_PayAttention -> understood
 
- + [timeout] -> Nega_Timeout -> hold_still
- + [distracted] -> Nega_PayAttention -> hold_still
++ [timeout] -> Nega_Timeout -> hold_still
++ [distracted] -> Nega_PayAttention -> hold_still
 
 - (games)
 
@@ -197,7 +197,7 @@ Now don't you move while I get more comfortable. #44
 + [timeout] -> Nega_Timeout -> sniff
 
 /wait 
---> Nega_GoodJob.Sex_Chair ->
+--> Nega_GoodJob.EmoteOnly ->
 
 {shuffle:
     - Breathe in nice and deep. #05
@@ -205,7 +205,7 @@ Now don't you move while I get more comfortable. #44
     - Wallow in the reek of my pussy. #20
 }
 
--> Nega_GoodJob.Sex_Chair ->
+-> Nega_GoodJob.EmoteOnly ->
 
 
 - (belong)
@@ -217,14 +217,14 @@ This is where you belong, isn't it {isBoy: piggy|bitch}? #21
     Of course it is! #22
 
 +[no]
-     ~ addDisobey()
-    -> Nega_Unhappy.Sex_Chair  ->
+    ~ addDisobey()
+    -> Nega_Unhappy.EmoteOnly  ->
     /perform talk_annoyed angry 80
     You'll learn your place soon enough. #45
 
-+ [timeout] -> Nega_Timeout.Sex_Chair -> belong
++ [timeout] -> Nega_Timeout.EmoteOnly -> belong
 
-+ [distracted] -> Nega_PayAttention.Sex_Chair  -> belong
++ [distracted] -> Nega_PayAttention.EmoteOnly  -> belong
 
 -
 {shuffle:
@@ -283,7 +283,7 @@ Feel good {isBoy: piggy|bitch}? #54
     Of course it does. #55
 
 +[no]
-     ~ addDisobey()
+    ~ addDisobey()
     -> Nega_Unhappy  ->
     /perform talk_annoyed angry 80
     Too bad. #56
@@ -347,7 +347,7 @@ You like that, don't you {isBoy: piggy|bitch}? #69
     Yah, you do! #70
 
 +[no]
-     ~ addDisobey()
+    ~ addDisobey()
     -> Nega_Unhappy  ->
     /perform talk_annoyed angry 80
     Too bad. #71

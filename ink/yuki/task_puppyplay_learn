@@ -383,7 +383,7 @@ Your last lesson for today is the <b>horny</b> pose! #124
 - (horny)
 ~ tries++
 
-/perform do_hand_out aroused 65
+/perform idle_hand_out aroused 65
 To show me you're <b>"horny"</b>, arch your back and look up at me! #43
 
 /perform idle_pleased happy 60

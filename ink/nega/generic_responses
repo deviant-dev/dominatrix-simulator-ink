@@ -1,63 +1,57 @@
 === Nega_GoodJob ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Squatting
--> DoComment(true)
+= EmoteOnly 
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 
 {shuffle:
 
-    -{inPosition: /emotion amused 65 | /perform talk_consider aroused 45}
+    -{emoteOnly: /emotion amused 65 | /perform talk_consider aroused 45}
     That's it, little bitch. #01
 
-    -{inPosition: /emotion excited 50 | /perform idle_unhappy excited 50}
+    -{emoteOnly: /emotion excited 50 | /perform idle_unhappy excited 50}
     Just like that. #02
 
-    -{inPosition: /emotion disgusted 45 | /perform react_shrug_short disgusted 45}
+    -{emoteOnly: /emotion disgusted 45 | /perform react_shrug_short disgusted 45}
     Not bad. #04
 
-    -{inPosition: /emotion excited 65 | /perform tease_caress_breast_left excited 45}
+    -{emoteOnly: /emotion excited 65 | /perform tease_caress_breast_left excited 45}
     You're making my pussy wet. #06
 
-    -{inPosition: /emotion happy 55 | /perform talk_lean_forward happy 55}
+    -{emoteOnly: /emotion happy 55 | /perform talk_lean_forward happy 55}
     Toying with you is so much fun! #07
 
-    -{inPosition: /emotion aroused 65 | /perform do_shake_finger aroused 65}
+    -{emoteOnly: /emotion aroused 65 | /perform do_shake_finger aroused 65}
     Good little {hasPenis: meatbag|slit}. #08
 
-    -{inPosition: /emotion amused 45 | /perform react_thankful amused 45}
+    -{emoteOnly: /emotion amused 45 | /perform react_thankful amused 45}
     I'm glad you came to see me. #09
 
-    -{inPosition: /emotion excited 45 | /perform do_inspect excited 45}
+    -{emoteOnly: /emotion excited 45 | /perform do_inspect excited 45}
     Oh, yeah. #10
 
-    -{inPosition: /emotion aroused 40 | /perform talk_consider aroused 40 }
+    -{emoteOnly: /emotion aroused 40 | /perform talk_consider aroused 40 }
     Mmmmm. #11
 
-    -{inPosition: /emotion aroused 65 | /perform tease_caress_breasts aroused 65}
+    -{emoteOnly: /emotion aroused 65 | /perform tease_caress_breasts aroused 65}
     So hot! #12
 
-    -{inPosition: /emotion happy 40 | /perform idle_sassy happy 40}
+    -{emoteOnly: /emotion happy 40 | /perform idle_sassy happy 40}
     Good fucktoy. #13
 
-    -{inPosition: /emotion amused 45 | /perform do_fist_pump amused 45}
+    -{emoteOnly: /emotion amused 45 | /perform do_fist_pump amused 45}
     Nice! #14
 
-    -{inPosition: /emotion amused 55 | /perform react_whatever amused 55}
+    -{emoteOnly: /emotion amused 55 | /perform react_whatever amused 55}
     What a slut! #15
 
-    -{inPosition: /emotion excited 40 | /perform talk_consider excited 40}
+    -{emoteOnly: /emotion excited 40 | /perform talk_consider excited 40}
     I'm impressed, slut. #16
     
-    -{inPosition: /emotion amused 55 | /perform talk_consider amused 55}
+    -{emoteOnly: /emotion amused 55 | /perform talk_consider amused 55}
     Not too bad. You have potential. #61
 }
 
@@ -66,71 +60,62 @@
 
 
 === Nega_BadJob ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Squatting
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= Kneeling
--> DoComment(true)
-
-= Sex_Chair
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 
 {shuffle:
 
-    - {inPosition: /emotion angry 65 | /perform react_dumb angry 65}
+    - {emoteOnly: /emotion angry 65 | /perform react_dumb angry 65}
     Stupid {isBoy:prick|cunt}. #01
 
-    - {inPosition: /emotion angry 70 | /perform react_point_at_player_angry angry 70}
+    - {emoteOnly: /emotion angry 70 | /perform react_point_at_player_angry angry 70}
     You're fucking up! #02
 
-    - {inPosition: /emotion skeptical 70 | /perform idle_unhappy_stomp angry 65}
+    - {emoteOnly: /emotion skeptical 70 | /perform idle_unhappy_stomp angry 65}
     You better entertain me, {isBoy: worm|whore}. #03
 
-    - {inPosition: /emotion skeptical 70 | /perform talk_annoyed skeptical 70}
+    - {emoteOnly: /emotion skeptical 70 | /perform talk_annoyed skeptical 70}
     Try harder! #04
 
-    - {inPosition: /emotion disgusted 65 | /perform react_scoffs disgusted 65}
+    - {emoteOnly: /emotion disgusted 65 | /perform react_scoffs disgusted 65}
     You're doing it wrong. #05
 
-    - {inPosition: /emotion angry 55 | /perform talk_annoyed angry 55}
+    - {emoteOnly: /emotion angry 55 | /perform talk_annoyed angry 55}
     Useless. #06
 
-    - {inPosition: /emotion angry 45 | /perform react_dismissive angry 45}
+    - {emoteOnly: /emotion angry 45 | /perform react_dismissive angry 45}
     Pathetic. #07
 
-    - {inPosition: /emotion disgusted 65 | /perform react_whatever disgusted 65}
+    - {emoteOnly: /emotion disgusted 65 | /perform react_whatever disgusted 65}
     Ugggh. #08
 
-    - {inPosition: /emotion sad 75 | /perform idle_unhappy_stomp sad 75}
+    - {emoteOnly: /emotion sad 75 | /perform idle_unhappy_stomp sad 75}
     I'm not happy. #09
 
-    - {inPosition: /emotion skeptical 65 | /perform react_dismissive skeptical 65}
+    - {emoteOnly: /emotion skeptical 65 | /perform react_dismissive skeptical 65}
     You're boring me. #10
 
-    - {inPosition: /emotion skeptical 55 | /perform react_dismissive skeptical 55}
+    - {emoteOnly: /emotion skeptical 55 | /perform react_dismissive skeptical 55}
     How lame. #11
 
-    - {inPosition: /emotion disgusted 65 | /perform talk_threaten angry 85}
+    - {emoteOnly: /emotion disgusted 65 | /perform talk_threaten angry 85}
     Unworthy slut! #12
 
-    - {inPosition: /emotion angry 85 | /perform talk_lean_forward angry 85}
+    - {emoteOnly: /emotion angry 85 | /perform talk_lean_forward angry 85}
     Grrrr. #13
 
-    - {inPosition: /emotion sad 65 | /perform idle_cocks_head_to_left sad 65}
+    - {emoteOnly: /emotion sad 65 | /perform idle_cocks_head_to_left sad 65}
     Waste of time. #14
 
-    - {inPosition: /emotion disgusted 40 | /perform react_resigned disgusted 40}
+    - {emoteOnly: /emotion disgusted 40 | /perform react_resigned disgusted 40}
     I don't know why I bother. #15
     
-    - {inPosition: /emotion angry 40 | /perform react_point_at_player_angry angry 40}
+    - {emoteOnly: /emotion angry 40 | /perform react_point_at_player_angry angry 40}
     Not good enough! #16
     
     // - That's not right, dog! Try again! 
@@ -140,29 +125,20 @@
 
 === Nega_AcknowledgeYes ===
 
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Kneeling
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= Squatting
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 /character nega
 
 {shuffle:
-    -{inPosition: /emotion skeptical 50 | /perform talk_consider skeptical 75}
+    -{emoteOnly: /emotion skeptical 50 | /perform talk_consider skeptical 75}
     Huh. Maybe I will get to have a little fun after all. #05
 
-    -{inPosition: /emotion amused 50 | /perform do_inspect amused 55}
+    -{emoteOnly: /emotion amused 50 | /perform do_inspect amused 55}
     Maybe you aren't a waste of time. #03
 
     - /emotion happy 50
@@ -188,44 +164,38 @@
 ->->
 
 === Nega_Unhappy ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Squatting
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 
 {shuffle:
 
-    - {inPosition: /disgusted 55 | /perform talk_lean_forward disgusted 55}
+    - {emoteOnly: /disgusted 55 | /perform talk_lean_forward disgusted 55}
     Fucking liar. #01
 
-    - {inPosition: /disgusted 55 | /perform talk_lean_forward disgusted 55}
+    - {emoteOnly: /disgusted 55 | /perform talk_lean_forward disgusted 55}
     Bullshit. #02
 
-    - {inPosition: /disgusted 55 | /perform talk_lean_forward disgusted 55}
+    - {emoteOnly: /disgusted 55 | /perform talk_lean_forward disgusted 55}
     Stupid bitch! #03
 
-    - {inPosition: /disgusted 55 | /perform talk_lean_forward disgusted 55}
+    - {emoteOnly: /disgusted 55 | /perform talk_lean_forward disgusted 55}
     Lie to yourself, but you can't lie to me. #04
 
-    - {inPosition: /disgusted 55 | /perform talk_lean_forward disgusted 55}
+    - {emoteOnly: /disgusted 55 | /perform talk_lean_forward disgusted 55}
     What a load of crap. #05
 
-    - {inPosition: /disgusted 55 | /perform talk_lean_forward disgusted 55}
+    - {emoteOnly: /disgusted 55 | /perform talk_lean_forward disgusted 55}
     Who are you fucking kidding? #06
 
-    - {inPosition: /disgusted 55 | /perform talk_lean_forward disgusted 55}
+    - {emoteOnly: /disgusted 55 | /perform talk_lean_forward disgusted 55}
     Who are you trying to fool? #07
 
-    - {inPosition: /disgusted 55 | /perform talk_lean_forward disgusted 55}
+    - {emoteOnly: /disgusted 55 | /perform talk_lean_forward disgusted 55}
     Such a fucking fool. #08
 
 //use this for responses from player she doesn't like - verbal
@@ -233,20 +203,14 @@
 
 ->->
 
-TODO: add 'inposition' to generic response dialogue
+
 === Nega_Insult ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Squatting
--> DoComment(true)
+= EmoteOnly 
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 {shuffle:
     - /emotion disgusted 65
     You're so goddamn pitiful. #01
@@ -290,83 +254,73 @@ TODO: add 'inposition' to generic response dialogue
     - /emotion sad 75
     You're an ugly, little wretch. #14
     
-    -{inPosition: /emotion disgusted 60 | /perform react_scoffs disgusted 60}
+    -{emoteOnly: /emotion disgusted 60 | /perform react_scoffs disgusted 60}
     Filthy bag of fuck holes. #15
     
-    -{inPosition: /emotion angry 65 | /perform talk_lean_forward angry 65}
+    -{emoteOnly: /emotion angry 65 | /perform talk_lean_forward angry 65}
     You're a worthless slut. #16
 
-    -{inPosition: /emotion disgusted 75 | /perform react_shrug_long disgusted 75}
+    -{emoteOnly: /emotion disgusted 75 | /perform react_shrug_long disgusted 75}
     You're a pathetic worm. #17
 
-    -{inPosition: /emotion amused 45 | /perform talk_one_finger amused 45}
+    -{emoteOnly: /emotion amused 45 | /perform talk_one_finger amused 45}
     You're a dirty little whore. #18
 
-    -{inPosition: /emotion excited 60 | /perform idle_tease excited 60}
+    -{emoteOnly: /emotion excited 60 | /perform idle_tease excited 60}
     You're a slutty fleshbag. #19
 
-    -{inPosition: /emotion angry 55 | /perform talk_annoyed angry 55}
+    -{emoteOnly: /emotion angry 55 | /perform talk_annoyed angry 55}
     You're a useless meatbag. #20
     
 }
 
 ->->
 
+
 === Nega_Objectify ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Squatting
--> DoComment(true)
+= EmoteOnly 
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 {shuffle:
 
-    -{inPosition: /emotion disgusted 65 | /perform talk_lean_forward disgusted 65}
+    -{emoteOnly: /emotion disgusted 65 | /perform talk_lean_forward disgusted 65}
     That's all you're good for, cunt, being used. #19
 
-    -{inPosition: /emotion aroused 65 | /perform tease_caress_breast_left aroused 65}
+    -{emoteOnly: /emotion aroused 65 | /perform tease_caress_breast_left aroused 65}
     I enjoy watching you be a little whore for my attention. #21
 
-    -{inPosition: /emotion excited 55 | /perform idle_skeptical excited 55}
+    -{emoteOnly: /emotion excited 55 | /perform idle_skeptical excited 55}
     You're just a filthy cum bucket to be used and abused. #01
     //Does this make sense if the player is the one penetrating?
 
-    -{inPosition: /emotion amused 55 | /perform react_chuckle amused 55}
+    -{emoteOnly: /emotion amused 55 | /perform react_chuckle amused 55}
     What a {hasPenis: tiny little pecker|gaping hole} you have. #02
 
-    -{inPosition: /emotion angry 45 | /perform react_point_at_player_angry angry 45}
+    -{emoteOnly: /emotion angry 45 | /perform react_point_at_player_angry angry 45}
     Good thing this House keeps you fucking firm. #03
 
-    -{inPosition: /emotion aroused 55 | /perform do_inspect aroused 55}
+    -{emoteOnly: /emotion aroused 55 | /perform do_inspect aroused 55}
     Oooo... look at the little sex doll. #05
 
-    -{inPosition: /emotion aroused 60 | /perform talk_one_finger aroused 60}
+    -{emoteOnly: /emotion aroused 60 | /perform talk_one_finger aroused 60}
     Such a fucking cum dump.  #06
     //Does this make sense if the player is the one penetrating?
 }
 
 ->->
 
+
 === Nega_Keep_Going ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Squatting
--> DoComment(true)
+= EmoteOnly 
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 {shuffle:
     - Keep going! #01
@@ -384,18 +338,12 @@ TODO: add 'inposition' to generic response dialogue
 
 
 === Nega_Kneel ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Squatting
--> DoComment(true)
+= EmoteOnly 
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 ~ tries = 0
 - (kneel_tease)
@@ -424,12 +372,12 @@ TODO: add 'inposition' to generic response dialogue
 
 + { tries >= 2 } [timeout]
     ~ addDisobey()
-    -> Nega_CheckIfInterested.DoComment(inPosition)
+    -> Nega_CheckIfInterested.DoEmoteOnly(emoteOnly)
     -> kneel_tease
 
-+ [distracted] -> Nega_PayAttention.DoComment(inPosition) -> kneel_tease
++ [distracted] -> Nega_PayAttention.DoEmoteOnly(emoteOnly) -> kneel_tease
 
-- -> Nega_GoodJob.DoComment(inPosition) ->
+- -> Nega_GoodJob.DoEmoteOnly(emoteOnly) ->
 ~ addObey()
 
 ->->
@@ -491,56 +439,50 @@ Now get back up on your knees. #07
 
 //response to timeouts to questions
 === Nega_Timeout ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Squatting
--> DoComment(true)
+= EmoteOnly 
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 
 {cycle:
 
-    -{inPosition: /emtion disgusted 70 | /perform talk_annoyed disgusted 70}
+    -{emoteOnly: /emtion disgusted 70 | /perform talk_annoyed disgusted 70}
     Are you stupid, or something? #86
     
-    -{inPosition: /emotion disgusted 40 | /perform react_thankful disgusted 40}
+    -{emoteOnly: /emotion disgusted 40 | /perform react_thankful disgusted 40}
     ...the fuck? I'm talking to you!  #01
 
-    -{inPosition: /emotion angry 35 | /perform idle_unhappy_stomp angry 35}
+    -{emoteOnly: /emotion angry 35 | /perform idle_unhappy_stomp angry 35}
     Don't ignore me!  #02
 
-    -{inPosition: /emotion amused 80 | /perform do_snap_fingers amused 80}
+    -{emoteOnly: /emotion amused 80 | /perform do_snap_fingers amused 80}
     Fucking pay attention! #03
 
-    -{inPosition: /emotion sad 25 | /perform talk_annoyed sad 25}
+    -{emoteOnly: /emotion sad 25 | /perform talk_annoyed sad 25}
     Am I talking to a goddamn sack of potatoes? #04
 
-    -{inPosition: /emotion disgusted 25 | /perform talk_lean_forward disgusted 25}
+    -{emoteOnly: /emotion disgusted 25 | /perform talk_lean_forward disgusted 25}
     You little {isBoy: prick|cunt}. You're wasting my time. #05
 
-    -{inPosition: /emotion aroused 20 | /perform react_point_at_player_angry aroused 20}
+    -{emoteOnly: /emotion aroused 20 | /perform react_point_at_player_angry aroused 20}
     Answer me, {isBoy: maggot|slut}.  #06
 
-    -{inPosition: /emotion angry 60 | /perform talk_emphatic_one_hand angry 60}
+    -{emoteOnly: /emotion angry 60 | /perform talk_emphatic_one_hand angry 60}
     Are your ears still attached to your fucking head? #07
 
-    -{inPosition: /emotion amused 35 | /perform do_snap_fingers amused 35}
+    -{emoteOnly: /emotion amused 35 | /perform do_snap_fingers amused 35}
     Get your shit together and pay attention, {isBoy:dog|bitch}.   #08
 
-    -{inPosition: /emotion angry 60 | /perform react_clapping angry 60}
+    -{emoteOnly: /emotion angry 60 | /perform react_clapping angry 60}
     Wake the fuck up! #09
 
-    -{inPosition: /emotion angry 50 | /perform talk_annoyed angry 50}
+    -{emoteOnly: /emotion angry 50 | /perform talk_annoyed angry 50}
     You fucking falling asleep on me? #10
 
-    -{inPosition: /emotion disgusted 75 | /perform react_disappointed disgusted 75}
+    -{emoteOnly: /emotion disgusted 75 | /perform react_disappointed disgusted 75}
     I'm not a patient Mistress. #11
 }
 
@@ -548,236 +490,221 @@ Now get back up on your knees. #07
 
 //response to player distraction
 === Nega_PayAttention ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Sex_Chair
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 { shuffle:
-    -{inPosition: /emotion disgusted 30 |/perform react_disappointed disgusted 30}
+    -{emoteOnly: /emotion disgusted 30 |/perform react_disappointed disgusted 30}
     Eyes on me, pretty {player_name}. #01
 
-    -{inPosition: /emotion angry 75 | /perform react_point_at_player_angry angry 75}
+    -{emoteOnly: /emotion angry 75 | /perform react_point_at_player_angry angry 75}
     I'm fucking talking to you! #02
 
-    -{inPosition: /emotion skeptical 55 | /perform react_shrug_long skeptical 55}
+    -{emoteOnly: /emotion skeptical 55 | /perform react_shrug_long skeptical 55}
     Is your brain goddamn mush? Over here. #03
 
-    -{inPosition: /emotion skeptical 60 | /perform do_snap_fingers skeptical 60}
+    -{emoteOnly: /emotion skeptical 60 | /perform do_snap_fingers skeptical 60}
     Look at me, bitch. #04
 
-    -{inPosition: /emotion disgusted 60 | /perform react_disappointed disgusted 60}
+    -{emoteOnly: /emotion disgusted 60 | /perform react_disappointed disgusted 60}
     Were you raised in a fucking barn? Pay attention! #05
 
-    -{inPosition: /emotion angry 30 | /perform talk_annoyed angry 30}
+    -{emoteOnly: /emotion angry 30 | /perform talk_annoyed angry 30}
     Get your head in the goddamn game. #06
 
-    -{inPosition: /emotion amused 70 | /perform talk_lean_forward amused 70}
+    -{emoteOnly: /emotion amused 70 | /perform talk_lean_forward amused 70}
     Looking for a place to hide, slut? It won't work. #07
 
-    -{inPosition: /emotion disgusted 50 | /perform do_snap_fingers disgusted 50}
+    -{emoteOnly: /emotion disgusted 50 | /perform do_snap_fingers disgusted 50}
     Now, pay attention! #08
 }
 
 
 + [pay-attention]
     { shuffle:
-        -{inPosition: /emotion disgusted 75 | /perform react_point_at_player_angry disgusted 75}
+        -{emoteOnly: /emotion disgusted 75 | /perform react_point_at_player_angry disgusted 75}
         Don't fucking let it happen again. #09
 
-        -{inPosition: /emotion amused 50 | /perform talk_annoyed amused 50}
+        -{emoteOnly: /emotion amused 50 | /perform talk_annoyed amused 50}
         What the fuck was I saying? #10
 
-        -{inPosition: /emotion angry 35 | /perform react_disappointed angry 35}
+        -{emoteOnly: /emotion angry 35 | /perform react_disappointed angry 35}
         Goddamn rude little whore. #11
 
-        -{inPosition: /emotion amused 60 | /perform talk_lean_forward amused 60}
+        -{emoteOnly: /emotion amused 60 | /perform talk_lean_forward amused 60}
         Do it again and I might think you don't like me. #12
 
-        -{inPosition: /emotion angry 60 | /perform idle_unhappy_stomp angry 60}
+        -{emoteOnly: /emotion angry 60 | /perform idle_unhappy_stomp angry 60}
         I fucking hate being interrupted. #13
 
-        -{inPosition: /emotion aroused 60 | /perform do_fist_pump aroused 60}
+        -{emoteOnly: /emotion aroused 60 | /perform do_fist_pump aroused 60}
         Damn right, you'll pay attention. #14
     }
     ->->
 
-+ [timeout] -> Nega_PayAttention.DoComment(inPosition)
++ [timeout] -> Nega_PayAttention.DoEmoteOnly(emoteOnly)
 
 
 === Nega_CheckIfInterested ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Sex_Chair
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= Photo 
--> DoComment(true)
+= DoEmoteOnly(emoteOnly)
 
-= DoComment(inPosition)
-
-{inPosition: /emotion angry 75 | /perform idle_unhappy angry 75 }
+{emoteOnly: /emotion angry 75 | /perform idle_unhappy angry 75 }
 What the fuck is wrong with you!? #01
 
 - (loop)
 
-{inPosition: /emotion disgusted 80 | /perform react_point_at_player_angry disgusted 80}
+{emoteOnly: /emotion disgusted 80 | /perform react_point_at_player_angry disgusted 80}
 Are you going to behave and give me what I want? #02
 //Change to '... and do what I want'?
 //Make it more general to scenes instead of just Nega's intro -Taco
 
 + [yes]
-    {inPosition: /emotion disgusted 65 | /perform talk_one_finger disgusted 65}
+    {emoteOnly: /emotion disgusted 65 | /perform talk_one_finger disgusted 65}
     That's right, {isBoy: maggot|whore}. #03
     ->->
 
 + [no]
-    {inPosition: /emotion disgusted 55 | /perform do_get_the_fuck_out disgusted 55}
+    {emoteOnly: /emotion disgusted 55 | /perform do_get_the_fuck_out disgusted 55}
     Then fuck off. #04
 
     {just_changed == reward_removed:
-        {inPosition: /emotion angry 85 | /perform do_snap_fingers angry 85}
+        {emoteOnly: /emotion angry 85 | /perform do_snap_fingers angry 85}
         No refunds, you little bitch. #05
         {inTutorial: -> nega_intro.spiteful_interrupted}
     }
 
     -> exit
 
-+ [timeout] -> Nega_Timeout.DoComment(inPosition) -> loop
-+ [distracted] -> Nega_PayAttention.DoComment(inPosition) -> loop
++ [timeout] -> Nega_Timeout.DoEmoteOnly(emoteOnly) -> loop
++ [distracted] -> Nega_PayAttention.DoEmoteOnly(emoteOnly) -> loop
 
 
 === Nega_prepare_masturbate ===
 
-= Sex_Chair
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 {shuffle:
-    - {inPosition: /emotion aroused 75 | /perform idle_slave neutral 100 }
+    - {emoteOnly: /emotion aroused 75 | /perform idle_slave neutral 100 }
     {hasPenis: Grab your little cock and start stroking|Reach down and start rubbing your pussy}. #01
 
-    - {inPosition: /emotion angry 65 | /perform idle_slave neutral 100 }
+    - {emoteOnly: /emotion angry 65 | /perform idle_slave neutral 100 }
     {hasPenis: Get fucking hard for me!|Start rubbing that fucking pussy!} #02
 
-    - {inPosition: /emotion excited 55 | /perform idle_slave neutral 100 }
+    - {emoteOnly: /emotion excited 55 | /perform idle_slave neutral 100 }
     I want that {hasPenis: tiny little dick| gaping pussy} of yours all worked up. #03
 
-    - {inPosition: /emotion disgusted 60 | /perform idle_slave neutral 100 }
+    - {emoteOnly: /emotion disgusted 60 | /perform idle_slave neutral 100 }
     You're going to rub one out for me, pathetic {isBoy: worm|{isGirl: stain|wretch}}. #04
 }
 ->->
 
 === Nega_Masturbation_Comments ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Squatting
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= Photo 
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 {shuffle:
 
-    -{inPosition: /emotion amused 40 | /perform idle_sassy amused 40}
+    -{emoteOnly: /emotion amused 40 | /perform idle_sassy amused 40}
     Keep going. #06
 
-    -{inPosition: /emotion angry 55  | /perform talk_threaten angry 55 }
+    -{emoteOnly: /emotion angry 55  | /perform talk_threaten angry 55 }
     {hasPenis: Your dick's not hard enough.|Your pussy's not dripping enough.} #17
 
-    -{inPosition: /emotion excited 45 | /perform tease_stroke_motion excited 45  }
+    -{emoteOnly: /emotion excited 45 | /perform tease_stroke_motion excited 45  }
     Harder. Faster. #08
 
-    //-{inPosition:/emotion disgusted 55 |/perform react_scoffs disgusted 55  }
+    //-{emoteOnly:/emotion disgusted 55 |/perform react_scoffs disgusted 55  }
     //I bet your arm is getting tired. Too bad! #09
     //Commented out as it breaks the 4th wall in Negas forced sex scene -Taco
 
-    -{inPosition: /emotion happy 60 | /perform idle_pleased happy 60 }
+    -{emoteOnly: /emotion happy 60 | /perform idle_pleased happy 60 }
     More. More. More! #10
 
-    -{inPosition: /emotion aroused 65 | /perform talk_lean_forward aroused 65 }
+    -{emoteOnly: /emotion aroused 65 | /perform talk_lean_forward aroused 65 }
     I enjoy watching you be a little whore for my attention. #14
 
-    -{inPosition: /emotion amused 75 | /perform do_inspect amused 75 }
+    -{emoteOnly: /emotion amused 75 | /perform do_inspect amused 75 }
     That's it, little meatbag. #15
 
-    -{inPosition: /emotion amused 65 | /perform talk_consider amused 65 }
+    -{emoteOnly: /emotion amused 65 | /perform talk_consider amused 65 }
     {hasPenis: What a fucking slut getting <i>my</i> cock ready for me to use.|Such a slut getting <i>my</i> pussy so wet!} #23
 
-    -{inPosition: /emotion aroused 55 | /perform idle_bored aroused 55  }
+    -{emoteOnly: /emotion aroused 55 | /perform idle_bored aroused 55  }
     Wallow in it, {isBoy: worm|cunt}. #18
 
-    //-{inPosition:/emotion aroused 75 |/perform talk_question aroused 75  }
+    //-{emoteOnly:/emotion aroused 75 |/perform talk_question aroused 75  }
     //Work those fingers. #03
     //Commented out as it breaks the 4th wall in Negas forced sex scene
 
-    -{inPosition: /emotion happy 65 | /perform idle_tease happy 65 }
+    -{emoteOnly: /emotion happy 65 | /perform idle_tease happy 65 }
     Enjoy the view, slut! #16
 
-    -{inPosition: /emotion amused 75 | /perform talk_lean_forward amused 75 }
+    -{emoteOnly: /emotion amused 75 | /perform talk_lean_forward amused 75 }
     Being so close must be such a turn on for you, whore. #01
 
-    -{inPosition: /emotion disgusted 45  | /perform talk_annoyed disgusted 45 }
+    -{emoteOnly: /emotion disgusted 45  | /perform talk_annoyed disgusted 45 }
     Only a lucky few get to see something so wonderful. Be grateful! #02
 
-    -{inPosition: /emotion aroused 45  | /perform idle_tease aroused 45 }
+    -{emoteOnly: /emotion aroused 45  | /perform idle_tease aroused 45 }
     Work that {hasPenis: little prick|juicy pussy} harder. #24
     
-    -{inPosition: /emotion aroused 45  | /perform idle_tease aroused 45 }
+    -{emoteOnly: /emotion aroused 45  | /perform idle_tease aroused 45 }
     Take it nice and slow for a while. #25
     I want to savor your humiliation! #26
 
-    -{inPosition: /emotion aroused 45  | /perform idle_tease aroused 45 }
+    -{emoteOnly: /emotion aroused 45  | /perform idle_tease aroused 45 }
     Make sure you {hasPenis: stroke the full length|shove those fingers in all the way}. #27
 
-    -{inPosition: /emotion aroused 45  | /perform idle_tease aroused 45 }
+    -{emoteOnly: /emotion aroused 45  | /perform idle_tease aroused 45 }
     Give the {hasPenis: head|clit} a good squeeze for me! #28
 
 
-    --> break01(inPosition) ->
-    --> break02(inPosition) ->
-    --> break03(inPosition) ->
-    --> Nega_Objectify.DoComment(inPosition) ->
-    --> Nega_Objectify.DoComment(inPosition) ->
-    // - {inPosition: -> Nega_Objectify.Sex_Chair | -> Nega_Objectify  ->}
-    // - {inPosition: -> Nega_Objectify.Sex_Chair | -> Nega_Objectify  ->}
+    --> break01(emoteOnly) ->
+    --> break02(emoteOnly) ->
+    --> break03(emoteOnly) ->
+    --> Nega_Objectify.DoEmoteOnly(emoteOnly) ->
+    --> Nega_Objectify.DoEmoteOnly(emoteOnly) ->
+    // - {emoteOnly: -> Nega_Objectify.Sex_Chair | -> Nega_Objectify  ->}
+    // - {emoteOnly: -> Nega_Objectify.Sex_Chair | -> Nega_Objectify  ->}
 }
 
 ->->
 
-= break01(inPosition)
+= break01(emoteOnly)
 
 Do you like the idea of getting ready for me, {isBoy: worm|skank}? #11
 
 + [yes]
     ~ addObey()
-    -> Nega_GoodJob.DoComment(inPosition) ->
+    -> Nega_GoodJob.DoEmoteOnly(emoteOnly) ->
     /emotion amused 70
     Good. Keep going. #12
 
 + [no]
     ~ addDisobey()
-    -> Nega_BadJob.DoComment(inPosition) ->
+    -> Nega_BadJob.DoEmoteOnly(emoteOnly) ->
     /emotion disgusted 70
     Do it anyways! #13
 
 - ->->
 
-= break02(inPosition)
+= break02(emoteOnly)
 Do you want to cum for me? #19
 
 + [yes]
@@ -788,14 +715,14 @@ Do you want to cum for me? #19
     I do the cumming around here! #21
 
 + [no]
-    -> Nega_BadJob.DoComment(inPosition) ->
+    -> Nega_BadJob.DoEmoteOnly(emoteOnly) ->
 
     /emotion angry 65
     Well, you'll stroke until your dick falls off if that's what I want! #22
 
 - ->->
 
-= break03(inPosition)
+= break03(emoteOnly)
 Does that feel good whore? #04
 
 + [yes]
@@ -804,43 +731,37 @@ Does that feel good whore? #04
 
 
 + [no]
-    -> Nega_BadJob.DoComment(inPosition) ->
+    -> Nega_BadJob.DoEmoteOnly(emoteOnly) ->
     /emotion disgusted 65
     Too fucking bad. I hope it hurts! #07
 
 - ->->
 
 === Nega_Aroused ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Sex_Chair
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= Photo 
--> DoComment(true)
-
-= Squatting
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 {shuffle:
-    - {inPosition: /emotion aroused 75 | /perform idle_slave neutral 100}
+    - {emoteOnly: /emotion aroused 75 | /perform idle_slave neutral 100}
     Ahhhh. Yesss... I'm so fucking wet. #04
 
-    - {inPosition: /emotion excited 55 | /perform idle_slave neutral 100}
+    - {emoteOnly: /emotion excited 55 | /perform idle_slave neutral 100}
     I can smell my own pussy, fuck toy. #01
 
-    - {inPosition: /emotion aroused 65 | /perform idle_slave neutral 100}
+    - {emoteOnly: /emotion aroused 65 | /perform idle_slave neutral 100}
     Your little performance is making me ooze. #02
 
-    - {inPosition: /emotion excited 50 | /perform idle_slave neutral 100}
+    - {emoteOnly: /emotion excited 50 | /perform idle_slave neutral 100}
     Damn. My cunt is throbbing watching you. #03
 
-    - {inPosition: /emotion aroused 70 | /perform idle_slave neutral 100}
+    - {emoteOnly: /emotion aroused 70 | /perform idle_slave neutral 100}
     I can't wait to slide my fingers into my hot cunt. #05
 
-    //- {inPosition: /emotion excited 80 | /perform idle_slave neutral 100}
+    //- {emoteOnly: /emotion excited 80 | /perform idle_slave neutral 100}
     //I'm going to cum so hard later. #06
     //Wrong VO file, need to fix -Taco
 }
@@ -865,7 +786,7 @@ Does that feel good whore? #04
     - Perhaps you deserve a small reward. #08
     - I think I'll do something nice for you. #09
     - I'm going to give you a little treat. #10
-      - It amuses me to reward you for a reward. #12
+    - It amuses me to reward you for a reward. #12
     - Time to show my appreciation. #13
 }
 

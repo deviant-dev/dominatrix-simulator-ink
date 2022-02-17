@@ -1,0 +1,668 @@
+TODO: rewrite for Nega
+
+=== Nega_Tempo_Comments ===
+= timeout
+
+/emotion annoyed 50
+
+{shuffle:
+    - What are you waiting for?
+    - Get going.
+    - I'm waiting.
+    - {wants_puppy: Why isn't my puppy moving?| -> timeout }
+    - {wants_puppy: Come on, puppy. What are you waiting for?| -> timeout }
+    - {wants_puppy: Get going, puppy.| -> timeout }
+}
+
+->->
+
+//asking the player to change speed
+= change_to_slower
+
+/emotion amused 50
+
+{shuffle:
+    - I want it nice and slow.
+    - Time to slow it down.
+    - Take your time now and go slow.
+    - Now, go slower.
+    - {wants_puppy: Go nice and slow, puppy. | -> change_to_slower }
+    - {wants_puppy: Slow down now, puppy. | -> change_to_slower }
+    - {wants_puppy: Take your time, puppy.| -> change_to_slower }
+    - {wants_puppy: Now, go slower, puppy. | -> change_to_slower }
+    
+}
+
+->->
+
+= change_to_faster
+
+/emotion excited 50
+
+{shuffle:
+    - Time to speed up. 
+    - I want you to go a little faster.
+    - A little faster. 
+    - Pick up the pace.
+    - {wants_puppy: Speed up now, puppy.| -> change_to_faster }
+    - {wants_puppy: Go a little faster, puppy. | -> change_to_faster }
+    - {wants_puppy: Pick up the pace, puppy.| -> change_to_faster }
+    - {wants_puppy: Be more eager, puppy. Faster. | -> change_to_faster }
+}
+->->
+
+//correcting the player for going the wrong speed, lost arousal level
+= too_fast
+
+/emotion angry 50
+
+//record non-verbal sounds to indicate disappointment at too fast
+
+{shuffle:
+    - Slow down! That's too fast.
+    - Woah. Slow it down.
+    - {wants_puppy: Woah, slow down, puppy! | -> too_fast }
+    - {wants_puppy: You need go slower, puppy. | -> too_fast }
+    - cc: (unhappy grunts) 
+    - cc: (unhappy grunts) 
+    - cc: (unhappy groan)
+    - cc: (unhappy groan)
+}
+->->
+
+= too_slow
+
+/emotion disgusted 50
+
+//record non-verbal sounds to indicate disappointment at too slow
+{shuffle:
+    - That's too slow. Go faster.
+    - You're not trying hard enough. Speed it up.
+    - {wants_puppy: Go faster, puppy! | -> too_slow }
+    - {wants_puppy: More, puppy, faster! | -> too_slow }
+    - cc: (disappointed grunts) 
+    - cc: (disappointed grunts) 
+    - cc: (disappointed groan)
+    - cc: (disappointed groan)
+}
+->->
+
+//comments about speed delivered at different arousal levels keeping her voice pitch at the right arousal level
+= just_right_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - Stay like that for a while. 
+    - (sigh) Very nice. 
+    - Perfect.
+    - Keep doing that.
+    - {wants_puppy: That's nice, puppy.| -> just_right_arousal_low }
+    - {wants_puppy: Keep doing that, puppy. | -> just_right_arousal_low }
+    - {wants_puppy: Perfect, puppy.| -> just_right_arousal_low }
+    - {wants_puppy: Don't change anything, puppy.| -> just_right_arousal_low }
+}
+
+->->
+
+= just_right_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - Ahhhh. That feels nice.
+    - {wants_puppy: 
+        Much better, puppy.
+        - else:
+        That's much better. 
+    }
+    - {wants_puppy: 
+        That feels really good, puppy.
+        -else:
+        That feels really good. 
+    }
+    - {wants_puppy: 
+        Mmm. That's just right, puppy.
+        - else:
+        Mmm. That's just right.
+    }
+    - {wants_puppy: 
+        Ooo. I like that pace, puppy.
+        - else:
+        Oooo. I like that pace.
+    }
+}
+
+->->
+
+= just_right_arousal_high
+
+/emotion aroused 100
+
+{shuffle:
+    - {wants_puppy: 
+        Mmm. That's it, puppy!
+        - else:
+        Mmm. That's it! 
+    }
+    - {wants_puppy: 
+        Oh my goodness! Just like that, puppy.
+        - else:
+        Oh my goodness! Just like that.
+    }
+    - {wants_puppy: 
+        That's perfect, puppy!
+        - else:
+        That's perfect!
+    }
+    - {wants_puppy: 
+    Oh yes! Right there, puppy.
+    - else:
+    Oh yes! Right there.
+    }
+}
+
+->->
+
+//
+= continue_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - So relaxing. 
+    - You're so good at this.
+    - You make me feel good. 
+    - cc: (content moan)
+    - cc: (content moan)
+    - cc: (content moan)
+    - cc: (content sigh)
+    - cc: (content sigh)
+    - cc: (content sigh)
+}
+
+->->
+
+= continue_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - Ahhhh. I'm so wet!
+    - That feels so, so good!
+    - You're overwhelming me!
+    - cc: (eager moan)
+    - cc: (eager moan)
+    - cc: (eager moan)
+    - cc: (eager sigh)
+    - cc: (eager sigh)
+    - cc: (eager sigh)
+}
+->->
+
+= continue_arousal_high
+
+/emotion aroused 100
+
+{shuffle:
+    - I can hardly stand it anymore!
+    - I'm almost there!
+    - You're going to make me cum!
+    - cc: (excited moan)
+    - cc: (excited moan)
+    - cc: (excited moan)
+    - cc: (excited sigh)
+    - cc: (excited sigh)
+    - cc: (excited sigh)
+}
+->->
+
+= orgasming
+
+/emotion aroused 100
+
+{shuffle:
+    - Yes! I'm cumming!
+    - Ahhhh! Yes! Yes!
+    - Oh my Goddess, oh my Goddess, oh my Goddess!!
+}
+
+{shuffle:
+    - cc: (long orgasmic moans)
+    - cc: (short orgasmic moans)
+    - cc: (shuddering orgasmic moans)
+}
+
+->->
+
+
+// Cunnilingus-specific tempo comment lines.
+=== Nega_Tempo_Cunnilingus_Comments ===
+
+= timeout
+
+/emotion annoyed 50
+
+{shuffle:
+    - I can't feel your tongue!
+    - I want to feel your tongue.
+    - {wants_puppy: Where's that puppy tongue? | -> timeout }
+    - {wants_puppy: Use your mouth, puppy. | -> timeout }
+    - -> Yuki_Tempo_Comments.timeout ->
+    - -> Yuki_Tempo_Comments.timeout ->
+    - -> Yuki_Tempo_Comments.timeout ->
+}
+-> END
+
+= change_to_slower
+
+/emotion amused 50
+
+{shuffle:
+    - {wants_puppy: 
+        Slow that puppy tongue down.
+        - else:
+        Slow that tongue down.
+    }
+    - {wants_puppy: 
+        Now, take your time with that puppy tongue.
+        - else:
+        Now, take your time with your tongue.
+    }
+    - -> Yuki_Tempo_Comments.change_to_slower ->
+    - -> Yuki_Tempo_Comments.change_to_slower ->
+    - -> Yuki_Tempo_Comments.change_to_slower ->
+}
+-> END
+
+= change_to_faster
+
+/emotion excited 50
+
+{shuffle:
+    - {wants_puppy: 
+        Speed that tongue up now, puppy.
+        - else:
+        Speed that tongue up now.
+    }
+    - {wants_puppy: 
+        Now, start working that puppy tongue harder.
+        - else:
+        Now, start working your tongue harder.
+    }
+    - -> Yuki_Tempo_Comments.change_to_faster ->
+    - -> Yuki_Tempo_Comments.change_to_faster ->
+    - -> Yuki_Tempo_Comments.change_to_faster ->
+}
+-> END
+
+= too_fast
+
+/emotion angry 75
+
+{shuffle:
+    - {wants_puppy: 
+        You're licking too fast!
+        - else:
+        You're licking too fast!
+    }
+    - {wants_puppy: 
+        Oh my goodness. Slow that mouth down!
+        - else:
+        Oh my goodness. Slow that mouth down!
+    }
+    - -> Yuki_Tempo_Comments.too_fast ->
+    - -> Yuki_Tempo_Comments.too_fast ->
+    - -> Yuki_Tempo_Comments.too_fast ->
+}
+-> END
+
+= too_slow
+
+/emotion disgusted 75
+
+{shuffle:
+    - {wants_puppy: 
+        Move that puppy tongue faster!
+        -else:
+        Move that tongue faster!
+    }
+    - {wants_puppy: 
+        Your puppy muzzle is too slow!
+        - else:
+        That mouth is too slow!
+    }
+    - -> Yuki_Tempo_Comments.too_slow ->
+    - -> Yuki_Tempo_Comments.too_slow ->
+    - -> Yuki_Tempo_Comments.too_slow ->
+}
+-> END
+
+= just_right_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - {wants_puppy: 
+        I like what your puppy tongue is doing! 
+        -else:
+        I like what your tongue is doing.
+    }
+    - {wants_puppy: 
+        Your puppy muzzle feels good!
+        - else:
+        Your mouth feels good.
+    }
+    - -> Yuki_Tempo_Comments.just_right_arousal_low ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_low ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_low ->
+}
+-> END
+
+= just_right_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - {wants_puppy: 
+        What a clever puppy tongue you have. 
+        - else:
+        What a clever tongue you have.
+    }
+    - {wants_puppy: 
+        Your puppy tongue feels so good on me. 
+        - else:
+        Your tongue feels so good on me.
+    }
+    - -> Yuki_Tempo_Comments.just_right_arousal_medium ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_medium ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_medium ->
+}
+-> END
+
+= just_right_arousal_high
+
+/emotion aroused 100
+
+{shuffle:
+    - {wants_puppy: 
+        You know just how to use your puppy tongue!
+        - else:
+        You know just how to use your tongue!
+    }
+    - {wants_puppy: 
+        I love how your puppy tongue makes me feel!
+        - else:
+        I love how your tongue makes me feel!
+    }
+    - -> Yuki_Tempo_Comments.just_right_arousal_high ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_high ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_high ->
+}
+-> END
+
+= continue_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - Such a warm tongue.
+    - Mmm. Your mouth feels good. 
+    - -> Yuki_Tempo_Comments.continue_arousal_low ->
+    - -> Yuki_Tempo_Comments.continue_arousal_low ->
+    - -> Yuki_Tempo_Comments.continue_arousal_low ->
+}
+-> END
+
+= continue_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - Oh yes. Move your tongue just like that.
+    - I love how your mouth feels.
+    - -> Yuki_Tempo_Comments.continue_arousal_medium ->
+    - -> Yuki_Tempo_Comments.continue_arousal_medium ->
+    - -> Yuki_Tempo_Comments.continue_arousal_medium ->
+}
+-> END
+
+= continue_arousal_high
+
+/emotion aroused 75
+
+{shuffle:
+    - You're going to make me cum with your tongue!
+    - -> Yuki_Tempo_Comments.continue_arousal_high->
+    - -> Yuki_Tempo_Comments.continue_arousal_high->
+    - -> Yuki_Tempo_Comments.continue_arousal_high->
+}
+-> END
+
+= orgasming
+
+/emotion aroused 100
+
+{shuffle:
+    - Your mouth is making me cum!
+    - -> Yuki_Tempo_Comments.orgasming ->
+    - -> Yuki_Tempo_Comments.orgasming ->
+    - -> Yuki_Tempo_Comments.orgasming ->
+}
+-> END
+
+
+// Sex-specific tempo comment lines.
+=== Nega_Tempo_Sex_Comments ===
+
+= timeout
+
+/emotion annoyed 50
+
+{shuffle:
+    - I can't feel your tongue!
+    - I want to feel your tongue.
+    - {wants_puppy: Where's that puppy tongue? | -> timeout }
+    - {wants_puppy: Use your mouth, puppy. | -> timeout }
+    - -> Yuki_Tempo_Comments.timeout ->
+    - -> Yuki_Tempo_Comments.timeout ->
+    - -> Yuki_Tempo_Comments.timeout ->
+}
+-> END
+
+= change_to_slower
+
+/emotion amused 50
+
+{shuffle:
+    - {wants_puppy: 
+        Slow that puppy tongue down.
+        - else:
+        Slow that tongue down.
+    }
+    - {wants_puppy: 
+        Now, take your time with that puppy tongue.
+        - else:
+        Now, take your time with your tongue.
+    }
+    - -> Yuki_Tempo_Comments.change_to_slower ->
+    - -> Yuki_Tempo_Comments.change_to_slower ->
+    - -> Yuki_Tempo_Comments.change_to_slower ->
+}
+-> END
+
+= change_to_faster
+
+/emotion excited 50
+
+{shuffle:
+    - {wants_puppy: 
+        Speed that tongue up now, puppy.
+        - else:
+        Speed that tongue up now.
+    }
+    - {wants_puppy: 
+        Now, start working that puppy tongue harder.
+        - else:
+        Now, start working your tongue harder.
+    }
+    - -> Yuki_Tempo_Comments.change_to_faster ->
+    - -> Yuki_Tempo_Comments.change_to_faster ->
+    - -> Yuki_Tempo_Comments.change_to_faster ->
+}
+-> END
+
+= too_fast
+
+/emotion angry 75
+
+{shuffle:
+    - {wants_puppy: 
+        You're licking too fast!
+        - else:
+        You're licking too fast!
+    }
+    - {wants_puppy: 
+        Oh my goodness. Slow that mouth down!
+        - else:
+        Oh my goodness. Slow that mouth down!
+    }
+    - -> Yuki_Tempo_Comments.too_fast ->
+    - -> Yuki_Tempo_Comments.too_fast ->
+    - -> Yuki_Tempo_Comments.too_fast ->
+}
+-> END
+
+= too_slow
+
+/emotion disgusted 75
+
+{shuffle:
+    - {wants_puppy: 
+        Move that puppy tongue faster!
+        -else:
+        Move that tongue faster!
+    }
+    - {wants_puppy: 
+        Your puppy muzzle is too slow!
+        - else:
+        That mouth is too slow!
+    }
+    - -> Yuki_Tempo_Comments.too_slow ->
+    - -> Yuki_Tempo_Comments.too_slow ->
+    - -> Yuki_Tempo_Comments.too_slow ->
+}
+-> END
+
+= just_right_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - {wants_puppy: 
+        I like what your puppy tongue is doing! 
+        -else:
+        I like what your tongue is doing.
+    }
+    - {wants_puppy: 
+        Your puppy muzzle feels good!
+        - else:
+        Your mouth feels good.
+    }
+    - -> Yuki_Tempo_Comments.just_right_arousal_low ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_low ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_low ->
+}
+-> END
+
+= just_right_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - {wants_puppy: 
+        What a clever puppy tongue you have. 
+        - else:
+        What a clever tongue you have.
+    }
+    - {wants_puppy: 
+        Your puppy tongue feels so good on me. 
+        - else:
+        Your tongue feels so good on me.
+    }
+    - -> Yuki_Tempo_Comments.just_right_arousal_medium ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_medium ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_medium ->
+}
+-> END
+
+= just_right_arousal_high
+
+/emotion aroused 100
+
+{shuffle:
+    - {wants_puppy: 
+        You know just how to use your puppy tongue!
+        - else:
+        You know just how to use your tongue!
+    }
+    - {wants_puppy: 
+        I love how your puppy tongue makes me feel!
+        - else:
+        I love how your tongue makes me feel!
+    }
+    - -> Yuki_Tempo_Comments.just_right_arousal_high ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_high ->
+    - -> Yuki_Tempo_Comments.just_right_arousal_high ->
+}
+-> END
+
+= continue_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - Such a warm tongue.
+    - Mmm. Your mouth feels good. 
+    - -> Yuki_Tempo_Comments.continue_arousal_low ->
+    - -> Yuki_Tempo_Comments.continue_arousal_low ->
+    - -> Yuki_Tempo_Comments.continue_arousal_low ->
+}
+-> END
+
+= continue_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - Oh yes. Move your tongue just like that.
+    - I love how your mouth feels.
+    - -> Yuki_Tempo_Comments.continue_arousal_medium ->
+    - -> Yuki_Tempo_Comments.continue_arousal_medium ->
+    - -> Yuki_Tempo_Comments.continue_arousal_medium ->
+}
+-> END
+
+= continue_arousal_high
+
+/emotion aroused 75
+
+{shuffle:
+    - You're going to make me cum with your tongue!
+    - -> Yuki_Tempo_Comments.continue_arousal_high->
+    - -> Yuki_Tempo_Comments.continue_arousal_high->
+    - -> Yuki_Tempo_Comments.continue_arousal_high->
+}
+-> END
+
+= orgasming
+
+/emotion aroused 100
+
+{shuffle:
+    - Your mouth is making me cum!
+    - -> Yuki_Tempo_Comments.orgasming ->
+    - -> Yuki_Tempo_Comments.orgasming ->
+    - -> Yuki_Tempo_Comments.orgasming ->
+}
+-> END

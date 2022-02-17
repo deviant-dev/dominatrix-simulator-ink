@@ -25,7 +25,7 @@ You like being Yuki's little pup, don't you? #01
     -> start
     
 + [no]
-    -> Nega_Unhappy.Sex_Chair ->
+    -> Nega_Unhappy.EmoteOnly ->
     -> start
 
 = start
@@ -33,7 +33,7 @@ Get down on all fours like the dog you are, maggot! #04
 
 + [pose:hands_and_knees]
 
-+ [timeout] -> Nega_Timeout.Sex_Chair -> start
++ [timeout] -> Nega_Timeout.EmoteOnly -> start
 
 - That's right. #05
 
@@ -50,12 +50,12 @@ Isn't that right? #08
     Let's make you prove it! #10
     
 + [no]
-    -> Nega_Unhappy.Sex_Chair ->
+    -> Nega_Unhappy.EmoteOnly ->
     I'm going to teach you your place. #11
     
-+ [timeout] -> Nega_Timeout.Sex_Chair -> please
++ [timeout] -> Nega_Timeout.EmoteOnly -> please
 
-+ [distracted] -> Nega_PayAttention.Sex_Chair -> please
++ [distracted] -> Nega_PayAttention.EmoteOnly -> please
 
 - (personal)
 /perform sex_chair_crosslegs_left_present
@@ -68,11 +68,11 @@ Got it, dog? #14
     Good. #15
     
 + [no]
-    -> Nega_CheckIfInterested.Sex_Chair ->
+    -> Nega_CheckIfInterested.EmoteOnly ->
     
-+ [timeout] -> Nega_Timeout.Sex_Chair -> personal
++ [timeout] -> Nega_Timeout.EmoteOnly -> personal
 
-+ [distracted] -> Nega_PayAttention.Sex_Chair -> personal
++ [distracted] -> Nega_PayAttention.EmoteOnly -> personal
 
 
 - (kiss_feet)
@@ -83,11 +83,11 @@ you will thank me for the priviledge. #17
 Come here and kiss my boot, bitch! #18
 
 + [pose:kiss_feet]
-   -> Nega_GoodJob.Sex_Chair ->
+    -> Nega_GoodJob.EmoteOnly ->
     
 + [no] 
     No?! #19
-    -> Nega_CheckIfInterested.Sex_Chair ->
+    -> Nega_CheckIfInterested.EmoteOnly ->
 
 + [timeout] -> kiss_feet
 
@@ -98,7 +98,7 @@ Sit up, dog. #20
 
 + [pose:puppy_sit]
 
-+ [timeout] -> Nega_Timeout.Sex_Chair -> personal
++ [timeout] -> Nega_Timeout.EmoteOnly -> personal
 
 
 -
@@ -118,21 +118,21 @@ Are you? #25
     Then you're not fucking worthy. #27
     Got it, bitch? #28
     
-        ++ [yes]
+    ++ [yes]
             Good. #29
             Don't fucking forget it! #30
             
-        ++ [no]
+    ++ [no]
             You've obviously forgotten who you're talking to. #31
             
-        ++ [timeout] -> Nega_PayAttention.Sex_Chair -> worthy
+    ++ [timeout] -> Nega_PayAttention.EmoteOnly -> worthy
     
 + [no]
-    -> Nega_AcknowledgeYes.Sex_Chair ->
+    -> Nega_AcknowledgeYes.EmoteOnly ->
     
-+ [timeout] -> Nega_Timeout.Sex_Chair -> personal
++ [timeout] -> Nega_Timeout.EmoteOnly -> personal
 
-+ [distracted] -> Nega_PayAttention.Sex_Chair -> personal
++ [distracted] -> Nega_PayAttention.EmoteOnly -> personal
 
 
 - 
@@ -174,9 +174,9 @@ I stepped outside earlier and got the bottoms of my boots dirty. #33
         -> deny_boot_lick
     }
 
-+ [timeout] -> Nega_Timeout.Sex_Chair -> ask_clean_boot
++ [timeout] -> Nega_Timeout.EmoteOnly -> ask_clean_boot
 
-+ [distracted] -> Nega_PayAttention.Sex_Chair -> ask_clean_boot
++ [distracted] -> Nega_PayAttention.EmoteOnly -> ask_clean_boot
 
 - (accept_boot_lick)
 //The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. It would be really cool if there was actually dirt on the boot that disappeared/fell off as the player "licked"
@@ -218,7 +218,7 @@ Beg like the filthy dog you are. #51
 
 + [pose:puppy_beg]
 
-+ [timeout] -> Nega_PayAttention.Sex_Chair -> beg 
++ [timeout] -> Nega_PayAttention.EmoteOnly -> beg 
 
 
 - 
@@ -232,7 +232,7 @@ Get into your horny pose, bitch. #55
 
 + [pose:puppy_horny]
 
-+ [timeout] -> Nega_PayAttention.Sex_Chair -> beg 
++ [timeout] -> Nega_PayAttention.EmoteOnly -> beg 
 
 - 
 /perform sex_chair_openlegs_wide
@@ -309,10 +309,10 @@ Playtime's over, bitch! #73
 = bad_lick
 
 {shuffle:
-    - -> Nega_BadJob.Sex_Chair ->
-    - -> Nega_BadJob.Sex_Chair ->
-    - -> Nega_BadJob.Sex_Chair ->
-    - -> Nega_BadJob.Sex_Chair ->
+    - -> Nega_BadJob.EmoteOnly ->
+    - -> Nega_BadJob.EmoteOnly ->
+    - -> Nega_BadJob.EmoteOnly ->
+    - -> Nega_BadJob.EmoteOnly ->
     - You should know how to do this by now, bitch! #84
     - It's not that hard. Use your tongue! #85
     - I'm not convinced you want to serve me. #86

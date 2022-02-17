@@ -11,19 +11,22 @@
 = start
 //could add discussed puppy status variable here, currently if puppy not chosen the scene ends. 
 TODO Need to add /perform animations across the board basically, but all dialogue and choice logic should be done. :) <3 
-
 - (puppy_question)
 /perform placeholder
-    Now, before you get started working off that Obsidian...  
-- (puppy_check)
-    Do you accept being my puppy for this punishment? 
+    Even though you're being punished today,
+    I'm going to give you a choice.
     
+    You know I like it when you're my puppy,
+    So...
+- (puppy_check)
+    Would you like to be my puppy for this punishment?
 
 + [pose:puppy_yes]
-    I'm glad you're starting to know your place! 
+    That makes me happy, puppy.
+   ~ wants_puppy = true
     
     /perform do_point_down
-    Time to sit down and listen.
+    Now, sit and listen.
 
 + [pose:puppy_no]
     Are you trying to mess with me? 
@@ -34,18 +37,37 @@ TODO Need to add /perform animations across the board basically, but all dialogu
     -> puppy_check
 
 + [Yes]
-    Well, if that's the case, then answer with your paws.
-    
-    Try again, {player_name}.
-    -> puppy_check
+    Then you better start acting like one.
+    Try again, but this time use your paws.
+   -> puppy_check
 
 
 + [No]
     Oh what am I going to do with you...
     
-    Get out then if you don't want to behave! 
-    -> exit
+    If you don't want to be my puppy,
+    then I will let you continue as a human.
     
+    -- (human)
+    Do you want to continue as a human?
+    
+    ++ [yes]
+    Very well.
+    You can be a human.
+    
+    ++ [no]
+    It sounds like you're not ready 
+    to pay off your punishment.
+    Come back another time when you're ready.
+    
+    -> exit
+    ++ [timeout]
+    -> Yuki_Timeout->
+    -> human
+
+    ++ [distracted]
+    -> Yuki_PayAttention->
+    -> human
     
 + [timeout]
   -> Yuki_Timeout->
@@ -56,51 +78,89 @@ TODO Need to add /perform animations across the board basically, but all dialogu
   -> puppy_check
     
 
--
+- 
+Now, don't think that just because I'm not as mean 
+as the other Mistresses
+that I can't be good at punishing you!
 
-/perform talk_one_finger angry 65
-  Now, don't think just because I'm not as mean as the other mistresses,
-  that I can't be good at punishing you!
+I want you to be the best {wants_puppy: puppy | slave} you can be.
+And that means I will correct you when I have to!
 
-- (explained_rules)
 /perform talk_consider skeptical 70
   But I don't quite understand <i>why</i> you misbehaved.
-
+  
+- (explained_rules)
 /perform idle_skeptical sad 55
   I explained the rules to you, didn't I?
-
-
 + [yes] 
+    {wants_puppy:
     -> Yuki_PuppyPlay_Punishment_UsePaws ->
     -> explained_rules
+    - else:
+    Then you must be deliberately disobeying.
+    I'm so disappointed!
+    }
 
 + [no] 
+    {wants_puppy:
     -> Yuki_PuppyPlay_Punishment_UsePaws ->
     -> explained_rules
-    
-+ [pose:puppy_yes]
-    /perform react_shrug_long sad 65
-    ~ addObey()
-    Somebody isn't being a very obedient puppy then.
-
-+ [pose:puppy_no]
-  /perform talk_annoyed angry 55
-    Bad puppy! Now that's just not true, and you know it!
+    - else:
+    /perform talk_annoyed angry 55
+    Bad {player_name}! Now that's just not true, and you know it!
 
   /perform talk_lean_forward angry 70
-    Why would you try to lie to me?
+    Why would you even attempt to lie to me?
 
   /perform idle_unhappy disgusted 65
     You should be ashamed of yourself.
-    Lying counts as being disobedient too.
+    Lying counts as being disobedient too!
 
   /perform react_point_at_player_angry angry 80
-    For your total lack of respect towards me and this house,
+    For your total lack of respect towards me, and this House,
 
   /perform do_tap_wrist angry 70
   ~ addPunishment()
     you've just earned <i>another</i> punishment mark.
-
+    }
+    
++ [pose:puppy_yes]
+    /perform react_shrug_long sad 65
+    ~ addObey()
+    {wants_puppy:
+        Then you must be deliberately disobeying.
+        I'm so disappointed!
+        - else:
+        You said you didn't want to be my puppy. 
+        Don't answer with your paws.
+        Nod or shake your head. 
+        -> explained_rules
+    }
+    
++ [pose:puppy_no]
+    {wants_puppy:
+      /perform talk_annoyed angry 55
+        Bad puppy! Now that's just not true, and you know it!
+    
+      /perform talk_lean_forward angry 70
+    Why would you try to lie to me?
+    
+      /perform idle_unhappy disgusted 65
+        You should be ashamed of yourself.
+        Lying counts as being disobedient too!
+    
+      /perform react_point_at_player_angry angry 80
+        For your total lack of respect towards me and this House,
+    
+      /perform do_tap_wrist angry 70
+      ~ addPunishment()
+        you've just earned <i>another</i> punishment mark.
+    - else:
+        You said you didn't want to be my puppy. 
+        Don't answer with your paws.
+        Nod or shake your head. 
+        -> explained_rules
+    }
 
 + [timeout]
   -> Yuki_Timeout->
@@ -110,28 +170,22 @@ TODO Need to add /perform animations across the board basically, but all dialogu
   -> Yuki_PayAttention->
   -> explained_rules
 
-    
 -
 /perform do_point_down skeptical 65
-  Now, down {player_name}, where bad, misbehaving puppies belong,
+    {wants_puppy:
+        Now, down {player_name}, where bad, misbehaving puppies belong,
+        - else:
+        Get down to grovel for forgiveness
+    }
   and show me how sorry you are. 
 
-//check pose 
-~ tries = 0
--(grovelamusement)
-~ tries ++
-/perform idle_unhappy amused 55
- //add shuffle of lines
+
+-(groveltries)
  
-TODO Could add a longer check here to keep the player groveling, make it feel more like a punishment, will revisit later
++ [pose:grovel] -> chastise
++ [timeout] -> grovel
 
-+[pose:puppy_sorry]
-+{ tries < 2 } [timeout] -> grovelamusement
-+{ tries >= 2 } [timeout] -> grovel
-
-- -> groveldone
-
--(grovel)
+- (grovel)
 
 /perform idle_unhappy_stomp angry 75
   I said down, you stubborn puppy!
@@ -139,61 +193,181 @@ TODO Could add a longer check here to keep the player groveling, make it feel mo
   Show me you're sorry. 
   
   This shouldn't be difficult...
+  
+-> groveltries
 
-~ tries = 0
--(grovelpose)
-~ tries ++
+- (chastise)
 
-+[pose:puppy_sorry]
-+{ tries < 2 } [timeout] -> grovelpose
-+{ tries >= 2 } [timeout] -> Yuki_Interested -> grovel
+{wants_puppy:
+    {shuffle:
+        - I am so ashamed of you, puppy. 
+        - You are such a naughty, naughty puppy.  
+        - Your tail better be between your legs!
+    }
+    - else:
+    {shuffle:
+        - After everything I've taught you, you disappoint me.
+        - I almost think you're trying to make me look bad. 
+        - You'll never be favored in this House if you keep misbehaving. 
+    }
+}
 
--(groveldone)
+To make sure you stop and think about what you did,
+
+You're going to stay like that for...
+    
+{shuffle:
+    - 5 seconds.
+    /wait 5 
+    - 20 seconds.
+    /wait 20
+    - 1 minute.
+    /wait 60
+}
+
+- (groveldone)
 /perform talk_consider amused 55
-  Did you think about how you've misbehaved? 
-  You still need sooo much training...
+    
+ Did you think about how you've misbehaved? 
+ 
+ + [yes] 
+    {wants_puppy:
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> groveldone
+    - else:
+    That's a good start!
+    }
+
++ [no] 
+    {wants_puppy:
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> groveldone
+    - else:
+    I better not be wasting my time with you!
+    -> Yuki_Kiss_Foot ->
+    }
+    
++ [pose:puppy_yes]
+    /perform react_shrug_long sad 65
+    ~ addObey()
+    {wants_puppy:
+        Then you must be deliberately disobeying.
+        I'm so disappointed!
+        - else:
+        You're not a puppy.
+        Nod or shake your head. 
+        -> groveldone
+    }
+    
++ [pose:puppy_no]
+    {wants_puppy:
+      /perform talk_annoyed angry 55
+        Bad puppy! Now that's just not true, and you know it!
+    
+      /perform talk_lean_forward angry 70
+        Why would you even attempt to lie to me?
+    
+      /perform idle_unhappy disgusted 65
+        You should be ashamed of yourself.
+        Lying counts as being disobedient too!
+    
+      /perform react_point_at_player_angry angry 80
+        For your total lack of respect towards me, and this House,
+    
+      /perform do_tap_wrist angry 70
+      ~ addPunishment()
+        you've just earned <i>another</i> punishment mark.
+    - else:
+        You're not a puppy.
+        Nod or shake your head. 
+        -> groveldone
+    }
+
++ [timeout]
+  -> Yuki_Timeout->
+  -> groveldone
+
++ [distracted]
+  -> Yuki_PayAttention->
+  -> groveldone
+  
+ - 
+ But, you clearly need more of a reminder...
 
 /perform react_thankful amused 50
   Ahem, now then.
 
 /perform do_summon_player amused 55
-  Sit back up on your knees.
+ Sit back up on your knees.
 
   ~ tries = 0
   -(kneeling)
   ~ tries ++
 
 /perform idle_sassy
-  Put your paws on your head.
+{wants_puppy:
+    Put your paws on your head.
+    - else:
+    Put your hands above your head.
+}
 
-+[pose:present_kneel]
-+{ tries < 2 } [timeout] -> kneeling
-+{ tries >= 2 } [timeout] -> Yuki_Interested -> kneeling
++ [pose:present_kneel]
++ [timeout] -> kneeling
 
 
 -(commandhands)
 
 /perform talk_threaten angry 65
+  {wants_puppy:
   Now, your paws stay up until I say otherwise or unless you're answering me.
+    - else:
+    Don't move your hands without permission.
+}
 
 /perform idle_skeptical skeptical 75
-  Got that? You may answer now. 
+  Got that? 
 
 + [yes] 
+    {wants_puppy:
     -> Yuki_PuppyPlay_Punishment_UsePaws ->
     -> commandhands
+    - else:
+    /perform react_nod_little happy 65
+    Good. 
+    }
 
 + [no] 
+    {wants_puppy:
     -> Yuki_PuppyPlay_Punishment_UsePaws ->
     -> commandhands
-    
-+ [pose:puppy_yes]
-    /perform react_nod_little happy 65
-    Good.
-
-+ [pose:puppy_no]
+    - else:
     /perform react_dismissive angry 55
-    Too bad! Keep your paws up!
+    Too bad. Keep them there anyway!
+    This is a punishment afterall!
+}
+
++ [pose:puppy_yes]
+    /perform react_shrug_long sad 65
+    ~ addObey()
+    {wants_puppy:
+        /perform react_nod_little happy 65
+        Good.
+        - else:
+        You're not a puppy.
+        Nod or shake your head. 
+        -> commandhands
+    }
+    
++ [pose:puppy_no]
+    {wants_puppy:
+    /perform react_dismissive angry 55
+      Too bad! Keep your paws up anyway!
+      This is a punishment afterall!
+    - else:
+        You're not a puppy.
+        Nod or shake your head. 
+        -> commandhands
+    }
 
 
 +[timeout]
@@ -205,7 +379,7 @@ TODO Could add a longer check here to keep the player groveling, make it feel mo
   -> commandhands
 
 - (edging_explanation)
-/perform idle_tease aroused 55
+/perform idle_tease amused 55
   For your punishment today, you're going to touch yourself for me, until you're aching, 
   
   and then, even though it's going to pain me, I'll have to leave you wanting this time. 
@@ -217,41 +391,152 @@ TODO Could add a longer check here to keep the player groveling, make it feel mo
   So I'm going to <i>tease</i> you,
   and <i>taunt</i> you,
   and there's <i>nothing</i> you can do about it.
+
   
-  - (edging_question)
-  
-  Are you ready to be a good {player_name} and accept your punishment?  
-  
-+ [yes] 
+- (understand)
+
+{wants_puppy:
+    Do you understand, puppy?
+    - else:
+    Do you understand, {player_name}?
+}
+  + [yes] 
+    {wants_puppy:
     -> Yuki_PuppyPlay_Punishment_UsePaws ->
-    -> edging_question
+    -> edging_explanation
+    - else:
+    Good! Time to get busy!
+    -> understand
+    }
 
 + [no] 
+    {wants_puppy:
     -> Yuki_PuppyPlay_Punishment_UsePaws ->
-    -> edging_question
-  
+    -> edging_explanation
+    - else:
+    Oh {player_name}...
+    -> leave
+    }
   
 +[pose:puppy_yes]
-    TODO set perform
-    /perform HAPPY 
-    Good pup! Now get those paws busy on your {hasPenis: cock|pussy}!
-    
-    //flow into edging_1
-    ->edging_1
+    {wants_puppy:
+    /perform HAPPY
+    Good pup! Time to get busy!
+    -> edging
+    - else:
+    You're not a puppy.
+    Nod or shake your head. 
+    -> edging_explanation
+    }
   
 +[pose:puppy_no]
-    TODO set perform
+    {wants_puppy:
     /perform ANNOYED 
-    Oh puppy... You have to take your punishment somehow...
-    
-    /perform do_point_left 
-    Then I don't have anything else to say to you. Shoo! Out! 
+    Oh puppy...
+    -> Yuki_CheckIfInterested ->
+    - else:
+    You're not a puppy. 
+    Nod or shake your head. 
+    -> edging_explanation 
+    }
+
++[timeout]
+  -> Yuki_Timeout ->
+  -> understand
+
++[distracted]
+  -> Yuki_PayAttention ->
+  -> understand
   
-    //get kicked out to main hall
-    -> exit
+  
+- (consent)
+Are you ready to be a good {player_name} and accept your punishment?  
+  
++ [yes] 
+    {wants_puppy:
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> consent
+    - else:
+    Good! Time to get busy!
+    -> edging
+    }
+
++ [no] 
+    {wants_puppy:
+    -> Yuki_PuppyPlay_Punishment_UsePaws ->
+    -> consent
+    - else:
+    Oh {player_name}...
+    -> leave
+    }
+  
++[pose:puppy_yes]
+    {wants_puppy:
+    /perform HAPPY
+    Good pup! Time to get busy!
+    -> edging
+    - else:
+    You're not a puppy.
+    Nod or shake your head. 
+    -> consent
+    }
+  
++[pose:puppy_no]
+    {wants_puppy:
+    /perform ANNOYED 
+    Oh puppy...
+    -> leave
+    - else:
+    You're not a puppy. 
+    Nod or shake your head. 
+    -> consent 
+    }
+
++[timeout]
+  -> Yuki_Timeout ->
+  -> consent
+
++[distracted]
+  -> Yuki_PayAttention ->
+  -> consent
+  
+  
+- (leave)
+You have to take your punishment somehow...
+If you won't do this,
+then I don't have anything else to say to you.
+Shoo! Out!
+
+-> exit
+
+- (edging)
+
+{shuffle:
+    - Start performing. 
+    Nice and slow.
+    - I'm impatient,
+    so don't waste any time getting aroused for me!
+    - But, don't enjoy yourself too much.
+    You're going to need all the stamina you have!
+}
+
+{wants_puppy:
+    That's it, puppy. 
+    - else:
+    That's it, {player_name}.
+}
+
+{shuffle:
+    - -> edging_1
+    - -> edging_2
+    - -> edging_3
+}
 
 = edging_1
 -
+
+/wait 2
+
 -> RandomCommentLoop (-> tease_bank_kneeling, 3, 4, 3, 4) ->
 -> tease_bank_joi -> 
 
@@ -483,9 +768,10 @@ TODO set perform
 
 = edging_3
 
-/scene atrium.edging_couch
+/scene Atrium.Couch_Resting
 /music yuki
-/character yuki prone_lounge_right aroused 55
+/character yuki
+/emotion aroused 55
 
 TODO set perform
 /perform
@@ -528,7 +814,7 @@ TODO change this to puppy_beg and adjust dialogue to have Yuki asking the player
 
 +[pose:kneel]
 + { tries < 2 } [timeout] -> frontseat
-+ { tries >= 2 } [timeout] -> Yuki_Interested.Couch -> frontseat
++ { tries >= 2 } [timeout] -> Yuki_Interested.EmoteOnly -> frontseat
 TODO set perform
 /perform
   But don't get too excited!
@@ -552,11 +838,11 @@ TODO set perform
     Don't you dare cum without my permission while I'm letting you touch yourself. 
 
 +[timeout]
-  -> Yuki_Timeout.Couch ->
+  -> Yuki_Timeout.EmoteOnly ->
   -> memorable
 
 +[distracted]
-  -> Yuki_PayAttention.Couch ->
+  -> Yuki_PayAttention.EmoteOnly ->
   -> memorable
 
 - -> RandomCommentLoop(-> tease_bank_couch, 4, 5, 4, 5) -> 
@@ -605,11 +891,11 @@ TODO set perform for this section
     and bad behavior will make the Goddess <i>very</i> angry.
 
 + [timeout]
-  -> Yuki_Timeout.Couch ->
+  -> Yuki_Timeout.EmoteOnly ->
   -> together
 
 + [distracted]
-  -> Yuki_PayAttention.Couch ->
+  -> Yuki_PayAttention.EmoteOnly ->
   -> together
 
 
@@ -637,11 +923,11 @@ TODO set perform for this section
 
 
 +[timeout]
-  -> Yuki_Timeout.Couch ->
+  -> Yuki_Timeout.EmoteOnly ->
   -> FeelGood
 
 +[distracted]
-  -> Yuki_PayAttention.Couch ->
+  -> Yuki_PayAttention.EmoteOnly ->
   -> FeelGood
 - -> edging_break_3
 
@@ -688,11 +974,11 @@ Now, have you been good? Did you save your orgasm for later?
   
 
 + [timeout]
-  -> Yuki_Timeout.Couch ->
+  -> Yuki_Timeout.EmoteOnly ->
   -> orgasm_question
 
 + [distracted]
-  -> Yuki_PayAttention.Couch ->
+  -> Yuki_PayAttention.EmoteOnly ->
   -> orgasm_question
 
 - (work)
@@ -737,11 +1023,11 @@ TODO set perform animations
     You're so cute when you're my puppy!
 
   ++[timeout]
-    -> Yuki_Timeout.Couch ->
+    -> Yuki_Timeout.EmoteOnly ->
     -> feelbetter
 
   ++[distracted]
-    -> Yuki_PayAttention.Couch ->
+    -> Yuki_PayAttention.EmoteOnly ->
     -> feelbetter
 
 + [pose:puppy_no]
@@ -752,11 +1038,11 @@ TODO set perform animations
     for your own sake.
 
 + [timeout]
-  ->Yuki_Timeout.Couch ->
+  ->Yuki_Timeout.EmoteOnly ->
   -> comeback
 
 + [distracted]
-  -> Yuki_PayAttention.Couch ->
+  -> Yuki_PayAttention.EmoteOnly ->
   -> comeback
 
 
@@ -792,10 +1078,10 @@ TODO add bank of new timeout lines
 
 { shuffle:
   - I can tell you're getting turned on by this!
-  - This punishment is juuuuust what you need!
+  - This punishment is just what you need!
   - Like what you see?
-    Trick question, silly--
-    of course you do!
+    Trick question, silly.
+    Of course, you do!
   - Be sure to get yourself nice and excited!
   - Oh, I love to see you use your paws!
   - Now <i>that</i> is what your paws are for, not for misbehaving!

@@ -1,0 +1,172 @@
+=== nega_reward_cunnilingus_dog ===
+-> select_gender_check ->
+~ setScene(reward_scene, Nega, "nega_reward_cunnilingus_dog", -> nega_reward_cunnilingus_dog)
+
+-> scene_setup -> intro
+
+TODO: create setting new  with Nega leaning over the chair facing backwards and treating the player as a dog
+//options: Nega wants Yuki's dog (position is player on all fours licking her from behind); she randomly makes them masturbate while she uses them (set this up so there is a random option that she wants this or not)
+
+= scene_setup
+/scene attic
+/music nega
+/ambient none
+/character nega
+->->
+
+
+= intro
+
+Come here and kneel, {player_name}. #01
+
+-> continue ->
+
++ [move:couch]
+
+-
+
++ [pose:kneel]
+
++ [timeout] -> Yuki_Interested.EmoteOnly ->
+
+- -> Yuki_GoodJob.EmoteOnly ->
+
+- 
+You're in for such a treat today, {player_name}. #02
+
+- (mouth)
+
+{shuffle:
+    - I'm going to let you put that cute tongue of yours to work #03
+    and make me cum. #04
+    - I want you to make me cum with that little tongue of yours. #05
+    - That mouth of yours is going to make me orgasm. #06
+}
+
+Would you like that, {player_name}? #07
+
++ [yes]
+    ~ removeReward(-> load_begin)
+    -> Yuki_AcknowledgeYes.EmoteOnly ->
+    -> begin
+    
++ [no] 
+    -> Yuki_AcknowledgeNo.EmoteOnly ->
+    If you don't want this reward, #08
+    you can go to someone else. #09
+    
+    -- (leave)
+    Are you sure you want to leave? #10
+    
+    ++ [yes]
+        Alright then. #11
+        Goodbye. #12
+        -> exit
+    
+    ++ [no]
+        Phew. #13
+        I thought you didn't like me. #14
+        -> begin
+    
+    ++ [timeout] -> Yuki_Timeout.EmoteOnly -> leave
+    
+    ++ [distracted] -> Yuki_PayAttention.EmoteOnly -> leave
+
++ [timeout] -> Yuki_Timeout.EmoteOnly -> mouth
+
++ [distracted] -> Yuki_PayAttention.EmoteOnly -> mouth
+
+-
+-> begin     
+
+
+= load_begin
+-> scene_setup -> begin
+
+= load_minigame
+-> scene_setup -> minigame
+
+
+= begin
+
+Do you want to use a puppy tongue or a human one? #15
+
+If you want to be my puppy, #16
+just use your paw to say yes. #17
+
+If you want to be human, #18
+nod your head. #19
+
++ [yes]
+    Human it is! #20
+    
++ [no]
+    That's not an option, silly. #21
+    -> begin
+
++ [pose:puppy_yes]
+    Oooo! I just love my puppy. #22
+    From now on, perform as a puppy. #23
+    ~ wants_puppy = true
+    
++ [pose:puppy_no]
+    That's not an option, puppy. #24
+    -> begin
+    
++ [timeout] -> Yuki_Timeout.EmoteOnly -> begin
+
++ [distracted] -> Yuki_PayAttention.EmoteOnly -> begin
+
+-
+
+Now, don't worry. #25
+I'll tell you exactly what to do to make me cum. #26
+
+Just follow directions #27
+and you'll do great! #28
+
+Once I get more comfortable, #29
+
+{wants_puppy:
+    you can start, puppy. #30
+    - else:
+    you can start, {player_name}. #31
+}
+
+-> minigame
+
+= minigame
+
+/scene attic
+
+/perform cun_couch_idle
+
++ [minigame:success] -> finish
+
+
+= finish
+
+Wow. #32
+
+{wants_puppy:
+    {shuffle:
+        - That was amazing, puppy. #33
+        - I'm so impressed, puppy. #34
+        - You did so well, puppy! #35
+    }
+    -> Yuki_Puppyplay_Reward_Complete ->
+    
+    - else:
+    {shuffle:
+        - That was amazing, {player_name}. #36
+        - I'm so impressed, {player_name}. #37
+        - You did so well, {player_name}! #38
+    }
+    -> Yuki_Reward_Complete ->
+}
+
+//check to see if player enjoyed themselves
+-> exit
+
+
+

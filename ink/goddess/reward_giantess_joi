@@ -1,14 +1,15 @@
-=== goddess_reward_joi ===
-
+=== goddess_reward_giantess_joi ===
 
 TODO: make this a scene with the Giantess where the player is small in her hand
 
 -> select_gender_check ->
-~ setScene(reward_scene, Goddess, "goddess_reward_joi", -> goddess_reward_joi)
+~ setScene(reward_scene, Goddess, "goddess_reward_giantess_joi", -> goddess_reward_giantess_joi)
 -> scene_setup -> intro
 
+TODO: set up scene
+
 = scene_setup
-/scene bedroom.hub
+/scene 
 /music goddess
 /ambient none
 /character goddess
@@ -18,36 +19,31 @@ TODO: make this a scene with the Giantess where the player is small in her hand
 -> scene_setup -> gave_reward
 
 = intro
-/perform idle_sassy amused 75
+
 //scene starts with Goddess normal sized
 
 //this is where the player is asked if they want to give up their reward stone
 
-/perform talk_consider aroused 65
 {shuffle:
     - I enjoy watching slaves cum for me. #01
-    - I'm curious how well you can orgasm for me. #02
-    - I'm thinking about allowing you to cum for me. #03
+     Toying with their pleasure until I grant release.
+    - Time for my little mouse to perform.
+     It will be amusing to watch you masturbate for me.
+    - Your pleasure belongs to me, little mouse.
+    I want to see you cum for me.
 }
 
-
-{shuffle:
-    - Demonstrating to me precisely that your #04
-    pleasure is mine to grant. #05
-    - Controlling your every motion so that your exquisite release #06
-    is a tribute to my attentiveness. #07
-}
 
 - (choice)
-/perform talk_question skeptical 55
 {shuffle:
-    - Would you like to show me, {player_name}? #08
-    - Is this something you want? #09
+    - And you want to please me, don't you?
+    - Does my little mouse want to perform?
     - Shall I grant you this? #10
 }
 
 + [yes]
     -> Goddess_AcknowledgeYes ->
+    ~ removeReward(-> load_gave_reward)
     -> gave_reward
 
 + [no]
@@ -63,247 +59,11 @@ TODO: make this a scene with the Giantess where the player is small in her hand
 
 = gave_reward
 
-/perform do_hand_out skeptical 55
-{shuffle:
-    - Then present your wrist so that I may claim your Bloodstone.
-    - Turn over your Bloodstone.
-}
-
-+ [pose:present_wrist_reward]
-    ~ removeReward(-> load_gave_reward)
-    -> Goddess_GoodJob ->
-
-+ [timeout] -> Goddess_Timeout -> gave_reward
-
--
-{shuffle:
-    - -> toy
-    - -> toy
-    - -> begin
-    - -> begin
-}
-
-= toy
-
-/perform talk_lean_forward aroused 75
-{shuffle:
-    - I'm feeling generous. #12
-    - I'm in a good mood today. #13
-    - I'm in, haha, a good mood today #257
-    - I find you entertaining. #14
-    - I find you ... entertaining #258
-}
-
-/perform do_inspect amused 65
-{shuffle:
-
-    - So, I will consider your preferences. #15
-    - So I will consider, <b><i>your</i></b> preferences. #259
-}
-
-{shuffle:
-    - -> ass
-    - -> mouth
-    - -> lube
-}
-
-= ass
-
-/perform talk_question skeptical 85
-Would you like to plug your ass for me first? #16
-
-+ [yes]
-    -> Goddess_AcknowledgeYes ->
-    /perform
-    Go, prepare yourself. #17
-    Choose the plug you believe will please me most. #18
-    -- (prepare)
-    <b>Nod</b> your head when you are ready. #19
-
-    ++ [yes] -> plug
-
-+ [no]
-    /perform do_shake_finger amused 45
-    This is not required today, #20
-    but in the future I may insist. #21
-    -> begin
-
-+ [timeout] -> Goddess_Timeout -> ass
-
-+ [distracted] -> Goddess_PayAttention -> ass
-
-= mouth
-/perform talk_consider skeptical 65
-Would you like to wear a gag for me, {player_name}? #22
-
-+ [yes]
-    /perform react_thankful happy 65
-    Excellent. #23
-
-    /perform do_shoo_player amused 35
-    Then go retrieve it. #24
-
-    /perform talk_one_finger amused 55
-    If you have more than one, choose your favorite. #25
-    -- (prepare)
-    <b>Nod</b> your head when you are ready. #26
-
-    ++ [yes] -> gag
-
-+ [no]
-    /perform do_shake_finger amused 45
-    This is not required today, #27
-    but in the future I may insist. #28
-    -> begin
-
-+ [timeout] -> Goddess_Timeout -> mouth
-
-+ [distracted] -> Goddess_PayAttention -> mouth
-
-= lube
-/perform talk_question amused 65
-Now, would you like to pleasure yourself with lubrication? #29
-
-+ [yes]
-    /perform talk_behold happy 45
-    Splendid. #30
-    Then go retrieve your favorite lube. #31
-
-    ++ [yes] -> mess
-
-+ [no]
-    /perform do_shake_finger amused 45
-    This is not required today, #32
-    but in the future I may insist. #33
-    -> begin
-
-+ [timeout] -> Goddess_Timeout -> lube
-
-+ [distracted] -> Goddess_PayAttention -> lube
-
-= plug
-
-~ has_plug = true
-
-/perform idle_skeptical amused 55
-Welcome back, {player_name}. #34
-Let me gaze upon your choice of plug. #35
-
-- (present)
-
-/perform do_point_down aroused 45
-Turn around and present your ass. #36
-
-+ [pose: present_ass_reverse_spread]
-+ [timeout] -> Goddess_Timeout -> present
-
--
-/perform react_thankful happy 45
-{shuffle:
-    - I approve of your selection. #37
-    - Your choice pleases me. #38
-    - -> Goddess_GoodJob ->
-}
-
-- (wiggle)
-
-/perform talk_threaten angry 55
-That is my ass, {player_name}. #39
-That plug is mine. #40
-When I tell you to, #41
-you will wiggle it for me. #42
-
-/perform talk_question skeptical 55
-Understood? #43
-
-+ [yes]
-    -> Goddess_GoodJob ->
-    -> begin
-
-+ [no]
-    /perform talk_threaten disgusted 65
-    Your answer displeases me. #44
-    You put the toy in. #45
-    You will wiggle it when I say so. #46
-
-    /perform talk_annoyed angry 45
-    Will you obey? #47
-
-    ++ [yes]
-        Excellent. #48
-        Then we shall continue. #49
-        -> begin
-
-    ++ [no]
-        -> Goddess_CheckIfInterested ->
-        -> wiggle
-
-+ [timeout] -> Goddess_Timeout -> plug
-
-+ [distracted] -> Goddess_PayAttention -> plug
-
-= gag
-~ has_gag = true
-
-/perform react_thankful amused 35
-Hello again, {player_name}. #50
-
-//perform
-Let me get a good look at you. #51
-
-- (turn_1)
-
-//perform
-Turn your head side to side. #52
-Nice and slow. #53
-
-TODO: add in poses to turn head left, turn head right
-
-+ [pose:turn_head_right]
-
-+ [timeout] -> Goddess_Timeout -> turn_1
-
-- -> Goddess_GoodJob ->
-
-- (turn_2)
-
-//perform
-And the other way.
-
-+ [pose:turn_head_left]
-
-+ [timeout] -> Goddess_Timeout -> turn_2
-
-- -> Goddess_GoodJob ->
-
-//perform
-An excellent choice. #54
-Your lips bulge beautifully around it. #55
-
--> begin
-
-= mess
-
-/perform react_thankful happy 35
-Hello again, {player_name}. #56
-
-/perform do_snap_fingers amused 55
-Now pour a generous amount of lube on your throbbing genitals. #57
-
-/wait3
-
-/perform tease_caress_breatst_right aroused 75
-{shuffle:
-    - That's it. make yourself nice and messy for me. #58
-    - Such a beautiful mess you're making. #59
-    - -> Goddess_GoodJob ->
-}
-
--> begin
-
-= begin
+TODO: write section where the player has to give up a reward
 
 -> goddess_generic_joi.begin -> loop
+
+
 
 
 
@@ -313,250 +73,17 @@ Now pour a generous amount of lube on your throbbing genitals. #57
 -> RandomCommentLoopWithNo (-> goddess_generic_joi.instructions_and_questions, -> goddess_generic_joi.no_orgasm, 3, 6, 2, 4) ->
 
 
--> cei
+-> finish
 
 
+= finish
 
-= cei
-/perform idle_fake_annoyed amused 65
-Tell me, {player_name}... #150
+Now orgasm for me, {player_name}.
 
-
-/perform talk_question aroused 55
-{shuffle:
-    - Do you enjoy eating your own cum? #151
-    - Would you like to eat your cum for me? #152
-    - Does the thought of eating your own cum excite you? #153
-    - Does the taste of your own cum fill you with a rush of tingling pleasure? #154
-}
-
-+ [yes]
-    /perform tease_bend_over aroused 75
-    Eager to please, I see. #155
-    ~ wants_cei = true
-    ->orgasm_cei
-
-+ [no]
-    /perform talk_consider amused 35
-    Interesting. #156
-
-    /perform talk_question skeptical 45
-    Shall I make you do it anyway? #157
-
-    ++ [yes]
-        /perform do_shake_finger amused 55
-        How intriguing. #158
-        ->orgasm_cei
-
-    ++ [no]
-        /perform react_scoffs annoyed 50
-        Very well. #159
-        I will tolerate this preference. #160
-        -> goddess_generic_joi.orgasm
-
-+ [timeout] -> Goddess_Timeout -> cei
-
-+ [distracted] -> Goddess_PayAttention -> cei
-
-= orgasm_cei
-/perform idle_skeptical amused 45
-You're going to prove your dedication to me, by cleaning every single drop. #161
-
-{hasPenis: -> cei_instructions_penis->|->cei_instructions_vagina->}
-
-/perform talk_question skeptical 45
-Would that please you {player_name}? #162
-
-+[yes]
-    ->Goddess_AcknowledgeYes->
-    {hasPenis: -> cei_countdown_penis|->cei_countdown_vagina}
-
-+ [no]
-    -> Goddess_Unhappy ->
-    /perform talk_question skeptical 45
-    Do you wish to continue? #163
-
-    ++ [yes]
-        -> Goddess_AcknowledgeYes->
-        {hasPenis: -> cei_countdown_penis|->cei_countdown_vagina}
-
-
-    ++ [no]
-
-        {shuffle:
-            -/perform talk_annoyed disgusted 45
-            Very well. #164
-            /perform do_shoo_player annoyed 65
-            Goodbye. #165
-
-            -/perform talk_lean_forward angry 50
-            Great. #263
-            /perform talk_annoyed annoyed 50
-            Now begone. #264
-        }
-        -> exit
+-> goddess_generic_joi.orgasm ->
 
 ->exit
 
-
-
-
-= cei_instructions_vagina
-
-/perform talk_gesture aroused 75
-{shuffle:
-    - When you have finished, I want you to lick your fingers until the mess you have made is completely gone. #252
-    - After completion, suck your fingers dry of any ejaculate. I want them to be immaculate. #253
-    - When you have finished, I want you to lick your fingers dry, until the mess you have made is <i>completely</i> gone. #268
-    - After completion, suck your fingers dry. I want them to be <i>immaculate.</i> #269
-    - After completion, suck your fingers dry. I want them <i>immaculate.</i> #270
-}
-
-->->
-
-= cei_instructions_penis
-
-/perform talk_gesture aroused 75
-{shuffle:
-    - Fetch a small vessel. You will fill it when I order you to cum. #254
-    - I want you to eject your seed into the palm of your hand and lick it all up after I order you to cum. #255
-    - Now retrieve a spoon to fill with your hot semen when I command you to cum. #256
-    - I want you #271
-    to spill your seed all over your belly. And then #272
-    clean it up. #273
-    Lick those fingers <i>dry.</i> #274
-    - I want you to cum all over your belly. #275
-    And then clean yourself up. #276
-    <i>Lick</i> those fingers dry. #278
-    - You will cum into your hand. #279 //angry
-    And then, you will swallow it. #280 //angry   TODO:wrote these differently for lipsync and tone, fix later-Taco
-    - You will cum into your hand ... and then you will swallow it! #281 //amused
-    - I hope you're thirsty. #282
-    Time to cum into your hand #283
-    and drink every last drop. #284
-    - Mmmm, I hope you're thirsty. #285
-    Time to cum into your hand #286
-    and drink <i>every<i/> <i>last<i/> <i>drop.<i/> #287
-}
-
-->->
-
-= cei_countdown_penis
-
-
-/perform tease_stroke_motion happy 45
-{shuffle:
-    - Now, keep stroking right up until the point of ejaculation. #181
-    - Now, keep stroking up until the point of ejaculation. #265
-}
-/wait
-
-/perform talk_gesture aroused 55
-Nod your head, when your little vessel is ready to cum. #182
-
-+[yes]
-
-    -> goddess_generic_joi.tease_comments ->
-
-/perform do_inspect aroused 75
-Since I am the one who shall allow your release, I want you to ejaculate at the count of three. #183
-
-/perform count_nega amused 85
-One.... #184
-
-TODO talk_two_fingers
-Two.... #185
-
-...
-
-/wait
-
-TODO talk_three_fingers
-Three... #186
-
--> goddess_generic_joi.cum_comments ->
-
-Now swallow your cum. #187
-
-/wait 3
-
-Such a good little {player_name}. Consuming ones own seed often makes them feel warm and satisfied, do you feel that way slave? #188
-
-    ++[yes]
-        /perform do_now_leave disgusted 35
-        Great. Now begone slut. #189
-        ->exit
-
-
-    ++[no]
-        /perform idle_bored sad 45
-        Shame, consider yourself lucky I granted you a release. #190
-
-        ->exit
-
-
-= cei_countdown_vagina
-
-/perform idle_fake_annoyed aroused 65
-{shuffle:
-
-    - Now keep playing with yourself right up until the point of ejaculation. #169
-    - Now, keep playing with yourself right until you're ready to explode #261
-    - Now, keep playing with yourself, right up until the point you explode #262
-
-}
-
-/wait
-
-/perform talk_emphatic_one_hand angry 65
-Nod your head when you are approaching completion. #170
-
-+[yes]
-
-    -> goddess_generic_joi.tease_comments ->
-
-    /perform talk_emphatic_one_hand happy 75
-    Since I am the one who shall grant your release, you will push yourself to orgasm for me on the count of three. #171
-
-    One.... #172
-
-    Two.... #173
-
-    ...
-
-    /wait
-
-    Three... #174
-
-    -> goddess_generic_joi.cum_comments ->
-
-    /perform do_point_down happy 45
-
-    {shuffle:
-        - Now clean up that delicious mess you've made. Lick those fingers clean. #175
-        - Slide those soft fingers into your mouth and suckle every last bit of juice from them. #176
-    }
-
-    /wait 3
-
-    /perform talk_one_finger aroused 45
-    {shuffle:
-        - Such a good little {player_name}. Does the taste of your musty pleasure leave you feeling warm... and satisfied? #177
-        - Oh how watching you suck the juice from your fingers fills me with lust. Do you taste good, little mouse? #178
-    }
-
-
-
-    ++[yes]
-        /perform do_shoo_player amused 50
-        Wonderful. Now begone slut. #179
-        ->exit
-
-
-    ++[no]
-        /perform do_get_the_fuck_out angry 70
-        Shame, consider yourself lucky I granted you a release. #180
-        ->exit
 
 
 

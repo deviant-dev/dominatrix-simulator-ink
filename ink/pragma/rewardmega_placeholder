@@ -1,15 +1,7 @@
 === pragma_rewardmega_placeholder ===
 -> select_gender_check ->
 ~ setScene(reward_scene, Pragma, "pragma_rewardmega_placeholder", -> pragma_rewardmega_placeholder)
--> scene_setup ->
-
-/notify title="The Divine Engine Pragma's Mega-Reward Confirmation" text="This is a placeholder big reward. Do you want to spend 10 bloodstones?"
-
-+ [yes]
-    ~ removeBigReward(-> load_gave_reward)
-    /notify title="The Divine Engine Pragma's Mega-Reward Paid" text="You turn over ten Bloodstones."
-    -> gave_reward
-+ [no] -> exit
+-> scene_setup -> intro
 
 
 = scene_setup
@@ -20,11 +12,29 @@
 ->->
 
 
-= load_gave_reward
--> scene_setup -> gave_reward
+= intro
+
+/notify title="The Divine Engine Pragma's Mega-Reward Confirmation" text="This is a placeholder big reward. Do you want to spend 10 bloodstones?"
+
++ [yes]
+    ~ removeBigReward(-> load_begin)
+    /notify title="The Divine Engine Pragma's Mega-Reward Paid" text="You turn over ten Bloodstones."
+    -> begin
++ [no] -> exit
 
 
-= gave_reward
+= load_begin
+-> scene_setup -> begin
+
+
+= begin
 /notify title="The Divine Engine Pragma's Mega-Reward" text="You received your big reward. Returning to entry."
 /wait 5
+-> finish
+
+
+= finish
+
+// scene wrap-up goes here
+
 -> exit

@@ -5,6 +5,12 @@
 /music pragma
 /ambient pragma
 /character pragma
+-> intro
+
+
+= intro
+
+// consent check
 
 /notify title="The Divine Engine Pragma's Punishment Check" text="This is a placeholder punishment. Do you accept your punishment?"
 
@@ -15,8 +21,21 @@
     /wait
     -> exit
 
+- -> begin
+
+
+= begin
+
+// scene goes here
+
+-> finish
+
+
+= finish
+
+// scene wrap-up goes here
+
 - ~removePunishment()
 /notify title="The Divine Engine Pragma's Punishment Result" text="You have been punished. One obsidian removed.<br/> Returning to the entry."
-
-- /wait 5
+/wait 5
 -> exit

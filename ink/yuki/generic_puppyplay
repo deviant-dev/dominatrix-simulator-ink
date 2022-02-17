@@ -3,6 +3,13 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 === Yuki_Puppy_Intro ===
 
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 {shuffle:
     - Time for you to be a puppy! #01
     - I want my puppy for this one. #02
@@ -10,16 +17,23 @@ TODO: add emotions and performances to swipe a Bloodstone
     - Who's my good puppy? #05
     - Yay! More puppy time. #06
     - I'm so excited to make you my puppy again. #07
+    - Oooo! I just love my puppy. #22
 }
 
 -(sit)
-/perform do_point_down happy 55
+
+{shuffle:
+    -{not emoteOnly: /perform do_point_down|/emotion} happy 55
+    -{not emoteOnly: /perform do_point_down|/emotion} amused 65
+}
+
 <b>"Sit"</b>, {player_name}. #04
 
-+ [pose:puppy_sit] 
++ [pose:puppy_sit]
     ~addObey()
+    -> Yuki_GoodJob.DoEmoteOnly(emoteOnly) ->
 
-+ [timeout] 
++ [timeout]
     ~addDisobey()
     -> Yuki_Interested ->
     -> sit
@@ -28,10 +42,17 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 === Yuki_Puppyplay_Reward_Earned ===
 
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 {shuffle:
-    - /perform idle_sassy excited 65
-    - /perform idle_pleased happy 55
-    - /perform do_bouncing_big excited 75
+    - {not emoteOnly: /perform idle_sassy|/emotion} excited 65
+    - {not emoteOnly: /perform idle_pleased|/emotion} happy 55
+    - {not emoteOnly: /perform do_bouncing_big|/emotion} excited 75
 }
 
 {shuffle:
@@ -49,9 +70,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ addReward()
 
 {shuffle:
-    - /perform talk_lean_forward happy 75
-    - /perform idle_yuki excited 65
-    - /perform do_wave_small amused 55
+    - {not emoteOnly: /perform talk_lean_forward|/emotion} happy 75
+    - {not emoteOnly: /perform idle_yuki|/emotion} excited 65
+    - {not emoteOnly: /perform do_wave_small|/emotion} amused 55
 }
 
 {shuffle:
@@ -66,10 +87,17 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 === Yuki_Puppyplay_Reward_Complete ===
 
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 {shuffle:
-    - /perform idle_sassy happy 65
-    - /perform idle_pleased happy 50
-    - /perform do_bouncing_big excited 70
+    - {not emoteOnly: /perform idle_sassy|/emotion} happy 65
+    - {not emoteOnly: /perform idle_pleased|/emotion} happy 50
+    - {not emoteOnly: /perform do_bouncing_big|/emotion} excited 70
 }
 
 {shuffle:
@@ -78,6 +106,7 @@ TODO: add emotions and performances to swipe a Bloodstone
     - You're the best puppy a girl could ask for. #191
 }
 
+TODO: this should be removed. rewards are taken at the start of a scene. lines can be used in a different section
 {shuffle:
     - That uses up a reward! #03
     - You've just redeemed one reward.  #04
@@ -85,9 +114,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 }
 
 {shuffle:
-    - /perform talk_lean_forward happy 45
-    - /perform idle_yuki amused 65
-    - /perform do_wave_big happy 55
+    - {not emoteOnly: /perform talk_lean_forward|/emotion} happy 45
+    - {not emoteOnly: /perform idle_yuki|/emotion} amused 65
+    - {not emoteOnly: /perform do_wave_big|/emotion} happy 55
 }
 
 {shuffle:
@@ -100,10 +129,17 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 === Yuki_Puppyplay_Punishment_Earned ===
 
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 {shuffle:
-    - /perform react_sad_kick_foot_yuki sad 65
-    - /perform idle_bored scared 75
-    - /perform react_shrug_long sad 55
+    - {not emoteOnly: /perform react_sad_kick_foot_yuki|/emotion} sad 65
+    - {not emoteOnly: /perform idle_bored scared|/emotion} 75
+    - {not emoteOnly: /perform react_shrug_long|/emotion} sad 55
 }
 
 {shuffle:
@@ -121,9 +157,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ addPunishment()
 
 {shuffle:
-    - /perform talk_lean_forward skeptical 45
-    - /perform idle_yuki skeptical 65
-    - /perform do_you_leave_right angry 75
+    - {not emoteOnly: /perform talk_lean_forward|/emotion} skeptical 45
+    - {not emoteOnly: /perform idle_yuki|/emotion} skeptical 65
+    - {not emoteOnly: /perform do_you_leave_right|/emotion} angry 75
 }
 
 {shuffle:
@@ -136,10 +172,17 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 === Yuki_Puppyplay_Punishment_Complete ===
 
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 {shuffle:
-    - /perform react_sad_kick_foot_yuki sad 65
-    - /perform idle_bored skeptical 75
-    - /perform react_shrug_long angry 60
+    - {not emoteOnly: /perform react_sad_kick_foot_yuki|/emotion} sad 65
+    - {not emoteOnly: /perform idle_bored|/emotion} skeptical 75
+    - {not emoteOnly: /perform react_shrug_long|/emotion} angry 60
 }
 
 {shuffle:
@@ -156,9 +199,9 @@ TODO: add emotions and performances to swipe a Bloodstone
 ~ removePunishment()
 
 {shuffle:
-    - /perform talk_lean_forward sad 75
-    - /perform idle_yuki skeptical 55
-    - /perform do_you_leave_right angry 60
+    - {not emoteOnly: /perform talk_lean_forward|/emotion} sad 75
+    - {not emoteOnly: /perform idle_yuki skeptical|/emotion} 55
+    - {not emoteOnly: /perform do_you_leave_right|/emotion} angry 60
 }
 
 {shuffle:
@@ -366,32 +409,29 @@ TODO: Rewrite for Yuki
 
 === Yuki_milking_comments ===
 
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Kneeling
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= Sex_Chair
--> DoComment(true)
-
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 {shuffle:
-    - {inPosition: /emotion amused 65 | /perform talk_consider aroused 45} 
+    - {emoteOnly: /emotion amused 65 | /perform talk_consider aroused 45}
     I bet my special little {isBoy: boy|{isGirl: girl|pet}} is enjoying this. #01
-    - {inPosition: /emotion aroused 65 | /perform tease_caress_breasts aroused 65}
+    - {emoteOnly: /emotion aroused 65 | /perform tease_caress_breasts aroused 65}
     Such a {hasPenis: hard little cock|wet little pussy}. #02
-    - {inPosition: /emotion happy 55 | /perform talk_lean_forward happy 55}
+    - {emoteOnly: /emotion happy 55 | /perform talk_lean_forward happy 55}
     What a good little cum pet. #03
-    - {inPosition: /emotion excited 50 | /perform idle_sassy excited 50}
+    - {emoteOnly: /emotion excited 50 | /perform idle_sassy excited 50}
     Ooo. Your cheeks are growing so flushed! #04
-    - {inPosition: /emotion excited 65 | /perform tease_caress_breast_left excited 45}
+    - {emoteOnly: /emotion excited 65 | /perform tease_caress_breast_left excited 45}
     You're oozing, pet! #05
-    - {inPosition: /emotion excited 40 | /perform talk_consider excited 40}
+    - {emoteOnly: /emotion excited 40 | /perform talk_consider excited 40}
     What an adorable slut you are. #06
-    - {inPosition: /emotion happy 60 | /perform idle_pleased happy 60 }
+    - {emoteOnly: /emotion happy 60 | /perform idle_pleased happy 60 }
     You're so {hasPenis: thick|tight}. #07
-    - {inPosition: /emotion amused 45 | /perform react_thankful amused 45}- 
+    - {emoteOnly: /emotion amused 45 | /perform react_thankful amused 45}-
     I love how soft your flesh is! #08
 }
 

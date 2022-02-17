@@ -8,23 +8,22 @@
 - (give_reward)
 
 {cycle:
-
-    - /perform do_hand_out angry 60
+    - /perform idle_hand_out angry 60
     Hand it over. #01
 
-    - /perform do_hand_out excited 25
+    - /perform idle_hand_out excited 25
     Gimme! #07
 
-    - /perform do_hand_out happy 40
+    - /perform idle_hand_out happy 40
     Oooo. Give it here.  #08
 
     - /perform idle_unhappy_stomp angry 55
     Now, give it to me. #12
-      /perform do_hand_out angry 55
+    /perform idle_hand_out angry 55
 
     - /perform talk_lean_forward amused 65
     Time to pay up! #13
-      /perform do_hand_out amused 65
+    /perform idle_hand_out amused 65
 }
 
 + [pose:present_wrist_reward]
@@ -53,7 +52,6 @@
 = roll_dice
 
 {cycle:
-
     - /perform do_fist_pump happy 65
     Fuck yeah! #02
 
@@ -67,7 +65,6 @@
 }
 
 {cycle:
-
     - /perform do_rub_hands_together excited 65
     You're my bitch now. #03
 
@@ -113,14 +110,14 @@ Take the dice and give them a good shake. #11
 
 
 + [hold:dice!]
-+ [timeout:5] -> Nega_BadJob.Squatting -> hold
++ [timeout:5] -> Nega_BadJob.EmoteOnly -> hold
 
 - (roll)
 /perform squat excited 25
 Go ahead. Roll them bones. #06
 
 + [roll!] -> get_roll
-+ [timeout] -> Nega_BadJob.Squatting -> roll
++ [timeout] -> Nega_BadJob.EmoteOnly -> roll
 
 
 // 'Roll' event will force the script into this thread.
@@ -327,7 +324,7 @@ Nothing for you today. #16
 
 - (result_punishment_tease_no_intro)
 {shuffle:
-   - -> nega_punishment_tease
+    - -> nega_punishment_tease
 }
 
 
@@ -346,8 +343,8 @@ Ooo, two skulls. #38
 -> check_consent ->
 
 {cycle:
-     - -> nega_punishment_light_bootlick
-     - -> nega_punishment_light_camerashoot
+    - -> nega_punishment_light_bootlick
+    - -> nega_punishment_light_camerashoot
 }
 
 
@@ -430,12 +427,11 @@ You're gonna love getting rewards from me. #49
     -> exit
     
 + [timeout]
-    -> Nega_Timeout.Squatting -> check_consent_again
+    -> Nega_Timeout.EmoteOnly -> check_consent_again
 
 = come_again
 
 - {cycle:
-
     -/perform idle_skeptical amused 45
     Come visit me again, cunt. #59
 

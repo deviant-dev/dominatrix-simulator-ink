@@ -8,9 +8,7 @@
     /ambient crowd
     ~ Headmistress_RaiseCurtains()
     /character crowd cheers_loud
-
     /character headmistress
-
     -> headmistress_punishment_spanking.get_on_desk ->
 }
 
@@ -63,7 +61,7 @@ Lift your backside high, {isBoy: mongrel|moppet}. #24
     /perform talk_lean_forward skeptical 75
     I disagree. #27
 
-    /perform do_hand_out happy 50
+    /perform idle_hand_out happy 50
     Arch just a bit more. #28
 
     /perform idle_cocks_head_to_left amused 55
@@ -171,14 +169,13 @@ Turn to the left. #241
 
 
 + [pose:present_ass_left]
+    -> Headmistress_GoodJob ->
+    /perform talk_consider happy 65
+    This chattel has potential. #02
 
-      -> Headmistress_GoodJob ->
-      /perform talk_consider happy 65
-      This chattel has potential. #02
-
-      /perform talk_behold amused 65
-      Do you think we can mold it? #03
-      /character crowd cheers
+    /perform talk_behold amused 65
+    Do you think we can mold it? #03
+    /character crowd cheers
 
 
 - (rotate_right_timeout)
@@ -187,12 +184,10 @@ Now turn to the right. #242
 
 
 + [pose:present_ass_right]
-
-
-      - /character crowd gasps
-      /character headmistress talk_behold amused 65
-      -> Headmistress_AcknowledgeYes ->
-      <i>She</i> will enjoy watching this one be broken in, I think. #04
+    - /character crowd gasps
+    /character headmistress talk_behold amused 65
+    -> Headmistress_AcknowledgeYes ->
+    <i>She</i> will enjoy watching this one be broken in, I think. #04
 
 
 ->->

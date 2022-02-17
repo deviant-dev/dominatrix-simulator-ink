@@ -1,0 +1,211 @@
+TODO: needs minigame dialgue in generic responses 
+
+=== treat_reward_riding  ===
+ -> select_gender_check ->
+~ setScene(reward_scene, Nega, "nega_reward_hard_forcedsex", -> nega_reward_hard_forcedsex)
+
+/scene hell.ready
+/music treat
+/ambient none
+/character treat
+
+
+-(intro)
+
+
+{hasPenis:I'm going to ride you nice and slow for your reward.|I'm going to give you a dildo for me to ride.} #01
+
+- (consent)
+
+Would you like to experience that, {player_name}? #02
+
++ [yes]
+    ~ addDisobey()
+    
+    -> Treat_AcknowledgeYes ->
+
++ [no]
+    ~ addObey()
+    
+    -> Treat_CheckIfInterested ->
+
++ [timeout] -> Treat_Timeout -> consent
+
+ + [distracted] -> Treat_PayAttention -> consent
+
+- (ready)
+
+{shuffle:
+    - While I ride you, #03
+    I want you to relax and enjoy yourself. #04
+
+    - This is a special moment for us to enjoy together. #05
+
+    - Intimate moments like this are special #06
+    and should be cherished. #07
+}
+
+Give me a moment while I find us something comfortable to lie on. #08
+
+//reload scene with treat's bed
+
+That's better. #09
+
+- (lay_down)
+
+Come lie down with me. #10
+On your back with your legs stretched out. #11
+
++ [pose:lay_down] -> Treat_GoodJob -> begin
+
++ [timeout] -> Treat_Timeout-> lay_down
+
+- (begin)
+
+Now... #12
+I want you to take a few moments to touch yourself. #13
+/wait
+To feel your body. #14
+/wait
+To caress yourself. #15
+/wait
+
+Show me how much you want this by preparing yourself for me. #16
+/wait
+
+Very nice. #17
+/wait
+
+It's important you enjoy this as much as I will. #18
+
+- (feel_good)
+Does your body feel good? #19
+
++ [yes]
+    ~ addDisobey()
+    -> Treat_AcknowledgeYes ->
+
++ [no]
+
++ [timeout] -> Treat_Timeout -> feel_good
+
++ [distracted] -> Treat_PayAttention -> feel_good
+
+
+- (arouse)
+Do you want more time to arouse yourself? #20
+
++ [yes]
+    -> Treat_AcknowledgeYes ->
+    Take all the time you need. #21
+    Nod when you are ready for me. #22
+    
+    -- (pleasure)
+    -> RandomCommentLoopWithYes(-> pleasure_comments, -> more, 2, 4, 3, 5) ->
+
++ [no]
+    ~ addObey()
+    Then you must be ready. #23
+    -> more
+
++ [timeout] -> Treat_Timeout -> arouse
+    
++ [distracted] -> Treat_PayAttention -> arouse
+
+
+- (more)
+Now... #24
+
+-(instructions)
+To make me orgasm, #25
+I want you to rock your hips with me as I ride you, {player_name}. #26
+
+Do you understand? #27
+
++ [yes]
+    -> Nega_AcknowledgeYes ->
+
++ [no]
+     -- (confirm)
+    Each time I thrust, #28
+    you should lift your hips to meet me. #29
+    
+    Understand? #30
+    
+    ++ [yes]
+        Good. #31
+    
+
+    ++ [no]
+        If you don't understand, #32
+        perhaps you'd prefer to come back later? #33
+
+    ++ [timeout] -> Treat_Timeout -> confirm
+    ++ [distracted] -> Treat_PayAttention -> confirm
+
++ [timeout] -> Treat_Timeout -> instructions
++ [distracted] -> Treat_PayAttention -> instructions
+
+--> minigame
+
+
+= minigame
+
+/scene hell.bed
+
+///perform idle on the bed
+
++ [minigame:success] -> finish
+
+
+= finish
+
+Ahhh. What a delight you are. #34
+
+- (enjoy)
+
+{shuffle:
+    - Did you enjoy yourself {player_name}? #35
+    - Did you orgasm with me? #36
+    - Was that a desireable reward? #37
+}
+
++ [yes]
+    Wonderful. #38
+
++ [no]
+    How disappointing. #39
+    Perhaps next time you should arouse yourself more first. #40
+
++ [timeout] -> Treat_Timeout -> enjoy
++ [distracted] -> Treat_PayAttention -> enjoy
+
+-
+It is time for you to go now. #41
+You are needed elsewhere. #42
+
+-> exit
+
+
+
+= pleasure_comments
+
+{shuffle:
+    - You look lovely, {player_name}. #43
+    - That's it. Take your time. #44
+    - You have the potential to be very special. #45
+    - Show me how much you want to feel me above you. #46
+    - I like watching you arouse yourself. #47
+    - Your pleaure is my pleasure. #48
+    - Mmm. I can't wait to feel you beneath me. #49
+    - Let your hands bring out your arousal. #50
+    - Relax as you give in to pleasure. #51
+    - Very nice. #52
+    - Mmm. Just like that. #53
+    - Oh yes. Watching you excites me. #54
+    - there are so many things I want to show you. #55
+    - You should use these techniques with the Headmistress. #56
+    - Lovely Yuki would be panting to see you like this. #57
+}
+
+->->

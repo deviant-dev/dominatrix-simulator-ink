@@ -202,8 +202,8 @@ TODO: Support 'wiggle' action
 //     -> Nega_GoodJob ->
 //     ++ [wiggle-success:5]
 //         That's enough.  #35
-        /perform idle_cocks_head_to_left amused 25
-        Turn back around and present yourself.  #36
+//        /perform idle_cocks_head_to_left amused 25
+//        Turn back around and present yourself.  #36
 //         ~ addObey()
 // + [wiggle-timeout]
 //     -> Nega_BadJob ->
@@ -300,7 +300,7 @@ Do you want to try your luck? #45
 
         /perform talk_behold aroused 75
         I can be a lot of fun with the right... toy. #54
-         -> nega_reward_dice
+        -> nega_reward_dice
 
     ++[distracted] -> Nega_PayAttention -> check_reward_again
 

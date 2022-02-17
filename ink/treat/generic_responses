@@ -1,42 +1,56 @@
 === Treat_GoodJob ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 
 { shuffle:
-    - /perform idle_sassy happy 50
+    - {emoteOnly:/emotion|/perform idle_sassy} happy 50
     There's a good {player_name}. #01
 
-    - /perform idle_tease aroused 65
+    - {emoteOnly:/emotion|/perform idle_tease} aroused 65
     What a good little {player_name}. #02
 
-    - /perform idle_clasp_hands happy 50
+    - {emoteOnly:/emotion|/perform idle_clasp_hands} happy 50
     You're doing so well. #03
 
-    - /perform talk_consider happy 50
+    - {emoteOnly:/emotion|/perform talk_consider} happy 50
     Very nice! #04
 
-    - /perform react_thankful happy 45
+    - {emoteOnly:/emotion|/perform react_thankful} happy 45
     Keep up the good work! #05
 
-    - /perform idle_sassy aroused 65
+    - {emoteOnly:/emotion|/perform idle_sassy} aroused 65
     Most pleasing. #06
 
-    - /perform idle_tease happy 50
+    - {emoteOnly:/emotion|/perform idle_tease} happy 50
     Someone is being a good {player_name}. #07
 
-    //- /perform react_thankful  aroused 40
+    //- {emoteOnly:/emotion|/perform react_thankful}  aroused 40
     //Nicely done. #08
 
-    - /perform do_inspect aroused 60
+    - {emoteOnly:/emotion|/perform do_inspect} aroused 60
     Impressive. #09
 
-    //- /perform talk_consider amused 55
+    //- {emoteOnly:/emotion|/perform talk_consider} amused 55
     //That's it. #10
 }
 
 ->->
 
 === Treat_AcknowledgeYes ===
+-> DoEmoteOnly(false)
 
-/perform react_nod_little amused 55
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+
+{emoteOnly:/emotion|/perform react_nod_little} amused 55
 {shuffle:
     - How delightful. #01
     - Very good. #02
@@ -50,70 +64,91 @@
 ->->
 
 === Treat_Unhappy ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 
 {shuffle:
-    - /perform react_disappointed sad 65
+    - {emoteOnly:/emotion|/perform react_disappointed} sad 65
     How disappointing. #01
 
-    - /perform react_whatever angry 50
+    - {emoteOnly:/emotion|/perform react_whatever} angry 50
     Really? #02
 
-    - /perform talk_annoyed sad 65
+    - {emoteOnly:/emotion|/perform talk_annoyed} sad 65
     I see. #03
 
-    - /perform react_resigned sad 55
+    - {emoteOnly:/emotion|/perform react_resigned} sad 55
     How unfortunate. #04
 
-    - /perform react_dismissive skeptical 70
+    - {emoteOnly:/emotion|/perform react_dismissive} skeptical 70
     So be it. #05
 
-    - /perform react_scoffs angry 40
+    - {emoteOnly:/emotion|/perform react_scoffs} angry 40
     Very well. #06
 }
 
 ->->
 
 === Treat_Timeout ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 
 { shuffle:
-    - /perform idle_clasp_hands amused 45
+    - {emoteOnly:/emotion|/perform idle_clasp_hands} amused 45
     I asked you a question. #01
 
-    - /perform talk_emphatic_one_hand angry 55
+    - {emoteOnly:/emotion|/perform talk_emphatic_one_hand} angry 55
     Hurry up. I'm waiting. #02
 
-    - /perform talk_lean_forward skeptical 35
+    - {emoteOnly:/emotion|/perform talk_lean_forward} skeptical 35
     Come now. Don't be rude. #03
 
-    - /perform do_shielding_eyes skeptical 65
+    - {emoteOnly:/emotion|/perform do_shielding_eyes} skeptical 65
     Hello? Are you still there? #04
 
-    -/perform talk_question sad 65
+    -{emoteOnly:/emotion|/perform talk_question} sad 65
     Are you going to answer me? #05
  }
 
 ->->
 
 === Treat_PayAttention ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 
 { cycle:
-    - /perform do_shake_finger_stern angry 80
+    - {emoteOnly:/emotion|/perform do_shake_finger_stern} angry 80
     Look at me when I'm speaking to you, {player_name}. #01
     /wait 1
 
-    - /perform do_shake_finger skeptical 65
+    - {emoteOnly:/emotion|/perform do_shake_finger} skeptical 65
     Tsk. Tsk. Pay attention! #02
     /wait 1
 
-    - /perform react_dumb angry 40
+    - {emoteOnly:/emotion|/perform react_dumb} angry 40
     I'm over here. Stop looking around. #03
     /wait 1
 
-    - /perform talk_one_finger angry 40
+    - {emoteOnly:/emotion|/perform talk_one_finger} angry 40
     I expect you to pay attention when I'm speaking. #04
     /wait 1
 
-    - /perform idle_unhappy skeptical 60
+    - {emoteOnly:/emotion|/perform idle_unhappy} skeptical 60
     Therapy requires attentiveness. #05
     /wait 1
 }
@@ -125,23 +160,23 @@
 
 // TODO: Make # of cycle elements equal or change to cycle/shuffle
 - { cycle:
-    - /perform talk_consider happy 60
+    - {emoteOnly:/emotion|/perform talk_consider} happy 60
     Where was I? Oh yes... #06
     /wait 1
 
-    - /perform react_scoffs amused 60
+    - {emoteOnly:/emotion|/perform react_scoffs} amused 60
     That's better. Let's continue. #07
     /wait 1
 
-    - /perform idle_clasp_hands happy 40
+    - {emoteOnly:/emotion|/perform idle_clasp_hands} happy 40
     Good {player_name}. #08
     /wait 1
 
-    - /perform talk_annoyed amused 30
+    - {emoteOnly:/emotion|/perform talk_annoyed} amused 30
     Let's try that again. #09
     /wait 1
 
-    - /perform idle_unhappy amused 30
+    - {emoteOnly:/emotion|/perform idle_unhappy} amused 30
     As I was saying... #10
     /wait 1
  }
@@ -150,46 +185,60 @@
 
 
 === Treat_BadJob ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 
 /emotion angry 50
 
 { shuffle:
-    - /perform react_disappointed sad 65
+    - {emoteOnly:/emotion|/perform react_disappointed} sad 65
     I'm disappointed. #01
 
-    - /perform do_shake_finger_stern angry 55
+    - {emoteOnly:/emotion|/perform do_shake_finger_stern} angry 55
     I know you can do better. #02
 
-    - /perform talk_consider skeptical 70
+    - {emoteOnly:/emotion|/perform talk_consider} skeptical 70
     That's not quite right. #03
 
-    -/perform react_scoffs angry 45
+    -{emoteOnly:/emotion|/perform react_scoffs} angry 45
     You are testing me. #04
 
-    - /perform talk_annoyed sad 70
+    - {emoteOnly:/emotion|/perform talk_annoyed} sad 70
     I expect more. #05
 }
 
 ->->
 
 === Treat_CheckIfInterested ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
 
 {checked_if_interested: -> check_terse}
 
 ~checked_if_interested = true
 
-/perform idle_unhappy sad
+{emoteOnly:/emotion|/perform idle_unhappy} sad
 
 You are the one who came to see me. #01
 - (check_again)
 
-/perform talk_behold skeptical
+{emoteOnly:/emotion|/perform talk_behold} skeptical
 
 Are you willing to continue? #02
 
-/perform idle
+{emoteOnly:/emotion|/perform idle}
 
-+ [yes] -> IsInterested
++ [yes] -> IsInterested(emoteOnly)
 + [no]
 + [timeout] -> check_again
 
@@ -206,31 +255,112 @@ then you should leave. #05
 
 My time is precious, after all. #06
 
-/perform talk_annoyed skeptical 65
+{emoteOnly:/emotion|/perform talk_annoyed} skeptical 65
 
 So I'll ask one last time. #07
 
-/perform talk_lean_forward angry 50
+{emoteOnly:/emotion|/perform talk_lean_forward} angry 50
 Do you want to continue? #08
 
-+ [yes] -> IsInterested
-+ [no] -> NotInterested
++ [yes] -> IsInterested(emoteOnly)
++ [no] -> NotInterested(emoteOnly)
 
 
-= IsInterested
+= IsInterested(emoteOnly)
 
--> Treat_GoodJob ->
-/perform idle happy 70
+{emoteOnly:/emotion|/perform idle} happy 70
 Excellent. #09
-Let's stop wasting time, then. #10
+
+// Removing this because it feels redundant in-game - Deviant
+// Let's stop wasting time, then. #10
 
 ->->
 
 
-= NotInterested
+= NotInterested(emoteOnly)
 
-/perform talk_annoyed angry 65
+{emoteOnly:/emotion|/perform talk_annoyed} angry 65
 Then you must leave. #11
 Return to me when you are ready. #12
 
 -> exit
+
+=== Treat_Reward_Complete ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+{shuffle:
+    - {emoteOnly:/emotion|/perform idle_sassy} happy 65
+    - {emoteOnly:/emotion|/perform idle_pleased} happy 50
+    - {emoteOnly:/emotion|/perform idle_tease} aroused 70
+}
+
+{shuffle:
+    - I adore giving you rewards. #01
+    - Rewarding you makes me happy. #02
+    - I hope you relished your reward. #03
+}
+
+{shuffle:
+    - Keep up the good work! #04
+    - I want you to keep earning them. #05
+    - Make sure to keep behaving. #06
+}
+
+{shuffle:
+    - {emoteOnly:/emotion|/perform talk_lean_forward} amused 45
+    - {emoteOnly:/emotion|/perform idle} happy 65
+    - {emoteOnly:/emotion|/perform idle_skeptical} aroused 55
+}
+
+{shuffle:
+    - You may go for now, #07
+    but come see me again soon. #08
+    - Time to go for now. #09
+    - Goodbye, little one. #10
+}
+
+->->
+
+
+=== Treat_Take_Reward_Prompt ===
+
+// don't use performances
+
+/character treat
+
+{shuffle:
+    - Present your wrist. #01
+    - This will cost you one Bloodstone. #02
+    - Time to hand over your Bloodstone. #03
+    - Give me your wrist, {player_name}. #04
+}
+
+->->
+
+
+=== Treat_Take_Reward(-> load) ===
+
+- (give_reward)
+
+/character treat idle_hand_out happy 75
+
+-> Treat_Take_Reward_Prompt ->
+
++ [pose:present_wrist_reward]
+    /perform do_swipe_hand excited 50
+    /wait 1
+    ~removeReward(load)
+    -> Treat_AcknowledgeYes.EmoteOnly ->->
+
++ [no] -> Treat_CheckIfInterested -> give_reward
++ [timeout] -> Treat_Timeout -> give_reward
++ [distracted] -> Treat_PayAttention -> give_reward
+
+
+
+

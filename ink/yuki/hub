@@ -140,16 +140,24 @@ Looking to serve me, then? #14
     }
 
 - else:
-    {shuffle:
-        //- -> yuki_reward_bathe
-        //- -> yuki_reward_massage
+    {deviation == yuki_cunnilingus:
+        {shuffle:
+            - -> yuki_reward_cunnilingus
+            //- -> yuki_reward_puppyplay_lickfeet
+        }
+
+    - else:
+        {shuffle:
+            //- -> yuki_reward_bathe
+            //- -> yuki_reward_massage
+        - -> yuki_reward_cunnilingus
         - -> yuki_reward_puppyplay_milking
         // - -> yuki_reward_puppyplay_lickfeet
 
-        // Put more reward scenes here.
+            // Put more reward scenes here.
+        }
     }
 }
-
 
 = choose_punishment
 
@@ -164,20 +172,30 @@ Looking to serve me, then? #14
     I want you to be the best {isBoy: boy|{isGirl:girl|pet}}! #22
 }
 
+
 {deviation == puppyplay:
     {shuffle:
-        // - -> yuki_punishment_puppyplay_cage
-        - -> yuki_punishment_puppyplay_spanking
+      // - -> yuki_punishment_puppyplay_cage
+      - -> yuki_punishment_puppyplay_spanking
     }
 
 - else:
-    {shuffle:
-        // - -> yuki_punishment_edging
-        // - -> yuki_punishment_puppyplay_cage
-        - -> yuki_punishment_puppyplay_spanking
-        // Put more punishment scenes here.
+    {deviation == yuki_cunnilingus:
+        {shuffle:
+            //- -> yuki_punishment_puppyplay_spanking
+            - -> yuki_punishment_edging
+        }
+
+    - else:
+        {shuffle:
+          // - -> yuki_punishment_edging
+          // - -> yuki_punishment_puppyplay_cage
+          - -> yuki_punishment_puppyplay_spanking
+          // Put more punishment scenes here.
+        }
     }
 }
+
 
 
 = choose_task
@@ -188,9 +206,16 @@ Looking to serve me, then? #14
     }
 
 - else:
-    {shuffle:
-        //- -> yuki_task_fanning
-        - -> yuki_task_puppyplay
-        // Put more task scenes here.
+    {deviation == yuki_cunnilingus:
+        {shuffle:
+            - -> yuki_task_puppyplay
+        }
+
+    - else:
+        {shuffle:
+          //- -> yuki_task_fanning
+          - -> yuki_task_puppyplay
+          // Put more task scenes here.
+        }
     }
 }

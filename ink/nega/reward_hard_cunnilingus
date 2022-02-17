@@ -1,53 +1,271 @@
 === nega_reward_hard_cunnilingus ===
 
-Reward - Nega - Cunnilingus
-Approach
-Confirm here to play
-Present wrist and bloodstone removed
-Dice game result: reward
+-> select_gender_check ->
+~ setScene(reward_scene, Nega, "nega_reward_hard_cunnilingus", -> nega_reward_hard_cunnilingus)
+-> scene_setup -> intro
 
-[Laughs] “Look at that, the little bitch got lucky.”
-“You think this means I’m going to be nice?”
-Yes - “You don’t know me at all do you?”
-No - “Hmmm, good little slave, knowing your place.”
-“Get on your knees.”
-Player kneels. Nega puts a foot up on their shoulder giving the player a nice view.
-“For your reward, I’m going to cum on that tongue of yours. That’s a reward a horny slut like you wants isn’t it, getting to make ME cum?”
-No - [Sigh] “What a waste of a bloodstone. Not my problem, go earn another one, fuckboi.” Nega kicks the player away.
-Yes - “Right answer!” Minigame instructions to be determined.
-“On your back!” Nega visually pushes the player to the ground with her foot on their shoulder and stands over them.
-“There’s nowhere else for me to sit down, so I’m just going to have to ride that face. Lucky you.”
-Nega straddles the player looking down at him, now in position for cunnilingus.
-“Can’t reach your needy cock with my kneeling on your arms? Tough luck.”
-Nega puts a hand just above her pussy, pointing at it, tapping her finger.
-“This is your reward. No one said anything about your pleasure.”
-Nega slides slightly forward and rides the player’s face while giving instructions relevant to the mini game, instructing the player how to please her.
-Nega slides back a little to look at the player.
-“Look at you, glistening with my juices.”
-“Enough foreplay, I’m going to really take you for a ride.”
-“And for a rough ride, I’ll need a well lubed toy.”
-Nega spits on the player’s face.
-[Laughs] “You like that? Want another?”
-No - “Ungrateful cunt.” Nega spreads it around with her hand.
-Yes - Nega spits on the player again, laughs, and does it a third time.
-“There. A nice slippery slut face to grind on.”
-Nega changes her position to ride the player looking down their body, ass-view.
-“Awww, your poor ignored cock, drippy and alone.”
-“If you make me cum, maybe I’ll give it some attention.”
-“Let’s see if you can hold your breath long enough to get me there.”
-“Shake your head ‘no’ if you need air.”
-Nega backs up and smothers the player, grinding on their face, with a visual countdown while she moans.
-After ten seconds she lifts up.
-“Take a deep breath, cushion, you’ll have to do better than that.”
-Nega sits down again, grinding on the player with a visual countdown.
-Nega cries out with increasing pleasure as she gets closer. If the player makes it to whatever number of seconds you decide, Nega cums. If the player needs to breathe she lifts up and gives another chance. There’s a limited number of chances, how many is up to you.
-If player fails - “Pathetic. I’ll just have to get there another way.”
-If player succeeds - Nega cums. “Mmmmm, good boy. I think that cock has earned some attention. While you make me cum again.”
-Nega is holding a riding crop.
-“I’m going to smack your cock and balls until you scream. You’ll be a great little vibrator.”
-Nega rides the player’s face one more time, smacking sounds are heard, and with the presumption they’re making the player scream, she moans in response to it vibrating in addition to the licking.
-When Nega is about to cum she lifts slightly off the player, rubbing herself with her fingers to finish off and squirting directly into the player’s view, on their face.
-Nega stands above the player.
-[Laugh] “What a mess. Go clean yourself up, slut.”
+TODO: create setting with her squatting over the player's face
+//options: Nega wants to fuck the player's face (squatting over their face); she randomly makes them masturbate while she uses them (set this up so there is a random option that she wants this or not)
 
+= scene_setup
+/scene 
+/music nega
+/ambient crowd
 ->->
+
+= intro
+For your reward, 
+
+{shuffle:
+    - you shall demonstrate to your fans 
+    just how well you can pleasure a Mistress with your mouth.
+    - you shall perfect your ability to gratify with your tongue.
+}
+
+{shuffle:
+    - If you earn <i>Her</i> favor, you may one day quench the Goddess in this way.
+    - Perfection here may afford you the opportunity to suckle our Goddess. 
+}
+
+- (mouth)
+
+{shuffle:
+    - I expect your tongue to perform exceptionally. 
+    - The audience will want to see how well you can work that tongue of yours.
+    - Your mouth and lips must be exceptional in this!
+}
+
+Do you agree to this reward, moppet?
+
++ [yes]
+    ~ removeReward(-> load_begin)
+    -> Nega_AcknowledgeYes ->
+    -> begin
+    
++ [no] 
+    -> Nega_Unhappy ->
+    If this reward fails to appeal to you,
+    then you must leave.
+    
+    -- (leave)
+    Do you wish to depart,{isBoy: miscreant|foible}?
+    
+    ++ [yes]
+        As you wish.
+        You may go.
+        -> exit
+    
+    ++ [no]
+        You're so dumb.
+        Let's get back to it.
+        -> begin
+    
+    ++ [timeout] -> Nega_Timeout -> leave
+    
+    ++ [distracted] -> Nega_PayAttention -> leave
+
++ [timeout] -> Nega_Timeout -> mouth
+
++ [distracted] -> Nega_PayAttention -> mouth
+
+-
+
+-> Nega_Give_Reward ->
+~ removeReward(-> load_begin)
+
+-> begin     
+
+= load_begin
+-> scene_setup -> begin
+
+
+= begin
+
+// insert randomisation options
+
+-> kneel
+-
+
+- (kneel)
+
+{shuffle:
+    - Kneel, trinket.
+    - On your knees, poppet.
+    - Down, harlot.
+}
+
++ [pose:kneel]
+
++ [timeout] -> Nega_Timeout -> kneel
+
+- -> Nega_GoodJob ->
+
+It is imperative that you follow
+a Mistress's instructions precisely.
+
+You will demonstrate on...
+
+TODO: do we want to include options??
+{shuffle:
+    - me, this time. 
+    As soon as I am in position, you may begin.
+    
+    - my girl.
+    Once she is ready, you may begin.
+    
+    - Mistress Yuki-Onna.
+    Once she is ready, you may begin.
+}
+
+
+-> minigame
+
+= minigame
+TODO: create scene
+/scene theatre.cunnilingus
+
+/perform cun_desk_idle
+
++ [minigame:success] -> finish_good
+
++ [minigame:fail] -> finish_bad
+
+
+= finish_good
+~ embarrassed = true
+TODO: Only setting the variable to true because it is actually checked for under generic responses. Needs to be able to carry over from that section
+
+Breathtaking, moppet!
+
+{embarrassed:
+    {shuffle:
+        - You performed exceptionally under pressure.
+        - Even discomfitted, you triumphed!
+        - <i>She</i> enjoyed your flushed performance.
+    }
+    - else:
+    {shuffle:
+        - Your enthusiasm for performing becomes you!
+        - I am pleased with your passionate exhibition.
+        - <i>She</i> delights in your eagerness.
+    }
+}
+
+//check to see if player enjoyed themselves
+
+Your reward is complete.
+You may depart.
+
+-> exit
+
+= finish_bad
+
+Shocking!
+What a layabout!
+
+{embarrassed:
+    {shuffle:
+        - Your nervousness overcame you. 
+        - You must not let your unease spoil your service.
+        - Clearly you let your nerves get the best of you. 
+    }
+    - else:
+    {shuffle:
+        - Your enthuasiasm failed you. 
+        - Excitation is not enough. 
+        Skill is required.
+        - Your excitedment outweighed your ability.
+    }
+}
+
+//do we give a punishment
+
+Go.
+
+-> exit
+
+
+
+
+
+//options to consider: 
+
+//wearing a leash 
+//hands tied behind back 
+//having to use fingers as well 
+//what happens if player tries to touch her body with their hands?
+//kiss her thighs
+//lick her anus 
+//tongue her anus 
+//finger in her anus 
+//let them masturbate at the same time 
+
+//You could switch it up between being on your hands and knees; kneeling with them on a chair or some sort of queening stool; and facesitting with you on your back. I would love to be made to keep my hands away (behind my back/off to the sides) by the pose.
+//Sounds-wise, lots of moaning and pleasurable sounds, so you know they are enjoying it, and lots of affirmation and encouragement too. Although it might also be exciting to do it in front of an audience, cheering for you and playing along...!
+
+//Maybe some light teasing, where they pull away and make you beg to keep going? And maybe then grasp your head and pull it in, so your vision goes dark for a bit but the sounds get louder...
+
+//At least one moment were the Domina is really pushing into you, almost making the screen go black while moaning nicely.
+
+//And also the slide in-between dem legs to start, so basically start with the mistress (assuming she is sitting or lying down) having her feet on your shoulder kn a way that keeps you away from her and then she allows you to come closer and you need to kind of slide your head in between her legs to get to where you need to be.
+
+//without knowing who this would be for, one thing that comes to mind is teasing that maybe another slave might have the honor and privilege to actually be inside them
+
+//It would be interesting if there could also be an option to be observed by another Mistress? Maybe with the Headmistress having it be with the observers? 
+
+//If you want to make it special, maybe only let the player get The Goddess cunnilingus reward if they have 10 bloodstones or if they do a certain number of tasks. 
+
+//Forced face sitting would be my preference (maybe while tied up? :sub:). 
+
+//please include some anallingus in there! 
+//Yuki could be more encouraging, Nega more humiliating, Head Mistress more structured and precise with her instruction, and The Goddess more commanding with maybe a little of everything.
+
+//Reward - Nega - Cunnilingus
+//Approach
+//Confirm here to play
+//Present wrist and bloodstone removed
+//Dice game result: reward
+
+//[Laughs] “Look at that, the little bitch got lucky.”
+//“You think this means I’m going to be nice?”
+//Yes - “You don’t know me at all do you?”
+//No - “Hmmm, good little slave, knowing your place.”
+//“Get on your knees.”
+//Player kneels. Nega puts a foot up on their shoulder giving the player a nice view.
+//“For your reward, I’m going to cum on that tongue of yours. That’s a reward a horny slut like you wants isn’t it, getting to make ME cum?”
+//No - [Sigh] “What a waste of a bloodstone. Not my problem, go earn another one, fuckboi.” Nega kicks the player away.
+//Yes - “Right answer!” Minigame instructions to be determined.
+//“On your back!” Nega visually pushes the player to the ground with her foot on their shoulder and stands over them.
+//“There’s nowhere else for me to sit down, so I’m just going to have to ride that face. Lucky you.”
+//Nega straddles the player looking down at him, now in position for cunnilingus.
+//“Can’t reach your needy cock with my kneeling on your arms? Tough luck.”
+//Nega puts a hand just above her pussy, pointing at it, tapping her finger.
+//“This is your reward. No one said anything about your pleasure.”
+//Nega slides slightly forward and rides the player’s face while giving instructions relevant to the mini game, instructing the player how to please her.
+//Nega slides back a little to look at the player.
+//“Look at you, glistening with my juices.”
+//“Enough foreplay, I’m going to really take you for a ride.”
+//“And for a rough ride, I’ll need a well lubed toy.”
+//Nega spits on the player’s face.
+//[Laughs] “You like that? Want another?”
+//No - “Ungrateful cunt.” Nega spreads it around with her hand.
+//Yes - Nega spits on the player again, laughs, and does it a third time.
+//“There. A nice slippery slut face to grind on.”
+//Nega changes her position to ride the player looking down their body, ass-view.
+//“Awww, your poor ignored cock, drippy and alone.”
+//“If you make me cum, maybe I’ll give it some attention.”
+//“Let’s see if you can hold your breath long enough to get me there.”
+//“Shake your head ‘no’ if you need air.”
+//Nega backs up and smothers the player, grinding on their face, with a visual countdown while she moans.
+//After ten seconds she lifts up.
+//“Take a deep breath, cushion, you’ll have to do better than that.”
+//Nega sits down again, grinding on the player with a visual countdown.
+//Nega cries out with increasing pleasure as she gets closer. If the player makes it to whatever number of seconds you decide, Nega cums. If the player needs to breathe she lifts up and gives another chance. There’s a limited number of chances, how many is up to you.
+//If player fails - “Pathetic. I’ll just have to get there another way.”
+//If player succeeds - Nega cums. “Mmmmm, good boy. I think that cock has earned some attention. While you make me cum again.”
+//Nega is holding a riding crop.
+//“I’m going to smack your cock and balls until you scream. You’ll be a great little vibrator.”
+//Nega rides the player’s face one more time, smacking sounds are heard, and with the presumption they’re making the player scream, she moans in response to it vibrating in addition to the licking.
+//When Nega is about to cum she lifts slightly off the player, rubbing herself with her fingers to finish off and squirting directly into the player’s view, on their face.
+//Nega stands above the player.
+//[Laugh] “What a mess. Go clean yourself up, slut.”

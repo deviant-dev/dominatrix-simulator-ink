@@ -1,0 +1,534 @@
+=== goddess_generic_joi ===
+
+
+
+= begin
+//this is where the actual scene happens
+
+/wait
+- (ready)
+
+Are you ready? #62
+
++ [yes]
+    -> Goddess_AcknowledgeYes->
+
++ [no]
+    Do you wish to conintue? #63
+
+    ++ [yes]
+        -> Goddess_AcknowledgeYes->
+
+    ++ [no]
+        Very well. #64
+        Goodbye. #65
+        -> exit
+
+    ++ [timeout] -> Goddess_Timeout -> ready
+
++ [timeout] -> Goddess_Timeout -> ready
+
++ [distracted] -> Goddess_PayAttention -> ready
+
+- (understand)
+
+{shuffle:
+    - I expect you to follow my every instruction. #66
+    - You will obey my every instruction. #67
+    - I'm going to tell you exactly how to cum. #68
+}
+
+If you reach the brink before I have given permission, #01
+shake your head 'no' so that I may instruct you. #02
+
+{shuffle:
+    - Do you understand? #69
+    - Will you obey? #70
+    - Are you ready to obey? #71
+}
+
++ [yes]
+    Very pleasing. #72
+
++ [no]
+    -> Goddess_CheckIfInterested->
+
++ [timeout] -> Goddess_Timeout -> understand
+
++ [distracted] -> Goddess_PayAttention -> understand
+
+- (hold)
+
+{hasPenis: Grab hold of yourself and start gently stroking.|Cup yourself and start gently rubbing.} #73
+
+//check to see if controller is low
+
+-> tease_comments ->
+
+/wait 2
+
+Are {hasPenis: hard|throbbing} for me, little mouse? #74
+
++ [yes]
+    Excellent. #75
+    I want to keep you that way. #76
+
++ [no]
+    -> Goddess_Unhappy ->
+    {shuffle:
+    - Perhaps you aren't ready for me. #77
+    - Performance anxiety? Shame. #78
+}
+
++ [timeout] -> Goddess_Timeout -> hold
+
++ [distracted] -> Goddess_PayAttention -> hold
+
+- Let's see how well you can obey my instructions. #79
+
+->->
+
+= instructions_and_questions
+
+-> instructions ->
+
+{shuffle:
+    -
+    - -> joi_comments ->
+}
+
+{shuffle:
+    -
+    -
+    -
+    - -> question ->
+    - -> question ->
+    - -> question ->
+}
+
+
+Perhaps one day I'll let you fuck my slaves for me. #235
+Bring them to pleasure over and over again to worship me. #236
+{shuffle:
+    -
+    - -> joi_comments ->
+}
+
+->->
+
+= comments
+
+->->
+
+= instructions
+
+{shuffle:
+    - -> slow ->
+    - -> fast ->
+    - {hasPenis: ->squeeze->|->squeeze_vagina->}
+    - -> steady ->
+}
+
+
+->->
+
+= slow
+
+Now, take it nice and slow. #87
+
+{shuffle:
+    - Slide your hand {hasPenis:up and down|back and forth} 5 teasing times. #88
+    -> Goddess_SayNumberRangeSlow(1, 3, 1) ->
+    -> random_comments ->
+    -> Goddess_SayNumberRangeSlow(4, 5, 2) ->
+
+    - Gently caress your fingers along your smooth skin. #89
+    /wait 3
+    -> random_comments ->
+
+    - Use your whole hand and give me 10 firm {hasPenis:strokes|rubs}. #90
+    -> Goddess_SayNumberRangeSlow(1, 4, 1) ->
+    -> random_comments ->
+    -> Goddess_SayNumberRangeSlow(5, 7, 1) ->
+    -> random_comments ->
+    -> Goddess_SayNumberRangeSlow(8, 10, 2) ->
+    -> random_comments ->
+
+    - I want you to show me 20 painfully slow {hasPenis:strokes|circles}. #91
+    One. Two. Three. Four. Five. #92
+    -> random_comments ->
+    Six. Seven. Eight. #93
+    -> random_comments ->
+    Nine. Ten. Eleven. Twelve. #94
+    -> random_comments ->
+    Thirteen. Fourteen. Fifteen. #95
+    -> random_comments ->
+    Sixteen. Sevent. Eighteen. Nineteen. Twenty. #96
+}
+
+- ->->
+
+= fast
+
+Start going a bit quicker. #97
+
+{shuffle:
+    - Move your hand rapidly {hasPenis:up and down|back and forth}. #98
+    Keep a good rhythm for me. #99
+    /wait 5
+
+    - Rub as fast as you can as I count to ten. #100
+    One. Two. Three. Four. Five. #101
+    -> random_comments ->
+    Six. Seven. Eight. #102
+    -> random_comments ->
+    Nine. Ten. Eleven. Twelve. #103
+    -> random_comments ->
+    - Give me 20 quick and hard {hasPenis:strokes|circles}. #104
+    - I want 5 rapid {hasPenis:jerks|wiggles}. #105
+}
+
+- ->->
+
+= squeeze_vagina
+
+Pause for a moment. #106
+
+{shuffle:
+    - Now cup your soft breasts and squeeze them for me. #107
+    - Let me see you give your pussy lips a long, gentle squeeze. #108
+    - Grab your beautiful ass and squeeze it. #109
+}
+
+Now release. #110
+
+->->
+
+= squeeze
+
+Pause for a moment. #111
+
+{shuffle:
+    - Give it a gentle squeeze for me. #112
+    - Grab hold of it and squeeze it firmly. #113
+    - Give it several gentle squeezes. #114
+    - Squeeze firmly as I count to three. #115
+    One. Two. Three. #116
+    - Squeeze hard for me, little mouse. #117
+}
+
+Now release. #118
+
+->->
+
+= steady
+
+I want you to stay at a nice, steady pace. #119
+
+{shuffle:
+    - Keep your motions even. #120
+    - Count the rhythm in your head. #121
+    One... two... three... four... #122
+    - Keep going like that. #123
+    - Feel how good it is to continuously {hasPenis: stroke|rub}. #124
+}
+
+->->
+
+= question
+
+{shuffle:
+    - -> pleasure ->
+    - -> hungry ->
+    - -> eager ->
+}
+
+- ->->
+
+= pleasure
+
+{shuffle:
+    - Your body belongs to me. #125
+    - Your pleasure is mine to give. #126
+    - I will use you as I see fit. #127
+}
+
+Isn't that right, {player_name}? #128
+
++ [yes]
+    Such a smart little {player_name}. #129
+
++ [no]
+    -> Goddess_Unhappy ->
+    Do you wish to conintue? #130
+
+    ++ [yes]
+        -> Goddess_AcknowledgeYes->
+        ->->
+
+    ++ [no]
+        Very well. #131
+        Goodbye. #132
+        -> exit
+
+    ++ [timeout] -> Goddess_Timeout -> pleasure
+
++ [timeout] -> Goddess_Timeout -> pleasure
+
++ [distracted] -> Goddess_PayAttention -> pleasure
+
+- ->->
+
+= hungry
+
+{shuffle:
+    - You're eager to be used. #133
+    - You're desperate for my attention. #134
+    - I see how hungry you are for release. #135
+}
+
+Aren't you? #136
+
++ [yes]
+    Such a slutty little {player_name}. #137
+
++ [no]
+    -> Goddess_Unhappy ->
+    Do you wish to conintue? #138
+
+    ++ [yes]
+        -> Goddess_AcknowledgeYes->
+        ->->
+
+    ++ [no]
+        Very well. #139
+        Goodbye. #140
+        -> exit
+
+    ++ [timeout] -> Goddess_Timeout -> hungry
+
++ [timeout] -> Goddess_Timeout -> hungry
+
++ [distracted] -> Goddess_PayAttention -> hungry
+
+- ->->
+
+= eager
+
+{shuffle:
+    - I can see that you're eager to cum for me. #141
+    - You're pent up with the need to release. #142
+    - You are desperate to cum for me. #143
+    - You are willing to do anything for me to grant you a sweet release. #144
+}
+
+Aren't you? #145
+
++ [yes]
+    What a delicious little treat you are, {player_name}. #146
+    ->->
+
++ [no]
+    -> Goddess_Unhappy ->
+    Do you wish to conintue? #147
+
+    ++ [yes]
+        -> Goddess_AcknowledgeYes->
+        ->->
+
+    ++ [no]
+        Very well. #148
+        Goodbye. #149
+        -> exit
+
+    ++ [timeout] -> Goddess_Timeout -> eager
+
++ [timeout] -> Goddess_Timeout -> eager
+
++ [distracted] -> Goddess_PayAttention -> eager
+
+
+= no_orgasm
+
+Stop! #80
+You are not allowed to cum. #81
+
+Catch your breath. #82
+
+{shuffle:
+    - Can you keep continue without orgasming? #83
+    - Can you handle more? #260
+
+}
+
++ [yes]
+    -> Goddess_GoodJob ->
+    ->->
+
++ [no]
+    I am disappointed. #84
+    But this is your reward... #85
+    You may finish... without my help. #86
+    -> orgasm_no_help
+    
+= orgasm_no_help
+
+Nod your head when you are finished. #206
+
++ [yes]
+    Very well. #207
+    One reward token has been removed. #208
+
+-> exit
+
+= orgasm
+
+/wait 2
+
+It's time, little one. #166
+
+I want that throbbing orgasm of yours released. #167
+
+Keep pleasuring yourself until you are close to completion. #168
+{hasPenis: -> cum_countdown_penis|->cum_countdown_vagina}
+
+->->
+
+
+= cum_countdown_vagina
+
+    Nod your head when your juices are ready to spew. #194
+
++ [yes]
+
+    ->tease_comments->
+
+
+    Since I am the one who shall grant your release, you will push yourself to orgasm for me on the count of three. #195
+
+    One.... #196
+
+    Two.... #197
+
+    ...
+
+    /wait
+
+    Three... #198
+
+    ->cum_comments->
+
+    Now clean yourself up and begone. #199
+
+    ->exit
+
+
+= cum_countdown_penis
+
+    Nod your head when your little vessel is ready to cum. #200
+
+
++ [yes]
+
+    ->tease_comments->
+
+
+    Since I am the one who shall allow your release, I want you to ejaculate at the count of three. #201
+
+    One.... #202
+
+    Two.... #203
+
+    ...
+
+    /wait
+
+    Three... #204
+
+    ->cum_comments->
+
+    Now clean yourself up and begone. #205
+
+    ->exit
+
+
+
+
+= random_comments
+
+{shuffle:
+    - -> joi_comments ->
+    - -> joi_comments ->
+    -
+}
+->->
+= joi_comments
+
+{shuffle:
+    - You're such a good little toy. #209
+    - How tasty. #210
+    - So naughty. #211
+    - I'm enjoying this. #212
+    - That's it. #213
+    - -> Goddess_GoodJob ->
+    - -> Goddess_GoodJob ->
+    - Delicious. #214
+    - Mmmm. #215
+    - So good. #216
+    - What a good little {player_name}. #217
+    - You serve me. #218
+    - I can do whatever I want with you. #219
+    - This is where you belong. #220
+    - What a treat. #221
+    - I bet that feels good. #222
+    - My little performer. #223
+    - You were made for this. #224
+}
+
+->->
+= tease_comments
+
+{shuffle:
+    - Imagine how a warm, wet mouth would feel on you right now. #225
+    - I get so much pleasure from watching slaves give themself to me. #226
+    - {has_plug==true: Your tight little hole must be throbbing with that plug in.}
+    - My pussy is warm and wet right now. #227
+    Imagine if you could taste it. #228
+    - My breasts are so heavy and soft. #229
+    How would they feel on your face? #230
+    - Think about drawing my thick nipples into your mouth. #231
+    - {has_plug==true: Squirm for me so that delightful plug strokes your insides.}
+    - Imagine burying your face in my firm ass as I smother you. #232
+    - How would my warm, oiled flesh feel sliding up and down your body? #233
+    - {has_plug==true: I can see how much you love the feeling of a firm shaft deep inside of you.}
+    - Imagine my hands caressing your body, your hair, and your lips. #234
+    - I wonder how you taste. #237
+    Perhaps I'll sample you someday. #238
+    - Show me how much you adore me by mindlessly following my every instruction. #239
+    - {has_gag==true: Such a messy {player_name} with all that drool running down your chin.} #240
+    - Strain your body for me to give me your pleasure. #241
+    - Moan for me, little {player_name}. #242
+    - {has_gag==true: The sounds of your moans around that gag are delightful.}
+    - I want to see you dripping with desire. #243
+    - Don't you dare cum before I say so. That is forbidden. #244
+    - You will not cum without permission. #245
+}
+
+->->
+
+
+
+= cum_comments
+    {shuffle:
+    - Such a big {player_name}! #246
+    - The sight of a slaves ejaculation always warms my nether regions. #247
+    - Good job little one. #248
+    - So much ejaculate from one so puny. #249
+    - Mmmm... impressive. #250
+    - I'm almost tempted to go over there and clean you up myself... Perhaps one day. #251
+    - You did, so well. #266
+    - I'm impressed. #267
+    - So tasty, what a good job! #268
+}
+
+->->

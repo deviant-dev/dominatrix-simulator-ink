@@ -42,14 +42,14 @@ That's what you want, isn't it? #06
 /perform idle_tease amused 65
 For me to give you some special attention? #07
 
-  +[yes]
++[yes]
     /perform do_shake_finger amused 70
     Don't worry. #08
 
     /perform tease_caress_breast_right aroused 65
     I'll give you some <i>very</i> special attention today. #09
 
-  +[no]
++[no]
     -> Nega_Unhappy ->
     /perform react_dismissive skeptical 65
     Yes you do. #10
@@ -57,8 +57,8 @@ For me to give you some special attention? #07
     /perform react_point_at_player_angry disgusted 55
     That's why you always come back. #11
 
- + [timeout] -> Nega_Timeout -> attention
- + [distracted] -> Nega_PayAttention -> attention
++ [timeout] -> Nega_Timeout -> attention
++ [distracted] -> Nega_PayAttention -> attention
 
 //Nega leans in and whispers in the player's ear
 
@@ -69,19 +69,19 @@ Have you ever been the star of your own photo shoot? #12
 
 /perform idle_swaying excited 55
 
-  +[yes]
++[yes]
     /perform react_scoffs skeptical 80
     Not like this, you haven't. #13
 
-  +[no]
++[no]
     /perform do_fist_pump excited 80
     Then you're in for a real treat! #14
 
- + [timeout] -> Nega_Timeout -> attention
- + [distracted] -> Nega_PayAttention -> attention
++ [timeout] -> Nega_Timeout -> attention
++ [distracted] -> Nega_PayAttention -> attention
 
 - (camera)
- /perform idle_camera happy 50
+/perform idle_camera happy 50
 {shuffle:
     - Time to smile for the camera, bitch! #15
     - I need more photos for my collection. #16
@@ -143,8 +143,8 @@ Did you enjoy it? #23
         /perform talk_threaten angry 75
         Then fucking do what you're told! #32
 
- + [timeout] -> Nega_Timeout -> enjoy
- + [distracted] -> Nega_PayAttention -> enjoy
++ [timeout] -> Nega_Timeout -> enjoy
++ [distracted] -> Nega_PayAttention -> enjoy
 
 
 - /perform idle_skeptical
@@ -219,8 +219,8 @@ Turn around, bend over and present your ass to me! #42
     That's not right! Try again! #43
     -> ass
 + { tries >= 2 } [timeout]
-     -> Nega_CheckIfInterested
-     -> ass
+    -> Nega_CheckIfInterested
+    -> ass
 
 - /emotion amused 40
 -> take_photo ->
@@ -298,12 +298,12 @@ Let me see that filthy {hasPenis: cock|pussy} of yours. #55
 /wait
 
 {shuffle:
-     - It's just so {hasPenis: tiny|flappy}! #56
-     - Just further proof what a desperate fucktoy you are! #57
- }
+    - It's just so {hasPenis: tiny|flappy}! #56
+    - Just further proof what a desperate fucktoy you are! #57
+}
 //nega laughs
 /perform idle_camera amused
--> Nega_GoodJob.Photo ->
+-> Nega_GoodJob.EmoteOnly ->
 
 /emotion disgusted 50
 -> take_photo ->
@@ -338,12 +338,12 @@ That will be perfect for photos! #62
 /wait
 
 {shuffle:
-     - What a bitch in heat! #63
-     - You'll take a fucking in any position I tell you to. #64
- }
+    - What a bitch in heat! #63
+    - You'll take a fucking in any position I tell you to. #64
+}
 //nega laughs
 /perform idle_camera amused
--> Nega_GoodJob.Photo ->
+-> Nega_GoodJob.EmoteOnly ->
 
 /emotion disgusted 50
 -> take_photo ->
@@ -376,12 +376,12 @@ Spread those knees! #68
 /wait
 
 {shuffle:
-     - You're only good enough for me to wipe my boots on. #69
-     - So many delicious holes to fuck up! #70
- }
+    - You're only good enough for me to wipe my boots on. #69
+    - So many delicious holes to fuck up! #70
+}
 //nega laughs
 /perform idle_camera amused
--> Nega_GoodJob.Photo ->
+-> Nega_GoodJob.EmoteOnly ->
 
 /emotion disgusted 50
 -> take_photo ->
@@ -415,13 +415,13 @@ the pathetic wretch you are. #73
 /wait
 
 {shuffle:
-     - What a perfect position for shoving my foot up your ass. #74
-     - So worthless! Your face belongs on the ground. #75
- }
+    - What a perfect position for shoving my foot up your ass. #74
+    - So worthless! Your face belongs on the ground. #75
+}
 
 //nega laughs
 /perform idle_camera amused
--> Nega_GoodJob.Photo ->
+-> Nega_GoodJob.EmoteOnly ->
 
 /emotion disgusted 50
 -> take_photo ->
@@ -454,12 +454,12 @@ Eager for the bite of my rope. #78
 /wait
 
 {shuffle:
-     - Imagine your wrists branded with the coils of my rope. #79
-     - So eager to be a lowly slave! #80
- }
+    - Imagine your wrists branded with the coils of my rope. #79
+    - So eager to be a lowly slave! #80
+}
 //nega laughs
 /perform idle_camera amused
--> Nega_GoodJob.Photo ->
+-> Nega_GoodJob.EmoteOnly ->
 
 /emotion disgusted 50
 -> take_photo ->

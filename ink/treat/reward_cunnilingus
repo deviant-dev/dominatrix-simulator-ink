@@ -1,0 +1,204 @@
+=== treat_reward_cunnilingus ===
+-> select_gender_check ->
+~ setScene(reward_scene, Treat, "treat_reward_cunnilingus", -> treat_reward_cunnilingus)
+
+-> scene_setup -> intro
+
+= scene_setup
+/scene Hell.CunnilingusIntro
+/music treat
+/ambient none
+/character treat treat_chair_idle_spread happy 40
+->->
+
+
+= intro
+
+- (approach)
+Come over here, {player_name}. #01
+
+-> continue ->
+
++ [move:approach]
++ [timeout] -> Treat_CheckIfInterested.EmoteOnly -> approach
++ [distracted] -> Treat_PayAttention.EmoteOnly -> approach
+
+- (kneel)
+/perform treat_chair_point_down aroused 65
+Kneel between my legs. #02
+
++ [pose:kneel]
++ [timeout] -> Treat_CheckIfInterested.EmoteOnly -> kneel
+
+- -> Treat_GoodJob.EmoteOnly ->
+
+/perform treat_chair_idle_spread happy 65
+{shuffle:
+    - I have something special for you today. #03
+    - You are a lucky {player_name}. #04
+}
+
+- (mouth)
+
+{shuffle:
+    - You are going to show me how well #05
+    you can make me orgasm with your mouth. #06
+    - You get to taste me and make me cum. #07
+    - I want you to use your mouth to make me cum. #08
+}
+
+/perform treat_chair_ask_question amused 60
+Does that sound nice, {player_name}? #09
+
++ [yes]
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+
++ [no] 
+    -> Treat_Unhappy.EmoteOnly ->
+    If you don't want this reward, #10
+    you don't have to stay. #11
+    
+    -- (leave)
+    Are you sure you want to leave? #12
+    
+    ++ [yes]
+        Very well. #13
+        Goodbye. #14
+        -> exit
+    
+    ++ [no]
+        How nice. #15
+        Then we can have some fun together. #16
+        -> begin
+    
+    ++ [timeout] -> Treat_Timeout.EmoteOnly -> leave
+    
+    ++ [distracted] -> Treat_PayAttention.EmoteOnly -> leave
+ 
++ [timeout] -> Treat_Timeout.EmoteOnly -> mouth
+
++ [distracted] -> Treat_PayAttention.EmoteOnly -> mouth
+
+-
+-> take_reward
+
+
+= load_begin
+-> scene_setup -> begin
+
+
+= take_reward
+
+/perform treat_chair_idle_hand_out aroused 35
+-> Treat_Take_Reward_Prompt ->
+
++ [pose:present_wrist_reward_kneel]
+    /perform treat_chair_do_swipe_hand excited 50
+    /wait 1
+    ~removeReward(->load_begin)
+    -> Treat_AcknowledgeYes.EmoteOnly -> begin
+
++ [no]
+    /perform treat_chair_idle_spread
+    -> Treat_CheckIfInterested.EmoteOnly -> take_reward
++ [timeout]
+    /perform treat_chair_idle_spread
+    -> Treat_Timeout.EmoteOnly -> take_reward
++ [distracted]
+    /perform treat_chair_idle_spread
+    -> Treat_PayAttention.EmoteOnly -> take_reward
+
+= begin
+/character treat treat_chair_ask_question skeptical 50
+Would you like to pleasure yourself at the same time? #17
+
++ [yes]
+    ~ wants_masturbate = true
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    You deserve to really enjoy this reward. #18
+    Wait until I tell you when to touch yourself. #19
+    
++ [no]
+    You don't have to. #20
+    You can focus all your attention on me. #21
+    
++ [timeout] /log ask_pleasure -> Treat_Timeout.EmoteOnly -> begin
+
++ [distracted] -> Treat_PayAttention.EmoteOnly -> begin
+
+-
+
+{shuffle:
+    - Just follow all of my instructions to make me cum. #22
+    - I will tell you exactly how to make me cum. #23
+}
+
+
+First, I will undress #24
+and then you may begin. #25
+
+
+You may touch yourself #26
+after you start on me. #27
+
+-> minigame
+
+
+= load_minigame
+-> scene_setup -> minigame
+
+
+= minigame
+/scene Hell.Cunnilingus
+/character treat treat_chair_cun_spread aroused 50
+
++ [minigame:success] -> finish
+
+
+= finish
+/scene Hell.CunnilingusComplete
+/character treat treat_chair_idle_spread aroused 70
+
+What a delight, {player_name}. #28
+
+{shuffle:
+    - I'm very proud of you. #29
+    - I'm so impressed. #30
+    - You should be proud of yourself. #31
+}
+
+-> player_orgasm
+
+= player_orgasm
+
+/perform treat_chair_ask_question amused 45
+{wants_masturbate:
+    {shuffle:
+        - Did you finish with me? #32
+        - Did you orgasm? #33
+        - Did you cum, little one? #34
+    }
+    -> player_orgasm_answer ->
+}
+-> Treat_Reward_Complete.EmoteOnly -> exit
+
+
+= player_orgasm_answer
+
+/perform treat_chair_idle_spread happy 75
++ [yes]
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    I like it when you enjoy yourself too. #35
+    
++ [no]
+    That's alright. #36
+    You may finish later. #37
+    
++ [timeout] /log player_orgasm_answer -> Treat_Timeout.EmoteOnly -> player_orgasm
+
++ [distracted] -> Treat_PayAttention.EmoteOnly -> player_orgasm
+
+-->->
+
+
+

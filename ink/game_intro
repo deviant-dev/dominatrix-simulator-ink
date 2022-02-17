@@ -1,27 +1,31 @@
 === game_intro ===
-
+//Initial save for the player
+//Set the Tutorial and Scene status, then create Save File
 ~ tutorial_step = at_game_intro
 ~ setScene(intro_scene, None, "game_intro", -> game_intro)
 ~ save(-> game_intro)
 
+//Load Unity SceneName.SubScene
+//Load Music and Ambient Noise
 /scene EntryDark.TitleScreen
 /music entry
 /ambient none
 
 /log Starting game intro.
 
-+ [wait:6] -> verify_age
 
-
+//Comfirm player is 18+
++ [wait:6] 
+    -> verify_age
 = verify_age
 /scene EntryDark.VerifyAge
-
-+ [yes] -> instructions
++ [yes] 
+    -> instructions
 + [no]
 
 - /scene EntryDark.Empty
 /notify text="Sorry. No children allowed." #note11
-    
+
 + [move]
 + [wait:20]
 
@@ -29,8 +33,9 @@
 -> END
 
 
-= instructions
 
+= instructions
+//Engage player
 /scene EntryDark.Instructions
 /character Treat
 /music entry
@@ -48,8 +53,10 @@ Hello. #01
 Would you like to play a little game? #02
 
 
-+ [yes] -> lets_play
-+ [no] -> answer_no
++ [yes] 
+    -> lets_play
++ [no] 
+    -> answer_no
 + [continue]
 
 - (nod_info)
@@ -61,8 +68,9 @@ Nod your head for "yes." #03
 Shake your head for "no." #04
 /perform idle
 
-+ [yes!] -> lets_play
-+ [no!]
++ [yes!] 
+    -> lets_play
++ [no]
     -- (answer_no)
     No?! #27
     But I'm just certain you'll enjoy it. #28
@@ -71,6 +79,7 @@ Shake your head for "no." #04
 + [timeout] -> nod_info
 
 
+//Inform Player
 = lets_play
 
 /perform talk_behold happy 50
@@ -106,17 +115,17 @@ Give it a try. #09
 // + [timeout:15] -> journal_loop
 
 - /action close_journal
-/perform do_arm_raise happy
+/perform do_arm_raise happy 60
 Perfect! #12
 
 /action hide_instructions
 /perform talk_thoughtful amused 50
 Now... #13
 If you want the most authentic experience, #14
-/perform talk_lean_forward amused
+/perform talk_lean_forward aroused 25
 strip naked and begin with no clothes on. #15
 
-/perform idle_tease aroused
+/perform idle_tease aroused 75
 Wouldn't you just love to do that for me? #16
 
 // Give player ability to answer, but continue either way.
@@ -149,12 +158,15 @@ Are you ready? #20
     -> check_ready        
 
 
+//Encourage Player
 = ready
 
 /perform react_thankful happy 50
 Wonderful. #21
+
 /perform do_stand_to_right
 Have fun! #22
+
 /perform idle_stand_to_right
 /wait 1
 

@@ -1,0 +1,517 @@
+TODO: rewrite for Ms. Treatment
+
+=== Treat_Tempo_Comments ===
+= timeout
+
+/emotion annoyed 50
+
+{shuffle:
+    - Perform. #01
+    - Do something. #02
+    - I'm waiting. #03
+    - You hesitate. #04
+}
+
+->->
+
+//asking the player to change speed
+= change_to_slower
+
+/emotion amused 50
+
+{shuffle:
+    - I want you to slow down. #05
+    - Switch to a nice, slow pace. #06
+    - Take your time. #07
+    Slow down. #08
+    - Now, go slower. #09
+}
+
+->->
+
+= change_to_faster
+
+/emotion excited 50
+
+{shuffle:
+    - I want you to go a little faster. #10
+    - A little faster. #11
+    - Get into it. Go faster. #12
+    - Put more energy into it. Speed up. #13
+}
+->->
+
+//correcting the player for going the wrong speed, lost arousal level
+= too_fast
+
+/emotion angry 50
+
+//record non-verbal sounds to indicate disappointment at too fast
+
+{shuffle:
+    - Patience. Slow down. #14
+    - Tsk tsk. Go slower. #15
+    - Slow down. You're too eager. #16
+    - cc: (unhappy grunts) #17
+    - cc: (unhappy grunts) #18
+    - cc: (unhappy groan) #19
+    - cc: (unhappy groan) #20
+}
+->->
+
+= too_slow
+
+/emotion disgusted 50
+
+//record non-verbal sounds to indicate disappointment at too slow
+{shuffle:
+    - Don't lose focus. Speed up. #21
+    - I don't want it that slow. #22
+    - That's too slow. #23
+    - More enthusiasm, please. Faster. #24
+    - cc: (disappointed grunts) #25
+    - cc: (disappointed grunts) #26
+    - cc: (disappointed groan) #27
+    - cc: (disappointed groan) #28
+}
+->->
+
+//comments about speed delivered at different arousal levels keeping her voice pitch at the right arousal level
+= just_right_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - (sigh) Very nice. #29
+    - Perfect. #30
+    - Don't change anything. #31
+    - That's just right. #32
+}
+
+->->
+
+= just_right_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - Ahhhh. That feels very nice. #33
+    - Mmmm. You please me, little one. #34
+    - Oh yes. I want it just like that. #35
+    - You're doing very well. Keep going like that. #36
+}
+
+->->
+
+= just_right_arousal_high
+
+/emotion aroused 100
+
+{shuffle:
+    - Ahhhhh. Yes! That is so damn good. #37
+    - That is absolutely perfect. #38
+    - I'm really enjoying your service, little one. #39
+    - You know exactly what I like. #40
+}
+
+->->
+
+//
+= continue_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - So relaxing. #41
+    - You have talent. #42
+    - You impress me. #43
+    - cc: (content moan) #44
+    - cc: (content moan) #45
+    - cc: (content moan) #46
+    - cc: (content sigh) #47
+    - cc: (content sigh) #48
+    - cc: (content sigh) #49
+}
+
+->->
+
+= continue_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - Ahhhh. I'm aching for release! #50
+    - That feels so, so good! #51
+    - You're overwhelming me! #52
+    - cc: (eager moan) #53
+    - cc: (eager moan) #54
+    - cc: (eager moan) #55
+    - cc: (eager sigh) #56
+    - cc: (eager sigh) #57
+    - cc: (eager sigh) #58
+}
+->->
+
+= continue_arousal_high
+
+/emotion aroused 100
+
+{shuffle:
+    - You've pushed me to the brink, little one! #59
+    - I'm almost there! #60
+    - You're going to make me cum! #61
+    - cc: (excited moan) #62
+    - cc: (excited moan) #63
+    - cc: (excited moan) #64
+    - cc: (excited sigh) #65
+    - cc: (excited sigh) #66
+    - cc: (excited sigh) #67
+}
+->->
+
+= orgasming
+
+/emotion aroused 100
+
+{shuffle:
+    - That's it... that's it... #68
+    I'm cumming! #69
+    - Ahhhh! Yes! Yes! #70
+    - You're making me cum! #71
+}
+
+{shuffle:
+    - cc: (long orgasmic moans)#72
+    - cc: (short orgasmic moans) #73
+    - cc: (shuddering orgasmic moans) #74
+}
+
+->->
+
+// Cunnilingus-specific tempo comment lines.
+=== Treat_Tempo_Cunnilingus_Comments ===
+
+= timeout
+
+/emotion annoyed 50
+
+{shuffle:
+    - I can't feel your tongue! #01
+    - Where's that pretty little mouth of yours? #02
+    - {wants_masturbate: Stop touching yourself when you're not pleasuring me.| -> timeout } #03
+    - {wants_masturbate: No pleasure for you, if there's no pleasure for me.| -> timeout } #04
+    - -> Treat_Tempo_Comments.timeout ->
+    - -> Treat_Tempo_Comments.timeout ->
+    - -> Treat_Tempo_Comments.timeout ->
+}
+-> END
+
+= change_to_slower
+
+/emotion amused 50
+
+{shuffle:
+    - Let your tongue slowly drag over my lips. #05
+    - Now, take your time with your tongue. #06
+    - Slow down. #07
+    Enjoy my taste. #08
+    - {wants_masturbate: Go nice and slow on both of us. | -> change_to_slower } #09
+    - {wants_masturbate: Switch to a slow pace with your mouth and your hand. | -> change_to_slower } #10
+    - -> Treat_Tempo_Comments.change_to_slower ->
+    - -> Treat_Tempo_Comments.change_to_slower ->
+    - -> Treat_Tempo_Comments.change_to_slower ->
+}
+-> END
+
+= change_to_faster
+
+/emotion excited 50
+
+{shuffle:
+    - Move your tongue faster. #11
+    - Lick faster, like you're hungry. #12
+    - {wants_masturbate: Move faster with your tongue and your hand.| -> change_to_faster } #13
+    - {wants_masturbate: Go a little faster on both of us. | -> change_to_faster } #14
+    - -> Treat_Tempo_Comments.change_to_faster ->
+    - -> Treat_Tempo_Comments.change_to_faster ->
+    - -> Treat_Tempo_Comments.change_to_faster ->
+}
+-> END
+
+= too_fast
+
+/emotion angry 75
+
+{shuffle:
+    - Not so hungry. Go slower. #15
+    - Don't rush. Enjoy my taste. #16
+    - {wants_masturbate: You're going too fast. Slow your tongue and hand down.| -> too_fast } #17
+    - {wants_masturbate: You need go slower on us both. | -> too_fast } #18
+    - -> Treat_Tempo_Comments.too_fast ->
+    - -> Treat_Tempo_Comments.too_fast ->
+    - -> Treat_Tempo_Comments.too_fast ->
+}
+-> END
+
+= too_slow
+
+/emotion disgusted 75
+
+{shuffle:
+    - Speed up your tongue, little one! #19
+    - You slack. More eagerness with your tongue. #20
+    - {wants_masturbate: No, no. Faster with your hand and mouth. | -> too_slow } #21
+    - {wants_masturbate: You're not pleasuring me, or yourself, fast enough. | -> too_slow } #22
+    - -> Treat_Tempo_Comments.too_slow ->
+    - -> Treat_Tempo_Comments.too_slow ->
+    - -> Treat_Tempo_Comments.too_slow ->
+}
+-> END
+
+= just_right_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - Your mouth feels just right. #23
+    - I like what you're doing with your mouth. #24
+    - {wants_masturbate: Maintain that speed with your mouth and hand.| -> just_right_arousal_low } #25
+    - {wants_masturbate: Oh yes. This is just the right tempo to get us both quivering.| -> just_right_arousal_low } #26
+    - -> Treat_Tempo_Comments.just_right_arousal_low ->
+    - -> Treat_Tempo_Comments.just_right_arousal_low ->
+    - -> Treat_Tempo_Comments.just_right_arousal_low ->
+}
+
+-> END
+
+= just_right_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - Oooo. You're making me very wet. #27
+    - Your mouth is doing wonderful things to me. #28
+    - {wants_masturbate: Keep us both aroused and don't change anything.| -> just_right_arousal_medium} #29
+    - {wants_masturbate: Your pace is so good. Making us both vibrate with pleasure.| -> just_right_arousal_medium} #30
+    - -> Treat_Tempo_Comments.just_right_arousal_medium ->
+    - -> Treat_Tempo_Comments.just_right_arousal_medium ->
+    - -> Treat_Tempo_Comments.just_right_arousal_medium ->
+}
+-> END
+
+= just_right_arousal_high
+
+/emotion aroused 100
+
+{shuffle:
+    - You are masterful with your tongue. #31
+    - Your mouth feels so good. #32
+    - Keep doing that and you'll make me cum. #33
+    - {wants_masturbate: You're going to make us both cum at this pace.| -> just_right_arousal_high} #34
+    - {wants_masturbate: I want you to cum with me. Stay moving just like that.| -> just_right_arousal_high} #35
+    - -> Treat_Tempo_Comments.just_right_arousal_high ->
+    - -> Treat_Tempo_Comments.just_right_arousal_high ->
+    - -> Treat_Tempo_Comments.just_right_arousal_high ->
+}
+-> END
+
+= continue_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - Such a warm tongue. #36
+    - Mmm. Your mouth feels good. #37
+    - {wants_masturbate: Move your hand at the same speed as your mouth.| -> continue_arousal_low} #38
+    - {wants_masturbate: That's a nice speed to get us both worked up.| -> continue_arousal_low} #39
+    - -> Treat_Tempo_Comments.continue_arousal_low ->
+    - -> Treat_Tempo_Comments.continue_arousal_low ->
+    - -> Treat_Tempo_Comments.continue_arousal_low ->
+}
+-> END
+
+= continue_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - Oh yes. Move your tongue just like that. #40
+    - I love how your mouth feels. #41
+    - {wants_masturbate: This is perfect. I hope you're throbbing as much as I am.| -> continue_arousal_medium} #42
+    - {wants_masturbate: So satisfying. Keep your hand in time to your tongue.| -> continue_arousal_medium} #43
+    - -> Treat_Tempo_Comments.continue_arousal_medium ->
+    - -> Treat_Tempo_Comments.continue_arousal_medium ->
+    - -> Treat_Tempo_Comments.continue_arousal_medium ->
+}
+-> END
+
+= continue_arousal_high
+
+/emotion aroused 75
+
+{shuffle:
+    - You're going to make me cum with your tongue! #44
+    - Your mouth is doing all the right things! #45
+    - {wants_masturbate: I hope you're ready to cum when I am. Almost there!| -> continue_arousal_high} #46
+    - {wants_masturbate: You're going to make me explode. Be ready to join me!| -> continue_arousal_high} #47
+    - -> Treat_Tempo_Comments.continue_arousal_high->
+    - -> Treat_Tempo_Comments.continue_arousal_high->
+    - -> Treat_Tempo_Comments.continue_arousal_high->
+}
+-> END
+
+= orgasming
+
+/emotion aroused 100
+
+{shuffle:
+    - Your mouth is making me cum! #48
+    - That tongue of yours is making me spasm! #49
+    - {wants_masturbate: Oh yes!! Cum with me, little one!| -> orgasming} #50
+    - {wants_masturbate: Ahhhh. That's it!! Time for us both to orgasm!| -> orgasming} #51
+    - -> Treat_Tempo_Comments.orgasming ->
+    - -> Treat_Tempo_Comments.orgasming ->
+    - -> Treat_Tempo_Comments.orgasming ->
+}
+-> END
+
+
+// Sex-specific tempo comment lines.
+=== Treat_Tempo_Sex_Comments ===
+
+= timeout
+
+/emotion annoyed 50
+
+{shuffle:
+    - -> Treat_Tempo_Comments.timeout ->
+    - -> Treat_Tempo_Comments.timeout ->
+    - -> Treat_Tempo_Comments.timeout ->
+}
+-> END
+
+= change_to_slower
+
+/emotion amused 50
+
+{shuffle:
+    - -> Treat_Tempo_Comments.change_to_slower ->
+    - -> Treat_Tempo_Comments.change_to_slower ->
+    - -> Treat_Tempo_Comments.change_to_slower ->
+}
+-> END
+
+= change_to_faster
+
+/emotion excited 50
+
+{shuffle:
+    - -> Treat_Tempo_Comments.change_to_faster ->
+    - -> Treat_Tempo_Comments.change_to_faster ->
+    - -> Treat_Tempo_Comments.change_to_faster ->
+}
+-> END
+
+= too_fast
+
+/emotion angry 75
+
+{shuffle:
+    - -> Treat_Tempo_Comments.too_fast ->
+    - -> Treat_Tempo_Comments.too_fast ->
+    - -> Treat_Tempo_Comments.too_fast ->
+}
+-> END
+
+= too_slow
+
+/emotion disgusted 75
+
+{shuffle:
+    - -> Treat_Tempo_Comments.too_slow ->
+    - -> Treat_Tempo_Comments.too_slow ->
+    - -> Treat_Tempo_Comments.too_slow ->
+}
+-> END
+
+= just_right_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - -> Treat_Tempo_Comments.just_right_arousal_low ->
+    - -> Treat_Tempo_Comments.just_right_arousal_low ->
+    - -> Treat_Tempo_Comments.just_right_arousal_low ->
+}
+-> END
+
+= just_right_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - -> Treat_Tempo_Comments.just_right_arousal_medium ->
+    - -> Treat_Tempo_Comments.just_right_arousal_medium ->
+    - -> Treat_Tempo_Comments.just_right_arousal_medium ->
+}
+-> END
+
+= just_right_arousal_high
+
+/emotion aroused 100
+
+{shuffle:
+    - -> Treat_Tempo_Comments.just_right_arousal_high ->
+    - -> Treat_Tempo_Comments.just_right_arousal_high ->
+    - -> Treat_Tempo_Comments.just_right_arousal_high ->
+}
+-> END
+
+= continue_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - -> Treat_Tempo_Comments.continue_arousal_low ->
+    - -> Treat_Tempo_Comments.continue_arousal_low ->
+    - -> Treat_Tempo_Comments.continue_arousal_low ->
+}
+-> END
+
+= continue_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - -> Treat_Tempo_Comments.continue_arousal_medium ->
+    - -> Treat_Tempo_Comments.continue_arousal_medium ->
+    - -> Treat_Tempo_Comments.continue_arousal_medium ->
+}
+-> END
+
+= continue_arousal_high
+
+/emotion aroused 75
+
+{shuffle:
+    - -> Treat_Tempo_Comments.continue_arousal_high->
+    - -> Treat_Tempo_Comments.continue_arousal_high->
+    - -> Treat_Tempo_Comments.continue_arousal_high->
+}
+-> END
+
+= orgasming
+
+/emotion aroused 100
+
+{shuffle:
+    - -> Treat_Tempo_Comments.orgasming ->
+    - -> Treat_Tempo_Comments.orgasming ->
+    - -> Treat_Tempo_Comments.orgasming ->
+}
+-> END
+
+
+
+
+

@@ -1,9 +1,7 @@
 /// For actions
 === Headmistress_GoodJob ===
 /character headmistress
-
 { shuffle:
-
     -/perform do_arm_raise amused 50
     Most excellent. #01
 
@@ -41,51 +39,49 @@
     Impressive. #11
 
     // GoodJob with audience.
-    - {headmistress_has_audience:
+    -{headmistress_has_audience:
             /perform idle_skeptical amused 45
             Slaves in this House must be pleasing to <i>Her</i>. #03
         - else:
             -> Headmistress_GoodJob
-      }
-    - {headmistress_has_audience:
+    }
+    -{headmistress_has_audience:
             /perform do_arm_raise happy 55
             You may hold your head high. #08
         - else:
             -> Headmistress_GoodJob
-      }
-    - {headmistress_has_audience:
+    }
+    -{headmistress_has_audience:
             /perform talk_consider aroused 70
             A rousing performance. #10
         - else:
             -> Headmistress_GoodJob
-      }
-    - {headmistress_has_audience:
+    }
+    -{headmistress_has_audience:
             /perform react_thankful happy 55
             I take such joy in my role. #15
         - else:
             -> Headmistress_GoodJob
-      }
-    - {headmistress_has_audience:
+    }
+    -{headmistress_has_audience:
             /perform idle_sassy aroused 40
             Such a delight to behold! #16
         - else:
             -> Headmistress_GoodJob
-      }
-    - {headmistress_has_audience:
+    }
+    -{headmistress_has_audience:
             /perform react_thankful excited 45
             I am overwhelmed with satisfaction. #17
         - else:
             -> Headmistress_GoodJob
-      }
+    }
 }
 
 ->->
 
 === Headmistress_BadJob ===
 /character headmistress
-
 { shuffle:
-
     -/perform talk_one_finger angry 80
     Tsk. Tsk. You can do better. #148
 
@@ -113,32 +109,31 @@
     -/perform talk_one_finger angry 80
     Tsk. Tsk. #03
 
-
     // BadJob with audience
-    - {headmistress_has_audience:
+    -{headmistress_has_audience:
             /perform talk_one_finger angry 70
             I expect a better performance. #156
         - else:
             -> Headmistress_BadJob
-      }
-    - {headmistress_has_audience:
+    }
+    -{headmistress_has_audience:
             /perform react_thankful scared 70
             Your lack of grace is stunning. #152
         - else:
             -> Headmistress_BadJob
-      }
-    - {headmistress_has_audience:
+    }
+    -{headmistress_has_audience:
             /perform talk_annoyed disgusted 80
             You are putting on a poor display. #248
         - else:
             -> Headmistress_BadJob
-      }
-    - {headmistress_has_audience:
+    }
+    -{headmistress_has_audience:
             /perform react_disappointed disgusted 70
             Your audience is disappointed. #157
         - else:
             -> Headmistress_BadJob
-      }
+    }
 
 }
 
@@ -146,9 +141,7 @@
 
 === Headmistress_Unhappy ===
 /character headmistress
-
 { shuffle:
-
     -/perform idle_unhappy_stomp disgusted 80
     Uggh. #247
 
@@ -191,11 +184,10 @@
 
 ->->
 
+//timeout for actions
 === Headmistress_NoAction ===
 /character headmistress
-
 { shuffle:
-
     -/perform talk_lean_forward angry 80
     Perform, mongrel. #01
 
@@ -223,11 +215,10 @@
 
 ->->
 
+//timeout for questions
 === Headmistress_Timeout ===
 /character headmistress
-
 { shuffle:
-
     -/perform talk_lean_forward angry 75
     Respond, wretch. #01
 
@@ -263,7 +254,6 @@
 
 === Headmistress_PayAttention ===
 { shuffle:
-
     -/perform do_shake_finger angry 30
     The focus of your attention must remain on me. #01
 
@@ -323,9 +313,7 @@
 
 === Headmistress_AcknowledgeYes ===
 /character headmistress
-
 { shuffle:
-
     -/perform do_arm_raise happy 55
     Excellent. #01
 
@@ -365,13 +353,40 @@
 
 ->->
 
+=== Headmistress_AcknowledgeNo ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+/character headmistress
+{cycle:
+    -{emoteOnly: /emotion disgust 30|/perform idle_unhappy disgust 30}
+    That's disappointing. 
+
+    -{emoteOnly: /emotion sad 60|/perform react_shrug_long sad 60}
+    What a shame. 
+
+    -{emoteOnly: /emotion angry 65|/perform react_thankful angry 65}
+    <i>She</i> shudders with displeasure.
+
+    -{emoteOnly: /emotion disgusted 25|/perform idle_clasp_hands disgusted 25}
+    You let yourself down.
+
+    -{emoteOnly: /emotion angry 35|/perform react_shake_head_disbelief angry 35}
+    That is most unfortunate.
+    }
+
+->->
+
 === Headmistress_Resume ===
 /character headmistress
 
 //generic responses whenever the Headmistress continues dialogue after a response or action.
 
 { shuffle:
-
     -/perform idle_clasp_hands amused 65
     We shall resume, then. #01
 
@@ -408,7 +423,6 @@
 //generic responses whenever the Headmistress returns from a break or interruption to resume a punishment
 
 { shuffle:
-
     -/perform react_scoffs disgusted 75
     Enough. We shall resume. #01
 
@@ -437,9 +451,7 @@
 
 === Headmistress_GoodSpank ===
 /character headmistress
-
 { shuffle:
-
     -/perform idle_eager aroused 75
     A fine welt is forming. #158
 
@@ -462,10 +474,10 @@
     I suspect that one hurt. #164
 
     - /character crowd oos
-      /character headmistress
+    /character headmistress
 
     - /character crowd gasps
-      /character headmistress
+    /character headmistress
 
 //    - /character headmistress mmms
 TODO: Change this to an 'Mmmm' VO line. -Deviant
@@ -561,10 +573,10 @@ TODO: Change this to an 'Mmmm' VO line. -Deviant
     Your audience is disappointed. #157
 
     - /character crowd boos
-      /character headmistress
+    /character headmistress
 
     - /character crowd gasps
-      /character headmistress
+    /character headmistress
 
     -/perform react_point_at_player_angry angry 80
     Do not dodge my spank, slave! #246
@@ -645,7 +657,7 @@ TODO: decide whether to keep these lines
     You may not stop until I give you leave. #11
 
     -/character crowd boos
-     /character headmistress
+    /character headmistress
 
     -/perform talk_one_finger disgusted 75
     Tsk. Tsk. Next time you will do better. #13
@@ -676,8 +688,8 @@ TODO: decide whether to keep these lines
 
     -/perform talk_behold aroused 75
     Do you think {isBoy:he is|{isGirl:she is|they are}} enjoying {isBoy:himself|{isGirl:herself|themself}}? #03
-     /character crowd cheers
-     /character headmistress
+    /character crowd cheers
+    /character headmistress
 
     -/perform do_smooth_skirt amused 65
     Exhibit control lest your arm tire. #04
@@ -704,21 +716,21 @@ TODO: decide whether to keep these lines
     One must be proud to display their arousal. #11
 
     -/perform react_thankful amused 65
-     /character crowd oos
-     /character headmistress
+    /character crowd oos
+    /character headmistress
     You please our guests with your performance. #12
 
     -/perform talk_lean_forward excited 55
     You have earned this small pleasure. #13
-     /character crowd oos
-     /character headmistress
+    /character crowd oos
+    /character headmistress
 
     -/perform do_arm_raise excited 60
     You are a divine {isBoy:reprobate|harlot}. #15
 
     -/perform talk_behold aroused 75
-     /character crowd cheers
-     /character headmistress
+    /character crowd cheers
+    /character headmistress
     Our guests are frenzied and demand more. #16
 
     -/perform talk_lean_forward excited 55
@@ -744,18 +756,18 @@ TODO: decide whether to keep these lines
     /perform idle_unhappy
         {shuffle:
             - Are you too good to take a punishment, {player_name}? #216
-              Obey instructions. #217
+            Obey instructions. #217
             - A punishment is owed, buffoon. #01
-              Will you comply? #02
+            Will you comply? #02
         }
 
     - scene_type == reward_scene:
     /perform talk_behold
         {shuffle:
             - You would be remiss to turn away from your reward.  #03
-              Shall we continue? #04
+            Shall we continue? #04
             - Perhaps today is not the day you deserve to be rewarded. #05
-              Do you want your reward? #06
+            Do you want your reward? #06
         }
 
     - else:
@@ -764,7 +776,7 @@ TODO: decide whether to keep these lines
         {shuffle:
             - Do you desire to continue, {player_name}?  #08
             - You came here to serve, {isBoy: urchin| moppet}. #09
-              Shall we continue? #10
+            Shall we continue? #10
         }
 }
 
@@ -785,7 +797,7 @@ TODO: decide whether to keep these lines
     /perform idle_unhappy_stomp
         {shuffle:
             - Well? #218
-              You merely drag out the inevitable with your delay. #219
+            You merely drag out the inevitable with your delay. #219
             - Are you going to continue to play the reluctant {player_name}? #220
         }
 
@@ -793,9 +805,9 @@ TODO: decide whether to keep these lines
     /perform talk_behold
         {shuffle:
             - Your passion feeds and time is wasting. #12
-              Shall we continue? #13
+            Shall we continue? #13
             - What a pity you would waist such a gift. #14
-              Shall we resume? #15
+            Shall we resume? #15
         }
 
     - else:
@@ -831,3 +843,203 @@ I have no time for your shenanigans. #222
 /character headmistress do_you_leave_right angry 80
 
 -> exit
+
+=== Headmistress_Reward_Emotion_State ===
+TODO: copy VO from reward_exhibitionism
+TODO: embarassed variable has to be able to set in the scene and it currently doesn't carry over 
+
+- (excited)
+/wait 
+/character headmistress
+/perform talk_question amused 50
+
+{shuffle:
+    - Are you excited to be rewarded in this way, {isBoy: heathen|harlot}? #16
+    - Are you flush with the thrill of such a reward, trinket?
+    - Are you inflamed at the thought of such a reward, harlot?
+}
+
+/perform idle_pleased happy 50
+
++[yes]
+    /character crowd oos
+    ~ addObey()
+    /character headmistress idle happy 50
+    -> Headmistress_AcknowledgeYes ->
+    --/character headmistress react_thankful
+    {shuffle:
+        - Such hedonistic exhibitionism will please <i>Her</i>. #17
+        - Your audience shall delight in the perfection of your performance.
+        - Your libertine nature will be a pleasure to behold! 
+    }
+    
+    /wait 2
+    -> nervous_tease ->->
+
++ [no]
+    /perform idle
+    -> nervous_consent_check
+
++ [timeout] -> Headmistress_Timeout -> excited
++ [distracted] -> Headmistress_PayAttention -> excited
+
+= nervous_consent_check
+
+/perform react_shrug_long amused 75
+{shuffle:
+    - Do you tremble with nervous embarrassment, foible? #20
+    - Does your heart flutter in nervousness at such a reward, moppet?
+    - Are you nervous at the thought of performing such a reward, 
+}
+/perform idle neutral
+
++ [yes]
+    /character crowd jeers
+    /character headmistress react_thankful amused 
+    ~ embarrassed = true
+    {shuffle:
+        - Ahhh. Such delicate sensibilities. #21
+        - What a delicate flower.
+        - Such a tender soul. 
+    }
+    
+    /character headmistress idle neutral
+    Nevertheless. This is your reward. #22
+    -- (continue_consent)
+    /perform talk_question scared 30
+    Do you desire to continue thusly? #23
+
+    ++ [yes]
+        /character crowd oos
+        ~ addObey() 
+        /character headmistress idle_tease aroused 50
+        Oh. This will be a treat. #24
+        {shuffle:
+            - Your embarrassment will only enhance our succor.
+            - The flush of your embarassment will delight!
+        }
+        
+        ->->
+    
+    ++ [no]
+        /character crowd boos
+        /character headmistress do_smooth_skirt angry 50
+        If your discomfort overwhelms you,  #26
+        /perform react_scoffs
+        then this reward is not for you. #27
+        You are dismissed, bauble. #28
+        
+        /character headmistress idle_clasp_hands
+        Keep your reward and return when you are ready. #29
+        -> exit
+
+    ++ [timeout] -> Headmistress_Timeout -> continue_consent
+    ++ [distracted] -> Headmistress_PayAttention -> continue_consent
+    
++ [no]
+    /perform do_smooth_skirt angry 50
+    If your discomfort overwhelms you,  #26
+    /perform react_scoffs
+    then this reward is not for you. #27
+    /perform talk_question neutral
+    Do you desire to continue thusly? #23
+    /perform idle
+        
+    ++ [yes]
+        /character crowd cheers_short
+        ~ addObey() 
+        /character headmistress react_nod_big happy 50
+        -> Headmistress_AcknowledgeYes ->
+        /perform idle_clasp_hands
+    
+        -> Headmistress_Resume ->
+        ->->
+    
+    
+    ++ [no]
+        /character crowd boos
+        /character headmistress react_scoffs angry 50
+        You are dismissed, bauble. #28
+        
+        /perform idle_clasp_hands neutral
+        Keep your reward and return when you are ready. #29
+        -> exit
+
+    ++ [timeout] -> Headmistress_Timeout -> continue_consent
+    ++ [distracted] -> Headmistress_PayAttention -> continue_consent
+
++ [timeout] -> Headmistress_Timeout -> nervous_consent_check
++ [distracted] -> Headmistress_PayAttention -> nervous_consent_check
+
+
+= nervous_tease
+
+/perform react_shrug_long amused 75
+{shuffle:
+    - Do you tremble with nervous embarrassment, foible? #20
+    - Does your heart flutter in nervousness at such a reward, moppet?
+    - Are you nervous at the thought of performing such a reward, 
+}
+
+/perform idle neutral
+
++[yes]
+    /character crowd cheers_short
+    /character headmistress react_thankful aroused 75
+    ~ embarrassed = true
+    {shuffle:
+        - How utterly delightful! #33
+        - -> Headmistress_AcknowledgeYes ->
+        - -> Headmistress_AcknowledgeYes ->
+    }
+    
+    /perform talk_behold
+    {shuffle:
+        - This will quench <i>our</i> refreshment even moreso. #34
+        - More than one of us will feast.
+        - Your performance shall be like fine wine.
+    }
+    
+    ->->
+    
+
++[no]
+    /character crowd cheers_short
+    /character headmistress do_arm_raise happy 75
+    A true performer, students! #30
+    {shuffle:
+        - Our subject enjoys being on display. #31
+        - We have an exhibitionist before us!
+        - Behold our peacock!
+    }
+    
+    ->->
+    
++ [timeout] -> Headmistress_Timeout -> nervous_tease
++ [distracted] -> Headmistress_PayAttention -> nervous_tease
+
+->->
+
+=== Headmistress_Give_Reward ===
+TODO: copy over VO from reward_exhibitionism
+
+- (give_reward)
+/character Headmistress idle_hand_out neutral
+{shuffle:
+    - Time to turn over your Bloodstone, speck. #65
+    - Present your wrist that I may remove your Bloodstone. #66
+    - Thrust your wrist forward to spend one of your Bloodstones. #67
+}
+
+/perform idle neutral
+
++ [pose:present_wrist_reward]
++ [no] -> Headmistress_CheckIfInterested -> give_reward
++ [timeout] -> Headmistress_NoAction -> give_reward
++ [distracted] -> Headmistress_PayAttention -> give_reward
+
+- /perform do_swipe_hand happy 50
+/wait 2
+-> Headmistress_AcknowledgeYes->
+
+->->

@@ -9,6 +9,10 @@
 {
     - deviation == unspeakable_toy:
         -> deviation_unspeakable_toy
+    - deviation == yuki_cunnilingus:
+        -> yuki_reward_cunnilingus
+    - deviation == treat_cunnilingus:
+        -> treat_reward_cunnilingus
     - deviation == puppyplay:
         -> yuki_hub
     - deviation == hand_signals:
@@ -58,10 +62,14 @@
 
 {
     - deviation == unspeakable_toy:
-        -> deviation_unspeakable_toy
+        -> game_start
+    - deviation == yuki_cunnilingus:
+        -> game_start
+    - deviation == treat_cunnilingus:
+        -> game_start
     - deviation == hand_signals:
         /scene none
-        -> headmistress_hub
+        -> game_start
     - deviation == exhibitionism:
         /scene none
         -> headmistress_hub
@@ -86,7 +94,7 @@
 -> pause(1) ->
 
 // If the player has never done the Ms Treatment intro, do the intro.
-{not treat_intro:
+{not treat_intro && not inTutorial:
     -> treat_intro
 }
 
@@ -465,6 +473,7 @@
 ~ has_plug = false
 ~ has_gag = false
 ~ wants_cei = false
+~ wants_puppy = false
 
 ~ temp mistressName = "{mistress}"
 

@@ -1,29 +1,282 @@
+
+
 === yuki_reward_cunnilingus ===
 -> select_gender_check ->
 ~ setScene(reward_scene, Yuki, "yuki_reward_cunnilingus", -> yuki_reward_cunnilingus)
--> scene_setup ->
-
-/perform cun_couch_idle
-
-+ [minigame:success] -> exit
+-> scene_setup -> intro
 
 
 = scene_setup
-/scene atrium.cunnilingus
+/scene atrium.couch_sitting
 /music yuki-reward
 /ambient none
-/character yuki
+/character Yuki sex_couch_openlegs_idle amused 65
 ->->
 
 
-= load_gave_reward
--> scene_setup -> gave_reward
+= intro
+
+/perform sex_couch_openlegs_idle_eager aroused 60
+You're in for such a treat today, {player_name}. #02
+
+- (mouth)
+
+/perform sex_couch_openlegs_talk_question excited 75
+{shuffle:
+    -I'm going to let you put that cute tongue of yours to work #03
+    and make me cum. #04
+
+    -I want you to make me cum with that little tongue of yours. #05
+
+    -That mouth of yours, is going to make me orgasm. #06
+
+    //-That mouth of yours, is going to make me orgasm! #39
+}
+
+/perform sex_couch_openlegs_talk_question skeptical 55
+Would you like that, {player_name}? #07
+
++ [yes]
+   -> Yuki_AcknowledgeYes.EmoteOnly ->
+
++ [no]
+    -> Yuki_AcknowledgeNo.EmoteOnly ->
+    /perform sex_couch_openlegs_idle_tease sad 60
+    If you don't want this reward, #08
+    you can go to someone else. #09
+
+    -- (leave)
+    /perform sex_couch_openlegs_talk_question skeptical 60
+    Are you sure you want to leave? #10
+
+    ++ [yes]
+        /perform sex_couch_openlegs_react_scoffs angry 45
+        Alright then. #11
+        Goodbye. #12
+        -> exit
+
+    ++ [no]
+        /perform sex_couch_openlegs_react_thankful happy 55
+        Phew. #13
+        I thought you didn't like me. #14
+
+    ++ [timeout] -> Yuki_Timeout.EmoteOnly -> leave
+    ++ [distracted] -> Yuki_PayAttention.EmoteOnly -> leave
+
++ [timeout] -> Yuki_Timeout.EmoteOnly -> mouth
+
++ [distracted] -> Yuki_PayAttention.EmoteOnly -> mouth
 
 
-= gave_reward
-/notify title="Mistress Yuki-Onna's Mega-Reward" text="ou received your big reward. Returning to entry."
-/wait 5
+- (move)
+
+/perform sex_couch_openlegs_point_down amused 50
+ {shuffle:
+    - Come here then.
+    - Now come here.
+}
+
+
++ [move:couch]
++ [timeout] -> Yuki_PayAttention.EmoteOnly -> move
++ [distracted]  -> Yuki_PayAttention.EmoteOnly -> move
+
+- -> mode
+
+
+= load_begin
+-> scene_setup -> begin
+
+
+= load_minigame
+-> scene_setup -> minigame
+
+
+= mode
+
+{shuffle:
+    - -> puppy_option
+    - -> puppy_option
+    - -> human_option
+    - -> human_option
+}
+
+
+= puppy_option
+
+I want you to be my puppy for this.
+
+Do you agree?
+
++ [yes]
+     ~ wants_puppy = true
+     -> puppy_intro
+
++ [no]
+    Alright.
+    I guess you can be a human this time.
+    -> human_intro
+
++ [timeout] -> Yuki_Timeout.EmoteOnly -> puppy_option
+
++ [distracted] -> Yuki_PayAttention.EmoteOnly -> puppy_option
+
+
+
+= human_option
+
+This time, I want you to be human.
+
+Do you agree?
+
++ [yes]
+    /perform sex_couch_openlegs_arm_raise aroused 75
+    Human it is! #20
+    -> human_intro
+
++ [no]
+
+  /perform sex_couch_openlegs_idle_tease sad 65
+    Alright.
+    I guess you can be my puppy, after all.
+    -> puppy_intro
+
++ [timeout] -> Yuki_Timeout.EmoteOnly -> human_option
+
++ [distracted] -> Yuki_PayAttention.EmoteOnly -> human_option
+
+
+= puppy_intro
+-> Yuki_Puppy_Intro.EmoteOnly -> take_reward
+
+
+ = human_intro
+/perform sex_couch_openlegs_point_down amused 70
+{shuffle:
+    - Kneel for me.
+    - Get down on your knees.
+}
+
++ [pose:kneel] -> take_reward
++ [timeout] -> Yuki_Timeout.EmoteOnly -> human_intro
+
+
+= take_reward
+
+/character yuki yuki_chair_idle_hand_out happy 75
+
+-> Yuki_Take_Reward_Prompt ->
+
++ [pose:present_wrist_reward_kneel]
+    /perform yuki_chair_crosslegs_do_swipe_hand excited 50
+    /wait 1
+    ~removeReward(->load_begin)
+    -> Yuki_AcknowledgeYes.EmoteOnly -> begin
+
++ [no]
+    /perform sex_chair_crosslegs_idle_left
+    -> Yuki_CheckIfInterested.EmoteOnly -> take_reward
+
++ [timeout]
+    /perform sex_chair_crosslegs_idle_left
+    -> Yuki_Timeout.EmoteOnly -> take_reward
+
++ [distracted]
+    /perform sex_chair_crosslegs_idle_left
+    -> Yuki_PayAttention.EmoteOnly -> take_reward
+
+
+= begin
+/character yuki sex_chair_crosslegs_idle_tease aroused 75
+
+Now, don't worry. #25
+I'll tell you exactly what to do to make me cum. #26
+
+//only trigger the first time through
+{not minigame:
+    Since this is your first cunnilingus reward
+}
+
+You're going to start slow and steady.
+Don't want to tire you out too much!
+Teehee!
+
+//continue normally
+/perform sex_couch_openlegs_arm_raise excited 65
+Just follow directions #27
+and you'll do great! #28
+
+/emotion aroused 75
+Once I get more comfortable #29
+
+{wants_puppy:
+    /emotion aroused 75
+    you can start, puppy. #30
+  - else:
+    /emotion aroused 75
+    you can start, {player_name}. #31
+}
+
+-> minigame
+
+
+= minigame
+/scene atrium.cunnilingus
+/perform cun_couch_idle aroused 69
++ [minigame:success] -> finish
+
+
+= finish
+/scene Atrium.Cunnilingus_Complete
+/perform sex_couch_openlegs_idle amused 45
+
+Wow. #32
+
+
+/perform sex_couch_openlegs_react_thankful aroused 75
+{wants_puppy:
+
+    {shuffle:
+        - That was amazing, puppy. #33
+        - I'm so impressed, puppy. #34
+        - You did so well, puppy! #35
+    }
+- else:
+    {shuffle:
+       - That was amazing, {player_name}. #36
+       - I'm so impressed, {player_name}. #37
+       - You did so well, {player_name}! #38
+    }
+}
+
+/perform sex_couch_openlegs_talk_question skeptical 50
+Did you enjoy your reward?
+
++ [yes]
+  /perform sex_couch_openlegs_idle_eager happy 60
+    Oh goody!
+    I enjoyed it too.
+
++ [no]
+  /perform sex_couch_openlegs_react_scoffs sad 45
+    That makes me so sad!
+    Maybe you just need more practice.
+
++ [timeout] -> Yuki_Timeout.EmoteOnly ->
+
+
+- We're done for now!
+
+Time to stand back up.
+
++ [pose:stand]
+
+- /perform sex_couch_openlegs_idle amused 45
+
+{wants_puppy:
+    -> Yuki_Puppyplay_Reward_Complete.EmoteOnly ->
+- else:
+    -> Yuki_Reward_Complete.EmoteOnly ->
+}
+
 -> exit
-
-
-

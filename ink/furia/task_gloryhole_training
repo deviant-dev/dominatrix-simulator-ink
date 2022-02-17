@@ -309,7 +309,7 @@ Just a tease to show you what's in store for you.
 
 //player must turn to left while on Knees
 - (player_inspection)
-/perform do_hand_out excited 55
+/perform idle_hand_out excited 55
 Let me see that mouth of yours.
 Turn to me, and open wide.
 //Furia cups the player jaw and leans forward - can we make the player have to turn their head left and right?

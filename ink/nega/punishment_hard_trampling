@@ -22,67 +22,67 @@
 
 -   Are you ready?
 
-    +   [Yes]
++   [Yes]
     Ha! That's what you think.
     
-    +   [No]
++   [No]
     I don't really care, you know.
     
-    +   [timeout]
++   [timeout]
     Too scared to talk? 
 
 - (lie_on_back) 
 Lie on your back.
 
-    +   [Comply] -> foot_on_chest
++   [Comply] -> foot_on_chest
     So vulnerable, a befitting position for a little maggot like you.
     
-    +   [Don't comply]
++   [Don't comply]
     - ~demerits++
     Don't feel like complying, eh? Why don't you try again with this Obsidian? 
     -> lie_on_back
 
 - (foot_on_chest) 
-/Nega puts her foot on the player's chest.
+//Nega puts her foot on the player's chest.
 -   (own_you) I own you, right, cunt?
 
-    +   [Yes]
++   [Yes]
     That's right, worm! 
     -> steps_onto_player
     
-    +   [No]
++   [No]
     - ~demerits++
-    /Nega pounds the player's chest with her boot. 
+    //Nega pounds the player's chest with her boot. 
     - Fuck you, meatbag! 
     Your cheekiness is going to get you in a lot of trouble!
     
-    +   [timeout]
++   [timeout]
     Hey, I asked you a question! 
     -> own_you
 
 - (steps_onto_player) 
-/Nega steps up onto the player. 
+//Nega steps up onto the player. 
 How does that feel, worm? 
 
 -   (disgusting) 
 I'll bet a disgusting whore like you is really enjoying this, right?
 
-    +   [Yes]
++   [Yes]
     You're so pathetic! But that pleases me, maggot. 
     -> nega_walks
     
-    +   [No]
++   [No]
     That only makes me enjoy this more, stain. 
     -> nega_walks
     
-    +   [timeout] 
++   [timeout] 
     - ~demerits++
     Answer me, fuckup! 
     -> disgusting
 
 - (nega_walks) 
 /Wait 10 
-/Nega steps around on the player's stomach and chest
+//Nega steps around on the player's stomach and chest
 
 {shuffle:
     - Feel the weight of my boots dig into your flesh!
@@ -91,7 +91,7 @@ I'll bet a disgusting whore like you is really enjoying this, right?
     }
 
 /Wait 10 
-/Nega continues to step around on the player's stomach and chest
+//Nega continues to step around on the player's stomach and chest
 
 {shuffle:
     - I once choked a man out with my heel while I was trampling him. 
@@ -102,34 +102,39 @@ I'll bet a disgusting whore like you is really enjoying this, right?
     I should remember to grab those next time.
 }
 
-/Wait 10 while Nega continues to step around on the player's stomach and chest
+//Wait 10 while Nega continues to step around on the player's stomach and chest
 
-- (boot_in_face) /Still on the player's chest, Nega puts her boot on the player's face
+//Still on the player's chest, Nega puts her boot on the player's face
+- (boot_in_face) 
 - (lick_it) Lick it.
-    +   [Comply] //The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. 
+//The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. 
++   [Comply] 
     /Wait 10. -> keep_going
-    +   [Don't comply]
+
++   [Don't comply]
     I said lick it! -> lick_it
 
 - (keep_going) Keep going, dumbfuck! I want the bottom of my heels to be spotless!
-    +   [Comply]
++   [Comply]
     /Wait 10. -> other_one
-    +   [Don't comply]
+
++   [Don't comply]
     - ~demerits++
     Not good enough, keep at it! -> keep_going
 
 - (other_one) Now the other one. 
-- (other_boot_in_face)/Nega puts her other boot on the player's face.
-    +   [Comply]
+//Nega puts her other boot on the player's face.
+- (other_boot_in_face)
++   [Comply]
     /Wait 10. -> keep_licking
-    +   [Don't comply]
++   [Don't comply]
     - ~demerits++
     I don't care how you feel about it, lick my boot! -> other_boot_in_face
 
 - (keep_licking) That's it, cunt, just like that. Keep licking.
-    +   [Comply]
++   [Comply]
     /Wait 10. -> finish 
-    +   [Don't comply]
++   [Don't comply]
     - ~demerits++
     You don't get a reprieve until you lick my boot clean, bitch! You won't get any mercy from me! -> keep_licking
 
@@ -151,15 +156,15 @@ I'll bet a disgusting whore like you is really enjoying this, right?
 }
 
 - (reward_spit)
-/Still on the player's chest, Nega leans over the player's head and looks at them directly.
+//Still on the player's chest, Nega leans over the player's head and looks at them directly.
 Open your mouth, loser!
-/Nega let's a drop of saliva fall from her lips into the player's mouth.
+//Nega let's a drop of saliva fall from her lips into the player's mouth.
 I'm sure you loved that, my disgusting slut!
 -> end_trample
 
 
 - (reward_boobs)
-/Still on the player's chest, Nega leans over the player's head and puffs her chest out so her breasts protrude towards the player's face.
+//Still on the player's chest, Nega leans over the player's head and puffs her chest out so her breasts protrude towards the player's face.
 Enjoy the view, dumbfuck!
 Only a lucky few get to see something so wonderful, be grateful!
 /Wait 10
@@ -167,7 +172,7 @@ Only a lucky few get to see something so wonderful, be grateful!
 
 
 - (reward_ass)
-/Still on the player's chest, Nega turns around and squats, so her ass is in the player's face.
+//Still on the player's chest, Nega turns around and squats, so her ass is in the player's face.
 Being so close must be such a turn on for you, bitch!
 Don't get used to it!
 /Wait 10
@@ -177,7 +182,7 @@ Don't get used to it!
 
 - (end_trample)
 {~I'm done with you.|Until next time.|Come back to play again sometime!}
-/Nega walks off the player and leaves the room.
+//Nega walks off the player and leaves the room.
 
 
 ->END

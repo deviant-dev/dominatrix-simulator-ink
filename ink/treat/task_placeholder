@@ -11,14 +11,20 @@
 + [yes]
 + [no] -> exit
 
-- /notify title="Ms. Treatment's Task Test" text="This is a placeholder task scene. Do you complete your task?"
+- /notify title="Ms. Treatment's Task Test" text="This is a placeholder task scene. Did you complete your task?"
+
+//Temp disable of reward/punishment due to player confusion
+//Taco
 
 + [yes]
-    ~addReward()
-    /notify title="Ms. Treatment's Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
+    //~addReward()
+    /notify title="Ms. Treatment's Task Result" text="Congratulations. Returning to the entry."
+    //One bloodstone added.<br/>
+
 + [no]
-    ~addPunishment()
-    /notify title="Ms. Treatment's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+    //~addPunishment()
+    /notify title="Ms. Treatment's Task Result" text="Too bad. Returning to the entry."
+    //One obsidian added.<br/>
 
 - /wait 5
 -> exit

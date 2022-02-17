@@ -1,127 +1,154 @@
 === Goddess_GoodJob ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Sex_Chair
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 
 
 
 { shuffle:
-
-    -{inPosition: /emotion happy 50 | /perform idle happy 50 }
+    -{emoteOnly: /emotion happy 50 | /perform idle happy 50 }
     There's a good {player_name}. #114
 
-    -{inPosition: /emotion aroused 65 | /perform idle_tease aroused 65 }
+    -{emoteOnly: /emotion aroused 65 | /perform idle_tease aroused 65 }
     What a good little {player_name}. #115
 
-    -{inPosition: /emotion amused 55 | /perform talk_lean_forward amused 55 }
+    -{emoteOnly: /emotion amused 55 | /perform talk_lean_forward amused 55 }
     That's my {player_name}. #116
 
-    -{inPosition: /emotion happy 50 | /perform idle_clasp_hands happy 50 }
+    -{emoteOnly: /emotion happy 50 | /perform idle_clasp_hands happy 50 }
     Aren't you the sweetest little thing? #117
 
-    -{inPosition: /emotion happy 50 | /perform talk_consider happy 50 }
+    -{emoteOnly: /emotion happy 50 | /perform talk_consider happy 50 }
     Very nice. #118
 
-    -{inPosition: /emotion happy 45 | /perform react_thankful happy 45 }
+    -{emoteOnly: /emotion happy 45 | /perform react_thankful happy 45 }
     That will do just fine. #119
 
-    -{inPosition: /emotion happy 40 | /perform do_inspect happy 40 }
+    -{emoteOnly: /emotion happy 40 | /perform do_inspect happy 40 }
     Quite satisfying. #120
 
-    -{inPosition: /emotion aroused 65 | /perform idle_sassy aroused 65 }
+    -{emoteOnly: /emotion aroused 65 | /perform idle_sassy aroused 65 }
     Mmmm. I like that. #121
 
-    -{inPosition: /emotion happy 50 | /perform react_thankful happy 50 }
+    -{emoteOnly: /emotion happy 50 | /perform react_thankful happy 50 }
     Someone is being a good {player_name}. #122
 
-    -{inPosition: /emotion happy 50 | /perform talk_consider happy 50 }
+    -{emoteOnly: /emotion happy 50 | /perform talk_consider happy 50 }
     Well done. #123
 
-    -{inPosition: /emotion aroused 40 | /perform idle_tease aroused 40 }
+    -{emoteOnly: /emotion aroused 40 | /perform idle_tease aroused 40 }
     That's very pleasing. #124
 
-    -{inPosition: /emotion aroused 60 | /perform do_inspect aroused 60 }
+    -{emoteOnly: /emotion aroused 60 | /perform do_inspect aroused 60 }
     I am pleased. #61
 }
 
 ->->
 
 === Goddess_AcknowledgeYes ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Sex_Chair
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 
 {shuffle:
-    -{inPosition: /emotion aroused 65 | /perform idle_sassy aroused 65 }
+    -{emoteOnly: /emotion aroused 65 | /perform idle_sassy aroused 65 }
     How delightful. #01
 
-    -{inPosition: /emotion happy 50 | /perform talk_consider happy 50 }
+    -{emoteOnly: /emotion happy 50 | /perform talk_consider happy 50 }
     Very well. #02
 
-    -{inPosition: /emotion happy 50 | /perform idle_clasp_hands happy 50 }
+    -{emoteOnly: /emotion happy 50 | /perform idle_clasp_hands happy 50 }
     So be it. #03
 
-    -{inPosition: /emotion amused 60 | /perform talk_one_finger amused 60 }
+    -{emoteOnly: /emotion amused 60 | /perform talk_one_finger amused 60 }
     Alright then. #04
 
-    -{inPosition: /emotion happy 50 | /perform do_inspect happy 50 }
+    -{emoteOnly: /emotion happy 50 | /perform do_inspect happy 50 }
     Excellent. #05
 }
 
 ->->
 
-=== Goddess_Unhappy ===
--> DoComment(false)
+=== Goddess_AcknowledgeNo ===
+-> DoEmoteOnly(false)
 
-= Sex_Chair
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 
 {shuffle:
-    -{inPosition: /emotion sad 55 | /perform idle_bored sad 55 }
+    -{emoteOnly: /emotion aroused 65 | /perform idle_sassy skeptical 65 }
+    I see. #01
+
+    -{emoteOnly: /emotion happy 50 | /perform talk_consider amused 50 }
+    A pity. #02
+
+    -{emoteOnly: /emotion happy 50 | /perform idle_clasp_hands amused 50 }
+    How unfortunate. #03
+
+    -{emoteOnly: /emotion amused 60 | /perform talk_one_finger amused 60 }
+    Too bad. #04
+
+    -{emoteOnly: /emotion happy 50 | /perform do_inspect skeptical 50}
+    As you wish. #05
+}
+
+->->
+
+=== Goddess_Unhappy ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+
+{shuffle:
+    -{emoteOnly: /emotion sad 55 | /perform idle_bored sad 55 }
     How disappointing. #01
 
-    -{inPosition: /emotion skeptical 65 | /perform react_shake_head_disbelief skeptical 65 }
+    -{emoteOnly: /emotion skeptical 65 | /perform react_shake_head_disbelief skeptical 65 }
     Really? #02
 
-    -{inPosition: /emotion disgusted 60 | /perform idle_unhappy disgusted 60 }
+    -{emoteOnly: /emotion disgusted 60 | /perform idle_unhappy disgusted 60 }
     I see. #03
 }
 
 ->->
 
 === Goddess_Timeout ===
--> DoComment(false)
+-> DoEmoteOnly(false)
 
-= Sex_Chair
--> DoComment(true)
+= EmoteOnly
+-> DoEmoteOnly(true)
 
-= DoComment(inPosition)
+= DoEmoteOnly(emoteOnly)
 
 
 { shuffle:
-    -{inPosition: /emotion angry 45 | /perform idle_clasp_hands angry 45 }
+    -{emoteOnly: /emotion angry 45 | /perform idle_clasp_hands angry 45 }
     I asked you a question. #11
 
-    -{inPosition: /emotion angry 55 | /perform talk_emphatic_one_hand angry 55 }
+    -{emoteOnly: /emotion angry 55 | /perform talk_emphatic_one_hand angry 55 }
     Hurry up. I'm waiting. #12
 
-    -{inPosition: /emotion skeptical 35 | /perform talk_lean_forward skeptical 35 }
+    -{emoteOnly: /emotion skeptical 35 | /perform talk_lean_forward skeptical 35 }
     I don't like it when people make me wait. #13
 
-    -{inPosition: /emotion angry 65 | /perform idle_skeptical angry 65 }
+    -{emoteOnly: /emotion angry 65 | /perform idle_skeptical angry 65 }
     What makes you think you can ignore me? Answer me. #14
- }
+}
 
 ->->
 
@@ -290,8 +317,8 @@ Bye for now, {player_name}. #113
 + [wait:5]
     // {debug: -> again | ->->}
     ->->
-    
-    
+
+
 === Goddess_SayNumberRangeOfType(-> sayNumber, start, end, wait) ===
 ~ temp current = start
 
@@ -325,23 +352,23 @@ Bye for now, {player_name}. #113
 // NOTE: Keep these on separate lines for the subtitle system. -deviant
 {
     - n == 1:
-        One. #1
+        One. #01
     - n == 2:
-        Two. #2
+        Two. #02
     - n == 3:
-        Three. #3
+        Three. #03
     - n == 4:
-        Four. #4
+        Four. #04
     - n == 5:
-        Five. #5
+        Five. #05
     - n == 6:
-        Six. #6
+        Six. #06
     - n == 7:
-        Seven. #7
+        Seven. #07
     - n == 8:
-        Eight. #8
+        Eight. #08
     - n == 9:
-        Nine. #9
+        Nine. #09
     - n == 10:
         Ten. #10
     - n == 11:
@@ -373,23 +400,23 @@ Bye for now, {player_name}. #113
 // NOTE: Keep these on separate lines for the subtitle system. -deviant
 {
     - n == 1:
-        One. #1
+        One. #01
     - n == 2:
-        Two. #2
+        Two. #02
     - n == 3:
-        Three. #3
+        Three. #03
     - n == 4:
-        Four. #4
+        Four. #04
     - n == 5:
-        Five. #5
+        Five. #05
     - n == 6:
-        Six. #6
+        Six. #06
     - n == 7:
-        Seven. #7
+        Seven. #07
     - n == 8:
-        Eight. #8
+        Eight. #08
     - n == 9:
-        Nine. #9
+        Nine. #09
     - n == 10:
         Ten. #10
     - n == 11:
@@ -421,23 +448,23 @@ Bye for now, {player_name}. #113
 // NOTE: Keep these on separate lines for the subtitle system. -deviant
 {
     - n == 1:
-        One. #1
+        One. #01
     - n == 2:
-        Two. #2
+        Two. #02
     - n == 3:
-        Three. #3
+        Three. #03
     - n == 4:
-        Four. #4
+        Four. #04
     - n == 5:
-        Five. #5
+        Five. #05
     - n == 6:
-        Six. #6
+        Six. #06
     - n == 7:
-        Seven. #7
+        Seven. #07
     - n == 8:
-        Eight. #8
+        Eight. #08
     - n == 9:
-        Nine. #9
+        Nine. #09
     - n == 10:
         Ten. #10
     - n == 11:
@@ -464,3 +491,37 @@ Bye for now, {player_name}. #113
         /logError Can't say number '{n}'.
 }
 ->->
+
+=== Goddess_Take_Reward_Prompt ===
+
+// don't use performances
+
+{shuffle:
+    - Present your wrist, little mouse.
+    - This will cost you one Bloodstone. 
+    - Time to hand over your Bloodstone. 
+    - Give me your wrist, {player_name}. 
+}
+
+->->
+
+
+=== Goddess_Take_Reward(-> load) ===
+
+- (give_reward)
+
+/character goddess idle_hand_out happy 75
+
+-> Goddess_Take_Reward_Prompt ->
+
++ [pose:present_wrist_reward]
+    /perform do_swipe_hand excited 50
+    /wait 1
+    ~removeReward(load)
+    -> Goddess_AcknowledgeYes.EmoteOnly ->->
+
++ [no] -> Goddess_CheckIfInterested -> give_reward
++ [timeout] -> Goddess_Timeout -> give_reward
++ [distracted] -> Goddess_PayAttention -> give_reward
+
+

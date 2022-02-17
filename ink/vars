@@ -77,6 +77,9 @@ VAR scene_count = 0
 VAR has_plug = false
 VAR has_gag = false 
 VAR wants_cei = false
+VAR wants_puppy = false
+VAR embarrassed = false
+VAR wants_masturbate = false
 
 // Goddess Variables
 VAR goddess_regard = 0 
@@ -91,6 +94,14 @@ VAR headmistress_signal_endurance_difficulty = 1
 VAR headmistress_signal_furniture_difficulty = 1
 VAR headmistress_has_audience = false
 VAR headmistress_masturbated_for_crowd = false
+VAR headmistress_spanking_target_count = 10
+VAR headmistress_spanking_implement = "hand"
+VAR headmistress_spanking_count = 0
+VAR headmistress_spanking_break_count = 0
+VAR headmistress_spanking_mistakes = 0
+
+LIST headmistress_cunnilingus_target = headmistress_target_hm, headmistress_target_yuki, headmistress_target_slave
+
 
 // Nega Variables
 VAR nega_regard = 0
@@ -98,6 +109,17 @@ VAR nega_last_result = -100
 VAR nega_die_1 = 0
 VAR nega_die_2 = 0
 VAR nega_die_3 = 0
+VAR thrusts = 0
+VAR nega_thrust_mistakes = 0
+VAR nega_difficulty = 0
+VAR nega_thrust_count = 0
+VAR nega_thrust_target_count = 20
+VAR nega_thrust_break_count = 6
+VAR chance = 0
+VAR licked_boots = false
+VAR posed = false
+VAR edged = false
+VAR demerits = 0
 
 // Yuki Variables
 VAR yuki_regard = 0

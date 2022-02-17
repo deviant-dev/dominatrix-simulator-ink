@@ -1,5 +1,5 @@
- === nega_reward_hard_forcedsex ===
- -> select_gender_check ->
+=== nega_reward_hard_forcedsex ===
+-> select_gender_check ->
 //reward_hard
 ~ setScene(reward_scene, Nega, "nega_reward_hard_forcedsex", -> nega_reward_hard_forcedsex)
 
@@ -34,12 +34,11 @@ Do you have any idea what I'm going to do to you? #08
     Well? #11
     -> Nega_BadJob -> ask_any_idea
 
- + [distracted] -> Nega_PayAttention -> ask_any_idea
++ [distracted] -> Nega_PayAttention -> ask_any_idea
 
 - (forcedsex_start)
 
 {shuffle:
-
     -/perform idle_tease excited 50
     I'm about to use you like the eager little whore you are. #31
 
@@ -235,12 +234,7 @@ Ahhhh! That's it! #41
 /perform sex_squat_thrust happy 50
 Your stiff dick is just what I needed! #42
 
-VAR thrusts = 0
-VAR nega_thrust_mistakes = 0
-VAR nega_difficulty = 0
-VAR nega_thrust_count = 0
-VAR nega_thrust_target_count = 20
-VAR nega_thrust_break_count = 6
+
 
 /music nega-reward-forced-sex-mini-1
 
@@ -261,9 +255,9 @@ Your job is to make me cum, got it?! #44
 +[no]
     /perform sex_squat_thrust_single angry 50
     ~ addDisobey()
-    -> Nega_BadJob.Squatting ->
+    -> Nega_BadJob.EmoteOnly ->
 
-+ [timeout] -> Nega_Timeout.Squatting ->  make_cum
++ [timeout] -> Nega_Timeout.EmoteOnly ->  make_cum
 - /perform sex_squat_writhe amused 75
 Brace yourself! #127
 
@@ -326,7 +320,7 @@ You better move those goddamn hips while I fuck you, slut. #43
 
 -> RandomCommentLoop (-> masturbation_comment, 3, 5, 3, 5) ->
 
--> Nega_GoodJob.Squatting ->
+-> Nega_GoodJob.EmoteOnly ->
 
 -> break03 ->
 
@@ -339,14 +333,14 @@ I just adore cumming as the song peaks, so don't fuck it up! #117
 /perform sex_squat_thrust_fast happy 45
 
 
--> Nega_GoodJob.Squatting ->
+-> Nega_GoodJob.EmoteOnly ->
 
 -> RandomCommentLoop (-> masturbation_comment, 2, 4, 2, 4) ->
 
 
 {inTutorial:
     -> nega_intro.surprise_interrupt
-  }
+}
 
 - /music nega-reward-forced-sex-mini-2
 
@@ -357,9 +351,9 @@ Decent. Let's pick up the pace, huh? #51
 = masturbation_comment
 
 {shuffle:
-        - -> Nega_Aroused.Squatting ->
+        - -> Nega_Aroused.EmoteOnly ->
         - -> forced_sex_comment->
-        - -> Nega_GoodJob.Squatting ->
+        - -> Nega_GoodJob.EmoteOnly ->
 }
 
 ->->
@@ -427,13 +421,12 @@ Do you want to cum with me, {isBoy: maggot|whore}? #56
     Can't even cum for your Mistress! #60
 
 +[timeout]
-    -> Nega_Timeout.Squatting
+    -> Nega_Timeout.EmoteOnly
     -> cum_with_me
 
 - (nega_orgasm)
 /perform sex_squat_thrust
- {shuffle:
-
+{shuffle:
     -/emotion angry 55
     Pick up the pace, slut! #118
 
@@ -442,13 +435,12 @@ Do you want to cum with me, {isBoy: maggot|whore}? #56
 
     -/emotion disgusted 65
     Faster, cunt. #120
-     }
+}
 
 + [wait]
 
 - /perform sex_squat_thrust_fast
 {shuffle:
-
     -/emotion aroused 90
     I'm almost there. #121
 
@@ -690,7 +682,6 @@ When I say 'go', hold your fucking breath. #88
 Go! #89
 
 {shuffle:
-
     - /emotion amused 45
     One. Two. Three. #90
 
@@ -703,10 +694,9 @@ Go! #89
     -/emotion excited 55
     One. Two. Three. Four. Five. Six. #110
 
-     /emotion aroused 75
+    /emotion aroused 75
     Seven. Eight. Nine. Ten.  #111
-
-    }
+}
 
 /emotion disgusted 50
 Now, breathe bitch! #95
@@ -721,7 +711,6 @@ Impressive! #94
 = Badthrust
 
 {cycle:
-
     -/emotion disgusted 45
     Your cock is useless! #96
 
@@ -757,22 +746,20 @@ Impressive! #94
 
     -/emotion angry 60
     Pound to the sound! #107
-    - -> Nega_BadJob.Squatting ->
-    - -> Nega_BadJob.Squatting ->
-    - -> Nega_BadJob.Squatting ->
-    - -> Nega_BadJob.Squatting ->
-    }
+    - -> Nega_BadJob.EmoteOnly ->
+    - -> Nega_BadJob.EmoteOnly ->
+    - -> Nega_BadJob.EmoteOnly ->
+    - -> Nega_BadJob.EmoteOnly ->
+}
 
 ->->
 
 = forced_sex_comment
 
 {cycle:
-
     //-/emotion aroused 45
     //My pussy is so hungry! #93
     //Feels like a cheesy delivery
-
     -/perform sex_squat_tease amused 45
     I bet you wish you could bury your face in my tits. #140
 

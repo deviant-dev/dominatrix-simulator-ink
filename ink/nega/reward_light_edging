@@ -3,22 +3,19 @@
 
 {shuffle:
     - -> tease_edging
-
 }
 
 = tease_edging
-
 /scene attic.chair
 /music nega-reward
 /ambient off
 /character Nega
 ~ edged = true
 
-
 -/perform sex_chair_crosslegs_idle_left amused 70
 This won't take long. (wicked laugh) #04
 
--> Nega_Kneel.Sex_Chair ->
+-> Nega_Kneel.EmoteOnly ->
 
 ~ tries = 0
 - (boots)
@@ -50,11 +47,11 @@ does the sight of my boots turn you on? #46
     /perform sex_chair_crosslegs_idle_tease excited 70
     That'll only make what I'm about to do to you all the more satisfying. #51
 
-+ { tries < 2 } [timeout] -> Nega_Timeout.Sex_Chair -> boots
++ { tries < 2 } [timeout] -> Nega_Timeout.EmoteOnly -> boots
 
 + { tries >= 2 } [timeout]
     ~ addDisobey()
-    -> Nega_CheckIfInterested.Sex_Chair
+    -> Nega_CheckIfInterested.EmoteOnly
     -> boots
 
 - (after_observe_boots)
@@ -97,29 +94,28 @@ Got that, whore? #59
         -> start
 
     ++[no]
-        -> Nega_CheckIfInterested.Sex_Chair ->
+        -> Nega_CheckIfInterested.EmoteOnly ->
 
-+ { tries < 2 } [timeout] -> Nega_Timeout.Sex_Chair -> understand
++ { tries < 2 } [timeout] -> Nega_Timeout.EmoteOnly -> understand
 
 + { tries >= 2 } [timeout]
-     ~ addDisobey()
-     -> Nega_CheckIfInterested.Sex_Chair ->
-     -> understand
+    ~ addDisobey()
+    -> Nega_CheckIfInterested.EmoteOnly ->
+    -> understand
 
-+ [distracted] -> Nega_PayAttention.Sex_Chair ->
++ [distracted] -> Nega_PayAttention.EmoteOnly ->
 
 
 - (start)
 
 
-TODO: VO needs a cough removed -Taco
 Get going! #65
 
--> Nega_prepare_masturbate.Sex_Chair ->
+-> Nega_prepare_masturbate.EmoteOnly ->
 
 + [wait 2]
 
---> Nega_GoodJob.Sex_Chair ->
+--> Nega_GoodJob.EmoteOnly ->
 
 + [wait 2]
 
@@ -132,7 +128,7 @@ Get going! #65
 
 -> RandomCommentLoopWithNo(-> masturbation_comment, -> no_more, 3, 5, 2, 5) ->
 
--> Nega_GoodJob.Sex_Chair ->
+-> Nega_GoodJob.EmoteOnly ->
 
 /perform sex_chair_openlegs_idle excited 75
 You really are a foot whore! #66
@@ -175,7 +171,7 @@ You really are a foot whore! #66
 
 + [no]
     /perform sex_chair_openlegs_idle_tease skeptical 75
-    -> Nega_Unhappy.Sex_Chair ->
+    -> Nega_Unhappy.EmoteOnly ->
     -- (secret)
     You secretly love being demeaned like this. #09
     {hasPenis: Jerking off|Grinding one out} at the mere sight of my boots. #10
@@ -189,19 +185,19 @@ You really are a foot whore! #66
 
     ++ [no]
         /perform sex_chair_openlegs_lean_forward angry 80
-        -> Nega_Insult.Sex_Chair ->
+        -> Nega_Insult.EmoteOnly ->
         /perform sex_chair_crosslegs_snap_right_fingers angry 65
         I'm done with you. #13
         Get out! #14
         -> exit
 
-    ++ [timeout] -> Nega_Timeout.Sex_Chair -> secret
+    ++ [timeout] -> Nega_Timeout.EmoteOnly -> secret
 
-    ++ [distracted] -> Nega_PayAttention.Sex_Chair -> secret
+    ++ [distracted] -> Nega_PayAttention.EmoteOnly -> secret
 
-+ [timeout] -> Nega_Timeout.Sex_Chair -> enjoy
++ [timeout] -> Nega_Timeout.EmoteOnly -> enjoy
 
-+ [distracted] -> Nega_PayAttention.Sex_Chair -> enjoy
++ [distracted] -> Nega_PayAttention.EmoteOnly -> enjoy
 
 = no_more
 
@@ -218,7 +214,7 @@ You really are a foot whore! #66
     Stop friggen yourself, idiot! #69
 }
 
--> Nega_Insult.Sex_Chair ->
+-> Nega_Insult.EmoteOnly ->
 
 /perform sex_chair_crosslegs_idle_right disgusted 75
 You should be able to last longer than that. #70
@@ -298,22 +294,22 @@ You should be able to last longer than that. #70
         Leave. #90
         -> exit
 
-    ++ [timeout] -> Nega_Timeout.Sex_Chair -> more
+    ++ [timeout] -> Nega_Timeout.EmoteOnly -> more
 
-    ++ [distracted] -> Nega_PayAttention.Sex_Chair -> more
+    ++ [distracted] -> Nega_PayAttention.EmoteOnly -> more
 
-+ [timeout] -> Nega_Timeout.Sex_Chair -> question
++ [timeout] -> Nega_Timeout.EmoteOnly -> question
 
-+ [distracted] -> Nega_PayAttention.Sex_Chair -> question
++ [distracted] -> Nega_PayAttention.EmoteOnly -> question
 
 
 = masturbation_comment
 
 { shuffle:
-    - -> Nega_Masturbation_Comments.Sex_Chair ->
+    - -> Nega_Masturbation_Comments.EmoteOnly ->
     - -> edging_comment ->
-    - -> Nega_Aroused.Sex_Chair ->
-    - -> Nega_GoodJob.Sex_Chair ->
+    - -> Nega_Aroused.EmoteOnly ->
+    - -> Nega_GoodJob.EmoteOnly ->
 }
 
 ->->

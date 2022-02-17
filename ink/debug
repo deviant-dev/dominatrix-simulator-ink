@@ -1,14 +1,53 @@
 === Debug ===
+
+//Popular Combinations
+
+~ unlockAll()
+
+~SEED_RANDOM(5)
+
+~ inTutorial = false
+~ rewards = 5
+~ setGender("p")
+
+
+
+// -> game_intro.instructions
+//-> deviation_unspeakable_toy.test
+
+
+
+// -> goddess_intro.video_jump
+// -> goddess_intro.load_at_interview
+// -> headmistress_punishment_spanking.spank_test
+// /scene TheatreOpen.Ready
+// /music headmistress
+// /ambient crowd
+// -> headmistress_reward_exhibitionism.masturbate
+
+//-> yuki_hub
+// /scene entry.intro3
+// -> yuki_intro.start_slap
+//-> yuki_punishment_puppyplay_spanking.spank_success_test
+// ~ tutorial_step = at_hm_intro
+// -> entry_hub.move_headmistress
+
+
+
+
+//--------------------------------------------------
+//
 // --- Set gender here to skip gender selection step ---
-//~ setGender("m")
-~ setGender("f")
+// ~ setGender("m")
+// ~ setGender("f")
 // ~ setGender("p")
 
-//~SEED_RANDOM(5)
+//--------------------------------------------------
+// ~ SEED_RANDOM(5)
 
+//--------------------------------------------------
 // --- Force a different deviation ---
 // ~ setDeviation(full_game)
-// -> game_intro.instructions
 // ~ setDeviation(tutorial)
 // ~ setDeviation(demo)
 // ~ setDeviation(exhibitionism)
@@ -18,37 +57,35 @@
 // ~ setDeviation(treat)
 // ~ setDeviation(furia)
 // ~ setDeviation(unspeakable_toy)
-//  -> deviation_unspeakable_toy
-//-> deviation_unspeakable_toy.test
-// -> goddess_reward_serviced
+// ~ setDeviation(yuki_cunnilingus)
 
+//--------------------------------------------------
 // --- Unlocks ---
 // ~ unlockAll()
 // ~ unlockShortcuts()
 
-
-// --- Punish and Reward ---
-~ punishments = 1
+//--------------------------------------------------
+// --- Punishments and Reward ---
+// ~ punishments = 0
 ~ rewards = 1
 
-
-// --- Tutorial ---
+//--------------------------------------------------
+// --- Tutorial Completion ---
 // ~ inTutorial = false
 
+//--------------------------------------------------
+// --- Mistress Regard ---
+// ~ angel_regard = 0
+// ~ caliste_regard = 0
+// ~ furia_regard = 0
+// ~ goddess_regard= 0
+// ~ headmistress_regard = 0
+// ~ nega_regard = 0
+// ~ pragma_regard = 0
+// ~ treat_regard = 0
+// ~ yuki_regard = 0
 
-// --- Regard ---
-// ~ angel_regard =
-// ~ caliste_regard =
-// ~ furia_regard =
-// ~ goddess_regard=
-// ~ headmistress_regard =
-// ~ nega_regard =
-// ~ pragma_regard =
-// ~ treat_regard = 10
-// ~ yuki_regard =
-
-
-
+//--------------------------------------------------
 // --- Mistress Models ---
 // /character angel
 // /character caliste
@@ -60,15 +97,14 @@
 // /character treat
 // /character yuki
 
-
-
+//--------------------------------------------------
 // --- Other Models ---
-///character crowd
-///character female slave
-///character male slave
+// /character crowd
+// /character female slave
+// /character male slave
+// /character slave
 
-
-
+//--------------------------------------------------
 // --- Music ---
 // /music angel
 // /music caliste
@@ -80,8 +116,7 @@
 // /music treat
 // /music yuki
 
-
-
+//--------------------------------------------------
 // --- Angel Scene Jumps ---
 // -> angel_hub
 // -> angel_intro
@@ -90,8 +125,7 @@
 // -> angel_rewardmega_placeholder
 // -> angel_task_placeholder
 
-
-
+//--------------------------------------------------
 // --- Caliste Scene Jumps ---
 // -> caliste_hub
 // -> caliste_intro
@@ -100,8 +134,7 @@
 // -> caliste_rewardmega_placeholder
 // -> caliste_task_placeholder
 
-
-
+//--------------------------------------------------
 // --- Furia Scene Jumps ---
 // -> furia_hub
 // -> furia_intro
@@ -112,10 +145,9 @@
 // -> furia_task_placeholder
 // -> furia_task_gloryhole_training
 
-
-
+//--------------------------------------------------
 // --- Goddess Scene Jumps ---
-// -> goddess_hub.hello
+// -> goddess_hub
 // -> goddess_intro
 // -> goddess_intro.video_jump
 // -> goddess_monitoring
@@ -127,9 +159,11 @@
 // -> goddess_intro.load_at_interview
 // -> goddess_rewardmega_giantess
 // -> goddess_reward_joi
+// -> goddess_reward_giantess_joi
 // -> giantess_temp
+// -> goddess_reward_serviced
 
-
+//--------------------------------------------------
 // --- Headmistress Scene Jumps ---
 // -> headmistress_hub
 // -> headmistress_intro
@@ -138,13 +172,7 @@
 // -> headmistress_punishment_spanking.spank_test
 // -> headmistress_reward_cunnilingus
 // -> headmistress_reward_exhibitionism
-
-// /scene TheatreOpen.Ready
-// /music headmistress
-// /ambient crowd
-// -> headmistress_reward_exhibitionism.masturbate
-
-
+// -> headmistress_reward_cunnilingus
 // -> headmistress_reward_exhibitionism
 // -> headmistress_rewardmega_placeholder
 // -> headmistress_task_flogging
@@ -154,8 +182,7 @@
 // -> headmistress_task_handsignals_furniture
 // -> headmistress_train_spanking
 
-
-
+//--------------------------------------------------
 // --- Nega Scene Jumps ---
 // -> nega_hub
 // -> nega_intro
@@ -169,8 +196,7 @@
 // -> nega_reward_light_edging
 // -> nega_reward_tease
 
-
-
+//--------------------------------------------------
 // --- Pragma Scene Jumps ---
 // -> pragma_hub
 // -> pragma_intro
@@ -179,32 +205,27 @@
 // -> pragma_rewardmega_placeholder
 // -> pragma_task_placeholder
 
-
-
+//--------------------------------------------------
 // --- Treat Scene Jumps ---
 // -> treat_care
 // -> treat_hub
 // -> treat_intro
 // -> treat_promo
 // -> treat_punishment_placeholder
+// -> treat_reward_cunnilingus
 // -> treat_reward_placeholder
+// -> treat_reward_riding
 // -> treat_rewardmega_placeholder
 // -> treat_session_subdrop
 // -> treat_task_placeholder
 // -> treat_monitoring
 
-
-
+//--------------------------------------------------
 // --- Yuki Scene Jumps ---
-// -> yuki_hub
+-> yuki_hub
 // -> yuki_intro
 // -> yuki_reward_cunnilingus
-
-
-// /scene entry.intro3
-// -> yuki_intro.start_slap
-
--> yuki_punishment_edging
+// -> yuki_punishment_edging
 // -> yuki_punishment_puppyplay_cage
 // -> yuki_punishment_puppyplay_spanking
 // -> yuki_reward_bathe
@@ -212,7 +233,7 @@
 // -> yuki_reward_puppyplay_lickfeet
 // -> yuki_reward_puppyplay_milking
 // -> yuki_rewardmega_placeholder
--> yuki_reward_cunnilingus
+// -> yuki_reward_cunnilingus
 // -> yuki_task_fanning
 // -> yuki_task_puppyplay
 // -> yuki_task_puppyplay_intro
@@ -221,24 +242,19 @@
 // -> yuki_task_teaservice
 // -> yuki_train_spanking
 
-//-> yuki_punishment_puppyplay_spanking.spank_success_test
-
-
-
+//--------------------------------------------------
 // --- Game Jumps ---
 // -> demo_end
 // -> DONE
-// -> exit 
+// -> exit
 // -> entry_hub
 // ~ tutorial_step = at_hm_intro
-// -> entry_hub.move_headmistress
 // -> game_intro
 // -> game_intro_again
 // -> game_outro
 // -> skip_to_full_loop
 
-
-
+//--------------------------------------------------
 // --- Tests ---
 // -> test_look
 // -> test_audio

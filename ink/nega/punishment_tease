@@ -2,10 +2,10 @@
 // writing status: in progress
 
 === nega_punishment_tease ===
- -> select_gender_check ->
+-> select_gender_check ->
 
 ~ setScene(punishment_scene, Nega, "nega_punishment_tease", -> nega_punishment_tease)
- 
+
 /scene attic.Ready
 /music nega-punishment
 /ambient howling-wind
@@ -17,7 +17,10 @@
 
 + [yes]
 
-/perform idle_skeptical amused 75
++ [no]
+-> exit
+
+- /perform idle_skeptical amused 75
 Maybe this visit won't be a total waste. #01
 
 
@@ -33,7 +36,7 @@ I'm going to make you wallow in depravity. #42
 
 - (present)
 /perform talk_behold skeptical 75
-  
+
 Spread your knees and present yourself. #03
 
 + [pose:present_kneel]
@@ -66,8 +69,8 @@ I see what you are. #28
     +[no]
         -> Nega_Unhappy ->
         
- + [timeout] -> Nega_Timeout -> insult
- + [distracted] -> Nega_PayAttention -> insult      
++ [timeout] -> Nega_Timeout -> insult
++ [distracted] -> Nega_PayAttention -> insult      
 
 - -> Nega_Insult ->
 /perform idle_skeptical skeptical 70
@@ -116,7 +119,7 @@ You just can't stay away, can you? #23
     ~ addDisobey()
     -> Nega_Unhappy ->
     /perform talk_question skeptical 70
-   That bloodstone you just added to my pile says different. #24
+    That bloodstone you just added to my pile says different. #24
 
 
 + [no]
@@ -161,8 +164,8 @@ Maybe get to be a slutty little fucktoy? #112
     /perform talk_one_finger disgusted 80
     No, you didn't. #113
 
- + [timeout] -> Nega_Timeout -> lucky
- + [distracted] -> Nega_PayAttention -> lucky
++ [timeout] -> Nega_Timeout -> lucky
++ [distracted] -> Nega_PayAttention -> lucky
 
 -
 ->->
@@ -207,7 +210,7 @@ Isn't that right, {isBoy: maggot|{isGirl: stain|worm}}? #33
     Of course you are! #34
 
 +[no]
-     ~ addDisobey()
+    ~ addDisobey()
     -> Nega_Unhappy ->
     /perform talk_annoyed angry 80
     Playing all shy and innocent. #35
@@ -255,8 +258,8 @@ Hoping you'd be mistreated. That's what. #31
 
 + [pose:lick_ground]
 + [timeout]
-     ~ addDisobey()
-     -> Nega_BadJob -> grovel
+    ~ addDisobey()
+    -> Nega_BadJob -> grovel
 
 - -> Nega_Insult ->
 ~ addObey()

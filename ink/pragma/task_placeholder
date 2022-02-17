@@ -5,13 +5,37 @@
 /music pragma
 /ambient pragma
 /character pragma
+-> intro
+
+
+= intro
+
+// consent check
 
 /notify title="The Divine Engine Pragma's Task Check" text="This is a placeholder task check. Do you want to do the task?"
 
 + [yes]
-+ [no] -> exit
++ [no]
+    << Don't waste my time, then. >>
+    << Go away.>>
+    /wait
+    -> exit
 
-- /notify title="The Divine Engine Pragma's Task Test" text="This is a placeholder task scene. Do you complete your task?"
+- -> begin
+
+
+= begin
+
+// scene goes here
+
+-> finish
+
+
+= finish
+
+// scene wrap-up goes here
+
+/notify title="The Divine Engine Pragma's Task Test" text="This is a placeholder task scene. Do you complete your task?"
 
 + [yes]
     ~addReward()
