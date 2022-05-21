@@ -148,9 +148,9 @@ INCLUDE nega/reward_hard_cunnilingus_dog
 
 
 
-EXTERNAL getNegaDie1()
-EXTERNAL getNegaDie2()
-EXTERNAL getNegaDie3()
+// EXTERNAL getNegaDie1()
+// EXTERNAL getNegaDie2()
+// EXTERNAL getNegaDie3()
 
 
 // Flow Variables
