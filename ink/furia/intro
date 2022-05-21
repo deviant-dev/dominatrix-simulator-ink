@@ -34,11 +34,6 @@
 /ambient furia
 /character furia
 
--/notify title="Enforcer Furia's Intro" text="This is a placeholder intro scene."
-
-+ [move]
-
--
 //player enter room on outside of carefully
 //watches a series of slaves doing tasks for a minute or so - during this time, Enforcer Furia is barking out criticisms or commands and whipping a slave at a punishment pole
 //she turns to the player to acknowledge them and interrogate them to find out why they are there
@@ -51,6 +46,8 @@
 // - 1 androgenous slave laying on the electrical bed covered in sweat with more electrical clamps attached
 
 //Scene begins: Furia finishes whipping player
+
+// Player can move around the scene while Furia is busy?
 
 Six.
 -> whipping_comments ->
@@ -78,6 +75,12 @@ You have earned your release.
 
 //Furia turns to player
 
+Come here, chattel.
+
++ [move:Approach]
+
+-
+
 What have we here?
 
 I see <i>'It'</i> has taken an interest in you.
@@ -86,11 +89,16 @@ Opened the way to my chamber of re-programming.
 
 Look around...
 
+- (look)
+
 Observe what is all around you.
+
++ [distracted]
++ [timeout] -> look
 
 //check to see if the player looks and watches
 
-Each one of these creatures came to me raw and in need of purpose.
+- Each one of these creatures came to me raw and in need of purpose.
 
 Do you see how they suffer?
 

@@ -40,6 +40,10 @@
 
 
 === load_game ===
+{deviation == demo || deviation == demo_short:
+    -> game_start
+}
+
 -> load_path
 
 
@@ -79,6 +83,9 @@
     - deviation == demo:
         -> pause(3) ->
         -> game_outro
+    - deviation == demo_short:
+        -> pause(3) ->
+        -> game_intro
     - deviation == treat:
         -> treat_care
     - deviation == nega_dice:
@@ -160,7 +167,7 @@
 
 
 === select_gender_check ===
-{hasChosen(): ->->}
+{hasChosenBody(): ->->}
 {web:
     -> select_gender_web ->->
 - else:
@@ -186,12 +193,12 @@
     /notify text="<i>You now appear feminine.</i>" delay=10 #note09
     -> options
 
-+ {hasChosen()} [move]
++ {hasChosenBody()} [move]
 
 - ->->
 
 
-=== function hasChosen() ===
+=== function hasChosenBody() ===
 ~ return player_name != "none"
 
 === function save(-> load) ===
@@ -243,7 +250,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Punishment Added: {getSummaryText()}
-    /notify title="<color=red>Punishment</color> Earned" text="{getName(current_mistress)}'s regard for you has <color=red>decreased</color>." delay = 3
+    /notify title="<color=red>Punishment</color> Earned" text="{getName(current_mistress)}'s regard for you has <color=red>decreased</color>." delay = 3 #note21
 }
 
 ~ return true
@@ -265,7 +272,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Punishment Removed: {getSummaryText()}
-    /notify title="Punishment Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3
+    /notify title="Punishment Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3 #note22
 }
 
 ~ return true
@@ -287,7 +294,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Punishment x10 Removed: {getSummaryText()}
-    /notify title="Punishment x10 Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3
+    /notify title="Punishment x10 Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3 #note23
 }
 
 ~ return true
@@ -313,7 +320,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Reward Added: {getSummaryText()}
-    /notify title="Reward Earned" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3
+    /notify title="Reward Earned" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3 #note24
 }
 
 ~ return
@@ -335,7 +342,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Reward Removed: {getSummaryText()}
-    /notify title="Reward Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3
+    /notify title="Reward Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased</color>." delay = 3 #note25
 }
 
 ~ return true
@@ -357,7 +364,7 @@
 	<i>{getSummaryText()}</i>
 - else:
     /log Reward x10 Removed: {getSummaryText()}
-    /notify title="Reward x10 Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased greatly</color>." delay = 3
+    /notify title="Reward x10 Paid" text="{getName(current_mistress)}'s regard for you has <color=blue>increased greatly</color>." delay = 3 #note26
 }
 
 ~ return true
@@ -449,13 +456,13 @@
 }
 
 
-=== function setDeviation(d) ===
-
-// Set the deviation.
+=== function setDeviation(d)
 ~ deviation = d
 
 // Set inTutorial to true only for tutorial, demo, and full game.
-~ inTutorial = deviation == demo || deviation == tutorial || deviation == full_game
+~ inTutorial = deviation == demo || deviation == demo_short || deviation == tutorial || deviation == full_game
+
+/log Deviation = {deviation} / inTutorial = {inTutorial}
 
 ~ return
 

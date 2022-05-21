@@ -135,24 +135,86 @@ TODO: Some kind of animation and sound should play to give the chastity device
     - Ready to come out of chastity?
 }
 
-+ [yes] -> Goddess_AcknowledgeYes ->
++ [yes] -> Goddess_AcknowledgeYes -> chastity_removal
 + [no]
-    You cannot serve me while in chastity.
+    Interesting.
+    Perhaps you enjoy staying confined?
     
+    ++ [yes]
+    How intriguing.
+    You will find it hard to spend rewards 
+    while you remain in chastity.
+    -> chastity_continue
+    
+    ++ [no]
+    I see.
+    Then do you want your chastity device removed?
+    
+        +++ [yes]
+        Very well.
+        -> chastity_removal
+        
+        +++ [no]
+        You waste my time.
+        Begone.
+        -> exit
+
+- (chastity_continue)
+Do you want to stay in chastity?
+
++ [yes]
+    Very well.
+    You shall stay locked up.
+    This pleases me.
+    -> special_reward
+    
++ [no]
+    Then you must give up your bloodstones to be released.
     Do you want to be released?
     
     ++ [yes]
-    Then you shall be free.
+    -> Goddess_AcknowledgeYes ->
+    -> chastity_removal
     
     ++ [no]
-    Then you must go.
+    You waste my time.
+    Begone. 
+    -> exit
+    
+- (special_reward)
+I will offer you a special reward for your obedience.
+
+Would you like to have a special reward with me?
+    
++ [yes]
+    -> Goddess_AcknowledgeYes ->
+    -> goddess_rewardmega_giantess
+    
++ [no]
+    You waste my time.
+    Begone.
     -> exit
 
--
+- (chastity_removal)
 
-Time to come out of your cage, little mouse.
+{shuffle:
+    - I want to enjoy watching you be released.
+    - Time to come out of your cage, little mouse.
+}
 
-/notify title="Chastity Release" text="Insert chastity release dialog here. Returning to entry"
+- (pride)
+{shuffle:
+    - Present yourself before me.
+    - Stand tall, with pride.
+}
+
++ [pose: present] -> Goddess_GoodJob ->
++ [timeout] -> Goddess_Timeout -> pride
+
+- This is a special gift I grant you.
+
+
+/notify title="Chastity Release" text="Chastity release animation plays. Returning to entry"
 ~ inChastity = false
 ~ removeBigReward(-> exit)
 /wait 5

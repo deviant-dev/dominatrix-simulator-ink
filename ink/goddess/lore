@@ -5,7 +5,12 @@
 // If we've heard the last lore, then don't say anything else here.
 {lore03: ->->}
 
-Since you've been so good, I'll tell you a little bit about the house.
+
+/perfrom talk_lean_forward aroused 80
+Since you've been so good, I'll tell you a little secret.
+
+
+
 { once:
     - -> lore01 ->
     - -> lore02 ->
@@ -15,13 +20,442 @@ Since you've been so good, I'll tell you a little bit about the house.
 ->->
 
 = lore01
-<< Inster Lore01 Here >>
+
+/perform react_scoffs happy 75
+I have some questions for you to ponder #
+
+little mouse. #
+
+/perform talk_lean_forward excited 65
+Why have you appeared here #
+in <br>my</br>, House? #
+
+/perform talk_thoughtful amused 55
+Did you choose to come here? #
+
+/perform do_shake_finger skeptical 35
+Or were you made to be here? #
+
+/emotion talk_thoughtful happy 50
+Who <i>are</i> you? #
+
+/perform talk_consider amused 35
+Or rather #
+
+who <i>were</i> you? #
+
+/wait 2
+
+
+/perform talk_emphatic_one_hand
+What if I told you #
+
+I know the answers to those questions? #
+
+/wait 2
+
+/perform idle_swaying happy 65
+I can see that puny head of yours #
+
+/perform talk_behold aroused 75
+is still struggling to adapt #
+
+/perform talk_lean_forward skeptical 75
+and learn. #
+
+- (accommodating)
+/perform idle_tease aroused 50
+However, we mistresses have been #
+
+accommodating of your... #
+
+desires thus far. #
+
+/perform talk_question amused 45
+Would you agree, small one? #
+
++[yes]
+    ~ addObey()
+    /perform idle_sassy happy 75
+    Good {player_name}. #
+    
+    /emotion aroused 75
+    You have barely begun to crawl, #
+    
+    let alone take the first steps in your journey. #
+
+    I am looking forward to see what direction you take. #
+    
++ [no]
+    ~ addDisobey()
+    /perform react_shake_head_disbelief disgusted 50
+    --> Goddess_Unhappy ->
+    Feeling a bit bratty, are we? #
+    
+    What a pity. #
+
+    We shall resume this conversation #
+
+    another time then. #
+
++ [timeout] 
+    /perform talk_question angry 60
+    Well? #
+    -> accommodating
+
++ [distracted] -> Goddess_PayAttention -> accommodating
+
 ->->
+
 
 = lore02
-<< Inster Lore01 Here >>
+
+
 ->->
 
+
+
 = lore03
-<< Inster Lore01 Here >>
+
+
 ->->
+
+
+
+// //Throat clearing noises
+
+// //The following is based upon the work of 2 Historians
+// // Diane WolkStein
+// // and
+// //Samuel Noah Kramer
+// //
+// //Huluppu-Tree
+// The 1st days;
+// The 1st nights;
+// The 1st years.
+
+// ---
+
+// All, was brought to be.
+// All, was nourished;
+// None were left wanting.
+
+// ---
+
+// Bread, was created.
+// Water, was consumed;
+
+// Us, made manifest.
+// None disputed this.
+
+// Of us, people of Earth.
+
+// ---
+
+// Earth, and Sky.
+
+// This fruition;
+// Solidified our exsistence.
+
+// Names, Rifts, Struggles shared;
+// All, will know.
+// All, will remember.
+
+// ---
+
+// Equal to each other,
+// For all of time.
+
+// As the Wilds beyond;
+// Savage, and forceful, the flood is upon us.
+
+// All, shall perish.
+// All, shall succumb to Water.
+
+// ---
+
+// //1st of 7 hymns
+// //The Holy Priestess of Heaven
+
+// I say, "Hail!" to the Holy One who appears in the Heavens!
+// I say, "Hail!" to the Holy Priestess of Heaven!
+// I Say, "Hail!" to Inanna, Great Lady of Heaven!
+
+// Holy Torch! You fill the sky with light!
+// You brighten the day at dawn!
+
+// Isay, "Hail!" to Inanna, Great Lady of Heaven!
+
+// Awesome Lady of the Annuna Gods! Crowned with great horns,
+// You fill the Heavens and Earth with Light!
+
+// I say, "Hail!" to Inanna, First Daughter of the Moon!
+
+// Mighty, Majestic, and Radiant,
+// You shine brilliantly in the evening,
+// You brighten the day at dawn,
+// You stand in the Heavens like the Sun and the Moon,
+// Your wonders are know both above and below,
+// To the greatness of the Holy Priestess of Heaven,
+// To you, Inanna, I sing!
+
+
+// //2nd of 7 hymns
+// //Loud Thundering Storm
+
+// Proud Queen of the Earth Gods, Supreme Among the Heaven Gods,
+// Loud Thundering Strom, you pour your rain over all the lands and all the people.
+// You make the Heavens tremble and the Earth quake.
+// Great Priestess, who can soothe your troubled heart?
+
+// You flash like lightening over the highlands; you throw your firebrands across the Earth.
+// Your deafening command, whistling like the South Wind, splits apart great mountains.
+// You trample the disobedient like a wild bull; Heaven and Earth tremble.
+// Holy Priestess, who can soothe your troubled heart?
+
+
+// Your frightful cry, descending from the Heavens, devours its victims.
+// Your quivering hand, causes the midday heat, to hover over the sea.
+// Your nighttime stalking of the Heavens, chills the land with its dark breeze.
+// Holy Inanna, the riverbanks overflow with the flood-waves of your Heart...
+
+// On the Seventh day, when the crescent Moon reaches its fullness,
+// You bath and sprinkle you face with Holy water.
+// You cover your body, with the long woolen garments of Queenship.
+// You fasten combat and battle to your side;
+// You tie them into a girdle and let them rest.
+
+// In Eridu you recieve the <i>me</i> from the God of Wisdom,
+// Father Enki presented the <i> me<i/> to you, at his Holy shrone in Eridu.
+// He placed Queenship and Godship in your hands.
+
+// You mount the steps to your high Throne.
+// In all majesty, you sit there.
+// With you beloved husband, Duzumi, at your side.
+
+// The Gods of the land, wishing to hear their fate, come before you.
+// The Gods of Heaven and Earth, kneel before you.
+// The living creatures and the people and Sumer, come before you.
+// The people of Sumer, parade before you.
+// They are caught in your gaze, and held in your Holy yoke.
+
+
+// //3rd of 7 hymns
+// //The Holy One
+
+// The people of Sumer parade before you.
+// They play the sweet <i>ala</i>-drums before you.
+// The people of Sumer parade before you.
+
+// I say, "Hail!" to Inanna, Great Lady of Heaven!
+
+// They beat the holy drum and timpani before you.
+// The people of Sumer parade before you.
+
+// I say, "Hail!" to Inanna, Great Lady of Heaven!
+
+// They play the holy harp and timpani before you.
+// The people of Sumer parade before you.
+
+// I say, "Hail!" to Inanna, First Daughter of the Moon!
+
+// The male prostitutes comb their hair before you.
+// They decorate the napes of their necks with colored scarfs,
+// They drap the cloak of the Gods about thei shoulders.
+// The righteous man and woman walk before you.
+// They holed the soothing harp by their sides.
+// Those who follow wear the sword belt.
+// They grasp the spear in their hands.
+// The people of Sumer parade before you.
+
+// The women adorn their right side with men's clothing.
+// The people of Sumer parade before you.
+
+// I say, "Hail!" to Inann, Great Lady of Heaven!
+
+// The people compete with jump ropes and colored cords.
+// The people of Sumer parade before you.
+
+// I say, "Hail!" to Inanna, First Daughter of the Moon!
+
+// The young men, who carry hoops, sing to you.
+// The maidens and coiffured priestesses walk before you,
+// They carry the sword and double-edged ax.
+// The ascending <i>kurgarrsa</i> priests raise their swords before you.
+// The priest, who covers his sword with blood, sprinkles blood,
+// He sprinkles blood over the throne of the court chamber.
+// The <i>tigi</i>-drum, the <i>sem</i>-drum, and the <i>ala</i>-tambourine resound!
+
+// In the Heavens the Holy One appears alone.
+
+// <i>My Lady looks in sweet wonder from heaven.
+// She looks in sweet wonder on all the lands
+// And on the people of Sumer as numerous and sheep.</i>
+
+
+// //4th of 7 hymns
+// //The Lady of the Evening
+// At the end of the day, the Radiant Star, the Great Light that fills the sky,
+// The Lady of the Evening appears in the Heavens.
+// The people in all the lands lift their eyes to her.
+// The men purify themselves; the women cleanse themselves.
+// The ox in his yoke lows to her.
+// The sheep stir up the dust in their fold.
+// All the living creatures of the steppe,
+// The four-footer creatures of the high steppe,
+// The lush gardens and orchards, the green reeds and trees,
+// The fish of the deep and the birds in the Heavens-
+// My Lady makes them all hurry to their sleeping places.
+
+// The living creatures and the numerous people of Sumer kneel before her.
+// Those chosen by the old women prepare great platters of food and drink for her.
+// The Lady refreshes herself in the land.
+// There is great joy in Sumer.
+// The young man makes love with his beloved.
+
+// <i>My Lady looks in sweet wonder from heaven.
+// The people of Sumer parade before the Holy Inanna.
+// Inanna, the Lady of the Evening, is radiant.
+// I sign your praises, Holy Inanna.
+// The Lady of the Evening is radiant on the horizon.</i>
+
+
+// //5th of 7 hymns
+// //The Lady of the Morning
+
+// Honored Counselor, Ornament of Heaven, Joy of An!
+// When sweet sleep has ended in the bedchamber,
+// You appear like bright daylight.
+
+// When all the lands and the people of Sumer assemble,
+// Those sleeping on the roofs and those sleeping by the walls,
+// When they sing your praises, bringing their concerns to you,
+// You study their words.
+
+// You render a cruel judgement against the evildoer;
+// You destroy the wicked.
+// You look with kindly eyes on the straightforward;
+// You give that one your blessing
+
+// <i>My Lady looks in sweet wonder from Heaven.
+// The people of Sumer parade before the Holy Inanna.
+// Inanna, the Lady of the Morning, is radiant.
+// I sing your praises, Holy Inanna.
+// The Lady of the Morning is radiant on the horizon.</i>
+
+
+// //6th of 7 hymns
+// //The Lady who ascends in the Heavens
+
+// My Lady, the Amazement of the Land, the Lone Star,
+// The Brave One who appears first in the Heavens-
+// All the lands fear her.
+
+// In the pure places of the steppe,
+// On the high roofs of the dwellings,
+// On the platforms of the city,
+// They make offerings to her;
+// Piles of incense like sweet-smelling cedar,
+// Fine sheep, fat sheep, long-haired sheep,
+// Butter, cheese, dates, fruits of all kinds.
+
+// They purify the Earth for My Lady.
+// They celebrate her in song.
+// They fill the table of the land with the first fruits.
+// They pour Dark Beer for her.
+// They pour Light Beer for her.
+// Dark Beer, Emmer Beer,
+// Emmer Beer for My Lady.
+
+// The <i>sagub</i>-vat and the <i>lamsari</i>-vat make a bubbling noise for her.
+// They prepare <i>gug</i>-bread in date syrup for her.
+// Flour, flour in honey, Beer at dawn.
+// They pour wine and honey for her at sunrise.
+
+// The Gods and the people of Sumer go to her with food and drink.
+// They feed Inanna in the pure clean place.
+
+// <i>My lady looks in sweet wonder from Heaven.
+// The people of Sumer parade befoire the Holy Inanna.
+// Inann, the Lady Who Ascends in the Heavens, is radiant.
+// I sing you praises, Holy Inanna.
+// The Lady Who Ascends in the Heavens is radiant on the horizon.</i>
+
+
+// //7 of 7 hymns
+// //The Joy of Sumer
+// //The Sacred Marriage Rite
+
+// The people of Sumer assemble in the palace,
+// The house which guides the land.
+// The king builds and throne for the queens of the palace.
+// He sits beside her on the throne.
+
+// In order to care for the life of all the lands,
+// The exact first day of the month is closely examined,
+// And on the day of the disappearance of the moon,
+// On the day of the sleeping of the moon,
+// The <i>me</i> are perfectly carried out
+// So that the New Year's Day, the day of rites,
+// May be properly determines,
+// And a sleeping place be set up for Inanna.
+
+// The peopl cleanse the rushed with sweet-smelling cedar oil,
+// They arrange the rushed for the bed.
+// They spread a bridal sheet over the bed.
+// A bridal sheet to rejoice the heart,
+// A bridal sheet to sweeten the loin,
+// A bridal sheet for Inanna and Dumuzi.
+
+// The queen bathes her holy loins,
+// Inanna bathes for the holy loins of Dumuzi,
+// She washes herself with soap.
+// She sprinkles sweet-smelling cedar oil on the ground.
+
+// The kind goes with lifted head to the holy loins,
+// Dumuzi goes with lifted head to the holy loins of Inanna.
+// He lies down beside her on the bed.
+// Tenderly he caresses her, murmuring words of love:
+// "O my holy jewel! O my wonderous Inanna!"
+
+// After he enters her holy vulva, causing the queen to rejoice,
+// After he enters her holy vulva, causing Inanna to rejoice,
+// Inanna holds him to her and murmurs:
+// "O Dumuzi, you and truly my love."
+
+// The kind bids the people enter the great hall.
+// The people bring food offerings and bowls.
+// They burn juniper resin, performing laving rites,
+// And piles up sweet-smelling incense.
+
+// The king embraces his beloved bride,
+// Dumuzi embraces Inanna.
+// Inanna, seated on the royal throne, shines like daylight.
+// The king, like the sun, shines radiantly by her side.
+// He arranges abundance, lushness, and plenty before her.
+// He assembles the people of Sumer.
+
+// The musicians play for the queen:
+// They play the loud instrument which drowns out the southern storm,
+// They play the sweet <i>algar</i>-instrument, the ornament of the palace,
+// They play the stringer instrument which brings joy to all people,
+// They play songs for Inanna to rejoice the heart.
+
+// The king reaches out his hand for food and drink,
+// Dumuzi reaches out his hand for food and drink.
+// The palace is festive. The king is joyous.
+// In the pure clean place they celebrate Inanna in song.
+// She is the ornament of the assembly, the joy of Sumer!
+
+// The people spend the day in plenty.
+// The king stands before the assembly in great joy.
+// He hails Inanna with the praises of the gods and the assembly;
+// "Holy Priestess! Created with the heavens and earth,
+// Inanna, First Daughter of the Moon, Lady of the Evening!
+// I sing your praises."
+
+// <i>My Lady looks in sweet wonder from Heaven.
+// The people of Sumer parade before the Holy Inanna.
+// The Lady Who Ascends in the Heavens, Inanna, is radiant.
+// Might, majestic, radiant and ever youthful-
+// To you, Inanna, I sing!</i>

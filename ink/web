@@ -2,6 +2,10 @@
 
 === table_of_contents ===
 
++ <b>Test: Pragma Intro</b>
+    ~ setDeviation(full_game)
+    -> pragma_intro
+
 + <b>Test: Goddess JOI Reward</b>
     ~ setDeviation(full_game)
     -> goddess_reward_joi
@@ -50,7 +54,7 @@ Genitals: {hasPenis:penis|vulva}
 + {hasPenis}[Swap to vulva]
     ~ hasPenis = false
 
-+ {hasChosen()} [move]
++ {hasChosenBody()} [move]
     ->->
 
 - -> options

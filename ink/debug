@@ -2,13 +2,14 @@
 
 //Popular Combinations
 
-~ unlockAll()
+//~ unlockAll()
 
-~SEED_RANDOM(5)
+//~SEED_RANDOM(5)
 
-~ inTutorial = false
-~ rewards = 5
-~ setGender("p")
+//~ inTutorial = false
+//~ rewards = 10
+//~ inChastity = true
+//~ setGender("p")
 
 
 
@@ -67,7 +68,7 @@
 //--------------------------------------------------
 // --- Punishments and Reward ---
 // ~ punishments = 0
-~ rewards = 1
+// ~ rewards = 1
 
 //--------------------------------------------------
 // --- Tutorial Completion ---
@@ -199,7 +200,8 @@
 //--------------------------------------------------
 // --- Pragma Scene Jumps ---
 // -> pragma_hub
-// -> pragma_intro
+-> pragma_intro
+// -> pragma_intro.intro_temp
 // -> pragma_punishment_placeholder
 // -> pragma_reward_placeholder
 // -> pragma_rewardmega_placeholder
@@ -222,7 +224,7 @@
 
 //--------------------------------------------------
 // --- Yuki Scene Jumps ---
--> yuki_hub
+// -> yuki_hub
 // -> yuki_intro
 // -> yuki_reward_cunnilingus
 // -> yuki_punishment_edging

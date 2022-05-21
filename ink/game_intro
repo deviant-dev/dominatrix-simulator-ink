@@ -1,22 +1,28 @@
 === game_intro ===
 //Initial save for the player
 //Set the Tutorial and Scene status, then create Save File
+
 ~ tutorial_step = at_game_intro
 ~ setScene(intro_scene, None, "game_intro", -> game_intro)
-~ save(-> game_intro)
-
-//Load Unity SceneName.SubScene
-//Load Music and Ambient Noise
-/scene EntryDark.TitleScreen
-/music entry
-/ambient none
 
 /log Starting game intro.
 
+{deviation == demo_short:
+    /scene EntryDark.StartDemo
+- else:
+    /scene EntryDark.TitleScreen
+}
 
-//Comfirm player is 18+
-+ [wait:6] 
-    -> verify_age
+/music entry
+/ambient none
+
+/wait 6
+
+{deviation != demo_short: -> verify_age }
+
++ [begin!] -> instructions
+
+
 = verify_age
 /scene EntryDark.VerifyAge
 + [yes] 
@@ -53,11 +59,12 @@ Hello. #01
 Would you like to play a little game? #02
 
 
-+ [yes] 
++ [yes!] 
     -> lets_play
-+ [no] 
++ [no!] 
     -> answer_no
 + [continue]
+
 
 - (nod_info)
 
@@ -68,9 +75,9 @@ Nod your head for "yes." #03
 Shake your head for "no." #04
 /perform idle
 
-+ [yes!] 
++ [yes!]
     -> lets_play
-+ [no]
++ [no!]
     -- (answer_no)
     No?! #27
     But I'm just certain you'll enjoy it. #28
@@ -82,6 +89,8 @@ Shake your head for "no." #04
 //Inform Player
 = lets_play
 
+{deviation == demo_short: -> ready}
+
 /perform talk_behold happy 50
 Of course you would. #05
 I think you're going to like this little game I've created. #06
@@ -89,8 +98,8 @@ I think you're going to like this little game I've created. #06
 It's still a work in progress. #30
 but there's already plenty to enjoy. #31
 
-/perform talk_gesture amused 50
-Just do what you're told and you'll be fine. #07
+-> do_what_your_told ->
+
 
 + [continue]
 
@@ -164,6 +173,8 @@ Are you ready? #20
 /perform react_thankful happy 50
 Wonderful. #21
 
+{deviation == demo_short: -> do_what_your_told -> }
+
 /perform do_stand_to_right
 Have fun! #22
 
@@ -172,3 +183,10 @@ Have fun! #22
 
 + [move]
     -> select_gender -> post_intro_deviation_check
+    
+= do_what_your_told
+
+/perform talk_gesture amused 50
+Just do what you're told and you'll be fine. #07
+
+->->

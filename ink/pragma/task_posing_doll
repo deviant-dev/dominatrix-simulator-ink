@@ -1,0 +1,46 @@
+=== pragma_task_posing_doll ===
+-> select_gender_check ->
+~ setScene(task_scene, Pragma, "pragma_task_posing_doll", -> pragma_task_posing_doll)
+/scene PragmasRoom.posingdoll
+/music pragma
+/ambient pragma
+/character pragma
+-> start
+
+
+= start
+
+// consent check
+
++ [yes]
++ [no]
+    << Don't waste my time, then. >>
+    << Go away.>>
+    /wait
+    -> exit
+
+- -> begin
+
+
+= begin
+
+// scene goes here
+
+-> finish
+
+
+= finish
+
+// scene wrap-up goes here
+
+/notify title="The Divine Engine Pragma's Task Test" text="This is a placeholder task scene. Do you complete your task?"
+
++ [yes]
+    ~addReward()
+    /notify title="The Divine Engine Pragma's Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
++ [no]
+    ~addPunishment()
+    /notify title="The Divine Engine Pragma's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+
+- /wait 5
+-> exit

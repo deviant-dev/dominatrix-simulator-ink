@@ -91,12 +91,15 @@ INCLUDE nega/punishment_hard_genitaltorture
 INCLUDE nega/punishment_hard_trampling
 
 INCLUDE pragma/hub
+INCLUDE pragma/hub_vignette
 INCLUDE pragma/intro
 INCLUDE pragma/task_dancing_doll
 INCLUDE pragma/task_placeholder
 INCLUDE pragma/punishment_placeholder
 INCLUDE pragma/reward_placeholder
 INCLUDE pragma/rewardmega_placeholder
+INCLUDE pragma/generic_responses
+INCLUDE pragma/task_posing_doll
 
 INCLUDE treat/hub
 INCLUDE treat/hub_vignette
@@ -143,13 +146,15 @@ INCLUDE nega/reward_hard_cunnilingus_dog
 
 
 
-// EXTERNAL getNegaDie1()
-// EXTERNAL getNegaDie2()
-// EXTERNAL getNegaDie3()
+
+
+EXTERNAL getNegaDie1()
+EXTERNAL getNegaDie2()
+EXTERNAL getNegaDie3()
 
 
 // Flow Variables
-LIST deviation = (full_game), tutorial, demo, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia, unspeakable_toy, yuki_cunnilingus, treat_cunnilingus
+LIST deviation = (full_game), tutorial, demo, demo_short, puppyplay, hand_signals, exhibitionism, treat, nega_dice, pragma, furia, unspeakable_toy, yuki_cunnilingus, treat_cunnilingus
 
 VAR debug = false
 VAR web = true
@@ -164,6 +169,7 @@ VAR inVR = false
 }
 
 ~ setDeviation(deviation)
+
 -> game_start
 
 

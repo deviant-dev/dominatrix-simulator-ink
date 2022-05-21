@@ -1,0 +1,208 @@
+
+=== Pragma_AcknowledgeYes ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+/character Pragma
+
+{cycle:
+
+    -{emoteOnly: /emotion |/perform }
+    Response logged. #
+
+    -{emoteOnly: /emotion |/perform }
+    Acceptable. #
+
+    
+    }
+
+->->
+
+=== Pragma_AcknowledgeNo ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+/character Pragma
+
+{cycle:
+
+    -{emoteOnly: /emotion |/perform }
+    Response logged. #
+
+    -{emoteOnly: /emotion |/perform }
+    Unacceptable. #
+
+    -{emoteOnly: /emotion |/perform }
+    Disappointing. #
+
+    }
+
+->->
+
+=== Pragma_GoodJob ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+/character Pragma
+
+{shuffle:
+
+    -{emoteOnly: /emotion |/perform }
+    Excellent. #
+
+    -{emoteOnly: /emotion |/perform }
+    Satisfactory. #
+
+    -{emoteOnly: /emotion |/perform }
+    Agreeable. #
+
+    -{emoteOnly: /emotion |/perform }
+    Interesting. #
+
+    -{emoteOnly: /emotion |/perform }
+    Amenable. #
+
+    -{emoteOnly: /emotion |/perform }
+    Curious. #
+
+    
+    }
+
+->->
+
+=== Pragma_Badjob ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+/character Pragma
+
+{cycle:
+
+    -{emoteOnly: /emotion |/perform }
+    Disappointing. #
+
+    -{emoteOnly: /emotion |/perform }
+    Unsatisfactory. #
+
+    -{emoteOnly: /emotion |/perform }
+    Error. #
+
+    -{emoteOnly: /emotion |/perform }
+    Failure. #
+
+    -{emoteOnly: /emotion |/perform }
+    Invalid. #
+
+    -{emoteOnly: /emotion |/perform }
+    Out of Scope. #
+
+    
+    }
+
+->->
+
+//Response to timeouts to questions
+=== Pragma_Timeout ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+/character Pragma
+
+{cycle:
+
+    -{emoteOnly: /emotion |/perform }
+    Is this one malfunctioning? #
+
+    -{emoteOnly: /emotion |/perform }
+    Have you encountered an error in your programming? #
+
+    
+    }
+
+->->
+
+//Response to timeouts to actions
+=== Pragma_Interested ===
+
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+/character Pragma
+
+{cycle:
+
+    -{emoteOnly: /emotion |/perform }
+    Are you still there? #
+
+    -{emoteOnly: /emotion |/perform }
+    Respond! #
+
+    
+    }
+
+->->
+
+//response to player distraction
+=== Pragma_PayAttention ===
+-> DoEmoteOnly(false)
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+= DoEmoteOnly(emoteOnly)
+
+/character Pragma
+
+{cycle:
+
+    -{emoteOnly: /emotion |/perform }
+    What is it doing? #
+
+    -{emoteOnly: /emotion |/perform }
+    Is it malfunctioning? #
+
+    
+    }
+
++ [pay-attention]
+    { cycle:
+        - {emoteOnly:/emotion|/perform talk_consider}
+        Focus on me. #
+
+        - {emoteOnly:/emotion|/perform react_thankful}
+        It tries my patience. #
+
+        - {emoteOnly:/emotion|/perform idle_clasp_hands}
+        Hmmm, its circutry is underperforming. #
+
+    }
+    ->->
+
++ [timeout] -> Pragma_PayAttention.DoEmoteOnly(emoteOnly) ->->
+
+
+
