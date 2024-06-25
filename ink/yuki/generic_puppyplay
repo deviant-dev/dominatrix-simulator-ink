@@ -1,12 +1,17 @@
 
 TODO: add emotions and performances to swipe a Bloodstone
 
+
+
+
 === Yuki_Puppy_Intro ===
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -40,12 +45,17 @@ TODO: add emotions and performances to swipe a Bloodstone
 
 -->->
 
+
+
+
 === Yuki_Puppyplay_Reward_Earned ===
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -85,12 +95,16 @@ TODO: add emotions and performances to swipe a Bloodstone
 ->->
 
 
+
+
 === Yuki_Puppyplay_Reward_Complete ===
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -127,12 +141,17 @@ TODO: this should be removed. rewards are taken at the start of a scene. lines c
 
 ->->
 
+
+
+
 === Yuki_Puppyplay_Punishment_Earned ===
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -170,12 +189,17 @@ TODO: this should be removed. rewards are taken at the start of a scene. lines c
 
 ->->
 
+
+
+
 === Yuki_Puppyplay_Punishment_Complete ===
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -213,6 +237,9 @@ TODO: this should be removed. rewards are taken at the start of a scene. lines c
 
 ->->
 
+
+
+
 === Yuki_PuppyPlay_UsePaws ===
 
 //don't use performances
@@ -227,6 +254,9 @@ TODO: this should be removed. rewards are taken at the start of a scene. lines c
 
 ->->
 
+
+
+
 === Yuki_PuppyPlay_Punishment_UsePaws ===
 //don't use performances
 
@@ -240,6 +270,9 @@ TODO: this should be removed. rewards are taken at the start of a scene. lines c
 }
 
 ->->
+
+
+
 
 === Yuki_Puppyplay_GoodSpank ===
 
@@ -259,6 +292,9 @@ TODO: this should be removed. rewards are taken at the start of a scene. lines c
  }
 
 ->->
+
+
+
 
 === Yuki_Puppyplay_BadSpank ===
 
@@ -281,6 +317,9 @@ TODO: this should be removed. rewards are taken at the start of a scene. lines c
     }
 ->->
 
+
+
+
 === Yuki_Sit_Up ===
 
 {shuffle:
@@ -292,6 +331,9 @@ TODO: this should be removed. rewards are taken at the start of a scene. lines c
 }
 
 ->->
+
+
+
 
 === Yuki_Player_Masturbate ===
 /character yuki
@@ -324,6 +366,7 @@ That's it. #07
 
 - ->->
 
+
 = masturbation_comment
 
 { obeyed():
@@ -333,6 +376,9 @@ That's it. #07
 }
 
 ->->
+
+
+
 
 === Yuki_masturbation_punishment ===
 TODO: Rewrite for Yuki
@@ -361,6 +407,8 @@ TODO: Rewrite for Yuki
 ->->
 
 
+
+
 === Yuki_masturbation_comments ===
 
 {shuffle:
@@ -379,6 +427,7 @@ TODO: Rewrite for Yuki
 
 ->->
 
+
 = slow_down
 {shuffle:
     - Take your time {hasPenis: stroking|rubbing} yourself. #09
@@ -388,6 +437,7 @@ TODO: Rewrite for Yuki
 
 ->->
 
+
 = speed_up
 {shuffle:
   - Mmmm. Let me see how fast you can {hasPenis: stroke|rub}. #12
@@ -396,6 +446,7 @@ TODO: Rewrite for Yuki
 }
 
 ->->
+
 
 = right_speed
 {shuffle:
@@ -407,12 +458,16 @@ TODO: Rewrite for Yuki
 ->->
 
 
+
+
 === Yuki_milking_comments ===
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 

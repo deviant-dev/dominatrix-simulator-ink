@@ -1,5 +1,8 @@
 TODO: all animations have been imported from another scene. They all need to be changed to sex_chair animations.
 
+
+
+
 === goddess_reward_serviced ===
 -> select_gender_check ->
 ~ setScene(reward_scene, Goddess, "goddess_reward_serviced", -> goddess_reward_serviced)
@@ -10,9 +13,12 @@ TODO: all animations have been imported from another scene. They all need to be 
 /scene Bedroom.ServicedIntro
 /music goddess
 /ambient none
-/character goddess amused 50
+/character goddess 
+/emotion amused 50
 ->->
 
+= test_interaction
+-> scene_setup -> begin_interaction
 
 = intro
 
@@ -52,13 +58,14 @@ Would you enjoy that, {player_name}? #07
 = load_gave_reward
 -> scene_setup -> gave_reward
 
+
 = gave_reward
 /perform do_point_down skeptical 50
 Lay down before me. #08
 /perform idle_tease aroused 25
 Get into the proper position. #09
 
-- /notify title="<color=red>Pro Tip!</color>" text="For a more comfortable experience, grab a pillow to support your head! Your Goddess is watching you; the least you can do, is return the gesture." #note08
+- /notify title="<color=red>Pro Tip!</color>" text="For a more comfortable experience, grab a pillow to support your head! Your Goddess is watching you; the least you can do, is return the gesture." #note15
 
 + [pose:lay_down_bent_knees]
 
@@ -67,6 +74,7 @@ Get into the proper position. #09
 - Close your eyes and take a deep breath. #10
 
 -> ready
+
 
 = ready
 
@@ -99,21 +107,24 @@ Are you ready, {player_name}? #18
     -> Goddess_AcknowledgeNo ->
     
     -- (begin2)
-    Do you wish to continue?
+    Do you wish to continue? #95
     
     ++ [yes]
-         -> Goddess_AcknowledgeYes.EmoteOnly ->
-         
+        -> Goddess_AcknowledgeYes.EmoteOnly ->
+        
     ++ [no]
-        A pity.
-        Perhaps you'll be more in the mood next time.
+        A pity. #96
+        Perhaps you'll be more in the mood next time. #97
         -> leave
         
     ++ [timeout] -> Goddess_Timeout.EmoteOnly -> begin2
         
 + [timeout] -> Goddess_Timeout.EmoteOnly -> begin
 
-- Begin girl. #19
+- -> begin_interaction
+
+= begin_interaction
+Begin girl. #19
 
 -> serviced_slow ->
 /character goddess sex_chair_crosslegs_idle_tease aroused 50
@@ -137,9 +148,9 @@ nod your head to ask for permission to cum. #22
 -{stopping:
     - -> serviced_slow ->
     - -> serviced_medium ->
-      /character goddess sex_chair_crosslegs_grind aroused 75
+    /character goddess sex_chair_crosslegs_grind aroused 75
     - -> serviced_fast ->
-      /character goddess sex_chair_openlegs_masturbate aroused
+    /character goddess sex_chair_openlegs_masturbate aroused
     - {shuffle:
         - -> serviced_slow ->
         /character goddess sex_chair_openlegs_masturbate_fast
@@ -154,19 +165,24 @@ nod your head to ask for permission to cum. #22
 
 -> handjob
 
+
 = serviced_slow
 -> serviced("slow") ->->
+
 
 = serviced_medium
 -> serviced("medium") ->->
 
+
 = serviced_fast
 -> serviced("fast") ->->
+
 
 = serviced(speed)
 /character slave serviced_{hasPenis:penis|vagina}_{speed}
 /character goddess
 ->->
+
 
 = cum
 /wait 3
@@ -177,7 +193,7 @@ nod your head to ask for permission to cum. #22
 }
 
 + [yes]
-     -> orgasm
+    -> orgasm
 
 + [no]
     What a tease. #25
@@ -185,6 +201,7 @@ nod your head to ask for permission to cum. #22
     -> handjob
 
 + [timeout] -> Goddess_Timeout.EmoteOnly -> cum
+
 
 = orgasm
 
@@ -204,7 +221,7 @@ I will join you. #30
 //adjust wait for VO orgasm length
 - /wait 6
 
-/character goddess sex_chair_openlegs aroused 50
+/character goddess sex_chair_openlegs_wide aroused 50
 Ripples of pleasure consume me, little mouse. #31
 // [heavy breathing]
 
@@ -218,11 +235,11 @@ Ripples of pleasure consume me, little mouse. #31
 }
 
 + [yes]
-   -> Goddess_AcknowledgeYes.EmoteOnly ->
+    -> Goddess_AcknowledgeYes.EmoteOnly ->
 
 + [no]
     A few moments more. #34
-     -- (reminder)
+    -- (reminder)
     "Nod" your head when you are spent. #35
 
     ++ [yes]
@@ -253,11 +270,11 @@ Did you enjoy my girl's attentions? #38
 
 + [timeout] -> Goddess_Timeout.EmoteOnly -> enjoy
 
-
 -
 /perform sex_chair_crosslegs_snap_right_fingers happy 25
 Your reward is over, little mouse. #42
 
+TODO: this line is playing in full game. It should not.
 {deviation != unspeakable_toy:
     One reward has been deducted from your wrist. #43
     ~removeReward(-> entry_hub)
@@ -295,6 +312,7 @@ You may go. #44
 
 -->->
 
+
 = command
 /wait 2
 /character goddess
@@ -306,8 +324,8 @@ You may go. #44
     - Rub and tease your nipples. #53
     - Arch your back for me, little mouse. #54
 }
-
 ->->
+
 
 = serviced_comment
 /character goddess
@@ -324,8 +342,8 @@ You may go. #44
         - -> vagina_comments ->
     }
 }
-
 ->->
+
 
 = pleasure_comments
 /character goddess
@@ -349,8 +367,8 @@ You may go. #44
     - -> Goddess_GoodJob.EmoteOnly ->
     - -> Goddess_GoodJob.EmoteOnly ->
 }
-
 ->->
+
 
 = arousal_comments
 /character goddess
@@ -370,8 +388,8 @@ You may go. #44
     and you can take her place. #81
     - Impress me often and I will grant you a taste of me. #82
 }
-
 ->->
+
 
 = vagina_comments
 /character goddess
@@ -383,8 +401,8 @@ You may go. #44
     - So juicy. #87
     - Your moist petals open to her. #88
 }
-
 ->->
+
 
 = penis_comments
 /character goddess
@@ -396,5 +414,4 @@ You may go. #44
     - Your musk coats the air. #93
     - Your firm rod yields to her. #94
 }
-
 ->->

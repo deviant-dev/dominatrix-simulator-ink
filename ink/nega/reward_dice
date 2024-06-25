@@ -39,7 +39,7 @@
 
 = scene_setup
 /scene attic.Ready
-/music nega-ambient-1
+/music nega-reward-dice
 /ambient howling-wind
 /character nega
 ->->
@@ -100,7 +100,6 @@ Get down here. #09
 
 // This animation creates dice in Nega's hand.
 /perform squat_dice_give amused 35
-/music nega-ambient-2
 Time to play a little game. #10
 /wait 1
 
@@ -135,7 +134,7 @@ Go ahead. Roll them bones. #06
     That's the same as last time. #84
     // This re-gathers the dice to Nega's hand
     /perform squat_dice_give amused 35
-    Boring! Do it better, fuckwit. #85
+    Boring! Do it better, fuck wit. #85
     -> hold
 }
 
@@ -169,6 +168,7 @@ Go ahead. Roll them bones. #06
     - result == -2: -> result_punishment_light
     - result <= -3: -> result_punishment_hard
 }
+
 
 = result_reward_hard
 
@@ -267,8 +267,9 @@ You get nothing, of course, but for a roll like that... #28
     -> result_punishment_tease_no_intro
 - else:
     Perhaps I'll let you in on a little secret. #30
-    -> nega_lore
+    -> nega_lore -> exit
 }
+
 
 = result_no_reward
 TODO: Put in UI sound or musical sting if the player fails.
@@ -289,7 +290,6 @@ Nothing for you today. #16
 /perform idle_looming
 
 -> exit
-
 
 
 = result_punishment_tease
@@ -368,6 +368,7 @@ Mmmm, look at that. #40
     - -> nega_punishment_hard_genitaltorture
 }
 
+
 = intro_change_dice
 
 /perform squat_forward amused 65
@@ -391,7 +392,7 @@ Stand up, {player_name}. #87
 
 /lookat dice
 /perform squat_forward
-Ooo. Looky here. #46
+Ooo. Lookie here. #46
 Someone just got lucky! #47
 
 /lookat player
@@ -428,6 +429,7 @@ You're gonna love getting rewards from me. #49
     
 + [timeout]
     -> Nega_Timeout.EmoteOnly -> check_consent_again
+
 
 = come_again
 

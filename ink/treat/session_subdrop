@@ -2,7 +2,7 @@
 -> select_gender_check ->
 ~ setScene(session_scene, Treat, "treat_session_subdrop", -> treat_session_subdrop)
 /scene Hell.Ready
-/music treat
+/music treat-sub-drop
 //ambient treat
 /character treat
 
@@ -20,11 +20,11 @@
 }
 
 /perform talk_consider aroused 65
-I think we should get you into the right headspace. #04
+I think we should get you into the right head space. #04
 
 /perform idle_tease aroused 70
 There's nothing quite like dropping you #05
-into a submissive headspace to really enhance our pleasure. #06
+into a submissive head space to really enhance our pleasure. #06
 
 /perform talk_question skeptical 55
 Would you like that, {player_name}? #07
@@ -176,14 +176,14 @@ Understand? #41
 + [timeout] -> eyes
 -
 
-//TODO make an animation that make her eyes glow a tiny bit
+
 
 /perform idle_skeptical amused 55
 I see you. #46
 In your eyes, I see a soul who yearns for a place. #47
 For a home. #48
 To belong. #49
-
+TODO: make an animation that make her eyes glow a tiny bit
 Breathe. #50
 
 [Deep Breath] #115
@@ -213,9 +213,10 @@ I see you. #56
 
 -> see_you
 
+
 = see_you
 
-//TODO talk_breathe_cycle
+TODO: talk_breathe_cycle
 {shuffle:
     - Breathe, {player_name}. #57
     In and out. #58
@@ -247,8 +248,9 @@ TODO: have cycle reset @deviant
 
 -> see_you
 
+
 = upper_body
-//TODO do_admire_upper?
+TODO: do_admire_upper?
 /perform react_thankful aroused 50
 I see the gentle curve of your head. #67
 The soft swell of your lips. #68
@@ -270,8 +272,9 @@ Do you feel my eyes on you, {player_name}? #70
 
 - ->->
 
+
 = lower_body
-//TODO do_admire_lower
+TODO: do_admire_lower
 /perform do_inspect aroused 65
 I see the sumptuous fall of your belly. #73
 The strong lines of your thighs. #74
@@ -293,12 +296,13 @@ Expose yourself to me, little one. #78
 
 - -> Treat_GoodJob ->
 
-//TODO walking around player animation
+TODO: walking around player animation
 So beautiful. #80
 So perfect. #81
 Just where I want you. #82
 
 -> ready
+
 
 = genitals
 /perform idle_hand_on_hip skeptical 55
@@ -321,8 +325,9 @@ You need this attention, don't you? #86
 
 - ->->
 
+
 = heart
-//TODO make animation of her walking over and sitting down in chair?
+TODO: make animation of her walking over and sitting down in chair?
 /perform idle_hand_on_hip skeptical 55
 I know you yearn to belong. #89
 To be owned. #90
@@ -339,8 +344,8 @@ Rest at my feet. #94
 
 -
 -> Treat_GoodJob ->
-//TODO performance to pet the player's hair?
-//TODO pose recognition?
+TODO: performance to pet the player's hair?
+TODO: pose recognition?
 
 /perform idle_pleased amused 35
 Just relax. #95
@@ -355,7 +360,7 @@ I will be here anytime you need to be taken care of. #99
 
 = ready
 
-//TODO chair talking animations?
+TODO: chair talking animations?
 /perform idle_skeptical amused  45
 {shuffle:
     - Have you let your ego go? #100
@@ -372,14 +377,14 @@ I will be here anytime you need to be taken care of. #99
     That's alright. #105
     -> see_you
 
- + [timeout] -> ready
++ [timeout] -> ready
 
 -  (serve)
 /perform idle_skeptical skeptical 55
 Are you ready to serve? #106
 
 + [yes]
-/emotion aroused 65
+    /emotion aroused 65
     I am proud of you. #107
     Your service will be cherished. #108
 
@@ -391,7 +396,7 @@ Are you ready to serve? #106
 + [timeout] -> serve
 
 - /perform do_summon_player amused 55
- Now stand. #110
+Now stand. #110
 
 + [pose: stand]
 

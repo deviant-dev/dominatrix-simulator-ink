@@ -1,0 +1,384 @@
+// writing status: in progress
+
+
+
+
+=== ereshkigal_hub ===
+-> select_gender_check ->
+
+~ setHub(Ereshkigal, "ereshkigal_hub", -> ereshkigal_hub)
+
+{inTutorial: -> ereshkigal_intro}
+
+TODO: make a room for ereshkigal
+
+/ambient none
+
+
++ [move:Exit] -> exit
++ [move:Approach] -> apology_check(-> hello, -> exit)
+
+
+= hello
+
+/wait
+
+{ ereshkigal_regard >= 10:
+/perform react_thankful happy 50
+    Hello small creature.
+- else:
+    {shuffle: 
+        - /perform talk_behold amused 45
+            Greetings, {player_name}.
+        - /perform talk_one_hand skeptical 35
+            Hello, {player_name}.
+    }
+}
+
+{shuffle:
+    - /perform talk_behold amused 45
+        Why have you come to me?
+    - /perform talk_one_hand skeptical 75
+        Why are you here?
+    -/perform idle_skeptical excited 40
+        Why do you seek me out?
+}
+
+{ 
+    - punishments > 0 && inChastity:
+    You are in chastity.
+    You require correction. Go get your punishments and perhaps we'll talk.
+    -> exit
+    - rewards >= 10 && inChastity: -> chastity_release
+    - inChastity: -> chastity_rejection
+    - punishments >= 10: -> chastity_offer
+    - punishments > 0: -> check_punishment
+    - rewards >= 10: -> check_reward_mega
+    - rewards > 0 : -> check_reward
+    - else: -> no_task
+}
+
+
+= chastity_rejection
+
+TODO: dialogue suggests you need favor with Mistresses to be released. Is this what we mean?
+
+You are not yet worthy.
+Raise your standing with my Mistresses
+and save your high marks,
+then perhaps I'll entertain your presence
+and release you from your cage. 
+Ten should suffice.
+Now leave.
+
++ [yes] -> exit
+
++ [no]
+    No? Then take a punishment and leave anyway.
+    ~ addPunishment()
+    -> exit
+    
++ [timeout] -> exit
+
++ [move:exit] -> exit
+
+
+= chastity_offer
+My, my.
+A full wrist of Obsidian.
+
+Submit to chastity...
+and I shall remove them. 
+
+- (offer)
+Do you accept? 
+
++ [yes]
+    What an eager little mouse.
+
+//+ [no] -> Ereshkigal_AcknowledgeNo -> check_punishment
+
++ [timeout] -> offer
+
+- (accept_chastity)
+
+{shuffle:
+    - Imprisonment you shall have.
+    - Chastity it is. 
+    - You shall be confined then.
+}
+
+TODO: Some kind of animation and sound should play to give the chastity device
+
+{shuffle:
+    - Look how well it fits you.
+    - There. All locked away.
+    - Awww. 
+    The little mouse is trapped in a cage.
+}
+
+{shuffle:
+    - Earn ten Bloodstones to have your freedom.
+    - Return with ten rewards to be set free. 
+}
+
+~ inChastity = true
+/wait 5
+-> exit
+
+
+= chastity_release
+
+{shuffle:
+    - I see. Ten rewards.
+    - Ahhh. Ten Bloodstones.
+}
+
+{shuffle:
+    - Here to be released from confinement, then?
+    - Ready to come out of chastity?
+}
+
+//+ [yes] -> Ereshkigal_AcknowledgeYes -> chastity_removal
++ [no]
+    Interesting.
+    Perhaps you enjoy staying confined?
+    
+    ++ [yes]
+    How intriguing.
+    You will find it hard to spend rewards 
+    while you remain in chastity.
+    -> chastity_continue
+    
+    ++ [no]
+    I see.
+    Then do you want your chastity device removed?
+    
+        +++ [yes]
+        Very well.
+        -> chastity_removal
+        
+        +++ [no]
+        You waste my time.
+        Begone.
+        -> exit
+
+- (chastity_continue)
+Do you want to stay in chastity?
+
++ [yes]
+    Very well.
+    You shall stay locked up.
+    This pleases me.
+    -> special_reward
+    
++ [no]
+    Then you must give up your bloodstones to be released.
+    Do you want to be released?
+    
+    ++ [yes]
+//    -> Ereshkigal_AcknowledgeYes ->
+    -> chastity_removal
+    
+    ++ [no]
+    You waste my time.
+    Begone. 
+    -> exit
+    
+- (special_reward)
+I will offer you a special reward for your obedience.
+
+Would you like to have a special reward with me?
+    
++ [yes]
+//    -> Ereshkigal_AcknowledgeYes ->
+//    -> ereshkigal_rewardmega_giantess
+    
++ [no]
+    You waste my time.
+    Begone.
+    -> exit
+
+- (chastity_removal)
+
+{shuffle:
+    - I want to enjoy watching you be released.
+    - Time to come out of your cage, little mouse.
+}
+
+- (pride)
+{shuffle:
+    - Present yourself before me.
+    - Stand tall, with pride.
+}
+
+//+ [pose: present] -> Ereshkigal_GoodJob ->
+//+ [timeout] -> Ereshkigal_Timeout -> pride
+
+- This is a special gift I grant you.
+
+/notify title="Chastity Release" text="Chastity release animation plays. Returning to entry"
+~ inChastity = false
+~ removeBigReward(-> exit)
+/wait 5
+-> exit
+
+
+= check_punishment
+
+
+{shuffle:
+    - /perform talk_lean_forward skeptical 60
+    Tsk tsk. Are you here to pay off a punishment?
+    - /perform do_smooth_skirt amused 50
+    My little mouse has been naughty. 
+    Ready to be punished?
+    - /perform talk_question amused 15
+    Have you come to pay off a punishment?
+    - /perform talk_lean_forward sad 30
+    Are you here to be punished?
+}
+
++ [yes] -> choose_punishment
++ [no]
+
+- No? 
+
+{
+    - punishments < 10 && rewards < 10:
+        -> no_task
+    - punishments >= 10:
+    /perform react_dismissive skeptical 25
+        You have too many punishments for a task, I'm afraid. 
+        You'll have to take some off first.
+    - rewards >= 10:
+        I cannot give you a task when your wrist is full of rewards.
+        Indulge yourself before performing any more tasks.
+}
+
+-> goodbye
+
+
+= check_reward_mega
+
+- /perform do_inspect amused 45
+Well, well. 
+Looks like our little mouse has a full band of Bloodstones.
+
+{ereshkigal_regard < 10:
+    It's too bad you haven't pleased me more or I might have something special for you. 
+    But I can still give you a reward if you spend just one. 
+    -> check_reward
+}
+
+{inChastity:
+    Too bad you are in chastity or I could truly enjoy you.
+    -> check_reward
+}
+
+This pleases me greatly.
+You have earned the privilege of spending them with me.
+Would you like that?
+
+//+ [yes] -> choose_reward_mega
++ [no] -> check_reward
+
+
+= check_reward
+
+-
+
+{shuffle:
+    - My, you have been good. Here for your reward?
+    - I'm impressed. Here to collect your reward?
+    - Do you want the honor of receiving a reward from me?  
+    - I find giving rewards so satiating. Are you here for one?
+}
+        + [yes] -> choose_reward
+        + [no]
+
+- No? 
+
+{
+    - rewards < 10:
+        -> no_task
+
+    - rewards >= 10:
+        I cannot give you a task when your wrist is full of rewards.
+        Indulge yourself before performing any more tasks.
+}
+
+-> goodbye
+
+
+= no_task
+
+{ punishments == 0 && rewards == 0:
+    Ah, I see you have no punishments or rewards.
+    Then I cannot play with you. 
+    I do not assign tasks. 
+- else:
+    Would you like to perform a task for me?
+}
+
++ [yes] -> choose_task
++ [no] 
+    No? Then out of my sight.
+    -> exit
+
+
+= choose_punishment
+
+{shuffle:
+    - Then a punishment you shall have.
+    }
+
+{ shuffle:
+    - -> ereshkigal_punishment_placeholder
+}
+
+//= choose_reward_mega
+
+//ereshkigal waves her hand over player's wrist
+//{shuffle:
+//    - Give them here.
+ //   - I shall claim them all. 
+//}
+
+//{shuffle:
+//    - -> ereshkigal_rewardmega_giantess
+//}
+
+
+= choose_reward
+-> choose_task
+//-> Ereshkigal_AcknowledgeYes ->
+
+//{shuffle:
+  //  - You are a possession.
+    //A mouse I keep around to amuse and satisfy me.
+//    Even receiving your reward is at my whim.
+
+  //  - Your pleasure belongs to me.
+//    I will grant you a reward 
+ //   in the manner most satisfying to me.
+//}
+
+//{shuffle:
+//    - -> ereshkigal_reward_serviced
+//    - -> ereshkigal_reward_joi
+//}
+
+
+= choose_task
+
+{ shuffle:
+    - -> ereshkigal_task_placeholder
+}
+
+
+= goodbye
+I have nothing for you.
+You may go. 
+/wait
+-> exit

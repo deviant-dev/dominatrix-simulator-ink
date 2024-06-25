@@ -1,4 +1,10 @@
-// writing status: in progress
+
+//change existing scene so she does not see if they are hungry, thirsty, etc
+//she simply asks them to beg and then does the reward
+//revise so that the puppy play activities become a task
+//create new poses or reactions to show the player is doing the task
+//expand dialogue to add more comments when they complete a task
+
 
 === yuki_reward_puppyplay_milking ===
 
@@ -56,6 +62,7 @@ Would you like that, {player_name}? #04
 = load_gave_reward
 -> scene_setup -> gave_reward
 
+
 = gave_reward
 
 Before we start, #06
@@ -75,6 +82,7 @@ Are you hungry, thirsty, playful, or tired? #10
 + [pose:puppy_tired]  -> tired
 + [pose:puppy_no] -> just_milked
 + [timeout:15] -> Yuki_Timeout -> mood
+
 
 = hungry
 /perform idle_yuki excited 55
@@ -179,6 +187,7 @@ Would you rather just be milked? #27
 
 + [timeout] -> Yuki_Timeout -> just_milked
 
+
 = consent_check
 
 /perform idle_sassy scared 50
@@ -228,7 +237,6 @@ Are you uncomfortable having me masturbate you? #33
 + [distracted] -> Yuki_PayAttention -> consent_check
 
 
-
 = begin
 /music yuki-reward
 I think puppy might just be ready for the best part! #40
@@ -272,6 +280,8 @@ Now, spread your knees. #168
     /emotion excited 60
     Time for my good puppy to be juiced! #44
 }
+
+// /scene atrium.milkingready
 
 /perform yuki_kneel aroused 65
 Since this is a reward, I'm going to let you finish. #45
@@ -323,6 +333,8 @@ Are you ready, puppy? #48
 - (milking)
 /perform yuki_milk_puppy_{hasPenis:penis|vagina}
 
+// /perform serviced_{hasPenis:penis|vagina}_slow
+
 I can see how excited you already are! #51
 /wait
 My {hasPenis: hand wraps around|two fingers fit inside} you perfectly! #52
@@ -353,6 +365,7 @@ Just raise your right paw! #171
 
 -> question -> resume
 
+
 = ready
 
 /perform yuki_milk_puppy_{hasPenis:penis|vagina} aroused 50
@@ -364,6 +377,7 @@ Just raise your right paw! #171
 -> Yuki_PlayerToCum.EmoteOnly ->
 
 -> finish
+
 
 = milk_self
 
@@ -382,6 +396,7 @@ Just raise your right paw! #171
 }
 
 ->->
+
 
 = finish
 /perform yuki_milk_puppy_{hasPenis:penis|vagina}_fast aroused 75
@@ -433,6 +448,7 @@ I treat my puppies well, don't I? #177
 
 - -> Yuki_Puppyplay_Reward_Complete -> exit
 
+
 = question
 
 {shuffle:
@@ -459,8 +475,8 @@ I treat my puppies well, don't I? #177
 
 + (stop) [pose:puppy_back_no]
 
-   /perform yuki_kneel
-   Do you want to keep going, puppy? #71
+    /perform yuki_kneel
+    Do you want to keep going, puppy? #71
 
     ++ [yes] -> stop_cancel
     ++ [no] -> stop_really
@@ -477,7 +493,7 @@ I treat my puppies well, don't I? #177
             Oh goody! I'm not ready to stop either! #62
 
             - /emotion amused 60
-            Oooo. Someone's really enjoy {isBoy: himself|{isGirl: herself|themself}}! #63
+            Oooo. Someone's really enjoying {isBoy: himself|{isGirl: herself|themself}}! #63
 
         }
         ->->

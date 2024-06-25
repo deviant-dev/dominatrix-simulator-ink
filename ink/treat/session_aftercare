@@ -1,0 +1,1367 @@
+=== treat_session_aftercare ===
+-> select_gender_check ->
+~ setScene(session_scene, Treat, "treat_session_aftercare", -> treat_session_aftercare)
+/scene hell.ready
+/music treat-aftercare-intro
+/ambient treat
+/character treat
+
+//~ increaseRegard()
+
+- (consent)
+/perform idle_pleased happy 65
+TODO: add variable to only play 'hello...today' if they came from the journal
+
+// Hello, {player_name}! #01
+
+I can see you need some aftercare, precious. #02
+
+/perform talk_behold happy 55
+First... take a deep breath #03
+and let any tension sink out of your shoulders. #04
+
+/perform idle_clasp_hands
+Aftercare is my specialty, #05
+but I cannot safely support you #06
+if you are experiencing severe physical pain #07
+or medical distress. #08
+
+- (distress)
+/perform talk_gesture skeptical 50
+Are you in physical danger or distress, {player_name}? #09
+
+/perform idle skeptical 50
++ [no]
+    -> Treat_AcknowledgeYes ->
+
++ [yes]
+    /perform do_inspect skeptical 50
+    This concerns me. #10
+    I want you to be physically safe #11
+    and out of distress before we continue. #12
+    
+    -- (medical)
+    /perform talk_gesture skeptical 50
+    Do you need to seek medical or physical support right now? #13
+
+    ++ [yes]
+        /perform idle_clasp_hands sad 50
+        Your safety is critical, precious. #14
+        
+        /perform talk_gesture skeptical 20
+        Please separate yourself from me #15
+        and attend to your physical needs. #16
+        
+        /perform idle_clasp_hands sad 30
+        Seek medical attention, if required... #17
+        
+        Or, grab a warm blanket or take a bath to soothe aches. #18
+
+        /perform do_shoo_player sad 65
+        Return when you are physically safe #19
+        
+        and I will take mental and emotional care of you. #20
+        
+        /perform idle_pleased happy 20
+        I will be here when you return. #21
+        //set variable to return to aftercare if player leaves now
+        -> exit
+        
+    ++ [no]
+        /perform talk_question skeptical 70
+        --- (safe)
+        Do you feel comfortable to continue? #22
+
+        +++ [yes]
+            That is good. #23
+            We will proceed, #24
+            but you must always seek other help when you need it. #25
+
+        +++ [no]
+            Your safety is critical, precious. #26
+        
+            Please separate yourself from me #29
+            and attend to your physical needs. #30
+            
+            Seek medical attention, if required... #31
+            
+            Or, grab a warm blanket or take a bath to soothe aches. #32
+    
+            /perform do_you_leave_right sad 65
+            Return when you are physically safe #33
+            
+            and I will take mental and emotional care of you. #34
+            
+            I will be here when you return. #35
+            //set variable to return to aftercare if player leaves now
+            -> exit
+            
+        +++ [timeout] 
+    
+            Please answer me, {player_name}. #36
+            -> safe
+            
+    ++ [timeout] 
+    
+        Please answer me, {player_name}. #37
+        -> medical
+
++ [timeout] 
+    Please answer me, {player_name}. #38
+        -> distress
+
+
+- /perform talk_thoughtful
+-> invite 
+
+= invite
+/scene hell.ready
+/music treat-aftercare-intro
+/ambient treat
+/character treat
+
+/perform idle_pleased happy 40
+Let us get comfortable. #39
+
+I suggest you bring a blanket or pillow #40
+or any comfort objects you like, #41
+and we will sit together on my bed. #42
+
+- /notify title="<color=red>Pro Tip!</color>" text="Take a moment to grab self care items. Nod 'yes' to resume." #note14
+
++ [yes!]
+
+- (come_sit)
+/scene HellBed.care
+/music treat-aftercare-body
+/character Treat
+/perform legs_crossed_idle happy 30
+
+Come sit with your legs crossed, {player_name}. #43
+
++ [pose: sit]
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+
+//how to pose the mistress? 
+
+- (body)
+
+We will start by focusing on your <i>body</i>. #44
+
+/perform legs_crossed_idle_hands_on_heart happy 55
+Place your hand on your heart. #45
+
++ [pose: sit_heart]
+
++ [timeout] -> Treat_Timeout.EmoteOnly ->
+
+- /wait 2
+
+This simple gesture feels like a hug to your brain. #46
+
+Now, close your eyes or soften your gaze #47
+
+/perform legs_crossed_idle happy 30
+and take a deep, cleansing breath. #48
+
+/perform legs_crossed_do_breathe happy 50
+
+[Breathe In] #666
+
+[Breathe Out] #999 
+
+/wait 4
+
+Again. #49
+
+/perform legs_crossed_do_breathe happy 50
+[Breathe In] #666
+
+[Breathe Out] #999 
+/wait 4
+
+/perform legs_crossed_idle
+Breathe in through your nose #50
+and out through your mouth. #51
+
+/perform legs_crossed_idle_hands_on_body
+Our first step is to create safety in the body #52
+using the tool of the breath. #53
+
+- (body2)
+/perform legs_crossed_do_breathe happy 50
+Breath in....and out. #489
+
+/perform legs_crossed_idle
+Slow your breathing. #54
+Try to make your exhales longer than your inhales. #55
+
+/perform legs_crossed_do_breathe happy 50
+[Breathe In] #666
+
+[Breathe Out] #999 
+/wait 3 
+
+/perform legs_crossed_idle
+Now. #56
+//Can we do a specific breathing pattern with counting? 
+
+Breathe in deeply as you raise your shoulders up to your ears, #27
+then exhale as you let your shoulders sink down. #28
+
+Twice more. Slow it down. #57
+
+/perform legs_crossed_do_breathe 
+[Breathe In] #666
+
+[Breathe Out] #999 
+
+/wait 3 
+
+/perform legs_crossed_do_breathe 
+[Breathe In] #666
+
+[Breathe Out] #999 
+
+/wait 3 
+
+/perform legs_crossed_idle
+-> Treat_GoodJob.EmoteOnly ->
+
+- (here)
+/perform legs_crossed_idle_hands_on_heart
+Are you here with me, little one? #58
+
++ [yes]
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+
++ [no]
+    You are safe, {player_name}. #59
+    -> body2
+
++ [timeout] -> here
+
+- 
+
+Although our Mistresses care for you, #60
+in their own ways... #61
+You exist to serve them. #62
+
+/perform legs_crossed_idle
+That is your purpose in this place. #63
+You accepted your fate. #64
+
+- (accept)
+
+Do you understand, little one? #65
+
++ [yes]
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    
++ [no] 
+    Then it is time you learned. #66
+    But first we must tend to your hurts. #67
+    
++ [timeout]
+    -> accept 
+
+
+- (heart)
+/perform legs_crossed_idle_hands_on_belly skeptical 30
+Tell me, little one. #68
+
+What are you feeling most strongly right now? #69
+
+
+- (check_emotion)
+/scene HellBed.CareWithChoices
+
+
++ [numb]
+    /scene HellBed.care
+    -> numb 
+    
++ [shame]
+    /scene HellBed.care
+    -> shame 
+    
++ [lonely]
+    /scene HellBed.care
+    -> lonely 
+    
++ [anger]
+    /scene HellBed.care
+    -> anger
+    
++ [need]
+    /scene HellBed.care
+    -> need 
+
+
+// Use a combination of structured narrative, random comment loops and breath reminders to give the player space to process their emotions
+
+= numb
+/music treat-aftercare-numb
+/perform legs_crossed_idle
+//insert acknowledgement of emotion
+
+Breathe in. Breathe out. #70
+
+Sometimes our minds react to strong emotion #71
+by disconnecting from the body. #72
+
+Your mind may try to stop the pain #73
+by dissociating from it, #74
+but you can't numb part of you #75
+while staying connected to the rest. #76
+
+/perform legs_crossed_do_breathe 
+[Breathe In] #666
+
+[Breathe Out] #999
+
+/wait 3 
+
+/perform legs_crossed_idle_hands_on_heart
+Whatever happened before, you are here now #77
+and I will take care of you. #78
+
+The most important message #79
+your body needs to hear right now #80
+is that you are safe. #81
+
+/wait 1 
+
+/perform legs_crossed_idle happy 40
+Being human can be, I hear, rather complex. #82
+You might know that you're safe, #83
+but your nervous system does not. #84
+
+What we're here to do is communicate that safety #85
+in a way your body can understand. #86
+
+First, draw your attention to your breath. #87
+
+- (numb_breath)
+
+/perform legs_crossed_do_breathe 
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Notice where you feel the air coming into your body, #88
+in your nostrils, or your throat, #89
+perhaps your belly or chest. #90
+
+Can you feel your breath? #91
+
++ [yes] 
+    -> Treat_AcknowledgeYes.EmoteOnly -> 
+    
++ [no] 
+    Bring a gentle focus, little one. #92
+    
++ [timeout]
+    -> numb_breath 
+
+- It should be a soft, pleasant sensation, #93
+without forcing or gripping. #94
+
+Rest your focus in that place. #95
+Enjoy the feeling of the breath coming in #96
+and out of your body. #97
+
+Breathe. #98
+
+Let the breath fill your awareness. #99
+
+You are right here, in your own body… #100
+right now, in this present moment. #101
+
+The safety of your breath becomes #102
+the safety of your body. #103
+
+You are safe here. #104
+You are safe now. #105
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+/wait 1
+
+Now, I'd like you to place a hand on your heart again. #106
+Or wherever feels comfortable and loving, #107
+and if it feels right, #108
+gently caress that spot. #109
+
+This is your hand on your body. #110
+This is real. This is true. #111
+
+How marvelous, isn't it, that you are still here #112
+after everything you've been through? #113
+
+Can you feel it? #114
+
+- (numb_heart) 
+
+Can you feel your sweet heart beating for you? #115
+
++ [yes] 
+    //insert positive affirmation
+    You are still here. #116
+    
++ [no] 
+    Nonetheless, it carries on. #117
+    
++ [timeout]
+    -> numb_heart
+
+- See if you can find any sensations of gratitude #118
+or wonder for your sweet heart #119
+and how, no matter what, it just keeps beating. #120
+
+/wait 1 
+
+Breathe, my pet. #121
+
+Let the breath be what moves you. #122
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Let your awareness expand now to fill your whole body, #123
+feeling the movement in stillness, #124
+the breathing, beating, pulsing vibration. #125
+
+/wait 1
+
+Your body is always on your side, #126
+always trying to keep you alive. #127
+
+Feel what it's like to be alive in this moment. #128
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+// stay point 
+~temp count = 5
+
+- (again)
+
+{shuffle:
+    - You are here. I am with you. #129
+    - You are here. I am here with you. #456
+    - It's safe to let go. #130
+    - It's safe to rest. #131
+    - This is enough for now. #132
+    - Let yourself just be. #133
+    - Feel yourself supported by the earth. #134
+    - Return to the breath. #135
+    - The breath is always here to support you. #136
+    - Feel your sweet heart beating for you. #137
+    - Feel your gentle heart beating for you. #457
+    - Just breathe. #138
+    - Be here, right now. #458
+    - This is all there is, in this moment. #459
+    - You are alive. #460
+    - Your breath is keeping you alive. #470
+    - Cherish your breath. #471
+    - Thank your gentle heart. #472
+}
+
+~count--
+
+{count > 0: -> again}
+
+
+- (numb_check)
+
+Do you feel more grounded now? #139
+
++ [yes]
+    Wonderful. #140
+    
+    -- (numb_check2)
+    Have any strong emotions come up for you? #141
+    
+    ++ [yes]
+        Tell me what you're feeling. #142
+        -> check_emotion
+        
+    ++ [no]
+        Then we will move on. #143
+        -> mind
+        
+    ++ [timeout] -> numb_check2
+    
++ [no]
+    That's all right, darling. #144
+    
+    -- (numb_check3)
+    Are you feeling any strong emotions? #145
+    
+    ++ [yes]
+        Tell me what you're feeling. #146
+        -> check_emotion
+        
+    ++ [no]
+        Let us begin again. #147
+        -> numb_breath
+        
+    ++ [timeout] -> numb_check3
+    
++ [timeout] -> numb_check 
+
+
+- (shame)
+/music treat-aftercare-shame
+
+Take a moment to recall the source of your #148
+embarrassment or shame. #149
+
+/wait 1 
+
+This may be uncomfortable, my pet, #150
+but I need you to be brave for me. #151
+
+- (shame_body)
+
+Bring your attention to the body. #152
+Notice how these feelings appear #153
+as physical sensations. #154
+
+Take a deep breath. #155
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Let it out. #156
+
+And another. #157
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Where are you feeling the sensations in your body? #466
+
+As you focus on these feelings. #467
+Your hands, or your feet? #461
+Or your chest? #462
+Perhaps your throat. #463
+Maybe, in your eyes. #464
+Or down in your gut. #465
+It could be anywhere. #468
+And that's okay. #469
+
+-> feel_it
+
+= feel_it
+
+Do you feel it in your body? #158
+
++ [yes]
+    Very good. Stay with that sensation. #159
+    
++ [no]
+    Let's have another try. #160
+    -> shame_body 
+    
++ [timeout]
+    -> feel_it
+
+- 
+Shame is one of the most powerful emotions #161
+the human body is capable of holding. #162
+Though in this moment you may feel #163
+as though your heart will give out. #164
+
+But you will stay whole. #473
+
+I promise that you are safe, dear one. #165
+This will not overcome you. #166
+
+/wait 1
+
+I want you now to notice this experience #167
+as if you stood outside of yourself. #168
+Observe your suffering as a friend might, #169
+with compassion. #170
+
+Compassion means 'to suffer with'; #171
+and just as you might sit with a friend in their pain, #172
+you can sit with yourself here and now, in yours. #173
+
+And I am here with you. #474
+I am also giving you compassion. #475
+To suffer with you, as you feel this pain. #476
+
+Take a deep breath for me. #174
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Now let it go. And stay present for a while. #175
+
+// stay point 
+~temp count = 5
+
+- (again2)
+
+{shuffle:
+    - Don't rush yourself through this. #176
+    - You are on time. #177
+    - You can decide what it means. #178
+    - Stay with the pain. #179
+    - The only way out is through. #180
+    - I'm here with you. #181
+    - You're here with your sweet self. #182
+    - I promise that you are safe. #183
+    - Return to the breath. #184
+    - There's no need to go fast. #477
+    - Stay here. #478
+    - Focus on what your body is feeling. #479
+    - Be your compassionate companion. #480
+    - Notice what you feel in your body. #481
+    - Breath into those feelings. #482
+    - Make space for them. #483
+    - You are safe. #484
+    - I am here with you. #485
+    - Remember to breathe. #486
+    - Be with yourself right now. #487
+    - Stay present. #488
+}
+
+~count--
+
+{count > 0: -> again2}
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Remember that you are in service to the Goddess. #185
+She chose you and through her Mistresses #186
+she continues to shape and mold you to do Her will. #187
+
+Your adoration is a gift, my pet. #188
+Not every mortal is blessed with such #189
+becoming eagerness to serve and submit. #190
+
+There may be times, like now, #191
+when you are humiliated by the task #192
+or the punishment, #193
+forced to debase yourself, #194
+or even find that you enjoy something 'too much'. #195
+
+And yet… there is no need to be ashamed. #196
+
+Let's take a deep breath and I'll say that again. #197
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+There is no need to feel ashamed. #198
+
+- (shame_believe)
+
+Do you believe me, little one? #199
+
++ [yes] 
+    That makes me very happy. #200
+    
++ [no]
+    That's all right, darling. #201
+    I'll believe it for you until you're ready. #202
+    
++ [timeout]
+    -> shame_believe 
+
+- Your natural desires are beautiful and worthy; #203
+your passions, properly channelled, #204
+find their ultimate purpose in the Divine. #205
+
+I am so, so proud of you, little one. #206
+Do you know how precious you are? #207
+
+You've served your Mistresses well, #208
+and through them, the Goddess Herself. #209
+
+Yes, you are very special indeed. #210
+
+You may be hurting right now, but this will pass. #211
+It is by moving through this pain that you will discover #212
+your best and truest desires #213
+and learn the real value of your submission. #214
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+- (shame_check)
+
+Do you feel more comfortable and safe? #215
+
++ [yes] 
+    Then let us go on. #216
+    -> mind
+    
++ [no]
+    Tell me what you are feeling, little one. #217
+    -> check_emotion
+
++ [timeout] -> shame_check 
+
+- (lonely)
+/music treat-aftercare-lonely
+
+Feelings of loneliness #218
+are common in subdrop. #219
+You may even feel abandoned or betrayed. #220
+This is natural. #221
+
+/wait 
+
+You are safe, {player_name}. #222
+
+I want you to place one hand on your heart. #223
+Breathe slowly and deeply. #224
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Now look inside. #225
+You are not alone. #226
+I am here with you, and most importantly, #227
+you are here with yourself. #228
+
+/wait 
+
+Feel the warmth of your skin, #229
+the pulse of your living body. #230
+
+/wait 
+
+- (lonely_alive) 
+
+Can you feel that you are alive? #231
+
++ [yes] 
+    -> Treat_AcknowledgeYes.EmoteOnly -> lonely_close
+    
++ [no] 
+    Breathe in and breathe out. #232
+    Know that you are here, #233
+    body and soul, #234
+    exactly where you need to be. #235
+    -> lonely_close
+    
++ [timeout] -> lonely_alive 
+
+
+= lonely_close
+
+Can you feel a sense of closeness #236
+with yourself in this moment? #237
+
++ [yes] 
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    
++ [no] 
+    That's all right. Breathe. #238
+    
++ [timeout] -> lonely_close 
+
+
+- With your hand on your heart, #239
+repeat these words, #240
+speaking to the lonely little one inside: #241
+
+I'm here with you. #242
+
+/wait 
+
+You're safe with me. #243
+
+/wait 
+
+I love you. #244
+
+/wait 
+
+Good darling. #245
+You're right here, little one. #246
+You are beautiful and brave. #247
+I am so proud of you, my pet. #248
+
+// stay point
+~temp count = 5
+
+- (again3)
+
+{shuffle:
+    - You are important. #249
+    - You are valuable. #250
+    - You are worthy of care. #251
+    - You are worthy of attention. #252
+    - You are worthy of respect. #253
+    - You are precious. #455
+    - You are special. #490
+    - You are good enough. #491
+    - You are perfect. #492
+    - I am proud of you. #254
+    - I see you. #255
+    - I sense you. #493
+    - I notice you. #494
+    - I am glad you're here. #256
+    - I'm glad you came to see me. #257
+    - I'm honored that you let me be here with you right now. #495
+}
+
+~count--
+
+{count > 0: -> again3}
+
+
+
+You did your utmost to serve your Mistress well, #258
+and as a passionate submissive and valuable servant, #259
+you are deserving of care. #260
+
+Now. #261
+
+- (lonely_check)
+
+Do you feel more comfortable and safe? #262
+
++ [yes] 
+    Then let us go on. #263
+    -> mind
+    
++ [no]
+    Tell me what you are feeling, little one. #264
+    -> check_emotion
+
++ [timeout] -> lonely_check 
+
+
+- (anger)
+/music treat-aftercare-anger
+
+Anger and fear can be overwhelming, #265
+but they are valuable signals #266
+meant to help you understand your needs. #267
+
+We will move through this together #268
+to give you what you need. #269
+-> anger_somatic
+
+
+= anger_somatic
+
+Take a deep, slow breath... #270
+
+[Breathe In] #666
+
+[Breathe Out] #999 
+
+And as you let it go, look inside. #271
+
+/wait 
+
+Can you pinpoint where you are #272
+feeling this emotion most strongly? #273
+
+/wait 
+
++ [yes]
+    -> Treat_AcknowledgeYes.EmoteOnly->
+    
++ [no]
+    Bring your focus to the body. #274
+    Remember, emotions are physical. #275
+    -> anger_somatic 
+    
++ [timeout]
+    -> anger_somatic
+
+- /wait 
+
+See if you can soften around it. #276
+
+/wait 1 
+
+You're safe, little one. #277
+This feeling can't hurt you. #278
+
+/wait 1 
+
+Allow your breath to gently move you #279
+as you sit with the emotion. #280
+
+/wait 2 
+
+Now, my darling, I want you to try and #281
+soothe yourself in the midst of this pain. #282
+
+You didn't choose to feel this way. #283
+It's your body's natural reaction. #284
+
+If it feels right, #285
+softly place your hand on the spot #286
+where you feel the emotion. #287
+
+- Is it in your chest? #496
+- Your stomach? #497
+- Your arms? #498
+- Your face? #499
+- Your throat? #500
+- Your gut? #501
+
+- Notice where that emotion #502
+- of anger is occurring. #503
+- And focus on how you feel. #504
+
+
+
+
+Repeat after me: #288
+Poor darling, #289
+/wait 2 
+I'm sorry it's so hard right now. #290
+/wait 3 
+I'm here. We're safe now. #291
+/wait 4
+
+//add positive affirmation
+
+Now, sit with the emotion, and breathe. #292
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Allow it to rise up within you... #293
+feeling it in your stomach... #294
+your muscles... #295
+your whole body. #296
+
+/wait 1 
+
+Allow it to be expressed. #297
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+This may be uncomfortable, #298
+but I promise that you are safe. #299
+
+// stay point 
+~temp count = 5
+
+- (again4)
+
+{shuffle:
+    - Just keep breathing. #300
+    - I promise, this will not overcome you. #301
+    - I'm here with you. #302
+    - You're safe, darling. #303
+    - The only way out is through. #304
+    - Trust me. Trust yourself. #305
+    - You are enough. #306
+    - You will make it out. #307
+    - Keep returning to the breath. #308
+    - Let the emotions #505
+        work their way through your body. #506
+    - Feel the waves of emotion... #507
+        Breathe into that open space. #508
+    - Whatever you're feeling #509
+        will pass. #510
+    - Those emotions #511
+        will move #512
+        as you breathe. #513
+    - Stay here with me. #514
+    - Stay safe with me. #515
+        And with yourself. #516
+    - You are not alone. #517
+}
+
+~count--
+
+{count > 0: -> again4}
+
+/wait 2
+
+- (anger_release)
+
+Now, slowly let go of your focus. #309
+Unclench your fists, drop your shoulders, #310
+and release the tension in your muscles #311
+as you feel the emotion drain from your body. #312
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+/wait 5
+
+Slowly, gently #313
+bring your awareness back to the body. #314
+Gently wiggle your fingers and your toes. #315
+Notice how it feels to be embodied. #316
+
+- (anger_check_somatic)
+
+Are you still feeling strong anger or fear? #317
+
++ [yes] 
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    -> anger_somatic 
+    
++ [no] 
+    //add posiive affirmation
+    -> anger_comfort
+
++ [timeout] -> anger_check_somatic
+
+
+- (anger_comfort)
+
+Breathe. I am here with you #318
+and you are here with yourself. #319
+
+See if you can get in touch #320
+with any feelings of comfort or tenderness #321
+for your sweet little self. #322
+
+[Breathe In] #666
+
+[Breathe Out] #999
+/wait 
+
+You've done so well, #323
+moving through these difficult feelings #324
+with kindness and compassion. #325
+
+I'm proud of you, little one. #326
+
+Now. #327
+- (anger_check)
+
+Are you feeling calmer and more grounded? #328
+
++ [yes] 
+    Then let us go on. #329
+    -> mind
+    
++ [no]
+    Tell me what you are feeling, little one. #330
+    -> check_emotion
+
++ [timeout] -> anger_check 
+
+
+- (need) 
+/music treat-aftercare-need
+
+Ah, dear heart. #331
+Of course you need a little reassurance, #332
+after all of that hard work and intensity. #333
+
+You have been working hard, haven't you. #334
+Doing your best to please your Mistresses. #335
+
+- (need_best)
+
+You are doing your best, are you not? #336
+
++ [yes]
+    Good {player_name}! #337
+    
++ [no] 
+    I know it may not feel like your best, #338
+    but I need you to trust that you are enough, #339
+    and let that move you, rather than shame. #340
+    
++ [timeout]
+    -> need_best
+
+
+- I know it isn't always the easiest task, #341
+and I'm proud of you for trying. #342
+
+You're a good {player_name}. #343
+I'm  proud of you for all your efforts, #344
+and especially now for coming to me #345
+and asking for what you need. #346
+
+Remember that you are here to serve the Goddess Herself. #347
+Every bruise, every tear, every whimper and moan #348
+is worship to Her. #349
+
+Your pleasure and your pain mingle with that of #350
+every submissive in Her service #351
+to form a pleasing sacrifice of passion. #352
+
+Life and death, pleasure and pain, #353
+all these things the Goddess can give and take #354
+within a single breath. #355
+
+This is your purpose, {player_name}. #356
+You were made for passion, #357
+and your continued existence is at Her pleasure. #358
+
+- (need_understand)
+
+Do you understand me? #359
+
++ [yes] 
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    
++ [no] 
+    It is a lesson you must learn #360
+    if you are to survive here, my pet. #361
+    
++ [timeout]
+    -> need_understand
+
+
+- You are a treasure in the house of the Goddess, #362
+a valuable object, a beautiful toy, #363
+and it pleases me to take care of my toy now. #364
+
+I've been watching your progress, little one. #365
+You are a keen student and a willing slave, #366
+eager to serve, ready to submit. #367
+I wish all my toys had your enthusiasm. #368
+
+- (need_trust)
+
+Do you trust me? #369
+
++ [yes] 
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    
++ [no]
+    This is a choice you can make, my pet. #370
+    Choose now, and the feeling will come. #371
+    Again I ask, #372
+        -> need_trust
+        
++ [timeout]
+    -> need_trust 
+
+
+- Then hear me now. #373
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+You are good. #374
+
+You are worthy. #375
+
+You are strong. #376
+
+You are safe. #377
+
+And above all, my darling, #378
+you are my good {player_name}. #379
+
+/wait 
+
+Now. #380
+
+
+- (need_check)
+
+Are you feeling better? #381
+
++ [yes] 
+    Then let us go on. #382
+    -> mind
+    
++ [no]
+    Tell me what you are feeling, little one. #383
+    -> check_emotion
+
++ [timeout] -> need_check 
+
+
+- (mind)
+/music treat-aftercare-mind
+
+Open your eyes. #384
+Look at me, darling. #385
+// need to check for not distracted -taco
+
+Breathe. #386
+Take any small movements that you need. #387
+
+Before we conclude, #518
+I'd like to spend a little time #388
+reflecting on your recent experience #389
+to see if you can better understand yourself #390
+as well as your needs. #391
+
+If you'd prefer, you may choose to do this part #392
+on your own or with a friend. #393
+
+- (mind_consent)
+
+Would you like to reflect with me now? #394
+
++ [yes]
+    Excellent. #395
+    
++ [no] 
+    I understand, little one. #396
+    -> exit
+    
++ [timeout] 
+    -> mind_consent 
+
+
+- (reflect) 
+Take a breath with me now. #397
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Recall the scene that brought you here. #398
+Remember that you are safe now. #399
+
+Breathe with me. #400
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Whenever you feel afraid, return to the breath. #401
+
+//stay point 
+- Try not to get caught up in the memories. #402
+    Just let the thoughts pass by #403
+    and breathe. #404
+- Stay with me. #405
+- Stay with your body. #406
+- Remember self-compassion. #407
+- You are not alone. #408
+- You will not be overcome by this. #409
+- Just breathe. #410
+- Be present. #519
+- Be with me. #520
+- Focus on where you are, right now, with me. #521
+- You are strong. #522
+- Your memories will move. #523
+- Focus on your breathing... #524
+    And let the thoughts pass by. #525
+
+
+
+
+- (mind_moment)
+
+Can you pinpoint the moment #411
+where you began to notice that something was wrong? #412
+
++ [yes] 
+    Consider how it felt in your body, #413
+    what thoughts passed through your mind. #414
+    
++ [no]
+    Sometimes we don't get the body's message right away, #415
+    until we have time to process. #416
+    
++ [timeout]
+    -> mind_moment
+
+-
+It is important to reflect with compassion; #417
+knowing you are a complex, embodied being #418
+with myriad conflicting thoughts and feelings, #419
+deserving of kindness and worthy of care. #420
+
+/wait 1 
+
+This is not a time to be critical, #421
+but rather to get curious. #422
+
+See if you can remember what happened… #423
+
+the words… #424
+
+actions… #425
+
+and your head space. #426
+
+/wait 
+
+[Breathe In] #666
+
+[Breathe Out] #999
+
+Identifying a trigger, #427
+whether internal or external, #428
+thought, word or deed, #429
+can give you a starting point to address this #430
+in your own work. #431
+
+You may have some ideas already of #432
+why you were affected… #433
+
+or what you might do differently in the future. #434
+
+Perhaps that activity is unsafe for you right now, #435
+or perhaps you simply need more time… #436
+or space… #437
+or care. #438
+
+Let's take a few moments to reflect. #439
+
+/wait 30
+
+- (mind_reflect)
+
+Did anything come up for you, darling? #440
+
++ [yes]
+    Very good. #441
+    I want you to take that with you #442
+    and use it to inform your self care #443
+    and your safety plan. #444
+    
++ [no]
+    That's quite all right. #445
+    I appreciate that you tried for me. #446
+    
++ [timeout]
+    -> mind_reflect 
+
+- The most important thing is how you respond to yourself #447
+in this time of vulnerability. #448
+
+You have not failed, little one. #449
+You have learned. #450
+You are becoming stronger and more resilient. #451
+
+And I am so proud of you for moving through this #452
+with intentionality and care. #453
+
+You are a very good {player_name}. #454
+
+- (end) 
+
+
+
+-> exit

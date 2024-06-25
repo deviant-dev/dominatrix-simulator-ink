@@ -1,9 +1,9 @@
 === treat_intro ===
 ~ setScene(intro_scene, Treat, "treat_intro", -> treat_intro)
 
-//TODO make scene for treat to encounter player in entry, after tutorial
+TODO: make scene for treat to encounter player in entry, after tutorial
 /scene Entry.TMonitoring
-/music treat
+/music treat-intro
 /ambient treat
 /character treat idle_clasp_hands amused 65
 
@@ -345,7 +345,7 @@ You can come see me anytime you need someone to take care of you. #84
 
 /perform idle_swaying amused 65
 I can help you relax, #85
-get into the right headspace, #86
+get into the right head space, #86
 
 /perform tease_caress_breasts_large aroused 75
 or soothe you after a hard session. #87

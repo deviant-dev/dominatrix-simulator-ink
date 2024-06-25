@@ -1,13 +1,12 @@
 === Goddess_GoodJob ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
 
+
 = DoEmoteOnly(emoteOnly)
-
-
-
 
 { shuffle:
     -{emoteOnly: /emotion happy 50 | /perform idle happy 50 }
@@ -49,14 +48,18 @@
 
 ->->
 
+
+
+
 === Goddess_AcknowledgeYes ===
 -> DoEmoteOnly(false)
+
 
 = EmoteOnly
 -> DoEmoteOnly(true)
 
-= DoEmoteOnly(emoteOnly)
 
+= DoEmoteOnly(emoteOnly)
 
 {shuffle:
     -{emoteOnly: /emotion aroused 65 | /perform idle_sassy aroused 65 }
@@ -77,14 +80,18 @@
 
 ->->
 
+
+
+
 === Goddess_AcknowledgeNo ===
 -> DoEmoteOnly(false)
+
 
 = EmoteOnly
 -> DoEmoteOnly(true)
 
-= DoEmoteOnly(emoteOnly)
 
+= DoEmoteOnly(emoteOnly)
 
 {shuffle:
     -{emoteOnly: /emotion aroused 65 | /perform idle_sassy skeptical 65 }
@@ -105,14 +112,18 @@
 
 ->->
 
+
+
+
 === Goddess_Unhappy ===
 -> DoEmoteOnly(false)
+
 
 = EmoteOnly
 -> DoEmoteOnly(true)
 
-= DoEmoteOnly(emoteOnly)
 
+= DoEmoteOnly(emoteOnly)
 
 {shuffle:
     -{emoteOnly: /emotion sad 55 | /perform idle_bored sad 55 }
@@ -127,11 +138,16 @@
 
 ->->
 
+
+
+
 === Goddess_Timeout ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -152,8 +168,10 @@
 
 ->->
 
-=== Goddess_PayAttention ===
 
+
+
+=== Goddess_PayAttention ===
 
 { cycle:
     - /perform idle_skeptical angry 80
@@ -223,6 +241,8 @@
 ->->
 
 
+
+
 === Goddess_BadJob ===
 
 /emotion angry 50
@@ -238,6 +258,9 @@
 }
 
 ->->
+
+
+
 
 === Goddess_CheckIfInterested ===
 
@@ -301,12 +324,13 @@ Perhaps another time when you are ready to learn your place. #156
 -> Goddess_ByeForNow -> exit
 
 
+
+
 === Goddess_ByeForNow ===
 
 /perform do_snap_fingers
 
 /scene bedroombroken.pissed
-
 
 + [wait 1.5]
 
@@ -315,8 +339,18 @@ Perhaps another time when you are ready to learn your place. #156
 
 Bye for now, {player_name}. #113
 + [wait:5]
-    // {debug: -> again | ->->}
-    ->->
+-
+
+// {debug: -> again}
+
+// If showing the short demo,
+// show the 'thank you for playing' screen
+// before starting over.
+{deviation == demo_short: -> demo_end ->}
+
+->->
+
+
 
 
 === Goddess_SayNumberRangeOfType(-> sayNumber, start, end, wait) ===
@@ -338,14 +372,25 @@ Bye for now, {player_name}. #113
 // /log {current}/{end}
 -> loop
 
+
+
+
 === Goddess_SayNumberRange(start, end, wait) ===
 -> Goddess_SayNumberRangeOfType(-> Goddess_SayNumber, start, end, wait) ->->
+
+
+
 
 === Goddess_SayNumberRangeSlow(start, end, wait) ===
 -> Goddess_SayNumberRangeOfType(-> Goddess_SayNumberSlow, start, end, wait) ->->
 
+
+
+
 === Goddess_SayNumberRangeFast(start, end, wait) ===
 -> Goddess_SayNumberRangeOfType(-> Goddess_SayNumberFast, start, end, wait) ->->
+
+
 
 
 === Goddess_SayNumber(n) ===
@@ -396,6 +441,9 @@ Bye for now, {player_name}. #113
 }
 ->->
 
+
+
+
 === Goddess_SayNumberFast(n) ===
 // NOTE: Keep these on separate lines for the subtitle system. -deviant
 {
@@ -443,6 +491,9 @@ Bye for now, {player_name}. #113
         /logError Can't say number '{n}'.
 }
 ->->
+
+
+
 
 === Goddess_SayNumberSlow(n) ===
 // NOTE: Keep these on separate lines for the subtitle system. -deviant
@@ -492,18 +543,23 @@ Bye for now, {player_name}. #113
 }
 ->->
 
+
+
+
 === Goddess_Take_Reward_Prompt ===
 
 // don't use performances
 
 {shuffle:
-    - Present your wrist, little mouse.
-    - This will cost you one Bloodstone. 
-    - Time to hand over your Bloodstone. 
-    - Give me your wrist, {player_name}. 
+    - Present your wrist, little mouse. #01
+    - This will cost you one Bloodstone. #02
+    - Time to hand over your Bloodstone. #03
+    - Give me your wrist, {player_name}. #04
 }
 
 ->->
+
+
 
 
 === Goddess_Take_Reward(-> load) ===
@@ -523,5 +579,3 @@ Bye for now, {player_name}. #113
 + [no] -> Goddess_CheckIfInterested -> give_reward
 + [timeout] -> Goddess_Timeout -> give_reward
 + [distracted] -> Goddess_PayAttention -> give_reward
-
-

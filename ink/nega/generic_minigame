@@ -1,9 +1,14 @@
 TODO: rewrite for Nega
 
+
+
+
 === Nega_Tempo_Comments ===
+
+
 = timeout
 
-/emotion annoyed 50
+/emotion disgusted 50
 
 {shuffle:
     - What are you waiting for?
@@ -15,6 +20,7 @@ TODO: rewrite for Nega
 }
 
 ->->
+
 
 //asking the player to change speed
 = change_to_slower
@@ -35,6 +41,7 @@ TODO: rewrite for Nega
 
 ->->
 
+
 = change_to_faster
 
 /emotion excited 50
@@ -50,6 +57,7 @@ TODO: rewrite for Nega
     - {wants_puppy: Be more eager, puppy. Faster. | -> change_to_faster }
 }
 ->->
+
 
 //correcting the player for going the wrong speed, lost arousal level
 = too_fast
@@ -70,6 +78,7 @@ TODO: rewrite for Nega
 }
 ->->
 
+
 = too_slow
 
 /emotion disgusted 50
@@ -87,13 +96,14 @@ TODO: rewrite for Nega
 }
 ->->
 
+
 //comments about speed delivered at different arousal levels keeping her voice pitch at the right arousal level
 = just_right_arousal_low
 
 /emotion aroused 50
 
 {shuffle:
-    - Stay like that for a while. 
+    - Stay like that for awhile. 
     - (sigh) Very nice. 
     - Perfect.
     - Keep doing that.
@@ -104,6 +114,7 @@ TODO: rewrite for Nega
 }
 
 ->->
+
 
 = just_right_arousal_medium
 
@@ -135,6 +146,7 @@ TODO: rewrite for Nega
 
 ->->
 
+
 = just_right_arousal_high
 
 /emotion aroused 100
@@ -164,6 +176,7 @@ TODO: rewrite for Nega
 
 ->->
 
+
 //
 = continue_arousal_low
 
@@ -183,6 +196,7 @@ TODO: rewrite for Nega
 
 ->->
 
+
 = continue_arousal_medium
 
 /emotion aroused 75
@@ -200,6 +214,7 @@ TODO: rewrite for Nega
 }
 ->->
 
+
 = continue_arousal_high
 
 /emotion aroused 100
@@ -216,6 +231,7 @@ TODO: rewrite for Nega
     - cc: (excited sigh)
 }
 ->->
+
 
 = orgasming
 
@@ -236,12 +252,15 @@ TODO: rewrite for Nega
 ->->
 
 
+
+
 // Cunnilingus-specific tempo comment lines.
 === Nega_Tempo_Cunnilingus_Comments ===
 
+
 = timeout
 
-/emotion annoyed 50
+/emotion angry 50
 
 {shuffle:
     - I can't feel your tongue!
@@ -253,6 +272,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.timeout ->
 }
 -> END
+
 
 = change_to_slower
 
@@ -275,6 +295,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = change_to_faster
 
 /emotion excited 50
@@ -295,6 +316,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.change_to_faster ->
 }
 -> END
+
 
 = too_fast
 
@@ -317,6 +339,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = too_slow
 
 /emotion disgusted 75
@@ -337,6 +360,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.too_slow ->
 }
 -> END
+
 
 = just_right_arousal_low
 
@@ -359,6 +383,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = just_right_arousal_medium
 
 /emotion aroused 75
@@ -379,6 +404,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.just_right_arousal_medium ->
 }
 -> END
+
 
 = just_right_arousal_high
 
@@ -401,6 +427,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = continue_arousal_low
 
 /emotion aroused 50
@@ -413,6 +440,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.continue_arousal_low ->
 }
 -> END
+
 
 = continue_arousal_medium
 
@@ -427,6 +455,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = continue_arousal_high
 
 /emotion aroused 75
@@ -439,6 +468,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = orgasming
 
 /emotion aroused 100
@@ -450,14 +480,17 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.orgasming ->
 }
 -> END
+
+
 
 
 // Sex-specific tempo comment lines.
 === Nega_Tempo_Sex_Comments ===
 
+
 = timeout
 
-/emotion annoyed 50
+/emotion angry 50
 
 {shuffle:
     - I can't feel your tongue!
@@ -469,6 +502,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.timeout ->
 }
 -> END
+
 
 = change_to_slower
 
@@ -491,6 +525,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = change_to_faster
 
 /emotion excited 50
@@ -511,6 +546,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.change_to_faster ->
 }
 -> END
+
 
 = too_fast
 
@@ -533,6 +569,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = too_slow
 
 /emotion disgusted 75
@@ -553,6 +590,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.too_slow ->
 }
 -> END
+
 
 = just_right_arousal_low
 
@@ -575,6 +613,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = just_right_arousal_medium
 
 /emotion aroused 75
@@ -595,6 +634,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.just_right_arousal_medium ->
 }
 -> END
+
 
 = just_right_arousal_high
 
@@ -617,6 +657,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = continue_arousal_low
 
 /emotion aroused 50
@@ -629,6 +670,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.continue_arousal_low ->
 }
 -> END
+
 
 = continue_arousal_medium
 
@@ -643,6 +685,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = continue_arousal_high
 
 /emotion aroused 75
@@ -655,6 +698,7 @@ TODO: rewrite for Nega
 }
 -> END
 
+
 = orgasming
 
 /emotion aroused 100
@@ -666,3 +710,7 @@ TODO: rewrite for Nega
     - -> Yuki_Tempo_Comments.orgasming ->
 }
 -> END
+
+
+
+

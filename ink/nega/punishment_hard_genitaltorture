@@ -3,11 +3,11 @@
 ~ setScene(punishment_scene, Nega, "nega_punishment_hard_genitaltorture", -> nega_punishment_hard_genitaltorture)
 
 /scene Attic.Ready
-/music nega2
+/music nega-punishment-hard
 /ambient howling-wind
 /character nega
 
-//slit, maggot, worm, meatbag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cumbucket, skank, pillow biter, tease
+//slit, maggot, worm, meat bag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cum bucket, skank, pillow biter, tease
 
 // tease_slapping
 // TODO: Player has to endure slapping while kneeling. This scene will focus on Nega telling the player they don't get to be touched nicely. They aren't worthy of it. She will slap them and get them to slap their genitals / nipples.
@@ -51,23 +51,23 @@ I love it when the dice let me get nasty. #11
 - (mistreated)
 Aren't you? #17
 
-    + [yes]
-        ~ addObey()
-        Of course you are. #18
++ [yes]
+    ~ addObey()
+    Of course you are. #18
 
-    + [no]
-        ~ addDisobey()
-        {shuffle:
-            - -> Nega_Unhappy ->
-            I already know you are. #19
-            That's why you're here. #20
-        }
++ [no]
+    ~ addDisobey()
+    {shuffle:
+        - -> Nega_Unhappy ->
+        I already know you are. #19
+        That's why you're here. #20
+    }
 + [timeout] -> Nega_Timeout -> mistreated
 + [distracted] -> Nega_PayAttention -> mistreated
 
 
 - /perform do_throat_cut disgusted
-And I know just how to make you suffer, meatbag. #21
+And I know just how to make you suffer, meat bag. #21
 
 /perform tease_caress_breast_left excited
 Let's have some fun fucking up your genitals! #22
@@ -76,34 +76,33 @@ What do you think about that, skank? #23
 
 - (consent)
 Want to torture yourself for me #24
-to prove what a pathetic fleshbag you really are? #25
+to prove what a pathetic flesh bag you really are? #25
 
- + [yes]
++ [yes]
     ~ addObey()
     -> Nega_Insult ->
     I'm going to make sure you suffer for it. #26
 
-    + [no]
-        ~ addDisobey()
-        {shuffle:
-            - -> Nega_Unhappy ->
-            - I don't believe you. #27
-        }
++ [no]
+    ~ addDisobey()
+    {shuffle:
+        - -> Nega_Unhappy ->
+        - I don't believe you. #27
+    }
+    -- (confirm_consent)
+        I know you're a dirty whore who wants to torture yourself for me. #28
+        Don't you? #29
 
-        -- (confirm_consent)
-            I know you're a dirty whore who wants to torture yourself for me. #28
-            Don't you? #29
+    ++ [yes]
+        That's what I fucking thought! #30
 
-        ++ [yes]
-            That's what I fucking thought! #30
+    ++ [no]
+        Goddammit. #31
+        Get the fuck out of here! #32
+        -> exit
 
-        ++ [no]
-            Goddamnit. #31
-            Get the fuck out of here! #32
-            -> exit
-
-        ++ [timeout] -> Nega_Timeout -> confirm_consent
-        ++ [distracted] -> Nega_PayAttention -> confirm_consent
+    ++ [timeout] -> Nega_Timeout -> confirm_consent
+    ++ [distracted] -> Nega_PayAttention -> confirm_consent
 
 + [timeout] -> Nega_Timeout -> consent
 + [distracted] -> Nega_PayAttention -> consent
@@ -171,6 +170,7 @@ to prove what a pathetic fleshbag you really are? #25
 
 -> torture_end
 
+
 = set_task_count
 
 { shuffle:
@@ -181,6 +181,7 @@ to prove what a pathetic fleshbag you really are? #25
 
 ->->
 
+
 = slap_genitals
 /perform idle_fake_annoyed amused 60
 
@@ -188,7 +189,8 @@ I'm gonna to start counting. #42
 
 And you're going to reach down and slap that {hasPenis: cock|pussy} each time I do. #43
 
-/perform do_slap_pussy aroused
+TODO: Create pussy slapping animation
+/perform do_flick_air aroused
 One smack for each count. #44
 
 -/perform talk_threaten disgusted 50
@@ -250,6 +252,7 @@ Got it? #48
 {task_count < task_goal: -> try_slap_react}
 
 ->->
+
 
 = flick_genitals
 /perform idle_fake_annoyed excited 50
@@ -323,6 +326,7 @@ Understood? #53
 
 ->->
 
+
 = yank_genitals
 /perform idle_fake_annoyed disgusted 50
 I bet your floppy {hasPenis: sac stretches|pussy lips stretch} really far! #111
@@ -339,8 +343,8 @@ Can you handle it, little piggy? #61
     ~ addObey()
 
 +[no]
-     ~ addDisobey()
-     -- -> check_ready
+    ~ addDisobey()
+    -- -> check_ready
 
 + [timeout] -> Nega_Timeout -> handle
 + [distracted] -> Nega_PayAttention -> handle
@@ -410,8 +414,8 @@ Let's count you down. #63
 = pinch_genitals
 /perform idle_fake_annoyed aroused 50
 Now. I wanna hear you whine. #89
-
-/perform do_pinch_air excited 75
+TODO: Create pinching animation
+/perform do_flick_air excited 75
 Grab that {hasPenis: tiny pecker of yours and pinch the head hard|fat clit of yours and pinch it hard}. #68
 
 - (try_pinch_genitals)
@@ -426,7 +430,7 @@ And don't stop until I tell you to. #70
 Go! #90
 
 + [react-success]
-     -> Nega_GoodJob ->
+    -> Nega_GoodJob ->
 + [react-fail]
     -> Nega_BadJob ->
     -> try_pinch_genitals
@@ -445,27 +449,29 @@ Go! #90
 /perform idle_fake_annoyed disgusted 50
 Time to watch you wince in pain! #91
 
-/perform do_scratch_air angry 30
+TODO: Create scratching animation
+/perform do_flick_air angry 30
 You're going to dig your nails into that #92
 pathetic {hasPenis: cock|pussy} of yours. #93
 
 - (ready)
 /perform idle_tease aroused
-Aren't you excited to suffer for me, meatbag? #94
+Aren't you excited to suffer for me, meat bag? #94
 
 +[yes]
     My little pain slut. #95
     ~ addObey()
 
 +[no]
-     ~ addDisobey()
-     -- -> check_ready
+    ~ addDisobey()
+    -- -> check_ready
 
 + [timeout] -> Nega_Timeout -> ready
 + [distracted] -> Nega_PayAttention -> ready
 
 -
-/perform do_scratch_air excited 40
+
+/perform do_flick_air excited 40
 Dig your nails in each time I count. #96
 
 /perform react_point_at_player_angry disgusted 50
@@ -519,6 +525,7 @@ I'll count backwards just to be nice. #99
 
 ->->
 
+
 = warning
 
 /perform react_scoffs skeptical
@@ -533,6 +540,7 @@ I'll count backwards just to be nice. #99
 
 ->->
 
+
 = start_over
 
 {shuffle:
@@ -543,6 +551,7 @@ I'll count backwards just to be nice. #99
 }
 
 ->->
+
 
 = humiliation_comment
 
@@ -589,6 +598,7 @@ Are you a fucking wimp who can't take a little torture? #83
         ++ [timeout] -> Nega_Timeout -> check_ready
         ++ [distracted] -> Nega_PayAttention -> check_ready
 ->->
+
 
 = torture_end
 

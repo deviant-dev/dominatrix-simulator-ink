@@ -1,60 +1,338 @@
 === pragma_task_dancing_doll ===
 -> select_gender_check ->
-~ setScene(task_scene, Pragma, "pragma_task_placeholder", -> pragma_task_placeholder)
+~ setScene(task_scene, Pragma, "pragma_task_dancing_doll", -> pragma_task_dancing_doll)
 /scene PragmasRoom.Ready
-/music pragma
-/ambient pragma
-/character pragma
+/music Pragma
+/ambient Pragma
+/character Pragma
 -> intro
 
 
 = intro
+// Camera pans around the space, showing slaves strapped to fucking and milking machines in various states of arousal and motion. 
 
 // consent check
+/perform idle_cocks_head_to_left amused 60
+Subject is selected to undergo
+endurance training and enhancement protocol No.17:
+Dancing Doll. 
 
-/notify title="The Divine Engine Pragma's Task Check" text="This is a placeholder task check. Do you want to do the task?"
+/perform idle_skeptical skeptical 55
+To complete this protocol,
+Specimen 33 must demonstrate coordinated levels of 
+intuition and calculation
+that will trigger climax in Specimen 7.
+
+/perform react_thankful 
+We seek ultimate perfection in our specimens.
+
+/perform do_arm_raise 
+Refinement of the form and movement is necessary
+to achieve this result.
+
+- (protocol)
+/perform talk_question amused 45
+Does Specimen 33 consent to the Dancing Doll protocol?
 
 + [yes]
+    -> take_spot
 + [no]
-    << Don't waste my time, then. >>
-    << Go away.>>
+    /perform do_get_the_fuck_out angry 70
+    We have no use for specimens 
+    that do not desire to serve. 
     /wait
-    -> exit
+    -> leave
++ [timeout] -> Pragma_Timeout -> protocol
 
-- -> begin
 
+
+= take_spot
+/scene PragmasRoom.DancingDollMinigame
+/character slave_f idle_table_legsup
+/character Pragma
+/music Pragma
+/ambient Pragma
+/perform idle_fake_annoyed aroused 69
+
+/perform do_snap_fingers
+Subject, present chassis for inspection. 
+
++ [pose: present_chest]
+
++ [timeout] -> Pragma_Timeout ->
+
+- /perform react_shake_head_disbelief
+Hm… substandard. 
+We will lend our likeness to this doll. 
+//workshop whether or not to use Pragma's form 
+
+-> begin
 
 = begin
+//change pose 
+/perform talk_consider amused 35 
+Subject will commit these instructions to memory. 
 
-// scene goes here
-//task - headset, hands have to all be moving for set amount of time - player is dancing to make other NPCs hooked up to fucking machines orgasm (they are in the pragma 'perfect form' shape)
-//the more embarassed and uncomfortable a player is, the richer the experiment results and the greater the essence she can extract
-//pragma is already the perfect form - player is given her form to wear when performing task, they get to modify her body (blend shapes for breasts, butt, hair, height, etc)
+/perform talk_one_hand
+Human passion is unruly. 
+We see, however, that it has potential
+to express Divine Beauty. 
 
-//pragma will ask the player to select the most pleasing body, using her body as a template, to indicate what is 'most exciting' for sexual arousal and then the player will have to dance to cause a slave to orgasm being fucked by a machine 
-//player is put into a pragma body and can modify the features of the pragma body (breasts, ass, etc) in front of a mirror
-//scene reloads and player is in front of a slave strapped to a fucking machine
-//minigame - player has to move headset and both hands to be sexual enticing to the slave being fucked. as they move, the arousal level goes up and the fucking machine goes faster. If the player stops moving, the arousal level goes down and the fucking machine slows. The slave orgasms when the arousal meter is full and then he player can stop moving
-//scene wraps up with pragma evaluates the performance 
-//good ending - earn a reward, pragma is filled with power and excited to use the passion for her next experiment
-//bad ending - earn a punishment, all is not lost, we can use your pain to our advantage
+/perform talk_thoughtful
+We believe the human action of Dance 
+can display Divine Beauty.
 
--> finish
+Organic subjects are uniquely, 
+though imperfectly, formed for 
+the intuition and calculation
+required to complete dance movements. 
+
+/perform talk_gesture 
+Attend. 
+
+/perform talk_behold
+This slave is in thrall to the Divine Engine. 
+It cannot escape and will experience 
+every sensation the machine can offer.
+
+/perform idle_cocks_head_to_left
+The doll's purpose is to work the machine
+— and to create beauty — 
+by dancing. 
+
+//end of intro dialogue
 
 
-= finish
+//can we dispense with this (understand) check? 
+//- (understand)
+///perform talk_question skeptical 70
+//Subject, do you understand? 
 
-// scene wrap-up goes here
+//+ [yes]
+//    -> Pragma_AcknowledgeYes ->
 
-/notify title="The Divine Engine Pragma's Task Test" text="This is a placeholder task scene. Do you complete your task?"
+//+ [no]
+//    /perform react_disappointed angry 70
+    
+
+//    -- (agree)
+//    Do you agree to be enhanced? 
+    
+//    ++ [yes] -> Pragma_AcknowledgeYes.EmoteOnly -> instructions
+
+//    ++ [no]
+//        -> leave
+
+//    ++ [timeout] -> Pragma_BadJob -> Pragma_Timeout -> agree
+
+//+ [timeout] -> Pragma_Timeout -> understand
+
+- (instructions)
+
+/perform react_scoffs
+Physical endurance is key to this task. 
+
+/perform talk_lean_forward
+The only technical requirement of the dance 
+
+/perform talk_emphatic_one_hand
+is perpetual motion of the hands and head.
+Subject must display both endurance
+and aesthetic sensibility.
+
+/perform idle_skeptical
+A successful effort will result in climax 
+for the specimen on the machine.
+
+However.
+If the subject does not perform adequately,
+the subject will restart the dance sequence.
+
+
+/perform talk_question skeptical 50
+- (ready)
+{shuffle:
+    - Is the subject ready to proceed? 
+    - Subject, are you prepared to perform?
+}
 
 + [yes]
-    ~addReward()
-    /notify title="The Divine Engine Pragma's Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
-+ [no]
-    ~addPunishment()
-    /notify title="The Divine Engine Pragma's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+    -> position
 
-- /wait 5
++ [no] 
+    -> Pragma_AcknowledgeNo ->
+    Would the subject like to terminate the process? 
+    
+    -- (agree2)
+    /perform talk_question skeptical 50 
+    Subject, will you reconsider?
+    
+    ++ [yes] -> Pragma_AcknowledgeYes -> position
+
+    ++ [no]
+        -> leave
+
+    ++ [timeout] -> Pragma_BadJob -> Pragma_Timeout -> agree2
+
++ [timeout] -> Pragma_Timeout -> ready
+
+- (position)
+/perform do_snap_fingers
+Subject, prepare for the dance. 
+
++ [pose: raised_chin] -> prepare
++ [timeout] -> Pragma_Timeout -> position
+
+- (prepare)
+
+/perform talk_lean_forward excited 55
+{shuffle:
+    - Let us observe the machinations. 
+    - This simulation should be interesting. 
+}
+
+
+-> minigame
+
+
+= minigame
+/scene PragmasRoom.DancingDollMinigame
+/character slave_f idle_table_legsup
+/character Pragma
+/music Pragma
+/ambient Pragma
+/perform idle_fake_annoyed aroused 69
+
+
+//+ [minigame:success] -> finish_success
+//+ [minigame:failure] -> finish_failure
+
+-(start_dance)
+/perform idle_skeptical
+/wait 1
++ [continue]
+-
+
++ [pose:doll_05_02_1st]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_02_2nd]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_02_3rd]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_02_4th]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_02_5th]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_02_6th]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_02_7th]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_02_8th]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_02_9th]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_09_1st]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_09_2nd]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_09_3rd]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_09_4th]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_09_5th]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [pose:doll_05_09_6th]
++ [timeout] -> Pragma_BadJob -> start_dance
+-
+
++ [yes] -> start_dance
++ [no] -> finish_success
++ [timeout] -> finish_failure
+
+= finish_success
+/scene PragmasRoom.Ready
+/music Pragma
+/ambient Pragma
+/character Pragma
+/wait
+
+/perform idle_clasp_hands happy 80
+
+-(pleased)
+
+{shuffle:
+    - We are pleased with the experiment results. 
+    - This subject has pleased us. 
+}
+/wait 1
+
++ [pose: raised_chin]
++ [timeout] -> Pragma_Timeout -> pleased
+
+- Bloodstone marker granted. 
+
+~addReward()
+/wait 
+-> leave
+
+= finish_failure
+/scene PragmasRoom.Ready
+/music Pragma
+/ambient Pragma
+/character Pragma
+
+/perform talk_annoyed angry 80
+Subject is organic. Weak. Flawed. 
+{shuffle:
+    - Further training required. 
+    - We must run additional experiments. 
+}
+
+Obsidian marker added to tally. 
+
+~addPunishment()
+/wait 1
+
+/perform do_shoo_player
+Subject should return when it is able to endure. 
+-> leave
+
+= leave
+/perform idle_clasp_hands
+
+- (leave_repeat)
+{shuffle:
+    - Ending simulation. 
+    - Powering down experiment simulation. 
+    - Powering down.
+    - Now shutting down. 
+}
 -> exit
-

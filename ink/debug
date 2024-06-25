@@ -6,15 +6,18 @@
 
 //~SEED_RANDOM(5)
 
-//~ inTutorial = false
-//~ rewards = 10
+~ inTutorial = false
 //~ inChastity = true
-//~ setGender("p")
+~ setGender("m")
+~ treat_intro_complete = true
+~ pragma_intro_completed = false
+//~ furia_intro_completed = true
+// -> entry_hub
 
-
+// -> headmistress_reward_cunnilingus.load_yuki
 
 // -> game_intro.instructions
-//-> deviation_unspeakable_toy.test
+// -> goddess_reward_serviced.test_interaction
 
 
 
@@ -33,13 +36,10 @@
 // ~ tutorial_step = at_hm_intro
 // -> entry_hub.move_headmistress
 
-
-
-
 //--------------------------------------------------
 //
 // --- Set gender here to skip gender selection step ---
-// ~ setGender("m")
+//  ~ setGender("m")
 // ~ setGender("f")
 // ~ setGender("p")
 
@@ -48,9 +48,10 @@
 
 //--------------------------------------------------
 // --- Force a different deviation ---
-// ~ setDeviation(full_game)
+~ setDeviation(full_game)
 // ~ setDeviation(tutorial)
 // ~ setDeviation(demo)
+// ~ setDeviation(demo_short)
 // ~ setDeviation(exhibitionism)
 // ~ setDeviation(hand_signals)
 // ~ setDeviation(nega_dice)
@@ -67,24 +68,26 @@
 
 //--------------------------------------------------
 // --- Punishments and Reward ---
-// ~ punishments = 0
-// ~ rewards = 1
+~ punishments = 1
+~ rewards = 1
+// ~ just_changed = punishment_removed
 
 //--------------------------------------------------
 // --- Tutorial Completion ---
-// ~ inTutorial = false
+~ inTutorial = false
 
 //--------------------------------------------------
 // --- Mistress Regard ---
 // ~ angel_regard = 0
 // ~ caliste_regard = 0
-// ~ furia_regard = 0
+//~ furia_regard = 9
 // ~ goddess_regard= 0
 // ~ headmistress_regard = 0
 // ~ nega_regard = 0
 // ~ pragma_regard = 0
 // ~ treat_regard = 0
 // ~ yuki_regard = 0
+// ~ ereshkigal_regard = 0
 
 //--------------------------------------------------
 // --- Mistress Models ---
@@ -97,6 +100,7 @@
 // /character pragma
 // /character treat
 // /character yuki
+// /character ereshkigal
 
 //--------------------------------------------------
 // --- Other Models ---
@@ -116,6 +120,7 @@
 // /music pragma
 // /music treat
 // /music yuki
+// /music ereshkigal
 
 //--------------------------------------------------
 // --- Angel Scene Jumps ---
@@ -136,11 +141,21 @@
 // -> caliste_task_placeholder
 
 //--------------------------------------------------
+// --- Ereshkigal Scene Jumps ---
+// -> ereshkigal_hub
+// -> ereshkigal_hub_vignette
+// -> ereshkigal_task_placeholder
+// -> ereshkigal_punishment_placeholder
+// -> ereshkigal_reward_placeholder
+
+//--------------------------------------------------
 // --- Furia Scene Jumps ---
 // -> furia_hub
 // -> furia_intro
 // -> furia_intro_wip
 // -> furia_punishment_placeholder
+// -> furia_punishment_edging
+-> furia_reward_pegging
 // -> furia_reward_placeholder
 // -> furia_rewardmega_placeholder
 // -> furia_task_placeholder
@@ -200,8 +215,10 @@
 //--------------------------------------------------
 // --- Pragma Scene Jumps ---
 // -> pragma_hub
--> pragma_intro
+// -> pragma_intro
 // -> pragma_intro.intro_temp
+// -> pragma_task_dancing_doll
+-> pragma_task_posing_doll
 // -> pragma_punishment_placeholder
 // -> pragma_reward_placeholder
 // -> pragma_rewardmega_placeholder
@@ -213,11 +230,13 @@
 // -> treat_hub
 // -> treat_intro
 // -> treat_promo
-// -> treat_punishment_placeholder
+// -> treat_punishment_spanking
+// -> treat_punishment_spanking.here
 // -> treat_reward_cunnilingus
 // -> treat_reward_placeholder
 // -> treat_reward_riding
 // -> treat_rewardmega_placeholder
+// -> treat_session_aftercare
 // -> treat_session_subdrop
 // -> treat_task_placeholder
 // -> treat_monitoring
@@ -251,7 +270,7 @@
 // -> exit
 // -> entry_hub
 // ~ tutorial_step = at_hm_intro
-// -> game_intro
+-> game_intro
 // -> game_intro_again
 // -> game_outro
 // -> skip_to_full_loop
@@ -262,6 +281,7 @@
 // -> test_audio
 // -> test_marks
 // -> test_multiple_poses
+// -> test_dancing
 // -> test_crowd_reactions
 // -> test_notification_ui
 // -> test_nega_dice
@@ -270,12 +290,20 @@
 
 ->->
 
+=== test_animation(anim, duration) ===
+/notify text="{anim}"
+/perform {anim} 
+/wait {duration}
+->->
+
 
 === skip_to_full_loop ===
 
 ~ setDeviation(full_game)
 ~ inTutorial = false
 -> entry_hub
+
+
 
 
 === test_yes_no ===
@@ -287,9 +315,11 @@
 + [no] -> again
 
 
+
+
 === test_notification_ui ===
 
-/scene Entry.Em
+/scene Entry.Empty
 
 - (again)
 {cycle:
@@ -301,6 +331,9 @@
 
 + [yes] -> again
 + [no] ->->
+
+
+
 
 === test_marks ===
     + add punishment
@@ -316,22 +349,25 @@
 -> test_marks
 
 
+
+
 === test_nega_dice ===
 ~ setGender("p")
 ~ setScene(reward_scene, Nega, "nega_reward_dice", -> nega_reward_dice)
 -> nega_reward_dice.scene_setup -> nega_reward_dice.test_dice
 
 
- === test_audio ===
+
+
+=== test_audio ===
 + [ Music] /music
 + [ Angel Music] /music angel
 + [Caliste Music] /music caliste
++ [Ereshkigal Music] /music ereshkigal
 + [Furia Music] /music furia
 + [Goddess Music] /music goddess
 + [Headmistress Music] /music headmistress
 + [Headmistress Music] /music headmistress-punishment
-+ [Nega Music] /music nega
-+ [Nega Music] /music nega2
 + [Nega Music] /music nega-punishment
 + [Nega Music] /music nega-reward
 + [Nega Music] /music nega-reward-forced-sex-mini-1
@@ -350,6 +386,8 @@
 + [ Music] /music
 
 - -> test_audio
+
+
 
 
 === test_crowd_reactions ===
@@ -384,6 +422,8 @@
     ~reaction = "cheers_loud"
 + [cheers_short!]
     ~reaction = "cheers_short"
++ [claps!]
+~reaction = "claps"
 + [Menu!] -> menu
 
 - /character crowd {reaction}
@@ -402,6 +442,74 @@
 + [Menu!] -> menu
 
 - -> comment_menu
+
+=== test_multiple_dances ===
+/scene Entry.DanceTest
+
+- (start)
+
++ [move:dance1] -> move_dance1
+-
+
+- (move_dance1)
+/wait 1
++ [continue]
+-
+
++ [pose:doll_05_02_1st]
+    /notify title="Pose 1 successful!"
+/wait 1
+-
+
++ [pose:doll_05_02_2nd]
+    /notify title="Pose 2 successful!"
+/wait 1
+-
+
++ [pose:doll_05_02_3rd]
+    /notify title="Pose 3 successful!"
+/wait 1
+-
+
++ [pose:doll_05_02_4th]
+    /notify title="Pose 4 successful!"
+/wait 1
+-
+
++ [pose:doll_05_02_5th]
+    /notify title="Pose 5 successful!"
+/wait 1
+-
+
++ [pose:doll_05_02_6th]
+    /notify title="Pose 6 successful!"
+/wait 1
+-
+
++ [pose:doll_05_02_7th]
+    /notify title="Pose 7 successful!"
+/wait 1
+-
+
++ [pose:doll_05_02_8th]
+    /notify title="Pose 8 successful!"
+/wait 1
+-
+
++ [pose:doll_05_02_9th]
+    /notify title="Pose 9 successful!"
+/wait 1
+-
+
++ [pose:doll_05_02_10th]
+    /notify title="Pose 10 successful!"
+/wait 1
+-
+
+- ->start
+
+
+
 
 
 === test_multiple_poses ===

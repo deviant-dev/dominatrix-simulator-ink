@@ -1,23 +1,22 @@
 // writing status: in progress
 
-=== goddess_lore ===
 
+
+
+=== goddess_lore ===
 // If we've heard the last lore, then don't say anything else here.
 {lore03: ->->}
 
-
-/perfrom talk_lean_forward aroused 80
+/perform talk_lean_forward aroused 80
 Since you've been so good, I'll tell you a little secret.
-
-
 
 { once:
     - -> lore01 ->
     - -> lore02 ->
     - -> lore03 ->
 }
-
 ->->
+
 
 = lore01
 
@@ -36,7 +35,7 @@ Did you choose to come here? #
 /perform do_shake_finger skeptical 35
 Or were you made to be here? #
 
-/emotion talk_thoughtful happy 50
+/perform talk_thoughtful happy 50
 Who <i>are</i> you? #
 
 /perform talk_consider amused 35
@@ -45,7 +44,6 @@ Or rather #
 who <i>were</i> you? #
 
 /wait 2
-
 
 /perform talk_emphatic_one_hand
 What if I told you #
@@ -104,23 +102,15 @@ Would you agree, small one? #
     -> accommodating
 
 + [distracted] -> Goddess_PayAttention -> accommodating
-
 ->->
 
 
 = lore02
-
-
 ->->
-
 
 
 = lore03
-
-
 ->->
-
-
 
 // //Throat clearing noises
 
@@ -155,7 +145,7 @@ Would you agree, small one? #
 // Earth, and Sky.
 
 // This fruition;
-// Solidified our exsistence.
+// Solidified our existence.
 
 // Names, Rifts, Struggles shared;
 // All, will know.
@@ -184,7 +174,7 @@ Would you agree, small one? #
 // Holy Torch! You fill the sky with light!
 // You brighten the day at dawn!
 
-// Isay, "Hail!" to Inanna, Great Lady of Heaven!
+// I say, "Hail!" to Inanna, Great Lady of Heaven!
 
 // Awesome Lady of the Annuna Gods! Crowned with great horns,
 // You fill the Heavens and Earth with Light!
@@ -199,12 +189,11 @@ Would you agree, small one? #
 // To the greatness of the Holy Priestess of Heaven,
 // To you, Inanna, I sing!
 
-
 // //2nd of 7 hymns
 // //Loud Thundering Storm
 
 // Proud Queen of the Earth Gods, Supreme Among the Heaven Gods,
-// Loud Thundering Strom, you pour your rain over all the lands and all the people.
+// Loud Thundering Storm, you pour your rain over all the lands and all the people.
 // You make the Heavens tremble and the Earth quake.
 // Great Priestess, who can soothe your troubled heart?
 
@@ -212,7 +201,6 @@ Would you agree, small one? #
 // Your deafening command, whistling like the South Wind, splits apart great mountains.
 // You trample the disobedient like a wild bull; Heaven and Earth tremble.
 // Holy Priestess, who can soothe your troubled heart?
-
 
 // Your frightful cry, descending from the Heavens, devours its victims.
 // Your quivering hand, causes the midday heat, to hover over the sea.
@@ -225,8 +213,8 @@ Would you agree, small one? #
 // You fasten combat and battle to your side;
 // You tie them into a girdle and let them rest.
 
-// In Eridu you recieve the <i>me</i> from the God of Wisdom,
-// Father Enki presented the <i> me<i/> to you, at his Holy shrone in Eridu.
+// In Eridu you receive the <i>me</i> from the God of Wisdom,
+// Father Enki presented the <i> me<i/> to you, at his Holy shrine in Eridu.
 // He placed Queenship and Godship in your hands.
 
 // You mount the steps to your high Throne.
@@ -238,7 +226,6 @@ Would you agree, small one? #
 // The living creatures and the people and Sumer, come before you.
 // The people of Sumer, parade before you.
 // They are caught in your gaze, and held in your Holy yoke.
-
 
 // //3rd of 7 hymns
 // //The Holy One
@@ -261,7 +248,7 @@ Would you agree, small one? #
 
 // The male prostitutes comb their hair before you.
 // They decorate the napes of their necks with colored scarfs,
-// They drap the cloak of the Gods about thei shoulders.
+// They drape the cloak of the Gods about their shoulders.
 // The righteous man and woman walk before you.
 // They holed the soothing harp by their sides.
 // Those who follow wear the sword belt.
@@ -271,7 +258,7 @@ Would you agree, small one? #
 // The women adorn their right side with men's clothing.
 // The people of Sumer parade before you.
 
-// I say, "Hail!" to Inann, Great Lady of Heaven!
+// I say, "Hail!" to Inanna, Great Lady of Heaven!
 
 // The people compete with jump ropes and colored cords.
 // The people of Sumer parade before you.
@@ -291,7 +278,6 @@ Would you agree, small one? #
 // <i>My Lady looks in sweet wonder from heaven.
 // She looks in sweet wonder on all the lands
 // And on the people of Sumer as numerous and sheep.</i>
-
 
 // //4th of 7 hymns
 // //The Lady of the Evening
@@ -319,7 +305,6 @@ Would you agree, small one? #
 // I sign your praises, Holy Inanna.
 // The Lady of the Evening is radiant on the horizon.</i>
 
-
 // //5th of 7 hymns
 // //The Lady of the Morning
 
@@ -342,7 +327,6 @@ Would you agree, small one? #
 // Inanna, the Lady of the Morning, is radiant.
 // I sing your praises, Holy Inanna.
 // The Lady of the Morning is radiant on the horizon.</i>
-
 
 // //6th of 7 hymns
 // //The Lady who ascends in the Heavens
@@ -376,11 +360,10 @@ Would you agree, small one? #
 // They feed Inanna in the pure clean place.
 
 // <i>My lady looks in sweet wonder from Heaven.
-// The people of Sumer parade befoire the Holy Inanna.
-// Inann, the Lady Who Ascends in the Heavens, is radiant.
+// The people of Sumer parade before the Holy Inanna.
+// Inanna, the Lady Who Ascends in the Heavens, is radiant.
 // I sing you praises, Holy Inanna.
 // The Lady Who Ascends in the Heavens is radiant on the horizon.</i>
-
 
 // //7 of 7 hymns
 // //The Joy of Sumer
@@ -400,7 +383,7 @@ Would you agree, small one? #
 // May be properly determines,
 // And a sleeping place be set up for Inanna.
 
-// The peopl cleanse the rushed with sweet-smelling cedar oil,
+// The people cleanse the rushed with sweet-smelling cedar oil,
 // They arrange the rushed for the bed.
 // They spread a bridal sheet over the bed.
 // A bridal sheet to rejoice the heart,
@@ -416,7 +399,7 @@ Would you agree, small one? #
 // Dumuzi goes with lifted head to the holy loins of Inanna.
 // He lies down beside her on the bed.
 // Tenderly he caresses her, murmuring words of love:
-// "O my holy jewel! O my wonderous Inanna!"
+// "O my holy jewel! O my wondrous Inanna!"
 
 // After he enters her holy vulva, causing the queen to rejoice,
 // After he enters her holy vulva, causing Inanna to rejoice,

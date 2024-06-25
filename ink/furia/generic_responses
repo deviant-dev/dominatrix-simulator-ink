@@ -1,212 +1,196 @@
-/// For actions
-=== Furia_GoodJob ===
-/character furia
-
-{ shuffle:
-
-    -/perform idle_fake_annoyed amused 65
-    Very good.
-
-    -/perform talk_consider aroused 85
-    Muy bien.
-
-    -/perform idle_pleased amused 65
-    Excellent.
-
-    -/perform do_inspect excited 60
-    Excellente.
-
-
-}
-
-->->
-
-=== Furia_BadJob ===
-/character furia
-
-{ shuffle:
-
-  -/perform talk_annoyed disgusted 80
-  Terrible.
-
-  -/perform react_dismissive scared 80
-  No, no no no
-
-  -/perform react_whatever scared 80
-  That was awful!
-
-  -/perform talk_one_finger angry 80
-  Most embarrasing for you
-
-  -/perform talk_lean_forward angry 80
-  You call that effort?!
-}
-
-->->
-
-=== Furia_Unhappy ===
-/character furia
-
-{ shuffle:
-
-    -/perform react_dumb skeptical 70
-    I do not believe you.
-
-
-    -/perform react_point_at_player_angry disgusted 55
-    Do not lie to me.
-
-    -/perform react_dismissive angry 65
-    I have no time for fools.
-
-    -/perform react_shake_head_disbelief sad 50
-    Disappointing.
-}
-
-->->
-
-=== Furia_NoAction ===
-/character furia
-
-{ shuffle:
-
-  -/perform idle_bored disgusted 65
-  Move, you {isBoy: mongrel | {isGirl: slut | maggot}}!
-
-  -/perform talk_one_finger sad 65
-  Are you even listening to me?
-
-  -/perform react_resigned sad 70
-  I can't believe you'd act like this...
-
-  -/perform idle_skeptical skeptical 55
-  Are you trying to piss me off?
-}
-
-->->
-
-=== Furia_Timeout ===
-/character furia
-
-{ shuffle:
-
-  -/perform talk_lean_forward angry 75
-  ¡Responde, esclavo!
-
-  -/perform talk_one_finger sad 65
-  I am waiting...
-
-  -/perform react_scoffs scared 75
-  Perhaps you think I am patient.
-  I am not.
-
-
-}
-
-->->
-
-=== Furia_PayAttention ===
-/perform do_snap_fingers
-{ shuffle:
-
-    -Attention, whore!
-
-    -Are you listening to me?
-
-}
-
-+ [pay-attention]
-+ [timeout] -> Furia_PayAttention ->
-
-/perform react_thankful amused 65
-
-- { shuffle:
-
-    -Good, let us move on
-
-    -You better keep it that way
-
-}
-
-->->
 //For positive responses to questions
+
+
+
 
 === Furia_AcknowledgeYes ===
 /character furia
 
 { shuffle:
-
-   -/perform react_thankful excited 55
-    Excellente!
-
-    -/perform talk_behold amused 70
-    Magnifica!
-
-    -/perform react_nod_big skeptical 65
-    Bien.
+    -/perform react_thankful excited 55
+    Excelente. #01
 
     -/perform talk_thoughtful happy 45
-    Excellent.
+    Excellent. #02
 
-    -/perform idle_sassy aroused 55
-    Magnificent.
+    -/perform talk_behold amused 70
+    Perfecto. #03
 
+    - Perfect. #04
+
+    - Bien. #05
+
+    - Good. #06
+
+    - Very good. #07
+
+    - Muy bien. #08
+
+    - I am glad. #09
 
 }
-
 ->->
 
-=== Furia_Resume ===
-/character furia
 
-//generic responses whenever the Furia continues dialogue after a response or action.
+
+
+=== Furia_AcknowledgeNo ===
+/character furia
 
 { shuffle:
 
-   -/perform talk_consider skeptical 75
-   We shall carry on, then
+    - That displeases me. #01
 
-   -/perform talk_question amused 75
-   I suppose you will need more training
-   after this session
+    - Disappointing. #02
 
-   -/perform talk_thoughtful aroused 65
-   Chop chop, worm!
-   We haven't got all day
+    - No? #03
 
-   -/perform react_thankful sad 80
-  Let's continue, now that you're paying attention
+    - Unfortunate. #04
 
-   -/perform react_point_at_player_angry angry 80
-   You had better keep yourself in check!
+    - Desgraciada. #05
 
-}
+    - I see. #06
 
+    - Ya veo. #07
+
+    - Too bad. #08
+
+    - A pity. #09
+}   
 ->->
 
-=== Furia_punishment_resumes ===
+
+
+
+=== Furia_GoodJob ===
 /character furia
 
-//generic responses whenever the Furia returns from a break or interruption to resume a punishment
+{ shuffle:
+    - You are making progress. #01
+    - You are doing well. #02
+    - Esta muy bien. #03
+    - Qué bueno. #05
+    - Bien hecho. #06
+    - Well done. #07
+    - You improve. #08
+    - Good progress. #09
+    - Me agrada. #10
+    - I am impressed. #11
+}
+->->
+
+
+
+
+=== Furia_BadJob ===
+/character furia
 
 { shuffle:
+    - Terrible. #01
+    - Terrible (Spanish). #02
+    - Unacceptable. #03
+    - Pitiful. #04
+    - Shameful. #05
+    - Badly done. #06
+    - Pathetic. #07
+    - Lamentable. (Spanish) #08
+    - Pésimo. #09
+    - I expect more from you. #10
+}
+->->
 
-   -/perform talk_annoyed disgusted 65
-    'sighs' Let's continue, your disobedience needs to be extinguished
 
 
-   -/perform react_thankful amused 65
-   Now, we return to the problem at hand: your lack of discipline
 
-   -/perform talk_lean_forward disgusted 65
-   I do enjoy a good struggle,
-   but you are making this more trouble
-   than it is worth
+=== Furia_NoAction ===
+/character furia
+
+/perform react_dumb angry 65
+{ shuffle:
+    - Obey, {isBoy: boy | {isGirl: girl | slave}}! #01
+
+    - I gave you a command. #02
+
+    - Your lack of action is unacceptable. #03
+
+    - It is time to move, idiota. #04
+
+    - Why do you resist? #05
+}
+->->
 
 
+
+
+=== Furia_Timeout ===
+/character furia
+
+{ shuffle:
+    -/perform talk_lean_forward angry 75
+    ¡Responde, imbecile! #01
+
+    -/perform talk_one_finger sad 65
+    I am waiting... #02
+
+    -/perform react_scoffs scared 75
+    ¿Cuál es el problema? #03
+    
+    - I am not a patient Mistress. #04
+    
+    - Where is your mind, slave? #05
+    
+    - Answer me, idiota. #06
+    
+    - Answer me, slave. #07
+    
+    - ¡Ey! Focus. 
+}
+->->
+
+
+
+
+=== Furia_PayAttention ===
+/perform do_snap_fingers
+{ shuffle:
+    - Attend to me, {isBoy: puto|{isGirl: puta|animal}}. #01
+    - Eyes on me, slave. #02
+    - Your rudeness is distasteful. #03
+    - I require your attention. #04
 }
 
++ [pay-attention]
++ [timeout] -> Furia_PayAttention ->
+
+-/perform react_thankful amused 65
+
+{ shuffle:
+    - -> Furia_AcknowledgeYes ->
+    - Much better. #05
+    - Good. You can be corrected. #06
+    - I will continue... #07
+}
 ->->
+
+
+
+
+=== Furia_Aroused ===
+/character Furia
+
+{shuffle:
+
+    - I grow hard watching you, my slave. #01
+    - Watching you is thrilling, {isBoy: puto|{isGirl: puta|animal}}. #02
+    - My heart quickens at such submission. #03
+    - You are a feast for my eyes and soul. #04
+    - My cock leaks as you give in, slave. #05
+
+}
+->-> 
+
+
+
 
 === Furia_CheckIfInterested ===
 
@@ -217,47 +201,27 @@
 {
     - scene_type == punishment_scene:
     /perform talk_lean_forward angry 65
-        {shuffle:
-            -Slave, you are venturing into dangerous territory
-            You do not want to anger me, I assure you
-            Will you comply with my instructions?
 
-
-
-            -You are a disgrace!
-            I do not understand
-            How you managed to catch the attention of the goddess
-            Do you wish to please me?
-
-        }
+    Ending your punishment early #01
+    will not remove your obsidian stone. #02
+    Do you want to finish this suffering, {isBoy:esclavo|{isGirl:esclava|animal}}? #03
 
     - scene_type == reward_scene:
     /perform idle_cocks_head_to_left skeptical 70
-        {shuffle:
-          -I see your attention is waning,
-          should we continue?
 
-
-          -Your enthusiasm has evaporated,
-          as water in the hot sun.
-          Are you wishing to proceed with your reward?
-        }
+    Your attention wanders. #04
+    Your bloodstone is already surrendered. #05
+    Do you want to continue? #06
 
     - else:
     /perform idle_unhappy sad 65
-        {shuffle:
-          -You insolent wretch!
-          How dare you let your attention wander!
-          Will you do as I ask of you?
+    
+    My dungeon is a place for you to be remade. #07
+    If you do not seek this, #08
+    you must leave. #09
+    Do you want to finish this task? #10
 
-          -I can not believe this.
-          Keep up this behavior, and you will be cast out!
-          Now, will you obey?
-
-        }
 }
-
-
 
 - (check_again)
 
@@ -270,66 +234,60 @@
 {
     - scene_type == punishment_scene:
     /perform talk_annoyed angry 75
-        {shuffle:
-            - You disappoint me.
-              Are you going to listen or not?
 
-            - Will you respond to my commands?
-        }
+    You anger me. #11
+    Are you going to listen or not? #12
 
     - scene_type == reward_scene:
     /perform talk_question skeptical 70
-        {shuffle:
-            - You were so excited when we started
-              Won't you play nice?
-
-            - This interruption is a waste of time
-              Shall we continue?
-        }
+    
+    You were so excited when we started #13
+    Won't you play nice? #14
 
     - else:
     /perform idle_cocks_head_to_left angry 50
-    I have little patience for those that do not obey
-        {shuffle:
-            - Will you comply with my demands?
-            - Can you muster the courage to carry on?
-        }
+    
+    I have little patience for those that do not obey. #15
+    Can you muster the courage to carry on? #16
+        
 }
-
-
 
 + [yes] -> check_yes
 + [no]
 
-- /perform idle_unhappy_stomp
-You pathetic whelp!
-Undeserving of any attention.
+- 
+{
+    - scene_type == punishment_scene:
+    /perform do_get_the_fuck_out angry 65
+    
+    You pathetic worm. #17
+    Get out of my sight! #18
 
--> out_vermin
+    - scene_type == reward_scene:
+    /perform react_shrug_short
+    
+    This is such a shame. #19
+    You may go. #20
 
+    - else:
+    /perform react_scoffs
+    
+    You waste my time today. #21
+    Leave. #22
+        
+}
+
+-> exit
 
 - (check_yes) -> Furia_AcknowledgeYes ->
 /perform idle_cocks_head_to_left skeptical 65
+
 {shuffle:
-  -I am satisfied with that answer
-  Let us carry on
 
-  -You are learning {isBoy:pequeño|{isGirl:pequeña|pequeñe}}.
-  Do not test my patience again
-  Or you will be sorry
-
-
-  -Fine then,
-  I will keep a close watch on your from now on
+-You are learning, {isBoy:pequeño|{isGirl:pequeña|criatura}}. #23
+-You are learning, little one. #25
 
 }
 
+We will continue what we are doing. #24
 ->->
-
-
-= out_vermin
-
-/perform do_get_the_fuck_out angry 65
-/wait 4
-
--> exit

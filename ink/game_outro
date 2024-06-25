@@ -54,6 +54,10 @@ but you're going to have to convince me it's worth my time. #09
     Go to deviant.tech #11
     and decide which method of devotion suits you best. #13
 - else:
+    /perform talk_behold amused 70
+    /action show_toys
+    Show your commitment.<br/>Purchase a toy to use with my game.#19
+    
     /perform talk_one_finger amused 50
     /action show_social
     Show your devotion.<br/>Spread the word on social media. #14
@@ -95,8 +99,6 @@ How disappointing. Tell me what went wrong. #20
 /character Treat idle_skeptical aroused
 Now... your journey has just begun. #21
 When you're ready... #22
-
-// I hope I see you again soon. #19
 
 -> continue ->
 

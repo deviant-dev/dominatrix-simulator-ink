@@ -22,13 +22,14 @@
 ~ setScene(intro_scene, Nega, "nega_intro", -> nega_intro)
 
 /scene Attic.Hub
-/music nega
+/music nega-hub-1
 /ambient howling-wind
 
 + [move:Approach]
 
 - /scene Attic.Ready
 /character nega
+/music nega-intro
 
 {skipChecks: -> skip}
 
@@ -52,7 +53,7 @@
     -> start
 
 
-//play some kind of dischordant sound when the player enters?
+//play some kind of discordant sound when the player enters?
 = start
 
 /perform idle_skeptical amused 45
@@ -194,21 +195,21 @@ She does such good work. #33
 TODO: Support 'wiggle' action
 
 // - (wiggle)
-// Wiggle it for me. #34
+// Wiggle it for me. -34
 
 // //check to see if the headset wiggles?
 
 // + [wiggle-success:5]
 //     -> Nega_GoodJob ->
 //     ++ [wiggle-success:5]
-//         That's enough.  #35
+//         That's enough.  -35
 //        /perform idle_cocks_head_to_left amused 25
-//        Turn back around and present yourself.  #36
+//        Turn back around and present yourself.  -36
 //         ~ addObey()
 // + [wiggle-timeout]
 //     -> Nega_BadJob ->
 //     ~ addDisobey()
-//     Did I tell you to stop? #37
+//     Did I tell you to stop? -37
 //     -> wiggle
 // // + [no] -> Nega_CheckIfInterested -> wiggle
 
@@ -266,7 +267,7 @@ Do you want to try your luck? #45
     /perform idle skeptical skeptical 65
     Well. Are you going to give me what I want? #55
     {inTutorial:->check_reward|->check_reward_loop}
-    //Can't find a way to test this logic statement, halp
+    //Can't find a way to test this logic statement, Halp
 
 + [distracted] -> Nega_PayAttention -> check_reward_loop
     //Had to move timeout and distracted here to make them work properly
@@ -305,7 +306,6 @@ Do you want to try your luck? #45
     ++[distracted] -> Nega_PayAttention -> check_reward_again
 
     ++[timeout] -> Nega_Timeout -> check_reward_again
-
 
 
 // When the Goddess interrupts Nega playing with the player.

@@ -1,22 +1,19 @@
-//slit, maggot, worm, meatbag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cumbucket, skank, pillow biter, tease
+//slit, maggot, worm, meat bag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cum bucket, skank, pillow biter, tease
+
+
+
 
 === nega_hub ===
-
 -> select_gender_check ->
-
 // If the player hasn't done the intro yet,
 // then have them go to the intro.
-
 ~ setHub(Nega, "nega_hub", -> nega_hub)
-
 {inTutorial:
     -> nega_intro
 }
 
-- (hub)
-
 /scene Attic.Hub
-/music nega2
+/music nega
 /ambient howling-wind
 /character Nega
 
@@ -28,12 +25,13 @@
     -> nega_punishment_light_camerashoot
 }
 
-/scene Attic.Ready
+- /scene Attic.Ready
+/music nega-2
 
 { nega_regard >= 10:
     {shuffle:
     -/perform idle_tease excited 75
-    Oh looky! My favorite little piggy is back. #01
+    Oh lookie! My favorite little piggy is back. #01
 
     -/perform idle_tease amused 75
     Woof! If it isn't my special {isBoy: dog|bitch}. #02
@@ -62,6 +60,7 @@
     No Bloodstone treats for me, hmm? Not interested. #07
     -> exit
 }
+
 
 = reward
 
@@ -125,6 +124,7 @@
 
 -> nega_reward_dice
 
+
 = nega_greeting_tease
 
 {cycle:
@@ -146,9 +146,7 @@
     - -> sniff ->
     - -> slap ->
 }
-
 /log leave to hub.
-
 ->->
 
 
@@ -175,7 +173,6 @@ Bow down and kiss the ground I walk on. #29
 - /wait 3
 -> Nega_GoodJob ->
 /wait 2
-
 ->->
 
 - (kiss_boot)
@@ -193,7 +190,6 @@ Kiss my dirty boot. #30
 - /wait 3
 -> Nega_GoodJob ->
 /wait 2
-
 ->->
 
 - (kiss_ass)
@@ -211,8 +207,8 @@ Time to kiss my ass. Literally. #31
 - /wait 3
 -> Nega_GoodJob ->
 /wait 2
-
 ->->
+
 
 = sniff
 
@@ -237,7 +233,6 @@ Stick your face in my ass and give it a good sniff. #32
 - /wait 3
 -> Nega_GoodJob ->
 /wait 2
-
 ->->
 
 - (sniff_crotch)
@@ -256,7 +251,6 @@ Suck in that delicious smell, worm. #34
 - /wait 3
 -> Nega_GoodJob ->
 /wait 2
-
 ->->
 
 - (sniff_armpit)
@@ -274,8 +268,8 @@ Come get a nice big whiff of my armpit, skank. #35
 - /wait 3
 -> Nega_GoodJob ->
 /wait 2
-
 ->->
+
 
 = slap
 
@@ -301,7 +295,6 @@ Take a slap, bitch, and don't fucking cry either! #36
     -> try_slap
 
 - /wait 2
-
 ->->
 
 - (slap_ass)
@@ -327,7 +320,6 @@ I want to smack it. #39
     -> try_spank
 
 - /wait 2
-
 ->->
 
 - (slap_genitals)
@@ -348,7 +340,6 @@ Go! #44
     -> slap_genitals
 
 - /wait 2
-
 ->->
 
 // {shuffle:

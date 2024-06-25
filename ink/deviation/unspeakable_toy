@@ -32,17 +32,31 @@ Would you like to find out? #06
 /perform react_thankful excited 75
 Fantastic! #07
 
+-> toys
+-> finish
+
+= toys
 /perform talk_gesture happy 50
-This should work with any buttplug.io compatible toy. #08
+// This should work with any buttplug.io compatible toy. #08
+This should work with any buttplug.io or 
+Lovense compatible toy.
 It will also work with an Xbox controller. #09
+
+/perform react_scoffs amused 50
 Even if you don't have a toy, #10
 you can still play along manually. #11
 
-/perform react_scoffs amused 50
+->->
+
+= finish
 It's a work in progress, #12
 so keep your eye out for updates #13
 and share with us your feedback. #14
 
+-> connect
+-> finish2
+
+= connect 
 /perform talk_question happy 50
 Go grab your toy, #15
 /perform idle_skeptical amused 75
@@ -52,10 +66,13 @@ come back and nod your head. #18
 
 +  [yes]
 
-- /perform idle happy 50
+->->
+
+= finish2
+/perform idle happy 50
 Delicious. #19
 
-//Please choose which Mistress you'd like to experience this with: #20
+Please choose which Mistress you'd like to experience this with: #20
 TODO: UI with character choices
 
 /perform do_arm_raise excited 75
@@ -69,6 +86,7 @@ Let's begin. #24
 /perform do_snap_fingers amused
 -> start
 
+
 = start
 
 /scene bedroom.hub
@@ -79,6 +97,3 @@ Let's begin. #24
 + [move:Approach]
 
 --> goddess_reward_serviced
-
-
-

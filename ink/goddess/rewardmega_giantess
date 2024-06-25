@@ -21,7 +21,7 @@
 
 
 = load_gave_reward
--> scene_setup -> gave_reward
+-> scene_setup ->   gave_reward
 
 
 = gave_reward
@@ -30,6 +30,9 @@
 /wait 10
 
 -> exit
+
+
+
 
 === giantess_temp ===
 For those stones, 
@@ -75,6 +78,7 @@ You're so little it's pathetic.
 
 -> tease
 
+
 = grow 
 Be careful, little mouse, or you might get crushed.
 
@@ -97,27 +101,25 @@ How shall I pleasure myself with you today?
 
 ->->
 
+
 = dildo 
 I think you'll fill my pussy quite nicely.
 
-
 -> finish
+
 
 = lollipop
 You'll make an excellent lollipop for me to lick.
 -> finish
 
+
 = nipple
 You're just the right size to caress my nipple.
 -> finish
+
 
 = finish
 Did you enjoy being my tiny little mouse, {isBoy:boy|{isGirl:girl|slave}}?
 
 + [yes] -> exit
 + [no] -> exit
-
-
-
-
-

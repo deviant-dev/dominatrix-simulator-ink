@@ -1,6 +1,6 @@
 === yuki_punishment_puppyplay_spanking ===
 
-//this scene has the player crawl over to the couch and lay across it with their butt out. They get a spanking similiar to the Headmistress scene
+//this scene has the player crawl over to the couch and lay across it with their butt out. They get a spanking similar to the Headmistress scene
 
 {shuffle:
 - ~ yuki_spanking_goal = 5
@@ -11,7 +11,7 @@
 ~ yuki_spanking_fails = 0
 ~ yuki_spanking_mistakes = 0
 
- -> select_gender_check ->
+-> select_gender_check ->
 
 /scene atrium.close
 
@@ -148,7 +148,7 @@ Are you ready puppy? #54
     -> ready
     
 + [pose:puppy_yes]
-   Alright. Then here we go! #55
+    Alright. Then here we go! #55
 
 + [pose:puppy_no]
     Well, then take a deep breath and get ready #56
@@ -166,9 +166,9 @@ Are you ready puppy? #54
         -> big_puppy
         
     ++ [pose:puppy_yes]
-       -> Yuki_AcknowledgeYes ->
-       That means we can get this over with #60
-       and do fun stuff next time! #61
+        -> Yuki_AcknowledgeYes ->
+        That means we can get this over with #60
+        and do fun stuff next time! #61
     
     ++ [pose:puppy_no]
         -> Yuki_AcknowledgeNo ->
@@ -198,9 +198,9 @@ Are you ready puppy? #54
     
 + [react-fail]
     ~yuki_spanking_fails++
-     -> Yuki_Puppyplay_BadSpank ->
+        -> Yuki_Puppyplay_BadSpank ->
     {yuki_spanking_fails == 1: -> perfect ->}
-    {yuki_spanking_fails > 2: -> spank_failout}
+    {yuki_spanking_fails > 2: -> spank_fail}
     -> start_over ->
     -> try_spank
 
@@ -211,7 +211,7 @@ Are you ready puppy? #54
 -> spank_success
 
 
- = start_over
+= start_over
 
 {shuffle:
     - Now you have to start over! #20
@@ -221,6 +221,7 @@ Are you ready puppy? #54
     Time to start again. #23
     }
 ->->   
+
 
 = perfect
 
@@ -248,7 +249,8 @@ Ready? #25
     
 ->->
 
-= spank_failout
+
+= spank_fail
 
 /perform react_disappointed sad 50
 -> Yuki_Badjob ->
@@ -370,6 +372,7 @@ Are you sorry for breaking the rules, puppy? #34
 -
 -> exit
 
+
 = cage 
 
 /perform react_shrug_short sad 30
@@ -395,6 +398,7 @@ Someone will let you out, eventually. #72
 /wait 3 
 
 -> exit
+
 
 = SayNumber(n)
 // NOTE: Keep these on separate lines for the subtitle system. -deviant

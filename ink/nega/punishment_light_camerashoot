@@ -4,7 +4,7 @@
 //punishment_light
 
 /scene atticphotoshoot.ready
-/music nega-punishment
+/music nega-punishment-light
 /ambient howling-wind
 /character nega idle_camera amused 75
 
@@ -180,6 +180,7 @@ You're going to be my little camera bitch. #33
 
 -> finish
 
+
 = titties
 
 /perform idle_skeptical happy 50
@@ -209,6 +210,7 @@ Reach up and give 'em a <i>good</i> squeeze! #39
 -> photo_comment ->
 
 ->->
+
 
 = ass
 /perform idle_camera disgusted 35
@@ -272,6 +274,7 @@ Turn around. #52
 /perform idle amused 55
 ->->
 
+
 = crotch
 
 /perform do_point_down
@@ -299,7 +302,7 @@ Let me see that filthy {hasPenis: cock|pussy} of yours. #55
 
 {shuffle:
     - It's just so {hasPenis: tiny|flappy}! #56
-    - Just further proof what a desperate fucktoy you are! #57
+    - Just further proof what a desperate fuck toy you are! #57
 }
 //nega laughs
 /perform idle_camera amused
@@ -311,6 +314,7 @@ Let me see that filthy {hasPenis: cock|pussy} of yours. #55
 -> photo_comment ->
 
 ->->
+
 
 = dog
 
@@ -351,6 +355,7 @@ That will be perfect for photos! #62
 
 ->->
 
+
 = fuckdoll
 
 /perform talk_one_finger amused
@@ -388,6 +393,7 @@ Spread those knees! #68
 -> photo_comment ->
 
 ->->
+
 
 = humble
 
@@ -429,6 +435,7 @@ the pathetic wretch you are. #73
 
 ->->
 
+
 = slave
 
 /perform talk_one_finger amused
@@ -467,6 +474,7 @@ Eager for the bite of my rope. #78
 
 ->->
 
+
 = finish
 /perform idle_camera happy
 
@@ -499,6 +507,7 @@ See ya later {isBoy: scum|{isGirl: whore|maggot}}. #89
 
 - {debug: -> Debug -> exit |-> exit}
 
+
 = photo_comment
 
 {shuffle:
@@ -512,8 +521,8 @@ See ya later {isBoy: scum|{isGirl: whore|maggot}}. #89
     she needs to <i>improve</i> you. #97
     - Oh yeah. #98
     I'm sure the Headmistress will find plenty wrong with your performance. #99
-    - You're just the kind of fuck slut Angelica loves to torment. #100
-    - I'm sure Caliste will find some use for these in her rituals. #101
+    // - You're just the kind of fuck slut Angelica loves to torment. #100
+    // - I'm sure Caliste will find some use for these in her rituals. #101
     - Better see Treat after this humiliation. #102
     - Sluts like you can't lie to the camera! #103
 }

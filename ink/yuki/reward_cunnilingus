@@ -1,5 +1,3 @@
-
-
 === yuki_reward_cunnilingus ===
 -> select_gender_check ->
 ~ setScene(reward_scene, Yuki, "yuki_reward_cunnilingus", -> yuki_reward_cunnilingus)
@@ -8,7 +6,7 @@
 
 = scene_setup
 /scene atrium.couch_sitting
-/music yuki-reward
+/music yuki-cunnilingus
 /ambient none
 /character Yuki sex_couch_openlegs_idle amused 65
 ->->
@@ -28,16 +26,14 @@ You're in for such a treat today, {player_name}. #02
 
     -I want you to make me cum with that little tongue of yours. #05
 
-    -That mouth of yours, is going to make me orgasm. #06
-
-    //-That mouth of yours, is going to make me orgasm! #39
+    -That mouth of yours is going to make me orgasm. #06
 }
 
 /perform sex_couch_openlegs_talk_question skeptical 55
 Would you like that, {player_name}? #07
 
 + [yes]
-   -> Yuki_AcknowledgeYes.EmoteOnly ->
+    -> Yuki_AcknowledgeYes.EmoteOnly ->
 
 + [no]
     -> Yuki_AcknowledgeNo.EmoteOnly ->
@@ -71,9 +67,9 @@ Would you like that, {player_name}? #07
 - (move)
 
 /perform sex_couch_openlegs_point_down amused 50
- {shuffle:
-    - Come here then.
-    - Now come here.
+{shuffle:
+    - Come here then. #01
+    - Now come here. #22
 }
 
 
@@ -104,17 +100,17 @@ Would you like that, {player_name}? #07
 
 = puppy_option
 
-I want you to be my puppy for this.
+I want you to be my puppy for this. #41
 
-Do you agree?
+Okay? #42
 
 + [yes]
-     ~ wants_puppy = true
-     -> puppy_intro
+    ~ wants_puppy = true
+    -> puppy_intro
 
 + [no]
-    Alright.
-    I guess you can be a human this time.
+    Alright. #43
+    I guess you can be a human this time. #44
     -> human_intro
 
 + [timeout] -> Yuki_Timeout.EmoteOnly -> puppy_option
@@ -122,23 +118,23 @@ Do you agree?
 + [distracted] -> Yuki_PayAttention.EmoteOnly -> puppy_option
 
 
-
 = human_option
 
-This time, I want you to be human.
+I know sometimes I like you to be a puppy, #45
+but I want you to be a human for this. #46
 
-Do you agree?
+Is that okay? #47
 
 + [yes]
-    /perform sex_couch_openlegs_arm_raise aroused 75
+    /perform sex_couch_openlegs_idle_eager aroused 75
     Human it is! #20
     -> human_intro
 
 + [no]
 
-  /perform sex_couch_openlegs_idle_tease sad 65
-    Alright.
-    I guess you can be my puppy, after all.
+    /perform sex_couch_openlegs_idle_tease sad 65
+    Alright. #48
+    I guess you can be my puppy, after all. #49
     -> puppy_intro
 
 + [timeout] -> Yuki_Timeout.EmoteOnly -> human_option
@@ -147,14 +143,28 @@ Do you agree?
 
 
 = puppy_intro
--> Yuki_Puppy_Intro.EmoteOnly -> take_reward
+
+- (sit)
+
+<b>"Sit"</b>, {player_name}. #50
+
++ [pose:puppy_sit]
+    ~addObey()
+    -> Yuki_GoodJob.EmoteOnly ->
+
++ [timeout]
+    ~addDisobey()
+    -> Yuki_Interested.EmoteOnly ->
+    -> sit
+
+--> take_reward
 
 
- = human_intro
+= human_intro
 /perform sex_couch_openlegs_point_down amused 70
 {shuffle:
-    - Kneel for me.
-    - Get down on your knees.
+    - Kneel for me. #51
+    - Get down on your knees. #52
 }
 
 + [pose:kneel] -> take_reward
@@ -163,12 +173,12 @@ Do you agree?
 
 = take_reward
 
-/character yuki yuki_chair_idle_hand_out happy 75
+/perform sex_couch_openlegs_idle happy 75
 
 -> Yuki_Take_Reward_Prompt ->
 
 + [pose:present_wrist_reward_kneel]
-    /perform yuki_chair_crosslegs_do_swipe_hand excited 50
+    /perform sex_couch_openlegs_react_thankful excited 50
     /wait 1
     ~removeReward(->load_begin)
     -> Yuki_AcknowledgeYes.EmoteOnly -> begin
@@ -194,15 +204,15 @@ I'll tell you exactly what to do to make me cum. #26
 
 //only trigger the first time through
 {not minigame:
-    Since this is your first cunnilingus reward
+    Since this is your first cunnilingus reward... #53
 }
 
-You're going to start slow and steady.
-Don't want to tire you out too much!
-Teehee!
+You're going to start slow and steady. #54
+Don't want to tire you out too much! #55
+Teehee! #56
 
 //continue normally
-/perform sex_couch_openlegs_arm_raise excited 65
+/perform sex_couch_openlegs_react_thankful excited 65
 Just follow directions #27
 and you'll do great! #28
 
@@ -212,7 +222,7 @@ Once I get more comfortable #29
 {wants_puppy:
     /emotion aroused 75
     you can start, puppy. #30
-  - else:
+- else:
     /emotion aroused 75
     you can start, {player_name}. #31
 }
@@ -250,24 +260,24 @@ Wow. #32
 }
 
 /perform sex_couch_openlegs_talk_question skeptical 50
-Did you enjoy your reward?
+Did you enjoy your reward? #57
 
 + [yes]
-  /perform sex_couch_openlegs_idle_eager happy 60
-    Oh goody!
-    I enjoyed it too.
+    /perform sex_couch_openlegs_idle_eager happy 60
+    Oh goody! #58
+    I enjoyed it too. #59
 
 + [no]
-  /perform sex_couch_openlegs_react_scoffs sad 45
-    That makes me so sad!
-    Maybe you just need more practice.
+    /perform sex_couch_openlegs_react_scoffs sad 45
+    That makes me so sad! #60
+    Maybe you just need more practice. #61
 
 + [timeout] -> Yuki_Timeout.EmoteOnly ->
 
 
-- We're done for now!
+- We're done for now! #62
 
-Time to stand back up.
+Time to stand back up. #63
 
 + [pose:stand]
 

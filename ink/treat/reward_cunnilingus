@@ -4,9 +4,10 @@
 
 -> scene_setup -> intro
 
+
 = scene_setup
 /scene Hell.CunnilingusIntro
-/music treat
+/music treat-cunnilingus
 /ambient none
 /character treat treat_chair_idle_spread happy 40
 ->->
@@ -108,6 +109,7 @@ Does that sound nice, {player_name}? #09
     /perform treat_chair_idle_spread
     -> Treat_PayAttention.EmoteOnly -> take_reward
 
+
 = begin
 /character treat treat_chair_ask_question skeptical 50
 Would you like to pleasure yourself at the same time? #17
@@ -168,6 +170,7 @@ What a delight, {player_name}. #28
 }
 
 -> player_orgasm
+
 
 = player_orgasm
 

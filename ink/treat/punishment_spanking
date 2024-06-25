@@ -1,0 +1,593 @@
+=== treat_punishment_spanking ===
+-> select_gender_check ->
+~ setScene(punishment_scene, Treat, "treat_punishment_spanking", -> treat_punishment_spanking)
+-> scene_setup -> intro
+
+
+= scene_setup
+/scene Hell.Ready
+/music Treat
+/ambient treat
+/character Treat idle_fake_annoyed sad 25
+->->
+
+= sit_test
+-> scene_setup -> intro
+
+= intro
+
+-> select_gender_check ->
+~ setScene(punishment_scene, Treat, "treat_punishment_spanking", -> treat_punishment_spanking)
+
+
+
+//Ms. Treatment OTK Spanking
+//Scene plot: Player will be lectured while Ms. Treatment spanks them. Each time the player gets this scene, they will receive a different number of spanks and a different lecture.
+//Room set up: Ms. Treatment is sitting on her couch
+//Outline:
+//Ms. Treatment tells the player the kind of punishment they will receive
+//Consent check with the player to see if they agree to the punishment
+//She chastises the player and gives them instructions on how to receive a spanking (VR headset reaction)
+//Ms. Treatment makes them present their ass to be inspected before she spanks it 
+//She summons the player to the couch where she is sitting and has them sit 
+//Ms. Treatment reminds them why they are being spanked and has them lay across her lap (player will be on knees and elbows)
+//Player is given a random spanking block with different lectures and different numbers of spanks 
+//player is invited to aftercare with her when it is finished
+
+
+-(disappointed)
+/perform do_shake_finger amused 50
+Oh dear, oh dear. #01
+Present yourself to me. #02
+
++ [pose: present_stand] -> Treat_GoodJob ->
+
++ [Timeout] -> Treat_Timeout -> spread
+
+- /perform idle_unhappy_arms_crossed sad 50
+Someone hasn't been playing nicely and following the rules. #03
+
+- (rules)
+/perform talk_consider skeptical 75
+Have you been behaving, {player_name}? #04
+/perform idle_fake_annoyed sad 50
+
++ [Yes]
+  ~ addObey()
+  /perform react_scoffs angry 50
+    You're not being very honest. #05
+    You are here to be punished, after all. #06
+
++ [No]
+  ~ addDisobey()
+  /perform react_no happy 50
+    No, you haven't. #07
+    It's time for a little... discipline. #08
+
++ [Timeout] -> Treat_Timeout.EmoteOnly -> rules
+
+
+-
+/perform talk_thoughtful sad 50
+Don't worry, {player_name}. #09
+I'm not angry with you. #10
+/perform react_shrug_short sad 60
+Just... #11
+disappointed. #12
+
+/perform idle_unhappy amused 40
+{shuffle:
+    - It seems I'm not the only Mistress you've upset lately. #13
+        You were sent here for a friendly reminder #14
+        of your place in this House. #15
+    - If you don't learn, and quickly, #16
+        you may find yourself at the mercy of the <i>Goddess</i>... #17
+        and she may not be all that merciful. #18
+}
+
+
+- (worry)
+/perform talk_question skeptical 50
+Do you want all the Mistresses to be happy, little one? #19
+
+/perform idle 
+
++ [Yes]
+  ~ addObey()
+  /perform react_thankful happy 60
+    Of course you do, darling. #20
+
++ [No]
+  ~ addDisobey()
+  /perform do_inspect amused 50
+    My my, I can see why you've been sent here. #21
+    This punishment will be an important lesson for you then. #22
+    
+ 
++ [Timeout] -> Treat_Timeout.EmoteOnly -> worry
+
+- (instructions)
+
+/perform talk_one_finger angry 50
+I have decided to give you a lecture and a firm spanking. #23
+
+/perform idle_skeptical amused 50
+I think you can learn to behave better #24
+with a little pain to remind you. #25
+
+/perform talk_thoughtful skeptical 60 
+And I want to make sure #26
+your easily distracted mind #27
+really pays attention! #28
+
+-(consent_check)
+/perform talk_question skeptical 65
+Do you accept this punishment? #29
+
+/perform idle 
+
++ [Yes]
+    ~ addObey()
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    
++ [No]
+    ~ addDisobey()
+    Oh? #30
+    -> Treat_CheckIfInterested.EmoteOnly ->
+    
+
++ [Timeout] -> Treat_Timeout.EmoteOnly -> consent_check
+
+-
+
+  /perform talk_consider aroused 70
+    Before we begin, #31
+    I want to inspect the adorable ass #32
+    I am going to spank. #33
+
+- (display)
+/perform do_point_down amused 70
+Turn around and bend over. #34
+
++ [pose: present_ass_reverse]
+
++ [Timeout] -> Treat_Timeout.EmoteOnly -> display
+
+-
+
+{shuffle:
+    - Ahhh. How delightfully round! #35
+    - Mmmm. Such a smooth bottom. #36
+    - (sigh) What a delicious ass. #37
+}
+
+{shuffle:
+    - Perfect for spanking! #38
+    - I am eager to see it turn pink! #39
+    - So much delicate flesh to punish! #40
+}
+
+- (spread)
+/perform idle happy 60
+Spread your ass for Mommy. #41
+Let me see what we're working with here. #42
+
++ [pose: present_ass_reverse_spread] 
+
++ [Timeout] -> Treat_Timeout.EmoteOnly -> spread
+
+- 
+Good listening, {player_name}. #43
+
+{shuffle:
+    - What a lovely sight. #44
+    - There. Now that's a lovely view. #45
+    - So beautiful and ready to be punished. #46
+}
+
+{shuffle:
+    - Mmm. Such a tight, little hole. #47
+    - How cute! It's like you're blowing a kiss to me. #48
+    - I can see everything from here, little one. #49
+}
+
+{shuffle:
+    - You must feel so exposed right now! #50
+    - How vulnerable you are with your ass spread. #51
+    - There are so many other things I could do besides a spanking! #52
+}
+
+But... #53
+I must focus on my task at hand. #54
+
+Let us continue to your punishment. #55
+
+- (turn)
+
+Turn back around and prepare yourself. #56
+
++ [pose:stand] -> Treat_GoodJob.EmoteOnly ->
+
++ [Timeout] -> Treat_Timeout.EmoteOnly -> turn
+
+- -> here
+
+
+
+= here
+/scene hell.spanking
+// Treat sits and pat the cushion next to her. 
+/character treat idle_sitting_couch
+// TODO: create /perform sex_couch_summon_player 
+Come here. #57
+
++ [move]
++ [no] 
+    ~ addDisobey()
+    -> Treat_CheckIfInterested.EmoteOnly ->
+    
+- (sit)
+
+Sit down. #58
+
+
++ [pose: sit]
+
++ [no]
+    ~ addDisobey()
+    -> Treat_CheckIfInterested.EmoteOnly ->
+    
++ [Timeout] -> sit
+
+- A promising start. #59
+
+Bend yourself over my knee, {player_name}. #60
+
+- /notify title="<color=red>Pro Tip!</color>" text="Grab a pillow to support your stomach. Get comfy!" #note16
+
+TODO: Pose should be altered so player is on knees and elbows
+
++ [pose:hands_and_knees] -> Treat_GoodJob.EmoteOnly ->
+
+- 
+
+Remember... each time I strike you, #61
+raise you head upright so I know you feel the sting of my swat. #62
+
+- (understood)
+Understood? #63
+
++ [Yes]
+    ~ addObey()
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    
++ [No]
+    ~ addDisobey()
+    Raise your head quickly each time you hear me strike you. #64
+
++ [Timeout] -> Treat_Timeout.EmoteOnly -> understood
+
+- 
+Now let's start. #65
+
+- /notify title="<color=red>Pro Tip!</color>" text="For a more realistic experience, set down one controller and spank yourself hard when you hear the **slap**. <br/><br/>Understood?" #note17
+
++ [yes!]
+
+-
+// First Lecture
+-> pick_lecture_1 -> complete
+
+
+= pick_lecture_1
+
+{shuffle:
+    - -> spank_loop(-> spank_lecture_1, 5) ->
+    - -> spank_loop(-> spank_lecture_5, 8) ->
+    - -> spank_loop(-> spank_lecture_6, 10) ->
+    - -> spank_loop(-> spank_lecture_7, 10) ->
+    - -> spank_loop(-> spank_lecture_8, 10) ->
+}
+
+->->
+
+
+= pick_lecture_2
+
+{shuffle:
+    - -> spank_loop(-> spank_lecture_2, 5) ->
+    - -> spank_loop(-> spank_lecture_3, 8) ->
+    - -> spank_loop(-> spank_lecture_4, 8) ->
+}
+
+->->
+
+= spank_loop(-> cycle, count)
+
+~ task_count = 0
+
+- (spank)
+
+/character treat do_spank_player_sitting_couch aroused 75
+
++ [react-success]
+    -> cycle ->
+    ~ task_count++
+    {task_count == count: ->->|-> spank}
++ [react-fail] -> Treat_BadJob.EmoteOnly -> spank
+
+
+= spank_lecture_1
+
+{cycle: //5 spanks 
+    - You know, Mommy is really quite fond of you. #66
+      It pains me to have to hurt you. #67
+    - But this is for your own good, little one. #68
+    - As little as I enjoy this particular teaching, #69
+      a rosy bottom is the mark of a good lesson. #70
+    - Mommy wants to help you learn your place. #71
+    - To keep you safe and sound. #72
+    - ->->
+}
+
+->->
+
+= spank_lecture_2
+
+{cycle: //5 spanks
+    - You have been quite unruly and obstinate lately. #73
+    - I grow weary of this backtalk and brattery. #74
+      But still, you belong to me. #75
+    - I am your Mistress and you are my subject. #76
+      And you <i>will</i> submit to me — or else. #77
+    - After all, Mommy knows best, doesn't she. #78
+    - That's right, little one. #79
+      Dry your eyes now. We have work to do. #80
+    - ->->
+}
+
+->->
+
+= spank_lecture_3
+
+{cycle: //8 spanks, 9 lines 
+    - Your cries wound me, but you need the discipline. #81
+    - You will be a more effective servant to your Mistresses. #82
+    - You will tame your unruly spirit. #83
+    - You will accept your place in this House. #84
+    - And Mommy will be so, so proud of you, baby. #85
+    - I know it hurts, but you're doing really well. #86
+    - I'm so proud of you for taking your punishment. #87
+    - I can see the fire in your eyes. #88
+    - You want to please Mommy so badly. #89
+    - ->->
+}
+
+->->
+
+= spank_lecture_4
+
+{cycle: //8 spanks, 10 lines 
+    - Since you are behaving like a naughty child, #90
+      You will be punished like one. #91
+    - I don't know why you're acting out so much. #92
+    - Testing Mommy, perhaps? #93
+    - Or did somebody… put you up to it? #94
+    - Yuki often tells me how Nega leads her astray. #95
+      Then she gets a scolding from Headmistress, poor thing, #96
+    - And runs to Mommy for my… special comforts. #97
+    - But this House has eyes, and ears… and voices. #98
+    - Mind who or what you listen to, if you want to survive. #99
+    - ->->
+}
+
+->->
+
+= spank_lecture_5
+
+{cycle: //8 spanks, 10 lines 
+    - Yes, Mommy is disappointed in you. #100
+    - You must work harder to please your Mistresses. #101
+    - The Goddess is always watching, you know. #102
+      She consumes your passion. #103
+    - If you don't do better, who knows how she might react. #104
+    - I've seen her pluck the genitals off a subject. #105
+    - She swallowed them, never to be returned. #106
+    - So heed Mommy's warning, my pet. #107
+    - Do better, know your place, and give your all. #108
+      Or find yourself at the Goddess's feet. #109
+}    
+
+->->
+
+= spank_lecture_6
+
+{cycle: //10 spanks, 12 lines 
+    - I really didn't want to do this, darling. #110
+      Mommy would much rather give you treats. #111
+    - Instead I have to punish you. Again. #112
+    - It's really quite upsetting. #113
+    - And <i>you</i> and Mommy have a… special relationship. #114
+    - That's why I'm the one responsible for your spanking. #115
+    - But it hurts me, little one, more than it hurts you. #116
+    - I hope you remember this lesson. #117
+    - Next time, Mommy might get cross. #118
+    - You don't want that, do you, my pet? #119
+    - That's what I thought. #120
+      You're so good, baby. #121
+}
+
+->->
+
+= spank_lecture_7
+
+{cycle: //10 spanks, 12 lines 
+    - Does that hurt, baby {player_name}? #122
+    - To be honest, sometimes I almost enjoy it. #123
+    - It gets under your skin... life... #124
+      in a manner of speaking. #125
+    - I am Ms. Treatment - counsellor, confidante, guide. #126
+    - I hear the woes and complaints of every creature in this House. #127
+      Sometimes it's all too much for me to hold. #128
+    - I'm tempted to let the excess pain flow into my hands; #129
+    - Tempted to hit just a little harder than you can stand; #130
+    - Tempted to let your soft, human body absorb my stress. #131
+    - Ahh, I can feel you shake on Mommy's knee. #132
+      Don't be afraid; my control is perfect. #133
+    - But just once I'd like to let it all out. You know? #134
+}
+
+->->
+
+= spank_lecture_8
+
+{cycle: //10 spanks, 13 lines 
+    - I really thought you knew better, pet. #135
+    - You have so much potential. #136
+    - You could be counted with Headmistress's best students. #137
+    - I observed her special class the other day. #138
+    - Her goal is to first break, then reshape the submissive. #139
+      Not to destroy, but to remake. #140
+    - Some of them, of course, buckle under the pressure. #141
+    - But I am there to try and prevent that. #142
+    - At times, Headmistress can be harsh or distracted. #143
+    - We are under an inauspicious star at present, #144
+      And the Goddess has been… distant. #145
+    - All Mistresses need Her guidance and care, #146
+      But Headmistress seems especially despondent. #147
+}
+
+->->
+
+
+= complete
+
+{shuffle:
+    - There! All done. #148
+    - Well! That ought to do it. #149
+    - There, there. It's over, now. #150
+}
+
+
+{shuffle:
+    - You certainly sounded penitent, #151
+      making all those lovely noises. #152
+    - Mommy's sorry she had to punish you so hard. #153
+      She didn't enjoy it any more than you did. #154
+    - Phew. My palm is burning. #155
+      And your face is as flushed as your cheeks. #156
+}
+
+
+- (more_punishment)
+
+{shuffle:
+    - Now, little one. #157
+      Have you learned your lesson? #158
+    - Will you be good now, baby? #159
+    - Are you going to be good for Mommy now? #160
+}
+
++ [Yes]
+    ~ addObey()
+   -> Treat_AcknowledgeYes.EmoteOnly ->
+    Do try to behave, #162
+    at least for the next century. #163
+
++ [No]
+    ~ addDisobey()
+    Feeling especially bratty today, are we? #164
+    
+        ++ [yes]
+            Very well. #165
+            Perhaps you are testing the rules, #166
+            like a toddler testing a grownup. #167
+            Searching for safety. #168
+            Very well. It's your skin. #169
+            Time for another spanking. #170
+            -> pick_lecture_2 ->
+            
+        ++ [no]
+            I should hope not. #171
+            I shall assume you've learned your lesson then. #172
+            
+        ++ [Timeout] -> Treat_PayAttention.EmoteOnly->
+    
++ [Timeout] -> Treat_PayAttention.EmoteOnly->
+
+
+
+- (sit2)
+
+Time to sit back up. #173
+
++ [pose: sit] -> Treat_GoodJob.EmoteOnly ->
+
++ [no]
+    ~ addDisobey()
+    -> Treat_CheckIfInterested.EmoteOnly ->
+    
++ [Timeout] -> sit2 
+
+
+- (end_treat_edging_punishment)
+
+/perform 
+{shuffle:
+    - Let's get that punishment marker off your wrist. #174
+    - I will remove your punishment stone. #175
+}
+
+~ removePunishment()
+
+- {obeyed():
+    -> GoodEnding
+- else:
+    -> BadEnding
+}
+
+
+= GoodEnding
+
+Overall, I am very pleased with your punishment. #176
+
+You seem very contrite. #177
+
+{shuffle:
+    -  <i>She</i> can see right through you. #178
+        Live with sincerity at the bottom #179
+        and she will reward you. #180
+    - The <i>Goddess</i> prizes such well behaved servants. #181
+  }
+
+
+-> aftercare
+
+
+= BadEnding
+
+I have to say... #183
+You could have been more repentant. #184
+You offered a lot of resistance to your punishment. #185
+
+{shuffle:
+    - Learn to love your lowly place. #186
+        The <i>Goddess</i> is always watching. #187
+    - <i>She</i> consumes your passion. #188
+      Show her you are worthy, #189
+        or risk the ultimate rejection. #190
+}
+
+-> aftercare
+
+= aftercare
+Before you go, would you like <b>aftercare</b> first? #191
+
++ [yes] -> treat_session_aftercare.invite
++ [no]
+
+- Very well. #192
+You may depart. #193
+
+
+-> exit

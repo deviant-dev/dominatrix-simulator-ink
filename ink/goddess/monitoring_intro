@@ -1,73 +1,55 @@
 === goddess_monitoring_intro ===
 -> angry
 
+
 = angry
-
 -> select_gender_check ->
-
 ~ rewards = 0
 ~ punishments = 0
 ~ tutorial_step = at_goddess_outro
 ~ goddess_angry_shortcut = true
 ~ setScene(intro_scene, Goddess, "goddess_monitoring_intro.angry", -> goddess_monitoring_intro.angry)
-
 /scene Huge.InHand
 /music goddess-giant-punishment
 /ambient none
 /character goddess
-
 /emotion skeptical 35
 Well, well {player_name}. #01
 You've only just arrived and already you misbehave. #02
 So disappointing. #03
-
 /emotion sad 45
 There are no secrets in my House. #04
 Every soul here must serve. #05
-
 /emotion angry 35
 You will be made pleasing #06
 or you will cease to be of use. #07
-
 /emotion amused 35
 For your transgressions, you will suffer. #08
 Ten Obsidians worth of punishments will do. #09
-
 //give player 10 punishment markers
-
 - (punishment_loop)
-
 -> continue ->
 ~addPunishment()
 /wait 0.2
-
 {punishments < 10:
     -> punishment_loop
 }
-
 /wait 3
 /emotion angry 25
 You will pay them all now! #10
 /wait
-
 /emotion aroused 35
 Pleasure will be denied to you until you have proved your worth. #11
 Ten Bloodstones will unlock you from your imprisonment. #12
-
 -> continue ->
-
 //remove 10 punishment markers with flare
 ~removeBigPunishment()
-
 //give chastity device
 ~ inChastity = true
-
 /wait 3
 Now go and fail me no further, {player_name}. #13
-
 ~ inTutorial = false
 ~ tutorial_goddess_outro_angry_complete = true
-
 {deviation == tutorial:
     -> game_outro
 - else:
@@ -76,45 +58,35 @@ Now go and fail me no further, {player_name}. #13
 
 
 = pleased
-
 -> select_gender_check ->
-
 ~ rewards = 0
 ~ punishments = 0
 ~ tutorial_step = at_goddess_outro
 ~ goddess_pleased_shortcut = true
 ~ setScene(intro_scene, Goddess, "goddess_monitoring_intro.pleased", -> goddess_monitoring_intro.pleased)
-
 /scene Huge.InHand
 /music goddess
 /ambient huge-space
 /character goddess
-
 /emotion amused 85
 Hello there, little {player_name}. #14
 You have performed adequately for one so new. #15
 I am satisfied. For now. #16
-
 /emotion happy 65
 As always, the Headmistress outdoes herself. #17
 Her dedication to obedience serves me well. #18
 Restrained passion sustains so much longer #19
 than a bright flame that burns out too soon. #20
-
 /emotion skeptical 75
 I must commend Mistress Yuki-Onna, as well. #21
 It seems her recent lesson has provided quite the motivation. #22
-
 /emotion excited 65
 Continue to serve in my house and remain useful. #23
-
 /emotion amused 75
 I shall leave you now. #24
 Go forth and please me, {player_name}. #25
-
 ~ inTutorial = false
 ~ tutorial_goddess_outro_happy_complete = true
-
 {deviation == tutorial:
     -> game_outro
 - else:

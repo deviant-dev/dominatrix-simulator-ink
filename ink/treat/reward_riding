@@ -1,211 +1,612 @@
-TODO: needs minigame dialgue in generic responses 
-
 === treat_reward_riding  ===
- -> select_gender_check ->
-~ setScene(reward_scene, Nega, "nega_reward_hard_forcedsex", -> nega_reward_hard_forcedsex)
+-> select_gender_check ->
+~ setScene(reward_scene, Treat, "treat_reward_riding", -> treat_reward_riding)
 
+-> scene_setup -> intro
+
+
+= scene_setup
 /scene hell.ready
 /music treat
 /ambient none
 /character treat
-
+->->
 
 -(intro)
+/perform idle_tease aroused 75
+For this special reward... #01
 
+{hasPenis:I'm going to ride you nice and slow until we both orgasm.|I'm going to grind my body against yours until we both orgasm.} #02
 
-{hasPenis:I'm going to ride you nice and slow for your reward.|I'm going to give you a dildo for me to ride.} #01
 
 - (consent)
+/perform talk_behold amused 75
+    Would you like to experience that, {player_name}? #03
 
-Would you like to experience that, {player_name}? #02
+/perform idle_skeptical happy 60
 
 + [yes]
-    ~ addDisobey()
-    
-    -> Treat_AcknowledgeYes ->
+    ~ addObey()
+    /emotion happy 60
+    -> Treat_AcknowledgeYes.EmoteOnly ->
 
 + [no]
-    ~ addObey()
-    
+    ~ addDisobey()
+    /emotion sad 60
     -> Treat_CheckIfInterested ->
 
 + [timeout] -> Treat_Timeout -> consent
++ [distracted] -> Treat_PayAttention -> consent
 
- + [distracted] -> Treat_PayAttention -> consent
+-
+-> take_reward
 
-- (ready)
+= load_begin
+-> scene_setup -> begin
 
+= take_reward
+
+/perform idle_hand_out aroused 50
+-> Treat_Take_Reward_Prompt ->
+
++ [pose:present_wrist_reward]
+    /perform do_swipe_hand excited 50
+    /wait 1
+    ~removeReward(->load_begin)
+    -> Treat_AcknowledgeYes.EmoteOnly -> begin
+
++ [no]
+    /perform idle
+    -> Treat_CheckIfInterested.EmoteOnly -> take_reward
+
++ [timeout]
+    /perform idle
+    -> Treat_Timeout.EmoteOnly -> take_reward
+
++ [distracted]
+    /perform idle
+    -> Treat_PayAttention.EmoteOnly -> take_reward
+
+
+= begin
+
+/perform idle_tease aroused 80
 {shuffle:
-    - While I ride you, #03
-    I want you to relax and enjoy yourself. #04
-
-    - This is a special moment for us to enjoy together. #05
-
-    - Intimate moments like this are special #06
-    and should be cherished. #07
+    - While I bring us both pleasure, #04
+        I want you to relax and enjoy yourself. #05
+    - This is a special moment for us to enjoy together. #06
+    - Intimate moments like this are special and should be cherished. #08
 }
 
-Give me a moment while I find us something comfortable to lie on. #08
+/emotion happy 65
+Give me a moment while I find us something comfortable to lie on. #09
+-> bed
 
-//reload scene with treat's bed
+= bed
 
-That's better. #09
+/scene hellbed.ridingready
+/character treat
+/music treat
+
+/perform kneel_idle happy 75
+
+That's better. #10
 
 - (lay_down)
 
-Come lie down with me. #10
-On your back with your legs stretched out. #11
+/perform kneel_do_gesture happy 60
+Come lie down with me. #11
 
-+ [pose:lay_down] -> Treat_GoodJob -> begin
+/perform kneel_idle amused 60
+On your back with your legs stretched out. #12
 
-+ [timeout] -> Treat_Timeout-> lay_down
++ [pose:lay_down] -> Treat_GoodJob.EmoteOnly -> start
++ [timeout] -> Treat_Timeout.EmoteOnly -> lay_down
 
-- (begin)
+- (start)
 
-Now... #12
-I want you to take a few moments to touch yourself. #13
-/wait
-To feel your body. #14
-/wait
-To caress yourself. #15
-/wait
+/emotion neutral
+Now... #13
 
-Show me how much you want this by preparing yourself for me. #16
-/wait
+/perform kneel_do_hand_on_heart aroused 60
+I want you to prepare yourself for me. #14
 
-Very nice. #17
-/wait
+/perform kneel_idle happy 60
+It's important you enjoy this as much as I will. #15
 
-It's important you enjoy this as much as I will. #18
-
-- (feel_good)
-Does your body feel good? #19
+- (arouse)
+/emotion amused 60
+Will you arouse your body for me, sweetling? #16
 
 + [yes]
-    ~ addDisobey()
-    -> Treat_AcknowledgeYes ->
+    ~ addObey()
+    -> Treat_AcknowledgeYes.EmoteOnly -> masturbate
+
++ [no] 
+    -- (confirm)
+    /emotion sad 40
+    It will be hard for you to enjoy this if you are not aroused. #17
+    
+    /emotion skeptical 50
+    Do you still want to receive this reward? #18
+    
+    ++ [yes]
+    ~ addObey()
+    -> Treat_AcknowledgeYes.EmoteOnly -> masturbate
+
+    ++ [no] 
+        /emotion sad 50
+        That is too bad. #19
+        You may leave, #20
+        /emotion happy 50
+        but please return another time. #21
+        -> exit
+        
+    ++ [timeout] -> Treat_Timeout.EmoteOnly -> confirm
+    ++ [distracted] -> Treat_PayAttention.EmoteOnly -> confirm
+    
++ [timeout] -> Treat_Timeout.EmoteOnly -> arouse
++ [distracted] -> Treat_PayAttention.EmoteOnly -> arouse
+
+
+= masturbate
+
+/perform kneel_do_gesture aroused 70
+
+Start by bringing your hand to your genitals. #22
+
++ [pose: touch_genitals] 
++ [timeout] -> Treat_Timeout.EmoteOnly -> masturbate
+
+
+-
+/perform kneel_idle emotion happy 75
+That's right, darling. #23
+
+/perform kneel_idle_tease aroused 70
+Take a few moments to touch yourself. #24
+
+/emotion amused 55
+Let your hands glide over your genitals. #25
+
+/perform kneel_idle happy 50
+
+-> RandomCommentLoop (-> arousal_comments, 4, 8, 2, 4) ->
+
+/emotion excited 75
+You're doing so well. #26
+    
+
+- (feel_good)
+/perform kneel_do_hand_on_heart amused 60
+    Does your body feel good, sweety? #27
+
+/perform kneel_idle happy 60
+
++ [yes]
+    ~ addObey()
+    /emotion excited 60
+    -> Treat_AcknowledgeYes.EmoteOnly ->
 
 + [no]
-
-+ [timeout] -> Treat_Timeout -> feel_good
-
-+ [distracted] -> Treat_PayAttention -> feel_good
++ [timeout] -> Treat_Timeout.EmoteOnly -> feel_good
++ [distracted] -> Treat_PayAttention.EmoteOnly -> feel_good
 
 
 - (arouse)
-Do you want more time to arouse yourself? #20
+/perform kneel_do_gesture amused 70
+Do you want more time to arouse yourself? #28
+
+/perform kneel_idle happy 70
 
 + [yes]
-    -> Treat_AcknowledgeYes ->
-    Take all the time you need. #21
-    Nod when you are ready for me. #22
+    /emotion happy 80
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+    Take all the time you need. #29
+    Nod when you are ready for me. #30
     
-    -- (pleasure)
-    -> RandomCommentLoopWithYes(-> pleasure_comments, -> more, 2, 4, 3, 5) ->
+    -> pleasure
+    
 
 + [no]
     ~ addObey()
-    Then you must be ready. #23
-    -> more
+    /emotion amused 70
+    Then you must be ready. #31
+    -> instructions
 
-+ [timeout] -> Treat_Timeout -> arouse
++ [timeout] -> Treat_Timeout.EmoteOnly -> arouse
     
-+ [distracted] -> Treat_PayAttention -> arouse
++ [distracted] -> Treat_PayAttention.EmoteOnly -> arouse
 
 
-- (more)
-Now... #24
 
--(instructions)
-To make me orgasm, #25
-I want you to rock your hips with me as I ride you, {player_name}. #26
+= pleasure
 
-Do you understand? #27
+/perform kneel_idle_tease aroused 70
+
+-> RandomCommentLoopWithYes(-> arousal_comments, -> stop, 4, 10, 3, 5) ->
+
+-> Treat_GoodJob.EmoteOnly ->
+
+- (keep_going)
+/perform kneel_do_gesture amused 65
+{ cycle:
+    - Does your body need more arousal? #32
+    - Does my little baby need more time? #33
+    - Do you want to keep arousing yourself? #34
+} 
+
+/perform kneel_idle happy 70
 
 + [yes]
-    -> Nega_AcknowledgeYes ->
+    Lovely. #35
+    -> pleasure
 
 + [no]
-     -- (confirm)
-    Each time I thrust, #28
-    you should lift your hips to meet me. #29
+    /emotion excited 70
+    Mmmm. #36
+    -> instructions
+            
++ [timeout] -> Treat_Timeout.EmoteOnly -> keep_going
++ [distracted] -> Treat_PayAttention.EmoteOnly -> keep_going
+
+
+- (stop)
+/perform kneel_idle happy 60
+Excellent. #37
+
+/emotion amused 65
+Stop touching yourself. #38
+
+/emotion aroused 65
+It is time for us to mesh our bodies, sweetling. #39
+
+- (instructions)
+
+/emotion skeptical 50
+Now... #40
+
+/perform kneel_do_hand_on_heart excited 60
+To make me orgasm, #41
+/emotion aroused 70
+I want you to rock your hips with me as I ride you, {player_name}. #42
+
+
+/perform kneel_idle amused 65
+Do you understand? #43
+
++ [yes]
+    -> Treat_AcknowledgeYes.EmoteOnly ->
+
++ [no]
     
-    Understand? #30
+    -- (confirm)
+        /emotion sad 60
+        {hasPenis:Each time I thrust, you should lift your hips to meet me.|Each time I move, you should grind your hips to meet me}.#44
+    
+        Understand? #46
     
     ++ [yes]
-        Good. #31
+        /emotion happy 65
+        Good. #47
+        -> ride
     
 
     ++ [no]
-        If you don't understand, #32
-        perhaps you'd prefer to come back later? #33
+        /emotion sad 70
+        If you don't understand, #48
+        perhaps you'd prefer to come back later? #49
+        -> elsewhere
 
-    ++ [timeout] -> Treat_Timeout -> confirm
-    ++ [distracted] -> Treat_PayAttention -> confirm
+    ++ [timeout] -> Treat_Timeout.EmoteOnly -> confirm
+    ++ [distracted] -> Treat_PayAttention.EmoteOnly -> confirm
 
-+ [timeout] -> Treat_Timeout -> instructions
-+ [distracted] -> Treat_PayAttention -> instructions
-
---> minigame
-
-
-= minigame
-
-/scene hell.bed
-
-///perform idle on the bed
-
-+ [minigame:success] -> finish
++ [timeout] -> Treat_Timeout.EmoteOnly -> instructions
++ [distracted] -> Treat_PayAttention.EmoteOnly -> instructions
+-
+-> ride
 
 
-= finish
+= ride
+/scene hellbed.riding
+/character treat
+/music treat
+/ambient none
 
-Ahhh. What a delight you are. #34
+- (sex_ready)
 
-- (enjoy)
+- -> ride_idle ->
+/emotion aroused 65
 
-{shuffle:
-    - Did you enjoy yourself {player_name}? #35
-    - Did you orgasm with me? #36
-    - Was that a desireable reward? #37
-}
+Mmmm. Your warm body feels lovely. #50
+
+/emotion happy 80
+We'll start nice and slow. #51
+
+-> ride_slow ->
+
+/emotion happy 70
+Relax and let the sensations carry you away. #52
+
+/emotion aroused 70
+- (riding_loop)
+
+-> RandomCommentLoop (-> sex_comments, 3, 6, 3, 5) ->
+
+-> break01 ->
+
+-> ride_slow ->
+/emotion aroused 75
+
+-> RandomCommentLoop (-> sex_comments, 2, 5, 2, 4) ->
+
+- /emotion happy 70
+You are doing wonderfully, {player_name}. #53
+
+/emotion excited 70
+Let's go a little faster now. #54
+
+-> ride_fast ->
+/emotion aroused 65
+
+-> RandomCommentLoop (-> sex_comments, 3, 6, 2, 4) ->
+
+-> break02 ->
+
+-> ride_fast ->
+/emotion aroused 70
+
+-> RandomCommentLoop (-> sex_comments, 4, 6, 2, 4) ->
+
+-> thrust_minigame_orgasm
+
+= thrust_minigame_orgasm
+
+-> ride_fast ->
+/emotion aroused 80
+
+Ahhhh. #55
+
+I can feel my orgasm peaking. #56
+
++ [wait]
+
+-(cum_with_me)
+-> ride_fast ->
+/emotion amused 85
+Do you want to cum with me, sweetling? #57
 
 + [yes]
-    Wonderful. #38
+    /emotion aroused 80
+    That's my sweet baby. #58
 
 + [no]
-    How disappointing. #39
-    Perhaps next time you should arouse yourself more first. #40
+    /emotion sad 60
+    That is too bad. #59
+    /emotion aroused 60
+    I will bless us both with my climax. #60
 
-+ [timeout] -> Treat_Timeout -> enjoy
-+ [distracted] -> Treat_PayAttention -> enjoy
++ [timeout]
+    -> Treat_Timeout.EmoteOnly -> cum_with_me
 
--
-It is time for you to go now. #41
-You are needed elsewhere. #42
+- (Treat_orgasm)
+
+- -> ride_fast ->
+/emotion aroused 85
+
+{shuffle:
+    -/emotion aroused 90
+    I'm almost there. #61
+
+    -/emotion happy 90
+    Ahhhhh. Such delicious sensations! #62
+
+    -/emotion excited 90
+    Sooo good. #63
+    
+}
+
+- -> ride_orgasm ->
+
+{shuffle:
+    -/emotion aroused 100
+    Ah... Goddess yes! #64
+
+    -/emotion excited 100
+    Ah... You're making me cum, sweetling! #65
+    }
+
++ [wait 2]
+
+
+- -> ride_idle ->
+
+-> finish
+
+
+= break01
+/emotion aroused 70
+Your body feels so delicious against mine. #66
+
+/emotion happy 70
+I can feel my juices coating our bodies. #67
+
+/emotion amused 75
+Are you enjoying yourself, little one? #68
+
++ [yes]
+    /emotion amused 65
+    Wonderful! #69
+    
+    /emotion happy 80
+    You're a very special, little {player_name}. #70
+    You've earned this. #71
+
++ [no]
+    /emotion sad 65
+    Oh no. #72
+    
+    Would you like me to stop? #73
+    
+    ++ [yes]
+        /emotion happy 60
+        But of course. #74
+        
+        We can try again another time. #75
+        
+        Goodbye for now. #76
+        
+        -> exit
+    
+    ++ [no]
+        /emotion aroused 65
+        I want you to enjoy this pet. #77
+        
+        We will continue. #78
+        
++[timeout] -> Treat_Timeout.EmoteOnly ->
+
+- ->->
+
+= break02
+
+-> ride_writhe ->
+/emotion aroused 75
+My breasts are aching from {hasPenis:riding you|grinding against you}. #79
+
+They bounce so wonderfully against my body, #80
+-> ride_slow ->
+/emotion amused 60
+gently tugging on my longing for you. #81
+
+/emotion amused 80
+Can you see how tight my nipples are, little one? #82
+
++ [yes]
+    /emotion amused 70
+    Good. Enjoy watching them. #83
+
++ [no]
+    /emotion skeptical 65
+    Then watch closely. #84
+    /emotion aroused 75
+    This is how aroused you make me. #85
+    
+    Are you watching them? #86
+    
+    ++ [yes]
+        /emotion happy 80
+        {shuffle:
+            - That's my good little {player_name}. #100
+            - That's my good {player_name}. #87
+        }
+        
+    ++ [no]
+        /emotion sad 60
+        Disappointing. #88
+        /emotion amused 70
+        Breasts are meant to be worshipped. #89
+        /emotion happy 75
+        You may focus on my body instead. #90
+        
+    ++ [timeout] -> Treat_Timeout.EmoteOnly ->
+        
++[timeout] -> Treat_Timeout.EmoteOnly ->
+
+- ->->
+
+= finish
+/perform sex_riding_idle excited 85
+
+Ahhh. #101 
+What a delight you are. #91
+
+- (enjoy)
+/emotion amused 80
+Did you enjoy yourself, {player_name}? #92
+
++ [yes]
+    /emotion happy 85
+    Wonderful. #95
+
++ [no]
+    /emotion amused 70
+    {shuffle:
+    - How disappointing. #96
+    - That's too bad. #102
+    }
+    /emotion amused 85
+    Perhaps next time we should get you more aroused first. #97
+
++ [timeout] -> Treat_Timeout.EmoteOnly -> enjoy
++ [distracted] -> Treat_PayAttention.EmoteOnly -> enjoy
+
+- (elsewhere)
+-> Treat_Reward_Complete ->
+
 
 -> exit
 
-
-
-= pleasure_comments
+= arousal_comments
 
 {shuffle:
-    - You look lovely, {player_name}. #43
-    - That's it. Take your time. #44
-    - You have the potential to be very special. #45
-    - Show me how much you want to feel me above you. #46
-    - I like watching you arouse yourself. #47
-    - Your pleaure is my pleasure. #48
-    - Mmm. I can't wait to feel you beneath me. #49
-    - Let your hands bring out your arousal. #50
-    - Relax as you give in to pleasure. #51
-    - Very nice. #52
-    - Mmm. Just like that. #53
-    - Oh yes. Watching you excites me. #54
-    - there are so many things I want to show you. #55
-    - You should use these techniques with the Headmistress. #56
-    - Lovely Yuki would be panting to see you like this. #57
+        - -> Treat_Masturbation_Comments ->
+        - -> Treat_Seduction_Comments ->
+        - -> Treat_Masturbation_Comments ->
+        - -> Treat_Pleasure_Comments ->
+}
+
+-->->
+= sex_comments 
+
+{shuffle:
+    - -> Treat_Riding_Comments ->
+    - -> Treat_Seduction_Comments ->
+    - -> Treat_Pleasure_Comments ->
+}
+    
+-->->
+
+= ride_idle
+
+/perform sex_riding_idle
+
+->->
+
+= ride_slow
+
+{hasPenis:
+    /perform sex_riding_idle_bounce_slow
+- else:
+    /perform sex_riding_idle_grind_slow
 }
 
 ->->
+
+= ride_fast
+
+{hasPenis:
+    /perform sex_riding_idle_bounce_fast
+- else:
+    /perform sex_riding_idle_grind_fast
+}
+
+->->
+
+= ride_writhe
+/perform sex_riding_idle_writhe
+->->
+
+
+= ride_orgasm
+/perform sex_riding_do_orgasm
+->->
+
+
+
+
+
+
+
+
+

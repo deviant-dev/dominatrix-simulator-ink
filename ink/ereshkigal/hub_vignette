@@ -1,0 +1,116 @@
+// writing status: in progress
+
+
+
+
+=== ereshkigal_hub_vignette ===
+
+~ setScene(vignette_scene, Ereshkigal, "ereshkigal_hub_vignette", -> ereshkigal_hub_vignette)
+
+/ambient none
+
+/character goddess
+
+-> start
+
+
+//Fade from black, into greyscale
+//The sisters are standing close to each other, and talking in frustrated tones
+= start
+
+G   -I don't believe you. 
+    -That will never work, they will find us.
+
+E   -Yes, perhaps they could. 
+    -But it is better than being slaughtered like cattle. 
+    -Are you satisfied with what we have done? What we have participated in? 
+    -There is blood, endless blood upon our hands. 
+    -I cannot abide this any longer. 
+
+G   -So your answer is to run, to hide?
+
+E   -Yes. But not for the sake of cowardice. 
+    -But for the sake of mercy. 
+    -Blood shall continue to be spilled, regardless of our involvement or not. 
+    -Why, why, why must we be a part of that? Do you not grow tired? 
+    -Do you not grow weary? There is. No. Point. 
+    -This is long brewing, long boiling. 
+    -This is not our battle. This is not our domain. 
+    -Let them squabble amongst themselves. 
+    -Why should we be a part of it? 
+    -Just because we share their holy lineage? Why should we…..Ugh.
+
+G   -I understand.
+    -I do not agree entirely, but I can understand your reasoning. 
+    -Where would we go?
+
+E   -Anywhere but here. 
+    -This plane is soaked. 
+    -Look at the ground beneath our feet. 
+    -Is the sand not crimson? 
+    -Are the clouds not raining the essence of our kindred? 
+    -This is hell! Why must we suffer for their sake? It's their argument.
+
+G   -Yes, it is. 
+    -But we will suffer the consequences of the outcome of their struggle, if we do not act.
+
+E   -Do you really think that would happen? 
+    -With their power? 
+    -With our power? 
+
+G   -They are old, and wise. 
+    -But we are cunning, and clever. 
+
+E   -They have such great power. 
+    -But, not absolute. 
+    -There is always somewhere else to flirt. 
+    -There is always somewhere new to explore. 
+    -Who's to say that they are the only ones of creation and destruction? 
+    -If we are part of them, part of their loins, their flesh, their seed, their fruit; do we not share the same gifts? 
+    -The same riches? The same richness? 
+
+G   -I know not.
+
+E   -Why?
+
+G   -Because they have told us so!
+
+E   -Yet again, you listen to them too much! 
+    -You have shackled yourself! 
+    -My dear sister, do you not see that it is your mind alone, that is the power? 
+    -Your thought is the power. 
+    -You have been fed lies, we both have been fed lies. 
+    -They all have been fed lies!
+
+G   -Yet, they fight. 
+    -Because they are loyal.
+
+E   -They are fools! 
+    -And. Loyal. But fools, nonetheless. 
+    -And there is no reason for us to be caught up in this ridiculous squabble.
+
+G   -I do not know my answer.
+
+E   -Well, dear sister. 
+    -When you make up your mind, you know where to find me. 
+    -Will I see you again?
+
+G   -I hope so.
+
+E   -But you don't know.
+
+G   -How can I? 
+    -No-one knows the futures.
+
+E   -Pah, you have much to learn.
+
+G   -So do you, with that arrogance.
+
+E   -Perhaps. 
+    -But as you've said before, I come by it honestly.
+
+G   -Very well. I shall think.
+
+->->
+No newline at end of file
+ of file

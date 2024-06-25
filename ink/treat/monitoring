@@ -35,19 +35,21 @@
     -> force_yes
 }
 
+
 = monitor
 
 //check for type of scene
 {
     - just_changed == reward_removed:
-     -> reward_monitor
+        -> reward_monitor
 
     - just_changed == punishment_removed:
-     -> punishment_monitor
+        -> punishment_monitor
 
     - else:
-     -> task_monitor
+        -> task_monitor
 }
+
 
 //comment on reward
 = reward_monitor
@@ -67,7 +69,7 @@
     That's good. #08
 
     /perform talk_one_finger amused 70
-    But you musn't neglect your mind. #09
+    But you mustn't neglect your mind. #09
 
     -/perform talk_one_finger amused 60
     You may have received a reward, #10
@@ -77,6 +79,7 @@
 }
 
 -> reminder
+
 
 //comment on punishment
 = punishment_monitor
@@ -95,7 +98,7 @@
     Therapy will help you overcome that. #15
 
     -/perform talk_lean_forward skeptical 55
-    Being punished will take it's toll on you. #16
+    Being punished will take its toll on you. #16
 
     /perform talk_one_finger scared 60
     We must keep your mind healthy. #17
@@ -109,7 +112,7 @@
 { shuffle:
 
     -/perform do_smooth_skirt amused 65
-    I see you are keeping busy fulfulling tasks. #18
+    I see you are keeping busy fulfilling tasks. #18
 
     -/perform talk_behold aroused 60
     Serving the Mistresses is an important duty. #19
@@ -142,6 +145,7 @@
 
 
 -> reminder
+
 
 = reminder
 
@@ -216,6 +220,6 @@ Do you want to visit me now? #30
 }
 
 -> entry_hub
-//TODO complete and hook up entry.explore
+TODO: complete and hook up entry.explore
 
 ->->

@@ -1,9 +1,15 @@
 
+
+
+
+
 === Pragma_AcknowledgeYes ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -11,22 +17,45 @@
 
 {cycle:
 
-    -{emoteOnly: /emotion |/perform }
-    Response logged. #
+    -{emoteOnly: /emotion happy 10 |/perform do_inspect happy 10 }
+    Admissible reply. #01
 
-    -{emoteOnly: /emotion |/perform }
-    Acceptable. #
+    -{emoteOnly: /emotion happy 20 |/perform react_nod_little happy 20 }
+    Acceptable. #02
+
+    -{emoteOnly: /emotion happy 30 |/perform do_inspect happy 30 }
+    Acknowledged. #03
+
+    -{emoteOnly: /emotion happy 40 |/perform react_nod_little happy 40 }
+    Intriguing. #04
+    
+    -{emoteOnly: /emotion happy 50 |/perform do_inspect happy 50 }
+    Response accepted. #05
+
+    -{emoteOnly: /emotion happy 60 |/perform react_nod_little happy 60 }
+    Comment recognized. #06
+    
+    -{emoteOnly: /emotion happy 70 |/perform do_inspect happy 70 }
+    Answer confirmed. #07
+    
+    - {emoteOnly: /emotion happy 30 |/perform do_inspect happy 30 }
+    Specimen 33 responds affirmative. #08
 
     
-    }
+}
 
 ->->
+
+
+
 
 === Pragma_AcknowledgeNo ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -34,24 +63,43 @@
 
 {cycle:
 
-    -{emoteOnly: /emotion |/perform }
-    Response logged. #
+    -{emoteOnly: /emotion disgusted 10 |/perform talk_consider disgusted 10 }
+    Response logged. #01
 
-    -{emoteOnly: /emotion |/perform }
-    Unacceptable. #
+    -{emoteOnly: /emotion disgusted 20 |/perform talk_gesture disgusted 20 }
+    Specimen disagrees. #02
 
-    -{emoteOnly: /emotion |/perform }
-    Disappointing. #
+    -{emoteOnly: /emotion disgusted 30 |/perform do_shake_finger disgusted 30 }
+    Negative response noted. #03
+    
+    -{emoteOnly: /emotion disgusted 40 |/perform talk_consider disgusted 40 }
+    Faulty reply. #04
 
-    }
+    -{emoteOnly: /emotion disgusted 50 |/perform talk_gesture disgusted 50 }
+    Inferior response. #05
+
+    -{emoteOnly: /emotion disgusted 60 |/perform do_shake_finger disgusted 60 }
+    Substandard. #06
+    
+    -{emoteOnly: /emotion disgusted 70 |/perform talk_consider disgusted 70 }
+    Poor response. #07
+    
+    -{emoteOnly: /emotion disgusted 30 |/perform do_shake_finger disgusted 30 }
+    Specimen 33 responds negative. #08
+}
 
 ->->
+
+
+
 
 === Pragma_GoodJob ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -59,34 +107,36 @@
 
 {shuffle:
 
-    -{emoteOnly: /emotion |/perform }
-    Excellent. #
+    -{emoteOnly: /emotion happy 10 |/perform react_thankful happy 10 }
+    Excellent. #01
 
-    -{emoteOnly: /emotion |/perform }
-    Satisfactory. #
+    -{emoteOnly: /emotion happy 20 |/perform do_inspect happy 20 }
+    Satisfactory. #02
 
-    -{emoteOnly: /emotion |/perform }
-    Agreeable. #
+    -{emoteOnly: /emotion happy 30 |/perform talk_lean_forward happy 30 }
+    Agreeable. #03
 
-    -{emoteOnly: /emotion |/perform }
-    Interesting. #
+    -{emoteOnly: /emotion happy 40 |/perform react_thankful happy 40 }
+    Interesting. #04
 
-    -{emoteOnly: /emotion |/perform }
-    Amenable. #
+    -{emoteOnly: /emotion happy 50 |/perform do_inspect happy 50 }
+    Amenable. #05
 
-    -{emoteOnly: /emotion |/perform }
-    Curious. #
-
-    
-    }
-
+    -{emoteOnly: /emotion happy 60 |/perform talk_lean_forward happy 60 }
+    Curious. #06
+}
 ->->
 
-=== Pragma_Badjob ===
+
+
+
+=== Pragma_BadJob ===
 -> DoEmoteOnly(false)
+
 
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -94,35 +144,37 @@
 
 {cycle:
 
-    -{emoteOnly: /emotion |/perform }
-    Disappointing. #
+    -{emoteOnly: /emotion disgusted 10 |/perform talk_one_finger disgusted 10 }
+    Inadequate. #01
 
-    -{emoteOnly: /emotion |/perform }
-    Unsatisfactory. #
+    -{emoteOnly: /emotion disgusted 20 |/perform talk_annoyed disgusted 20 }
+    Unsatisfactory. #02
 
-    -{emoteOnly: /emotion |/perform }
-    Error. #
+    -{emoteOnly: /emotion disgusted 30 |/perform talk_lean_forward disgusted 30 }
+    Error. #03
 
-    -{emoteOnly: /emotion |/perform }
-    Failure. #
+    -{emoteOnly: /emotion disgusted 40 |/perform react_dismissive disgusted 40 }
+    Failure. #04
 
-    -{emoteOnly: /emotion |/perform }
-    Invalid. #
+    -{emoteOnly: /emotion disgusted 50 |/perform react_whatever disgusted 50 }
+    Invalid. #05
 
-    -{emoteOnly: /emotion |/perform }
-    Out of Scope. #
-
-    
-    }
+    -{emoteOnly: /emotion disgusted 60 |/perform talk_one_finger disgusted 60 }
+    Out of Scope. #06
+}
 
 ->->
 
-//Response to timeouts to questions
+
+
+
 === Pragma_Timeout ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -130,24 +182,33 @@
 
 {cycle:
 
-    -{emoteOnly: /emotion |/perform }
-    Is this one malfunctioning? #
+    -{emoteOnly: /emotion disgusted 10 |/perform talk_question disgusted 10 }
+    Specimen. We are awaiting a response. #01
 
-    -{emoteOnly: /emotion |/perform }
-    Have you encountered an error in your programming? #
+    -{emoteOnly: /emotion disgusted 20 |/perform talk_question disgusted 20 }
+    Input is required. #02
 
+    -{emoteOnly: /emotion disgusted 30 |/perform talk_question disgusted 30 }
+    Specimen is inattentive. #03
     
-    }
+    -{emoteOnly: /emotion disgusted 40 |/perform talk_question disgusted 40 }
+    Specimens must pay attention. #04
+    
+}
 
 ->->
 
-//Response to timeouts to actions
+
+
+
 === Pragma_Interested ===
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -155,23 +216,32 @@
 
 {cycle:
 
-    -{emoteOnly: /emotion |/perform }
-    Are you still there? #
-
-    -{emoteOnly: /emotion |/perform }
-    Respond! #
-
+    -{emoteOnly: /emotion disgusted 10 |/perform talk_annoyed disgusted 10 }
+    Specimen is not performing. #01
     
-    }
+    -{emoteOnly: /emotion disgusted 20 |/perform do_snap_fingers disgusted 20}
+    Has it encountered an error in its programming? #02
+
+    -{emoteOnly: /emotion disgusted 30 |/perform talk_annoyed disgusted 30 }
+    Is it still there? #03
+
+    -{emoteOnly: /emotion disgusted 40 |/perform do_snap_fingers disgusted 40}
+    Unreasonable time delay. #04
+    
+}
 
 ->->
 
-//response to player distraction
+
+
+
 === Pragma_PayAttention ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -179,27 +249,29 @@
 
 {cycle:
 
-    -{emoteOnly: /emotion |/perform }
-    What is it doing? #
+    -{emoteOnly: /emotion disgusted 10 |/perform talk_question disgusted 10 }
+    What is it doing? #01
 
-    -{emoteOnly: /emotion |/perform }
-    Is it malfunctioning? #
+    -{emoteOnly: /emotion disgusted 20 |/perform talk_question disgusted 20 }
+    Is it malfunctioning? #02
 
+    -{emoteOnly: /emotion disgusted 30 |/perform talk_question disgusted 30 }
+    Is it defective? Is it a lemon? #06
     
-    }
+}
 
 + [pay-attention]
-    { cycle:
-        - {emoteOnly:/emotion|/perform talk_consider}
-        Focus on me. #
+{ cycle:
+    - {emoteOnly:/emotion skeptical 10 |/perform talk_consider skeptical 10}
+    Focus on us. #03
 
-        - {emoteOnly:/emotion|/perform react_thankful}
-        It tries my patience. #
+    - {emoteOnly:/emotion skeptical 20 |/perform react_thankful skeptical 20}
+    It tries our patience. #04
 
-        - {emoteOnly:/emotion|/perform idle_clasp_hands}
-        Hmmm, its circutry is underperforming. #
+    - {emoteOnly:/emotion skeptical 30 |/perform idle_clasp_hands skeptical 30}
+    Hmmm, its circuitry is under powered. #05
 
-    }
+}
     ->->
 
 + [timeout] -> Pragma_PayAttention.DoEmoteOnly(emoteOnly) ->->

@@ -4,7 +4,7 @@
 ~ setScene(reward_scene, Nega, "nega_reward_hard_forcedsex", -> nega_reward_hard_forcedsex)
 
 /scene attic.Ready
-/music nega-reward
+/music nega-reward-hard-prelude
 /ambient howling-wind
 /character nega
 
@@ -98,7 +98,7 @@ On your back. #04
 /perform react_point_at_player_angry angry 45
 Put your wrists above your head! #14
 
-///perform idle_fake_annoyed angry 50
+
 /perform talk_lean_forward angry 35
 
 + [pose:bound_wrists]
@@ -135,6 +135,7 @@ Now... time for me to get more comfortable. #20
 
 //nega yuki strips
 /scene attic.reward_forcedsex2
+/music nega-reward-hard
 /character nega
 
 /perform idle_tease aroused 75
@@ -153,10 +154,9 @@ I want to get off on some deep dicking. #12
 
 //- Hold your cock with both hands, slut. #112
 
-//I keep plenty of rope lying around just for this. #15
 
 /perform talk_question skeptical 75
-Look at you. Such a pathetic fleshbag. #21
+Look at you. Such a pathetic flesh bag. #21
 
 - (pussy_wet)
 
@@ -234,10 +234,6 @@ Ahhhh! That's it! #41
 /perform sex_squat_thrust happy 50
 Your stiff dick is just what I needed! #42
 
-
-
-/music nega-reward-forced-sex-mini-1
-
 - /perform sex_squat_idle aroused 50
 Let's find out how well you can work that {hasPenis:little dick|fat dildo} of yours. #115
 
@@ -307,7 +303,7 @@ It's going to be a wild ride. #113
 // //+ [minigame-quit] -> Nega_CheckIfInterested -> thrust_more
 
 - (thrust_continue)
-
+/music nega-reward-forced-sex-mini-1
 /perform sex_squat_thrust_single aroused 45
 Sometimes, I like to fuck to music, so listen to the beat, cunt. #116
 
@@ -348,6 +344,7 @@ I just adore cumming as the song peaks, so don't fuck it up! #117
 Decent. Let's pick up the pace, huh? #51
 -> thrust_minigame_orgasm
 
+
 = masturbation_comment
 
 {shuffle:
@@ -387,6 +384,7 @@ Decent. Let's pick up the pace, huh? #51
 // //As Nega gets close to cumming, she asks the player if they want her to cum while using them
 
 // //Player is not allowed to orgasm
+
 
 = thrust_minigame_orgasm
 
@@ -477,11 +475,11 @@ Do you want to cum with me, {isBoy: maggot|whore}? #56
     At least you made me cum. #129
 
     -/emotion aroused disgusted 70
-    Decent. For a pathetic fleshbag. #130
+    Decent. For a pathetic flesh bag. #130
 }
 
 - +[wait]
-/music nega-reward
+/music nega-reward-hard
 /perform idle_skeptical amused 75
 
 //orgasm conclude lines - decent job
@@ -507,6 +505,7 @@ Present yourself.  #131
 
 
 -> exit
+
 
 = Thrust_break
 ~ nega_thrust_break_count = 0
@@ -547,6 +546,7 @@ Get back to it, slut! #66
 
 //Tunnels
 
+
 = break01
 //choke player during forced sex
 //perform squat_grab_player_throat
@@ -564,7 +564,7 @@ You belong to me right now, bitch. #67
 
 - //{choke_point == 1: //perform squat_over_player_crotch }
 /emotion happy 70
-My filthy fucktoy. #68
+My filthy fuck toy. #68
 
 /emotion aroused 55
 A worm I will use and abuse until I'm satisfied. #69
@@ -611,6 +611,7 @@ Isn't that true? #76
 
 - //perform squat_over_player_crotch
 ->->
+
 
 = break02
 
@@ -662,6 +663,7 @@ Time for more fucking! #84
 
 ->->
 
+
 = break03
 //holding breath while Nega counts
 /perform sex_squat_idle amused 35
@@ -707,6 +709,7 @@ Now, breathe bitch! #95
 Impressive! #94
 
 ->->
+
 
 = Badthrust
 
@@ -754,11 +757,12 @@ Impressive! #94
 
 ->->
 
+
 = forced_sex_comment
 
 {cycle:
     //-/emotion aroused 45
-    //My pussy is so hungry! #93
+
     //Feels like a cheesy delivery
     -/perform sex_squat_tease amused 45
     I bet you wish you could bury your face in my tits. #140
@@ -774,6 +778,9 @@ Impressive! #94
 
     -/emotion aroused 50
     Fuck yah! #134
+
+    -/emotion happy 31
+    My pussy is so hungry! #93
 
     -/emotion excited 25
     Forcing {isBoy: pricks|cunts} to be my bitch is so fucking fun! #135

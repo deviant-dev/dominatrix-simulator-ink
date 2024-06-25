@@ -1,0 +1,664 @@
+
+// Cunnilingus-specific tempo comment lines delivered by HM 
+// All comments by other subjects go into Unity minigame code
+=== Headmistress_Generic_Minigame_Tempo_Cunnilingus ===
+
+
+= timeout
+/character headmistress
+/emotion sad 50
+
+{shuffle:
+    - What stays thy tongue? #01
+    - Thy mouth is still. Begin! #02
+    - -> Headmistress_Generic_Minigame_Tempo.timeout ->
+    - -> Headmistress_Generic_Minigame_Tempo.timeout ->
+}
+/character headmistress
+-> END
+
+
+= change_to_slower
+/character headmistress
+/emotion amused 50
+
+{shuffle:
+    - Slow thy tongue, trinket. #03
+    - Gentle thy mouth, bauble. #04
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_slower ->
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_slower ->
+}
+/character headmistress
+-> END
+
+
+= change_to_faster
+/character headmistress
+/emotion excited 50
+
+{shuffle:
+    - Faster! This cunny seeks more. #05
+    - Put some vigor into that tongue! #06
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_faster ->
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_faster ->
+}
+/character headmistress
+-> END
+
+
+= too_fast
+/character headmistress
+/emotion angry 75
+
+{shuffle:
+    - Easy, now, strumpet! #07
+    /character crowd gasps
+    - Ease your tongue. #08
+    /character crowd gasps
+    - -> Headmistress_Generic_Minigame_Tempo.too_fast ->
+    - -> Headmistress_Generic_Minigame_Tempo.too_fast ->
+}
+/character headmistress
+-> END
+
+
+= too_slow
+/character headmistress
+/emotion disgusted 75
+
+{shuffle:
+    - How soon your tongue wearies. Do not slacken! #09
+    /character crowd jeers
+    - Quicken thy tongue, lazybones. #10
+    /character crowd jeers
+    - -> Headmistress_Generic_Minigame_Tempo.too_slow ->
+    - -> Headmistress_Generic_Minigame_Tempo.too_slow ->
+}
+/character headmistress
+-> END
+
+
+= just_right_arousal_low
+/character headmistress
+/emotion happy 50
+
+{shuffle:
+    - Ah, yes. Your mouth is formed for this. #11
+    - Yes, that's a proper pace of the tongue. #12
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_low ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_low ->
+}
+/character headmistress
+-> END
+
+
+= just_right_arousal_medium
+/character headmistress
+/emotion aroused 50
+
+{shuffle:
+    - Your tongue is most fluent in silence, heathen. #13
+    - What splendid sensations your mouth creates! #14
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_medium ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_medium ->
+}
+/character headmistress
+-> END
+
+
+= just_right_arousal_high
+
+/character headmistress
+/emotion aroused 75 
+
+{shuffle:
+    - Thy tongue satisfies! #15
+    - I quiver at the ministrations of your mouth. #16
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_high ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_high ->
+}
+/character headmistress
+-> END
+
+
+= continue_arousal_low
+/character headmistress
+/emotion happy 50
+
+{shuffle:
+    - A pleasing lather in my nethers. #17
+    - A persistent mouth is its own reward. #18
+    - cc: (content moan) #40
+    - cc: (content sigh) #41
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_low ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_low ->
+}
+/character headmistress
+-> END
+
+
+= continue_arousal_medium
+/character headmistress
+/emotion aroused 50
+
+{shuffle:
+    - Ooh, yes! You look so fetching down there. #19
+    - Mmm. That’s right, little one — lap it up! #20
+    - What sweet perfume fills the air! #21
+    - cc: (eager moan) #42
+    - cc: (eager sigh) #43
+    - -> Headmistress_Crowd_Reward ->
+    - -> Headmistress_Crowd_General ->
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_medium ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_medium ->
+}
+/character headmistress
+-> END
+
+
+= continue_arousal_high
+/character headmistress
+
+/emotion aroused 75
+
+{shuffle:
+    - I’m… nearly… there… oh! #22
+    - Sweet death approaches! #23
+    - cc: (excited moan) #44
+    - cc: (excited sigh) #45
+    - -> Headmistress_Crowd_Reward ->
+    - -> Headmistress_Crowd_General ->
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_high->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_high->
+}
+/character headmistress
+-> END
+
+
+= orgasming
+
+/character headmistress
+/emotion aroused 100
+
+{shuffle:
+    - Swill every drop, trinket! #24
+    - Ahhh, yes! Drink my cum, hussy! #25
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.orgasming ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.orgasming ->
+}
+/character crowd claps
+/character headmistress
+{shuffle:
+    - cc: (long orgasmic moans) #26
+    - cc: (short orgasmic moans) #27
+    - cc: (shuddering orgasmic moans) #28
+}
+/character headmistress
+-> END
+
+
+
+
+=== Headmistress_Generic_Minigame_Tempo_Cunnilingus_Slave ===
+
+
+= timeout
+
+~ mg_commentCount = 0
+/character headmistress
+/emotion sad 50
+
+{shuffle:
+    - My slave trembles for your mouth! #01
+    - Her ready madge awaits your tongue! #02
+    - -> Headmistress_Generic_Minigame_Tempo.timeout ->
+    - -> Headmistress_Generic_Minigame_Tempo.timeout ->
+}
+/character headmistress
+-> END
+
+
+= change_to_slower
+/character headmistress
+~ mg_commentCount = 0
+/emotion amused 50
+
+{shuffle:
+    - Lap more gently upon her. #03
+    - Reign in thy eager mouth, harlot. #04
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_slower ->
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_slower ->
+}
+/character headmistress
+-> END
+
+
+= change_to_faster
+/character headmistress
+~ mg_commentCount = 0
+/emotion excited 50
+
+{shuffle:
+    - How she wriggles and writhes! Faster. #05
+    - Quicken thy tongue. #06
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_faster ->
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_faster ->
+}
+/character headmistress
+-> END
+
+
+= too_fast
+/character headmistress
+~ mg_commentCount = 0
+/emotion angry 75
+
+{shuffle:
+    -  Don't press her, strumpet! Easy, now. #07
+    /character crowd gasps
+    -  Check that hasty tongue of yours! #08
+    /character crowd gasps
+    - -> Headmistress_Generic_Minigame_Tempo.too_fast ->
+    - -> Headmistress_Generic_Minigame_Tempo.too_fast ->
+}
+/character headmistress
+-> END
+
+
+= too_slow
+/character headmistress
+~ mg_commentCount = 0
+/emotion disgusted 75
+
+{shuffle:
+    -  My girl is eager for more tongue. #09
+    /character crowd jeers
+    -  Hasten your mouth, heathen! #10
+    /character crowd jeers
+    - -> Headmistress_Generic_Minigame_Tempo.too_slow ->
+    - -> Headmistress_Generic_Minigame_Tempo.too_slow ->
+}
+/character headmistress
+-> END
+
+
+= just_right_arousal_low
+/character headmistress
+~ mg_commentCount = 0
+/emotion happy 50
+
+{shuffle:
+    -  A suitable pace for your tongue. #11
+    -  Steady your mouth, just so. #12
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_low ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_low ->
+}
+/character headmistress
+-> END
+
+
+= just_right_arousal_medium
+/character headmistress
+~ mg_commentCount = 0
+/emotion aroused 50
+
+{shuffle:
+    - She likes that rhythm of your tongue. #13
+    - Oh, bauble, your mouth moves on her splendidly! #14
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_medium ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_medium ->
+}
+/character headmistress
+-> END
+
+
+= just_right_arousal_high
+/character headmistress
+~ mg_commentCount = 0
+
+/emotion aroused 75 
+
+{shuffle:
+    - Her mewls beg for more! #15
+    - Don't stop! Tongue her quim! #16
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_high ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_high ->
+}
+/character headmistress
+-> END
+
+
+= continue_arousal_low
+/character headmistress
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+/emotion happy 50
+
+{shuffle:
+    -  Thy head bobbing on her is a fine sight. #17
+    -  She relishes your tongue. #18
+    - cc: (content moan) #40
+    - cc: (content sigh) #41
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_low ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_low ->
+}
+/character headmistress
+-> END
+
+
+= continue_arousal_medium
+/character headmistress
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+/emotion aroused 50
+
+{shuffle:
+    -  Feel her writhe under your tongue! #19
+    -  Your mouth creates a happy slave. #20
+    - cc: (eager moan) #42
+    - cc: (eager moan) #43
+    - -> Headmistress_Crowd_Reward ->
+    - -> Headmistress_Crowd_General ->
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_medium ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_medium ->
+}
+/character headmistress
+-> END
+
+
+= continue_arousal_high
+/character headmistress
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+
+/emotion aroused 75
+
+{shuffle:
+    - Hold fast! She's at the very brink. #21
+    - Lap that mossy-treasure! #22
+    - cc: (excited moan) #44
+    - cc: (excited sigh) #45
+    - -> Headmistress_Crowd_Reward ->
+    - -> Headmistress_Crowd_General ->
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_high ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_high ->
+}
+/character headmistress
+-> END
+
+
+= orgasming
+/character headmistress
+~ mg_commentCount = 0
+
+/emotion aroused 100
+
+{shuffle:
+    -  She trembles in the agony of bliss! #23
+    -  Capital tonguing of her cunny! #24
+}
+/character crowd claps
+/character headmistress
+-> END
+
+
+
+
+
+=== Headmistress_Generic_Minigame_Tempo_Cunnilingus_Yuki ===
+
+
+= timeout
+/character headmistress
+~ mg_commentCount = 0
+/emotion sad 50
+
+{shuffle:
+    - Your Mistress awaits your tongue. #01
+    - Place your mouth upon Mistress Yuki's cunny. #02
+    - -> Headmistress_Generic_Minigame_Tempo.timeout ->
+    - -> Headmistress_Generic_Minigame_Tempo.timeout ->
+}
+/character headmistress
+-> END
+
+
+= change_to_slower
+/character headmistress
+~ mg_commentCount = 0
+/emotion amused 50
+
+{shuffle:
+    - Slow thy tongue on Mistress Yuki. #03
+    - Temper your hasty mouth a little. #04
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_slower ->
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_slower ->
+}
+/character headmistress
+-> END
+
+
+= change_to_faster
+/character headmistress
+~ mg_commentCount = 0
+/emotion excited 50
+
+{shuffle:
+    -  Faster on Yuki's cunny. #05
+    -  Quicken your tongue, bauble. #06
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_faster ->
+    - -> Headmistress_Generic_Minigame_Tempo.change_to_faster ->
+}
+/character headmistress
+-> END
+
+
+= too_fast
+/character headmistress
+~ mg_commentCount = 0
+/emotion angry 75
+
+{shuffle:
+    -  Do not rush our sweet new Mistress! #07
+    /character crowd gasps
+    -  Not so hasty! Curb thy tongue. #08
+    /character crowd gasps
+    - -> Headmistress_Generic_Minigame_Tempo.too_fast ->
+    - -> Headmistress_Generic_Minigame_Tempo.too_fast ->
+}
+/character headmistress
+-> END
+
+
+= too_slow
+/character headmistress
+~ mg_commentCount = 0
+/emotion disgusted 75
+
+{shuffle:
+    -  Yuki's muff requires more effort! #09
+    /character crowd jeers
+    -  Quicken that mouth, heathen! #10
+    /character crowd jeers
+    - -> Headmistress_Generic_Minigame_Tempo.too_slow ->
+    - -> Headmistress_Generic_Minigame_Tempo.too_slow ->
+}
+/character headmistress
+-> END
+
+
+= just_right_arousal_low
+/character headmistress
+~ mg_commentCount = 0
+/emotion happy 50
+
+{shuffle:
+    -  This is where you belong... #11
+        On your knees between a Lady's thighs. #12
+    -  Your mouth on Mistress Yuki is a sumptuous sight! #13
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_low ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_low ->
+}
+/character headmistress
+-> END
+
+
+= just_right_arousal_medium
+/character headmistress
+~ mg_commentCount = 0
+/emotion aroused 50
+
+{shuffle:
+    -  What marvelous sensations you give her, trinket! #14
+    -  Mistress Yuki is pleased by your tongue. #15
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_medium ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_medium ->
+
+}
+/character headmistress
+-> END
+
+
+= just_right_arousal_high
+/character headmistress
+~ mg_commentCount = 0
+
+/emotion aroused 75 
+
+{shuffle:
+    -  Nearly… there! #16
+       Glory in your Mistress's pussy. #17
+    -  What a gifted little jezebel you are with that mouth! #18
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_high ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.just_right_arousal_high ->
+}
+/character headmistress
+-> END
+
+
+= continue_arousal_low
+/character headmistress
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+/emotion happy 50
+
+{shuffle:
+    -  I adore the sight of your head #19
+        bobbing between Yuki's thighs. #20
+    -  Mistress Yuki seems to enjoy your tongue, {player_name}. #21
+    - cc: (content moan) #40
+    - cc: (content sigh) #41
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_low ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_low ->
+}
+/character headmistress
+-> END
+
+
+= continue_arousal_medium
+/character headmistress
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+/emotion aroused 50
+
+{shuffle:
+    -  Capital! You look so fetching down there. #22
+    -  Let your tongue sweeten Yuki's flower. #23
+    - cc: (eager moan) #42
+    - cc: (eager sigh) #43
+    - -> Headmistress_Crowd_Reward ->
+    - -> Headmistress_Crowd_General ->
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_medium ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_medium ->
+}
+/character headmistress
+-> END
+
+
+= continue_arousal_high
+/character headmistress
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+
+/emotion aroused 75
+
+{shuffle:
+    - My, my, little one! #24
+        You're pushing dear Yuki to the brink! #25
+    - Don't you dare cease now, jezebel! #26
+        Swell her cunny to that flood of bliss! #27
+    - cc: (excited moan) #44
+    - cc: (excited sigh) #45
+    - -> Headmistress_Crowd_Reward ->
+    - -> Headmistress_Crowd_General ->
+    - -> Headmistress_Crowd_GoodJob ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_high ->
+    - -> Headmistress_Generic_Minigame_Tempo_Arousal.continue_arousal_high ->
+}
+/character headmistress
+-> END
+
+
+= orgasming
+/character headmistress
+~ mg_commentCount = 0
+
+/emotion aroused 100
+
+{shuffle:
+    -  Oh, yes! How she trembles and groans! #28
+        Well done, my good and faithful servant! #29
+    -  What a sight to behold! #30
+        I adore watching my dear Yuki #31
+        come undone for me. #32
+}
+/character crowd claps
+/character headmistress
+- What a delightful surprise #33
+    for our eager Mistress in training, #34
+    and a sweet repast for you, bauble. #35
+
+/character headmistress
+-> END
+

@@ -1,12 +1,10 @@
 === goddess_reward_giantess_joi ===
-
 TODO: make this a scene with the Giantess where the player is small in her hand
-
 -> select_gender_check ->
 ~ setScene(reward_scene, Goddess, "goddess_reward_giantess_joi", -> goddess_reward_giantess_joi)
 -> scene_setup -> intro
-
 TODO: set up scene
+
 
 = scene_setup
 /scene 
@@ -15,30 +13,30 @@ TODO: set up scene
 /character goddess
 ->->
 
+
 = load_gave_reward
 -> scene_setup -> gave_reward
+
 
 = intro
 
 //scene starts with Goddess normal sized
-
 //this is where the player is asked if they want to give up their reward stone
 
 {shuffle:
-    - I enjoy watching slaves cum for me. #01
-     Toying with their pleasure until I grant release.
+    - I enjoy watching slaves cum for me. 
+        Toying with their pleasure until I grant release.
     - Time for my little mouse to perform.
-     It will be amusing to watch you masturbate for me.
+        It will be amusing to watch you masturbate for me.
     - Your pleasure belongs to me, little mouse.
     I want to see you cum for me.
 }
-
 
 - (choice)
 {shuffle:
     - And you want to please me, don't you?
     - Does my little mouse want to perform?
-    - Shall I grant you this? #10
+    - Shall I grant you this? 
 }
 
 + [yes]
@@ -48,7 +46,7 @@ TODO: set up scene
 
 + [no]
     -> Goddess_Unhappy ->
-    Then begone. #11
+    Then begone.
     -> exit
 
 + [timeout] -> Goddess_Timeout -> intro
@@ -57,6 +55,7 @@ TODO: set up scene
 
 --> gave_reward
 
+
 = gave_reward
 
 TODO: write section where the player has to give up a reward
@@ -64,14 +63,10 @@ TODO: write section where the player has to give up a reward
 -> goddess_generic_joi.begin -> loop
 
 
-
-
-
 = loop
 
 // RandomCommentLoopWithNo(-> commentTunnel, -> noTunnel, minTimes, maxTimes, minWait, maxWait)
 -> RandomCommentLoopWithNo (-> goddess_generic_joi.instructions_and_questions, -> goddess_generic_joi.no_orgasm, 3, 6, 2, 4) ->
-
 
 -> finish
 
@@ -84,18 +79,13 @@ Now orgasm for me, {player_name}.
 
 ->exit
 
-
-
-
 // A (few) random modifier(s) might be selected e.g. non-dominant hand, stand, kneel, sit, etc.
-
 // Player may be asked to touch themself in a certain way. Some kind of hand motion or audio beat will allow the player to track their strokes.
 // Player may be asked to strike themself in a certain way. Hand motion or audio beat will show them how often to slap/spank/etc.
 // Random modifiers may change. i.e. You must kneel now.
 // Player may be asked to use the prop they said they had ready. i.e. Put on the cock ring.
 // (Only near the middle to end of a session) Player may be asked to edge.
 // The mistress will now instruct you how to finish: Any combination of full or ruined / normal or eaten.
-
 // Preparation:
 // Randomly set the rules for this session:
 // - normal jerk off and cum or
@@ -105,53 +95,41 @@ Now orgasm for me, {player_name}.
 // - jerk off and cum eating or
 // - jerk off and edging or
 // - stop and go jerk off
-
 // Randomly set special rules for this session:
 // - none/no special or
 // - light ass play or
 // - heavy ass play (insert finger or jerk with plug inside) – make this optional, if sub doesn’t want that, stop the session and give him a blue crystal for punishment or
-// - play time (let sub interact with mistress between jerksessions)
-
+// - play time (let sub interact with mistress between jerk sessions)
 // Randomly set the length of the jerk session:
 // one session could be a part of 5 minutes times a random number from 2-10, to create a 10-50 minutes jerk session
-
 // Randomly set the help for this session:
 // - none, must jerk to fully clothed mistress in her environment
-// - mistress shows parts of her body (breats, ass, pussy), sub always has to worship
+// - mistress shows parts of her body (breasts, ass, pussy), sub always has to worship
 // - mistress brings in another naked slave from other sex as sub, let slave go to different poses to help sub jerk off
 // - mistress brings in another naked slave from same sex as sub, let slave go to different poses to help (or make it harder)
-
 // Randomly set mistress character (changing some of her lines in the jerk-parts) and maybe give a bonus on this roll to neutral or encouraging, if the mistress is happy with the sub):
 // - neutral/normal
 // - encouraging
 // - humiliating
-
-
-
 // Start Session with INTRO:
 // (2-3 minutes), let sub jerk to make his dick hard, explain the rules (always jerk as hard and fast as told, don’t cum without permission, shake head no if sub is about to cum (to give him/her a 10-20 second break (and maybe punish him, depending of mistress character and how often it has already happened in this session)), ect.). If ass play instruct to put plug in or if light ass play instruct to caress the asshole
-
 // JERK SESSION:
 // (5 minutes), in these sessions, sub has to follow orders like faster, slow down, harder, lighter strokes and maybe gets encouraged or humiliated, and gets the help from mistress or the other slave.
-
 // AFTER JERK SESSION:
-// - if rule is edging, let sub edge 2-3mins without cuming
+// - if rule is edging, let sub edge 2-3mins without cumming
 // - if rule is stop and go, sub has to stop for 30s to 2 minutes, and put his/her hands away
 // - if special rule is light ass play, let sub jerk and remind sub to play with ass
 // - if special rule is heavy ass play, let sub jerk and play with his/her ass (insert finger or put plug out and in again)
 // - if special rule is play time, the sub has to play a game against mistress, e.g. rock paper scissors or so. Sub wins and gets a 2-3min edge, sub loses and has to stop jerking or even gets punished, if mistress character is humiliating
-
 // Goto JERK SESSION again until random repeat number is reached. If last JERK SESSION is complete, skip AFTER JERK SESSION and go to ENDING.
-
 // ENDING:
-// Let sub edge for 2-3min and explain the rules for cuming. Give a Countdown and instruct sub to go “over the edge” at 2 but don’t cum until 0.
+// Let sub edge for 2-3min and explain the rules for cumming. Give a Countdown and instruct sub to go “over the edge” at 2 but don’t cum until 0.
 // - if rule is normal jerk and cum, or edging, or stop and go, let sub go over the edge at 2 and let him cum at 0
 // - if rule is blue balls, stop countdown at 5 and stop session without AFTER CARE
 // - if rule is ruined cum, let sub go over the edge at 2 and instruct sub to cum at 0 without hands
 // - if rule is delayed cum, let sub go over the edge at 2 and delay the 0, maybe 2-5 seconds, sub has to jerk but have to hold it until 0 is called by mistress
 // - if rule is cum eating, let sub go over the edge at 2 and instruct him to cum in/on hand, let sub eat it
 // - if special rule is play time, let sub play against mistress, if sub wins, he gets his release, if not, stop session without AFTER CARE
-
 //  AFTER CARE:
 // - if special rule was heavy ass play, instruct to take out plug
 // - if mistress character is “normal”, instruct to clean the mess, present to mistress and get out
@@ -161,37 +139,21 @@ Now orgasm for me, {player_name}.
 // o punish sub (e.g. let sub slap the now sensitive genitals), instruct to clean the mess, and get the f. out or
 // o let sub jerk again (post orgasm torture) hard and fast for 2-3 minutes, instruct to clean the mess and get the f. out
 // So, you want to fuck me?
-
 // Okay grab your cock for me, does that feel good? Is it hard for me?
-
 // Now I never just start, I lube you up first, so grab your lube and put it all on your cock. As much as you like, get it nice and wet.
-
 // Start massaging up and down your shaft and running your hands all over your cock for me. Making sure it’s coated in the cool liquid.
-
 // Grip your cock with your hand, slowly move your hand up and down.
-
 // Now, start going a bit quicker. Up and down, keep a good rhythm for me.
-
 // Bring yourself to the point of orgasm, but don’t you dare cum, if a man I’m with cums at this point I get mad, I want to play with you for a bit longer.
-
 // Time for a little game to see if you’re really ready for me.
-
 // I want you to bring yourself to the point of orgasm as many times as you can, but if you cum, you fail.
-
 // You will be feeling so sexually frustrated by the time you make it to the 12th denied orgasm, your cock will be pulsating, your balls bulging and that’s the way I like it. Know how turned on I am as you do this, my pussy gets wetter with each orgasm that has been denied. It feels powerful to me.
-
 // I’d usually let you rest your cock in my mouth as you did this.
-
 // I wouldn’t do anything silly, to begin with, like move my tongue or mouth, I’d just let you enjoy the inside of my smooth warm mouth.
-
 // Maybe every now and then I’d slowly sink your whole cock to the back of my throat, letting you enjoy my mouth a little.
-
 // But don’t you dare cum. That is forbidden.
-
 // It turns me on so much feeling a cock that wants to cum inside of me, it leaks cum from the tip, but it’s not quite ready yet.
-
 // Get both your hands and stroke up your cock and towards yourself, run one hand over your whole cock and then have the other following closing behind. Keep on doing this, really working yourself up.
-
 // //instructions for how to touch themselves
 // include blocks for the head, shaft, and balls
 // include instructions for slow, medium, and fast speed
@@ -207,19 +169,12 @@ Now orgasm for me, {player_name}.
 // Ask if they want to cum - tell them no and keep going
 // Use timers for how long they should stroke and then give new instructions
 // add some story and conversation into it, these talking points will change depending on what other kinks might be involved, if there are no other kinks specified I tend to discuss how they need to be taught how to wank correctly and how to not cum too quickly.
-
 // Grab your cock with two fingers.
 // Start sliding them up and down your shaft.
-
 // Cup your balls with your other hand.
-
 // Grab your cock with your full hand.
 // Stroke faster.
-
-// Give me 10 / 20 / 30 excrutiating slow strokes
-
-
-
+// Give me 10 / 20 / 30 excruciating slow strokes
 //for other Mistresses
 //stuff your underwear in your mouth
 //40 medium strokes
@@ -227,17 +182,14 @@ Now orgasm for me, {player_name}.
 //20 slow strokes
 //stop stroking. all you get to do is stare at me for a while as your cock/pussy throbs
 //slap your balls 5 times
-//lick your precum
+//lick your pre cum
 //suck on your index finger
 //work your finger into your ass like a good little, boy/girl/pet
 //5 / 10 / 20 thrusts with your finger
 //little betas with clits (small penis)
-
 // Nega / Furia - SPH (Small Penis Humiliation)—It says it all in the title; laugh at it, make jokes about it, show your disgust and tell them how disappointing it is.
 // Nega / Furia / Goddess - CEI (Cum Eating Instructions)—Yes, make them eat their own cum, feel free to get creative with this and make them drink it out of shot glasses, their hands or a bowl of the floor (bring in some pet play and further humiliation).
 // Yuki / Nega / Treatment - Edging—Bring him to the edge of orgasm over and over and over but don't let him cum, not yet at least, soon... maybe, if they behave themselves and do as instructed.
 // Yuki / Treatment - GFE (Girlfriend Experience)—For the less dominant customers and models this is a good go to when it comes to JOI it doesn't necessarily have to be a full girlfriend experience but make the scene more of a "come and relax and let me help you pleasure yourself" then your typical dominant JOI scene.
-
 //Yuki / Treatment -  ask if they're enjoying it and most importantly, ensure you do not humiliate them in anyway. Instead offer them kindness, comfort and an escape from their day to day routine; play the long distance girlfriend who misses them, the girl next door with a devilish streak or maybe even the naughty school girl.
-
 //tell them what to do, tell them what to touch and not to touch, how fast or slow to go, when to stop and when to start, tell them to grab their balls at the same time or even bring other body parts into it.

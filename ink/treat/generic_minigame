@@ -1,9 +1,11 @@
-TODO: rewrite for Ms. Treatment
+
 
 === Treat_Tempo_Comments ===
+
+
 = timeout
 
-/emotion annoyed 50
+/emotion sad 50
 
 {shuffle:
     - Perform. #01
@@ -13,6 +15,7 @@ TODO: rewrite for Ms. Treatment
 }
 
 ->->
+
 
 //asking the player to change speed
 = change_to_slower
@@ -29,6 +32,7 @@ TODO: rewrite for Ms. Treatment
 
 ->->
 
+
 = change_to_faster
 
 /emotion excited 50
@@ -40,6 +44,7 @@ TODO: rewrite for Ms. Treatment
     - Put more energy into it. Speed up. #13
 }
 ->->
+
 
 //correcting the player for going the wrong speed, lost arousal level
 = too_fast
@@ -59,6 +64,7 @@ TODO: rewrite for Ms. Treatment
 }
 ->->
 
+
 = too_slow
 
 /emotion disgusted 50
@@ -76,6 +82,7 @@ TODO: rewrite for Ms. Treatment
 }
 ->->
 
+
 //comments about speed delivered at different arousal levels keeping her voice pitch at the right arousal level
 = just_right_arousal_low
 
@@ -90,6 +97,7 @@ TODO: rewrite for Ms. Treatment
 
 ->->
 
+
 = just_right_arousal_medium
 
 /emotion aroused 75
@@ -103,6 +111,7 @@ TODO: rewrite for Ms. Treatment
 
 ->->
 
+
 = just_right_arousal_high
 
 /emotion aroused 100
@@ -115,6 +124,7 @@ TODO: rewrite for Ms. Treatment
 }
 
 ->->
+
 
 //
 = continue_arousal_low
@@ -135,6 +145,7 @@ TODO: rewrite for Ms. Treatment
 
 ->->
 
+
 = continue_arousal_medium
 
 /emotion aroused 75
@@ -152,6 +163,7 @@ TODO: rewrite for Ms. Treatment
 }
 ->->
 
+
 = continue_arousal_high
 
 /emotion aroused 100
@@ -168,6 +180,7 @@ TODO: rewrite for Ms. Treatment
     - cc: (excited sigh) #67
 }
 ->->
+
 
 = orgasming
 
@@ -188,12 +201,16 @@ TODO: rewrite for Ms. Treatment
 
 ->->
 
+
+
+
 // Cunnilingus-specific tempo comment lines.
 === Treat_Tempo_Cunnilingus_Comments ===
 
+
 = timeout
 
-/emotion annoyed 50
+/emotion angry 50
 
 {shuffle:
     - I can't feel your tongue! #01
@@ -205,6 +222,7 @@ TODO: rewrite for Ms. Treatment
     - -> Treat_Tempo_Comments.timeout ->
 }
 -> END
+
 
 = change_to_slower
 
@@ -223,6 +241,7 @@ TODO: rewrite for Ms. Treatment
 }
 -> END
 
+
 = change_to_faster
 
 /emotion excited 50
@@ -237,6 +256,7 @@ TODO: rewrite for Ms. Treatment
     - -> Treat_Tempo_Comments.change_to_faster ->
 }
 -> END
+
 
 = too_fast
 
@@ -253,6 +273,7 @@ TODO: rewrite for Ms. Treatment
 }
 -> END
 
+
 = too_slow
 
 /emotion disgusted 75
@@ -267,6 +288,7 @@ TODO: rewrite for Ms. Treatment
     - -> Treat_Tempo_Comments.too_slow ->
 }
 -> END
+
 
 = just_right_arousal_low
 
@@ -284,6 +306,7 @@ TODO: rewrite for Ms. Treatment
 
 -> END
 
+
 = just_right_arousal_medium
 
 /emotion aroused 75
@@ -298,6 +321,7 @@ TODO: rewrite for Ms. Treatment
     - -> Treat_Tempo_Comments.just_right_arousal_medium ->
 }
 -> END
+
 
 = just_right_arousal_high
 
@@ -315,6 +339,7 @@ TODO: rewrite for Ms. Treatment
 }
 -> END
 
+
 = continue_arousal_low
 
 /emotion aroused 50
@@ -329,6 +354,7 @@ TODO: rewrite for Ms. Treatment
     - -> Treat_Tempo_Comments.continue_arousal_low ->
 }
 -> END
+
 
 = continue_arousal_medium
 
@@ -345,6 +371,7 @@ TODO: rewrite for Ms. Treatment
 }
 -> END
 
+
 = continue_arousal_high
 
 /emotion aroused 75
@@ -359,6 +386,7 @@ TODO: rewrite for Ms. Treatment
     - -> Treat_Tempo_Comments.continue_arousal_high->
 }
 -> END
+
 
 = orgasming
 
@@ -376,135 +404,173 @@ TODO: rewrite for Ms. Treatment
 -> END
 
 
-// Sex-specific tempo comment lines.
-=== Treat_Tempo_Sex_Comments ===
+
+
+// Riding-specific tempo comment lines.
+=== Treat_Minigame_Generic_Tempo_Riding ===
+
 
 = timeout
 
-/emotion annoyed 50
+/emotion sad 50
 
 {shuffle:
+    - Don't you want me to ride you, little one? #01
+    - I'm waiting up here! #02
     - -> Treat_Tempo_Comments.timeout ->
     - -> Treat_Tempo_Comments.timeout ->
     - -> Treat_Tempo_Comments.timeout ->
 }
 -> END
+
 
 = change_to_slower
 
 /emotion amused 50
 
 {shuffle:
+    - So eager to be ridden! Slow down. #03
+    - Slow your rocking, now. #04
     - -> Treat_Tempo_Comments.change_to_slower ->
     - -> Treat_Tempo_Comments.change_to_slower ->
     - -> Treat_Tempo_Comments.change_to_slower ->
 }
 -> END
+
 
 = change_to_faster
 
 /emotion excited 50
 
 {shuffle:
+    - Mm, yes! Rock a little faster. #05
+    - I want to ride you harder! #06
     - -> Treat_Tempo_Comments.change_to_faster ->
     - -> Treat_Tempo_Comments.change_to_faster ->
     - -> Treat_Tempo_Comments.change_to_faster ->
 }
 -> END
+
 
 = too_fast
 
 /emotion angry 75
 
 {shuffle:
+    - Not so hard down there! #07
+    - Gentle those hips! #08
     - -> Treat_Tempo_Comments.too_fast ->
     - -> Treat_Tempo_Comments.too_fast ->
     - -> Treat_Tempo_Comments.too_fast ->
 }
 -> END
+
 
 = too_slow
 
 /emotion disgusted 75
 
 {shuffle:
+    - I know you can go faster than that. #09
+    - Is my body putting you to sleep? Faster! #10
     - -> Treat_Tempo_Comments.too_slow ->
     - -> Treat_Tempo_Comments.too_slow ->
     - -> Treat_Tempo_Comments.too_slow ->
 }
 -> END
+
 
 = just_right_arousal_low
 
 /emotion aroused 50
 
 {shuffle:
+    - Mmm, you're a natural with those hips. #11
+    - I like riding my good little slave. #12
     - -> Treat_Tempo_Comments.just_right_arousal_low ->
     - -> Treat_Tempo_Comments.just_right_arousal_low ->
     - -> Treat_Tempo_Comments.just_right_arousal_low ->
 }
 -> END
+
 
 = just_right_arousal_medium
 
 /emotion aroused 75
 
 {shuffle:
+    - You feel so good inside me, sweetling! #13
+    - Oh! Mm, I love the way you move in me. #14
     - -> Treat_Tempo_Comments.just_right_arousal_medium ->
     - -> Treat_Tempo_Comments.just_right_arousal_medium ->
     - -> Treat_Tempo_Comments.just_right_arousal_medium ->
 }
 -> END
+
 
 = just_right_arousal_high
 
 /emotion aroused 100
 
 {shuffle:
+    - Oooo! I feel you deep in my centre! #15
+    - So deep, so full! I can't get enough! #16
     - -> Treat_Tempo_Comments.just_right_arousal_high ->
     - -> Treat_Tempo_Comments.just_right_arousal_high ->
     - -> Treat_Tempo_Comments.just_right_arousal_high ->
 }
 -> END
+
 
 = continue_arousal_low
 
 /emotion aroused 50
 
 {shuffle:
+    - Do you like your special treat from Ms Treatment? #17
+    - You're a quick study with those hips, darling. #18
     - -> Treat_Tempo_Comments.continue_arousal_low ->
     - -> Treat_Tempo_Comments.continue_arousal_low ->
     - -> Treat_Tempo_Comments.continue_arousal_low ->
 }
 -> END
+
 
 = continue_arousal_medium
 
 /emotion aroused 75
 
 {shuffle:
+    - Such exquisite movement! Just like that. #19
+    - Keep moving like that and I'll cum! #20
     - -> Treat_Tempo_Comments.continue_arousal_medium ->
     - -> Treat_Tempo_Comments.continue_arousal_medium ->
     - -> Treat_Tempo_Comments.continue_arousal_medium ->
 }
 -> END
+
 
 = continue_arousal_high
 
 /emotion aroused 75
 
 {shuffle:
+    - Ooh yes, baby doll! Deeper! #21
+    - You're perfect! Don't stop rocking! #22
     - -> Treat_Tempo_Comments.continue_arousal_high->
     - -> Treat_Tempo_Comments.continue_arousal_high->
     - -> Treat_Tempo_Comments.continue_arousal_high->
 }
 -> END
 
+
 = orgasming
 
 /emotion aroused 100
 
 {shuffle:
+    - {hasPenis:Ahhh! Cum inside me, darling!|Ahhh! Cum with me, darling!} #23
+    - Oh, Goddess! I'm coming! #24
     - -> Treat_Tempo_Comments.orgasming ->
     - -> Treat_Tempo_Comments.orgasming ->
     - -> Treat_Tempo_Comments.orgasming ->

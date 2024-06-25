@@ -1,3 +1,4 @@
+//Writing Status: In Progress
 === nega_reward_hard_cunnilingus ===
 
 -> select_gender_check ->
@@ -7,11 +8,13 @@
 TODO: create setting with her squatting over the player's face
 //options: Nega wants to fuck the player's face (squatting over their face); she randomly makes them masturbate while she uses them (set this up so there is a random option that she wants this or not)
 
+
 = scene_setup
 /scene 
-/music nega
+/music nega-reward-hard
 /ambient crowd
 ->->
+
 
 = intro
 For your reward, 
@@ -48,7 +51,7 @@ Do you agree to this reward, moppet?
     then you must leave.
     
     -- (leave)
-    Do you wish to depart,{isBoy: miscreant|foible}?
+    Do you wish to depart, {isBoy:miscreant|foible}?
     
     ++ [yes]
         As you wish.
@@ -75,13 +78,14 @@ Do you agree to this reward, moppet?
 
 -> begin     
 
+
 = load_begin
 -> scene_setup -> begin
 
 
 = begin
 
-// insert randomisation options
+// insert randomization options
 
 -> kneel
 -
@@ -120,9 +124,10 @@ TODO: do we want to include options??
 
 -> minigame
 
+
 = minigame
 TODO: create scene
-/scene theatre.cunnilingus
+
 
 /perform cun_desk_idle
 
@@ -140,7 +145,7 @@ Breathtaking, moppet!
 {embarrassed:
     {shuffle:
         - You performed exceptionally under pressure.
-        - Even discomfitted, you triumphed!
+        - Even discomfited, you triumphed!
         - <i>She</i> enjoyed your flushed performance.
     }
     - else:
@@ -158,6 +163,7 @@ You may depart.
 
 -> exit
 
+
 = finish_bad
 
 Shocking!
@@ -171,10 +177,10 @@ What a layabout!
     }
     - else:
     {shuffle:
-        - Your enthuasiasm failed you. 
+        - Your enthusiasm failed you. 
         - Excitation is not enough. 
         Skill is required.
-        - Your excitedment outweighed your ability.
+        - Your excitement outweighed your ability.
     }
 }
 
@@ -233,7 +239,7 @@ Go.
 //“Get on your knees.”
 //Player kneels. Nega puts a foot up on their shoulder giving the player a nice view.
 //“For your reward, I’m going to cum on that tongue of yours. That’s a reward a horny slut like you wants isn’t it, getting to make ME cum?”
-//No - [Sigh] “What a waste of a bloodstone. Not my problem, go earn another one, fuckboi.” Nega kicks the player away.
+//No - [Sigh] “What a waste of a bloodstone. Not my problem, go earn another one, fuck boy.” Nega kicks the player away.
 //Yes - “Right answer!” Minigame instructions to be determined.
 //“On your back!” Nega visually pushes the player to the ground with her foot on their shoulder and stands over them.
 //“There’s nowhere else for me to sit down, so I’m just going to have to ride that face. Lucky you.”

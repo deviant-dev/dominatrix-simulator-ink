@@ -25,6 +25,7 @@
     -> start
 }
 
+
 = start
 /character headmistress
 /wait 0.4
@@ -216,6 +217,7 @@ You are newly arrived and already in trouble. #48
 - (stand_straight)
 ~ tries++
 
+/music headmistress-training
 /perform do_snap_fingers angry 60
 Stand at attention! #57
 

@@ -1,11 +1,9 @@
 === goddess_reward_joi ===
-
-
 TODO: make this a scene with the Giantess where the player is small in her hand
-
 -> select_gender_check ->
 ~ setScene(reward_scene, Goddess, "goddess_reward_joi", -> goddess_reward_joi)
 -> scene_setup -> intro
+
 
 = scene_setup
 /scene bedroom.hub
@@ -14,8 +12,10 @@ TODO: make this a scene with the Giantess where the player is small in her hand
 /character goddess
 ->->
 
+
 = load_gave_reward
 -> scene_setup -> gave_reward
+
 
 = intro
 /perform idle_sassy amused 75
@@ -29,7 +29,6 @@ TODO: make this a scene with the Giantess where the player is small in her hand
     - I'm curious how well you can orgasm for me. #02
     - I'm thinking about allowing you to cum for me. #03
 }
-
 
 {shuffle:
     - Demonstrating to me precisely that your #04
@@ -61,12 +60,13 @@ TODO: make this a scene with the Giantess where the player is small in her hand
 
 --> gave_reward
 
+
 = gave_reward
 
-/perform do_hand_out skeptical 55
+/perform idle_hand_out skeptical 55
 {shuffle:
-    - Then present your wrist so that I may claim your Bloodstone.
-    - Turn over your Bloodstone.
+    - Then present your wrist so that I may claim your Bloodstone. #27
+    - Turn over your Bloodstone. #28
 }
 
 + [pose:present_wrist_reward]
@@ -83,13 +83,13 @@ TODO: make this a scene with the Giantess where the player is small in her hand
     - -> begin
 }
 
+
 = toy
 
 /perform talk_lean_forward aroused 75
 {shuffle:
     - I'm feeling generous. #12
     - I'm in a good mood today. #13
-    - I'm in, haha, a good mood today #257
     - I find you entertaining. #14
     - I find you ... entertaining #258
 }
@@ -106,6 +106,7 @@ TODO: make this a scene with the Giantess where the player is small in her hand
     - -> mouth
     - -> lube
 }
+
 
 = ass
 
@@ -132,6 +133,7 @@ Would you like to plug your ass for me first? #16
 
 + [distracted] -> Goddess_PayAttention -> ass
 
+
 = mouth
 /perform talk_consider skeptical 65
 Would you like to wear a gag for me, {player_name}? #22
@@ -152,13 +154,14 @@ Would you like to wear a gag for me, {player_name}? #22
 
 + [no]
     /perform do_shake_finger amused 45
-    This is not required today, #27
-    but in the future I may insist. #28
+    This is not required today, #20
+    but in the future I may insist. #21
     -> begin
 
 + [timeout] -> Goddess_Timeout -> mouth
 
 + [distracted] -> Goddess_PayAttention -> mouth
+
 
 = lube
 /perform talk_question amused 65
@@ -173,18 +176,17 @@ Now, would you like to pleasure yourself with lubrication? #29
 
 + [no]
     /perform do_shake_finger amused 45
-    This is not required today, #32
-    but in the future I may insist. #33
+    This is not required today, #20
+    but in the future I may insist. #21
     -> begin
 
 + [timeout] -> Goddess_Timeout -> lube
 
 + [distracted] -> Goddess_PayAttention -> lube
 
+
 = plug
-
 ~ has_plug = true
-
 /perform idle_skeptical amused 55
 Welcome back, {player_name}. #34
 Let me gaze upon your choice of plug. #35
@@ -242,6 +244,7 @@ Understood? #43
 
 + [distracted] -> Goddess_PayAttention -> plug
 
+
 = gag
 ~ has_gag = true
 
@@ -268,7 +271,7 @@ TODO: add in poses to turn head left, turn head right
 - (turn_2)
 
 //perform
-And the other way.
+And the other way. #32
 
 + [pose:turn_head_left]
 
@@ -282,29 +285,33 @@ Your lips bulge beautifully around it. #55
 
 -> begin
 
+
 = mess
 
 /perform react_thankful happy 35
-Hello again, {player_name}. #56
+Hello again, {player_name}. #50
 
 /perform do_snap_fingers amused 55
 Now pour a generous amount of lube on your throbbing genitals. #57
 
-/wait3
+/wait 3
 
-/perform tease_caress_breatst_right aroused 75
+/perform tease_caress_breast_right aroused 75
 {shuffle:
     - That's it. make yourself nice and messy for me. #58
     - Such a beautiful mess you're making. #59
     - -> Goddess_GoodJob ->
 }
 
+Get comfortable, {player_name}. #60
+I want you, nice and relaxed. #61
+
 -> begin
+
 
 = begin
 
 -> goddess_generic_joi.begin -> loop
-
 
 
 = loop
@@ -312,15 +319,12 @@ Now pour a generous amount of lube on your throbbing genitals. #57
 // RandomCommentLoopWithNo(-> commentTunnel, -> noTunnel, minTimes, maxTimes, minWait, maxWait)
 -> RandomCommentLoopWithNo (-> goddess_generic_joi.instructions_and_questions, -> goddess_generic_joi.no_orgasm, 3, 6, 2, 4) ->
 
-
 -> cei
-
 
 
 = cei
 /perform idle_fake_annoyed amused 65
 Tell me, {player_name}... #150
-
 
 /perform talk_question aroused 55
 {shuffle:
@@ -349,7 +353,7 @@ Tell me, {player_name}... #150
         ->orgasm_cei
 
     ++ [no]
-        /perform react_scoffs annoyed 50
+        /perform react_scoffs amused 50
         Very well. #159
         I will tolerate this preference. #160
         -> goddess_generic_joi.orgasm
@@ -357,6 +361,7 @@ Tell me, {player_name}... #150
 + [timeout] -> Goddess_Timeout -> cei
 
 + [distracted] -> Goddess_PayAttention -> cei
+
 
 = orgasm_cei
 /perform idle_skeptical amused 45
@@ -384,21 +389,18 @@ Would that please you {player_name}? #162
     ++ [no]
 
         {shuffle:
-            -/perform talk_annoyed disgusted 45
-            Very well. #164
-            /perform do_shoo_player annoyed 65
+            -/perform talk_annoyed skeptical 45
+            Very well. #159
+            /perform do_shoo_player 
             Goodbye. #165
 
-            -/perform talk_lean_forward angry 50
+            -/perform talk_lean_forward skeptical 50
             Great. #263
-            /perform talk_annoyed annoyed 50
+            /perform talk_annoyed 
             Now begone. #264
         }
         -> exit
-
-->exit
-
-
+-> exit
 
 
 = cei_instructions_vagina
@@ -411,8 +413,8 @@ Would that please you {player_name}? #162
     - After completion, suck your fingers dry. I want them to be <i>immaculate.</i> #269
     - After completion, suck your fingers dry. I want them <i>immaculate.</i> #270
 }
-
 ->->
+
 
 = cei_instructions_penis
 
@@ -429,7 +431,7 @@ Would that please you {player_name}? #162
     And then clean yourself up. #276
     <i>Lick</i> those fingers dry. #278
     - You will cum into your hand. #279 //angry
-    And then, you will swallow it. #280 //angry   TODO:wrote these differently for lipsync and tone, fix later-Taco
+    And then, you will swallow it. #280 //angry   TODO:wrote these differently for lip sync and tone, fix later-Taco
     - You will cum into your hand ... and then you will swallow it! #281 //amused
     - I hope you're thirsty. #282
     Time to cum into your hand #283
@@ -438,11 +440,10 @@ Would that please you {player_name}? #162
     Time to cum into your hand #286
     and drink <i>every last drop</i>. #287
 }
-
 ->->
 
-= cei_countdown_penis
 
+= cei_countdown_penis
 
 /perform tease_stroke_motion happy 45
 {shuffle:
@@ -461,17 +462,15 @@ Nod your head, when your little vessel is ready to cum. #182
 /perform do_inspect aroused 75
 Since I am the one who shall allow your release, I want you to ejaculate at the count of three. #183
 
-/perform count_nega amused 85
+/perform talk_one_finger amused 85
 One.... #184
 
-TODO talk_two_fingers
+/perform talk_two_fingers amused 85
 Two.... #185
-
-...
 
 /wait
 
-TODO talk_three_fingers
+/perform talk_one_hand amused 85
 Three... #186
 
 -> goddess_generic_joi.cum_comments ->
@@ -480,19 +479,19 @@ Now swallow your cum. #187
 
 /wait 3
 
-Such a good little {player_name}. Consuming ones own seed often makes them feel warm and satisfied, do you feel that way slave? #188
+Such a good little {player_name}. Consuming one's own seed often makes them feel warm and satisfied, do you feel that way slave? #188
 
     ++[yes]
         /perform do_now_leave disgusted 35
         Great. Now begone slut. #189
-        ->exit
+        -> exit
 
 
     ++[no]
         /perform idle_bored sad 45
         Shame, consider yourself lucky I granted you a release. #190
 
-        ->exit
+        -> exit
 
 
 = cei_countdown_vagina
@@ -517,19 +516,12 @@ Nod your head when you are approaching completion. #170
 
     /perform talk_emphatic_one_hand happy 75
     Since I am the one who shall grant your release, you will push yourself to orgasm for me on the count of three. #171
-
     One.... #172
-
     Two.... #173
-
     ...
-
     /wait
-
     Three... #174
-
     -> goddess_generic_joi.cum_comments ->
-
     /perform do_point_down happy 45
 
     {shuffle:
@@ -545,20 +537,15 @@ Nod your head when you are approaching completion. #170
         - Oh how watching you suck the juice from your fingers fills me with lust. Do you taste good, little mouse? #178
     }
 
-
-
     ++[yes]
         /perform do_shoo_player amused 50
         Wonderful. Now begone slut. #179
-        ->exit
-
+        -> exit
 
     ++[no]
         /perform do_get_the_fuck_out angry 70
         Shame, consider yourself lucky I granted you a release. #180
-        ->exit
-
-
+        -> exit
 
 // A (few) random modifier(s) might be selected e.g. non-dominant hand, stand, kneel, sit, etc.
 
@@ -583,14 +570,14 @@ Nod your head when you are approaching completion. #170
 // - none/no special or
 // - light ass play or
 // - heavy ass play (insert finger or jerk with plug inside) – make this optional, if sub doesn’t want that, stop the session and give him a blue crystal for punishment or
-// - play time (let sub interact with mistress between jerksessions)
+// - play time (let sub interact with mistress between jerk sessions)
 
 // Randomly set the length of the jerk session:
 // one session could be a part of 5 minutes times a random number from 2-10, to create a 10-50 minutes jerk session
 
 // Randomly set the help for this session:
 // - none, must jerk to fully clothed mistress in her environment
-// - mistress shows parts of her body (breats, ass, pussy), sub always has to worship
+// - mistress shows parts of her body (breasts, ass, pussy), sub always has to worship
 // - mistress brings in another naked slave from other sex as sub, let slave go to different poses to help sub jerk off
 // - mistress brings in another naked slave from same sex as sub, let slave go to different poses to help (or make it harder)
 
@@ -608,7 +595,7 @@ Nod your head when you are approaching completion. #170
 // (5 minutes), in these sessions, sub has to follow orders like faster, slow down, harder, lighter strokes and maybe gets encouraged or humiliated, and gets the help from mistress or the other slave.
 
 // AFTER JERK SESSION:
-// - if rule is edging, let sub edge 2-3mins without cuming
+// - if rule is edging, let sub edge 2-3mins without cumming
 // - if rule is stop and go, sub has to stop for 30s to 2 minutes, and put his/her hands away
 // - if special rule is light ass play, let sub jerk and remind sub to play with ass
 // - if special rule is heavy ass play, let sub jerk and play with his/her ass (insert finger or put plug out and in again)
@@ -617,7 +604,7 @@ Nod your head when you are approaching completion. #170
 // Goto JERK SESSION again until random repeat number is reached. If last JERK SESSION is complete, skip AFTER JERK SESSION and go to ENDING.
 
 // ENDING:
-// Let sub edge for 2-3min and explain the rules for cuming. Give a Countdown and instruct sub to go “over the edge” at 2 but don’t cum until 0.
+// Let sub edge for 2-3min and explain the rules for cumming. Give a Countdown and instruct sub to go “over the edge” at 2 but don’t cum until 0.
 // - if rule is normal jerk and cum, or edging, or stop and go, let sub go over the edge at 2 and let him cum at 0
 // - if rule is blue balls, stop countdown at 5 and stop session without AFTER CARE
 // - if rule is ruined cum, let sub go over the edge at 2 and instruct sub to cum at 0 without hands
@@ -689,7 +676,7 @@ Nod your head when you are approaching completion. #170
 // Grab your cock with your full hand.
 // Stroke faster.
 
-// Give me 10 / 20 / 30 excrutiating slow strokes
+// Give me 10 / 20 / 30 excruciating slow strokes
 
 
 
@@ -700,7 +687,7 @@ Nod your head when you are approaching completion. #170
 //20 slow strokes
 //stop stroking. all you get to do is stare at me for a while as your cock/pussy throbs
 //slap your balls 5 times
-//lick your precum
+//lick your pre cum
 //suck on your index finger
 //work your finger into your ass like a good little, boy/girl/pet
 //5 / 10 / 20 thrusts with your finger

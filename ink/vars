@@ -12,14 +12,15 @@ VAR inTutorial = true
 VAR load_path = -> game_start
 VAR inChastity = false
 VAR enableButtplug = false
+VAR enableHolidays = true
 
 // Kink Lessons
 VAR has_learned_spanking = false
 
 // Lists
 LIST move_status = hidden = 0, locked, unlocked, early_access, under_construction
-LIST scene_type = hub_scene, intro_scene, punishment_scene, reward_scene, task_scene, session_scene
-LIST current_mistress = (None), Goddess, Headmistress, Yuki, Nega, Treat, Pragma, Angel, Furia, Caliste
+LIST scene_type = hub_scene, intro_scene, punishment_scene, reward_scene, task_scene, session_scene, vignette_scene
+LIST current_mistress = (None), Goddess, Headmistress, Yuki, Nega, Treat, Pragma, Angel, Furia, Caliste, Ereshkigal
 LIST just_changed = (none), reward_added, reward_removed, punishment_added, punishment_removed
 
 // Tutorial Progress
@@ -66,6 +67,7 @@ VAR isXmas = false
 VAR checked_if_interested = false
 VAR obey = 0
 VAR disobey = 0
+VAR theater_curtains_raised = false
 
 // Temp Variables
 VAR tries = 0
@@ -81,6 +83,12 @@ VAR wants_puppy = false
 VAR embarrassed = false
 VAR wants_masturbate = false
 
+// Minigame Temp Variables
+VAR mg_performOther = false // true when performing mini-game on someone other than the Mistress
+VAR mg_withPenis = false    // true when performing mini-game on someone with a penis
+VAR mg_commentDelay = 2     // how many times to skip a 'continue' comment
+VAR mg_commentCount = 0     // how many times a 'continue' comment has been skipped
+
 // Goddess Variables
 VAR goddess_regard = 0 
 VAR goddess_hub_status = hidden
@@ -92,7 +100,6 @@ VAR headmistress_apologize = false
 VAR headmistress_signal_basics_difficulty = 1
 VAR headmistress_signal_endurance_difficulty = 1
 VAR headmistress_signal_furniture_difficulty = 1
-VAR headmistress_has_audience = false
 VAR headmistress_masturbated_for_crowd = false
 VAR headmistress_spanking_target_count = 10
 VAR headmistress_spanking_implement = "hand"
@@ -132,7 +139,7 @@ VAR yuki_spanking_mistakes = 0
 VAR yuki_spanking_fails = 0
 
 // Pragma Variables
-VAR pragma_intro_complete = false
+VAR pragma_intro_completed = false
 VAR pragma_regard = 0
 
 // Ms Treatment Variables
@@ -140,13 +147,14 @@ VAR treat_intro_complete = false
 VAR treat_regard = 0
 VAR treat_session_reminders = 0
 VAR treat_scenes_since_last_session = 0
+VAR treat_spanking_mistakes = 0
 
 // Angelica Variables
 VAR angel_intro_complete = false
 VAR angel_regard = 0
 
 // Sergeant Furia Variables
-VAR furia_intro_complete = false
+VAR furia_intro_completed = false
 VAR furia_regard = 0
 VAR furia_has_audience = 0
 
@@ -154,22 +162,6 @@ VAR furia_has_audience = 0
 VAR caliste_intro_complete = false
 VAR caliste_regard = 0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Sovereign Ereshkigal Variables
+VAR ereshkigal_intro_complete = false
+VAR ereshkigal_regard = 0

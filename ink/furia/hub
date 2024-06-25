@@ -1,34 +1,61 @@
 === furia_hub ===
-
 -> select_gender_check ->
 
-{furia_intro.start == false: -> furia_intro }
+{furia_intro_completed == false or deviation == furia: -> furia_intro }
 
 ~ setHub(Furia, "furia_hub", -> furia_hub)
 /scene none
 /scene FuriasRoom.Hub
-/music furia
+/music furia-hub-1
 /ambient furia
 /character furia
 /perform idle_unhappy skeptical 30
-
-- /notify title="Enforcer Furia's Hub" text="This is a placeholder. You negotiate a scene with the Mistress here.<br/><br/>Kinks:<br/>Interrogation<br/>Electro Play<br/>Degradation"
 
 + [move:Exit] -> exit
 + [move:Approach] -> apology_check(-> hello, -> exit)
 
 
 = hello
-
+/music furia-hub-2
 /wait
 
 { furia_regard >= 10:
-    << Hello favored subject. >>
+    ¡Fantástico! #01
+    My cariño arrives! #02
 - else:
-    << Hello subject. >>
+    {shuffle:
+        - You return, {isBoy: puto| {isGirl: perra| gusano}}. #03
+        - You return, slave. #68
+        - Oh mira, the {player_name} is back. #04
+        }
 }
 
+-
+{inChastity:
+    I see you are in chastity. #05
+    There are things I can do to you while in chastity, #06
+    but I can do more if you are released. #07
+    
+    If you want to be freed, #08
+    you should visit the Goddess. #09
+}
 
+Do you want to serve me? #10
+
++ [yes] -> Furia_AcknowledgeYes ->
++ [no] -> goodbye
+
+- (wrists)
+/perform idle_present_wrists skeptical 50
+{shuffle:
+    - Present your wrists. #11
+    - Show me your stones. #12
+}
+
++ [pose: present_wrists] 
++ [timeout] -> Furia_Timeout -> wrists
+
+- /perform idle_fake_annoyed amused 50
 {
     - punishments > 0: -> check_punishment
     - rewards >= 10: -> check_reward_mega
@@ -40,60 +67,75 @@
 = check_punishment
 
 /character furia
-I am eager to Punish you, slave.
-Are you ready?
+{punishments > 1:
+    You have more than one punishment due. #13
+- else:
+    You have an Obsidian punishment stone. #14
+}
+
+{shuffle:
+    - I am eager to break you down, slave. #15
+    - I yearn to punish you. #16
+}
+
+Will you submit? #17
+
 + [yes] -> choose_punishment
 + [no]
 
-- << No? >>
+- No? #18
 
 {
     - punishments < 10 && rewards < 10:
         -> check_task
     - punishments >= 10:
-        << You have too many punishments for a task, I'm afraid. >>
+        You have too many punishments to do anything else. #19
+        You must deal with them! #20
     - rewards >= 10:
-        << You have too many rewards for a task, I'm afraid. >>
-        {punishments > 1:
-            << Pay off those punishments and you might get a big reward. >>
-        - else:
-            << Pay off that punishment and you might get a big reward. >>
-        }
+        Well, I cannot give you a task, greedy slave. #21
+        You have hoarded rewards! #22
+        All punishments must be paid #23
+        and one reward redeemed #24
+        if you want a task. #25
+        So... #26
 }
 
-- << Don't you want to pay off a punishment? >>
+- Do you wish to serve a punishment? #27
 
 + [yes] -> choose_punishment
 + [no]
 
 -
-{inChastity == false:
-    << FYI: The Goddess can remove all of those punishments if you go into chastity. >>
-}
 
 -> goodbye
 
 
-
 = check_reward_mega
 
-<< Full band of rewards, huh? >>
-
+A full wrist of Bloodstones. #28
+Y sin castigos. #29
+Worthy of a special reward. #30
 
 {furia_regard < 10:
-    << It's too bad you haven't pleased me more or I might have something special for you. >>
-    << But I can still give you a reward if you spend just one. >>
+    But a fruitless waste of time for you! #31
+    You are not preciosista to me yet. #32
+    You may have a simple reward and be grateful. #33
     -> check_reward
 }
 
 {inChastity:
-    << Too bad you are in chastity or we could truly enjoy ourselves. >>
+    Pero, qué decepción. #34
+    You are in chastity. #35
+    You must fix that first. #36
+    All I can give you for now is a simple reward. #37
     -> check_reward
 }
 
-<< And you've pleased me quite a lot. >>
-<< Give me all 10 and I'll see you get something very special indeed. >>
-<< Would you like that? >>
+Yield all 10 bloodstones, #38
+and you will experience... #39
+Me. #40
+
+Is that what you desire, {player_name}? #41
 
 + [yes] -> choose_reward_mega
 + [no] -> check_reward
@@ -102,43 +144,47 @@ Are you ready?
 = check_reward
 
 /character furia
-<< Are you here to receive your reward? >>
+Do you want a reward, peque? #42
 
 + [yes] -> choose_reward
 + [no]
 
-- << No? >>
+- No? #43
 
 {
     - rewards < 10:
         -> check_task
 
     - rewards >= 10:
-        << You have too many rewards for a task. >>
-        << Indulge yourself before performing any more tasks. >>
+        Well, that is all you may have. #44
 }
 
-<< Would you like to indulge yourself? >>
+Now, idiota. #45
+Do you wish for a reward? #46
+
 + [yes] -> choose_reward
 + [no]
 
-- << Perhaps you are saving those for someone special. >>
-{ inChastity:
-    << FYI: See the Goddess about having that chastity device. >>
-}
+- You cling to those miserable crystals like a fool. #47
 
 -> goodbye
 
 
 = check_task
 
-{ punishments == 0 && rewards == 0:
-    << No rewards or punishments, huh? >>
-    << You must be here to do a task. >>
-- else:
-    I would rather punish you,
-    but I will still mold you with a task.
+/perform talk_consider skeptical 25
+{ 
+    - punishments == 0 && rewards == 0:
+        You have no gems, slave. #48
+        I can give you a task to earn one. #49
+    - punishments > 0:
+        I would rather torture you, #50
+        but still, I can shape you with a task. #51
+    - else:
+        You may serve me with a task. #52
 }
+
+Would you like that? #53
 
 + [yes] -> choose_task
 + [no] -> goodbye
@@ -146,7 +192,10 @@ Are you ready?
 
 = choose_punishment
 
-<< Time to punish you, then. >>
+{shuffle:
+- Your cries of anguish will be como música to my ears. #54
+- Ay, mongrel. You know your place. #55
+}
 
 { shuffle:
     - -> furia_punishment_placeholder
@@ -155,7 +204,10 @@ Are you ready?
 
 = choose_reward_mega
 
-<< Let's get intimate. >>
+{shuffle:
+- This will be almost as much fun as a punishment, no? #56
+- You've earned some fun, {isBoy:ansioso|{isGirl: ansiosa|eager one}}. #57
+}
 
 {shuffle:
     - -> furia_rewardmega_placeholder
@@ -164,14 +216,30 @@ Are you ready?
 
 = choose_reward
 
-<< Time to reward you, then. >>
-
 {shuffle:
-    - -> furia_reward_placeholder
+- Well chosen. #58
+- ¡Que bueno! #59
+}
+
+{ inChastity:
+    With you in chastity, #60
+    our choices are limited. #61
+    {shuffle:
+        - -> furia_reward_placeholder
+    }
+- else:
+    {shuffle:
+        - -> furia_reward_placeholder
+    }
 }
 
 
 = choose_task
+
+{shuffle:
+- I am eager to unravel you. #62
+- How eagerly you debase yourself for my approval. #63
+}
 
 { shuffle:
     - -> furia_task_gloryhole_training
@@ -179,7 +247,14 @@ Are you ready?
 
 
 = goodbye
-<< I have nothing for you. >>
-<< You may go. >>
+{shuffle:
+    - I have nothing more to say to you. #64
+    - You waste my time. #65
+}
+
+{shuffle:
+    - Get out. #66
+    - Leave me. #67
+}
 /wait
 -> exit

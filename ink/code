@@ -1,11 +1,13 @@
 
+
+
 === game_start ===
 
 { web: -> table_of_contents }
 
 /log Starting game from the beginning.
 
-// -> exit has the logic for module starting locations
+// Exit has the logic for module starting locations
 {
     - deviation == unspeakable_toy:
         -> deviation_unspeakable_toy
@@ -17,6 +19,9 @@
         -> yuki_hub
     - deviation == hand_signals:
         -> headmistress_hub
+    - deviation == treat_spanking:
+        ~ punishments = 1
+        -> treat_punishment_spanking
     - deviation == treat:
         -> treat_care
     - deviation == nega_dice:
@@ -25,11 +30,15 @@
         -> pragma_hub
     - deviation == furia:
         -> furia_hub
+    - deviation == ereshkigal:
+        -> ereshkigal_hub
     - inTutorial == false:
         -> entry_hub
     - else:
         -> game_intro
 }
+
+
 
 
 === game_restart ===
@@ -39,12 +48,15 @@
 -> game_start
 
 
+
+
 === load_game ===
 {deviation == demo || deviation == demo_short:
     -> game_start
 }
 
 -> load_path
+
 
 
 // For deviations that start after the main game intro's gender check.
@@ -61,31 +73,18 @@
 }
 
 
+
+
 === exit ===
 /scene None
 
 {
-    - deviation == unspeakable_toy:
-        -> game_start
-    - deviation == yuki_cunnilingus:
-        -> game_start
-    - deviation == treat_cunnilingus:
-        -> game_start
-    - deviation == hand_signals:
-        /scene none
-        -> game_start
     - deviation == exhibitionism:
         /scene none
         -> headmistress_hub
     - deviation == puppyplay:
         /scene none
         -> yuki_hub
-    - deviation == demo:
-        -> pause(3) ->
-        -> game_outro
-    - deviation == demo_short:
-        -> pause(3) ->
-        -> game_intro
     - deviation == treat:
         -> treat_care
     - deviation == nega_dice:
@@ -94,6 +93,11 @@
         -> pragma_hub
     - deviation == furia:
         -> furia_hub
+    - deviation == ereshkigal:
+        -> ereshkigal_hub
+    - deviation != full_game:
+        -> pause(3) ->
+        -> game_start
 }
 
 // Not in a deviation. Continue with normal game.
@@ -101,7 +105,7 @@
 -> pause(1) ->
 
 // If the player has never done the Ms Treatment intro, do the intro.
-{not treat_intro && not inTutorial:
+{not treat_intro_complete && not inTutorial:
     -> treat_intro
 }
 
@@ -124,10 +128,12 @@
         - -> entry_hub
         - -> entry_hub
         - -> entry_hub
-        // - -> entry_hub
-        // - -> entry_hub
+        - -> entry_hub
+        - -> entry_hub
     }
 }
+
+
 
 
 === pause(seconds) ===
@@ -135,8 +141,12 @@
 - ->->
 
 
+
+
 === continue ===
 + [continue] ->->
+
+
 
 
 === tutorial_end ===
@@ -145,6 +155,17 @@
 ~ inTutorial = false
 ~ main_entry_shortcut = true
 -> exit
+
+
+
+
+=== demo_end ===
+// Show The 'Thank You For Playing' Screen Before Restart
+/scene EntryDark.DemoEnd
+/wait 20
+->->
+
+
 
 
 === function unlockShortcuts() ===
@@ -159,11 +180,17 @@
 ~ main_entry_shortcut = true
 ~ return
 
+
+
+
 === function unlockAll() ===
 ~ goddess_hub_status = unlocked
+~ treat_intro_complete = true
 ~ inTutorial = false
 ~ unlockShortcuts()
 ~ return
+
+
 
 
 === select_gender_check ===
@@ -174,12 +201,16 @@
     -> select_gender ->->
 }
 
+
+
+
 === select_gender ===
 /scene entrydark.genderchoice
 /ambient rain
 /music entry
 
 /log Showing gender choices.
+/action open_journal_gender
 
 - (options)
 
@@ -193,19 +224,35 @@
     /notify text="<i>You now appear feminine.</i>" delay=10 #note09
     -> options
 
++ [close-journal]
+    {player_name == "none":
+        ~ player_name = "boy"
+    }
+    -> options
+    
 + {hasChosenBody()} [move]
 
 - ->->
 
 
+
+
 === function hasChosenBody() ===
 ~ return player_name != "none"
+
+
+
 
 === function save(-> load) ===
 ~ load_path = load
 {not debug:
     /save
+- else:
+    /log In debug. Skipping save.
 }
+
+
+
 
 === function setGender(gender) ===
 {
@@ -229,8 +276,12 @@
 ~ return
 
 
+
+
 === function addPunishment() ===
 ~ return addPunishmentWithPath(-> entry_hub)
+
+
 
 
 === function addPunishmentWithPath(-> path)
@@ -256,6 +307,8 @@
 ~ return true
 
 
+
+
 === function removePunishment() ===
 { punishments <= 0:
     /logError Can't remove punishment. Already at 0.
@@ -276,6 +329,8 @@
 }
 
 ~ return true
+
+
 
 
 === function removeBigPunishment() ===
@@ -300,8 +355,13 @@
 ~ return true
 
 
+
+
 === function addReward() ===
 ~ return addRewardWithPath(-> entry_hub)
+
+
+
 
 === function addRewardWithPath(-> load) ===
 { rewards >= 10:
@@ -326,6 +386,8 @@
 ~ return
 
 
+
+
 === function removeReward(-> load) ===
 { rewards <= 0:
     /logError Can't remove a reward. Already at 0.
@@ -346,6 +408,8 @@
 }
 
 ~ return true
+
+
 
 
 === function removeBigReward(-> load) ===
@@ -370,20 +434,37 @@
 ~ return true
 
 
+
+
 === function increaseRegard() ===
 ~ changeRegard(1)
+
+
+
 
 === function decreaseRegard() ===
 ~ changeRegard(-1)
 
+
+
+
 === function changeRegard(amount) ===
 ~ changeRegardOf(current_mistress, amount)
+
+
+
 
 === function increaseRegardTo(mistress) ===
 ~ changeRegardOf(mistress, 1)
 
+
+
+
 === function decreaseRegardTo(mistress) ===
 ~ changeRegardOf(mistress, -1)
+
+
+
 
 === function changeRegardOf(mistress, amount) ===
 {
@@ -405,12 +486,20 @@
         ~ furia_regard = MinMaxRegard(furia_regard + amount)
     - mistress == Treat:
         ~ treat_regard = MinMaxRegard(treat_regard + amount)
+    - mistress == ereshkigal:
+        ~ ereshkigal_regard = MinMaxRegard(ereshkigal_regard + amount)
     - else:
         /logError Can't change {mistress}'s regard.
 }
 
+
+
+
 === function MinMaxRegard(amount)
 ~ return MinMax(amount, 0, 10)
+
+
+
 
 === function MinMax(amount, min, max)
 {
@@ -419,17 +508,26 @@
     - else: ~ return amount
 }
 
+
+
+
 // Fallback for getNegaDie1/2/3() external function
 === function getNegaDie1() ===
 ~ return getNegaDie()
+
+
 
 
 === function getNegaDie2() ===
 ~ return getNegaDie()
 
 
+
+
 === function getNegaDie3() ===
 ~ return getNegaDie()
+
+
 
 
 === function getNegaDie() ===
@@ -448,12 +546,16 @@
 }
 
 
+
+
 === function rollToText(roll) ===
 {
     - roll == -1: Skull
     - roll == 0: Blank
     - roll == 1: Cup
 }
+
+
 
 
 === function setDeviation(d)
@@ -467,8 +569,12 @@
 ~ return
 
 
+
+
 === function setHub(mistress, name, -> load) ===
 ~ setScene(hub_scene, mistress, name, load)
+
+
 
 
 === function setScene(type, mistress, name, -> load) ===
@@ -481,6 +587,7 @@
 ~ has_gag = false
 ~ wants_cei = false
 ~ wants_puppy = false
+~ theater_curtains_raised = false
 
 ~ temp mistressName = "{mistress}"
 
@@ -496,6 +603,9 @@
 }
 
 ~ save(load)
+
+
+
 
 === function getSummaryText() ===
 ~ temp regardText = ""
@@ -521,6 +631,8 @@
         ~ regardText = "/ {current_mistress} Regard: {caliste_regard}"
     - current_mistress == Furia:
         ~ regardText = "/ {current_mistress} Regard: {furia_regard}"
+    - current_mistress == Ereshkigal:
+        ~ regardText = "/ {current_mistress} Regard: {ereshkigal_regard}"
 }
 
 // Set optional deviation-specific text
@@ -529,6 +641,8 @@
 }
 
 ~ return  "Punishments: {punishments} / Rewards: {rewards} {regardText} {deviationText}"
+
+
 
 
 === function getName(mistress) ===
@@ -551,10 +665,13 @@
         ~ return "Enforcer Furia"
     - current_mistress == Angel:
         ~ return "Lady Angelica"
+    - current_mistress == Ereshkigal:
+        ~ return "Sovereign Ereshkigal"    
     - else:
-        /logWarning Mistess not found: {mistress}
+        /logWarning Mistress not found: {mistress}
         ~ return "Mistress Unknown"
 }
+
 
 
 
@@ -568,9 +685,13 @@
 ~ return obey - disobey > 0
 
 
+
+
 === function resetObeyed() ===
 ~ obey = 0
 ~ disobey = 0
+
+
 
 
 === function addObey() ===
@@ -583,6 +704,8 @@
 }
 
 
+
+
 === function addDisobey() ===
 ~ disobey++
 
@@ -591,6 +714,8 @@
 - else:
     /log Disobey Increased: Obey = {obey} / Disobey = {disobey} / Obeying = {obey - disobey > 0:true|false}
 }
+
+
 
 
 === RandomCommentLoop(-> commentTunnel, minTimes, maxTimes, minWait, maxWait)
@@ -604,6 +729,9 @@
 ~ count++
 { count < max: -> repeat | ->-> }
 
+
+
+
 === RandomCommentLoopWithNo(-> commentTunnel, -> noTunnel, minTimes, maxTimes, minWait, maxWait)
 ~ temp count = 0
 ~ temp max = RANDOM(minTimes, maxTimes)
@@ -616,6 +744,9 @@
 - ~ count++
 { count < max: -> repeat | ->-> }
 
+
+
+
 === RandomCommentLoopWithYes(-> commentTunnel, -> yesTunnel, minTimes, maxTimes, minWait, maxWait)
 ~ temp count = 0
 ~ temp max = RANDOM(minTimes, maxTimes)
@@ -627,6 +758,8 @@
 + [yes] -> yesTunnel
 - ~ count++
 { count < max: -> repeat | ->-> }
+
+
 
 
 === RandomCommentLoopWithPuppyBackYes (-> commentTunnel, -> yesTunnel, minTimes, maxTimes, minWait, maxWait)

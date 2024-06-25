@@ -1,7 +1,7 @@
 === treat_care ===
-
-
 TODO: create session choice scene that lets players choose what type of session and asks if they want to continue
+-> start_scene_therapy
+
 = start_scene_therapy
 /scene TreatsRoom.CareIntro
 /perform couch_lounge_back
@@ -19,7 +19,7 @@ TODO: create session choice scene that lets players choose what type of session 
 {deviation == treat: 
     /scene TreatsBed.Treat
     - else:
-    /scene HellBed.Ready
+    /scene HellBed.Care
 }
 /character Treat prone_lounge_right
 /notify title="Instructions." text="Sit or lay down to begin. Stand to leave." #note05
@@ -29,7 +29,6 @@ TODO: create session choice scene that lets players choose what type of session 
 + [move:exit] -> end_scene
 
 - (comfort_begin)
-
 /music care-02
 /wait 2
 
@@ -360,13 +359,12 @@ TODO: create session choice scene that lets players choose what type of session 
 + [move:exit] -> end_scene
 
 
-
 = grief
 
 {deviation == treat: 
     /scene TreatsBed.Treat
     - else:
-    /scene HellBed.Ready
+    /scene HellBed.Care
 }
 /character Treat prone_lounge_right
 /notify title="Instructions." text="Sit or lay down to begin. Stand to leave." #note05
@@ -377,7 +375,7 @@ TODO: create session choice scene that lets players choose what type of session 
 
 - (grief_begin)
 
-/music care-02
+/music care-03
 /wait 2
 
 - (grief_loop_intro)
@@ -637,7 +635,7 @@ TODO: create session choice scene that lets players choose what type of session 
 {deviation == treat: 
     /scene TreatsBed.Treat
     - else:
-    /scene HellBed.Ready
+    /scene HellBed.Care
 }
 /character Treat prone_lounge_right
 /notify title="Instructions." text="Sit or lay down to begin. Stand to leave." #note05
@@ -655,7 +653,6 @@ TODO: create session choice scene that lets players choose what type of session 
 - (inner_strength_loop_intro)
 
 {cycle:
-
     - Just, breathe in #256
     - And let it out slowly #257
     - We all need to know, that we can do it #413
@@ -692,7 +689,6 @@ TODO: create session choice scene that lets players choose what type of session 
     - They're what help us grow #444
     - And I see, so much potential in you #445
 
-
     - -> inner_strength_loop
 }
 
@@ -706,7 +702,6 @@ TODO: create session choice scene that lets players choose what type of session 
 ~ temp count = 20
 
 {cycle:
-
     - You've got this #446
     - You can do it #447
     - Don't let any negative voices in your head #448
@@ -942,13 +937,12 @@ TODO: create session choice scene that lets players choose what type of session 
 + [move:exit] -> end_scene
 
 
-
 = self_care
 
 {deviation == treat: 
     /scene TreatsBed.Treat
     - else:
-    /scene HellBed.Ready
+    /scene HellBed.Care
 }
 
 /character Treat prone_lounge_right
@@ -961,13 +955,12 @@ TODO: create session choice scene that lets players choose what type of session 
 
 - (self_care_begin)
 
-/music care-02
+/music care-03
 /wait 2
 
 - (self_care_loop_intro)
 
 {cycle:
-
     - Just, breathe in #256
     - And let it out slowly #257
     - Sometimes that little voice inside you #643
@@ -976,7 +969,9 @@ TODO: create session choice scene that lets players choose what type of session 
     - That you can't take anymore #646
     - But that voice, those voices, they're wrong #647
     - You can, I know it #648
+
     // Could be "You can take it, I know it"
+
     - And I'm here, to help you know it too #649
     - I want you to know, that you can do it #650
     - You can do, whatever you need to #651
@@ -990,7 +985,9 @@ TODO: create session choice scene that lets players choose what type of session 
     - Tell the voices, to shhhh #659
     - Tell them to be quiet, when you're with me #660
     - Just give them a soft blanket, and gently lay them over those voices #661
+
     // Could be "Just take a soft blanket, and gently lay it over those voices"
+
     - Those voices are there for a reason #662
     - Somewhere, at some point in your life, you developed those voices #663
     - To protect you, to help you, or maybe #664
@@ -999,8 +996,8 @@ TODO: create session choice scene that lets players choose what type of session 
     - You can listen to me #668
     - Listen to my voice #669
     - Let my voice, fill your mind and heart #670
-    - ->self_care_loop
 
+    - ->self_care_loop
 }
 
 + [wait: 1] -> self_care_loop_intro
@@ -1011,7 +1008,6 @@ TODO: create session choice scene that lets players choose what type of session 
 ~ temp count = 20
 
 {cycle:
-
     - Because my voice is here, to take care of you #671
     - I believe in you #672
     - I care about you #673
@@ -1226,7 +1222,6 @@ TODO: create session choice scene that lets players choose what type of session 
     //- Anytime you need me, I'll be here #853
     - Whenever you need me, I'll be here #854
     //- Come to me, whenever you need me #855
-
 }
 
 ~ count++
@@ -1243,16 +1238,14 @@ TODO: create session choice scene that lets players choose what type of session 
 
 
 = end_scene
-
 {deviation != treat: -> exit}
-
 /scene TreatsRoom.Care
 /character Treat
 /music care-01
-/perform couch_lounge_back
 
-    - I promise I will be here #149
-    - Any time you need to be held. #150
+/perform couch_lounge_back 
+- I promise I will be here #149
+- Any time you need to be held. #150
 
 
 /scene TreatsRoom.CareOutro

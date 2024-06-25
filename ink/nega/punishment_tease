@@ -1,13 +1,16 @@
 
 // writing status: in progress
 
+
+
+
 === nega_punishment_tease ===
 -> select_gender_check ->
 
 ~ setScene(punishment_scene, Nega, "nega_punishment_tease", -> nega_punishment_tease)
 
 /scene attic.Ready
-/music nega-punishment
+/music nega-punishment-tease
 /ambient howling-wind
 /character nega idle_unhappy
 
@@ -152,7 +155,7 @@ For what? #30
 Hoping you'd get lucky? #111
 
 /perform idle_sassy amused 55
-Maybe get to be a slutty little fucktoy? #112
+Maybe get to be a slutty little fuck toy? #112
 
 + [yes]
     ~ addDisobey()
@@ -299,7 +302,6 @@ Now get the fuck away from me. #51
 
 
 - -> exit
-
 
 
 = tease_spitting

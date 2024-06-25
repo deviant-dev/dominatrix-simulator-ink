@@ -1,4 +1,8 @@
 
+
+
+
+
 === yuki_reward_puppyplay_lickfeet ===
 
 ~ setScene(reward_scene, Yuki, "yuki_reward_puppyplay_lickfeet", -> yuki_reward_puppyplay_lickfeet)
@@ -13,13 +17,13 @@ Do you want to worship my feet, puppy? #185
 
 +[pose:puppy_yes]
     /perform do_bouncing_big  excited 65
-    Yippy! #186
+    Yippie! #186
 
 +[pose:puppy_no]
     /perform react_shrug_short skeptical 55
     That's fine. #187
 
-    /perform do_consider amused 65
+    /perform talk_consider amused 65
     We can do something else. #188
     -> yuki_reward_puppyplay_milking
 
@@ -37,7 +41,7 @@ Come here puppy! #189
 + { tries < 2 } [timeout] -> lick_feet
 + { tries >= 2 } [timeout]
 
-- (lickfeetcomplete)
+- (lick_feet_complete)
 
 -> Yuki_Puppyplay_Reward_Complete ->->
 

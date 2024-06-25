@@ -4,7 +4,7 @@
 ~ setScene(reward_scene, Nega, "nega_reward_tease", -> nega_reward_tease)
 
 /scene attic.Ready
-/music nega-reward
+/music nega-reward-tease
 /ambient howling-wind
 /character nega idle_bored
 
@@ -50,7 +50,6 @@ Got it, {isBoy: prick|cunt}? #104
         - /perform talk_threaten angry 45
         Move and I'll boot your ass out of here so fast, #106
 
-        /perform react_crazy_gesture amused 50
         it will make your head spin. #107
 
         - -> Nega_Unhappy ->

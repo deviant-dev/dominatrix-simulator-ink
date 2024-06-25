@@ -1,0 +1,747 @@
+=== furia_punishment_edging ===
+-> select_gender_check ->
+~ setScene(punishment_scene, Furia, "furia_punishment_edging", -> furia_punishment_edging)
+/scene FuriasRoom.Ready
+/music furia
+/ambient furia
+/character furia
+
+
+
+//  ~removePunishment()
+// /notify title="Enforcer Furia's Punishment Result" text="You have been punished. One obsidian removed.<br/> Returning to the entry."
+
+// - /wait 5
+// -> exit
+
+TODO: notes on altering scene for Furia
+//Edging with caning or whipping - write both and have the game select one at random
+//player will be laying on the ground with their legs bent in front of them so they can watch her whip or cane them
+//This is fun for her - she likes the idea of warping the player's mind to become more masochistic 
+//Furia occasionally fondles herself mockingly while caning the player
+
+//If the player orgasms during this scene they will receive extra punishment markers
+//It would be great to use alignment in this scene: if the player is aligned with pleasure, more emphasis is placed on the whipping; if with pain, Furia will drag out the orgasm denial 
+//The fail criteria for punishments are: repeated timeouts/distractions; repeated disobey; orgasm
+//If a punishment is failed, should the player get an additional marker? 
+
+//Verbal taunts alternated with teasing and lewd comments to arouse the player 
+
+//Poses should be changed periodically to keep the player from tiring while masturbating 
+//Intro poses: present stand, humble 
+//Edging poses: hands and knees, present ass reverse
+
+//Scene outline
+//start 
+//pose present stand 
+//explain punishment (scene randomly selects cane or whip)
+//understand
+//consent check 
+//edging_intro start edging 
+//(Furia fondles herself and brandishes her cane/whip as the player obeys)
+//initial 5 strokes (Furia counts her strokes just before impact to aid the player in moving correctly)
+//change pose for edging vs impact 
+//then shuffle edging with impact breaks to keep player from becoming too excited 
+//orgasm check (if player confesses to orgasm during punishment they receive additional markers)
+
+TODO: Code to allow the scene to randomly select either cane or whip
+
+~ setScene(punishment_scene, Furia, "furia_punishment_edging", -> furia_punishment_edging)
+
+//game can suggest that the player bring a friend for this scene 
+
+/scene atrium.edging
+/music furia
+/character furia idle_unhappy sad 55
+
+-> start
+
+
+= start
+
+- Pathetic little worm. 
+You know the rules and still you chose to disobey. 
+
+Hands on your head, slave! 
+
++ [pose:present_stand]
+
+Not only did you disobey and earn a punishment,
+you came <i>here</i> to receive your punishment. 
+You crave the pain. 
+The degradation. 
+
+- (start_query)
+You need to be reminded just how worthless you are. 
+Is that not so, cielo? //mocking tone 
+
++ [yes]
+    Don't think you can flatter me into going easy on you. 
++ [no]
+    Too bad, {isBoy: puto| {isGirl: perra| gusano}}. 
+    You're all mine. 
++ [timeout]
+    //Furia snaps her fingers 
+    -> Furia_Timeout ->
+    -> start_query 
++ [distracted]
+    -> Furia_PayAttention ->
+    -> start_query 
+
+
+- (edging_explanation)
+/perform idle_tease amused 55
+As your punishment, 
+you will touch yourself until you are 
+{hasPenis: painfully hard|dripping} and aching with need. 
+
+You do NOT have permission to cum. 
+
+And to drive the lesson home
+that disobedient slaves have no place in this <i>House</i>,
+I will lash your body while you edge for me.
+
+We will see if the combination of frustration and pain 
+can penetrate that thick skull of yours. 
+
+- (understand)
+¿Entiendo? (Got it?)
+
++[yes]
+    -> Furia_AcknowledgeYes ->
++[no]
+    I don't like repeating myself. 
+    -> understand 
++[timeout]
+  -> Furia_Timeout ->
+  -> understand
+
++[distracted]
+  -> Furia_PayAttention ->
+  -> understand
+
+- (consent)
+Now... 
+Are you ready to submit to your suffering? 
+  
++[yes] 
+    Aquí vamos.
+    -> edging_intro
++[no] 
+    -> Furia_AcknowledgeNo -> 
+    Are you sure about that, peque? 
+        ++[yes]
+            Little coward.
+            -> leave 
+        ++[no]
+            That's what I thought. 
+            Let's get on with it. 
+            -> edging_intro 
+        ++[timeout]
+            -> Furia_Timeout ->
+            -> consent 
+        ++[distracted]
+            //Furia snaps her fingers 
+            -> Furia_PayAttention ->
+            -> consent 
+
++[timeout]
+  -> Furia_Timeout ->
+  -> consent
+
++[distracted]
+  -> Furia_PayAttention ->
+  -> consent
+
+- (leave)
+One way or another, you'll have to pay. 
+Now get out of my sight. 
+
+-> exit
+
+- (edging_intro_short)
+I don't like repeating myself. 
+You will recall that for this punishment 
+you must touch yourself as instructed, 
+and I will {cane|whip} you 
+until I think you've learned your lesson. 
+
+Do you understand what is required? 
+
++[yes]
+    -> Furia_AcknowledgeYes ->
+    -> edging_shuffle
++[no]
+    Then we will review it again.  
+    -> edging_intro
++[timeout]
+  -> Furia_Timeout ->
+  -> edging_intro_short
+
++[distracted]
+  -> Furia_PayAttention ->
+  -> edging_intro_short
+
+- (edging_intro) 
+
+
+//pose for masturbating (kneeling)
++[pose:kneel]
+
+- 
+Kneel, {isBoy: puto| {isGirl: perra| gusano}}. 
+Spread those legs. 
+Get your hand between your thighs and work. 
+
+//Furia fondles herself and brandishes the whip/cane 
+Tu lo tienes. That's it. 
+
+I bet you enjoy seeing yourself like this,
+don't you? 
+So obscene. 
+It makes me hard. 
+
+Make yourself feel good, {isBoy: chico|{isGirl: chica|mascota}}.
+But remember, you are forbidden to cum. 
+
+//pause for player to get going 
+
+Down on your hands and knees, {isBoy: puto| {isGirl: perra| gusano}}. 
+I'm going to {whip|cane} you as I count. 
+
++ [pose:hands_and_knees]
+
+- This will sting. 
+A little insecto bite. 
+
+- (edging_understand)
+Each impact will jerk you forward. 
+Move your head when it hits so I know you feel it. 
+
+¿Entiendo? (Got it?)
+
++[yes]
+    -> Furia_AcknowledgeYes ->
++[no]
+    I don't like repeating myself. 
+    -> edging_understand 
++[timeout]
+  -> Furia_Timeout ->
+  -> edging_understand
+
++[distracted]
+  -> Furia_PayAttention ->
+  -> edging_understand
+
+- 
+I begin.
+
+TODO: add in spanking count code from Goddess joi scene
+
+Uno. 
+
+Dos. Bueno. 
+
+Tres. 
+
+Cuatro. Uno mas. 
+
+Cinco. 
+
+Excelente. Now the real fun begins. 
+
+TODO: Player gets whipped / cropped as they edge
+
+- (edging_shuffle)
+TODO: Fix code in edging stitches to properly shuffle
+TODO: Because Furia wants the player to fail, she gives them the option to cum, but they will earn a new punishment stone
+{shuffle:
+    - -> edging_1
+    - -> edging_2
+    - -> edging_impact
+}
+
+TODO: assess function of tease_bank_joi
+
+= edging_1
+- On your knees, slave. 
++[pose:kneel]
+
+Touch yourself for me. 
+
+/wait 2
+//first two numbers are a random number of comments to pull and second two are intervals between comments
+-> RandomCommentLoop (-> tease_bank_1, 3, 4, 3, 4) ->
+
+- (enjoyment)
+
+/perform idle_tease aroused 45
+  Are you enjoying yourself so far, worm? 
+
++[yes]
+    We'll see about that. 
++[no]
+    Good. 
+
++[timeout]
+  -> Furia_Timeout->
+  -> enjoyment
+
++[distracted]
+  -> Furia_PayAttention ->
+  -> enjoyment
+  
+- (cumcheck1)
+Now tell me, did you cum yet? 
+
++ [yes]
+    -> cum_yes 
+
++ [no]
+    So. There's hope for you yet. 
+    
++ [timeout]
+    -> Furia_Timeout ->
+    -> cumcheck1
+
++ [distracted]
+    -> Furia_PayAttention ->
+    -> cumcheck1
+
+-> impact_1
+
+
+- (impact_1)
+  
+Hands off, this instant! 
+TODO: code for hands off pose
+Mmm, I can see you glisten for me. 
+
+On your hands and knees. 
+My {whip|cane} hand itches. 
+  
++ [pose:hands_and_knees] 
+
+- By the House! I'm going to enjoy this. 
+
+- (impact10)
+
+¡Uno! 
+
+¡Dos! That's it. 
+
+¡Tres!
+
+¡Cuatro!
+
+¡Cinco! 
+
+Halfway there, {isBoy: puto| {isGirl: perra| gusano}}.
+
+¡Seis!
+
+¡Siete! 
+
+Starting to burn, isn't it. 
+
+¡Ocho!
+
+¡Nueve!
+
+¡Diez! 
+
+For every offense, there is a suitable punishment. 
+
+Muy bieno. So red and tender for me. 
+
++ [timeout] 
+    -> Furia_Timeout ->
+    We begin again. 
+    -> impact10
+
++ [distracted]
+  -> Furia_PayAttention ->
+  We begin again. 
+  -> impact10
+
+->edging_2 
+
+
+= edging_2
+
+Right! To work. 
++[pose:kneel]
+Get that greedy little hand between your legs 
+and make yourself feel good — 
+but not too good! 
+
+-> RandomCommentLoop(-> tease_bank_2 , 4, 5, 3, 4)  ->
+
+-> tease_bank_joi -> 
+/perform talk_question amused 55
+  You like the crack of the whip, don't you? 
+  It excites you. 
+
+/perform idle_sassy aroused 70
+  You must be absolutely aching by now. 
+  Desperate. Greedy. Pathetic. 
+  //Furia spits on the floor
+  Remember, you do <i>not</i> have permission to cum. 
+
+- -> RandomCommentLoop(-> tease_bank_3 , 2, 4, 4, 3)  ->
+
++ [timeout]
+  -> Furia_Timeout ->
+//   -> aching
+
++ [distracted]
+  -> Furia_PayAttention ->
+//   -> aching
+
+- (cumcheck2)
+Now tell me, did you cum yet? 
+
++ [yes]
+    -> cum_yes
+
++ [no]
+    There's hope for you yet. 
+    
++ [timeout]
+    -> Furia_Timeout ->
+    -> cumcheck2
+
++ [distracted]
+    -> Furia_PayAttention ->
+    -> cumcheck2
+
+->impact_2
+
+
+- (impact_2)
+
+Enough! Get down. 
++ [pose:hands_and_knees] 
+
+Excelente. 
+
+- (impact15)
+
+¡Uno! 
+
+¡Dos! 
+
+¡Tres!
+
+Tender already, {isBoy: chico|{isGirl: chica|mascota}}?
+
+¡Cuatro!
+
+¡Cinco! 
+
+Don't flinch away from me. 
+
+¡Seis!
+
+¡Siete! 
+
+What a beautiful sight. 
+
+¡Ocho!
+
+¡Nueve!
+
+¡Diez! 
+
+Muy bueno. 
+
+¡Once!
+
+¡Doce!
+
+Your suffering is a gift. 
+
+¡Trece!
+
+¡Catorce!
+
+¡Quince!
+
+Perfecto, little slave. 
+
++ [timeout] 
+    -> Furia_Timeout ->
+    From the top. 
+    -> impact15
+
++ [distracted]
+  -> Furia_PayAttention ->
+  From the top. 
+  -> impact15
+
+Ahh, that is just what I needed. 
+
+-> edging_impact
+
+
+= edging_impact
+
+Now. On all fours, {isBoy: puto| {isGirl: perra| gusano}}. 
++[pose:hands_and_knees]
+
+Touch yourself and weep while I hurt you. 
+No kind release for you today, no. 
+
+- (edging_count)
+
+¡Uno! 
+
+¡Dos! 
+
+¡Tres!
+
+-> tease_bank_joi -> 
+
+¡Cuatro!
+
+¡Cinco! 
+
+-> tease_bank_joi -> 
+
+¡Seis!
+
+¡Siete! 
+
+¡Ocho!
+
+-> tease_bank_joi -> 
+
+¡Nueve!
+
+¡Diez! 
+
+-> tease_bank_joi -> 
+
+¡Once!
+
+¡Doce!
+
+-> tease_bank_joi ->
+
+¡Trece!
+
+-> tease_bank_joi -> 
+
+¡Catorce!
+
+¡Quince!
+
+-> tease_bank_joi -> 
+
+¡Dieciséis!
+
+¡Diecisiete!
+
+-> tease_bank_joi -> 
+
+¡Dieciocho!
+
+¡Diecinueve!
+
+¡Viente! Enough. 
+
+Good, cielo. 
+
++ [timeout] 
+    -> Furia_Timeout ->
+    From the top. 
+    -> edging_count
+
++ [distracted]
+  -> Furia_PayAttention ->
+  From the top. 
+  -> edging_count
+
+I hope you did not lose control, peque. 
+
+- (cumcheck3)
+Did you cum while I thrashed you? 
+
++ [yes]
+    -> cum_yes
+
++ [no]
+    So you <i>can</i> learn. 
+
++ [timeout]
+    -> Furia_Timeout ->
+    -> cumcheck3
+
++ [distracted]
+    -> Furia_PayAttention ->
+    -> cumcheck3
+
+- -> conclusion 
+
+= cum_yes
+- Pathetic slave. 
+You have earned yourself an additional punishment. 
+    
+~ addPunishment() 
+
+Now get out of my sight. 
+
+    -> exit 
+
+= conclusion
+
+Enough. You have done your time. 
+And I have other slaves to condition. 
+
+- (work)
+/perform
+    I do hope you'll behave… but if I am honest, 
+    it doesn't matter <i>why</i> you're here. 
+    One way or another, I will have you  
+    exactly how I want you. 
+
+/perform
+    Remember that you belong to Us. 
+
+- (end_furia_edging_punishment)
+
+    /perform 
+    Now, let's get that punishment marker off your wrist. 
+
+~ removePunishment()
+
+    /perform 
+    Begone, dog, and behave yourself. 
+
+->exit
+
+= tease_bank_1
+
+{ shuffle:
+  - /perform tease_arm_up
+  - /perform tease_ass_caress
+  - /perform tease_bend_over
+  - /perform tease_caress_breast_left
+  - /perform tease_dance_slow
+  - /perform tease_rubbing_crotch
+}
+
+{ shuffle:
+    - Like what you see, slave? 
+    - I do so enjoy watching you frustrate yourself. 
+    - That's right, {isBoy: chico|{isGirl: chica|mascota}}. 
+        Just like that.  
+    - Watch it, {isBoy: ansioso| {isGirl: ansiosa| eager one}}. 
+        Don't stray too close to the edge. 
+    - Pace yourself, peque. 
+    - What a beautiful sight! 
+    - I want you {hasPenis:painfully hard|dripping and desperate} for me. 
+    - Look in the mirror. 
+        See what you are - a pathetic, needy worm. 
+    - I love to hear your desperate, pathetic moans. 
+}
+
+->->
+
+
+= tease_bank_2
+
+{ shuffle:
+  - /perform tease_arm_up
+  - /perform tease_ass_caress
+  - /perform tease_bend_over
+  - /perform tease_caress_breast_left
+  - /perform tease_dance_slow
+  - /perform tease_rubbing_crotch
+}
+
+{ shuffle:
+    - I bet you want to cum real bad, don't you. 
+    - So eager! Yet you must control your passion. 
+    - I do hope you're not enjoying this too much. 
+    - Settle in. 
+        This will be a long ride. 
+    - Remember, you do <i>not</i> have permission to cum. 
+    - How does it feel to watch your own debasement? 
+    - Ah, mi dulce. 
+        So {hasPenis:hard|wet} for me. 
+    - Do you regret your misdemeanors, {isBoy: puto| {isGirl: perra| gusano}}? 
+    - Your frustrated passion gives me strength. 
+}
+
+
+->->
+
+
+= tease_bank_3
+
+{ shuffle:
+  - /perform tease_arm_up
+  - /perform tease_ass_caress
+  - /perform tease_bend_over
+  - /perform tease_caress_breast_left
+  - /perform tease_dance_slow
+  - /perform tease_rubbing_crotch
+  - /perform tease_pinup
+}
+
+{ shuffle:
+
+    - You must be getting close. 
+        Stay with me. 
+    - I wonder if your {hasPenis:cock|pussy} is sore yet. 
+    - Breathe, cielo, and don't stop touching yourself.
+    - I love to hear you moan for me. 
+    - Look what your punishment is doing to my cock, peque. 
+    - No amount of begging will get you the release you crave. 
+    - That's right, {isBoy: chico|{isGirl: chica|mascota}}. 
+        like that.  
+    - No release awaits you this time, slave. 
+
+}
+
+->->
+
+= tease_bank_joi
+
+TODO: Add /perform from new Furia poses
+
+{ shuffle:
+  - /perform
+  - /perform
+  - /perform
+  - /perform
+  - /perform
+  - /perform
+  - /perform
+}
+
+{ shuffle:
+    - You're enjoying this, aren't you, slut? 
+    - Your body believes it will get to cum. 
+        How sad. 
+    - Feel how the lash warms your ass and {hasPenis:head|cunt}. 
+    - I don't care if it burns! 
+        Keep touching yourself. 
+    - By the House! 
+        This feels good. 
+    - Ah, mi criatura. 
+        Embrace the pain. 
+    - You belong to the House. 
+    - Feel how the pleasure dances with the pain. 
+    - But what will make the lesson really stick — frustration or pain? 
+    - Scream all you want...
+        It makes me hard. 
+
+}
+
+->->
+
+
+
+

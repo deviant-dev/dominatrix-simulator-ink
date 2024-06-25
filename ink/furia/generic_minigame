@@ -1,0 +1,498 @@
+=== Furia_Tempo_Comments ===
+TODO: Need to include a 'fail' option under timeout. What happens if the player just stops participating? How does the scene end?
+
+
+//comments when player hasn't started
+= timeout
+
+/emotion sad 50
+
+{shuffle:
+    - Your task has arrived, slave. #01
+    - Get going. #02
+    - Do something. #03
+    - ¡Vamos!<br/>(Let's go!) #04
+    - Well, snap to it! #05
+    - {mg_performOther: They are waiting for you to start.| -> timeout} #06
+}
+->->
+
+
+//asking the player to change speed
+= change_to_slower
+
+/emotion amused 50
+
+{shuffle:
+    - Make it nice and slow. #07
+    - Time to slow it down. #08
+    - Go slower, criatura. #10
+}
+->->
+
+
+= change_to_faster
+
+/emotion excited 50
+
+{shuffle:
+    - Time to speed up. #11
+    - Move more quickly. #12
+    - Rápidamente, criatura.<br/>(More quickly, creature.) #13
+    - Go a little faster. #14
+    - {mg_performOther: They want you to move faster.| -> change_to_faster} #15
+}
+->->
+
+
+//correcting the player for going the wrong speed, lost arousal level
+= too_fast
+
+/emotion angry 50
+
+//record non-verbal sounds to indicate disappointment at too fast
+
+{shuffle:
+    - ¡Ay! That is much too fast. #16
+    - Woah. Slow it down. #17
+    - You rush. Go slower. #18
+    - Slow your pace. #19
+    
+}
+->->
+
+
+= too_slow
+
+/emotion disgusted 50
+
+//record non-verbal sounds to indicate disappointment at too slow
+{shuffle:
+    - That's too slow. Go faster. #20
+    - You're not trying hard enough. Speed it up. #21
+    - ¡Ay ay ay! Move faster! #22
+    - Pick up the pace, idiota. #23
+}
+->->
+
+
+//comments about speed delivered at different arousal levels keeping her voice pitch at the right arousal level
+= just_right_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - Ahhh. Stay at that pace. #24
+    - Very nice. #25
+    - That is the perfect speed. #26
+    - ¡Qué bueno!<br/>(That's good.)#27
+        Keep doing that. #28
+}
+->->
+
+
+= just_right_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - {not mg_performOther: Mmmm. Just like that. | -> just_right_arousal_medium} #29
+    - That's much better. #30
+    - {not mg_performOther: That feels really good. | -> just_right_arousal_medium} #31
+    - ¡Buen esfuerzo!<br/>(Good effort!)#32
+        Move just like that. #33
+}
+->->
+
+
+= just_right_arousal_high
+
+/music furia-minigame-climax
+/emotion aroused 100
+
+{shuffle:
+    - Ahhh, yes. ¡Perfecamente! #34
+    - Mi dulce, that is perfect! #35
+    - Oh yes! Right there. #36
+    - ¡Sensacional! #37
+        You are near the end. #38
+    - Ay, {isBoy: goloso.<br/>(Oh, how hungy.)| {isGirl: golosa.<br/>(Oh, how hungry.)| que hambre.<br/>(Oh, such hunger.)}} #39
+        You are at the best part. #40
+}
+->->
+
+
+= continue_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - {not mg_performOther: So relaxing. |-> continue_arousal_low} #41
+    - You're so good at this. #42
+    - {not mg_performOther: You make me feel good. |-> continue_arousal_low} #43
+    - ¡Qué correcto!<br/>(That's correct.) #44
+        Slow and steady. #45
+}
+->->
+
+
+= continue_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - {not mg_performOther: Ahhhh. I'm so wet! | -> continue_arousal_medium} #46
+    - Keep doing that and I might let you touch yourself. #47
+    - {not mg_performOther: You're overwhelming me! | -> continue_arousal_medium} #48
+    - Wallow in serving. #49
+    - I am impressed with your perseverance! #50
+    - Sigue así. Keep going. #51
+}
+->->
+
+
+= continue_arousal_high
+
+/music furia-minigame-climax
+/emotion aroused 100
+
+{shuffle:
+    - I am aroused watching you, dulce. #52
+    - It is almost there! #53
+    - {not mg_performOther: You're going to make me cum! | -> continue_arousal_high} #54
+    - I am pleased with your obedience thus far. #55
+    - ¡Ya casi lo dominas!<br/>(You've almost mastered that!)#56
+        You are so close to finishing! #57
+}
+->->
+
+
+= orgasming
+
+/music furia-minigame-climax
+/emotion aroused 100
+
+{shuffle:
+    - {not mg_performOther: Yes! I'm cumming! | -> orgasming} #58
+    - {not mg_performOther: Ahhhh! Yes! Yes! | -> orgasming} #59
+    - That's it, cielo.<br/>(sweet one) #60
+        You have done it! #61
+    - That's it, cariño.<br/>(sweet one) #67
+    - {mg_performOther:
+        ¡Lo has hecho!<br/>(You've done it!)#62
+        They are cumming! #63
+    - else:
+        -> orgasming
+    }
+}
+
+{not mg_performOther:
+    {shuffle:
+        - cc: (long orgasmic moans) #64
+        - cc: (short orgasmic moans) #65
+        - cc: (shuddering orgasmic moans) #66
+    }
+}
+->->
+
+
+
+
+// Gloryhole/blowjob -specific tempo comment lines.
+=== Furia_Tempo_Gloryhole_Comments ===
+
+
+= timeout
+
+~ mg_commentCount = 0
+/emotion sad 50
+
+{shuffle:
+    
+    - {mg_performOther: Do not just stare at it. | -> timeout} #01
+    - {mg_performOther: 
+            You leave your offering unsatisfied. #02
+            Begin. #03
+        - else:
+            -> timeout
+        }
+    - I want that mouth working. #04
+    - {not mg_performOther: I want to feel your tongue. | -> timeout}  #05
+    - Get that mouth moving. #06
+    - -> Furia_Tempo_Comments.timeout ->
+    - -> Furia_Tempo_Comments.timeout ->
+    - -> Furia_Tempo_Comments.timeout ->
+}
+-> END
+
+
+= change_to_slower
+
+~ mg_commentCount = 0
+/emotion amused 50
+
+{shuffle:
+    - Time to slow that tongue down. #07
+    - Now, take your time with your tongue. #08
+    - {mg_performOther: They want your mouth to drag slowly along it.| -> change_to_slower} #09
+    - Now, go nice and slow with your mouth. #10
+    - -> Furia_Tempo_Comments.change_to_slower ->
+    - -> Furia_Tempo_Comments.change_to_slower ->
+    - -> Furia_Tempo_Comments.change_to_slower ->
+}
+-> END
+
+
+= change_to_faster
+
+~ mg_commentCount = 0
+/emotion excited 50
+
+{shuffle:
+    - Speed that tongue up now. #11
+    - Now, start working your tongue harder. #12
+    - Slide your mouth faster. #13
+    - {mg_performOther: They want to feel your mouth move faster.| -> change_to_faster} #14
+    - -> Furia_Tempo_Comments.change_to_faster ->
+    - -> Furia_Tempo_Comments.change_to_faster ->
+    - -> Furia_Tempo_Comments.change_to_faster ->
+}
+-> END
+
+
+= too_fast
+
+~ mg_commentCount = 0
+/emotion angry 75
+
+{shuffle:
+    - You're licking too fast, {isBoy: puto| {isGirl: perra| gusano}}! #15
+    - ¡Ay caramba! Slow that mouth down! #16
+    - Tsk tsk tsk. #17
+        Your mouth moves too fast. #18
+    - {mg_performOther: You fail them when you rush with your mouth.| -> too_fast} #19
+    - -> Furia_Tempo_Comments.too_fast ->
+    - -> Furia_Tempo_Comments.too_fast ->
+    - -> Furia_Tempo_Comments.too_fast ->
+}
+-> END
+
+
+= too_slow
+
+~ mg_commentCount = 0
+/emotion disgusted 75
+
+{shuffle:
+    - Move that tongue faster! #20
+    - That mouth is too slow! #21
+    - Pitiful. #22
+        Move your mouth more. #23
+    - {mg_performOther: They want to feel more of your mouth. Faster.| -> too_slow} #24
+    - -> Furia_Tempo_Comments.too_slow ->
+    - -> Furia_Tempo_Comments.too_slow ->
+    - -> Furia_Tempo_Comments.too_slow ->
+}
+-> END
+
+
+= just_right_arousal_low
+
+~ mg_commentCount = 0
+/emotion aroused 50
+
+{shuffle:
+    - That's it. #25
+        {not mg_performOther: I like what your tongue is doing, peque.} #26
+    - Perfecto. #27
+        {not mg_performOther: Your mouth feels good.} #28
+    - Nice speed, but use more tongue. #29
+    - Buena velocidad. #30
+        {mg_performOther:
+            You arouse them, {isBoy: ansioso| {isGirl: ansiosa| eager one}}. #31
+        - else: 
+            -> just_right_arousal_low
+        }
+    - -> Furia_Tempo_Comments.just_right_arousal_low ->
+    - -> Furia_Tempo_Comments.just_right_arousal_low ->
+    - -> Furia_Tempo_Comments.just_right_arousal_low ->
+}
+
+-> END
+
+
+= just_right_arousal_medium
+
+~ mg_commentCount = 0
+/emotion aroused 75
+
+{shuffle:
+    - Buen ritmo. #32
+        What a clever tongue you have. #33
+    - Tu lo tienes. #34
+        Keep that mouth nice and wide. #35
+    - Nice pace. #36
+        Look at how you slobber on yourself. #37
+    - {mg_performOther: 
+        Very good tempo. #38
+        {mg_withPenis:
+            I can see how it pulses for more. #39
+        - else:
+            I can see how it aches for more. #40
+        }
+       - else: 
+       -> just_right_arousal_medium
+       }
+    - -> Furia_Tempo_Comments.just_right_arousal_medium ->
+    - -> Furia_Tempo_Comments.just_right_arousal_medium ->
+    - -> Furia_Tempo_Comments.just_right_arousal_medium ->
+}
+-> END
+
+
+= just_right_arousal_high
+
+~ mg_commentCount = 0
+/music furia-minigame-climax
+/emotion aroused 100
+
+{shuffle:
+    - That's it. #41
+        We shall make a proper cumslut from your flesh. #42
+    - Now, you will finish what you started. #43
+        Suck harder. #44
+    - ¡Ya casi lo dominas!<br/>(You've almost mastered it.) #45
+        Do not stop licking! #46
+    - {mg_performOther: Your tongue can make them cum, criatura.| -> just_right_arousal_high}. #47
+    - -> Furia_Tempo_Comments.just_right_arousal_high ->
+    - -> Furia_Tempo_Comments.just_right_arousal_high ->
+    - -> Furia_Tempo_Comments.just_right_arousal_high ->
+}
+-> END
+
+
+= continue_arousal_low
+
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+
+/emotion aroused 50
+
+{shuffle:
+    - {not mg_performOther: Such a warm tongue. |-> continue_arousal_low} #48
+    - {not mg_performOther: Mmm. Your mouth feels good. |-> continue_arousal_low} #49
+    - Make sure to use no teeth while you move. #50
+    - {not mg_performOther: Ahhhh...} #51
+        Look at that saliva drip down your chin. #52
+    - {mg_withPenis:
+            I want to hear how hard you are sucking. #53
+        - else:
+            I want to hear how hard you are licking. #54
+        }
+    - {mg_withPenis:
+            You are sliding your mouth just right, mi dulce. #55
+        - else:
+            You are bobbing your mouth just right, mi dulce. #56
+        }
+    - -> Furia_Tempo_Comments.continue_arousal_low ->
+    - -> Furia_Tempo_Comments.continue_arousal_low ->
+    - -> Furia_Tempo_Comments.continue_arousal_low ->
+}
+-> END
+
+
+= continue_arousal_medium
+
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+
+/emotion aroused 75
+
+{shuffle:
+    - {not mg_performOther: 
+            Ah, sí. #57
+            Move your tongue just like that. #58
+        - else:
+            -> continue_arousal_medium
+        }
+    - {not mg_performOther: I love how your mouth feels.|-> continue_arousal_medium} #59
+    - Suckle like a baby as you serve, {isBoy: chico|{isGirl: chica|mascota}}. #60
+    - I better see saliva dripping down your chin, {isBoy:cabrón|{isGirl:puta|animal}}. #61
+    - -> Furia_Tempo_Comments.continue_arousal_medium ->
+    - -> Furia_Tempo_Comments.continue_arousal_medium ->
+    - -> Furia_Tempo_Comments.continue_arousal_medium ->
+}
+-> END
+
+
+= continue_arousal_high
+
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+
+/music furia-minigame-climax
+/emotion aroused 75
+
+{shuffle:
+    - {mg_performOther: They are about to cum.| -> continue_arousal_high} #62
+        I want to see more spit dripping down your chest. #63
+    - {mg_performOther: Can you hear and feel their need to release?| -> continue_arousal_high} #64
+    - {not mg_performOther: So close! Keep going!| -> continue_arousal_high} #65
+    - {not mg_performOther: Ahhh! The end is coming!} #66
+        Do not stop slurping! #67
+    - {mg_performOther: It is ready to explode, criatura.| -> continue_arousal_high} #68
+    - {mg_performOther: It is ready to spasm, criatura.| -> continue_arousal_high} #69
+    - -> Furia_Tempo_Comments.continue_arousal_high->
+    - -> Furia_Tempo_Comments.continue_arousal_high->
+    - -> Furia_Tempo_Comments.continue_arousal_high->
+}
+-> END
+
+
+= orgasming
+~ mg_commentCount = 0
+/music furia-minigame-climax
+/emotion aroused 100
+
+{shuffle:
+    - {mg_performOther: Beg for their orgasm!| -> orgasming} #70
+    - {mg_performOther:
+            {mg_withPenis:
+                Suck the seed out of that cock. #71
+            - else:
+                Slurp the juices of that pussy. #72
+            }
+        - else:
+            -> orgasming
+        }
+    - Soak it all up! #73
+    - {not mg_performOther: Ahhh! Yes! | -> orgasming} #74
+      Swallow every drop! #75
+    - Swallow, cunt. #76
+        Don't you dare waste a drop. #77
+    - {mg_performOther: 
+            Use your mouth to absorb their essense... #78
+            Revel in it. #79
+        - else:
+            -> orgasming
+        }
+    - -> Furia_Tempo_Comments.orgasming ->
+    - -> Furia_Tempo_Comments.orgasming ->
+    - -> Furia_Tempo_Comments.orgasming ->
+}
+-> END

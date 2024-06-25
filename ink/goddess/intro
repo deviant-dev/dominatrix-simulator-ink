@@ -1,5 +1,8 @@
 TODO: Remove excessive animations -dev
 
+
+
+
 === goddess_intro ===
 -> select_gender_check ->
 
@@ -37,7 +40,7 @@ TODO: Remove excessive animations -dev
 /scene bedroom.intro
 /ambient rain
 /music goddess-intro-2
-/character goddess idle_sassy angry 70
+/character goddess idle_unhappy angry 70
 
 - Oh... How rude. #01
 
@@ -47,13 +50,13 @@ TODO: Remove excessive animations -dev
 
 /wait 3
 
-/perform react_disappointed angry 50
+/perform idle_tease aroused 50
 And I was having so much fun. #02
 
 /emotion amused 60
 Ah, well... #03
 
-{deviation == demo_short: -> inspection_start}
+{deviation == demo_short: -> ask_spying_done}
 
 -> interview
 
@@ -90,7 +93,7 @@ Did Mistress Yuki-Onna let you in? #05
     
 + { tries  <=1 } [timeout] 
     /perform react_nod_big disgusted 60
-    It's a simple question. Nod your head for yes./ #09
+    It's a simple question. Nod your head for yes. #09
     /perform react_head_toss_casual disgusted 60
     Shake your head for no. #10
     //Attempting to get the goddess to shake her head in time with the lines
@@ -103,6 +106,7 @@ Did Mistress Yuki-Onna let you in? #05
     -> ask_again
 
 + [distracted] -> Goddess_PayAttention -> ask_again
+
 
 = ask_again
 
@@ -121,6 +125,7 @@ Did Mistress Yuki-Onna let you in? #05
     Yuki-Onna is disobeying me again. She let you in, didn't she? #18
 }
     -> ask_entry
+
 
 = stay  
 - /perform talk_consider amused 35
@@ -174,7 +179,7 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
     
     /perform idle_bored skeptical 40
     Well, too bad. #11
-    You haven't earned that priviledge yet. #12
+    You haven't earned that privilege yet. #12
 
 + [no]
     /perform talk_thoughtful disgusted 40
@@ -191,9 +196,8 @@ I bet that turned you on. Didn't it?<br/>Spying on me and my precious pets. #28
 
 + [distracted] -> Goddess_PayAttention -> ask_spying_again
 
-
 - (ask_spying_done)
-/perform do_inspect aroused 50
+/perform talk_behold aroused 50
 I bet you have no idea where you are, do you? #36
 
 - (ask_where)
@@ -206,11 +210,11 @@ I bet you have no idea where you are, do you? #36
     You have no clue. #38
 
 + [no]
-    /perform react_scoffs amused 70
+    /perform react_head_toss_casual amused 70
     Of course you don't. #39
 
 + (ask_where_again)[timeout]
-    /perform idle_unhappy_stomp angry 50
+    /perform idle_unhappy_arms_crossed angry 50
     Well... do you have any idea where you are? #40
     -> ask_where
 
@@ -219,14 +223,16 @@ I bet you have no idea where you are, do you? #36
 - /perform talk_lean_forward amused 55
 You're just a tiny little mouse stuck in a maze. #41
 
-/perform talk_behold scared 65
+/emotion scared 65
 You may never find your way out again. #42
 
-/perform do_shake_finger amused 70
+/perform talk_gesture amused 70
 This is no ordinary house, mind you. #43
 
-/perform talk_consider aroused 65
+/perform idle aroused 65
 Even so. You are here now. #44
+
+{deviation == demo_short: -> inspection_start}
 
 /perform do_inspect skeptical 50
 And you won't be going anywhere for quite a while. #45
@@ -344,7 +350,7 @@ But first, let me have a good look at you. #71
 /perform idle_fake_annoyed amused 30
 I'm always curious about our new guests. #75
 
-/perform do_inspect aroused 50
+/perform talk_one_hand aroused 50
 I so rarely take the time to inspect them personally #76
 when they first arrive. #77
 
@@ -354,13 +360,13 @@ This is a bit of an unexpected treat. #78
 /perform talk_lean_forward aroused 50
 You don't mind, do you? #79
 
-/perform idle_sassy aroused 30
+/perform idle aroused 30
 
 + [yes] How unfortunate. #80
     /perform talk_annoyed disgusted 30
     Honestly, I don't even know why I bother asking. #81
 + [no]
-    /perform talk_one_finger skeptical 30
+    /perform idle_tease amused 30
     I think someone might be enjoying this. #82
 + [timeout]
     /perform react_scoffs amused 60
@@ -371,6 +377,7 @@ You don't mind, do you? #79
 - (stand_straight)
 ~ tries++
 
+/perform idle_sassy skeptical 40
 { shuffle:
     - Stand up straight. #84
     - Come on. Lift that head a bit for me. #85
@@ -388,7 +395,7 @@ You don't mind, do you? #79
 
 // /perform circle_player
 
-/emotion excited 45
+/perform idle_sassy excited 45
 Push your shoulders back and arch that lovely spine. #88
 /wait
 
@@ -399,7 +406,7 @@ Stick that pretty little ass out where I can see it. #89
 - (present_ass)
 ~ tries++
 
-+ [pose:present_ass_right]
++ [pose:present_ass_right] -> Goddess_GoodJob ->
 + { tries < 3 } [timeout] -> Goddess_BadJob -> present_ass
 + { tries >= 3 } [timeout] -> Goddess_CheckIfInterested -> present_ass
 
@@ -432,20 +439,21 @@ Now then... #90
 
 - -> Goddess_GoodJob ->
 
-/perform do_inspect aroused 30
+/perform idle_tease aroused 50
 Mmmmm... so much delicious flesh to work with. #94
 
 /emotion excited 25
 Strong bones and muscles. #95
 
-/perform talk_one_finger excited 45
+/emotion excited 45
 You'll need to be flexible, as well. #96
 
-/emotion aroused 70
+/perform tease_caress_breasts_large aroused 70
 Oh yes... There is much here we can work with. #97
 
 -> continue ->
 ~ addRewardWithPath(-> load_at_present_self)
+/wait 3
 -> present_self
 
 
@@ -472,7 +480,6 @@ Thrust your chest out. Knees apart. #99
 /perform idle_sassy aroused 45
 I want to see you present yourself more fully to me. #100
 
-
 + [pose:present_kneel]
 + { tries < 2 } [timeout] -> Goddess_BadJob -> present_self_again
 + { tries >= 2 } [timeout] -> Goddess_CheckIfInterested -> present_self_again
@@ -481,14 +488,14 @@ I want to see you present yourself more fully to me. #100
 
 /perform idle_fake_annoyed aroused 45
 Look at you. So obedient. So ready. #101
-/wait 1
+/wait 2
 
-/emotion amused 45
+/perform talk_behold amused 45
 You may go. But first, a reward. #102
 
 You may show me how much you appreciate my instruction. #103
 
-/perform do_point_down aroused 60
+/emotion aroused 60
 You may bow before me and kiss my feet. #104
 
 ~ tries = 0
@@ -499,7 +506,7 @@ You may bow before me and kiss my feet. #104
 
 Bow down, kiss, then back to your pose like a good little {player_name}. #105
 
-+ [pose:kiss_feet]
++ [pose:kiss_feet] -> Goddess_GoodJob.EmoteOnly ->
 + { tries < 3 } [timeout] -> kiss_feet
 + { tries >= 3 } [timeout]
 + [no]
@@ -509,7 +516,9 @@ Bow down, kiss, then back to your pose like a good little {player_name}. #105
     /perform react_thankful skeptical 70
     Turning down such a reward. You are a strange one. #107
 
-- /perform idle_skeptical amused 60
+- 
+/wait 3
+/perform idle_skeptical amused 60
 That's enough. #108
 
 ~ tries = 0
@@ -517,7 +526,7 @@ That's enough. #108
 ~ tries++
 
 //new line with vo
-/perform talk_question amused 60
+/perform idle_sassy amused 60
 Come back up to your feet, {player_name}. #158
 
 + [pose:raised_chin]
@@ -527,15 +536,14 @@ Come back up to your feet, {player_name}. #158
 - /perform do_inspect skeptical 60
 You might just prove useful one day, #109
 
-/perform idle_bored disgusted 70
+/emotion amused 30
 but you'll need much more training first. #110
 
-/perform do_now_leave amused 60
+/perform do_shoo_player amused 60
 Off to Mistress Yuki-Onna with you. #111
 
-/perform idle_skeptical amused 75
+/perform idle_tease amused 75
 I'm sure she can show you the ropes, so to speak. #112
-
 
 + [wait]
 
@@ -549,13 +557,9 @@ I'm sure she can show you the ropes, so to speak. #112
 -> exit
 
 
-
 = DemandApology
-
 -/wait
-
 { cycle:
-
     - /perform react_point_at_player_angry angry 60
     Don't pretend to toy with me. #140
 
@@ -563,7 +567,7 @@ I'm sure she can show you the ropes, so to speak. #112
     I am not amused. #141
 
     - /perform react_scoffs angry 60
-    Such behaviour is unacceptable. #142
+    Such behavior is unacceptable. #142
 
     - /perform react_disappointed angry 60
     You are trying my patience, worm. #143
@@ -585,5 +589,3 @@ You are forgiven. #146
 /perform react_point_at_player_angry angry 65
 Don't let it happen again. #147
 ->->
-
-

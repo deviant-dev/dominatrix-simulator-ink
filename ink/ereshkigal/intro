@@ -1,0 +1,39 @@
+//writing status: in progress
+
+
+
+
+=== ereshkigal_intro ===
+
+~ setHub(Ereshkigal, "ereshkigal_intro", -> ereshkigal_intro)
+
+TODO: make a room for ereshkigal
+
+/ambient none
+
+
+
++ [move:Exit] -> exit
++ [move:Approach] -> apology_check(-> start, -> exit)
+
+
+= start
+
+-> ereshkigal_hub_vignette
+
+~ ereshkigal_intro_complete = true
+
+->goodbye
+
+
+//She turns into a giantess, similar to the end of Goddess intro
+//Steps on player, screen goes black
+= goodbye
+
+How dare you come in here.
+
+Get the fuck out, and don't you dare come back.
+
+/wait
+-> exit
+

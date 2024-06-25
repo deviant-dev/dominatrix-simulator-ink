@@ -1,20 +1,24 @@
 
+
+
+
+
 === nega_punishment_hard_trampling ===
 
 ~ setScene(punishment_scene, Nega, "nega_punishment_hard_trampling", -> nega_punishment_hard_trampling)
 
 /scene Attic.Ready
-/music nega2
+/music nega-punishment-hard
 /ambient off
 /character nega
 
-//slit, maggot, worm, meatbag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cumbucket, skank, pillow biter, tease
+//slit, maggot, worm, meat bag, fuckup, wretch, outcast, stain, scum, taint, blemish, cunt, whore, cum bucket, skank, pillow biter, tease
 
 
 
 
 {shuffle:
-    - I want to hurt you now, meatbag!
+    - I want to hurt you now, meat bag!
     - Time to suffer, stain!
     - You're in for it now, cunt!
     - I'm going to walk all over you, wretch!
@@ -53,7 +57,7 @@ Lie on your back.
 +   [No]
     - ~demerits++
     //Nega pounds the player's chest with her boot. 
-    - Fuck you, meatbag! 
+    - Fuck you, meat bag! 
     Your cheekiness is going to get you in a lot of trouble!
     
 +   [timeout]
@@ -114,7 +118,7 @@ I'll bet a disgusting whore like you is really enjoying this, right?
 +   [Don't comply]
     I said lick it! -> lick_it
 
-- (keep_going) Keep going, dumbfuck! I want the bottom of my heels to be spotless!
+- (keep_going) Keep going, dumb fuck! I want the bottom of my heels to be spotless!
 +   [Comply]
     /Wait 10. -> other_one
 
@@ -165,7 +169,7 @@ I'm sure you loved that, my disgusting slut!
 
 - (reward_boobs)
 //Still on the player's chest, Nega leans over the player's head and puffs her chest out so her breasts protrude towards the player's face.
-Enjoy the view, dumbfuck!
+Enjoy the view, dumb fuck!
 Only a lucky few get to see something so wonderful, be grateful!
 /Wait 10
 -> end_trample

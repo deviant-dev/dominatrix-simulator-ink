@@ -13,7 +13,7 @@
 
 - (session_selection)
 
-// Determine which handsignal session to run
+// Determine which hand signal session to run
 { stopping:
     - -> headmistress_task_handsignals_basics.intro ->
     - -> headmistress_task_handsignals_basics.practice ->
@@ -27,6 +27,7 @@
 + [continue]
 
 - -> exit
+
 
 = random_practice
 

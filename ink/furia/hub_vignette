@@ -1,0 +1,84 @@
+=== furia_hub_vignette ===
+
+-> select_gender_check ->
+~ setScene(task_scene, Furia, "furia_hub_vignette", -> furia_hub_vignette)
+/scene FuriasRoom.Ready
+/music furia
+/ambient furia
+/character furia
+
+/notify title="Enforcer Furia's Task Check" text="This is a placeholder task check. Do you want to do the task?"
+
++ [yes]
++ [no] -> exit
+
+- /notify title="Enforcer Furia's Task Test" text="This is a placeholder task scene. Do you complete your task?"
+
++ [yes]
+    ~addReward()
+    /notify title="Enforcer Furia's Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
++ [no]
+    ~addPunishment()
+    /notify title="Enforcer Furia's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+
+- /wait 5
+-> exit
+
+Head Mistress comes to inspect Furia’s dungeon and her work. Furia is composed but clearly she is subordinate to the Head Mistress. HM makes a comment about the cleanliness of the dungeon. Furia brushes it off but when HM leaves she is furious with her captives at having not done a good enough job and making her look bad. 
+Done in a casual, almost indifferent way
+Run a finger over an object and say “dusty”
+Furia acting as if it’s supposed to be dusty
+Furia being pissed after the HM leaves and showing different emotions
+
+
+(How does the player enter the room/scene? Regains consciousness, peeking out from a cage, walking into a room to do chores, entering the room to play?) Furia lounges on human furniture while a captive is suspended from the ceiling (or tied to a rack or whatever). They moan in pain. Another captive is cleaning the floor (or some other subservient thing). The sound of a loud metal door banging open is heard. Furia jumps to her feet as HM comes into the dungeon. Furia straightens her clothes (if possible) and clears her throat. 
+
+Furia: Ah Head Mistress, what do I owe the pleasure?
+
+Furia bows (or some deferential gesture if possible). HM is taller than Furia (?) and looks down on her. HM looks around the room with an eyebrow raised (?). After a moment -
+
+HM: I thought you said you were going to … tidy up the dungeon.
+
+Furia: Of course, well, as you can see it’s a work in progress. 
+
+Furia kicks the prisoner cleaning the floors but otherwise does not take her eyes off HM. 
+
+HM: Hmm.
+
+Furia: Besides, my dungeon has better things to do than trivialize herself with domestic tasks. As you can see, I’m working (gesturing towards the prisoner on the rack) and I have prisoners waiting for their punishments (gesturing towards the player). HM looks towards the player, smirks a bit (?).
+
+HM: Well, I suppose we all have standards tantamount to our merit.
+
+Furia lets out a long exhale.
+
+Furia: Is there something I can help you with, Head Mistress?
+
+HM: Indeed. I need that one (points at player - or if this doesn’t fit the storyline she can point at another prisoner or just say a name) back in protocol if they ever want to convene with the Goddess (or whatever goal they’re working towards that they need to see HM for one more time). They’ve not completed their training. Send them to me when you’re done with them. 
+
+Furia: It would be my pleasure, Mistress. 
+
+Furia bows and HM leaves the room. The loud metal door slams shut. Suddenly Furia is furious. She turns towards the prisoners angrily.
+
+Furia: Pathetic! You’re all pathetic! See what happens when I go too easy on you!
+
+She kicks or whips the prisoner scrubbing the floor. 
+
+Furia: You enjoy making me look like a fool?! Huh?!
+
+She continues her attack then turns her attention to the prisoner suspended/tied up. She spits on them, slaps them.
+
+Furia: Well no more! I will show you all what Furia is capable of!
+
+She suddenly turns towards the player. Her eyes lit with excitement.
+
+Furia: And you!
+
+She starts walking toward the player (maybe cracking her whip).
+
+Furia: She wants you back after I’m done with you, huh?! 
+
+She is now very close to the player. Not yelling anymore but she has a devious tone. She crouches or leans down to the player. 
+
+Furia: Oh she’ll get you back all right. She may not recognize you when I’m done but I don’t mind sending her my sloppy seconds. Oh, I’m going to have a good time with you. Head Mistress will know exactly what my “standards” are by the time I’m done with you. (laughs)
+
+Cut scene to whatever play scene with Furia. 

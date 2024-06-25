@@ -1,0 +1,321 @@
+// headmistress_generic_minigame_tempo (any action, any subject)
+// headmistress_generic_minigame_tempo_cunnilingus (cunnilingus action, any subject)
+
+=== Headmistress_Generic_Minigame_Tempo ===
+
+TODO: Need to include a 'fail' option under timeout. What happens if the player just stops participating? How does the scene end?
+//comments when player isn't interacting with the minigame
+= timeout
+/character headmistress
+/emotion sad 50
+
+{shuffle:
+    - Why do you dawdle? #32
+    - Your performance is lacking finesse. #33
+    - My patience is waning, trinket. #34
+    - The assembly awaits; as do we. #35
+}
+->->
+
+//asking the player to change speed
+= change_to_slower
+/character headmistress
+/emotion amused 50
+
+{shuffle:
+    - Pace yourself, pet. #36
+    - Temper your enthusiasm, bauble. #37
+    - Take your time, now. #38
+    - There is no race. Go more slowly. #39
+
+}
+->->
+
+
+= change_to_faster
+/character headmistress
+/emotion excited 50
+
+{shuffle:
+    - I desire more. #40
+    - A little faster now, poppet. #41
+    - Pick up the pace! #42
+    - Hasten, harlot! #43
+    - Pick up the pace! #65
+}
+->->
+
+
+//correcting the player for going the wrong speed, lost arousal level
+= too_fast
+/character headmistress
+/emotion angry 50
+
+//record non-verbal sounds to indicate disappointment at too fast
+
+{shuffle:
+    - Slower, {player_name}! #44
+    - Haste makes waste! Slower, pet. #45
+    - Moderate your pace, heathen. #46
+    - cc: (unhappy grunts) #47
+    - cc: (unhappy grunts) #48
+    - cc: (unhappy groan) #49
+    - cc: (unhappy groan) #50
+}
+->->
+
+
+= too_slow
+/character headmistress
+/emotion disgusted 50
+
+//record non-verbal sounds to indicate disappointment at too slow
+{shuffle:
+    - You slacken, layabout. Faster. #51
+    - Swifter! Do not dawdle. #52
+    - A little faster, if you please. #53
+    - You frustrate me. Pick it up. #54
+    - cc: (disappointed grunts) #55
+    - cc: (disappointed grunts) #56
+    - cc: (disappointed groan) #57
+    - cc: (disappointed groan) #58
+}
+->->
+
+
+//comments about speed delivered at different arousal levels keeping her voice pitch at the right arousal level
+= just_right
+/character headmistress
+/emotion happy 50
+
+{shuffle:
+    - Stay like that for awhile. #59
+    - [sigh] Very nice, indeed. #60
+    - Mm, yes. Carry on! #61
+    - Ooh, how well you are learning your place! #62
+    - You're a natural at this. #63
+}
+->->
+
+
+
+
+=== Headmistress_Generic_Minigame_Tempo_Arousal ===
+
+
+= just_right_arousal_low
+/character headmistress
+/emotion happy 75
+
+{shuffle:
+    - {not mg_performOther: 
+        How pleasant this is. #01
+    } 
+    - You delight me with your efforts. #67
+    - {not mg_performOther: 
+        Such pleasure! #02
+    } 
+    - Mmm. That's the ticket! #68
+    - {mg_performOther: 
+        What a lubricious view! #03
+    } 
+    - -> Headmistress_Generic_Minigame_Tempo.just_right ->
+}
+->->
+
+
+= just_right_arousal_medium
+/character headmistress
+/emotion aroused 50
+
+{shuffle:
+    - {not mg_performOther: 
+        What splendid sensations you create! #04
+    } 
+    - Ohh, yes. You’re a quick study. #69
+    - Our audience is intrigued with you. #70
+    - {mg_performOther: 
+        Watching you succeed is divine. #05
+    } 
+    - {not mg_performOther: 
+        Ooh, I am beset with sensation! #06
+    } 
+}
+->->
+
+
+= just_right_arousal_high
+/character headmistress
+/emotion aroused 75
+
+{shuffle:
+    - {mg_performOther: 
+        Oh my stars! You delight me! #07
+    } 
+    - Oh, by the Goddess! How delicious. #71
+    - Yes! Right in the notch, harlot! #72
+    - {not mg_performOther: 
+        O, my Goddess! What sensation! What bliss! #08
+    } 
+    - {not mg_performOther: 
+        Oh, unholy beatitude! What fire consumes me! #09
+    } 
+}
+->->
+
+
+= continue_arousal_low
+/character headmistress
+/emotion happy 75
+
+{shuffle:
+    - {not mg_performOther:
+            This is remarkably dreamy. #10
+        }
+    - A pleasing exertion so far. #73
+    - Stay like this for awhile, moppet. #74
+    - Oh yes. Keep going. #75
+    - {mg_performOther: 
+            A lovely view. Carry on! #11
+        }
+    - {not mg_performOther: 
+            My satisfaction, bauble, shall be your reward. #12
+        }
+    - -> continue_arousal_low_moan ->
+    - -> continue_arousal_low_moan ->
+    - -> continue_arousal_low_moan ->
+    - -> continue_arousal_low_moan ->
+    - -> continue_arousal_low_moan ->
+    - -> continue_arousal_low_moan ->
+    - -> continue_arousal_low_sigh ->
+    - -> continue_arousal_low_sigh ->
+    - -> continue_arousal_low_sigh ->
+    - -> continue_arousal_low_sigh ->
+    - -> continue_arousal_low_sigh ->
+    - -> continue_arousal_low_sigh ->
+}
+->->
+
+= continue_arousal_low_moan
+{not mg_performOther:
+    cc: (content moan) #13
+}
+->->
+
+= continue_arousal_low_sigh
+{not mg_performOther:
+    cc: (content sigh) #14
+}
+->->
+
+
+= continue_arousal_medium
+/character headmistress
+/emotion aroused 50
+
+{shuffle:
+    - {not mg_performOther: 
+        Mmmmm, I am beset with sensation! #25
+    } 
+    - {not mg_performOther: 
+        That feels exquisite! #26
+    } 
+    - {not mg_performOther: 
+        You're overwhelming me! #27
+    } 
+    - Truly, this is an acceptable offering. #76
+    - Your earnestness pleases me, token. #77
+    - That's it. Your exertion is most pleasing. #78
+    - Do not slacken this delightful rhythm. #79
+    - {not mg_performOther: 
+        There is the most exquisite fire building in my very centre. #28
+    } 
+    - -> continue_arousal_medium_moan ->
+    - -> continue_arousal_medium_sigh ->
+    - -> continue_arousal_medium_moan ->
+    - -> continue_arousal_medium_sigh ->
+    - -> continue_arousal_medium_moan ->
+    - -> continue_arousal_medium_sigh ->
+    - -> continue_arousal_medium_moan ->
+    - -> continue_arousal_medium_sigh ->
+    - -> continue_arousal_medium_moan ->
+    - -> continue_arousal_medium_sigh ->
+    - -> continue_arousal_medium_moan ->
+    - -> continue_arousal_medium_sigh ->
+}
+->->
+
+= continue_arousal_medium_moan
+{not mg_performOther:
+    cc: (eager moan) #29
+}
+->->
+
+= continue_arousal_medium_sigh
+{not mg_performOther:
+    cc: (eager sigh) #30
+}
+->->
+
+= continue_arousal_high
+/character headmistress
+/emotion aroused 75
+
+{shuffle:
+    - Take notes my students! This one is a prodigy! #80
+    - {not mg_performOther: 
+        What a deluge of pleasure! #41
+    } 
+    - How exquisitely sublime! #81
+    - Don’t you dare cease now, jezebel! #82
+    - Almost there. Do not fail me, vassal! #83
+    - {not mg_performOther: 
+        Oh, bauble! I'm so close! #42
+    } 
+    - -> continue_arousal_high_moan ->
+    - -> continue_arousal_high_sigh ->
+    - -> continue_arousal_high_moan ->
+    - -> continue_arousal_high_sigh ->
+    - -> continue_arousal_high_moan ->
+    - -> continue_arousal_high_sigh ->
+    - -> continue_arousal_high_moan ->
+    - -> continue_arousal_high_sigh ->
+    - -> continue_arousal_high_moan ->
+    - -> continue_arousal_high_sigh ->
+    - -> continue_arousal_high_moan ->
+    - -> continue_arousal_high_sigh ->
+}
+->->
+
+= continue_arousal_high_moan
+{not mg_performOther:
+    cc: (eager moan) #43
+}
+->->
+
+= continue_arousal_high_sigh
+{not mg_performOther:
+    cc: (eager sigh) #44
+}
+
+->->
+
+
+= orgasming
+
+/character headmistress
+/emotion aroused 100
+
+{shuffle:
+    - Oh! Oh! Oh my word! #84
+    - Oh my Goddess, this one belongs here! #85
+    - O agony! O bliss! #86
+    - Oh, my Goddess! I’m melting! #87
+}
+
+{shuffle:
+    - cc: (long orgasmic moans) #88
+    - cc: (short orgasmic moans) #89
+    - cc: (shuddering orgasmic moans) #90
+}
+->->

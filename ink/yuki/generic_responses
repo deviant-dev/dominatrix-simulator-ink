@@ -1,8 +1,10 @@
 === Yuki_AcknowledgeYes ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -37,11 +39,16 @@
 
 ->->
 
+
+
+
 === Yuki_AcknowledgeNo ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -76,11 +83,16 @@
 
 ->->
 
+
+
+
 === Yuki_GoodJob ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -139,11 +151,16 @@
 
 ->->
 
+
+
+
 === Yuki_Badjob ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -154,8 +171,8 @@
     - {emoteOnly:/emotion|/perform talk_annoyed} angry 35
     I thought you knew better. #01
 
-    - {emoteOnly:/emotion|/perform talk_behold} skeptical 45
-    Oh geez, slave. #02
+    - {emoteOnly:/emotion|/perform react_oh_darn_yuki} skeptical 45
+    Oh jeez, slave. #02
 
     - {emoteOnly:/emotion|/perform talk_lean_forward} sad 45
     I know you know better. #03
@@ -172,13 +189,13 @@
     - {emoteOnly:/emotion|/perform talk_one_finger} sad 65
     Sometimes I have too much patience. #07
 
-    - {emoteOnly:/emotion|/perform idle_pleased} sad 75
+    - {emoteOnly:/emotion|/perform react_sad_kick_foot_yuki} sad 75
     Please just meet your expectations. For me? #08
 
     - {emoteOnly:/emotion|/perform do_shake_finger_stern} angry 45
     You are so naughty! #09
 
-    - {emoteOnly:/emotion|/perform react_dumb} scared 55
+    - {emoteOnly:/emotion|/perform idle_unhappy_stomp} scared 55
     That was terrible! #10
 
     - {emoteOnly:/emotion|/perform do_smooth_skirt} skeptical 65
@@ -205,12 +222,17 @@
 
 ->->
 
+
+
+
 //Response to timeouts to questions
 === Yuki_Timeout ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -218,7 +240,7 @@
 
 {cycle:
 
-    - {emoteOnly:/emotion|/perform react_dumb} angry 45
+    - {emoteOnly:/emotion|/perform idle_unhappy_stomp} angry 45
     Hellooo? I'm talking to you! #01
 
     - {emoteOnly:/emotion|/perform idle_unhappy_stomp} sad 50
@@ -248,14 +270,19 @@
 
 ->->
 
+
+
+
 //Response to timeouts to actions
 === Yuki_Interested ===
 
 TODO: change to NoAction to match the Headmistress and replace in scripts
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -278,7 +305,7 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
     - {emoteOnly:/emotion|/perform talk_one_finger} skeptical 60
     Come on, hurry up! #05
 
-    - {emoteOnly:/emotion|/perform react_dumb} angry 45
+    - {emoteOnly:/emotion|/perform react_shake_head_disbelief} angry 45
     What's taking so long? #06
 
     - {emoteOnly:/emotion|/perform do_snap_fingers} angry 45
@@ -287,12 +314,17 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
 
 ->->
 
+
+
+
 //response to player distraction
 === Yuki_PayAttention ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -311,7 +343,7 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
     - {emoteOnly:/emotion|/perform talk_annoyed} amused 65
     Oh, gee. You need a lot of training. Look at me. #04
 
-    - {emoteOnly:/emotion|/perform react_dumb} skeptical 60
+    - {emoteOnly:/emotion|/perform react_sad_kick_foot_yuki} sad 60
     Didn't anyone ever teach you to look at people when they're speaking to you? #05
 
     - {emoteOnly:/emotion|/perform react_disappointed} angry 65
@@ -340,13 +372,17 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
 + [timeout] -> Yuki_PayAttention.DoEmoteOnly(emoteOnly) ->->
 
 
+
+
 === Yuki_Aroused ===
 /character yuki
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -373,13 +409,18 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
 
 ->->
 
+
+
+
 === Yuki_Punishment_Response ===
 /character yuki
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -402,13 +443,18 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
 
 ->->
 
+
+
+
 === Yuki_Punishment_Chastise ===
 /character yuki
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -432,12 +478,17 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
 
 ->->
 
+
+
+
 === Yuki_Reward_Complete ===
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -448,9 +499,9 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
 }
 
 {shuffle:
-    - I just love giving rewards!  
-    - You should keep earning these kinds of rewards! 
-    - You're the best little {player_name} a girl could ask for!
+    - I just love giving rewards! #01
+    - You should keep earning these kinds of rewards! #02
+    - You're the best little {player_name} a girl could ask for! #03
 }
 
 {shuffle:
@@ -460,17 +511,23 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
 }
 
 {shuffle:
-    - See you soon, {player_name}!
-    - Keep being so good!
-    - Go earn some more rewards! 
+    - See you soon, {player_name}! #04
+    - Keep being so good! #05
+    - Go earn some more rewards! #06
 }
 
 ->->
+
+
+
+
 === Yuki_PlayerToCum ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -505,17 +562,24 @@ TODO: change to NoAction to match the Headmistress and replace in scripts
 
 ->->
 
+
+
+
 === Yuki_CheckIfInterested ===
 -> DoCheck(false, false)
+
 
 = EmoteOnly
 -> DoCheck(false, true)
 
+
 = Puppy
 -> DoCheck(true, false)
 
+
 = DoEmoteOnly(emoteOnly)
 -> DoCheck(false, emoteOnly)
+
 
 = DoCheck(isPuppy, emoteOnly)
 /character yuki
@@ -587,12 +651,15 @@ It's so much better when you decide to follow the rules and behave. #07
 
 ->->
 
+
+
+
 === Yuki_Kiss_Foot ===
 
 {shuffle:
-    - Kiss my foot.
-    - Come here and kiss my toes. 
-    - I expect you to kiss my foot. 
+    - Kiss my foot. #01
+    - Come here and kiss my toes. #02
+    - I expect you to kiss my foot. #03
 }
 
 + [pose: kiss_feet] -> Yuki_GoodJob ->
@@ -600,18 +667,24 @@ It's so much better when you decide to follow the rules and behave. #07
 
 - ->->
 
+
+
+
 === Yuki_Take_Reward_Prompt ===
 
 // don't use performances
 
 {shuffle:
-    - Present your wrist.
-    - This will cost you one Bloodstone.
-    - Time to hand over your Bloodstone.
-    - Give me your wrist, {player_name}.
+    - Present your wrist. #01
+    - This will cost you one Bloodstone. #02
+    - Time to hand over your Bloodstone. #03
+    - Give me your wrist, {player_name}. #04
 }
 
 ->->
+
+
+
 
 === Yuki_Take_Reward(-> load) ===
 

@@ -5,7 +5,7 @@
 
 
 /scene attic.chair
-/music nega-punishment
+/music nega-punishment-light
 /ambient howling-wind
 /character nega sex_chair_openlegs_wide
 TODO: add variation so sometimes the player can touch themselves and other times they can't. No orgasm
@@ -16,11 +16,12 @@ TODO: add variation so sometimes the player can touch themselves and other times
     -> start
 }
 
+
 = dog
 You like being Yuki's little pup, don't you? #01
 
 + [yes]
-    Well, now you can be my little bitch. #02
+    Well, now you can be my little flea bag. #02
     A dirty, little dog for me to use and abuse. #03
     -> start
     
@@ -28,8 +29,9 @@ You like being Yuki's little pup, don't you? #01
     -> Nega_Unhappy.EmoteOnly ->
     -> start
 
+
 = start
-Get down on all fours like the dog you are, maggot! #04
+Get down on all fours like the filthy dog you are, maggot! #04
 
 + [pose:hands_and_knees]
 
@@ -39,9 +41,9 @@ Get down on all fours like the dog you are, maggot! #04
 
 - (please)
 /perform sex_chair_crosslegs_tease
-You're a dirty horndog... #06
+You're a dirty beast, #06
 
-Willing to do anything to please me. #07
+willing to do anything to please me. #07
 
 Isn't that right? #08
 
@@ -62,7 +64,7 @@ Isn't that right? #08
 You're going to get up close and personal #12
 with the bottom of my boots. #13
 
-Got it, dog? #14
+Got it, {isBoy:dog|bitch}? #14
 
 + [yes]
     Good. #15
@@ -77,10 +79,10 @@ Got it, dog? #14
 
 - (kiss_feet)
 Before I give you the pleasure of cleaning my boot, #16
-you will thank me for the priviledge. #17
+you will thank me for the privilege. #17
 
 /perform sex_chair_crosslegs_snap_right_fingers
-Come here and kiss my boot, bitch! #18
+Come here and kiss my boot, {isBoy: worm|cunt}! #18
 
 + [pose:kiss_feet]
     -> Nega_GoodJob.EmoteOnly ->
@@ -94,7 +96,9 @@ Come here and kiss my boot, bitch! #18
 
 - (sit)
 /perform sex_chair_crosslegs_tease
-Sit up, dog. #20
+Now, sit up, {isBoy:dog|bitch}. #20
+
+TODO: add variation with no puppy pose if they haven't done Yuki's intro yet - use present kneel
 
 + [pose:puppy_sit]
 
@@ -109,14 +113,14 @@ Accept your place beneath me. #23
 
 - (worthy)
 /perform sex_chair_openlegs_idle_tease
-You're not worthy of being anything more than a dog in my presence. #24
+You're not worthy of being anything more than a {isBoy: filthy dog|dirty bitch} in my presence. #24
 
 Are you? #25
 
 + [yes]
     If I say you're not worthy. #26
     Then you're not fucking worthy. #27
-    Got it, bitch? #28
+    Got it? #28
     
     ++ [yes]
             Good. #29
@@ -137,7 +141,7 @@ Are you? #25
 
 - 
 /perform sex_chair_crosslegs_idle_left
-Let's make you prove your loyalty to me, bitch. #32
+Let's make you prove your loyalty to me, pooch. #32
 
 I stepped outside earlier and got the bottoms of my boots dirty. #33
 
@@ -147,11 +151,11 @@ I stepped outside earlier and got the bottoms of my boots dirty. #33
 
 {cycle:
     - Would you be a dear and clean that up for me with your tongue? #34
-    - Now, are you going to clean my boot? #35
+    - Wallow like a mutt and clean that up, won't you? #35
 }
     
 + [yes]
-    You're such a dirty dog! #36
+    You're such a dirty {isBoy: dog|bitch}! #36
     I love it! #37
     Now get busy! #38
     -> accept_boot_lick
@@ -181,7 +185,7 @@ I stepped outside earlier and got the bottoms of my boots dirty. #33
 - (accept_boot_lick)
 //The idea here is that the player has to move their head in a "yes"-like motion to "lick" the boot. It would be really cool if there was actually dirt on the boot that disappeared/fell off as the player "licked"
 
-TODO: Replace with headmovement mini-game eventually
+TODO: Replace with head movement mini-game eventually
 - (lick_1) 
 //Player must move head up and down near the bottom of the boot.
 
@@ -199,22 +203,24 @@ TODO: Replace with headmovement mini-game eventually
 - 
 {shuffle:
     - Lick it. #43
-    - Again. #44
-    - Lick. #45
-    - Use that tongue. #46
-    - Again! #47
-    - Keep going! #48
+    - -> Nega_Keep_Going ->
+    - Lick. #44
+    - Use that tongue. #45
+    - Again! #46
+    - -> Nega_Keep_Going ->
 }
 
 -> lick_again
 
 - (licks_done)
-Good job. #49
+-> Nega_GoodJob ->
 
 - (beg)
 /perform sex_chair_openlegs_idle
-Get up on your knees and beg me to let you clean my other boot. #50
-Beg like the filthy dog you are. #51
+Get up on your knees and beg me to let you clean my other boot. #47
+Beg like the filthy whelp you are. #48
+
+TODO: add variation with no puppy pose if they haven't done Yuki's intro yet - use present_kneel
 
 + [pose:puppy_beg]
 
@@ -223,31 +229,32 @@ Beg like the filthy dog you are. #51
 
 - 
 /perform sex_chair_openlegs_idle_tease
-Hrmm. #52
-I'm not convinced. #53
+Hrmm. #49
+I'm not convinced. #50
 
-I want to see you show me you're horny for my filthy boots. #54
+I want to see how horny you are for my filthy boots. #51
 
-Get into your horny pose, bitch. #55
+-> Nega_prepare_masturbate ->
 
-+ [pose:puppy_horny]
-
-+ [timeout] -> Nega_PayAttention.EmoteOnly -> beg 
-
-- 
 /perform sex_chair_openlegs_wide
-That's it. #56
-You're a horny little bitch just begging to clean my boots. #57
+That's it. #52
+
+-> Nega_Masturbation_Comments.EmoteOnly ->
+-> Nega_Masturbation_Comments.EmoteOnly ->
+
+Such a slutty, little {isBoy: mutt|tail} just begging to clean my boots. #53
 
 - (switch_feet) 
 /perform sex_chair_crosslegs_idle_right
 
+Keep groping yourself until I tell you to stop. #54
+
 {shuffle:
-    - Now, for the other boot, dog! #58
-    - My other boot deserves the same attention as the first. #59
+    - Now, for the other boot, {isBoy:mutt|bitch}! #55
+    - My other boot deserves the same attention as the first. #56
 }
 
-~ temp lickCount2 = RANDOM(3,5)
+~ temp lickCount2 = RANDOM(3,7)
 
 - (lick_again2)
 ~ lickCount2--
@@ -260,51 +267,67 @@ You're a horny little bitch just begging to clean my boots. #57
 
 - 
 {cycle:
-    - Lick it. #60
-    - Again. #61
-    - Don't dissapoint me now, dog. #62
-    - Lick. #63
-    - Use that tongue. #64
-    - Again! #65
-    - Keep going! #66
-    - Keep licking, bitch! #67
+    - Lick it. #57
+    - -> Nega_Keep_Going ->
+    - Don't disappoint me now, doggy. #58
+    - Lick. #59
+    - Use that tongue. #60
+    - Again! #61
+    - Keep going! #62
+    - Keep licking, {isBoy: dog|bitch}! #63
 }
 
+-> Nega_Masturbation_Comments.EmoteOnly ->
 -> lick_again2
 
 - (licks_done2)
-Very nice! All clean! #68
 
+{shuffle:
+    - No more {isBoy: stroking|rubbing}. #64
+    - Enough touching. #65
+    - Stop grinding. #66
+}
+
+{shuffle:
+    - Clean enough! #67
+    - That's enough. I'm satisfied. #68
+    - I'm bored of this. #69
+}
+
+/perform sex_chair_crosslegs_grind
+/wait 1
 
 - (inspect) //Nega inspects the bottoms of her boots.
-/perform sex_chair_crosslegs_grind
-If your tongue is this thorough, #69
-I'll bet it would be useful for other things as well... #70
+
+If your tongue is this thorough, #70
+It might someday be useful for other things as well... #71
 
 - (deny_boot_lick)
 /perform sex_chair_crosslegs_snap_right_fingers
-Too bad. #71
-Stand up. #72
-Playtime's over, bitch! #73
+But...too bad. #72
+Playtime's over, {isBoy: mongrel|bitch}! #73
+Get off the floor and go away. #74
 
 - -> exit
+
 
 = lick_comment
 
 {shuffle:
-    - Such a dirty dog. #74
-    - You're so disgusting! #75
-    - Can you believe how lowly you are, dog? #76
-    - You're less important than the dirt beneath my heels. #77
-    - You make a good shoe polisher! #78
-    - Perhaps I'll have you clean up my shoe closet one of these days. #79
-    - Get all that dirt! #80
-    - Don't you miss a spot! #81
-    - What a filthy bitch. #82
-    - You belong at the bottom of my feet. #83
+    - Such a dirty dog. #75
+    - You're so disgusting! #76
+    - What a lowly pooch you are. #77
+    - You're less important than the dirt beneath my heels. #78
+    - You make a good shoe polisher! #79
+    - Perhaps I'll have you clean up my shoe closet one of these days. #80
+    - Get all that dirt! #81
+    - Don't you miss a spot! #82
+    - What a filthy mongrel. #83
+    - You belong at the bottom of my feet. #84
 }
 
 ->->
+
 
 = bad_lick
 
@@ -313,9 +336,9 @@ Playtime's over, bitch! #73
     - -> Nega_BadJob.EmoteOnly ->
     - -> Nega_BadJob.EmoteOnly ->
     - -> Nega_BadJob.EmoteOnly ->
-    - You should know how to do this by now, bitch! #84
-    - It's not that hard. Use your tongue! #85
-    - I'm not convinced you want to serve me. #86
+    - You should know how to do this by now, {isBoy:mutt|bitch}! #85
+    - It's not that hard. Use your tongue! #86
+    - I'm not convinced you want to serve me. #87
 }
 
 ->->

@@ -1,0 +1,133 @@
+=== treat_task_foot_worship ===
+
+-> select_gender_check ->
+~ setScene(task_scene, Treat, "treat_task_foot_worship", -> treat_task_foot_worship)
+
+/scene Hell.FootWorship
+//music TreatFootWorship
+/ambient Treat
+/character Treat
+
+//Ms. Treatment Foot Worship Scene
+//In response to a player feeling a certain way - maybe sad, deflated, scared, nervous, shy, etc. 
+
+-(scared)
+“I can tell you are scared. Poor thing”
+
+//Treat approaches player and hugs them, smothering them with her breasts. 
+//She pulls away, looking at the player. 
+
+“How about a little treat? Would that help you feel better, my pet?”
+
++ [Yes]
+“Delightful. Come with me.”
+
++ [No] 
+“Well then we'll skip it and go right to your aftercare. I can see you need it.”
+// -> Goes to meditation.
+
+
+//A couch appears and she walks the player over to it. She sits down. 
+
+//If possible it would be great to exaggerate the perspective of being under her feet. 
+//Either the couch could be high up or maybe it's a stool instead or a strange part of the environment. 
+//Or maybe there's an illusion, like the player is below the floor to create the feeling of being very low to the ground and under her feet.
+
+-(story)
+“I'd like to tell you a little story.”
+
+//She lifts a leg and shows the player the underside of her boot. 
+
+“And as I tell you this tale, I want you to relax. 
+Ease into your servitude. 
+Worship my boots and massage my feet.
+
+- (darling)
+Does that sound like a good idea to you, my darling?”
+
+
++ [Yes]
+“Of course it does. You're such a good little boy/girl.”
+
+
+
++ [No]
+“I understand. It's not easy to relax sometimes. Let me help you relax”
+// -> Goes to meditation.
+
+
++ [Timeout] -> darling
+
+
+//She leans back and raises her boot towards the player's face. 
+//Player needs to move head and hands near the leg. 
+//Otherwise she will remind them of their task or comment on the player not being enthusiastic or asking if they need time to compose themselves. 
+//Treat slowly rotates her boot.
+
+
+//The story needs to be different, doesn't align with previously created lore -taco
+-(tell_story)
+“Long ago there was only one Goddess. 
+She was the Goddess of the entire Earth and under her wisdom everything was in harmony. 
+Over time, humans developed. 
+They had a lot of ideas. 
+Most of them foolish.”
+
+//Treat puts down her boot and raises the other for worship. 
+
+“The great Goddess decided the little humans needed guidance. 
+So, she created a second Goddess to rule over human affairs. 
+This Goddess was very powerful and strict. 
+A giantess with little patience for the pompous, self-involved ways of people.”
+
+//Treat puts her foot down.
+
+“It's cute how eager you are to please me. 
+Aw, I wish I could keep you all to myself. 
+
+-(boots_off)
+Would you like to see me with my boots off?”
+
++ [Yes]
+“I can do that for you, my pet.”
+
+
++ [No]
+“Just as well. My story is almost done.”
+//-> Continues with story.
+
+
+//Treat's boots disappear. 
+//Treat raises a foot and spreads her toes, slowly rotating her foot. 
+
+“As I was saying, the great Goddess kept humans in line for some time. 
+She would crush evil-doers under her foot, pluck the genitals off the disobedient, and if you were really good - she would allow you to pleasure her great vulva, the highest honor a person can experience.”
+
+//Treat raises her other foot.
+
+“As the human population grew and cultures diverged, she created more Goddesses to uphold her laws in vast and diverse populations. 
+But it is still the great Goddess that watches all human beings. 
+In fact, she's watching you right now. Best you mind yourself. 
+Please all the Goddesses like you would the great Goddess. 
+And maybe one day even you could have the honor of pleasing the great Goddess herself.”
+
+//Treat lowers her foot.
+-(feel_better)
+“Now did my little story calm you down? Feeling any better?
+
++ [Yes]
+“Lovely, you may continue your journey and call upon me when you need me.”
+
+
++ [No]
+“How about a calming meditation to rejuvenate you?”
+
++ [Timeout] -> feel_better
+
+-
+//If the player selects to have the boots off we could have random comments from Treat about how the foot worship is feeling. 
+//Things like “Oh what a delightful massage.” or “Yes, darling, right there feels amazing.” etc.
+
+
+
+-> exit

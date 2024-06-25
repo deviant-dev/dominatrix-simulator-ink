@@ -1,11 +1,12 @@
 === Yuki_Tempo_Comments ===
 
-TODO: Need to include a 'fail' option under timeout. What happens if the player just stops particpating? How does the scene end?
+TODO: Need to include a 'fail' option under timeout. What happens if the player just stops participating? How does the scene end?
+
 
 //comments when player is not moving their tongue or hasn't started
 = timeout
 
-/emotion annoyed 50
+/emotion sad 50
 
 {shuffle:
     - What are you waiting for? #01
@@ -17,6 +18,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 
 ->->
+
 
 //asking the player to change speed
 = change_to_slower
@@ -37,6 +39,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 
 ->->
 
+
 = change_to_faster
 
 /emotion excited 50
@@ -53,6 +56,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 
 ->->
+
 
 //correcting the player for going the wrong speed, lost arousal level
 = too_fast
@@ -74,6 +78,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 
 ->->
 
+
 = too_slow
 
 /emotion disgusted 50
@@ -92,6 +97,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 
 ->->
 
+
 //comments about speed delivered at different arousal levels keeping her voice pitch at the right arousal level
 = just_right_arousal_low
 
@@ -109,6 +115,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 
 ->->
+
 
 = just_right_arousal_medium
 
@@ -140,8 +147,10 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 
 ->->
 
+
 = just_right_arousal_high
 
+/music yuki-cunnilingus-climax
 /emotion aroused 100
 
 {shuffle:
@@ -169,6 +178,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 
 ->->
 
+
 = continue_arousal_low
 
 /emotion aroused 50
@@ -178,20 +188,15 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
     - You're so good at this. #65
     - You make me feel good. #66
     - cc: (content moan) #67
-    - cc: (content moan) #67
-    - cc: (content moan) #68
     - cc: (content moan) #68
     - cc: (content moan) #69
-    - cc: (content moan) #69
-    - cc: (content sigh) #70
-    - cc: (content sigh) #70
-    - cc: (content sigh) #71
-    - cc: (content sigh) #71
-    - cc: (content sigh) #72
-    - cc: (content sigh) #72
+    - cc: (content moan) #70
+    - cc: (content moan) #71
+    - cc: (content moan) #72
 }
 
 ->->
+
 
 = continue_arousal_medium
 
@@ -202,22 +207,18 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
     - That feels so, so good! #74
     - You're overwhelming me! #75
     - cc: (eager moan) #76
-    - cc: (eager moan) #76
-    - cc: (eager moan) #77
     - cc: (eager moan) #77
     - cc: (eager moan) #78
-    - cc: (eager moan) #78
-    - cc: (eager sigh) #79
     - cc: (eager sigh) #79
     - cc: (eager sigh) #80
-    - cc: (eager sigh) #80
-    - cc: (eager sigh) #81
     - cc: (eager sigh) #81
 }
 ->->
 
+
 = continue_arousal_high
 
+/music yuki-cunnilingus-climax
 /emotion aroused 100
 
 {shuffle:
@@ -225,22 +226,17 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
     - I'm almost there! #83
     - You're going to make me cum! #84
     - cc: (excited moan) #85
-    - cc: (excited moan) #85
-    - cc: (excited moan) #86
     - cc: (excited moan) #86
     - cc: (excited moan) #87
-    - cc: (excited moan) #87
     - cc: (excited sigh) #88
-    - cc: (excited sigh) #88
-    - cc: (excited sigh) #89
-    - cc: (excited sigh) #89
-    - cc: (excited sigh) #90
     - cc: (excited sigh) #90
 }
 ->->
 
+
 = orgasming
 
+/music yuki-cunnilingus-climax
 /emotion aroused 100
 
 {shuffle:
@@ -258,12 +254,15 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 ->->
 
 
+
+
 // Cunnilingus-specific tempo comment lines.
 === Yuki_Tempo_Cunnilingus_Comments ===
 
+
 = timeout
 
-/emotion annoyed 50
+/emotion sad 50
 
 {shuffle:
     - I can't feel your tongue! #01
@@ -276,12 +275,13 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 -> END
 
+
 = change_to_slower
 
 /emotion amused 50
 
 {shuffle:
-   - {wants_puppy:
+    - {wants_puppy:
         Slow that puppy tongue down. #05
         - else:
         Slow that tongue down. #06
@@ -296,6 +296,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
     - -> Yuki_Tempo_Comments.change_to_slower ->
 }
 -> END
+
 
 = change_to_faster
 
@@ -318,6 +319,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 -> END
 
+
 = too_fast
 
 /emotion angry 75
@@ -338,6 +340,11 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
     - -> Yuki_Tempo_Comments.too_fast ->
 }
 -> END
+
+
+
+
+
 
 = too_slow
 
@@ -360,6 +367,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 -> END
 
+
 = just_right_arousal_low
 
 /emotion aroused 50
@@ -380,6 +388,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
     - -> Yuki_Tempo_Comments.just_right_arousal_low ->
 }
 -> END
+
 
 = just_right_arousal_medium
 
@@ -402,8 +411,10 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 -> END
 
+
 = just_right_arousal_high
 
+/music yuki-cunnilingus-climax
 /emotion aroused 100
 
 {shuffle:
@@ -423,6 +434,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 -> END
 
+
 = continue_arousal_low
 
 /emotion aroused 50
@@ -435,6 +447,7 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
     - -> Yuki_Tempo_Comments.continue_arousal_low ->
 }
 -> END
+
 
 = continue_arousal_medium
 
@@ -449,8 +462,10 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 -> END
 
+
 = continue_arousal_high
 
+/music yuki-cunnilingus-climax
 /emotion aroused 75
 
 {shuffle:
@@ -461,8 +476,10 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 }
 -> END
 
+
 = orgasming
 
+/music yuki-cunnilingus-climax
 /emotion aroused 100
 
 {shuffle:
@@ -474,6 +491,307 @@ TODO: Need to include a 'fail' option under timeout. What happens if the player 
 -> END
 
 
+// Gloryhole/blowjob -specific tempo comment lines.
+=== Yuki_Tempo_Blowjob_Comments ===
+
+
+= timeout
+
+~ mg_commentCount = 0
+/emotion sad 50
+
+{shuffle:
+    - {wants_puppy: Use your mouth, puppy. | -> timeout }
+    - Do not just stare at it. 
+    - You leave your offering unsatisfied.
+            Begin.
+    - I want that mouth working.
+    - Get that mouth moving.
+    - -> Yuki_Tempo_Comments.timeout ->
+    - -> Yuki_Tempo_Comments.timeout ->
+    - -> Yuki_Tempo_Comments.timeout ->
+}
+-> END
+
+
+= change_to_slower
+
+~ mg_commentCount = 0
+/emotion amused 50
+
+{shuffle:
+    - Time to slow that tongue down.
+    - {wants_puppy:
+        Now, take your time with that puppy tongue.
+        - else:
+        Now, take your time with your tongue.
+    }
+    - They want your mouth to drag slowly along it.
+    - Now, go nice and slow with your mouth.
+     - {wants_puppy:
+        Slow that puppy tongue down.
+        - else:
+        Slow that tongue down.
+    }
+    - -> Yuki_Tempo_Comments.change_to_slower ->
+    - -> Yuki_Tempo_Comments.change_to_slower ->
+    - -> Yuki_Tempo_Comments.change_to_slower ->
+}
+-> END
+
+
+= change_to_faster
+
+~ mg_commentCount = 0
+/emotion excited 50
+
+{shuffle:
+    - {wants_puppy:
+        Speed that tongue up now, puppy.
+        - else:
+        Speed that tongue up now.
+    }
+    - {wants_puppy:
+        Now, start working that puppy tongue faster.
+        - else:
+        Now, start working your tongue harder.
+    }
+    - Slide your mouth faster.
+    - They want to feel your mouth move faster.
+    - -> Yuki_Tempo_Comments.change_to_faster ->
+    - -> Yuki_Tempo_Comments.change_to_faster ->
+    - -> Yuki_Tempo_Comments.change_to_faster ->
+}
+-> END
+
+TODO: Make sure to move the tagged lines from the regular minigame file or re-record
+
+= too_fast
+
+~ mg_commentCount = 0
+/emotion angry 75
+
+{shuffle:
+    - You're licking too fast, {player_name}.
+    - Tsk tsk tsk.
+        Your mouth moves too fast.
+    - Slow Down! That's too fast.
+    - Woah. Slow it down.
+    - {wants_puppy: Woah, slow down, puppy! | -> too_fast } 
+    - {wants_puppy: You need go slower, puppy. | -> too_fast } 
+    - {wants_puppy:
+        Oh my goodness. Slow that mouth down, puppy!
+        - else:
+        Oh my goodness. Slow that mouth down!
+    }
+}
+-> END
+
+
+= too_slow
+
+~ mg_commentCount = 0
+/emotion disgusted 75
+
+{shuffle:
+   - {wants_puppy:
+        Move that puppy tongue faster!
+        -else:
+        Move that tongue faster!
+    }
+    - That mouth is too slow!
+    - Pitiful.
+        Move your mouth more.
+    - That's too slow. Go faster.
+    - You're not trying hard enough. Speed it up.
+    - {wants_puppy: Go faster, puppy! | -> too_slow }
+    - {wants_puppy: More, puppy, faster! | -> too_slow }
+}
+-> END
+
+
+= just_right_arousal_low
+
+~ mg_commentCount = 0
+/emotion aroused 50
+
+{shuffle:
+    - That's it.
+    - Nice speed, but use more tongue.
+    - Stay like that for a while.
+    - (sigh) Very nice.
+    - Perfect.
+    - Keep doing that.
+    - {wants_puppy: That's nice, puppy.| -> just_right_arousal_low }
+    - {wants_puppy: Keep doing that, puppy. | -> just_right_arousal_low }
+    - {wants_puppy: Perfect, puppy.| -> just_right_arousal_low }
+    - {wants_puppy: Don't change anything, puppy.| -> just_right_arousal_low }
+     {wants_puppy:
+        I like what your puppy tongue is doing!
+        -else:
+        I like what your tongue is doing.
+    }
+}
+
+-> END
+
+
+= just_right_arousal_medium
+
+~ mg_commentCount = 0
+/emotion aroused 75
+
+{shuffle:
+    - Keep that mouth nice and wide.
+    - Nice pace.
+        Look at how you slobber on yourself.
+    - I can see how it aches for more.
+      {wants_puppy:
+        What a clever puppy tongue you have.
+        - else:
+        What a clever tongue you have.
+        }
+    - {wants_puppy:
+        Much better, puppy.
+        - else:
+        That's much better.
+    }
+    - {wants_puppy:
+        Ooo. I like that pace, puppy.
+        - else:
+        Oooo. I like that pace.
+    }
+}
+
+-> END
+
+
+= just_right_arousal_high
+
+~ mg_commentCount = 0
+/music Yuki-minigame-climax
+/emotion aroused 100
+
+{shuffle:
+    - Now, you will finish what you started.
+        Suck harder.
+    - ¡Ya casi lo dominas!<br/>(You've almost mastered it.)
+        Do not stop licking!
+    - Your tongue can make them cum, criatura.
+    - {wants_puppy:
+        Mmm. That's it, puppy!
+        - else:
+        Mmm. That's it!
+    }
+    - {wants_puppy:
+        Oh my goodness! Just like that, puppy.
+        - else:
+        Oh my goodness! Just like that.
+    }
+    - {wants_puppy:
+        That's perfect, puppy!
+        - else:
+        That's perfect!
+    }
+    {wants_puppy:
+        You know just how to use your puppy tongue!
+        - else:
+        You know just how to use your tongue!
+    }
+    - {wants_puppy:
+        Mmm. That's it, puppy!
+        - else:
+        Mmm. That's it!
+    }
+}
+-> END
+
+
+= continue_arousal_low
+
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+
+/emotion aroused 50
+
+{shuffle:
+    - Make sure to use no teeth while you move.
+    - You're so good at this.
+    - Look at that saliva drip down your chin.
+    - I want to hear how hard you are sucking.
+    - You are sliding your mouth just right, mi dulce.
+    - You're so good at this.
+}
+-> END
+
+
+= continue_arousal_medium
+
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+
+/emotion aroused 75
+
+{shuffle:
+    - Oh, yes. 
+    Move your tongue just like that.
+   - Suckle like a baby as you serve, {isBoy: chico|{isGirl: chica|mascota}}.
+    - I better see saliva dripping down your chin, {isBoy:cabrón|{isGirl:puta|animal}}.
+}
+-> END
+
+
+= continue_arousal_high
+
+~ mg_commentCount++
+
+{mg_commentCount < mg_commentDelay:
+    -> END
+}
+
+~ mg_commentCount = 0
+
+/music Yuki-minigame-climax
+/emotion aroused 75
+
+{shuffle:
+    - They are about to cum.
+        I want to see more spit dripping down your chest.
+    - Can you hear and feel their need to release?
+    - So close! Keep going!
+    - Do not stop slurping!
+    - It is ready to explode, criatura.
+    - It is ready to spasm, criatura.
+}
+-> END
+
+
+= orgasming
+~ mg_commentCount = 0
+/music Yuki-minigame-climax
+/emotion aroused 100
+
+{shuffle:
+    - Beg for their orgasm!
+    - Suck the seed out of that cock.
+    - Soak it all up!
+    - Swallow every drop!
+    - Swallow, cunt.
+        Don't you dare waste a drop.
+    - Use your mouth to absorb their essense...
+            Revel in it.
+}
+-> END
 
 
 

@@ -18,7 +18,7 @@
 /scene BedroomBroken.BadTouch
 /emotion angry
 Bad behavior will not be tolerated.
-/character goddess stomp_on_player
+
 
 + [wait 0.2]
 - ~ addPunishment()

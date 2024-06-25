@@ -1,52 +1,57 @@
+//Have Pragma mention her experiments up in cubbies on the walls
+//Have Pragma mention riddles or say a philosophical comment
+
+
+
+
 === pragma_intro ===
 ~ setScene(intro_scene, Pragma, "pragma_intro", -> pragma_intro)
 
 /scene PragmasRoom.Intro1
-/music pragma
-/ambient pragma
-/character slave_f lay_down
+/music pragma-intro-new
+/character slave_f idle_table_legsup
 /lookat pragma
-/character pragma idle_bored
+/character pragma idle
 /lookat slave_f
 
 
 + [Continue] -> start
 
-//pragma loves beautiful things - her gallery is filled with her creations of perfection
-//pragma seeks to perfect you and add you to her collection
-
-//Player enters scene in one of the statue cubbies around the outer edge of the room
-//Pragma has a slave on a table on the main platform and circles around them, leaning forward to inspect various parts of the body
 
 = start
 
-/perform do_walk_turn_in_place_repeated
+
+/perform do_walk_turn_in_place_repeated happy 50
 This subject is almost ready. #01
 
-/perform talk_thoughtful
+
 /wait 1
 Achieving perfection is a process that must not be rushed. #02
 
-/perform do_walk_turn_in_place_repeated
+
 /wait 1
+/perform idle_hand_on_hip
 Just a few more modifications... yes. #03
 
-/perform talk_lean_forward
+
 /wait 1
+/perform talk_lean_forward
 The legs... still too short. #04
 
-/perform do_walk_turn_in_place_repeated
-/wait 1
-Hrm... yes... the breasts must be firmer. #05
 
-/talk_consider
 /wait 1
+
+Yes... the breasts must be firmer. #05
+
+/wait 1
+/perform talk_thoughtful skeptical 50
 A few more sessions and we will soon be able to add it to our collection. #06
 
+//No other performances until she stops to notice the player
+//This is to stop the walking animation from breaking
 
 
-
-/perform idle_unhappy_arms_crossed angry 25
+/perform idle_unhappy_arms_crossed skeptical 50
 We must reflect further. #07
 
 //pragma stops and looks up and away
@@ -57,229 +62,284 @@ Time for our next restoration project. #08
 
 //scene reloads with the slave gone and the player standing before pragma
 //after preview of Pragma with slave, scene reloads with player in the center of the platform - they are now a posable doll
+-> inspection
 
+
+= inspection
 /scene None
 /wait
 /scene PragmasRoom.Intro2
-/music pragma
 /ambient pragma
 
-/character pragma do_walk_turn_in_place_repeated skeptical 65
+/lookat player
+/character pragma talk_consider happy 50
 What an interesting new specimen. #09
 
-/wait 1
-
 /perform react_shake_head_disbelief
-So many imperfections. #10
+So many imperfections and possibilities. #10
 
-/wait 1
 /perform talk_thoughtful
-Yet perhaps this one might out perform the others. #11
+We wonder if this one could endure complete testing? #11
 
-/wait 1
-/perform idle_hand_on_hip
+/lookat player
+/perform idle_hand_on_hip neutral
 Specimen. #12
 
-/wait 1
-/perform talk_one_finger
-Turn around slowly, so we may inspect its chassis. #13
 
-/wait 1
+- (turn_once)
+
+
+/perform do_snap_fingers happy 50
+Turn to the right, so we may inspect its chassis. #13
+
++[pose: present_stand_right]
+    -> Pragma_GoodJob ->
+    /emotion happy 50
+    The lines and angles appear adequate. #14
+    /emotion neutral
+    Solid enough to begin with. #15
+
++ [timeout] -> Pragma_Timeout -> turn_once
+
+- (configuration)
 /perform talk_one_hand
-What type of configuration is this? #14
+We wonder... #16
+/perform talk_question skeptical 50
+What type of configuration is this? #17
+/emotion neutral
 
--(configuration)
+- (turn_twice)
+/perform idle_cocks_head_to_left happy 50
+Let us see it from the back. #18
 
-//player has to rotate 360 degrees
-//continutious action or quarter turn poses?
-//Quarter turns for now -Taco
-//comments while Turning
++[pose: present_stand_reverse]
+    -> Pragma_GoodJob ->
+    /perform do_shake_finger
+    This is a model we have seen before, #19
+    /emotion neutral
+    but a newer version. #20
+    
+    Many specifications we can modify. #21
+    
+    /emotion happy 50
+    This bodes well. #22
+    /emotion neutral
 
-TODO: create new turn poses
-+[pose: turn_right_90]
--> Pragma_GoodJob ->
-We are intrigued.
++ [timeout] -> Pragma_Timeout -> turn_twice
 
-- /perform talk_lean_forward
-Keep going.
 
-+[pose: turn_right_180]
--> Pragma_GoodJob ->
+- (turn_thrice)
 
-/perform idle_cocks_head_to_left
-I see potential in this one.
+/perform talk_consider
+
+Turn again. #23
+
++ [pose: present_stand_left]
+    -> Pragma_GoodJob ->
+    /perform idle_cocks_head_to_left skeptical 50
+    /wait 1
+    The muscles flex with untapped strength. #24
+    Joints appear solid. #25
+    
++ [timeout] -> Pragma_Timeout -> turn_thrice
+
+
+- (full_turn)
+/wait 1
+/perform talk_gesture happy 50
+Face forward. #26
+
++[pose: stand] -> Pragma_GoodJob ->
++ [timeout] -> Pragma_Timeout -> full_turn
+
+- (chassis) 
+/wait 1 
+/perform talk_consider
+This chassis intrigues me. #27
+we see potential in this one. #28
+Until now, #29
+we haven't been able to go far #30
+with the others. #31
+/emotion skeptical 50
+Perhaps this specimen could endure initial stress testing. #32
 
 /wait 1
-Until now, 
-we haven't been able to go far
-with the others.
 
-- /perform talk_consider
-
-Turn again.
-
-+[pose: turn_right_270]
--> Pragma_GoodJob ->
-
-- Perhaps this specimen could endure full stress testing.
-
-/wait 1
-Have you endured stress testing before?
+- (question_test)
+/perform talk_behold happy 50
+Subject. #33
+Have you endured stress testing before? #34
 
 +[yes]
     -> Pragma_AcknowledgeYes ->
+    Follow our instructions precisely. #35
 
 +[no]
     -> Pragma_AcknowledgeNo ->
+    
 
 +[timeout]
-    -> Pragma_Timeout ->
+    -> Pragma_Timeout -> question_test 
 
 +[distracted]
-    -> Pragma_Interested ->
+    -> Pragma_Interested -> question_test
 
-- /perform talk_one_finger
-We will start with a basic examination.
+- (examination)
+/perform react_shrug_short skeptical 50
+A deeper examination must be performed. #36
 
-/perform idle_unhappy
-Hold your arms out to the side.
+
+/perform idle_unhappy happy 50
+Hold your arms out to the side. #37
 
 -(t_pose)
 
-+[pose: pose]
++[pose: arms_out]
 //player pose - T-pose
 
 /wait 1
-/perform react_nod_little
-Adequate structure.
+/perform react_nod_little skeptical 50
+We agree. #38
+The structure is adequate enough. #39
+It needs tightening, though. #40
 
-It's so important to have a solid frame to work with.
 /wait 1
 
 /perform talk_thoughtful
-This is good.
+We are not disappointed, so far. #41
 
 
-Now. 
+Now. #42
 
 /wait 1
-/perform talk_one_hand
-Arms straight up to the sky.
+/perform talk_one_hand happy 50
+Arms straight up to the sky. #43
 
-/perform idle_unhappy
-/wait 1
-Stretch fully. #20
+/perform idle_clasp_hands
+/wait 1 
+Stretch fully. #44
 
 -(head_pose)
 
-+[pose: tall_pose]
-TODO: create new tall_pose
++[pose: arms_up]
 
-Hold still.
+Hold still. #45
 
 /wait 1
-Tolerable mass. #21
+/emotion skeptical 50
+Tolerable mass. #46
+There is sufficient flesh to adjust. #47
 
-//add comments about what can be done with that mass
-/wait 1S
-Curl into a ball.
+/perform do_point_down happy 50
+Curl into a ball. #48
 
 -(ball_pose)
 
-//player pose - drop down to wrap arms around legs like a ball
-+[pose: ball_pose]
-TODO: create ball_pose
-/perform talk_annoyed
-Ugh. That is not at all spherical, #23
-but we detect passable flexibility. #24
+//Grovel is a good pose, as the player is clearly in need of testing and modification
++[pose: grovel]
+
+/perform talk_annoyed disgusted 50
+This creature is clearly not perfect. #49
+That is not at all spherical, #50
+/emotion happy 50
+but we detect enough flexibility #51
+to complete all tests. #52
 
 /perform react_dismissive
-This specimen will suffice. #25
+This specimen will suffice. #53
 
-//make comment about what flexiblity will do
--(suffice)
+- (suffice)
+/perform idle_unhappy
+Stand. #54
++[pose: present_stand]
 
-It should be asssigned a designation, 
-but first it must agree to be studied.
+-(designation)
 
-Does it agree to be my specimen?
+It should be assigned a designation, #55
+but first it must agree to participate. #56
+
+Does it agree to be a specimen? #57
 
 +[yes]
     -> Pragma_AcknowledgeYes ->
+    
 
 +[no]
     -> Pragma_AcknowledgeNo ->
-    Poor response.
+    You should be studied. #58
     
-    You should be studied.
-    
-    Do you agree?
+    /perform talk_question happy 50
+    Do you agree? #59
     
     ++[yes]
-    Appropriate response.
+    Appropriate response. #60
     
     ++[no]
-    This subject must now leave.
+    /perform do_now_leave disgusted 50
+    This subject must now leave. #61
     -> exit
 
 +[timeout]
-    -> Pragma_Timeout ->
+    -> Pragma_Timeout -> designation
 
 +[distracted]
-    -> Pragma_Interested ->
+    -> Pragma_Interested -> designation
 
 //continue building out decision tree 
-- /perform idle_unhappy
-Stand. #26
-+[pose: stand]
 
+
+- (specimen) 
 /perform react_point_at_player_angry
-You are designated specimen 33. #27
+You are designated Specimen 33. #62
 
 /perform talk_behold
-An imperfect machine that must be transformed #28
-into the perfect passion generator. #29
+An imperfect machine that must be transformed #63
+into the perfectly formed passion generator. #64
 
 
 //malfunctioning machine
-/perform do_smooth_skirt
-We should begin immediately. #30
+/perform talk_one_hand skeptical 50
+Stress and endurance testing must occur first. #65
 
-/perform idle_clasp_hands
-The best results come from willing participants. #31
+Followed by physical modifications and improvements. #66
+
+/perform idle_clasp_hands happy 50
+
+A willing participant is one who is ready to begin with no delay. #67
+
+/emotion skeptical 50
+We wonder if this one is eager to improve? #68
+
+/wait 1
 
 -(experiment)
-/perform talk_question
-Specimen 33, #32
-does it consent to begin the experiment immediately? #33
+/perform talk_question happy 50
+Does Specimen 33 consent to begin immediately? #69
 
 + [yes]
     ~ addObey()
     /perform idle_clasp_hands amused 50
-    A satisfactory answer. #34
+    The best results come from willing participants. #70
+    Let's begin our first test. #71
 
 + [no]
     ~ addDisobey()
     /perform talk_lean_forward angry 55
-    Curious. #35
+    Curious. #72
 
-    /perform talk_one_finger angry 70
-    An illogical answer. #36
-
-    /perform talk_consider amused 40
-    A first flaw. #37
-    
-    Return another time to be properly studied.
+    /perform do_now_leave    
+    Return another time to be properly tested and improved. #75
     -> exit
 
 + [timeout]
-    /perform react_scoffs angry 50
-    Speak up. #38
+    /perform react_scoffs disgusted 50
+    Speak up. #76
     -> experiment
 
 + [distracted] -> Pragma_PayAttention -> experiment
 
 -
+
 -> pragma_task_posing_doll
 
 //Pragma makes the player hold various positions for long durations while she inspects them
@@ -287,29 +347,25 @@ does it consent to begin the experiment immediately? #33
 //during posing, she refers to the player as 'it', as if recording a clinical experiment, commenting on their numerous deficiencies and flaws, talking about them as if they are not conscious or aware
 //Dialogue would be her talking to herself, formulating a repair plan or disassembly procedure to break them down into individual components and rebuild them into a 'drone of perfection'
 //speaking manner influenced by 7 or 9 or Borg
-
 //test subject, trying to find limits of this "thing", stress tests, it's no more important than a sample
 //extreme objectification
 //dressed up, decorated
-//gameplay - hold arms out to sides, slapped repeatedly, holding positions, undergoing repetitive activity, keeping going until have to stop (pragma is impressed or disappointed with specimen)
-
-
+//game play - hold arms out to sides, slapped repeatedly, holding positions, undergoing repetitive activity, keeping going until have to stop (pragma is impressed or disappointed with specimen)
 //doesn't understand passion so she's researching it (fucking machines)
 //for some reason you creatures require orgasms, which I don't really understand, so let's test how many you can endure (reward)
-
 //punishments - not worth much more than furniture, so you should hold positions as furniture
-
 //task - you need to be more like the ideal sexual creature, which is obviously the ultimate female, you need to be a passion generator, you need to be aesthetically hyper sexualized to trigger this state in other souls - according to my experiments, the female form is the ideal sexual object so I will turn you into this, just as the Mistresses are - put them in a costume and then perform a moving task (ie dancing)
-
 //many of my experiments have failed, as you can see - gestures around; i need to have more passion in my projects, I'm working on finding ways to perfect this mess,
-
 //hint at 4th wall - imagine yourself
-
-//task - headset, hands have to all be moving for set amount of time - player is dancing to make other NPCs hooked up to fucking machines orgasm (they are in the pragma 'perfoect form' shape)
-
+//task - headset, hands have to all be moving for set amount of time - player is dancing to make other NPCs hooked up to fucking machines orgasm (they are in the pragma 'perfect form' shape)
 //pragma is already the perfect form - player is given her form to wear when performing task, they get to modify her body (blend shapes for breasts, butt, hair, height, etc)
-
-//pragma's experiments are to extract as much essence as possible, which can come from pleasure, pain, discomfort, embarassment, etc
+//pragma's experiments are to extract as much essence as possible, which can come from pleasure, pain, discomfort, embarrassment, etc
+//Questions:
+//How do you know that all your memories are true?
+//If we keep replacing old parts of you with new parts, does it make you new or old?
+//When you were born, were you living or dying?
+//What is the opposite of the word, ‘opposite’?
+//“The mind is not a vessel to be filled, but a fire to be kindled.“
 
 -> exit
 

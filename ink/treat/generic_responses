@@ -1,17 +1,18 @@
 === Treat_GoodJob ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
 
-= DoEmoteOnly(emoteOnly)
 
+= DoEmoteOnly(emoteOnly)
 
 { shuffle:
     - {emoteOnly:/emotion|/perform idle_sassy} happy 50
     There's a good {player_name}. #01
 
-    - {emoteOnly:/emotion|/perform idle_tease} aroused 65
+    - {emoteOnly:/emotion excited 50|/perform idle_tease} aroused 65
     What a good little {player_name}. #02
 
     - {emoteOnly:/emotion|/perform idle_clasp_hands} happy 50
@@ -29,28 +30,32 @@
     - {emoteOnly:/emotion|/perform idle_tease} happy 50
     Someone is being a good {player_name}. #07
 
-    //- {emoteOnly:/emotion|/perform react_thankful}  aroused 40
-    //Nicely done. #08
+    - {emoteOnly:/emotion|/perform react_thankful}  aroused 40
+    Nicely done. #08
 
     - {emoteOnly:/emotion|/perform do_inspect} aroused 60
     Impressive. #09
 
-    //- {emoteOnly:/emotion|/perform talk_consider} amused 55
-    //That's it. #10
+    - {emoteOnly:/emotion|/perform talk_consider} amused 55
+    That's it. #10
 }
-
 ->->
+
+
+
 
 === Treat_AcknowledgeYes ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
 
-{emoteOnly:/emotion|/perform react_nod_little} amused 55
+{emoteOnly:/emotion happy 70|/perform react_nod_little} amused 55
 {shuffle:
     - How delightful. #01
     - Very good. #02
@@ -60,14 +65,18 @@
     - Wonderful. #06
     - Lovely. #07
 }
-
 ->->
+
+
+
 
 === Treat_Unhappy ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -91,14 +100,18 @@
     - {emoteOnly:/emotion|/perform react_scoffs} angry 40
     Very well. #06
 }
-
 ->->
+
+
+
 
 === Treat_Timeout ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -118,18 +131,22 @@
 
     -{emoteOnly:/emotion|/perform talk_question} sad 65
     Are you going to answer me? #05
- }
+}
 
 ->->
+
+
+
 
 === Treat_PayAttention ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
 
-= DoEmoteOnly(emoteOnly)
 
+= DoEmoteOnly(emoteOnly)
 
 { cycle:
     - {emoteOnly:/emotion|/perform do_shake_finger_stern} angry 80
@@ -140,7 +157,7 @@
     Tsk. Tsk. Pay attention! #02
     /wait 1
 
-    - {emoteOnly:/emotion|/perform react_dumb} angry 40
+    - {emoteOnly:/emotion|/perform do_summon_player} angry 40
     I'm over here. Stop looking around. #03
     /wait 1
 
@@ -179,16 +196,19 @@
     - {emoteOnly:/emotion|/perform idle_unhappy} amused 30
     As I was saying... #10
     /wait 1
- }
-
+}
 ->->
+
+
 
 
 === Treat_BadJob ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -211,14 +231,18 @@
     - {emoteOnly:/emotion|/perform talk_annoyed} sad 70
     I expect more. #05
 }
-
 ->->
+
+
+
 
 === Treat_CheckIfInterested ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -271,9 +295,6 @@ Do you want to continue? #08
 {emoteOnly:/emotion|/perform idle} happy 70
 Excellent. #09
 
-// Removing this because it feels redundant in-game - Deviant
-// Let's stop wasting time, then. #10
-
 ->->
 
 
@@ -285,11 +306,187 @@ Return to me when you are ready. #12
 
 -> exit
 
+
+=== Treat_Masturbation_Comments ===
+
+//instructions to player for how to touch themself
+
+//Do not insert animations, ONLY emotions
+/character treat 
+/emotion happy 70
+
+{shuffle:
+    - /emotion aroused 60
+        Caress yourself. #03
+    - Glide your fingers. #05
+    - /emotion aroused 60
+        Let your fingers slide over your flesh. #08
+    - Give it a gentle squeeze. #09
+    - Cup yourself with your hand. #10
+    - /emotion amused 70
+        Savor the warmth of your skin. #11
+    - Notice the moisture {hasPenis: ooze from your tip|build between your folds}. #12
+    - Take a moment to lightly pinch your nipple. #13
+    - Drag your hands gently across your skin. #14
+    - /emotion amused 70
+        Let the warmth draw your fingers. #15
+    - Hold yourself. #16
+    - /emotion aroused 70
+        Feel how wonderful your hand is on your body. #17
+    - Savor the touch of your skin. #18
+    - Let your other hand gently caress your chest. #19
+    - /emotion aroused 70
+        Don't forget, let your other hand caress your body as you enjoy yourself. #22
+    - Can you feel how much you throb? #24
+    - Take your time and explore every aspect of your genitals. #25
+    - Touching yourself is such a special time. #26
+    - Feel how the blood rushes to fill your genitals getting them ready for me. #27
+    - /emotion amused 70
+        Show me how much you want to feel me touch you. #28
+    - /emotion aroused 70
+        Mmm. I can't wait to feel you against me. #29
+    - Keep going as you work yourself #30
+        into a state of arousal for me. #31
+    - Maybe you want to squeeze yourself a little? #32
+    - You should do whatever makes you feel good right now. #33
+    - /emotion amused 70
+        You can lick your fingers if that helps. #34
+    - /emotion excited 60
+        I like watching you arouse yourself. #35
+    - /emotion amused 70
+        I bet it feels good to touch yourself for me. #37
+    - I love watching your hands drag across your skin. #38
+    - /emotion amused 70
+        The sight of you touching your body turns me on. #39
+    - Mmmm, I can see the blood rush into your genitals. #40
+    - Mmmm, I can't wait until you're aroused, and ready for me to ride you. #41
+    - /emotion aroused 70
+        I could just watch you touch yourself all day. #42
+    - Mmmm, that's it. Really enjoy your body right now. #43
+    - There's nothing I want more than to feel my body against yours. #44
+    - I can't wait until our skin is touching. #45
+}
+
+->->
+
+=== Treat_Pleasure_Comments ===
+
+//comments about how aroused Ms. Treatment is
+
+/character treat
+/emotion aroused 70
+
+{shuffle:
+    - You look lovely, {player_name}. #01
+    - /emotion happy 70
+        Mmmm... I'm enjoying this. #04
+    - /emotion happy 60
+        You have the potential to be very special. #03
+    - Your pleasure is my pleasure. #06
+    - Relax as you give in to pleasure. #09
+    - Mmm. Just like that. #10
+    - /emotion excited 70 
+        Oh yes. Watching you excites me. #11
+    - There are so many things I want to show you. #12
+    - /emotion amused 70
+        You should use these techniques with the Headmistress. #13
+    - /emotion amused 70
+        Lovely Yuki would be panting to see you like this. #14
+    - I can feel my breasts tingling all the way down to my vagina. #20
+    - Watching my pets, makes me feel so good. #21
+    - I just yearn to see my pets happy like this. #22
+    - /emotion aroused 85
+        Watching you in pleasure makes me throb. #23
+    
+    
+}
+
+->->
+
+=== Treat_Seduction_Comments ===
+
+//comments of Ms. Treatment seducing the player
+//Do not insert animations, ONLY emotions
+
+/character treat
+/emotion aroused 90
+
+{shuffle:
+    - /emotion happy 80
+        Your body is delightful. #01
+    - /emotion aroused 70
+        Let me hear you moan, darling. #02
+    - Seeing you move is breathtaking. #04
+    - I can't stop watching you. #05
+    - I quiver watching you. #07
+    - The sound of your pleasure is enticing. #08
+    - My skin is tingling at the sight of you. #09
+    - You are breathtaking. #10
+    - /emotion amused 80
+        You are a sexy little minx. #13
+    - /emotion amused 65
+        I knew my pet was a sexy little {player_name}. #14
+    - There's nothing more intoxicating than a wonderfully, pleasure-filled submissive. #15
+    - /emotion happy 80
+        I'm so glad you're here with me right now sharing this special moment. #16
+    - Let go and give in to how it feels. #23
+    - Savor this moment. #28
+    - /emotion 75
+        Savor all the sensations you're feeling. #29
+}
+
+->->
+
+=== Treat_Riding_Comments ===
+
+//comments made during the riding scene
+/character treat
+/emotion aroused 80
+
+{cycle:
+    - I know you want to stick your face in my breasts and cuddle. #01
+    - {hasPenis: Riding you is so satisfying.| Grinding against you is so satisfying.} #02
+    - All my folds are quivering as I rub against you. #04
+    - /emotion aroused 90
+        This is such a special moment, us together, touching like this. #05
+    - I'm trembling with how wonderful it feels to be against you. #06
+    - You've <b>earned</b> this special treat, little one. #07
+    - Our bodies, mmmm. They mesh so well together. #08
+    - I hope this feels as good to you, as it does to me, sweetling. #09
+    - That's it, keep moving with me and enjoy it just as much as I do. #10
+    - Your body is such a wonderful vessel for pleasure. #12
+    - I don't want this to stop. #13
+    - Let's enjoy this for as long as we can. #14
+    - That's right, in and out, in and out. #15
+    - That's right, back and forth, back and forth. #16
+    - You were made for this. #17
+    - Oh yes, just like that. #18
+        So good. #19
+    - I don't want to stop doing this with you, sweetling. #20
+    - /emotion aroused 90
+        Oh yes! #21
+        More! #22
+    - /emotion aroused 90
+        Oh the pleasure... ahhh! #23
+    - Mmmm, your body is perfect! #24
+    - These are my favorite rewards! #25
+    - I'm so glad you wanted this reward. #26
+    - Ahhhh, ohhh... Mmmm. Yes. #27
+    - Oh, let's ride the pleasure together! #28
+    - Give your body and your pleasure to me {player_name}! #29
+    - 
+    
+}
+
+->->
+
 === Treat_Reward_Complete ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -319,28 +516,29 @@ Return to me when you are ready. #12
 
 {shuffle:
     - You may go for now, #07
-    but come see me again soon. #08
+        but come see me again soon. #08
     - Time to go for now. #09
     - Goodbye, little one. #10
+    - It is time for you to go now. #98
+        You are needed elsewhere. #99
 }
-
 ->->
 
 
+
+
 === Treat_Take_Reward_Prompt ===
-
 // don't use performances
-
 /character treat
-
 {shuffle:
     - Present your wrist. #01
     - This will cost you one Bloodstone. #02
     - Time to hand over your Bloodstone. #03
     - Give me your wrist, {player_name}. #04
 }
-
 ->->
+
+
 
 
 === Treat_Take_Reward(-> load) ===
@@ -360,7 +558,3 @@ Return to me when you are ready. #12
 + [no] -> Treat_CheckIfInterested -> give_reward
 + [timeout] -> Treat_Timeout -> give_reward
 + [distracted] -> Treat_PayAttention -> give_reward
-
-
-
-

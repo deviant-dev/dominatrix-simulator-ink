@@ -5,9 +5,10 @@
     - -> tease_edging
 }
 
+
 = tease_edging
 /scene attic.chair
-/music nega-reward
+/music nega-reward-light
 /ambient off
 /character Nega
 ~ edged = true
@@ -30,7 +31,7 @@ does the sight of my boots turn you on? #46
 
     ++ [yes]
         /perform sex_chair_crosslegs_idle_left disgusted 70
-        That was a rhetorical question, dumbfuck! #48
+        That was a rhetorical question, dumb fuck! #48
         -> after_observe_boots
 
     ++ [no]
@@ -135,6 +136,7 @@ You really are a foot whore! #66
 
 -> enjoy
 
+
 = enjoy
 
 /perform sex_chair_crosslegs_left_present
@@ -199,6 +201,7 @@ You really are a foot whore! #66
 
 + [distracted] -> Nega_PayAttention.EmoteOnly -> enjoy
 
+
 = no_more
 
 /perform sex_chair_openlegs_idle_tease
@@ -211,7 +214,7 @@ You really are a foot whore! #66
     Hands off! #68
 
     - /emotion angry 70
-    Stop friggen yourself, idiot! #69
+    Stop friggin yourself, idiot! #69
 }
 
 -> Nega_Insult.EmoteOnly ->
@@ -243,7 +246,7 @@ You should be able to last longer than that. #70
 
 {shuffle:
     - /emotion skeptical 45
-    Can you take more, my dirty little cumbucket? #74
+    Can you take more, my dirty little cum bucket? #74
 
     - /emotion excited 65
     Wanna keep going? #75
@@ -313,6 +316,7 @@ You should be able to last longer than that. #70
 }
 
 ->->
+
 
 = edging_comment
 

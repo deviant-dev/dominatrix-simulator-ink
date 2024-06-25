@@ -95,10 +95,10 @@ Do you know why you're here? #11
     That's the fun part! #18
 
 + [timeout]
-    /perform react_dumb amused 50
+    /perform react_shrug_long amused 50
     Hello-o! #19
 
-    /perform idle_unhappy_stomp sad 55
+    /emotion sad 55
     Anybody home? #20
     -> new_guest
 
@@ -476,7 +476,7 @@ Let's find out how rough, shall we? #188
 
 + [no]
     /character nega react_scoffs disgusted
-    What a pathetic whimp. #189
+    What a pathetic wimp. #189
     -> confirm_no_slap
 
 + [timeout] -> Nega_Timeout -> rough
@@ -668,7 +668,7 @@ Let's find out. Shall we? #89
 Behave, Nega!  #93
 /perform idle_unhappy angry 70
 
-TODO Test this in Unity. Nega stops caressing fro some reason here.
+TODO: Test this in Unity. Nega stops caressing fro some reason here.
 
 /character nega
 /lookat player
@@ -830,8 +830,8 @@ Naughty {player_name}. #127
 /perform do_bouncing_little aroused 65
 The Headmistress will take care of that! #128
 
-//perform talk_consider excited 60
-//Make sure to come back to me when you're finished. #129
+/perform talk_consider excited 60
+Make sure to come back to me when you're finished. #129
 //This line should be: Remember to come back and see me once you're finished with the Headmistress!
 
 /perform do_tap_wrist happy 60

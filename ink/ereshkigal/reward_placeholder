@@ -1,0 +1,30 @@
+=== ereshkigal_reward_placeholder ===
+-> select_gender_check ->
+~ setScene(reward_scene, Ereshkigal, "ereshkigal_reward_placeholder", -> ereshkigal_reward_placeholder)
+-> scene_setup ->
+
+/notify title="Ereshkigal Reward Confirmation" text="This is a placeholder reward. Do you want to spend a bloodstone?"
+
++ [yes]
+    ~ removeReward(-> load_gave_reward)
+    /notify title="Ereshkigal Reward Paid" text="You turn over one Bloodstone."
+    -> gave_reward
++ [no] -> exit
+
+
+= scene_setup
+/scene bedroom.hub
+/music ereshkigal
+/ambient none
+
+->->
+
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+
+= gave_reward
+/notify title="Ereshkigal Placeholder Reward" text="You have been rewarded. Returning to entry."
+/wait 5
+-> exit

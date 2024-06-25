@@ -1,4 +1,3 @@
-
 === Headmistress_Crowd_Punishment ===
 //These comments are made when the player is being punished (eg, spanked, masturbating without being allowed to orgasm).
 /character crowd
@@ -17,8 +16,11 @@
     - That's why I try so hard! #11
     - I doubt this one will last long. #12
 }
-
+/character headmistress
 ->->
+
+
+
 
 === Headmistress_Crowd_Reward ===
 //These comments are made when the player is being rewarded (eg, being allowed to masturbate and cum, worshipping a Mistress’ feet).
@@ -32,13 +34,16 @@
     - Give us all your cum! #06
     - Her rewards are never raunchy enough! #07
     - I wanna lick every inch of {isBoy:his|{isGirl:her|their}} body. #08
-    - {isBoy:He honors|{isGirl:She honors|They honor}} the Goddess. #09
+    - {isBoy:He honors|{isGirl:She honors|They honor}} the <i>Goddess</i>. #09
     - I'm sure the crowd would cheer louder for me. #10
     - I can hardly sit still. #132
     - When's it going to be my turn? #11
 }
-
+/character headmistress
 ->->
+
+
+
 
 === Headmistress_Crowd_General ===
 //These comments occur at anytime, but most often during task scenes (eg, being trained to position their body certain ways, cleaning sexual toys).
@@ -58,8 +63,11 @@
     - I wish I was in {isBoy:his|{isGirl:her|their}} place. #12
     - I'm so nervous for {isBoy:him|{isGirl:her|them}} right now! #13
 }
-
+/character headmistress
 ->->
+
+
+
 
 === Headmistress_Crowd_Embarrassed ===
 //These comments occur during reward scenes when the player has indicated they are embarrassed to perform.
@@ -78,8 +86,11 @@
     - How mortifying! #11
     - How pathetic. Being so embarrassed! #12
 }
-
+/character headmistress
 ->->
+
+
+
 
 === Headmistress_Crowd_Slut ===
 //These comments occur during reward scenes when the player has indicated they are excited to perform.
@@ -98,8 +109,11 @@
     - Oh sure. Just show off like a little slut. #11
     - I hope I get fucked after this. #12
 }
-
+/character headmistress
 ->->
+
+
+
 
 === Headmistress_Crowd_GoodJob ===
 //This gets used whenever a player does / responds to something in a favorable way.
@@ -109,7 +123,7 @@
     - Very nice. #02
     - Oh yes. #03
     - Mmmm. #04
-    - {isBoy:His|{isGirl:Her|Their}} owner must be proud. #05
+    - {isBoy:His|{isGirl:Her|Their}} owner must be very proud. #05
     - Such a good {player_name}. #06
     - Magnificent! #07
     - Delightful. #08
@@ -120,8 +134,11 @@
     - So impressive! #13
     - Show off. #14
 }
-
+/character headmistress
 ->->
+
+
+
 
 === Headmistress_Crowd_BadJob ===
 //This gets used whenever a player does / responds to something in a displeasing way.
@@ -142,5 +159,5 @@
     - Oh my Goddess. #13
     - I could do better. #14
 }
-
+/character headmistress
 ->->

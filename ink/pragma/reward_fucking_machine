@@ -1,0 +1,93 @@
+=== pragma_reward_fucking_machine ===
+-> select_gender_check ->
+~ setScene(reward_scene, Pragma, "pragma_reward_fucking_machine", -> pragma_reward_fucking_machine)
+-> scene_setup -> intro
+
+
+= scene_setup
+/scene PragmasRoom.Ready
+/music pragma
+/ambient pragma
+/character pragma
+->->
+
+
+= intro
+
+/notify title="The Divine Engine Pragma's Reward Confirmation" text="This is a placeholder reward. Do you want to spend a bloodstone?"
+
++ [yes]
+    ~ removeReward(-> load_begin)
+    /notify title="The Divine Engine Pragma's Reward Paid" text="You turn over one Bloodstone."
+    -> begin
++ [no] -> exit
+
+
+= load_begin
+-> scene_setup -> begin
+
+
+= begin
+/notify title="The Divine Engine Pragma's Placeholder Reward" text="You have been rewarded. Returning to entry."
+/wait 5
+-> finish
+
+
+= finish
+
+// scene wrap-up goes here
+
+-> exit
+
+
+Pragma Fucking Machine Reward
+
+The player has been granted a reward and finds themself in Pragma’s room/laboratory. Pragma is latching the restraints of the test subject’s chair. Pragma suddenly stands upright.
+
+“Additional test subject detected.”
+
+Pragma turns her head then body completely around to face the player. 
+
+“Helmets must be worn in the laboratory.”
+
+The player’s helmet comes out (in whatever way agreed upon) and Pragma places it over the player’s head. Their view darkens and they can see a readout of code. 
+
+“Subject analysis processing.”
+
+Pragma taps on the side of the player's helmet as she programs it. The player’s helmet reads SUBJECT ANALYSIS PROCESSING…DOWNLOADING.
+
+“Test subject has advanced and gained new skills. It is ready for higher levels of testing. Begin Phase 2.”
+
+INITIATING PHASE 2. A door opens on the floor and a complex machine rises up. (This can be done however and can look like whatever. I’m just writing one possibility but it can be modified for practicality.) The machine has several robotic arms with metallic dildos on the end. In the center is a medical style bondage horse. 
+
+“Is the subject prepared to have their ability and stamina evaluation?”
+
+
+[no] “Subject does not present willingness. Evaluation aborted. Subject dismissed.” Player sent to another reward. 
+
+
+[yes] 
+
+“Prepare subject for anatomical modifiers.”
+
+Player sees text PREPARE FOR BODY MODIFICATION. The player’s breasts, butt and hips begin to grow with an audible hissing sound until their body has the same shape as Pragma. She looks over the player.
+
+“Perfection. Subject is prepared. Begin testing.”
+
+Player sees text PROCEED TO THE TESTING APPARATUS. 
+
+“Initiate Level 1 lubrication.”
+
+The machine robotically sprays streams of oil/lubricant all over the player, particularly their butt. 
+
+“Begin helmet durability test.”
+
+Hissing and whirring in the helmet can be heard by the player. One of the arms of the machine thrusts a dildo towards the player’s helmet. Helmet gives instructions to the player on proper blow job movements. Pragma makes randomized comments on what she is seeing. The helmet has a circular hole for breathing that is doubling as an orifice. Maybe there is a mirror view for the player or maybe there is a mechanism in their helmet that allows them to see from Pragma’s eyes or another camera in the room. 
+
+The scene proceeds with checking the durability and stamina of the anal orifice and then checks how the player does when accommodating oral and anal. We can throw in some hand jobs if desired as well. 
+
+The scene ends with the player coming off the machine.
+
+“This modification is proving successful. My theories on deriving perfection from the improbable, rudimentary human form are all being confirmed. Subject must return for more analysis. For now, power down.”
+
+Pragma takes off the player’s helmet and they leave her room.  

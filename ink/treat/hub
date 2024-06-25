@@ -3,11 +3,15 @@
 // players who exit a session early earn a punishment
 
 //when players come to visit her, she asks them what type of session they are there fore
-//UI on the screen displays their options: sex therapy, aftercare, hyponosis, meditation or a task
+//UI on the screen displays their options: sex therapy, aftercare, hypnosis, meditation or a task
 //Meditation = therapeutic domming sessions and any new ones created
 //Service = cleaning her office, rubbing her feet, etc.
-//Sex Therapy = displayers UI options for type of help they want: how to pleasure a woman, how to pleasure a man, anal stretching, etc
+//Sex Therapy = displays UI options for type of help they want: how to pleasure a woman, how to pleasure a man, anal stretching, etc
 //Aftercare = head stroked, cuddled, or otherwise comforted and praised
+//terms she uses = little one, sweety, baby boy / girl, little boy / girl, plaything, darling, sweet one, sweetling
+
+
+
 
 === treat_hub ===
 
@@ -16,7 +20,7 @@
 ~ setHub(Treat, "treat_hub", -> treat_hub)
 /scene none
 /scene Hell.Hub
-/music treat
+/music treat-hub
 /ambient treat
 /character treat
 
@@ -30,7 +34,10 @@
 
 { treat_regard >= 10:
 /perform react_thankful happy 65
-    It's nice to see you again, {player_name}. #01
+    {shuffle:
+        - It's nice to see you again, {player_name}. #01
+        - It's wonderful to see you again. #34
+    }
 - else:
 /perform talk_consider skeptical 55
     Come in, {player_name}. #02
@@ -41,6 +48,7 @@
     - This is a safe space. #03
     - Welcome to my sanctum of healing. #04
     - Your mental well-being is my priority. #05
+    - I gather you have a special reason for visiting today. #61
 }
 
 {
@@ -119,7 +127,6 @@ No? #40
 -> goodbye
 
 
-
 = check_reward_mega
 
 /perform idle_pleased excited 80
@@ -193,7 +200,7 @@ No? #40
 /perform do_shoo_player angry 35
 {shuffle:
         -  Indulge yourself before performing any more tasks. #22
-        -  You should go induldge yourself, before performing any more tasks. #59
+        -  You should go indulge yourself, before performing any more tasks. #59
 }
 
 /perform idle_hand_on_hip amused 45
@@ -251,7 +258,8 @@ Would you like to indulge yourself? #23
 + [no]
 
 
-- /react_whatever sad 45
+- (shame) 
+/perform react_whatever sad 45
 That's a shame. #29
 
 { treat_regard < 10:
@@ -272,13 +280,14 @@ That's a shame. #29
 
 -> select_session
 
+
 = choose_punishment
 
 - /perform do_smooth_skirt angry 50
 Time to punish you, then. #32
 
 { shuffle:
-    - -> treat_punishment_placeholder
+    - -> treat_punishment_spanking
 }
 
 
@@ -300,6 +309,7 @@ I enjoy rewarding you, {player_name}. #35
 
 {shuffle:
     - -> treat_reward_cunnilingus
+    - -> treat_reward_riding
 }
 
 
@@ -324,12 +334,19 @@ What type of session would you enjoy? #39
 + [Submissive Headspace]
     ~ treat_session_reminders = 0
     -> treat_session_subdrop
+    
++ [Aftercare]
+    ~ treat_session_reminders = 0
+    -> treat_session_aftercare
 
-+ [Meditation] -> meditation_session
++ [Meditation] 
+    ~ treat_session_reminders = 0
+    -> meditation_session
 
 + [Service]
     ~ treat_session_reminders = 0
     -> treat_task_placeholder
+
 
 = meditation_session
 

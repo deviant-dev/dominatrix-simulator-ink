@@ -4,9 +4,8 @@
 
 {sentFromElsewhere:
     /scene Theatre.DeskApproach
-    /music headmistress
+    /music headmistress-punishment
     /ambient crowd
-    ~ Headmistress_RaiseCurtains()
     /character crowd cheers_loud
     /character headmistress
     -> headmistress_punishment_spanking.get_on_desk ->

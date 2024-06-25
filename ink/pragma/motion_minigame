@@ -1,0 +1,132 @@
+=== Pragma_Motion_Minigame ===
+
+= timeout
+
+/emotion sad 50
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= change_to_slower
+
+/emotion amused 50
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= change_to_faster
+
+/emotion excited 50
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= too_fast
+
+/emotion angry 75
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= too_slow
+
+/emotion disgusted 75
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= just_right_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= just_right_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= just_right_arousal_high
+
+/music 
+/emotion aroused 100 
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= continue_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= continue_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= continue_arousal_high
+
+/music 
+/emotion aroused 75
+
+{shuffle:
+    - 
+}
+-> END
+
+
+= orgasming
+
+/music 
+/emotion aroused 100
+
+{shuffle:
+    - 
+}
+
+{shuffle:
+    - cc: (long orgasmic moans)
+    - cc: (short orgasmic moans)
+    - cc: (shuddering orgasmic moans)
+}
+-> END
+
+
+-> exit

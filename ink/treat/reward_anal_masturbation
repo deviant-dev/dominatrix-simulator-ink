@@ -1,5 +1,8 @@
 TODO: rewrite for Treat
 
+
+
+
 === treat_reward_anal_masturbation ===
 -> select_gender_check ->
 
@@ -17,7 +20,7 @@ TODO: rewrite for Treat
 /perform do_arm_raise
 /music headmistress-reward-prelude
 /character crowd cheers_loud
-~ Headmistress_RaiseCurtains()
+-> Theater_RaiseCurtains ->
 
 
 /wait 2
@@ -28,7 +31,7 @@ TODO: rewrite for Treat
     /character headmistress react_thankful aroused 50
     Eager students and connoisseurs of the flesh.
     - /character headmistress react_shrug_long excited 50
-    Every opportunity to perform for an audience must be siezed.
+    Every opportunity to perform for an audience must be seized.
     /character headmistress talk_thoughtful angry 50
     This is a true test of your willing obedience.
 }
@@ -42,7 +45,7 @@ TODO: rewrite for Treat
     - Delight and remain pleasing, {player_name}.
 }
 
-TODO: check for nervous or embarassed moved to generic responses, cut and move VO
+TODO: check for nervous or embarrassed moved to generic responses, cut and move VO
 - (excited)
 /wait 
 /perform talk_question amused 50
@@ -54,8 +57,8 @@ Are you excited to be rewarded in this way, {isBoy: heathen|harlot}?
     /character crowd oos
     ~ addObey()
     /character headmistress idle happy 50
-   -> Headmistress_AcknowledgeYes ->
-   --/character headmistress react_thankful
+    -> Headmistress_AcknowledgeYes ->
+    --/character headmistress react_thankful
     {shuffle:
         - Such hedonistic exhibitionism will please <i>Her</i>.
         - Your audience shall delight in feasting their eyes upon your body.
@@ -63,14 +66,14 @@ Are you excited to be rewarded in this way, {isBoy: heathen|harlot}?
     }
     /wait 2
     -> nervous_tease
-  
+
 + [no]
     /perform idle
-   -> nervous_consent_check
-  
+    -> nervous_consent_check
+
 + [timeout] -> Headmistress_Timeout -> excited
 + [distracted] -> Headmistress_PayAttention -> excited
- 
+
 
 = nervous_consent_check
 
@@ -126,7 +129,7 @@ Do you tremble with nervous embarrassment, foible?
         
     ++ [yes]
     /character crowd cheers_short
-     ~ addObey() 
+    ~ addObey() 
     /character headmistress react_nod_big happy 50
     -> Headmistress_AcknowledgeYes ->
     /perform idle_clasp_hands
@@ -154,20 +157,20 @@ Do you tremble with nervous embarrassment, foible?
 
 /perform react_shrug_long amused 75
 Do you tremble with nervous embarrassment, foible?
- 
+
 /perform idle neutral
- 
+
 +[yes]
     /character crowd cheers_short
     /character headmistress react_thankful aroused 75
-     ~ embarrassed = true
+    ~ embarrassed = true
     How utterly delightful!
     /perform talk_behold
-    This will quench <i>our</i> refreshment even moreso.
+    This will quench <i>our</i> refreshment even more so.
     
     -> ready
-   
- +[no]
+
++[no]
     /character crowd cheers_short
     /character headmistress do_arm_raise happy 75
     A true performer, students!
@@ -177,6 +180,7 @@ Do you tremble with nervous embarrassment, foible?
     
 + [timeout] -> Headmistress_Timeout -> nervous_tease
 + [distracted] -> Headmistress_PayAttention -> nervous_tease
+
 
 = ready
 
@@ -225,11 +229,13 @@ TODO: moved to generic responses, cut and move VO
 ~ removeReward(-> load_gave_reward)
 --> prepare
 
+
 = load_gave_reward
 /scene TheatreOpen.Ready
 /music headmistress-reward-prelude
 /ambient crowd
 -> prepare
+
 
 = prepare
 
@@ -254,15 +260,15 @@ Which will you choose?
         /character crowd oos
         /character headmistress do_arm_raise amused 50
         {isBoy: He chooses|{isGirl: She chooses|They choose}} to perform on {isBoy: his|{isGirl: her|their}} knees.
-       
+
         /character headmistress react_thankful angry 50
         Such a heady position of submission and subservience!
- 
+
 + [timeout] -> Headmistress_NoAction -> prepare
 
 // NOTE: The [distracted] choice shouldn't be used when posing as players often have to look away to get into poses. - deviant
 // + [distracted] -> Headmistress_PayAttention -> prepare
- 
+
 - (instructions)
 /perform idle_clasp_hands neutral
 You will be allowed to cum today, slave,
@@ -328,7 +334,7 @@ Do you understand, {isBoy: simpleton|ninny}?
 {shuffle:
     - Time to show us just how much of a slut you are.
     - We expect quite a performance from a self-proclaimed whore.
-    - Show us your finest exhibitionist frigging, {isBoy: muttonmonger|trollop}!
+    - Show us your finest exhibitionist frigging, {isBoy: mutton monger|trollop}!
 }
 
 - (tease_embarrassed)
@@ -338,11 +344,10 @@ Do you understand, {isBoy: simpleton|ninny}?
     - We are about to feast upon your burning visage, {isBoy: duckling|mouse}!
     - Your shame shall be our succor!
     - It is time to defile yourself for our pleasure, tribute.
- }
- /character crowd oos
+}
+/character crowd oos
 
 -> begin
-
 
 
 = begin
@@ -400,7 +405,6 @@ You may {hasPenis: wrap your hand around your rod|slip your fingers between your
 + [distracted] -> Headmistress_PayAttention -> cum
 
 
-
 = orgasm
 
 /character headmistress
@@ -415,7 +419,7 @@ You may {hasPenis: wrap your hand around your rod|slip your fingers between your
 {shuffle:
     - You may release your pent up passion, slave.
     - You may {hasPenis: spew your load|cream the floor}, whore.
-    - I give you leave to cum, {isBoy: manwhore|soiled dove}.
+    - I give you leave to cum, {isBoy: man whore|soiled dove}.
 }
 
 /perform idle_clasp_hands neutral
@@ -442,8 +446,8 @@ You may {hasPenis: wrap your hand around your rod|slip your fingers between your
 + [yes]
     /character crowd claps
     /character headmistress react_nod_little
-   -> Headmistress_AcknowledgeYes ->
-   
+    -> Headmistress_AcknowledgeYes ->
+
 + [no]
     We shall wait for you to finish!
     -- (reminder)
@@ -505,6 +509,7 @@ I give you leave to depart.
 
 -> exit
 
+
 = question
 
 /wait 2
@@ -534,7 +539,7 @@ I give you leave to depart.
 
     {embarrassed:
         /perform talk_one_hand happy 30
-         {shuffle:
+        {shuffle:
             - We can tell, little one.
             - Your torment is our delight!
         }
@@ -545,8 +550,8 @@ I give you leave to depart.
             - A true performance artist.
         }
     }
-      Then surely we must continue!
-      
+    Then surely we must continue!
+
 + [no]
     /character crowd jeers
     /character headmistress react_scoffs angry 50
@@ -556,6 +561,7 @@ I give you leave to depart.
 + [distracted] -> Headmistress_PayAttention -> question
     
 -->->
+
 
 = keep_going
 /perform talk_thoughtful skeptical 50
@@ -608,6 +614,7 @@ I give you leave to depart.
 
 ->->
 
+
 = command
 
 /wait 2
@@ -622,7 +629,7 @@ I give you leave to depart.
     - Pause and {hasPenis: cup and raise your sac|spread your folds} that all may enjoy the view.
     - {hasPenis: Squeeze harder as you stroke|Slide a finger into yourself as you rub your slit}.
     - Moan loudly as you {hasPenis: stroke|finger} yourself.
-    - Pinch your nipples with your free hand, {isBoy: manwhore|harlot}.
+    - Pinch your nipples with your free hand, {isBoy: man whore|harlot}.
     - Sway your hips for the crowd, strumpet!
 }
 
@@ -660,9 +667,10 @@ Does it feel good to be put on display, foible?
 
 -->->
 
+
 = masturbation_comment
 
-TODO: replace Headmistress crowdcomment (obsolete) with general
+TODO: replace Headmistress crowd comment (obsolete) with general
 
 {embarrassed:
     { shuffle:
@@ -681,6 +689,7 @@ TODO: replace Headmistress crowdcomment (obsolete) with general
 }
 
 ->->
+
 
 = embarrassment_comment
 
@@ -704,6 +713,7 @@ TODO: replace Headmistress crowdcomment (obsolete) with general
 
 ->->
 
+
 = slut_comment
 
 {shuffle:
@@ -721,13 +731,14 @@ TODO: replace Headmistress crowdcomment (obsolete) with general
     - What debaucherous perversion we feast upon.
     - Enjoy how unabashedly our harlot {hasPenis: strokes the shaft|rubs the slit}.
     - Unfettering the passions of <i>Her</i> slaves is pure ecstasy!
-    - This {isBoy: muttonmonger|painted hussy} is exactly where {isBoy: he belongs|{isGirl: she belongs|they belong}}.
+    - This {isBoy: mutton monger|painted hussy} is exactly where {isBoy: he belongs|{isGirl: she belongs|they belong}}.
 }
 
 ->->
 
 /character headmistress
 ->->
+
 
 = surprise_interrupt
 

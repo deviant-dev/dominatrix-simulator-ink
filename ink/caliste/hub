@@ -71,11 +71,9 @@
 -> goodbye
 
 
-
 = check_reward_mega
 
 << Full band of rewards, huh? >>
-
 
 {caliste_regard < 10:
     << It's too bad you haven't pleased me more or I might have something special for you. >>
@@ -179,6 +177,3 @@
 << You may go. >>
 /wait
 -> exit
-
-
-

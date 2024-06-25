@@ -1,0 +1,413 @@
+=== headmistress_reward_cunnilingus ===
+-> select_gender_check ->
+~ setScene(reward_scene, Headmistress, "headmistress_reward_cunnilingus", -> headmistress_reward_cunnilingus)
+-> scene_setup
+
+
+
+= scene_setup
+/scene Theatre.CunnilingusIntro
+/music headmistress-reward-prelude
+/ambient crowd
+/character crowd claps
+/character headmistress
+-> Theater_RaiseCurtains ->
+
++ [move:Exit] -> exit
++ [move:Approach] -> intro
+
+
+= intro
+/perform idle_clasp_hands amused 65
+For your reward, #01
+
+{shuffle:
+    - you shall demonstrate to your admirers #02
+        just how well you can pleasure a Mistress #03
+        with your mouth. #04
+    - you shall hone your ability to gratify #05
+        with your tongue. #06
+    - you shall praise your Mistress #07
+        not only with your lips, #08
+        but with your tongue. #09
+}
+
+/character crowd oos
+/wait 2
+/character headmistress
+/perform talk_behold happy 50
+{shuffle:
+    - If you earn <i>Her</i> favor, #10
+        you may one day #11
+        venerate the Goddess in this way. #12
+    - Perfection here may afford you #13
+    the opportunity to suckle our Goddess. #14
+    - Good favor with your Mistress #15
+    could someday grant you the privilege #16
+    of likewise worshiping our Goddess on your knees. #17
+    - Prove yourself and the Goddess, <i>Herself</i>, #18
+    may condescend to receive your adoration in like manner. #19
+}
+
+-> Headmistress_Crowd_General ->
+/character headmistress
+- (mouth)
+/perform talk_thoughtful skeptical 30
+{shuffle:
+    - I expect your tongue to perform exceptionally. #20
+    - The assembly will want to see #21
+        how well you can work that tongue of yours. #22
+    - Your mouth must be unexceptionable in this! #23
+    - Onlookers should see clearly #24
+        the pleasure you can create for your Mistress. #25
+}
+
+/perform talk_gesture amused 30
+Do you agree to this reward, moppet? #26
+
++ [yes]
+/character crowd cheers_loud
+/wait 2 
+/character headmistress 
+    -> Headmistress_AcknowledgeYes ->
+    -> Headmistress_Give_Reward ->
+    ~ removeReward(-> load_begin)
+    /character headmistress idle_clasp_hands
+    /character crowd cheers_short
+    -> Headmistress_Crowd_Reward ->
+    -> Headmistress_Crowd_Reward ->
+    /character headmistress
+    -> begin
+    
++ [no] 
+/character crowd boos
+/wait 2 
+/character headmistress
+    -> Headmistress_AcknowledgeNo ->
+    /perform talk_annoyed angry 50
+        If this reward fails to appease you, #27
+        then you must leave. #28
+    
+    -- (leave)
+    /perform talk_question sad 45
+        Do you wish to depart, {isBoy: miscreant|foible}? #29
+    
+    ++ [yes]
+    /perform do_you_leave_right
+        As you wish. #30
+        You may go. #31
+        -> exit
+    
+    ++ [no]
+    /perform do_quick_bow amused 50
+        Perhaps you were confused. #32
+        -> Headmistress_Resume ->
+        -> begin
+    
+    ++ [timeout] -> Headmistress_Timeout -> leave
+    
+    ++ [distracted] -> Headmistress_PayAttention -> leave
+
++ [timeout] -> Headmistress_Timeout -> mouth
+
++ [distracted] -> Headmistress_PayAttention -> mouth
+
+
+-
+
+-> load_begin
+
+
+= load_begin
+-> scene_setup -> begin
+
+
+= begin
+
+- (kneel)
+/perform do_point_down amused 65
+{shuffle:
+    - Kneel, trinket. #33
+    - On your knees, poppet. #34
+    - Down, harlot. #35
+}
+
++ [pose:kneel]
+
++ [timeout] -> Headmistress_NoAction -> kneel
+
+- -> Headmistress_GoodJob ->
+-> Headmistress_Crowd_GoodJob ->
+
+/character headmistress idle_pleased happy 50
+I am eager to see you complete this reward, jezebel. #36
+
+-> Headmistress_Reward_Emotion_State ->
+
+
+/perform talk_emphatic_one_hand happy 60
+It is imperative that you follow #37
+/perform idle_clasp_hands
+a Mistress's instructions precisely. #38
+
+/perform talk_one_finger skeptical 50
+At any time, #39
+you may be required to perform this service. #40
+
+/perform do_shake_finger amused 55
+    To ensure you become proficient, #41
+/perform talk_behold skeptical 60
+    I will insist you practice this reward #42
+    on various subjects anon. #43
+    
+-> Headmistress_Crowd_General ->
+    
+- (stand)
+/character headmistress talk_lean_forward amused 55
+    Now arise! #44
+    
++ [pose:stand]
++ [timeout] -> Headmistress_NoAction -> stand
+
+- /perform talk_consider aroused 55
+Today, you shall demonstrate on... #45
+
+/perform react_thankful excited 45
+{shuffle:
+
+    - Me. I'm feeling rather… lickerish. #46
+    /character crowd oos
+    -> Headmistress_Crowd_Reward ->
+    /character headmistress idle_sassy happy 50
+        As soon as I am in position, you may begin. #47
+        -> preload_hm
+
+    - My well-groomed girl. #48
+    /character crowd cheers_short
+    -> Headmistress_Crowd_Reward ->
+    /character headmistress talk_behold happy 50
+        Once she is in place, you may begin. #49
+        -> preload_slave
+
+    - Mistress Yuki-Onna. #50
+    /character crowd oos
+    -> Headmistress_Crowd_Reward ->
+    /character headmistress idle_cocks_head_to_left happy 50
+        Once she is ready, you may begin. #51
+        -> preload_yuki
+
+}
+
+
+//Load Staging Minigame Scene
+= preload_hm
+/scene none
+/scene Theatre.CunnilingusReady_HM
+/music headmistress-reward-denouement
+/character crowd cheers_loud
+/character headmistress
+
++ [move:Approach] -> load_hm
+
+
+= preload_slave
+/scene none
+/scene Theatre.CunnilingusReady_Slave
+/music headmistress-reward-denouement
+/character crowd cheers_loud
+/character headmistress
+
++ [move:Approach] ->  load_slave
+
+
+= preload_yuki
+/scene none
+/scene Theatre.CunnilingusReady_Yuki
+/music headmistress-reward-denouement
+/character crowd cheers_loud
+/character headmistress
+
++ [move:Approach] ->  load_yuki
+
+
+//Load Full Minigame Scene
+= load_hm
+/scene none
+/scene Theatre.Cunnilingus_HM
+/music headmistress-reward
+/ambient crowd
+/character headmistress
+
+// This minigame is on another character
+~ mg_performOther = false
+
+// Reset comment count
+~ mg_commentCount = 0
+
+// Skip 3 'continue' comments before saying another
+~ mg_commentDelay = 4
+
+//HM Sitting On Chair With Legs On Desk
+-> minigame
+
+
+= load_slave
+/scene none
+/scene Theatre.Cunnilingus_Slave
+/music headmistress-reward
+/ambient crowd
+/character headmistress
+
+// This minigame is on another character
+~ mg_performOther = true
+
+// Reset comment count
+~ mg_commentCount = 0
+
+// Skip 3 'continue' comments before saying another
+~ mg_commentDelay = 4
+
+//Slave On Back On Desk
+-> minigame
+
+
+= load_yuki
+/scene none
+/scene Theatre.Cunnilingus_Yuki
+/music headmistress-reward
+/ambient crowd
+/character headmistress
+
+// This minigame is on another character
+~ mg_performOther = true
+
+// Reset comment count
+~ mg_commentCount = 0
+
+// Skip 3 'continue' comments before saying another
+~ mg_commentDelay = 4
+
+//yuki On All fours On Desk
+-> minigame
+
+
+= minigame
+
++[minigame:success] -> finish_good
++[minigame:fail] -> finish_bad
+
+
+= finish_good
+/scene none
+/scene Theatre.CunnilingusComplete
+/music headmistress-reward-denouement
+/ambient crowd
+/character headmistress
+
+~ embarrassed = true
+TODO: only setting the variable to true because it is actually checked for under generic responses. needs to be able to carry over from that section
+
+/perform do_arm_raise aroused 65
+Breathtaking, moppet! #52
+
+-> Headmistress_Crowd_GoodJob ->
+/character headmistress
+
+{embarrassed:
+    /perform do_smooth_skirt happy 45
+    {shuffle:
+        - You performed exceptionally under pressure. #53
+        - Even discomfited, you triumphed! #54
+        - <i>She</i> enjoyed your flushed performance. #55
+    }
+    
+    {shuffle:
+        - I enjoy watching you blush as you serve. #56
+        - Such a pleasure to see you persevere when you are nervous. #57
+        - Never fail to do your best, even when you feel shy! #58
+    }
+    -> Headmistress_Crowd_GoodJob ->
+    /character headmistress
+    - else:
+    {shuffle:
+        - Your enthusiasm for performing becomes you! #59
+        - I am pleased with your passionate exhibition. #60
+        - <i>She</i> delights in your eagerness. #61
+    }
+    {shuffle:
+        - You can go far with such eager enthusiasm! #62
+        - The light of the stage enhances your fervor! #63
+        - Your appetite to perform satisfies us all! #64
+    }
+    -> Headmistress_Crowd_GoodJob ->
+    /character headmistress
+}
+
+//check to see if player enjoyed themselves
+Your reward is complete. #65
+/perform react_thankful happy 60
+/character crowd cheers_loud
+/character headmistress do_shoo_player
+You may go now. #66
+
+-> exit
+
+
+= finish_bad
+/scene none
+/scene Theatre.CunnilingusComplete
+/music headmistress-reward-denouement
+/ambient crowd
+/character crowd boos
+/character headmistress
+
+
+~ embarrassed = true
+TODO: only setting the variable to true because it is actually checked for under generic responses. needs to be able to carry over from that section
+
+/perform talk_annoyed angry 55
+{shuffle:
+    - Shocking! #67
+    - What a layabout! #68
+}
+
+-> Headmistress_Crowd_BadJob ->
+
+{embarrassed:
+    /character headmistress talk_one_finger sad 55
+    {shuffle:
+        - Your nervousness overcame you. #69
+        - You must not let your unease spoil your service. #70
+        - Clearly you let your nerves get the best of you. #71
+    }
+    
+    /perform do_arm_raise angry 50
+    {shuffle:
+        - We will work on improving this! #72
+        - Something to improve upon in the future. #73
+        - <i>She</i> expects much more from you. #74
+    }
+    -> Headmistress_Crowd_BadJob ->
+    - else:
+    /character headmistress idle_fake_annoyed angry 55
+    {shuffle:
+        - Your enthusiasm failed you. #75
+        - Excitation is not enough. #76
+            Skill is required. #77
+        - Your excitement outweighed your ability. #78
+    }
+    /perform idle_skeptical disgusted 50
+    {shuffle:
+        - It is easy to overestimate yourself. #79
+        - I expect you to focus more fully next time we meet. #80
+        - I must correct you of such unrestrained enthusiasm! #81
+    }
+    -> Headmistress_Crowd_BadJob ->
+}
+
+/character crowd jeers
+//do we give a punishment
+/character headmistress do_you_leave_right disgusted 60
+Leave me for now. #82
+
+-> exit

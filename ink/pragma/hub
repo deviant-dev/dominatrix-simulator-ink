@@ -1,17 +1,15 @@
 === pragma_hub ===
-
 -> select_gender_check ->
 
-{pragma_intro.start == false: -> pragma_intro }
+{pragma_intro_completed == false or deviation == pragma: -> pragma_intro }
 
 ~ setHub(Pragma, "pragma_hub", -> pragma_hub)
 /scene none
 /scene PragmasRoom.Hub
-/music pragma
+/music pragma-hub-1
 /ambient pragma
 /character pragma
-
-- /notify title="The Divine Engine Pragma's Hub" text="This is a placeholder. You negotiate a scene with the Mistress here.<br/><br/>Kinks:<br/>Dehumanization<br/>Mind Games<br/>Fucking Machines"
+/perform idle_clasp_hands skeptical 10
 
 + [move:Exit] -> exit
 + [move:Approach] -> apology_check(-> hello, -> exit)
@@ -22,11 +20,41 @@
 /wait
 
 { pragma_regard >= 10:
-    << Hello favored subject. >>
+/emotion happy 70
+    Hello favored subject. #01
 - else:
-    << Hello subject. >>
+/emotion happy 20
+    {shuffle:
+        - Hello, Subject 33. #02
+        - Greetings, imperfect one. #03
+    }
 }
 
+-
+{inChastity:
+    Chastity status: active. #04
+    Access to enhancement protocols restricted. #05
+
+    Requisition the Goddess to toggle chastity status. #06
+    Otherwise, continue for partial access. #07
+}
+
+Subject, do you seek purpose? #08
+
++ [yes] -> Pragma_AcknowledgeYes.EmoteOnly ->
++ [no] -> goodbye
+
+- (wrists)
+/perform idle_clasp_hands skeptical 50
+{shuffle:
+    - Display gemstones for calculation. #09
+    - Subject will now present wrists. #10
+}
+
++ [pose: present_wrists] 
++ [timeout] -> Pragma_Timeout.EmoteOnly -> wrists
+
+- /emotion amused 50
 {
     - punishments > 0: -> check_punishment
     - rewards >= 10: -> check_reward_mega
@@ -37,91 +65,118 @@
 
 = check_punishment
 
-/character pragma
-<< Are you here to pay your punishment? >>
+/perform do_tap_wrist disgusted 40
+{punishments > 1:
+    Subject Obsidian count exceeds one (1). #11 //(1) is silent 
+    Activate punishment subroutine to reduce count. #12
+- else:
+/perform do_inspect angry 75
+    Obsidian detected. #13
+    Punishment procedure accessible. #14
+}
+
+/perform idle_clasp_hands skeptical 70
+Is subject here to participate in a punishment experiment? #15
 + [yes] -> choose_punishment
 + [no]
 
-- << No? >>
+/emotion disgusted 45
+- No? #16
 
 {
     - punishments < 10 && rewards < 10:
         -> check_task
     - punishments >= 10:
-        << You have too many punishments for a task, I'm afraid. >>
-    - else:
-        << You have too many rewards for a task, I'm afraid. >>
+        Subject has an excess of Obsidians. #17
+        Remit at least one (1) to qualify for a task. #18
+    - rewards >= 10: 
+        Error encountered in reward value: #19
+        Total count too high for task algorithm. #20
         {punishments > 1:
-            << Pay off those punishments and you might get a big reward. >>
-        - else:
-            << Pay off that punishment and you might get a big reward. >>
+            Milestone reward accessible #21
+            If all punishments cleared. #22
+        - else: 
+            To access super-reward, #23
+            subject must complete remaining punishment. #24
         }
 }
 
-- << Don't you want to pay off a punishment? >>
+-/emotion amused 50
+Does subject wish to run a punishment algorithm? #25
 
 + [yes] -> choose_punishment
 + [no]
 
 -
-{inChastity == false:
-    << FYI: The Goddess can remove all of those punishments if you go into chastity. >>
+{inChastity == false: 
+    Subject will write this instruction to memory. #26
+    The Goddess can redact all current punishments #27
+    if chastity is activated. #28
 }
 
 -> goodbye
 
 
-
 = check_reward_mega
 
-<< Full band of rewards, huh? >>
+Subject has acquired a milestone reward count. #29
 
 
 {pragma_regard < 10:
-    << It's too bad you haven't pleased me more or I might have something special for you. >>
-    << But I can still give you a reward if you spend just one. >>
+    The subject has insufficient hidden variable. #30
+    A reward can still be accessed #31
+    if the subject remits a single Bloodstone. #32
     -> check_reward
 }
 
 {inChastity:
-    << Too bad you are in chastity or we could truly enjoy ourselves. >>
+    The subject is in chastity. #33
+    Hidden reward is inaccessible. #34
+    Requisition the Goddess to toggle chastity status. #35
     -> check_reward
 }
 
-<< And you've pleased me quite a lot. >>
-<< Give me all 10 and I'll see you get something very special indeed. >>
-<< Would you like that? >>
+Subject has shown intriguing signs of enhancement. #36
+Subject will remit ten (10) Bloodstones. #37
+Does the subject confirm? #38
+
 
 + [yes] -> choose_reward_mega
 + [no] -> check_reward
 
 
 = check_reward
-
-/character pragma
-<< Are you here to receive your reward? >>
+/music pragma-hub-2
+/perform talk_question amused 40
+Is the subject here to initiate a reward subroutine? #39
 
 + [yes] -> choose_reward
 + [no]
 
-- << No? >>
+- No? #40
+/emotion happy 50
+Subject seeks refinement above gratification. #41
 
 {
     - rewards < 10:
         -> check_task
 
-    - rewards >= 10:
-        << You have too many rewards for a task. >>
-        << Indulge yourself before performing any more tasks. >>
+    - rewards >= 10: 
+        Maximum Bloodstone variable registered. #42
+        Before initiating further tasks, #43
+        reduce variable by running reward subroutine. #44
 }
+/emotion skeptical 60
+Will the subject participate in a reward experiment? #45
 
-<< Would you like to indulge yourself? >>
 + [yes] -> choose_reward
 + [no]
 
-- << Perhaps you are saving those for someone special. >>
+-/emotion disgusted 50
+    Curious response. Subject is encountering a computational error. #46
+
 { inChastity:
-    << FYI: See the Goddess about having that chastity device. >>
+    Query Goddess to deactivate chastity status. #47
 }
 
 -> goodbye
@@ -129,11 +184,15 @@
 
 = check_task
 
-{ punishments == 0 && rewards == 0:
-    << No rewards or punishments, huh? >>
-    << You must be here to do a task. >>
-- else:
-    << Shall I give you a task then? >>
+{ 
+    - punishments == 0 && rewards == 0:
+        Null values found in gemstones. #48
+        The subject is in search of purpose. #49
+    - punishments > 0:
+        Obsidian variable below maximum threshold. #50
+        Will subject participate in a task? #51
+    - else:
+        Subject, do you wish to be enhanced? #52
 }
 
 + [yes] -> choose_task
@@ -141,8 +200,11 @@
 
 
 = choose_punishment
-
-<< Time to punish you, then. >>
+/emotion excited 45
+{shuffle:
+- Activating punishment subroutine. #53
+- Initiating punishment procedure. #54
+}
 
 { shuffle:
     - -> pragma_punishment_placeholder
@@ -150,8 +212,11 @@
 
 
 = choose_reward_mega
-
-<< Let's get intimate. >>
+/emotion excited 100
+{shuffle:
+- Activating encrypted reward subroutine. #55
+- Accessing secured reward subroutine. #56
+}
 
 {shuffle:
     - -> pragma_rewardmega_placeholder
@@ -159,24 +224,54 @@
 
 
 = choose_reward
-
-<< Time to reward you, then. >>
-
+/emotion excited 35
 {shuffle:
-    - -> pragma_reward_placeholder
+- Activating reward subroutine. #57
+- Initiating reward subroutine. #58
+}
+
+{ inChastity:
+/emotion angry 60
+    Chastity status limits access to reward subroutines. #59
+        {shuffle:
+            - -> pragma_rewardmega_placeholder
+            - -> pragma_rewardmega_placeholder
+        }
+    - else:
+        {shuffle:
+            - -> pragma_rewardmega_placeholder
+            - -> pragma_rewardmega_placeholder
+        }
 }
 
 
 = choose_task
+/emotion happy 25
+{shuffle:
+- Initiating task flow. #60
+- Launching procedure. #61
+}
 
 { shuffle:
-    - -> pragma_task_placeholder
+    // - -> pragma_task_dancing_doll
+    - -> pragma_task_posing_doll
 }
 
 
 = goodbye
-<< I have nothing for you. >>
-<< You may go. >>
+/emotion aroused 60
+{shuffle:
+    - Query routine complete. #62
+    - Experiment concluded. #63
+}
+
+
+/emotion disgusted 50
+{shuffle:
+    - Terminating all active processes. #64
+    - Powering down simulation. #65
+}
+
 /wait
 -> exit
 

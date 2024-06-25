@@ -1,0 +1,21 @@
+=== ereshkigal_punishment_placeholder ===
+-> select_gender_check ->
+~ setScene(punishment_scene, Ereshkigal, "ereshkigal_punishment_placeholder", -> ereshkigal_punishment_placeholder)
+
+/ambient none
+
+
+/notify title="Ereshkigal Punishment Check" text="This is a placeholder punishment. Do you accept your punishment?"
+
++ [yes]
++ [no]
+    << Don't waste my time, then. >>
+    << Leave. >>
+    /wait
+    -> exit
+
+- ~removePunishment()
+/notify title="Ereshkigal Punishment Result" text="You have been punished. One obsidian removed.<br/> Returning to the entry."
+
+- /wait 5
+-> exit

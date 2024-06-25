@@ -1,215 +1,238 @@
 === furia_intro ===
 ~ setScene(intro_scene, Furia, "furia_intro", -> furia_intro)
 
-/scene FuriasRoom.Hub
-/music furia
+/scene FuriasRoom.Intro01
+/music furia-intro-1
 /ambient furia
-/character furia
-
--/notify title="Enforcer Furia's Intro" text="This is a placeholder intro scene.<br/><br/>Kinks:<br/>Interrogation<br/>Electro Play<br/>Degradation"
-
-+ [move:Exit] -> exit
-+ [move:Approach]
-
-- (start)
-
-/notify title="Enforcer Furia's Intro Completed." text="Returning to the entry."
-/wait 5
-
-~ furia_intro_complete = true
--> exit
-
-
-
-
-
-
-
-=== furia_intro_wip ===
-
-~ setScene(intro_scene, Furia, "furia_intro", -> furia_intro)
-
-/scene FuriasRoom.Hub
-/music furia
-/ambient furia
-/character furia
 
 //player enter room on outside of carefully
-//watches a series of slaves doing tasks for a minute or so - during this time, Enforcer Furia is barking out criticisms or commands and whipping a slave at a punishment pole
+//watches a series of submissive doing tasks for a minute or so - during this time, Enforcer Furia is barking out criticisms or commands and whipping a submissive at a punishment pole
 //she turns to the player to acknowledge them and interrogate them to find out why they are there
 
-// During the interrogation, the slaves continue their tasks in the background
-// - 1 female slave in cell sucking on glory hole cock and giving another a hand job
-// - 1 male slave sitting in chair bound and softly crying while getting zapped with electrip nipple and genital clamps
-// - 1 trans female slave begging softly to be peed on laying on cold floor near hold in ground
-// - 1 female slave tied to punishment pole after being whipped
-// - 1 androgenous slave laying on the electrical bed covered in sweat with more electrical clamps attached
+// During the interrogation, the submissives continue their tasks in the background
+// - 1 female submissive in cell sucking on glory hole cock and giving another a hand job
+// - 1 male submissive sitting in chair bound and softly crying while getting zapped with electrified nipple and genital clamps
+// - 1 trans female submissive begging softly to be peed on laying on cold floor near hold in ground
+// - 1 female submissive tied to punishment pole after being whipped
+// - 1 androgynous submissive laying on the electrical bed covered in sweat with more electrical clamps attached
 
 //Scene begins: Furia finishes whipping player
 
 // Player can move around the scene while Furia is busy?
 
-Six.
--> whipping_comments ->
-Seven.
--> whipping_comments ->
-Eight.
--> whipping_comments ->
-Nine.
--> whipping_comments ->
-Ten.
--> whipping_comments ->
+/character submissive idle_whipping_post
+/character furia idle_whip_furia
+/lookat submissive
 
-You have done well, slave.
+- (repeat_test)
+
+/perform do_whip_furia
+Six. #01
+// Need custom animation that matches side whipping stance
+That's it. #64
+Embrace the pain. #58
+
+/perform do_whip_furia
+Seven. #02
+// Need custom animation that matches side whipping stance
+You were made for this. #59
+
+/perform do_whip_furia
+Eight. #03
+Feel the heat of each bite of my whip. #60
+
+/perform do_whip_furia
+Nine. #04
+// Need custom animation that matches side whipping stance
+Let go and accept your place. #61
+
+/perform do_whip_furia
+Ten. #05
+// Need custom animation that matches side whipping stance
+Ahhh! Your suffering is so delicious and filling! #62
+
+-> continue ->
+
+You have done well, slave. #06
 
 //furia lets her arm hang with the whip in an idle
 
-Your endurance continues to improve.
-You earn more of my favor.
-Keep impressing me and you shall graduate to the next level of training soon.
-You have earned your release.
+Your endurance continues to improve. #07
+// Need custom animation that matches side whipping stance
+You earn more of my favor. #08
+Keep impressing me and you shall graduate to the next level of training soon. #09
+// Need custom animation that matches side whipping stance
+You have earned your release. #10
 
-//slave is slumped and panting hard, moaning and gyrating against the pole to orgasm
+//submissive is slumped and panting hard, moaning and gyrating against the pole to orgasm
 
+-> main_intro
+
+
+= main_intro
 //scene reloads with Furia facing player?
-
+/scene FuriasRoom.Intro02
+/music furia-intro-2
+/ambient furia
 //Furia turns to player
 
-Come here, chattel.
+/character furia do_summon_player angry 50
+Come here, chattel. #11
 
 + [move:Approach]
 
 -
+/perform do_inspect skeptical 50
+What have we here? #12
 
-What have we here?
-
-I see <i>'It'</i> has taken an interest in you.
-
-Opened the way to my chamber of re-programming.
-
-Look around...
+/perform idle_bored amused 50
+I see <i>'It'</i> has taken an interest in you. #13
+Opened the way to my chamber of re-programming. #14
+Look around... #15
 
 - (look)
 
-Observe what is all around you.
+/perform talk_gesture skeptical 50
+    Observe what is all around you. #16
 
 + [distracted]
 + [timeout] -> look
 
 //check to see if the player looks and watches
 
-- Each one of these creatures came to me raw and in need of purpose.
-
-Do you see how they suffer?
-
-+ [yes]
-    Delicioso!
-    I can taste them all.
-
-+ [no]
-    Look closer, {isBoy: pequeño|{isGirl:pequeña|pequeñe}}.
-    You will learn to see.
-
-+ [timeout]
-
--
-Kneel before me.
-I will help you understand.
-
-+ [pose:kneel]
-+ [timeout]
-
--
-The Headmistress...
-she attempts, in her own misguided way,
-to mold our charges into objects of perfection.
-
-Believing they will feed with their pleasure and obedience.
-
-Such a pathetic waste of potential!
-
-
-//Furia gestures to slave writhing on the pole
-Look at the (depraved slut) here...
-She is eager for orgasm.
-This is her reward for her suffering.
-
-Do you see?
+-/perform idle_weight_shift amused 55 
+Each one of these creatures came to me raw and in need of purpose. #17
+Do you see how they suffer? #18
 
 + [yes]
-    Bien.
+    Delicioso! #19
+    I can taste them all. #20
 
 + [no]
-    (A pity.)
-    You will learn to see in time.
+    /perform talk_lean_forward angry 45
+    Look closer, {isBoy: pequeño|{isGirl:pequeña|pequeñe}}. #21
+    You will learn to see. #22
 
-+ [timeout]
++ [timeout] -> Furia_Timeout ->
+
+- (kneel)
+/perform do_point_down amused 65
+Kneel before me. #23
+I will help you understand. #24
+
++ [pose:kneel] -> Furia_GoodJob ->
++ [timeout] -> Furia_NoAction -> kneel
 
 -
-I draw out what is truly required to sustain us all.
+The Headmistress... #25
 
-Raw debasement.
+/perform react_crazy_gesture angry 50
+she attempts, in her own misguided way, #26
+to mold our charges into objects of perfection. #27
+Believing they will feed with their pleasure and obedience. #28
 
-Utter depraviity and suffering.
+/perform react_dismissive disgusted 65
+Such a pathetic waste of potential! #29
 
-Senseless pain.
+//Furia gestures to submissive writhing on the pole
+/perform do_point_right angry 50
+Look at the puta depravada here... #30
 
-I seek wanton objects of suffering
-who want nothing more than to be flayed open...
++ [distracted]
 
-Mind and soul.
++ [timeout]
+    Look at her, not me! #54
 
-In time, you will come to want that too.
+- /wait 2
+She is eager for orgasm. #31
+This is her reward for her suffering. #32
+Do you see? #33
+
++ [yes]
+    /perform react_thankful amused 55
+    Bien. #34
+
++ [no]
+    Que lástima. #65
+    You will learn to see in time. #35
+
++ [timeout] -> Furia_Timeout ->
+
+-
+/perform react_thankful excited 75
+I draw out what is truly required to sustain us all. #36
+/perform talk_behold
+Raw debasement. #37
+Utter depravity and suffering. #38
+Senseless pain. #39
+/perform idle_fake_annoyed
+Now. #66
+Show me your depravity. #67
+
+- (present)
+/perform talk_question amused 65
+Present yourself. #68
+Arms behind your head. #69
+Legs spread wide. #70
+
++ [pose:present_kneel] -> Furia_GoodJob ->
++ [timeout] -> Furia_NoAction -> present
+
+- /perform talk_lean_forward amused 65
+Let me <i>see</i> you. #71
+/perform idle_tease happy 35
+I seek wanton objects of suffering #40
+who want nothing more than to be flayed open... #41
+Mind and soul. #42
+In time, you will come to want that too. #43
 
 - (understand)
-Comprende?
+/perform talk_question skeptical 55
+Comprende? #44
 
 + [yes]
-    Good.
-    You are already on the right path by arriving here.
+    Good. #45
+    You are already on the right path by arriving here. #46
 
 + [no]
-    Time will tell.
-    They all fall in the end.
-    Given enough time and tempation.
+    Time will tell. #47
+    They all fall in the end. #48
+    Given enough time and temptation. #49
 
 + [timeout]
-    Understand?
+    Understand? #50
     -> understand
--
-Mistress Nega will taunt you and use you,
-but you will never achieve your true purpose with her.
 
-Come to me to be reborn.
+-/perform react_scoffs angry 55
+Mistress Nega will taunt you and use you, #51
+but you will never achieve your true purpose with her. #52
+
+/perform react_thankful amused 55
+Come to me to be reborn. #53
+
+~ furia_intro_completed = true
 
 {rewards >= 10 or punishments >= 10: -> exit}
 
 - (do_task)
-Shall I show you? (consent check)
+/perform talk_lean_forward skeptical 55
+Shall I show you? #63
 
 + [yes]
-    Excellente!
-    Then we shall begin.
-    -> furia_task_gloryhole_training
+    -> Furia_GoodJob ->
+    Then we shall begin. #55
+    -- (rise)
+    /perform do_crooked_finger amused 75    
+    Rise. #72
+    ++ [pose:stand] -> Furia_GoodJob -> furia_task_gloryhole_training
+    ++ [timeout] -> Furia_NoAction -> rise
 
 + [no]
-   Then you are not ready.
-   Return when you want to see.
+    /perform do_now_leave angry 75
+    Then you are not ready. #56
+    Return when you want to see. #57
 
 + [timeout] -> do_task
 
-
 - /wait 2
-~ furia_intro_complete = true
 -> exit
-
-= whipping_comments
-
-{cycle:
-    - That's it. Embrace the pain.
-    - You were made for this.
-    - Feel the heat of each bite of my whip.
-    - Let go and accept your place.
-    - Ahhh! Your suffering is so delicious and filling!
-}
-->->

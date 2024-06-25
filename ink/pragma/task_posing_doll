@@ -1,35 +1,381 @@
 === pragma_task_posing_doll ===
+
+//player must be able to hold statue poses for varying amounts of Time
+//task gets more difficult each time player visits Pragma 
+//the final stage will require the longest period of time and let the player know they have passed the first assessment stage to become one of her works of art. 
+
+// Subject's who perform perfectly on this protocol
+// pass the first threshold required to become
+// a work of art worthy of our collection.
+
 -> select_gender_check ->
 ~ setScene(task_scene, Pragma, "pragma_task_posing_doll", -> pragma_task_posing_doll)
-/scene PragmasRoom.posingdoll
+/scene PragmasRoom.Ready
 /music pragma
 /ambient pragma
 /character pragma
 -> start
 
+ 
 
 = start
 
-// consent check
+/perform idle_clasp_hands happy
+
+Subject is selected to undergo #67
+endurance training and enhancement protocol No.5: #68
+Art Exhibition. #69
+
+/perform idle_cocks_head_to_left amused 60
+We will begin with Specimen 33 on alert. #01
+
+Subject, stand erect. #02
+Attend to our words. #03
+
++ [pose: stand] -> Pragma_GoodJob ->
+
++ [timeout] -> Pragma_Timeout -> start
+
++ [distracted] -> Pragma_PayAttention -> start
+
+
+- (sublime)
+/perform talk_gesture happy 55
+Art is sublime. #04
+To achieve perfection, #05
+each specimen we attune #70
+must carry and display themself as a work of art. #07
+
+- (repeat)
+/perform talk_gesture happy 55
+Has Specimen 33 admired art at some point? #08
 
 + [yes]
+    -> Pragma_AcknowledgeYes ->
+    Subject is familiar with art. #09
+    
+    
 + [no]
-    << Don't waste my time, then. >>
-    << Go away.>>
-    /wait
-    -> exit
+    -> Pragma_AcknowledgeNo ->
+    Subject is not drawn to art. #10
+    
++ [timeout] -> Pragma_Timeout -> repeat
 
-- -> begin
++ [distracted] -> Pragma_PayAttention -> repeat
+
+- (assignment)
+
+/perform idle_skeptical skeptical 55
+Today's task is for Specimen 33 #11
+to display its form as a piece of art. #12
+
+/perform do_arm_raise happy 60
+One worthy of our collection. #13
+
+The subjects displayed have achieved perfection #71
+in each protocol we have assigned. #72
+
+/wait 2
+
+Query. #14
+
+- (art) 
+/perform talk_question skeptical 50
+Does Subject desire to serve as a piece of art? #15
+
++ [yes]
+    -> Pragma_AcknowledgeYes ->
+    
++ [no]
+    -> Pragma_AcknowledgeNo -> leave
+    
++ [timeout] -> Pragma_Timeout -> art
+
++ [distracted] -> Pragma_PayAttention -> art
+
+-
+/wait 1
+Protocol assessment will continue. #16
+
+/perform idle_hand_on_hip
+
+Subject's ability to correctly assume each position #17
+will be captured and catalogued. #18
+
+Subject must maintain the statuesque position #19
+until given permission to release it. #20
+
+Regular assessments of the specimen's progress #21
+will occur in the future. #22
+
+- (protocol)
+/perform talk_question amused 45
+Does Specimen 33 consent to the Art Exhibition protocol? #23
+
++ [yes]
+    -> Pragma_AcknowledgeYes ->
+    -> begin
+    
++ [no]
+    /perform do_get_the_fuck_out angry 70
+    We have no use for specimens #24
+    that do not desire to serve. #25
+    /wait
+    -> exit 
+    
++ [timeout] -> Pragma_Timeout -> protocol
+
++ [distracted] -> Pragma_PayAttention -> protocol
+
+
+-> begin
 
 
 = begin
 
-// scene goes here
+
+- (inspect)
+/perform do_snap_fingers
+It must present its chassis for readiness, subject. #26
+
++ [pose: present_chest] -> Pragma_GoodJob ->
+
++ [timeout] -> Pragma_Interested -> inspect
+
++ [distracted] -> Pragma_PayAttention -> inspect
+
+
+- /perform react_shake_head_disbelief
+/wait 2
+Physique lacks feminine perfection. #27
+Noted for future evaluation. #28
+
+We will accept the inferior physical specimen for this protocol. #29
+
+- Initiate Art Exhibition protocol. #30
+
+/perform talk_gesture excited 55
+{shuffle:
+    - Let us observe the machinations. #31
+    - This simulation will provide critical data. #32
+}
+
+/wait 2 
+
+~ task_count = 0
+
+{stopping:
+    - 
+        ~ task_goal = 3
+    - 
+        ~ task_goal = 4
+    - 
+        ~ task_goal = RANDOM (2,4)
+}
+
+/log {task_goal}
+
+-> position
+
+
+
+= position
+
+/perform idle_hand_on_hip
+{cycle:
+    - Will Subject 33 impress with this first position? #73
+    //make sure old #33 is removed from VO file in unity
+    - Now this one. #34
+    - Attempt this position. #35
+    - Next. #36
+    - Mimic this form. #37
+    - Move your limbs into this configuration. #38
+}
+
+{cycle:
+    - Arms must be curved delicately to achieve feminine elegance. #39
+    - This pose demonstrates the feminine essence is open for use. #40
+    - Subject will display grace and invitation with this position. #41
+    - This pose requires a firm chassis and a raised chin. #42
+    - Exhibit ultimate poise in this challenging position. #43
+    - The composure required for this pose is often challenging. #44
+    - Arms must be firm and precise. #45
+}
+
+{shuffle:
+    - -> statue_1 ->
+    - -> statue_2 ->
+    - -> statue_3 ->
+    - -> statue_4 ->
+    - -> statue_5 ->
+    - -> statue_6 ->
+    - -> statue_7 ->
+}
+
+~ task_count++
+
+{cycle:
+    - Test pose acquired. #53
+    - A tolerable attempt. #46
+    - Exhibition noted. #47
+    - Subject chassis lacks tension. #51
+    - This position passes the minimum threshold. #49
+    - Subject appears capable of completing the entire series. #48
+    - Areas for improvement have been noted. #50
+    - Subject 33 will need to undergo this testing multiple times. #52
+    
+}
+
+{task_count < task_goal: -> position}
 
 -> finish
 
 
-= finish
+= statue_1
+// ballet position with ankles touching and arms down in a curve
+-> statue(1) ->->
+
+
+= statue_2
+//ballet position with feet apart and arms straight out to sides
+-> statue(2) ->->
+
+
+= statue_3
+//ballet with one ankle crossed in front of the other one and one arm out to the side
+-> statue(3) ->->
+
+
+= statue_4
+//ballet with other ankle crossed over, knees slightly bent and one arm overhead
+-> statue(4) ->->
+
+
+= statue_5
+// ankles crossed and arms up over the head in a circle
+-> statue(5) ->->
+
+
+= statue_6
+// ankles crossed and arms out to the sides partly curved
+-> statue(6) ->->
+
+
+= statue_7
+// one arm up and the other out to side
+-> statue(7) ->->
+
+
+= statue(num)
+
++ [pose: statue_{num}]
+    ~ addObey()
+    {shuffle:
+        - /wait 1 
+        - /wait 2 
+        - /wait 3
+    }
+    
+    -> notations ->
+    
+    {shuffle:
+    - /wait 2
+    - /wait 3
+    - /wait 4
+    - /wait 5
+    }
+    
+    -> Pragma_GoodJob ->
+    
++ [timeout] 
+     ~ addDisobey()
+    -> Pragma_Interested ->
+
+-->->
+
+
+= notations
+
+{shuffle:
+    - Each statue position challenges the Subject's chassis. #74
+    - Artistic sculptures evoke emotion in specimens. #75
+    - Each sculpture takes extreme precision to craft. #76
+    - Subjects must display their forms with precision. #77
+    - Art must remain immobile so that it may be studied and admired. #78
+    - The perfect feminine form is divine art. #79
+    - The divine form of art must be replicated. #80
+    - Specimens that embody artistic perfection may one day enter our collection. #81
+    - The Headmistress may wish to see this artistic expression. #82
+    - This exhibition will be reported to the Goddess. #83
+    - The divine form of art is imperceptible to Mistress Nega-Yuki. #84
+    - Subject 33 is reminiscent of Miss Treatment's first ward. #85
+    - We must remind Enforcer Furia to preserve the subject's chassis. #86
+    - Notation: Mistress Yuki-Onna would make an admissible subject for this protocol. #87
+}
+
+->->
+
+= finish 
+
+- {obeyed():
+    -> GoodEnding
+- else:
+    -> BadEnding
+}
+
+= GoodEnding
+/wait 3
+
+/perform idle_clasp_hands happy 80
+
+-(pleased)
+
+{shuffle:
+    - We are pleased with the experiment results. #54
+    - This subject has pleased us. #55
+}
+/wait 3
+
++ [pose: raised_chin]
++ [timeout] -> Pragma_Timeout -> pleased
+
+- Bloodstone marker granted. #56
+
+~addReward()
+/wait 2
+-> leave
+
+= BadEnding
+/wait 3
+
+/perform talk_annoyed angry 80
+Subject is organic. Weak. Flawed. #57
+{shuffle:
+    - Further training required. #58
+    - We must run additional experiments. #59
+    - This test must be re-run. #60
+}
+
+Obsidian marker added to tally. #61
+
+~addPunishment()
+/wait 2
+
+/perform do_shoo_player
+Subject should return when it is able to endure. #62
+-> leave
+
+= leave
+/perform idle_clasp_hands
+
+- (leave_repeat)
+{shuffle:
+    - Ending simulation. #63
+    - Powering down experiment simulation. #64
+    - Powering down. #65
+    - Now shutting down. #66
+}
+-> exit
 
 // scene wrap-up goes here
 
@@ -40,7 +386,12 @@
     /notify title="The Divine Engine Pragma's Task Result" text="Congratulations. One bloodstone added.<br/> Returning to the entry."
 + [no]
     ~addPunishment()
-    /notify title="The Divine Engine Pragma's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+
+    {deviation == pragma:
+        /notify title="The Divine Engine Pragma's Task Result" text="Too bad. One obsidian added.<br/> Restarting Pragma's Intro."
+    - else:
+        /notify title="The Divine Engine Pragma's Task Result" text="Too bad. One obsidian added.<br/> Returning to the entry."
+    }
 
 - /wait 5
 -> exit

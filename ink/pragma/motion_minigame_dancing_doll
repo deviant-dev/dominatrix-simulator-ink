@@ -1,0 +1,168 @@
+=== Pragma_Motion_Minigame_DancingDoll ===
+
+//The slave on the fucking machine should be vocal throughout this minigame to increase the stimulation of the player
+
+= timeout
+
+/emotion sad 50
+
+{shuffle:
+    - Subject must maintain appropriate movement in the head and arms. 
+    - The machine slows. Motion is required.  
+    - Distress detected in specimen. Insufficient motion. 
+    - -> Pragma_Motion_Minigame.timeout ->
+    - -> Pragma_Motion_Minigame.timeout ->
+}
+-> END
+
+// speed comments adapted to motion consistency and fluidity
+
+= change_to_slower
+
+/emotion amused 50
+
+{shuffle:
+    - 
+    - -> Pragma_Motion_Minigame.change_to_slower ->
+    - -> Pragma_Motion_Minigame.change_to_slower ->
+}
+-> END
+
+
+= change_to_faster
+
+/emotion excited 50
+
+{shuffle:
+    - 
+    - -> Pragma_Motion_Minigame.change_to_faster ->
+    - -> Pragma_Motion_Minigame.change_to_faster ->
+}
+-> END
+
+
+= too_fast
+
+/emotion angry 75
+
+{shuffle:
+    - Subject appears rushed. Fluid motions are ideal. 
+    - Subject chassis lacks tension. 
+        Tighten core for smoother motion. 
+    - -> Pragma_Motion_Minigame.too_fast ->
+    - -> Pragma_Motion_Minigame.too_fast ->
+}
+-> END
+
+
+= too_slow
+
+/emotion disgusted 75
+
+{shuffle:
+    - {hasPenis: Stimulation machination slowing. Steady motion required. | Penetration machination slowing. Steady motion required.}
+    - Specimen arousal markers lowering. Motion must be consistent. 
+    - -> Pragma_Motion_Minigame.too_slow ->
+    - -> Pragma_Motion_Minigame.too_slow ->
+}
+-> END
+
+
+= just_right_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - The experiment is proceeding as expected. 
+    - The stimulation machine is functioning as expected. 
+    - -> Pragma_Motion_Minigame.just_right_arousal_low ->
+    - -> Pragma_Motion_Minigame.just_right_arousal_low ->
+}
+-> END
+
+
+= just_right_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - The subject's endurance feeds the stimulation experience. 
+    - Yes, this doll is pleasing us. 
+    - -> Pragma_Motion_Minigame.just_right_arousal_medium ->
+    - -> Pragma_Motion_Minigame.just_right_arousal_medium ->
+}
+-> END
+
+
+= just_right_arousal_high
+
+/music 
+/emotion aroused 100 
+
+{shuffle:
+    - This design is perfect for endurance and stress testing
+        in both subject and specimen.
+    - Specimen is nearing climax. Fascinating. 
+    - -> Pragma_Motion_Minigame.just_right_arousal_high ->
+    - -> Pragma_Motion_Minigame.just_right_arousal_high ->
+}
+-> END
+
+
+= continue_arousal_low
+
+/emotion aroused 50
+
+{shuffle:
+    - An adequate performance from an adequate doll. 
+    - Consistent motion has a measurable impact 
+        on specimen arousal markers.
+    - -> Pragma_Motion_Minigame.continue_arousal_low ->
+    - -> Pragma_Motion_Minigame.continue_arousal_low ->
+}
+-> END
+
+
+= continue_arousal_medium
+
+/emotion aroused 75
+
+{shuffle:
+    - Subject displays an intuitive sense of rhythm and embodiment. 
+    - Specimen arousal markers increasing. Performance adequate. 
+    - -> Pragma_Motion_Minigame.continue_arousal_medium ->
+    - -> Pragma_Motion_Minigame.continue_arousal_medium ->
+}
+-> END
+
+
+= continue_arousal_high
+
+/music 
+/emotion aroused 75
+
+{shuffle:
+    - {hasPenis: Stimulation response increasing. Sustain motion. | Penetration response increasing. Sustain motion.} 
+    - Specimen is critically aroused. Dance will continue. 
+    - -> Pragma_Motion_Minigame.continue_arousal_high->
+    - -> Pragma_Motion_Minigame.continue_arousal_high->
+}
+-> END
+
+
+= orgasming
+
+/music 
+/emotion aroused 100
+//comments by Pragma at this point should be less audible than the slave's cries
+{shuffle:
+    - Specimen orgasm detected. Experiment concluding. 
+    - Critical arousal reached; specimen climax achieved. 
+    - Experiment success criteria reached. Commencing analysis. 
+    - -> Pragma_Motion_Minigame.orgasming ->
+    - -> Pragma_Motion_Minigame.orgasming ->
+}
+-> END
+
+
+-> exit

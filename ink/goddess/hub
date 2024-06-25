@@ -1,13 +1,15 @@
 // writing status: in progress
 
 //first visit, player encounters Goddess and gets hint about needing more rewards first
-//future visits, the door can be locked if they don't have 10 bloodstones, but they need to know why they can't enter - could be acheived with in game notification or whisper 
+//future visits, the door can be locked if they don't have 10 bloodstones, but they need to know why they can't enter - could be achieved with in game notification or whisper 
 
 //future idea - Yuki could tell you that you can't enter and why, which would require scene reloading and returning player to entry hub
 
-== goddess_hub ==
+
+
+
+=== goddess_hub ===
 -> select_gender_check ->
-- (hub)
 
 ~ setHub(Goddess, "goddess_hub", -> goddess_hub)
 
@@ -27,23 +29,29 @@
 /wait
 
 { goddess_regard >= 10:
+/perform react_thankful happy 50
     Hello treasured mouse.
 - else:
     {shuffle: 
-        - Greetings, {player_name}.
-        - Hello, {player_name}.
+        - /perform talk_behold amused 45
+            Greetings, {player_name}.
+        - /perform talk_one_hand skeptical 35
+            Hello, {player_name}.
     }
 }
 
 {shuffle:
-    - Why are you here?
-    - Why have you come to me?
-    - Why do you seek me out?
+    - /perform talk_behold amused 45
+        Why have you come to me?
+    - /perform talk_one_hand skeptical 75
+        Why are you here?
+    -/perform idle_skeptical excited 40
+        Why do you seek me out?
 }
 
 { 
     - punishments > 0 && inChastity:
-    You are in chastity and...
+    You are in chastity.
     You require correction. Go get your punishments and perhaps we'll talk. #01
     -> exit
     - rewards >= 10 && inChastity: -> chastity_release
@@ -52,7 +60,7 @@
     - punishments > 0: -> check_punishment
     - rewards >= 10: -> check_reward_mega
     - rewards > 0 : -> check_reward
-    - else: -> check_task
+    - else: -> no_task
 }
 
 
@@ -78,6 +86,7 @@ Now leave. #09
 + [timeout] -> exit
 
 + [move:exit] -> exit
+
 
 = chastity_offer
 My, my.
@@ -110,7 +119,7 @@ TODO: Some kind of animation and sound should play to give the chastity device
     - Look how well it fits you.
     - There. All locked away.
     - Awww. 
-    The little mouse is traped in a cage.
+    The little mouse is trapped in a cage.
 }
 
 {shuffle:
@@ -213,7 +222,6 @@ Would you like to have a special reward with me?
 
 - This is a special gift I grant you.
 
-
 /notify title="Chastity Release" text="Chastity release animation plays. Returning to entry"
 ~ inChastity = false
 ~ removeBigReward(-> exit)
@@ -225,11 +233,11 @@ Would you like to have a special reward with me?
 
 /character goddess
 {shuffle:
-    - Tsk tsk. Are you here to pay off a punishment?
-    - My little mouse has been naughty. 
+    - /perform do_smooth_skirt amused 50
+    My little mouse has been naughty. 
     Ready to be punished?
-    - Have you come to pay off a punishment?
-    - Are you here to be punished?
+    - /perform talk_question amused 15
+    Have you come to pay off a punishment?
 }
 
 + [yes] -> choose_punishment
@@ -239,10 +247,11 @@ Would you like to have a special reward with me?
 
 {
     - punishments < 10 && rewards < 10:
-        -> check_task
+        -> no_task
     - punishments >= 10:
+    /perform react_dismissive skeptical 25
         You have too many punishments for a task, I'm afraid. 
-        You'll have to some off first.
+        You'll have to take some off first.
     - rewards >= 10:
         I cannot give you a task when your wrist is full of rewards.
         Indulge yourself before performing any more tasks.
@@ -253,6 +262,7 @@ Would you like to have a special reward with me?
 
 = check_reward_mega
 
+- /perform do_inspect amused 45
 Well, well. 
 Looks like our little mouse has a full band of Bloodstones.
 
@@ -268,7 +278,7 @@ Looks like our little mouse has a full band of Bloodstones.
 }
 
 This pleases me greatly.
-You have earned the priviledge of spending them with me.
+You have earned the privilege of spending them with me.
 Would you like that?
 
 + [yes] -> choose_reward_mega
@@ -277,6 +287,7 @@ Would you like that?
 
 = check_reward
 
+-
 /character goddess
 {shuffle:
     - My, you have been good. Here for your reward? #02
@@ -291,7 +302,7 @@ Would you like that?
 
 {
     - rewards < 10:
-        -> check_task
+        -> no_task
 
     - rewards >= 10:
         I cannot give you a task when your wrist is full of rewards.
@@ -301,13 +312,14 @@ Would you like that?
 -> goodbye
 
 
-= check_task
+= no_task
 
 { punishments == 0 && rewards == 0:
-    << No rewards or punishments, huh? >>
-    << You must be here to do a task. >>
+    Ah, I see you have no punishments or rewards.
+    Then I cannot play with you. 
+    I do not assign tasks. 
 - else:
-    << Shall I give you a task then? >>
+    Would you like to perform a task for me?
 }
 
 + [yes] -> choose_task
@@ -372,6 +384,3 @@ I have nothing for you.
 You may go. 
 /wait
 -> exit
-
-
-

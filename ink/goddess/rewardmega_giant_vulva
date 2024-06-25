@@ -1,0 +1,85 @@
+=== goddess_rewardmega_giant_vulva ===
+-> select_gender_check ->
+~ setScene(reward_scene, Goddess, "goddess_rewardmega_giant_vulva", -> goddess_rewardmega_giant_vulva)
+-> scene_setup ->
+
+/notify title="The Goddess' Reward Confirmation" text="This is a placeholder reward. Do you want to spend a bloodstone?"
+
++ [yes]
+    ~ removeReward(-> load_gave_reward)
+    /notify title="The Goddess' Reward Paid" text="You turn over one Bloodstone."
+    -> gave_reward
++ [no] -> exit
+
+
+= scene_setup
+/scene bedroom.hub
+/music goddess
+/ambient none
+/character goddess
+->->
+
+
+= load_gave_reward
+-> scene_setup -> gave_reward
+
+
+= gave_reward
+/notify title="The Goddess' Placeholder Reward" text="You have been rewarded. Returning to entry."
+/wait 5
+-> exit
+
+
+Goddess Mega Reward
+
+Player has achieved 10 Blood Stones and has enough regard with the Mistresses. With their achievement reached the player can now have the option to visit the Goddess. When they enter her room the player finds the Goddess standing before them. Her voice booms throughout the huge room. 
+
+Intro Option 1
+“Well well, how surprising. I would not have picked you out of the litter to have made it this far. The Mistresses speak highly of you though. And I’ve been watching you of course. Do you feel your time here has benefited you?”
+
+[no] - option to postpone reward. 
+
+[yes] 
+“I believe so as well. You’ve learned a lot. As your skills and dedication grow, so do your responsibilities. All the pressure and pain, the pleasure and release, it all leads you to bigger, more strenuous duties. Are you ready to truly give yourself over to the Goddess? Are you up for the task?
+
+[no] - option to postpone reward. 
+
+[yes]
+
+Intro Option 2
+“My records show that you’ve been put through some vigorous training and have the esteem of many Mistresses. Finally, a proper servant. This is your big moment, little one. Everything has led up to this. Are you prepared to please your Goddess’ pussy? Are you strong enough for such a big job?
+
+[no] - option to postpone reward. 
+
+[yes]
+
+Intro Option 3
+“I’ve been watching you. I’m always watching you. You’ve done better than most. In fact, I’m intrigued by your relentless desire to serve. It’s gotten me curious. How devoted are you? I’d like to see how far you’ll go to please your Goddess. Shall we see?
+[no] - option to postpone reward. 
+
+[yes]
+
+“Ha ha ha you are ambitious indeed.” 
+
+The Goddess takes a step back. The ground begins to shake. 
+
+Cut to the Goddess has grown giant, the size of a building. The player is as tall as her ankle and has to crane their neck to look up at the Goddess. Her voice shakes the room. 
+
+“Still so certain, little one? Are you up for the big job?”
+
+[yes]
+
+“Hahaha we will see.”
+
+The room rumbles and shakes as the Goddess lowers herself to the floor. Her doorway sized vulva stands in front of the player. 
+
+“Please me and I’ll let you inside. Annoy me and —- (not sure what consequence would be appropriate.)”
+
+The player must start with hand movements to the sides (labia). If they go directly for the clit or vaginal opening she will have a variety of scolding dialogue telling the player they’re not warming up enough or moving too fast. This can serve as somewhat of a lesson on how to treat vulvas. After a certain level of arousal has been achieved the Goddess will moan or have encouraging dialogue variations. Now the player can move to the clit. If they don’t move in time Goddess will give instructions. This time the player will need to do over the head hand movements. 
+
+If movements are done properly the Goddess will orgasm. This could be an actual earthquake. Fluid could shoot out of her vagina. The vagina could start oozing. There could be a video cut of her from above having her orgasm. There could be a light show. It could be a big moment. 
+
+If they achieve this the Goddess will want more and the player  will be told to crawl inside the vagina. The crawling motion will trigger a cut to the vaginal interior room. Fleshy and pink, the player can now stand up. The walls are smooth except for the textured, bumpier part above the vaginal opening. The player can hear the Goddess but her tones are muffled. They can get a reaction out of her by moving their arms and hands around. The textured spot (the Gspot) is the main goal that will trigger a shaking, flooding orgasm if stimulated for a certain amount of time. 
+
+Ending
+What will be the next stage in the game? Is this the end of the game? Do they go back to play with the Mistresses? We should brainstorm this to decide on the direction at this point.

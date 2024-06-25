@@ -7,9 +7,10 @@
 TODO: create setting new  with Nega leaning over the chair facing backwards and treating the player as a dog
 //options: Nega wants Yuki's dog (position is player on all fours licking her from behind); she randomly makes them masturbate while she uses them (set this up so there is a random option that she wants this or not)
 
+
 = scene_setup
 /scene attic
-/music nega
+/music nega-reward-hard
 /ambient none
 /character nega
 ->->
@@ -17,7 +18,7 @@ TODO: create setting new  with Nega leaning over the chair facing backwards and 
 
 = intro
 
-Come here and kneel, {player_name}. #01
+Come here and kneel, {player_name}.
 
 -> continue ->
 
@@ -32,18 +33,18 @@ Come here and kneel, {player_name}. #01
 - -> Yuki_GoodJob.EmoteOnly ->
 
 - 
-You're in for such a treat today, {player_name}. #02
+You're in for such a treat today, {player_name}.
 
 - (mouth)
 
 {shuffle:
-    - I'm going to let you put that cute tongue of yours to work #03
-    and make me cum. #04
-    - I want you to make me cum with that little tongue of yours. #05
-    - That mouth of yours is going to make me orgasm. #06
+    - I'm going to let you put that cute tongue of yours to work
+    and make me cum.
+    - I want you to make me cum with that little tongue of yours.
+    - That mouth of yours is going to make me orgasm.
 }
 
-Would you like that, {player_name}? #07
+Would you like that, {player_name}?
 
 + [yes]
     ~ removeReward(-> load_begin)
@@ -52,20 +53,20 @@ Would you like that, {player_name}? #07
     
 + [no] 
     -> Yuki_AcknowledgeNo.EmoteOnly ->
-    If you don't want this reward, #08
-    you can go to someone else. #09
+    If you don't want this reward,
+    you can go to someone else.
     
     -- (leave)
-    Are you sure you want to leave? #10
+    Are you sure you want to leave?
     
     ++ [yes]
-        Alright then. #11
-        Goodbye. #12
+        Alright then.
+        Goodbye.
         -> exit
     
     ++ [no]
-        Phew. #13
-        I thought you didn't like me. #14
+        Phew.
+        I thought you didn't like me.
         -> begin
     
     ++ [timeout] -> Yuki_Timeout.EmoteOnly -> leave
@@ -83,34 +84,35 @@ Would you like that, {player_name}? #07
 = load_begin
 -> scene_setup -> begin
 
+
 = load_minigame
 -> scene_setup -> minigame
 
 
 = begin
 
-Do you want to use a puppy tongue or a human one? #15
+Do you want to use a puppy tongue or a human one?
 
-If you want to be my puppy, #16
-just use your paw to say yes. #17
+If you want to be my puppy,
+just use your paw to say yes.
 
-If you want to be human, #18
-nod your head. #19
+If you want to be human,
+nod your head.
 
 + [yes]
-    Human it is! #20
+    Human it is!
     
 + [no]
-    That's not an option, silly. #21
+    That's not an option, silly.
     -> begin
 
 + [pose:puppy_yes]
-    Oooo! I just love my puppy. #22
-    From now on, perform as a puppy. #23
+    Oooo! I just love my puppy.
+    From now on, perform as a puppy.
     ~ wants_puppy = true
     
 + [pose:puppy_no]
-    That's not an option, puppy. #24
+    That's not an option, puppy.
     -> begin
     
 + [timeout] -> Yuki_Timeout.EmoteOnly -> begin
@@ -119,21 +121,22 @@ nod your head. #19
 
 -
 
-Now, don't worry. #25
-I'll tell you exactly what to do to make me cum. #26
+Now, don't worry.
+I'll tell you exactly what to do to make me cum.
 
-Just follow directions #27
-and you'll do great! #28
+Just follow directions
+and you'll do great!
 
-Once I get more comfortable, #29
+Once I get more comfortable,
 
 {wants_puppy:
-    you can start, puppy. #30
+    you can start, puppy.
     - else:
-    you can start, {player_name}. #31
+    you can start, {player_name}.
 }
 
 -> minigame
+
 
 = minigame
 
@@ -146,21 +149,21 @@ Once I get more comfortable, #29
 
 = finish
 
-Wow. #32
+Wow.
 
 {wants_puppy:
     {shuffle:
-        - That was amazing, puppy. #33
-        - I'm so impressed, puppy. #34
-        - You did so well, puppy! #35
+        - That was amazing, puppy.
+        - I'm so impressed, puppy.
+        - You did so well, puppy!
     }
     -> Yuki_Puppyplay_Reward_Complete ->
     
     - else:
     {shuffle:
-        - That was amazing, {player_name}. #36
-        - I'm so impressed, {player_name}. #37
-        - You did so well, {player_name}! #38
+        - That was amazing, {player_name}.
+        - I'm so impressed, {player_name}.
+        - You did so well, {player_name}!
     }
     -> Yuki_Reward_Complete ->
 }

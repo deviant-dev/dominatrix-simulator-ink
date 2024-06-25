@@ -8,7 +8,8 @@
 /log Starting game intro.
 
 {deviation == demo_short:
-    /scene EntryDark.StartDemo
+    ~ enableHolidays = false
+    /scene EntryDark.DemoStart
 - else:
     /scene EntryDark.TitleScreen
 }
@@ -39,7 +40,6 @@
 -> END
 
 
-
 = instructions
 //Engage player
 /scene EntryDark.Instructions
@@ -58,13 +58,11 @@ Hello. #01
 
 Would you like to play a little game? #02
 
-
 + [yes!] 
     -> lets_play
 + [no!] 
     -> answer_no
 + [continue]
-
 
 - (nod_info)
 
@@ -89,7 +87,7 @@ Shake your head for "no." #04
 //Inform Player
 = lets_play
 
-{deviation == demo_short: -> ready}
+{deviation == demo_short: -> begin}
 
 /perform talk_behold happy 50
 Of course you would. #05
@@ -100,7 +98,6 @@ but there's already plenty to enjoy. #31
 
 -> do_what_your_told ->
 
-
 + [continue]
 
 - (journal_loop)
@@ -110,9 +107,11 @@ If you get stuck, I've given you a journal to guide you. #08
 /perform talk_question skeptical 50
 Give it a try. #09
 
-
 /perform idle_skeptical happy 50
-/action show_instructions
+
+{deviation != demo_short:
+    /action show_instructions
+}
 
 {inVR: 
     Use the 'X' or 'menu' buttons on your controller. #10
@@ -121,55 +120,61 @@ Give it a try. #09
 }
 
 + [use-journal!]
-// + [timeout:15] -> journal_loop
 
 - /action close_journal
 /perform do_arm_raise happy 60
 Perfect! #12
-
 /action hide_instructions
-/perform talk_thoughtful amused 50
-Now... #13
+
+
+- /perform talk_thoughtful amused 50
 If you want the most authentic experience, #14
-/perform talk_lean_forward aroused 25
+/perform talk_lean_forward aroused 60
 strip naked and begin with no clothes on. #15
 
-/perform idle_tease aroused 75
-Wouldn't you just love to do that for me? #16
 
-// Give player ability to answer, but continue either way.
-+ [yes]
-+ [no]
+/perform talk_behold amused 80
+I've also set the game up so you #32
+can use your favorite toys while you play. #33
+
+- (ready) 
+/perform idle_skeptical amused
+Now... #13
+Go, get ready. #34
+And don't forget to grab your favorite toy. #35
+
 + [continue]
 
-- I promise you won't regret it. #17
-And, I promise to watch while you do. #18
-
-/perform idle_skeptical amused
+-
+/action show_toy_options
+You can connect your toys here #36
+just like you can in your journal. #37
 Don't worry. I'll wait for you. #19
 
-+ [wait 2]
++ [wait 3]
 
 - (check_ready)
 /emotion amused 50
 Are you ready? #20
 
-+ [yes!] -> ready
++ [yes!] -> begin
 + [no]
-    /emotion none
+    /emotion neutral
     I'll wait. #23
     <b>Nod</b> your head when you're ready #24
     or come back later. #25
     /wait 5
     -> check_ready
-+ [timeout] 
++ [timeout:20]
     Don't forget to <b>nod</b> your head for "yes". #26
     -> check_ready        
 
 
 //Encourage Player
-= ready
-
+= begin
+{deviation != demo_short:
+    /action hide_toy_options
+}
 /perform react_thankful happy 50
 Wonderful. #21
 
@@ -184,6 +189,8 @@ Have fun! #22
 + [move]
     -> select_gender -> post_intro_deviation_check
     
+
+
 = do_what_your_told
 
 /perform talk_gesture amused 50

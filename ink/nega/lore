@@ -1,4 +1,8 @@
 // writing status: in progress
+
+
+
+
 === nega_lore ===
 
 // If we've heard the last lore, then don't say anything else here.
@@ -13,6 +17,7 @@ Since you've been so good, I'll tell you a little bit about the House. #01
 }
 
 -> exit
+
 
 = lore01
 
@@ -31,13 +36,13 @@ And that means I can make you my little bitch anytime I want. #05
 Well... #06
 /perform talk_lean_forward amused
 only when you bring me a Bloodstone first. #07
- 
+
 - (piggy)
 /perform idle_fake_annoyed aroused 50
 And you're a good little piggy who wants to please me. #08
 Isn't that right? #09
 
- +[yes]
++[yes]
     ~ addObey()
     /perform do_rub_hands_together happy 75
     Good little, piggy. #10
@@ -48,11 +53,11 @@ Isn't that right? #09
 + [no]
     ~ addDisobey()
     /perform react_shake_head_disbelief angry 50
-   -> Nega_Unhappy ->
-   You're here, aren't you? #13
-   No more pretty little Bloodstone on your wrist. #14
-   So, try again. #15
-   -> piggy
+    -> Nega_Unhappy ->
+    You're here, aren't you? #13
+    No more pretty little Bloodstone on your wrist. #14
+    So, try again. #15
+    -> piggy
 
 + [timeout] 
     /perform talk_question disgusted 75
@@ -63,17 +68,21 @@ Isn't that right? #09
 
 - ->->
 
+
 = lore02
 << Insert Lore01 Here >>
 /wait 3
 ->->
+
 
 = lore03
 << Insert Lore01 Here >>
 /wait 3
 ->->
 
-     
+
+
+
 === function negaLoreEmpty()
 ~ return nega_lore.lore03
 

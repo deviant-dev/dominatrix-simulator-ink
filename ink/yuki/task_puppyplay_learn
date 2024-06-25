@@ -47,6 +47,7 @@ And also tests! #127
 
 ->->
 
+
 = session2
 
 /perform idle_pleased happy 75
@@ -85,6 +86,7 @@ Keep trying hard so you can be my bestest pet! #13
 }
 
 ->->
+
 
 = session3
 
@@ -159,6 +161,7 @@ I like it when my puppy <b>"begs"</b> for my attention! #08
     -> beg
 
 + { tries >= 3 } [timeout] -> Yuki_CheckIfInterested.Puppy -> beg
+
 
 = pose_confused
 
@@ -241,6 +244,7 @@ When you're feeling <b>"playful"</b>, stick your cute little butt into the air a
     -> playful
 
 + { tries >= 3 } [timeout] -> Yuki_CheckIfInterested.Puppy -> playful
+
 
 = pose_tired
 

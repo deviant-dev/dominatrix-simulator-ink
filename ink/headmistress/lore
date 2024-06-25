@@ -1,4 +1,8 @@
 // writing status: in progress
+
+
+
+
 === headmistress_lore ===
 
 // If we've heard the last lore, then don't say anything else here.
@@ -13,14 +17,17 @@ Since you've been so good, I'll tell you a little bit about the house.
 
 ->->
 
+
 = lore01
-<< Inster Lore01 Here >>
+<< Insert Lore01 Here >>
 ->->
+
 
 = lore02
-<< Inster Lore01 Here >>
+<< Insert Lore01 Here >>
 ->->
 
+
 = lore03
-<< Inster Lore01 Here >>
+<< Insert Lore01 Here >>
 ->->

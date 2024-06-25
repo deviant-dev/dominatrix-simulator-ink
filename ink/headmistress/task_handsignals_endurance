@@ -1,9 +1,11 @@
 === headmistress_task_handsignals_endurance ===
 -> intro -> exit
 
+
 = intro
 TODO: endurance signals intro
 ->->
+
 
 = practice 
 
@@ -15,18 +17,15 @@ TODO: endurance signals intro
 
 - ->->
 
+
 = practice_easy
 TODO: endurance signals practice
 ->->
 
+
 = practice_hard
 TODO: endurance signals practice w/ audience and w/o pose assist
 ->->
-
-
-
-
-
 
 
 ~ tries = 0
@@ -39,7 +38,7 @@ Rise up to your toes.
 
 + [pose:wait] ->
 + { tries < 2 } [timeout] -> wait
- 
+
 - In this position, you will *wait* for further instruction.
 
 -> exit
@@ -263,6 +262,3 @@ Rise up to your toes.
 
 // + [pose:puppy_horny] ->->
 // + { tries < 2 } [timeout] -> horny
-    
-    
-    

@@ -1,8 +1,10 @@
 === Nega_GoodJob ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly 
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -25,7 +27,7 @@
     Toying with you is so much fun! #07
 
     -{emoteOnly: /emotion aroused 65 | /perform do_shake_finger aroused 65}
-    Good little {hasPenis: meatbag|slit}. #08
+    Good little {hasPenis: meat bag|slit}. #08
 
     -{emoteOnly: /emotion amused 45 | /perform react_thankful amused 45}
     I'm glad you came to see me. #09
@@ -40,7 +42,7 @@
     So hot! #12
 
     -{emoteOnly: /emotion happy 40 | /perform idle_sassy happy 40}
-    Good fucktoy. #13
+    Good fuck toy. #13
 
     -{emoteOnly: /emotion amused 45 | /perform do_fist_pump amused 45}
     Nice! #14
@@ -59,11 +61,14 @@
 
 
 
+
 === Nega_BadJob ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -92,7 +97,7 @@
     Pathetic. #07
 
     - {emoteOnly: /emotion disgusted 65 | /perform react_whatever disgusted 65}
-    Ugggh. #08
+    Ughh. #08
 
     - {emoteOnly: /emotion sad 75 | /perform idle_unhappy_stomp sad 75}
     I'm not happy. #09
@@ -123,12 +128,17 @@
 
 ->->
 
+
+
+
 === Nega_AcknowledgeYes ===
 
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -163,11 +173,16 @@
 
 ->->
 
+
+
+
 === Nega_Unhappy ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -204,11 +219,15 @@
 ->->
 
 
+
+
 === Nega_Insult ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly 
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 {shuffle:
@@ -219,7 +238,7 @@
     Fucking stupid {isBoy: prick|cunt}. #02
 
     - /emotion angry 80
-    Jeezus you're so predictable. #03
+    Jesus; you're so predictable. #03
 
     - /emotion amused 55
     You're so fucking slutty. #04
@@ -234,10 +253,10 @@
     Such a fucking whore. #07
 
     - /emotion angry 55
-    Stupid dumbfuck. #08
+    Stupid dumb fuck. #08
 
     - /emotion disgusted
-    What a pathetic fuckdoll. #09
+    What a pathetic fuck doll. #09
 
     - /emotion disgusted
     You're a disgusting stain. #10
@@ -267,21 +286,25 @@
     You're a dirty little whore. #18
 
     -{emoteOnly: /emotion excited 60 | /perform idle_tease excited 60}
-    You're a slutty fleshbag. #19
+    You're a slutty flesh bag. #19
 
     -{emoteOnly: /emotion angry 55 | /perform talk_annoyed angry 55}
-    You're a useless meatbag. #20
+    You're a useless meat bag. #20
     
 }
 
 ->->
 
 
+
+
 === Nega_Objectify ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly 
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -295,30 +318,32 @@
 
     -{emoteOnly: /emotion excited 55 | /perform idle_skeptical excited 55}
     You're just a filthy cum bucket to be used and abused. #01
-    //Does this make sense if the player is the one penetrating?
 
     -{emoteOnly: /emotion amused 55 | /perform react_chuckle amused 55}
-    What a {hasPenis: tiny little pecker|gaping hole} you have. #02
+    What a {hasPenis: tiny, little pecker|gaping hole} you have. #02
 
     -{emoteOnly: /emotion angry 45 | /perform react_point_at_player_angry angry 45}
-    Good thing this House keeps you fucking firm. #03
+    Good thing this <i>House</i> keeps you fucking firm. #03
 
     -{emoteOnly: /emotion aroused 55 | /perform do_inspect aroused 55}
     Oooo... look at the little sex doll. #05
 
     -{emoteOnly: /emotion aroused 60 | /perform talk_one_finger aroused 60}
     Such a fucking cum dump.  #06
-    //Does this make sense if the player is the one penetrating?
 }
 
 ->->
 
 
+
+
 === Nega_Keep_Going ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly 
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -337,11 +362,15 @@
 ->->
 
 
+
+
 === Nega_Kneel ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly 
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -382,12 +411,16 @@
 
 ->->
 
+
+
+
 === Nega_Apologize ===
 
 {shuffle:
     - -> apology1
     // - -> apology2
 }
+
 
 = apology1
 Apologize for being a fuck up. #01
@@ -437,19 +470,24 @@ Now get back up on your knees. #07
 
 ->->
 
+
+
+
 //response to timeouts to questions
 === Nega_Timeout ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly 
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
 
 {cycle:
 
-    -{emoteOnly: /emtion disgusted 70 | /perform talk_annoyed disgusted 70}
+    -{emoteOnly: /emotion disgusted 70 | /perform talk_annoyed disgusted 70}
     Are you stupid, or something? #86
     
     -{emoteOnly: /emotion disgusted 40 | /perform react_thankful disgusted 40}
@@ -488,12 +526,17 @@ Now get back up on your knees. #07
 
 ->->
 
+
+
+
 //response to player distraction
 === Nega_PayAttention ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -549,11 +592,15 @@ Now get back up on your knees. #07
 + [timeout] -> Nega_PayAttention.DoEmoteOnly(emoteOnly)
 
 
+
+
 === Nega_CheckIfInterested ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -588,10 +635,14 @@ Are you going to behave and give me what I want? #02
 + [distracted] -> Nega_PayAttention.DoEmoteOnly(emoteOnly) -> loop
 
 
+
+
 === Nega_prepare_masturbate ===
+
 
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -610,56 +661,38 @@ Are you going to behave and give me what I want? #02
 }
 ->->
 
+
+
+
 === Nega_Masturbation_Comments ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
 {shuffle:
 
-    -{emoteOnly: /emotion amused 40 | /perform idle_sassy amused 40}
-    Keep going. #06
-
     -{emoteOnly: /emotion angry 55  | /perform talk_threaten angry 55 }
     {hasPenis: Your dick's not hard enough.|Your pussy's not dripping enough.} #17
 
-    -{emoteOnly: /emotion excited 45 | /perform tease_stroke_motion excited 45  }
-    Harder. Faster. #08
-
-    //-{emoteOnly:/emotion disgusted 55 |/perform react_scoffs disgusted 55  }
-    //I bet your arm is getting tired. Too bad! #09
-    //Commented out as it breaks the 4th wall in Negas forced sex scene -Taco
-
-    -{emoteOnly: /emotion happy 60 | /perform idle_pleased happy 60 }
-    More. More. More! #10
+    -{emoteOnly:/emotion disgusted 55 |/perform react_scoffs disgusted 55  }
+    I hope your arm is getting tired, slut! #09
 
     -{emoteOnly: /emotion aroused 65 | /perform talk_lean_forward aroused 65 }
     I enjoy watching you be a little whore for my attention. #14
 
     -{emoteOnly: /emotion amused 75 | /perform do_inspect amused 75 }
-    That's it, little meatbag. #15
+    That's it, keep rubbing little meat bag. #15
 
     -{emoteOnly: /emotion amused 65 | /perform talk_consider amused 65 }
     {hasPenis: What a fucking slut getting <i>my</i> cock ready for me to use.|Such a slut getting <i>my</i> pussy so wet!} #23
 
-    -{emoteOnly: /emotion aroused 55 | /perform idle_bored aroused 55  }
-    Wallow in it, {isBoy: worm|cunt}. #18
-
-    //-{emoteOnly:/emotion aroused 75 |/perform talk_question aroused 75  }
-    //Work those fingers. #03
-    //Commented out as it breaks the 4th wall in Negas forced sex scene
-
-    -{emoteOnly: /emotion happy 65 | /perform idle_tease happy 65 }
-    Enjoy the view, slut! #16
-
-    -{emoteOnly: /emotion amused 75 | /perform talk_lean_forward amused 75 }
-    Being so close must be such a turn on for you, whore. #01
-
-    -{emoteOnly: /emotion disgusted 45  | /perform talk_annoyed disgusted 45 }
-    Only a lucky few get to see something so wonderful. Be grateful! #02
+    -{emoteOnly:/emotion aroused 75 |/perform talk_question aroused 75  }
+    Work {hasPenis: that hand|those fingers}. #03
 
     -{emoteOnly: /emotion aroused 45  | /perform idle_tease aroused 45 }
     Work that {hasPenis: little prick|juicy pussy} harder. #24
@@ -673,18 +706,15 @@ Are you going to behave and give me what I want? #02
 
     -{emoteOnly: /emotion aroused 45  | /perform idle_tease aroused 45 }
     Give the {hasPenis: head|clit} a good squeeze for me! #28
-
-
+    
     --> break01(emoteOnly) ->
     --> break02(emoteOnly) ->
     --> break03(emoteOnly) ->
-    --> Nega_Objectify.DoEmoteOnly(emoteOnly) ->
-    --> Nega_Objectify.DoEmoteOnly(emoteOnly) ->
-    // - {emoteOnly: -> Nega_Objectify.Sex_Chair | -> Nega_Objectify  ->}
-    // - {emoteOnly: -> Nega_Objectify.Sex_Chair | -> Nega_Objectify  ->}
+
 }
 
 ->->
+
 
 = break01(emoteOnly)
 
@@ -704,6 +734,7 @@ Do you like the idea of getting ready for me, {isBoy: worm|skank}? #11
 
 - ->->
 
+
 = break02(emoteOnly)
 Do you want to cum for me? #19
 
@@ -722,6 +753,7 @@ Do you want to cum for me? #19
 
 - ->->
 
+
 = break03(emoteOnly)
 Does that feel good whore? #04
 
@@ -737,11 +769,16 @@ Does that feel good whore? #04
 
 - ->->
 
+
+
+
 === Nega_Aroused ===
 -> DoEmoteOnly(false)
 
+
 = EmoteOnly
 -> DoEmoteOnly(true)
+
 
 = DoEmoteOnly(emoteOnly)
 
@@ -757,16 +794,10 @@ Does that feel good whore? #04
 
     - {emoteOnly: /emotion excited 50 | /perform idle_slave neutral 100}
     Damn. My cunt is throbbing watching you. #03
-
-    - {emoteOnly: /emotion aroused 70 | /perform idle_slave neutral 100}
-    I can't wait to slide my fingers into my hot cunt. #05
-
-    //- {emoteOnly: /emotion excited 80 | /perform idle_slave neutral 100}
-    //I'm going to cum so hard later. #06
-    //Wrong VO file, need to fix -Taco
 }
 
 ->->
+
 
 
 
@@ -786,6 +817,7 @@ Does that feel good whore? #04
     - Perhaps you deserve a small reward. #08
     - I think I'll do something nice for you. #09
     - I'm going to give you a little treat. #10
+    - I want to give you a little something, {isBoy: fuck boy|fuck girl}. #11
     - It amuses me to reward you for a reward. #12
     - Time to show my appreciation. #13
 }
@@ -796,6 +828,7 @@ Does that feel good whore? #04
 // }
 
 ->->
+
 
 = reward_spit
 /perform talk_lean_forward
@@ -823,8 +856,7 @@ Didn't you? #16
 -->->
 
 
-
-//decide how to use this or what anims should be used
+//decide how to use this or what animations should be used
 = reward_ass
 //perform reverse_cowgirl_ass_raised_wiggle
 //long animation - appx 10 seconds

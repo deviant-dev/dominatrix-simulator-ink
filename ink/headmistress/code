@@ -1,9 +1,11 @@
-=== function Headmistress_RaiseCurtains() ===
-~ headmistress_has_audience = true
-/action raise_curtains
-~ return
+=== Theater_RaiseCurtains ===
+-> continue ->
+~ theater_curtains_raised = true
+->->
 
-=== function Headmistress_LowerCurtains() ===
-~ headmistress_has_audience = false
-/action lower_curtains
-~ return
+
+
+=== Theater_LowerCurtains ===
+-> continue ->
+~ theater_curtains_raised = false
+->->

@@ -1,12 +1,12 @@
-//should comment on how many rewards / punishments they have and notice when they have a mega reward
+TODO: Comment on how many rewards / punishments the player possesses
+TODO: Modify flow when the conditions for a mega_reward/_punishment are fulfilled
+
+
 
 
 === headmistress_hub ===
-
 -> select_gender_check ->
-
 ~ setHub(Headmistress, "headmistress_hub", -> headmistress_hub)
-
 {inTutorial && tutorial_step != at_hm_intro:
     ~ tutorial_step = at_hm_bonus
     ~ hm_bonus_shortcut = true
@@ -33,20 +33,20 @@
 /wait
 
 { headmistress_regard >= 10:
-    /perform react_thankful happy 55
+    /perform talk_behold happy 55
     I am pleased to see you, bauble. #01
 - else:
     {shuffle:
-        - /perform talk_behold amused 45
+        - /perform do_quick_bow amused 45
         Greetings, {isBoy: peon|{isGirl:moppet|peon}}. #02
 
         - /perform talk_one_hand skeptical 75
         Welcome back, flawed one. #03
 
-        -/perform idle_skeptical excited 40
+        -/perform do_summon_player excited 40
         I see you cannot stay away, trinket. #04
 
-        -/perform idle_bored amused 55
+        -/perform idle_clasp_hands amused 55
         You continue to return. #05
     }
 }
@@ -74,33 +74,55 @@ Are you here to pay your punishment? #06
     - punishments < 10 && rewards < 10:
         -> check_task
     - punishments >= 10:
-        << You have too many punishments for a task, I'm afraid. >>
+        /perform react_dismissive angry 30
+        Tut tut! #22
+        You have far too many punishments, to perform a task. #23
     - rewards >= 10:
-        << You have too many rewards for a task, I'm afraid. >>
-        << Pay off those punishments and you might get yourself something nice. >>
+        /perform do_smooth_skirt amused 40
+        Silly creature. #24
+        You cannot perform a task #25
+        when your wrist is full of rewards. #26
+        The only choice you have is to #27
+        pay off a punishment. #28
 }
+
+TODO: Add double-check for punishment
 
 -> goodbye
 
 
 = check_reward_mega
-
-<< Oh my. A full band of rewards, hmm? >>
+/perform talk_gesture happy 75
+How delightful. #29
+A full bracelet of Bloodstones! #30
 
 {headmistress_regard < 10:
-    << It's too bad you haven't pleased me more or I might have something special for you. >>
-    << But I can still give you a reward if you spend just one. >>
+/perform react_thankful sad 60
+    Sadly, you haven't pleased me enough to redeem them all. #31
+    Visit me more often to earn enough regard #32
+    to spend them all at once. #33
+    /perform do_smooth_skirt amused 50
+    You may, however, enjoy a simple reward, if you wish. #34
     -> check_reward
 }
 
 {inChastity:
-    << Too bad you are in chastity or we could truly enjoy ourselves. >>
+    /perform talk_lean_forward amused 65
+    Alas, you are in chastity. #35
+    Utter pleasure must wait for another time. #36
+    Perhaps a smaller reward will do. #37
     -> check_reward
 }
 
-<< And you've pleased me quite a lot. >>
-<< Give me all 10 and I'll see you get something very special indeed. >>
-<< Would you like that? >>
+/perform idle_clasp_hands happy 50
+You have been performing quite admirably. #38
+
+/perform idle_hand_out excited 50
+Hand over all your Bloodstones, #39
+and you shall be greatly rewarded. #40
+
+/perform idle_tease aroused 30
+What say you, poppet? #41
 
 + [yes] -> choose_reward_mega
 + [no] -> check_reward
@@ -117,10 +139,8 @@ Are you here to receive your reward? #08
 - /perform react_shrug_short scared 66
 No?  #09
 
-/perform talk_either_or disgusted 54
-Abstaining from pleasure, I see. #10
-
 /perform do_inspect amused 40
+Abstaining from pleasure, I see. #10
 How restrained. #11
 
 {
@@ -128,13 +148,17 @@ How restrained. #11
         -> check_task
 
     - rewards >= 10:
-        << You have too many rewards for a task, I'm afraid. >>
-        << An over-achiever, hmm? >>
-        << You'll just have to endulge yourself before performing any more tasks. >>
+        /perform idle_skeptical skeptical 50
+        Well, you have too many rewards #42
+        for a task, I'm afraid. #43
+        An over-achiever, hmm? #44
+        You'll just have to indulge yourself before performing any more tasks. #45
 }
 
 { inChastity:
-    << Why don't you see the Goddess about having that chastity device removed? >>
+    /perform react_scoffs disgusted 30
+    Seek the Goddess if you wish #46
+    to have your chastity device removed. #47
 }
 
 -> goodbye
@@ -176,11 +200,12 @@ How restrained. #11
 
 
 = choose_reward_mega
-
-<< Let's get intimate. >>
+/perform tease_caress_breasts_large aroused
+Now then, shall we get comfortable? #48
 {shuffle:
     - -> headmistress_rewardmega_placeholder
 }
+
 
 = choose_reward
 
@@ -188,13 +213,12 @@ How restrained. #11
 /emotion happy 65
 
 {shuffle:
-    - /perform react_thankful aroused 70
+    - /perform do_arm_raise amused 70
     Then a reward you shall have. #15
 
-    -/perform do_smooth_skirt happy 45
+    -/perform idle_pleased
     It is so pleasing when trinkets have earned a reward. #16
 
-    -/perform react_head_toss_casual skeptical 55
     Rewards are preferable to punishments. #17
 }
 
@@ -206,9 +230,8 @@ How restrained. #11
 // Eventually we'll have the game randomly pick here.
 {shuffle:
     - -> headmistress_reward_exhibitionism
-    // - -> headmistress_reward_cunnilingus_hm
-    // - -> headmistress_reward_cunnilingus_slave
-    // - -> headmistress_reward_cunnilingus_yuki
+    - -> headmistress_reward_cunnilingus
+
 }
 
 
@@ -241,9 +264,12 @@ How restrained. #11
 = goodbye
 
 /character headmistress react_resigned sad 70
-Then I have nothing for you. #18
+{shuffle:
+    - I have nothing for you. #49
+    - Then, I have nothing for you. #18
+}
 
-/perform do_you_leave_right disgusted 65
+/perform do_you_leave_right disgusted 40
 Begone. #19
 /wait 1
 

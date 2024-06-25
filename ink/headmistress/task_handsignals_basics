@@ -1,7 +1,9 @@
 
+
 === headmistress_task_handsignals_basics ===
 
 -> intro -> exit
+
 
 = intro
 
@@ -59,7 +61,7 @@ Come hither. #09
     -> Headmistress_NoAction -> come
 + [distracted] -> Headmistress_PayAttention -> come
 
-TODO: This line is repetative "the time has come". Would be good to redo this VO line with a different beginning.
+TODO: This line is repetitive "the time has come". Would be good to redo this VO line with a different beginning.
 - /scene TheatreOpen.Ready
 /music headmistress-hand-signals-kneel
 
@@ -151,7 +153,9 @@ Are you prepared to serve so attentively, flawed one? #23
 + [timeout] -> Headmistress_Timeout -> serve
 + [distracted] -> Headmistress_PayAttention -> serve
 
-- /perform do_smooth_skirt amused 60
+- /music headmistress-hand-signals-rear
+/perform do_smooth_skirt amused 60
+
 You will find this next position equally familiar. #29
 I know my audience found it quite entertaining. #30
 
@@ -207,7 +211,8 @@ Will you strive to please Her, chattel? #38
 + [distracted] -> Headmistress_PayAttention -> strive
 
 
-- /perform talk_gesture neutral
+- /music headmistress-hand-signals-humble
+/perform talk_gesture neutral
 I shall demonstrate the final signal for you to learn today. #41
 
 -> TestHumble(0) ->
@@ -260,7 +265,8 @@ Can you feel the cool air caress your {hasPenis: sack|slit}? #52
 + [timeout] -> Headmistress_Timeout -> caress
 
 
-- /perform do_arm_raise neutral
+- /music headmistress-hand-signals-intro
+/perform do_arm_raise neutral
 Rise up to your feet, {player_name}. #56
 /perform talk_gesture skeptical 30
 Let us see how well you have absorbed this lesson. #57
@@ -357,6 +363,7 @@ Stay attentive to your lessons! #70
 
 - -> exit
 
+
 = BadEndingIntro
 
 /perform talk_annoyed sad 50
@@ -381,6 +388,7 @@ Now, leave my sight. #74
 }
 
 - ->->
+
 
 = practice_easy
 /perform talk_consider amused 30
@@ -522,6 +530,7 @@ Depart. #101
 
 - -> exit
 
+
 = BadEndingEasy
 /perform idle_unhappy_arms_crossed disgusted 30
 The shape of your service is still unmolded. #102
@@ -537,6 +546,7 @@ For now, you are excused. #106
 
 - -> exit
 
+
 = practice_hard
 /perform idle_skeptical amused 25
 Your response to basic hand signals has been most impressive. #107
@@ -548,7 +558,8 @@ that you will proudly demonstrate them to an audience. #109
 
 /perform do_arm_raise amused 75
 /ambient crowd
-~ Headmistress_RaiseCurtains()
+/music headmistress-hand-signals-crowd
+-> Theater_RaiseCurtains ->
 /perform idle_pleased happy 50
 They do so love an excellent performance. #110
 /perform talk_one_finger amused 30
@@ -636,7 +647,7 @@ Do you understand, {isBoy: tribute|token}? #124
 + [timeout] -> Headmistress_Timeout -> understand
 + [distracted] -> Headmistress_PayAttention -> understand
 
-// todo: endurance signals practice w/ audience and w/o pose assist
+// TODO: endurance signals practice w/ audience and w/o pose assist
 - /perform do_arm_raise excited 35
 We shall begin.  #126
 /character crowd oos
@@ -694,7 +705,8 @@ Rise and face your audience. #137
 
 - ->->
 
- = GoodEndingHard
+
+= GoodEndingHard
 //favor with HM is earned
 /character crowd cheers_loud
 /character headmistress talk_behold excited 35
@@ -709,6 +721,7 @@ You were born to serve, little one. #140
 You have my permission to depart. #141
 
 - -> exit
+
 
 = BadEndingHard
 //Favor with HM is lost
@@ -734,6 +747,7 @@ Go and contemplate your failure. #146
 // - 1 = basic test
 // - 2 = advanced test
 
+
 = TestKneel(difficulty)
 
 ~ temp say_full_explanation = difficulty == 0
@@ -745,6 +759,7 @@ Go and contemplate your failure. #146
 - (retry)
 ~ tries++
 
+/music headmistress-hand-signals-kneel
 /perform signal_kneel skeptical 30
 /wait
 
@@ -785,6 +800,7 @@ Go and contemplate your failure. #146
 
 - ->->
 
+
 = TestRear(difficulty)
 
 ~ temp say_full_explanation = difficulty == 0
@@ -796,6 +812,7 @@ Go and contemplate your failure. #146
 - (retry)
 ~ tries++
 
+/music headmistress-hand-signals-rear
 /perform signal_rear skeptical 30
 /wait
 
@@ -835,6 +852,7 @@ Go and contemplate your failure. #146
 
 - ->->
 
+
 = TestHumble(difficulty)
 
 ~ temp say_full_explanation = difficulty == 0
@@ -846,6 +864,7 @@ Go and contemplate your failure. #146
 - (retry)
 ~ tries++
 
+/music headmistress-hand-signals-humble
 /perform signal_humble skeptical 30
 /wait
 

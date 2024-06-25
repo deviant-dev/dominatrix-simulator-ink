@@ -3,6 +3,7 @@
 ~ setScene(punishment_scene, Headmistress, "headmistress_punishment_spanking", -> headmistress_punishment_spanking)
 -> start
 
+
 = start
 
 TODO: Support shuffling swats and equipment
@@ -34,7 +35,7 @@ TODO: Support shuffling swats and equipment
 
 = ask_consent
 
-/music headmistress-punishment
+/music headmistress-training
 /character headmistress talk_question skeptical 55
 /lookat player
 
@@ -163,7 +164,7 @@ Now, kneel, slave. #225
     /perform do_arm_raise excited 65
     Observe the eagerness with which our chattel attempts to comply. #13
     /perform react_nod_little happy 65
-    This behaviour pleases Her. #14
+    This behavior pleases Her. #14
 - else:
     ~ addDisobey()
     /perform talk_annoyed sad 55
@@ -173,6 +174,7 @@ Now, kneel, slave. #225
 }
 
 - {inTutorial: -> punish_intro | -> punish_continue}
+
 
 = punish_intro
 
@@ -188,6 +190,7 @@ in response to the impact of my admonishments. #46
 
 /character headmistress do_smooth_skirt excited 65
 But enough of this pretense. #48
+
 /wait
 /character crowd murmur
 /ambient crowd
@@ -202,14 +205,14 @@ We have our entire class to enlighten! #50
 Let us show our audience #51
 the fine display you have for us. #52
 
-/character crowd cheers_loud
-~ Headmistress_RaiseCurtains()
 
 -> punish_continue
 
 
 = punish_continue
 /music headmistress-punishment-crowd
+/character crowd cheers_loud
+-> Theater_RaiseCurtains ->
 /character headmistress do_arm_raise happy 65
 Welcome esteemed guests! #53
 
@@ -449,7 +452,7 @@ Let us begin in earnest! #245
 
 + [wait]
 
-- (spank_test)
+- (spank_begin)
 
 /scene Theatre.HeadmistressAtBack
 
@@ -500,6 +503,7 @@ Let us begin in earnest! #245
 + [react-fail] -> Headmistress_BadSpank -> spank
 
 - -> SpankingFinished
+
 
 = SpankingFinished
 /scene Theatre.HeadmistressAtFront
@@ -594,7 +598,7 @@ Stand at attention! #257
 
 + [move]
 + [timeout] -> Headmistress_NoAction -> leave
-//There needs to be a seperate knot/stitch for the player not leaving, the NoAction dialogue doesn't feel right
+//There needs to be a separate knot/stitch for the player not leaving, the NoAction dialogue doesn't feel right
 
 // If in the tutorial, send player off to be tempted by her directly.
 - {inTutorial:
@@ -616,8 +620,9 @@ Stand at attention! #257
 
 - /scene Theatre.HeadmistressAtFront
 
+
 - {cycle:
-    -/perform talk_question amused 65
+    -/perform idle_hand_on_hip amused 65
     You may rest back on your heels, slave. #251
 
     -/perform idle_clasp_hands happy 65
@@ -701,7 +706,7 @@ Have you been keeping count, {isBoy: toad|strumpet}? #10
         /perform idle_skeptical angry 65
         I suggest you remember to count this time, foible. #26
         ~ headmistress_spanking_count = 0
-        -> spank
+        -> position
 
     ++[no]
         /perform talk_lean_forward amused 65
@@ -728,11 +733,30 @@ Have you been keeping count, {isBoy: toad|strumpet}? #10
     This flaw I shall address in the future. #35
     ~ headmistress_spanking_count = 0
     -> Headmistress_punishment_resumes ->
-    -> spank
+    -> position
 
 + [timeout] -> Headmistress_Timeout -> break01
 
 + [distracted] -> Headmistress_PayAttention -> break01
+
+- (position)
+
+- {cycle:
+    -/perform talk_lean_forward amused 80
+    Back on your hands and knees, slave. #254
+
+    -/perform do_point_down aroused 60
+    Resume your spanking position, slave. #255
+
+    -/perform talk_question excited 40
+    Present your ass, {isBoy: runt|{isGirl:strumpet|runt}}. #256
+}
+
++ [pose:hands_and_knees]
++ [timeout] -> Headmistress_NoAction -> SpankBreak
+
+- -> Headmistress_GoodJob ->
+-> spank_begin
 
 = break02
 

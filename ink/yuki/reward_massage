@@ -7,7 +7,8 @@ VAR massage_count = 0
 
 ~ setScene(reward_scene, Yuki, "yuki_reward_massage", -> yuki_reward_massage)
 
-/scene ?
+TODO: Create Scene
+/scene Atrium.Massage
 
 /character yuki
 
@@ -15,57 +16,46 @@ VAR massage_count = 0
 TODO: fix this dialogue to not reference going through the Headmistress on your first visit, reference something else instead
 {nega_reward_hard_forcedsex: 
 ->NormalVisit
-- else: 
+- else:
 ->FirstReward
 }
 
 -(FirstReward)
 
 /perform idle_tease
-
-You performed so well in there!
+  You performed so well in there!
 
 /perform idle_tease
-
-I hope the Headmistress didn't leave your little tushie too sore.
-
-Just remember, if you don't want to go through that, just follow the two simple rules I explained earlier!
+  I hope the Headmistress didn't leave your little tushie too sore.
+  Just remember, if you don't want to go through that, just follow the two simple rules I explained earlier!
 
 /perform talk_thoughtful
-
-Unless you're into that sort of thing.
-
-But then you can always go for reward spankings.
+  Unless you're into that sort of thing.
+  But then you can always go for reward spankings.
 
 /perform idle
-
-Now that you've paid off your punishment marker,
+  Now that you've paid off your punishment marker,
 
 /perform talk_lean_forward
-
-that's the Obsidian piece on your wrist there,
+  that's the Obsidian piece on your wrist there,
 
 /perform idle
-
-you can turn in your reward marker, the Bloodstone, for...
-
-Can you guess what?
+  you can turn in your reward marker, the Bloodstone, for...
+  Can you guess what?
 
 + [Yes]
 /perform idle_tease
-
 I knew you weren't just a pretty face.
+
 + [No]
 /perform idle_fake_annoyed
-
 Come on, I know you're smarter than this.
+
 + [timeout]
 /perform idle_fake_annoyed
-
 Come on, I know you're smarter than this.
 
 - Because the Goddess was at least satisfied with you, you still have a Bloodstone to use.
-
 Do you want to use it now?
 
 + [Yes]
@@ -78,13 +68,9 @@ Oh. Okay. That's fine. I hope I see you again slave!
 {FirstVisit: -> Undress}
 
 /perform talk_thoughtful
-
 Mmm, well I do have a task for you.
-
 But don't worry, it's not that kind of task!
-
 I didn't already forget why you're here!
-
 It'll be fun, trust me!
 
 - (Undress)
@@ -114,26 +100,25 @@ Get the oil, you know how this goes.
 - else:
 
 Now get that oil right there, and I want you to use it to massage me where I tell you.
-
 Do it in small circles, and apply lube when I tell you.
 
 }
 
 But only touching what I tell you! Or then you'll really be in big trouble!
-
 Follow directions, and we'll have tons of fun.
 
 -(Director1)
 ~massage_count = 0
 Why don't you massage my {shuffle:
--<>neck? -> massage_neck 
--<>back? ->massage_back 
+-<>neck? -> massage_neck
+-<>back? ->massage_back
 -<>legs? ->massage_legs1
 }
 
+
 = Cont
 -(Cont_Count)
-{Cont_Count > 1: 
+{Cont_Count > 1:
 ->LikeMassages
 - else:
 ->Director1
@@ -142,10 +127,8 @@ Why don't you massage my {shuffle:
 -(LikeMassages)
 {Cont2: -> Cont3}
 --(Cont2)
-I just love massages. 
-
-I love the cool feeling of oil running over me and fingers being rubbed into my skin. 
-
+I just love massages.
+I love the cool feeling of oil running over me and fingers being rubbed into my skin.
 Oh it's so relaxing.
 
 -(timeout2)
@@ -172,7 +155,6 @@ Good things come to those who wait {player_name}.
 -(Cont4)
 
 I'm gonna flip over now.
-
 I think it's time my front gets some attention.
 
 /perform yuki_lays_down_back
@@ -184,6 +166,7 @@ Why don't you massage my {shuffle:
 -<>belly? ->massage_belly
 -<>legs? ->massage_legs2
 }
+
 
 = Cont5
 {Break2 == true: ->Cont6}
@@ -201,18 +184,16 @@ Why don't you massage my {shuffle:
 -(BeenGoodToday)
 
 You've been relatively good today.
-
 I think I'll allow it.
-
 I want you to massage my {~breasts. ->breasts|ass. ->ass}
 ->ass
 
 ->DONE
 
+
 = ass
 
 /perform laying_down_stomach
-
 Go on you good {player_name}, get to groping!
 ~massage_count = 0
 ->massage_ass->
@@ -222,7 +203,6 @@ Mm, I love the feeling of you kneading my ass.
 ->massage_ass->
 
 This is making me so horny.
-
 Oh my Goddess, I can't stand it anymore!
 
 -(timeout4)
@@ -232,25 +212,23 @@ Are you as horny as I am?
 +[Yes]
 
 /perform laying_down_raise_ass
-
 In that case, I want you to eat my ass.
 
 + [No]
 
-After all of this? Really? 
+After all of this? Really?
 
 -(timeout3)
 
 Do you even find me attractive?
 
     ++[Yes]
-      Mm, you just like being a little serving slut. 
+      Mm, you just like being a little serving slut.
       -> reward_ending
     ++[No]
     {Unattractive == true}
-    
+
     Then I don't really care what you think, you big jerk!
-    
     You're going to eat my ass for my own pleasure.
 
 + [timeout]
@@ -267,8 +245,7 @@ Does it taste good slave? Speak into my ass.
 + [Yes]
 Keep talking into my ass, I like it. Just as much as you love the taste.
 + [No]
-Keep eating my ass anyways. 
-
+Keep eating my ass anyways.
 I don't care if you don't like it, <i>you're</i> here to please <i>me.</i>
 
 + [timeout]
@@ -291,9 +268,7 @@ Why not? My ass is a great conversationalist! Hehehe.
 ->timeout6
 -{Unattractive == true:
 You were a little rude to me today slave.
-
 I don't appreciate that very much.
-
 So you're going to get me off this way.
 
 -> cum_from_ass_ending
@@ -325,8 +300,7 @@ Does it taste good slave? Speak into my ass.
 + [Yes]
 Keep talking into my ass, I like it. Just as much as you love the taste.
 + [No]
-Keep eating my ass anyways. 
-
+Keep eating my ass anyways.
 I don't care if you don't like it, <i>you're</i> here to please <i>me.</i>
 
 + [timeout]
@@ -349,9 +323,7 @@ Why not? My ass is a great conversationalist! Hehehe.
 ->timeout10
 -{Unattractive == true:
 You were a little rude to me today slave.
-
 I don't appreciate that very much.
-
 So you're going to get me off this way.
 
 -> cum_from_ass_ending
@@ -360,18 +332,17 @@ So you're going to get me off this way.
 
 -> reward_ending
 - ->DONE
+
+
 = breasts
 
 Go on you good {player_name}, get to groping!
-
 Mm, I love the feeling of you kneading my breasts.
 
 ->massage_breasts->
 
 This is making me horny too.
-
 I want more though.
-
 Play with my nipples slave!
 
 ->massage_breasts->
@@ -387,37 +358,558 @@ Are you as horny as I am?
 Suck on my tits then! And really use your tongue!
 + [No]
 
-After all of this? Really? 
-
+After all of this? Really?
 Do you even find me attractive?
 
     ++ [Yes]
     Mm, you just like being a little serving slut.
     -> reward_ending
-    
+
     ++[No]
     {Unattractive == true}
-    
+
     Then I don't really care what you think, you big jerk!
-    
     Just hold on a second.
-    
     /perform laying_down_stomach
-    
+
     -> eat_ass_from_breasts
 
 + [timeout]
 ->Yuki_Timeout->
 ->timeout8
 - You can't even come close to fitting my huge tit in your little mouth.
-
 Mmm, lick them, lick them all over! Be like a good dog that's excited to see me!
-
 Flick my nipples with your tongue.
-
 You're such a good {player_name}, doing exactly what I tell you.
 
 -> reward_ending
+
+
+= stomach_break1
+
+{Break1 == true}
+
+Have you ever been massaged?
+
++ [Yes]
+    Then you know exactly what I'm talking about.
+
+- (timeout12)
+
+Were you naked like me?
+
+    ++ [Yes]
+
+    Oooh.
+
+    Did they play with you? You have to tell me.
+
+        +++ [Yes]
+        Oh you dirty player! Then you already know what it's like. But come stand in front of me anyways.
+        ->Caress
+
+        +++ [No]
+        Well that's a boring massage! Only the good ones are naked. Why don't you come stand in front of me and see if you like it?
+        ->Caress
+
+    ++ [No]
+    No? Why don't you come stand in front of me and see if you like it?
+    ->Caress
+
++ [No]
+Hm, that's a shame. Why don't you come stand in front of me and see if you like it?
+->Caress
+
++[timeout]
+->Yuki_Timeout->
+->timeout12
+
+-(timeout21)
+
+Why don't you come stand in front of me and see if you like it?
+-(Caress)
+
++[move]
+
++[timeout]
+->Yuki_Timeout->
+->timeout21
+
+- /perform caress_genitals_laying_down_stomach
+
+It's not really the same, but...
+
+-(timeout13)
+
+You like it anyways, don't you?
+
++[Yes]
+I know the kind of dirty {player_name} you are.
+
++[No]
+Well...Fine.
+
++[move] ->BreakReturn1
+
++[timeout]
+->Yuki_Timeout->
+->timeout13
+
+- Do you like faster massages?
+
++ [Yes]
+Oh silly me, I should have known that.
+
+/perform caress_genitals_laying_down_stomach_faster
+
++ [No]
+
+-(timeout14)
+
+So you like slower massages?
+
+    ++ [Yes]
+    Somebody likes to savor their time.
+
+    /perform caress_genitlas_laying_down__stomach_slower
+
+    ++ [No]
+    You're a real workaholic, you know?
+
+    +[move]
+    ->BreakReturn1
+
++ [timeout]
+->Yuki_Timeout->
+->timeout14
+
+- You rub my back, I rub your back.
+Er, {hasPenis: dick| cunt} in this case.
+But that's not really how the saying goes!
+This is probably better than rubbing your back anyways.
+
+/perform laying_down_stomach
+Mmm, but not more than you rubbing my back!
+
+-(timeout20)
+
+Chop chop, back to work!
+
++[move]
+
++[timeout]
+->Yuki_Timeout->
+->timeout20
+
+- ->->
+
+
+= stomach_break2
+
+{Break1 == true}
+
+I wish this place had some entertainment.
+Maybe I could talk to the Goddess about getting satellite.
+But in the mean time, that's what you slaves are for!
+
+-(timeout19)
+
+Come stand in front of me.
+
++[move]
++[timeout]
+->Yuki_Timeout->
+->timeout19
+
+- (present_ass_playing)
+
+Turn around and get on all fours.
+And stick your butt waaaaay up in the air.
+//I'm not sure specifically what this pose looks like, but it could work I think.
++ [pose:present_ass]
++ [timeout] -> present_ass_playing
+
+- Now I want you to sway back and forth, like you're a clock, or one of those music timer thingies!
+//Can this even be tracked?
+Tick, tock, tick, tock.
+Heehee, it's funny watching your cute little butt swing around.
+
+- (timeout15)
+
+Now, what if I just reached forward and played with your butt a little, hm?
+Would you like that?
+
++ [Yes]
+/perform laying_down_stomach_play_with_ass
+Oh, you are just so naughty!
+Maybe I'll just rub the outside of your asshole a little.
+Do you like when I apply pressure like that?
+
+    ++ [Yes]
+    Oh you are so bad! Maybe the Headmistress has been having too much fun with you...
+    /perform laying_down_stomach_play_with_ass_faster
+    Let me go a little faster...
+    Heehee, I can feel you pushing back into me. Somebody's enjoying themselves!
+
+    ++ [No]
+    Hm, maybe you just need some lube. I guess we could use some of mine...
+
++ [No]
+Heehee, well you better sway faster then, or I'm gonna getcha!
+Tick-tock-tick-tock, you better sway even faster slave, or I'm gonna catch that cute little ass of yours!
+//^^^Yuki says this at a faster rate than before
+
+Watching you squirm to get away is so funny, but I guess it's not much of a reward if you don't like it.
+
++ [timeout]
+-> Yuki_Timeout ->
+-> timeout15
+
+- /perform laying_down_stomach
+
+But I still need more massaging, so you need to get back to that.
+
+- (timeout25)
+
+Play time's over for now!
+
++ [move]
++ [timeout]
+-> Yuki_Timeout ->
+-> timeout25
+
+- ->->
+
+
+= back_break1
+
+{ Break2 == true }
+
+I know you're just dying to play with my breasts.
+/perform laying_down_caress_breasts
+Maybe I'll play with them for you, and you can watch like a good little admirer.
+I can see how badly you want to stick your face in them.
+Heheh, watch out, or you're gonna drool all over the place! I want you on massassing duty, not custodian duty.
+Okay, I can see you really want to touch them.
+
+- (timeout16)
+
+Am I wrong?
+
++ [Yes]
+
+Mmm, maybe you don't think you've earned that privledge yet. Are you really sure you don't want to?
+
+    ++ [Yes]
+    Mmph. You're such a spoil sport.
+
+    +++ [move]
+    -> BreakReturn2
+
+    ++ [No]
+    -> BreastKiss
+
++ [No]
+
+Just a quick kiss then!
+/perform laying_down_back
+First the left one, and I mean my left, not yours!
+
+-- (kiss_breasts_repeat1)
+++ [pose:kiss_breasts]
+++ [timeout] -> kiss_breasts_repeat1
+
+-- Then the right one.
+
+-- (kiss_breasts_repeat2)
+++ [pose:kiss_breasts]
+++ [timeout] -> kiss_breasts_repeat2
+
++ [timeout]
+-> Yuki_Timeout ->
+-> timeout16
+
+- Good {player_name}.
+
+/perform laying_down_caress_breasts
+But it's killing you, have to stand and stare.
+You have to be careful with these {player_name}.
+If I smothered you, you wouldn't be able to breath at all!
+But I still like teasing you right to the edge.
+/perform laying_down_back
+Well, back to work slave. I can't have you dying of a heart attack from my tits!
+
+->->
+//This is just duplicated from the top. I couldn't figure out how to divert from ->BreastKiss into another branch of dialogue correctly
+
+
+
+
+
+
+
+- (BreastKiss)
+
+Just a quick kiss then!
+/perform laying_down_back
+First the left one, and I mean my left, not yours!
+Just a quick kiss then!
+/perform laying_down_back
+First the left one, and I mean my left, not yours!
+
+- (kiss_breasts_repeat3)
++ [pose:kiss_breasts]
++ [timeout] -> kiss_breasts_repeat3
+
+- Then the right one.
+
+- (kiss_breasts_repeat4)
++ [pose:kiss_breasts]
++ [timeout] -> kiss_breasts_repeat4
+
+- Good {player_name}.
+
+/perform laying_down_caress_breasts
+But it's killing you, have to stand and stare.
+You have to be careful with these {player_name}.
+If I smothered you, you wouldn't be able to breath at all!
+But I still like teasing you right to the edge.
+/perform laying_down_back
+Well, back to work slave. I can't have you dying of a heart attack from my tits!
+Then the right one.
+->->
+
+
+= back_break2
+
+{Break2 == true}
+
+Hmm.
+
+- (timeout22)
+
+Why don't you go stand at my feet {player_name}.
+
++ [move]
++ [timeout]
+-> Yuki_Timeout ->
+-> timeout22
+
+- /perform laying_down_back_masturbating
+
+Do you want to {hasPenis:be inside|grind against} my cunt?
+
++[Yes]
+
+Hehehe, well that's too bad.
+Maybe another day.
+/perform laying_down_masturbating_faster
+Oh my Goddess yes, nothing gets me hotter than good little servant {isBoy:boys|girls}.
+Having you fuck me while one of the other little slaves sucks on my toes.
+Oh that would be amazing.
++ [No]
+
+Somebody likes to be a watch. Maybe you'll make a good cuck!
+Would you like that?
+
+- (timeout17)
+
+Would you want to be a good little cuck for me?
+
+    ++ [Yes]
+    /perform laying_down_masturbating_faster
+    Oh my Goddess yes, nothing gets me hotter than good little servant {isBoy: boys|girls}.
+    To have one of the other little slaves fuck me while you suck on my toes.
+    Oh that would be amazing.
+
+    ++ [No]
+
+     /perform laying_down_masturbating_faster
+     Well if you don't want to do anything, then being a cuck is the perfect job!
+     You get to stand there and watch all of the other slaves and Mistresses fuck each other.
+
++ [timeout]
+-> Yuki_Timeout ->
+-> timeout17
+
+- Oh my Goddess I'm so horny.
+I want to cum so bad. I'm so damn close!
+/perform laying_down_back
+But we can save that for later.
+Here.
+/perform laying_down_raise_fingers
+Lick them clean.
+
+- (lick_fingers_repeat)
++ [pose:lick_fingers]
++ [timeout] -> lick_fingers_repeat
+
+- You're so efficient with that mouth of yours.
+I can hold off for now.
+
+- (timeout23)
+
+Back to work!
+
++ [move]
++ [timeout]
+-> Yuki_Timeout ->
+-> timeout23
+- ->->
+
+
+= terminated_massage_ending
+
+- (FirstVisit)
+
+Hey!
+Back off!
+/perform idle
+/perform idle_unhappy_stomp
+What did I tell you?!
+Only massaging what I tell you!
+/perform confued
+All you had to was follow some simple directions!
+Just because you're here for a reward, doesn't mean you get to do whatever you want!
+/perform idle_unhappy
+The rules still apply!
+Now help me get dressed!
+Now leave me, and remember the rules next time! You just wasted a reward marker.
+-> exit
+-> DONE
+
+
+= reward_ending
+
+- (FirstVisit)
+
+You've been such a good {player_name} today.
+Let me get up.
+/perform sitting_on_table_legs_spread
+Use your fingers and make me cum {player_name}.
+
+->finger_pussy->
+
+Oh Goddess, you're going to make me cum!
+I want you to cum with me {player_name}.
+
+->finger_pussy->
+
+Make both of us cum together.
+Let me know when you're going to cum by nodding your head.
+
++ (AbouttoCum) [Yes]
+//I have no idea if this is going to work. I need the cycle to repeat itself until the player nods.
+- {cycle:
+- ->sexual_appraisals
+- { AbouttoCum: -> cum_together }
+}
+
+- (cum_together)
+
+Oh Goddess, me too!
+//Make some good cumming noises Domina, and then put them here.
+Whew.
+Well done slave. We made quite the mess!
+Don't worry, I'll have one of the other slaves clean it up.
+I'll even make them use their tongues, so you can think about that while you're sleeping tonight!
+If you hadn't been so good, that could be you cleaning the floor.
+Remember that!
+Now help me get dressed.
+Heheh. That was fun! Be a good {player_name} so you can come back! Literally!
+-> exit
+-> DONE
+
+
+= cum_from_ass_ending
+
+- (FirstVisit)
+
+Come on slave, lick me clean!
+
+Get your dirty tongue in there.
+~massage_count = 0
+-> eat_ass ->
+
+Do not under any circumstances move your mouth from my ass.
+You're going to lick me until I cum, do you understand?
+
++ [Yes]
+Next time, be nice to me, and you can get off too.
++ [No]
+What don't you get? You stand there and eat me out until I cum on your face.
++ [timeout]
+It's hard to hear you with your mouth being so busy.
+
+- This was supposed to be a reward that we both enjoy, and now you've forced me to be selfish!
+
+~ massage_count = 0
+-> eat_ass ->
+
+Hm, an asshole licking an asshole, how appropriate!
+Oh yes, I can feel it coming.
+Faster slave, faster!
+
+~ massage_count = 0
+-> eat_ass ->
+
+Yes, yes, yes! Oh Goddess here it comes!
+/perform laying_down_stomach_cumming
+Mmm, at least you bad slaves are good for something.
+Now clean out my pussy with your tongue!
+
+~ massage_count = 0
+-> eat_ass ->
+//It's close enough, you think?
+
+That's enough.
+/perform idle
+/perform idle_unhappy_stomp
+And you {isBoy:mister|miss} don't get any satisfaction for yourself.
+Next time you come for a reward, you should act more grateful!
+/perform react_shrug_long
+And on top of that, I'm giving you a punishment marker!
+Now help me get dressed.
+You're dismissed slave, come back when your attitutde improves.
+-> exit
+-> DONE
+
+
+= massage_appraisals
+
+{shuffle:
+
+- Oh that feels good.
+- Your hands feel great.
+- Keep going just like that.
+- Oh I like that a lot.
+- Don't stop.
+- This was just what I needed.
+- You're so obedient
+- I knew you'd be useful.
+- I'm going to need to keep you around.
+- Right there, yes, stay right there.
+- Just stay here for hours please.
+- You're doing so well.
+- This is fantastic.
+}
+->->
+
+
+= sexual_appraisals
+
+{shuffle:
+
+- Oh fuck that feels great!
+- Keep going slave, just like that.
+- Oh yes, oh that feels so good!
+- I'm so wet right now.
+- I want you so bad right now!
+- Why do I have to be so good all the time?
+
+}
+->->
+
 
 = massage_neck
 
@@ -436,6 +928,7 @@ Just around my shoulders and below my head.
 
 - ->Cont
 
+
 = massage_back
 
 {~| | |-> apply_oil->}
@@ -452,6 +945,7 @@ Anywhere on my back is fine.
 + [timeout] -> massage_back
 
 - ->Cont
+
 
 = massage_legs1
 
@@ -470,6 +964,7 @@ From my thighs to my feet if you please.
 
 - ->Cont
 
+
 = massage_shoulders
 
 {~| | |-> apply_oil->}
@@ -486,6 +981,7 @@ Just around my shoulders and below my head.
 + [timeout] -> massage_shoulders
 
 - ->Cont5
+
 
 = massage_belly
 
@@ -504,6 +1000,7 @@ Just around my little belly for now.
 
 - ->Cont5
 
+
 = massage_legs2
 
 {~| | |-> apply_oil->}
@@ -521,6 +1018,8 @@ Same as before, thighs to feet please.
 
 
 - -> Cont5
+
+
 = stomach_break1
 
 {Break1 == true}
@@ -643,6 +1142,7 @@ Chop chop, back to work!
 
 - ->->
 
+
 = stomach_break2
 
 {Break1 == true}
@@ -730,6 +1230,7 @@ Play time's over for now!
 -> timeout25
 
 - ->->
+
 
 = back_break1
 
@@ -848,6 +1349,7 @@ Well, back to work slave. I can't have you dying of a heart attack from my tits!
 
 Then the right one.
 
+
 = back_break2
 
 {Break2 == true}
@@ -943,6 +1445,7 @@ Back to work!
 -> timeout23
 - ->->
 
+
 = massage_appraisals
 
 {shuffle:
@@ -963,6 +1466,7 @@ Back to work!
 }
 ->->
 
+
 = sexual_appraisals
 
 {shuffle:
@@ -976,6 +1480,7 @@ Back to work!
 
 }
 ->->
+
 
 = terminated_massage_ending
 
@@ -993,7 +1498,7 @@ What did I tell you?!
 
 Only massaging what I tell you!
 
-/perform confued
+/perform 
 
 All you had to was follow some simple directions!
 
@@ -1008,6 +1513,7 @@ Now help me get dressed!
 Now leave me, and remember the rules next time! You just wasted a reward marker.
 -> exit
 -> DONE
+
 
 = reward_ending
 
@@ -1063,6 +1569,7 @@ Now help me get dressed.
 Heheh. That was fun! Be a good {player_name} so you can come back! Literally!
 -> exit
 -> DONE
+
 
 = cum_from_ass_ending
 
@@ -1131,6 +1638,7 @@ You're dismissed slave, come back when your attitutde improves.
 -> exit
 -> DONE
 
+
 = finger_pussy
 
 - (finger_pussy_repeat)
@@ -1141,6 +1649,7 @@ You're dismissed slave, come back when your attitutde improves.
 + [timeout] -> finger_pussy
 
 - ->->
+
 
 = massage_ass
 
@@ -1155,6 +1664,7 @@ You're dismissed slave, come back when your attitutde improves.
 
 - ->->
 
+
 = massage_breasts
 
 {~| | |-> apply_oil->}
@@ -1168,6 +1678,7 @@ You're dismissed slave, come back when your attitutde improves.
 
 - ->->
 
+
 = eat_ass
 
 - (eat_ass_repeat)
@@ -1178,6 +1689,7 @@ You're dismissed slave, come back when your attitutde improves.
 + [timeout] -> eat_ass
 
 - ->->
+
 
 = apply_oil
 
