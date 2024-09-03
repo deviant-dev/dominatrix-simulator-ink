@@ -1,0 +1,90 @@
+=== furia_reward_blowjob ===
+
+-> select_gender_check ->
+~ setScene(reward_scene, Furia, "furia_reward_blowjob", -> furia_reward_blowjob )
+
+/scene FuriasRoom.blowjob
+
+/ambient Furia
+/character Furia
+
+//Player needs to head bob to perform BJ
+
+
+(intro)
+
+//Furia keeps walking and occasionally cracking her whip, predatory eyes locked on the player
+
+
+
+//She snaps her fingers and her pants disappear, revealing a large, glistening cock 
+
+Your ass all slashed up, tears in your eyes. 
+Beaten down. Broken. 
+Ready to be fucked. Ready to be used. 
+
+//She stands in front of the player, cock in their face.
+
+-(like_cock)
+Look at me, bebé.
+Do you like my cock?
+
++ [yes]
+No one cares what you think, vermin. 
+Open that mouth. Wide. 
+-> bj 
+
++ [No]
+    //Furia slaps the player
+    I'll ask you once more! 
+    -(like_cock2)
+    Do you like my big cock, you pathetic little swine?
+    
+        ++ [yes]
+        No one cares what you think, vermin. 
+        -> bj 
+        
+        ++ [no] 
+        Muy bueno. 
+        This is going to be so much more fun. 
+        
+        ++ [timeout] -> like_cock2
+
++ [timeout] -> like_cock
+
+
+- (bj)
+/log blowjob begins
+Sluts like you make me sick. 
+You're all the same, with your "Yes, Mistress. No, Mistress." 
+"Blah, blah, blah."
+I have a better use for that drooling hole.
+Open up. Wide.
+
+
+{cycle: 
+    - I'm going to split you open. 
+    - Your poor little mouth can barely take the tip.
+    - That's right, mi puta. Keep going. 
+    - Relax, I won't hurt you… very much. 
+    - Move that warm, wet tongue around for me. 
+    - I love choking worthless sluts like you. 
+    - Ay, and you need it, don't you, peque. 
+}    
+
+{cycle:
+    - Open wider for your Mistress's cock! 
+    - Oh, you like being used, don't you? 
+    - More tongue, gusano. 
+    - Feel it swell and twitch in your throat. 
+    - Oh, lo lamento, you can't breathe? Good! 
+    - Prisoners should be used and not heard. 
+    - And using you only makes me harder. 
+}
+
+//Furia spits on the player (or ground)
+
+Pathetic! What a terrible cock sucker you are. 
+I've had better blow jobs from Yuki.
+
+-> exit

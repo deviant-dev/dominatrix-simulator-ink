@@ -2,18 +2,11 @@
 
 === table_of_contents ===
 
-+ <b>Test: Pragma Intro</b>
++ <b>Test: Furia Pegging Reward</b>
+    ~ rewards = 1
     ~ setDeviation(full_game)
-    -> pragma_intro
+    -> furia_reward_pegging
 
-+ <b>Test: Goddess JOI Reward</b>
-    ~ setDeviation(full_game)
-    -> goddess_reward_joi
-
-+ <b>Test: Goddess Unspeakable Toy Reward</b>
-    ~setDeviation(unspeakable_toy)
-    -> deviation_unspeakable_toy
-    
 + <b>DomSim: Threshold (with tutorial)</b>
     ~ setDeviation(full_game)
     -> game_intro_web

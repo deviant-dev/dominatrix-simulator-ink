@@ -2,89 +2,65 @@
 
 -> select_gender_check ->
 ~ setScene(reward_scene, Furia, "furia_reward_pegging", -> furia_reward_pegging)
+-> intro
 
-/scene FuriasRoom.Pegging
-
+= intro
+/scene FuriasRoomPlatform.Intro01
+/music Furia
 /ambient Furia
-/character Furia
+/character Furia idle amused 50
 
 TODO: Dev - set up scene placement, create pegging anims (3 - thrust, repetitive, orgasm), Furia with perfection, 'react' mechanic for thrust, slap, swat
 
-//blowjob, (pegging - priority) - rewards
-//annalingus - punishment
-//bootlicking - task
+
+TODO: Send to Grace to revise language so that Furia is encouraging the player to let go and wallow in being a masochistic slut. She is trying to always train their mind to give into their most degrading side. The language should not be just belittling them or putting them down, but doing so because she KNOWS that's what they want to experience.
 
 //interruptions in pegging would be verbal humiliation, slaps (react), and swats (react)
 
 //pegging is a combination of smooth penetration punctuated by hard slaps that the player must 'react' to
 
-TODO: Domina - break up scene into 2 rewards, 1 punishment, and one task. Priority is pegging. Others could become future scenes later. Add in scene code. Fix up dialogue. Send to voice over artist.
-
 // (intro_check) [consent check] and (intro)
 // (like_cock) 
-// (bj)
+
   // randomly select 1 {cycle} block
 // (permission) [player is allowed to masturbate]
 // pegging 
-  // game should randomly select 2 pegging sections (1, 2 or 3) and intersperse with breaks (bootworship and service)
-// (furia_pleasure) is the final section, where the player performs (anallingus) on Furia before she cums in their ass (furia_cum)
-  // game should randomly select 1 {shuffle} block in (anallingus) and 1 {cycle} block in (furia_use)
+  // game should randomly select 2 pegging sections (1, 2 or 3) and intersperse with breaks (face slapping, ass swatting, masturbation)
+// (furia_pleasure) is the final section, Furia cums in their ass (furia_cum)
+
   //(furia_cum) will shuffle orgasm lines 
 // (finish) is the conclusion 
-TODO: write shuffle and cycle blocks in (anallingus) and (furia_cum)
-TODO: write (finish)
-TODO: add nonverbal lines to (pegging), (anallingus) and (furia_cum) blocks
 
-+[move]
+Dirty sluts like you work me up. 
+Get me hard. 
+And deseparate to fuck.
 
-//Furia cracks her whip as she walks around the player (on their knees) analyzing her work. 
+- (intro_check)
 
--(intro_check)
+Do you want to be fucked, {isBoy: querido|querida}?
 
-Let us begin, slut. 
++ [yes]
+    ~ addObey()
+    Bueno.
+    That is exactly what I am going to do to you.
 
-On your knees.
-
-+[pose:present_kneel]
-
--
-I suppose you are here for a *reward*, eh {isBoy:cerdito|cerdita}?
-
-+ [Yes]
-    Good, good. You'll do nicely. 
-    Mi esposa de prisión. 
-    You're looking… ripe. 
-    All raw and whimpering, you fucking tease.
+  
++ [no]
+    ~ addDisobey()
+    Qué vergüenza!
+    What a shame!
     
-    I'll warn you now. 
-    This may hurt… and you will like it. 
-    
-    -- (learn)
-    Do you want to find out what I do to those who please me? 
-    
-    ++[yes]
-        ->Furia_AcknowledgeYes->
-        Perfecta. 
-        
-    ++ [no]
-        Aha! entiendo. 
-        Come back when you are ready. 
+    This is the reward I am offering.
 
-        // She snaps her whip.
-        ->exit 
-    
-    ++ [timeout] ->
+    -- (double_check)
+    Do you want this reward? 
 
-+ [No]
-    The slut is confused. 
-    Found themself here by accident, perhaps. 
-
-    -- (not_pleasing)
-    Do you or do you not want a reward? 
-
-    ++ [yes] -> Furia_AcknowledgeYes ->
+    ++ [yes] 
+        ~ addObey()
+        -> Furia_AcknowledgeYes ->
 
     ++ [no]
+      ~ addDisobey()
         Oh, perdóname.  
         I see you are not ready for a reward. 
         Some meat needs to be beaten longer to tenderize it.
@@ -92,399 +68,628 @@ I suppose you are here for a *reward*, eh {isBoy:cerdito|cerdita}?
         // She snaps her whip.
 
         ¡Vamos!
-        ->exit 
+        -> exit 
     
-    ++ [timeout] -> not_pleasing
+    ++ [distracted] 
+        ~ addDisobey()
+        -> Furia_PayAttention -> double_check
 
-+ [timeout] -> intro_check
+    ++ [timeout]
+        ~ addDisobey()
+        -> Furia_Timeout -> double_check
 
--(intro)
++ [distracted] 
+    ~ addDisobey()
+    -> Furia_PayAttention -> intro_check
 
-//Furia keeps walking and occasionally cracking her whip, predatory eyes locked on the player
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> intro_check
 
-It's dirty sluts like you that work me up. 
-Get me hard. 
+- -> Furia_Give_Reward ->
+~ removeReward(-> load_begin)
+-> begin
 
-//She snaps her fingers and her pants disappear, revealing a large, glistening cock 
 
-Your ass all slashed up, tears in your eyes. 
-Beaten down. Broken. 
-Ready to be fucked. Ready to be used. 
+= load_begin
+/scene FuriasRoomPlatform.Intro01
+/music furia
+/ambient furia
+-> begin
 
-//She stands in front of the player, cock in their face.
 
--(like_cock)
-Look at me, bebé.
-Do you like my cock?
+= begin
+ /character furia idle
+ 
+- (move_to_table_check)
+
+Get on the table.
+
++ [move:ClimbOntoTable]
+
++ [timeout] 
+    ~ addDisobey()
+    -> Furia_Timeout -> move_to_table_check 
+
+//Furia cracks her whip as she walks around the player (on their knees) analyzing her work. 
+
+-
+/scene FuriasRoomPlatform.Intro02
+
+- (knees)
+
+Now kneel.
+
++ [pose:present_kneel]
+    ~ addObey()
+
++ [no] 
+    ~ addDisobey()
+    -> Furia_CheckIfInterested -> knees
+
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> knees 
+
+- 
+Before I grace your ass with my cock,
+you must show me how worthy you are to receive it. 
+
+//player must rub face in Furia's crotch to 'beg' for it to be used on them 
+
+- (worship)
+My shaft is precioso.
+Vicious.
+A force to be reckoned with.
+And I do not share it with just anyone.
+Show me you are worthy enough to touch it.
+
+- (beg)
+
+Rub your face in my crotch and beg for me to release it.
+Can you do that, {isBoy: el codicioso|la codiciosa}?
 
 + [yes]
-No one cares what you think, vermin. 
-Open that mouth. Wide. 
--> bj 
+    ~ addObey()
+    -> Furia_AcknowledgeYes ->
+  
++ [no]
+    ~ addDisobey()
+    I cannot reward you if you do not beg.
+    -> Furia_CheckIfInterested -> beg
 
-+ [No]
-    //Furia slaps the player
-    I'll ask you once more! 
-    -(like_cock2)
-    Do you like my big cock, you pathetic little swine?
-    
-        ++ [yes]
-        No one cares what you think, vermin. 
-        -> bj 
-        
-        ++ [no] 
-        Muy bueno. 
-        This is going to be so much more fun. 
-        
-        ++ [timeout] -> like_cock2
++ [timeout] 
+    ~ addDisobey()
+    -> Furia_Timeout -> beg
 
-+ [timeout] -> like_cock
++ [distracted] 
+    ~ addDisobey()
+    -> Furia_PayAttention -> beg
 
+- -> rub_face_in_crotch ->
 
-//Player needs to head bob to perform BJ
--(bj)
-/log blowjob begins
+Enough.
+Let me see your hungry face, slut.
 
-Sluts like you make me sick. 
-You're all the same, with your "Yes, Mistress. No, Mistress." 
-"Blah, blah, blah."
-I have a better use for that drooling hole.
-Open up. Wide.
++ [pose:kneel]
 
 
-{cycle: 
-    - I'm going to split you open. 
-    - Your poor little mouth can barely take the tip.
-    - That's right, mi puta. Keep going. 
-    - Relax, I won't hurt you… very much. 
-    - Move that warm, wet tongue around for me. 
-    - I love choking worthless sluts like you. 
-    - Ay, and you need it, don't you, peque. 
-}    
-
-{cycle:
-    - Open wider for your Mistress's cock! 
-    - Oh, you like being used, don't you? 
-    - More tongue, gusano. 
-    - Feel it swell and twitch in your throat. 
-    - Oh, lo lamento, you can't breathe? Good! 
-    - Prisoners should be used and not heard. 
-    - And using you only makes me harder. 
+- (beg_check)
+{shuffle:
+    - Are you hungry for my cock in your ass, {isBoy:puto|puta}?
+    - Do you think you've earned having my cock up your ass?
 }
 
-//Furia spits on the player (or ground)
++ [yes]
+    ~ addObey()
+    {shuffle:
+        - I agree. 
+            You are ready. 
+            -> tease 
+        - Pathetic creature.
+            You haven't begged hard enough.
+            -> rub_face_in_crotch -> tease
+    }
 
-Pathetic! What a terrible cock sucker you are. 
-I've had better blow jobs from Yuki.
++[no]
+    -- (beg_check_2)
+    /perform talk_behold angry 65
+    ~ addDisobey()
+    Mmm. Interesante.
+    Do you want to beg harder?
+    
+    ++ [yes]
+        Then get to it!
+        -> rub_face_in_crotch -> tease
+        
+    ++ [no]
+        Then get the fuck out of here!
+        -> exit
+        
+    ++ [timeout]
+        ~ addDisobey()
+        -> Furia_Timeout -> beg_check_2
+    
+    ++ [distracted] 
+        ~ addDisobey()
+        -> Furia_PayAttention -> beg_check_2
 
--(permission)
-/log switch to Pegging
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> beg_check
+
++ [distracted]
+    ~ addDisobey()
+    -> Furia_PayAttention -> beg_check
+
+
+- (tease)
+Enough begging.
+Get on your back.
+
++ [pose:fuck_doll]
+    ~ addObey()
+    -> Furia_GoodJob ->
+
++ [no]
+    ~ addDisobey()
+    -> Furia_AcknowledgeNo -> Furia_CheckIfInterested -> tease
+
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> tease
+
+- Now, time for me to get a bit more comfortable.
+
+- (tease2)
+/scene FuriasRoomPlatform.Intro03
+/perform furia_pegging_idle_ready
+
+//Player gets on their back on a padded leather table, their knees bent and legs in the air
+Are you excited for your reward, {isBoy:cerdito|cerdita}?
+
++ [yes]
+    ~ addObey()
+    Good, good. You'll do nicely. 
+    Mi esposa de prisión. 
+    You're looking… ripe. 
+    All raw and whimpering, you fucking tease.
+    I'll warn you now. 
+    This may hurt… 
+    and you will like it. 
+
++ [no]
+    ~ addDisobey()
+    -> Furia_AcknowledgeNo -> Furia_CheckIfInterested -> tease2
+
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> tease2
+
+- (permission)
 It's time for the main event. 
 Touch yourself whenever you like, 
 Shove that grubby little hand between your legs. 
 If you cum, I don't care. 
-I'm not going to stop until *I'm* satisfied. 
+I'm not going to stop until <i>I'm</i> satisfied. 
 
--(pegging1)
-On the table, wretch! On your back. 
-/log move onto table
-TODO: posing
-I have plans for that slutty little ass, oh yes. 
+- (learn)
+Do you want to please me, {isBoy: perdito|perdita}? 
 
-//Player is on their back on a padded leather table, their knees bent and legs in the air
++ [yes]
+    ~ addObey()
+    ->Furia_AcknowledgeYes->
+
++ [no]
+    ~ addDisobey()
+    -> Furia_AcknowledgeNo -> Furia_CheckIfInterested -> learn
+
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> learn
+
+- (pegging1)
+
 //Furia walks around the player, fondling her cock
 
-I called a few of your cellmates,
-In case they want to join the fun. 
+{shuffle:
+    - I bet your tight, little hole will fight me. 
+    - I bet your sloppy, gaping hole will let me right in. 
+    - Let's find out how well your ass can take my rod. 
+}
 
-//Around the room are other inmates lurking in the shadows, masturbating and watching
-
-They've been drooling over that bruised ass,
-But I get the first taste. 
 I'm going to spread that filthy hole wide,
 Bust it open if I have to. 
-Whatever it takes to get this mega-cock balls deep. 
-
-You ready, boys?!
+Whatever it takes to get this thick cock balls deep. 
 
 //Furia laughs loudly and slaps the players ass. 
-//The inmates laugh and grunt. 
-//Mirrors reflect the scene back to the player. 
-//Furia squirts lube all over the players ass, pretending as though she’s pissing all over them. Everyone laughs but the player. 
 
 Time to use this bitch up!
 
 //Furia slaps the player's ass and penetrates them. 
-//Grunts and cheers from the audience.
+/perform furia_pegging_idle_slow
 
-{shuffle: 
-    - By the House, you're a tight fit. 
-    - That's right, worm. Squeeze that virgin asshole around my big cock.
-    - Do you like it when my balls slap your ass? 
-    - Look at that pathetic little ass. Filled to bursting. 
-    - The more you moan, the more they want to take your place.
-    - Cry if you want. It makes me even harder. 
-    - I love breaking and breeding prison bitches like you. 
-}
+-> react_to_thrusts ->
+// -> RandomCommentLoop(-> pegging_comments, 3, 3, 2, 4) ->
 
--(pegging2)
+- (pegging2)
 I never tire of this game. 
 I call it a reward for you, but oh, little gusano,
 It's all for Mami. 
 
 Your pain is my pleasure. 
-And you *will* suffer, {isBoy: cerdito|cerdita}. 
+And you <i>will</i> suffer, {isBoy: cerdito|cerdita}. 
 Your Mistress demands it. 
 The House demands it. 
 
-Back on the table, now! 
+- (question1)
+Does your ass hurt, slut?
 
-{shuffle: 
-    - Does it hurt, mi puta? 
-    - I bet you don't often get a view like this. 
-    - Scream all you like, worm. It is music to my ears. 
-    - What a spectacle! 
-    - Feel your Mistress's big cock pound into your ass. 
-    - Cum, bitch. I'll just keep pounding you.
-    - Listen to yourself grunt and moan like the whore you are. Disgusting. 
-    - Look at that pathetic {hasPenis:little cock|swollen pussy}. I bet it wants some action too. 
-}
++ [yes]
+    Oh, you poor baby.
+    I'd say I feel sorry for you,
+    but that would be a total lie.
 
--(pegging3)
-Down, mi puta. Table time. 
++ [no]
+    Ahhh. You're a little fuckslut.
+    I love it!
+
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> question1
+
++ [distracted]
+    ~ addDisobey()
+    -> Furia_PayAttention -> question1
+-    
+
+-> react_to_thrusts ->
+// -> RandomCommentLoop(-> pegging_comments, 3, 3, 2, 4) ->
+
+- (pegging3)
 Dungeon air is chilly on those hard nipples, eh? 
-I bet your {hasPenis:little pene|needy cunt} feels so cold
-As I breed your ass on this bench. 
+I bet your {hasPenis:little pene|needy coño} feels so cold
+as I breed your ass on this bench. 
 
 To be honest, I couldn't give two shits
-Whether you cum eighteen times or not at all. 
-You are *my* prison bitch, 
-And I *will* take my pleasure from you. 
+whether you cum eighteen times or not at all. 
+You are <i>my</i> prison bitch, 
+and I <i>will</i> take my pleasure from you. 
+
+- (question2)
+Are you orgasming as I use you, {isBoy: chico|{isGirl: chica|mascota}}?
+
++ [yes]
+    Now that's a delicious fuck toy!
     
-Bottoms up, slut! 
++ [no]
+    Your loss.
+    My pleasure!
 
-{shuffle:
-    - I love using my own cum as lube. 
-    - Louder, slut! I want to hear you cry and moan.
-    - Look at your audience. They all wish they were you right now. 
-    - What a mess you're making! I can't wait to watch you lick it up.
-    - That's right. Let the feeling take you. 
-    - I can't hear you, bitch!
-    - Furia takes what she wants, and what she wants is this asshole. 
-    - You cannot resist your Mistress's cock. You don't even want to.
-}
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> question2
 
--(break_bootworship)
-//Break 1 Boot Worship
-//Furia pulls away from the player.
-
-/perform do_point_down angry 75
-Enough. 
-On the floor, gusano! 
-Lick every inch of these boots.
-
-+ [pose:lick_floor]
-//Player needs to lower head to floor and move around a bit
-
-Yeah, show me what that filthy mouth is good for. 
-Sucking cock and licking boots.
-
-{shuffle: //pick 3-5 lines at random 
-    - Lick it up! 
-    - Boot polish and cum. You like the taste, ay. 
-    - Look at what you have become. 
-    - Don't spit. Swallow like a good prison bitch.
-    - What a magnificent sight. 
-    - Keep that ass in the air while I stroke my cock. 
-    - Does this excite you? How embarrassing. 
-}
-
-//She spits on her boot
-
-Lick it up!
-
-//After a beat
-
-Turn over. On your back!
-
-+[pose:lay_down]
-//Player looks up to see the underside of Furia’s boot and her body stretching high up above them. 
-
-Lick the shit off my boots, puta!
-
-{shuffle: //pick 3-5 lines at random 
-    - Bitches like you don't need a clean mouth. 
-    - Let the muck and the grime fill your senses. 
-    - This is all you are good for, slime. 
-    - I bet your mouth has been in worse places, hasn't it. 
-    - Mmm, meticuloso. Buen. 
-    - Don't forget to swallow, ha! 
-    - You may not like it, but your {hasPenis:prick|pussy} clearly does. 
-}
-
-//Lead back into pegging. 
-
-
--(break_service)
-//Furia pulls away from the player
-
-Enough, you greedy little pig. On the floor!
-
-//Furia cracks her whip.
-
-Get in the urinal! Let's see if that mouth is good for anything.
-
-//Scene transitions to urinal
-
-+[move]
++ [distracted]
+    ~ addDisobey()
+    -> Furia_PayAttention -> question2
+    
 -
 
-On your hands and knees, slut!
-
-+[pose:kneel]
-
-Get your nose to the porcelain, worm! 
-Lick the floor clean!
-
-+[pose:lick_ground]
-
-Lick all the piss and shit off the toilet, you pathetic little cumslut. 
-That's right. Stick your ass in the air. 
-I see what you're doing, greedy little puta. 
-You think you can tempt me with those bruised and bloodied cheeks? 
-
-Be careful what you wish for, prisoner. 
-You might just get it.
-
-//Furia points to the table in the main room.
-
-You're disgusting, licking this floor. 
-It makes me want to lower you even more. 
-
-//Return to pegging scene.
+-> react_to_thrusts ->
+// -> RandomCommentLoop(-> pegging_comments, 3, 3, 2, 4) ->
 
 
--(furia_pleasure)
-//Furia pulls away from the player.
 
-Enough, you greedy little pig. 
-I don't want to cum just yet. 
-Before I pump your ass with my cum,
-You have some work to do.
+- (furia_pleasure)
 
--(anallingus)
-Onto your hands and knees, slut! 
-TODO: posing
-
-//Furia takes a step back, turns around, and bends over
-//Her ass is in front of the player, spread open
-//She turns her head to instruct the player 
-
-It's your lucky day, bitch. 
-Do a good job and you'll get a big, sticky reward. 
-Fuck it up and it's back to your cell, inmate. 
-Now eat my ass!
-
-//Player will have to show head movement similar to cunnilingus movements. 
-//Pick 1 block to shuffle each time 
-
-{shuffle:
-    - That's right, lick it up. 
-    - Stick your tongue in my hole. 
-    - Oh fuck yes, {isBoy: chico|{isGirl: chica|mascota}}. 
-    - By the House! That's good. 
-}
-
-{shuffle:
-    - All around the rim, slut. 
-    - Mmm, so warm and wet. 
-    - Do you like the taste of my ass, {isBoy: ansioso| {isGirl: ansiosa| eager one}}?
-    - The only way you get to fuck *me* is with your tongue. 
-}
-
--(furia_use)
-//Furia straightens and turns around to face the player 
-Fuck, mi puta. 
-You got Mami all wound up again. 
-
-//She caresses their face, then administers a slap 
-On your back, whore. 
-The finale awaits. 
-
-TODO: posing 
-//Furia fondles her cock 
-
-See how horny you make me, lying there? 
+You make me so honry lying there.  
 Broken. Bruised. 
-Half choked, more than half sore. 
-//She laughs cruelly 
 
 I'm gonna cum so hard in your ass, 
-You'll be dripping with it all night 
-As you shiver alone in your cell. 
+you'll be dripping with it all night.
 
-//Furia penetrates the player 
+/perform furia_pegging_idle_fast
 
-{cycle:
-    - Fondle yourself, worm. 
-    - I want to feel your asshole tighten around my cock. 
-    - You sluts only want one thing. 
-    - So easy. So pathetic. 
-    - Ahh! 
-    - Feel my cock pound into your tight ass. 
-    - Let the pain turn to pleasure. 
-    - The House knows *I'm* having fun! 
-    - Fuck, mi puta. I'm getting close! 
-}
+-> RandomCommentLoop(-> cumming_comment, 3, 3, 2, 4) ->
 
-{cycle: 
-    - Fuck, you're tight! 
-    - I love using my own cum as lube. 
-    - That's right, get those grubby hands on your {hasPenis:cock|pussy}. 
-    - Feels good, doesn't it, slut. 
-    - I can feel you tighten and twitch on my cock. 
-    - Your audience is hot and bothered. 
-    - Fondling themselves, wretched things. 
-    - They're just like you. Good only to be used. 
-    - And I'm gonna use you up, slut! 
-}
 
--(furia_cum)
+- (furia_cum)
+
+//finish each orgasm with some panting or moaning in pleasure 
 
 {shuffle:
-    - Ahhh! I'm cumming! 
+    - Ahhh! Filling your ass with my seed is delicioso!
     - Take every drop of my seed in that filthy asshole. 
-    - That's right, bitch. Take it! 
-    - Oh, by the House! Ahh! 
+    - Oh, by the House, your ass is drinking my cum! Ahh! 
 }
 
--(finish)
+/wait 2
+
+So, fucking good!
+
+- (finish)
 //Furia pulls away from the player and snaps her fingers, transforming back into her clothed appearance
 
 Stand up, slut!
-+[pose:present_stand]
+
+I'm done using you.
+
++ [pose:present_stand]
+    ~ addObey()
+
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> finish
+
 -
+Oh good.
+You can still use your legs.
+
+- (ground)
+Now, get down on the floor before me.
+
++ [move]
+    ~ addObey()
+
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> ground
+
+-
+Mmmm. You're wobbling a bit.
+Let's see the destruction I've wrought.
+
+- (bend_over)
+Turn around and bend over.
+
++ [pose:present_ass_reverse_spread]
+    ~ addObey()
+
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> bend_over
+
+- 
+Wow. Look at that gaping hole.
+
 That looks painful. 
-Well, {isBoy: chico|{isGirl: chica|mascota}}. 
+I can see cum starting to leak out of you.
 
--(satisfied)
-Are you satisfied? 
+I am pleased with my work here today.
 
-+[yes]
-    ->Furia_AcknowledgeYes->
+- (turn_around)
+Turn around, {isBoy: querido|querida}.
+
++ [pose:present_stand]
+
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> turn_around
+
+
+Well, {isBoy: chico|{isGirl: chica|mascota}},
+
+- (satisfied)
+Did you enjoy that reward?
+
++ [yes]
+    -> Furia_AcknowledgeYes ->
     This is how good service is rewarded in this House. 
-    How I keep my servants faithful. 
-    The ones whose minds bend a certain way… 
+    How I condition my servants to debase themselves faithfully.  
+    The ones whose minds bend a certain way...
     Come back when you need more. 
-    ->exit
-+[no]
-    ->Furia_AcknowledgeNo->
+    -> exit
+ 
++ [no]
+    -> Furia_AcknowledgeNo ->
     Huh. Well, it's all the same to me. 
-    Come back later… 
-    Once your mind is twisted into the proper shape. 
-    ->exit
-+[timeout]
-    ->Furia_PayAttention->
-    ->satisfied
+    Maybe next time your mind will welcome the experience.
+    You may go.
+    -> exit
+
++ [timeout]
+    -> Furia_Timeout -> satisfied
 
 
+= rub_face_in_crotch
+
+- (rub)
+
+TODO: Need anim of Furia gesturing to her crotch
+
+{shuffle:
+    - Shove your face into my cock and whimper for it. 
+    - Get over here and keep begging for me to fuck you. 
+}
+
+//game looks for player's head to enter and leave the area near their crotch
+
++ [touch-start:crotch]
+    ~ addObey()
+
++ [timeout] 
+    ~ addDisobey()
+    -> Furia_Timeout -> rub
+
+- {shuffle:
+    - Mmm...
+    - Oh yes, slut.
+    - That's it, {isBoy:puto|{isGirl:perra|gusano}}.
+}
+
+-> BeggingCommentLoop(3, 3, 2, 4) ->->
+
+
+= react_to_thrusts
+
+/character furia furia_pegging_idle_ready aroused 75
+~ furia_thrust_count = 0
+~ furia_thrust_target_count = 5
+~ furia_thrust_mistakes = 0
+
+{shuffle:
+    - Now I'm going to slam into you. 
+        You better moan and jerk that head, piggy.
+    - Time for me to go hard.
+        Prepare to be 
+}
+
+- (thrust_again)
+/character furia furia_pegging_react_thrust aroused 75
+
++ [react-success]
+    ~ furia_thrust_count++
+
+    -> pegging_comment ->
+
+    {furia_thrust_count < furia_thrust_target_count: -> thrust_again}
++ [react-fail] 
+    ~ furia_thrust_mistakes++
+    -> bad_thrust_comment -> thrust_again
+
+- ->->
+
+
+= pegging_comment
+{shuffle: 
+    - By the House, you're a tight fit. 
+    - That's right, worm. 
+        Squeeze that virgin asshole around my big cock.
+    - I bet you love it when my balls slap your ass.
+    - Look at that pathetic little ass. 
+        Filled to bursting. 
+    - The more you moan, 
+        the more I want to slam into you.
+    - Cry if you want. 
+        It makes me even harder. 
+    - I love breaking and breeding prison bitches like you. 
+    - (Furia moans).
+    - (Furia moans).
+    - (Furia moans).
+    - (Furia moans).
+    - (Furia moans).
+    - I bet you don't often get a view like this. 
+    - Scream all you like, worm. 
+        It is music to my ears. 
+    - What a spectacle! 
+    - Feel your Mistress's big cock pound into your ass. 
+    - Cum, bitch. 
+        I'll just keep pounding you.
+    - Listen to yourself grunt and moan like the whore you are. 
+    - Moan, cunt!
+    - Let me hear how much you're enjoying this.
+    - Louder, slut! 
+        I want to hear you cry and moan.
+    - That's right. 
+        Let the feeling take you. 
+    - You're not loud enough, bitch!
+    - Using your ass is exactly what I needed to relax today.  
+    - You cannot resist your Mistress's cock. 
+        You don't even want to.
+    - Focus on feeling my cock pound into your tight ass. 
+    - Let the pain turn to pleasure. 
+    - The House knows <i>I'm</i> having fun! 
+    - Fuck, you're s tight! 
+    - I can feel you tighten and twitch on my cock. 
+    - I'm gonna use you up, slut! 
+TODO:   - (add a few more lines to this section)
+}
+
+
+->->
+
+
+= bad_thrust_comment
+
+-> Furia_BadJob ->
+
+{shuffle:
+    - When I slam in to you, moan and throw that head back.
+    - Let me see you jerk when you hear my balls slap your ass, piggy.
+    - Show me you feel.
+        Jerk that head back when I thrust, {isBoy: puto|{isGirl: puta|animal}}.
+}
+
+->->
+
+
+= BeggingCommentLoop(minTimes, maxTimes, minWait, maxWait)
+~ temp count = 0
+~ temp max = RANDOM(minTimes, maxTimes)
+/log Comments looping {max} times.
+- (repeat)
+
+-> begging_comment ->
+
++ [wait {RANDOM(minWait, maxWait)}]
+    ~ count++
+    { count < max: -> repeat | ->-> }
++ [touch-end:crotch]
+
+- (not_touching)
+-> Furia_BadJob ->
+
+- (not_touching_2)
+{shuffle:
+    - I'm not done with that face yet.
+    - Get that muzzle in here, {isBoy:puto|puta}.
+    - Did I say you could stop?
+    - Stick that face back in there, worm.
+}
+
++ [touch-start:crotch] -> repeat
+
++ [no]
+    ~ addDisobey()
+    Only good little piggies who beg get rewarded.
+    -> Furia_CheckIfInterested -> not_touching_2
+
++ [timeout] 
+    ~ addDisobey()
+    -> Furia_Timeout -> not_touching_2
+
++ [distracted] 
+    ~ addDisobey()
+    -> Furia_PayAttention -> not_touching_2
+
+
+= begging_comment
+
+{shuffle:
+    - Grind your face deeply.
+    - I want to hear you moan as you beg.
+    - Suck in the smell of my lust.
+    - I can barely feel you, slut.
+    - I'm not sure you really want me to fuck you. 
+    - Look at the hungry beggar before me. 
+    - Wallow in the smell of my fuckshaft.
+    - Burrow deeply, little piggy.
+    - That's it. Lose yourself in my crotch.
+    - Whimper and beg for my rod, {isBoy:puto|puta}.
+    - Your begging is intoxicating.
+    - Beggars are dirty sluts who want to be used. 
+    - I can feel the heat of your breath washing over me. 
+    - Oh yah. Hold your breath as you shove your face in there. 
+    - Beg harder.
+    - Show me how much you want my cock.
+    - Your bobbing head belongs between my legs. 
+    - Look at that tight ass wiggle as you debase yourself.
+}
+
+->->
+
+= cumming_comment
+{shuffle:
+    - Fuck, mi {isBoy: puto|puta}. 
+        I'm getting close! 
+    - Your tight ass is about to suck the cum right out of me!
+    - Tighten that ass so I can cum, slut!
+    - I can't hold out much longer!
+    - My cock is about to explode!
+    - Almost there, {isBoy: cerdito|cerdita}.
+    - Your ass is about to be my cum dump!
+    - Yes, yes, yes! I'm going to explode!
+}
+
+->->

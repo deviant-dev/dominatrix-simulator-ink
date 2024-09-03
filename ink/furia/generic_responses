@@ -7,28 +7,28 @@
 /character furia
 
 { shuffle:
-    -/perform react_thankful excited 55
-    Excelente. #01
-
-    -/perform talk_thoughtful happy 45
-    Excellent. #02
-
+    - /perform react_thankful excited 55
+        Excelente. #01
+    
+    - /perform talk_thoughtful happy 45
+        Excellent. #02
+    
     -/perform talk_behold amused 70
-    Perfecto. #03
-
+        Perfecto. #03
+    
     - Perfect. #04
-
+    
     - Bien. #05
-
+    
     - Good. #06
-
+    
     - Very good. #07
-
+    
     - Muy bien. #08
-
+    
     - I am glad. #09
-
 }
+
 ->->
 
 
@@ -107,7 +107,7 @@
 
 /perform react_dumb angry 65
 { shuffle:
-    - Obey, {isBoy: boy | {isGirl: girl | slave}}! #01
+    - Obey, {isBoy:boy|{isGirl:girl|slave}}! #01
 
     - I gave you a command. #02
 
@@ -125,23 +125,23 @@
 === Furia_Timeout ===
 /character furia
 
-{ shuffle:
+{shuffle:
     -/perform talk_lean_forward angry 75
-    ¡Responde, imbecile! #01
+        ¡Responde, imbecile! #01
 
     -/perform talk_one_finger sad 65
-    I am waiting... #02
+        I am waiting... #02
 
     -/perform react_scoffs scared 75
-    ¿Cuál es el problema? #03
+        ¿Cuál es el problema? #03
     
     - I am not a patient Mistress. #04
     
     - Where is your mind, slave? #05
     
-    - Answer me, idiota. #06
+    // - Answer me, idiota. #06
     
-    - Answer me, slave. #07
+    // - Answer me, slave. #07
     
     - ¡Ey! Focus. 
 }
@@ -200,94 +200,100 @@
 
 {
     - scene_type == punishment_scene:
-    /perform talk_lean_forward angry 65
-
-    Ending your punishment early #01
-    will not remove your obsidian stone. #02
-    Do you want to finish this suffering, {isBoy:esclavo|{isGirl:esclava|animal}}? #03
+        /perform talk_lean_forward angry 65
+        Ending your punishment early #01
+        will not remove your obsidian stone. #02
+        Do you want to finish this suffering, {isBoy:esclavo|{isGirl:esclava|animal}}? #03
 
     - scene_type == reward_scene:
-    /perform idle_cocks_head_to_left skeptical 70
-
-    Your attention wanders. #04
-    Your bloodstone is already surrendered. #05
-    Do you want to continue? #06
+        /perform idle_cocks_head_to_left skeptical 70
+        Your attention wanders. #04
+        Your bloodstone is already surrendered. #05
+        Do you want to continue? #06
 
     - else:
-    /perform idle_unhappy sad 65
-    
-    My dungeon is a place for you to be remade. #07
-    If you do not seek this, #08
-    you must leave. #09
-    Do you want to finish this task? #10
-
+        /perform idle_unhappy sad 65
+        My dungeon is a place for you to be remade. #07
+        If you do not seek this, #08
+        you must leave. #09
+        Do you want to finish this task? #10
 }
-
-- (check_again)
 
 + [yes] -> check_yes
 + [no]
-+ [timeout] -> check_terse
++ [timeout]
 
 - (check_terse)
 
 {
     - scene_type == punishment_scene:
-    /perform talk_annoyed angry 75
-
-    You anger me. #11
-    Are you going to listen or not? #12
+        /perform talk_annoyed angry 75
+        You anger me. #11
+        Are you going to listen or not? #12
 
     - scene_type == reward_scene:
-    /perform talk_question skeptical 70
-    
-    You were so excited when we started #13
-    Won't you play nice? #14
+        /perform talk_question skeptical 70
+        You were so excited when we started #13
+        Won't you play nice? #14
 
     - else:
-    /perform idle_cocks_head_to_left angry 50
-    
-    I have little patience for those that do not obey. #15
-    Can you muster the courage to carry on? #16
-        
+        /perform idle_cocks_head_to_left angry 50
+        I have little patience for those that do not obey. #15
+        Can you muster the courage to carry on? #16
 }
 
 + [yes] -> check_yes
 + [no]
-
-- 
-{
-    - scene_type == punishment_scene:
-    /perform do_get_the_fuck_out angry 65
+    {
+        - scene_type == punishment_scene:
+            /perform do_get_the_fuck_out angry 65
+            You pathetic worm. #17
+            Get out of my sight! #18
     
-    You pathetic worm. #17
-    Get out of my sight! #18
-
-    - scene_type == reward_scene:
-    /perform react_shrug_short
+        - scene_type == reward_scene:
+            /perform react_shrug_short
+            This is such a shame. #19
+            You may go. #20
     
-    This is such a shame. #19
-    You may go. #20
+        - else:
+            /perform react_scoffs
+            You waste my time today. #21
+            Leave. #22
+    }
 
-    - else:
-    /perform react_scoffs
-    
-    You waste my time today. #21
-    Leave. #22
-        
-}
+    -> exit
++ [timeout] -> Furia_Timeout -> check_terse
 
--> exit
-
-- (check_yes) -> Furia_AcknowledgeYes ->
+- (check_yes)
+-> Furia_AcknowledgeYes ->
 /perform idle_cocks_head_to_left skeptical 65
 
 {shuffle:
-
--You are learning, {isBoy:pequeño|{isGirl:pequeña|criatura}}. #23
--You are learning, little one. #25
-
+    - You are learning, {isBoy:pequeño|{isGirl:pequeña|criatura}}. #23
+    - You are learning, little one. #25
 }
 
 We will continue what we are doing. #24
 ->->
+
+
+=== Furia_Give_Reward ===
+
+- (give_reward)
+/character furia idle_hand_out neutral
+{shuffle:
+    - Time to turn over your Bloodstone, {isBoy:esclavo|{isGirl:esclava|animal}}.
+    - Give me your Bloodstone, {isBoy:pequeño|{isGirl:pequeña|criatura}}.
+    - Hold out your wrist to spend one of your Bloodstones.
+}
+
++ [pose:present_wrist_reward] 
+    /perform do_swipe_hand happy 5
+    /wait 2
+    -> Furia_AcknowledgeYes ->->
++ [no] -> Furia_CheckIfInterested -> give_reward
++ [timeout] -> Furia_Timeout -> give_reward
++ [distracted] -> Furia_PayAttention -> give_reward
+
+
+

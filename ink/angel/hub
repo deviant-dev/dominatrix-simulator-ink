@@ -13,8 +13,8 @@
 
 - /notify title="Lady Angelica's Hub" text="This is a placeholder. You negotiate a scene with the Mistress here.<br/><br/>Kinks:<br/>High School Bitch<br/>Forced Feminization<br/>Cuckholding"
 
-+ [move:Exit] -> exit
 + [move:Approach] -> apology_check(-> hello, -> exit)
++ [move:Exit] -> exit
 
 
 = hello

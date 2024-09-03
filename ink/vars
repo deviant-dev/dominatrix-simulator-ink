@@ -89,6 +89,11 @@ VAR mg_withPenis = false    // true when performing mini-game on someone with a 
 VAR mg_commentDelay = 2     // how many times to skip a 'continue' comment
 VAR mg_commentCount = 0     // how many times a 'continue' comment has been skipped
 
+// Furia Variables
+VAR furia_thrust_count = 0
+VAR furia_thrust_target_count = 5
+VAR furia_thrust_mistakes = 0
+
 // Goddess Variables
 VAR goddess_regard = 0 
 VAR goddess_hub_status = hidden

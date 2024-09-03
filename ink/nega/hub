@@ -18,8 +18,8 @@
 /character Nega
 
 
-+ [move:Exit] -> exit
 + [move:Approach]
++ [move:Exit] -> exit
 
 {deviation == nega_dice:
     -> nega_punishment_light_camerashoot

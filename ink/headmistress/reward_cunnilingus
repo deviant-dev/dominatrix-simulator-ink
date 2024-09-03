@@ -1,7 +1,7 @@
 === headmistress_reward_cunnilingus ===
 -> select_gender_check ->
 ~ setScene(reward_scene, Headmistress, "headmistress_reward_cunnilingus", -> headmistress_reward_cunnilingus)
--> scene_setup
+-> scene_setup -> intro
 
 
 
@@ -11,14 +11,15 @@
 /ambient crowd
 /character crowd claps
 /character headmistress
--> Theater_RaiseCurtains ->
+-> Theater_RaiseCurtains ->->
+
+
+= intro
 
 + [move:Exit] -> exit
 + [move:Approach] -> intro
 
-
-= intro
-/perform idle_clasp_hands amused 65
+- /perform idle_clasp_hands amused 65
 For your reward, #01
 
 {shuffle:
@@ -41,12 +42,12 @@ For your reward, #01
         you may one day #11
         venerate the Goddess in this way. #12
     - Perfection here may afford you #13
-    the opportunity to suckle our Goddess. #14
+        the opportunity to suckle our Goddess. #14
     - Good favor with your Mistress #15
-    could someday grant you the privilege #16
-    of likewise worshiping our Goddess on your knees. #17
+        could someday grant you the privilege #16
+        of likewise worshiping our Goddess on your knees. #17
     - Prove yourself and the Goddess, <i>Herself</i>, #18
-    may condescend to receive your adoration in like manner. #19
+        may condescend to receive your adoration in like manner. #19
 }
 
 -> Headmistress_Crowd_General ->
@@ -66,9 +67,9 @@ For your reward, #01
 Do you agree to this reward, moppet? #26
 
 + [yes]
-/character crowd cheers_loud
-/wait 2 
-/character headmistress 
+    /character crowd cheers_loud
+    /wait 2 
+    /character headmistress 
     -> Headmistress_AcknowledgeYes ->
     -> Headmistress_Give_Reward ->
     ~ removeReward(-> load_begin)
@@ -80,26 +81,26 @@ Do you agree to this reward, moppet? #26
     -> begin
     
 + [no] 
-/character crowd boos
-/wait 2 
-/character headmistress
+    /character crowd boos
+    /wait 2 
+    /character headmistress
     -> Headmistress_AcknowledgeNo ->
     /perform talk_annoyed angry 50
-        If this reward fails to appease you, #27
-        then you must leave. #28
+    If this reward fails to appease you, #27
+    then you must leave. #28
     
     -- (leave)
-    /perform talk_question sad 45
+        /perform talk_question sad 45
         Do you wish to depart, {isBoy: miscreant|foible}? #29
     
     ++ [yes]
-    /perform do_you_leave_right
+        /perform do_you_leave_right
         As you wish. #30
         You may go. #31
         -> exit
     
     ++ [no]
-    /perform do_quick_bow amused 50
+        /perform do_quick_bow amused 50
         Perhaps you were confused. #32
         -> Headmistress_Resume ->
         -> begin
@@ -115,11 +116,15 @@ Do you agree to this reward, moppet? #26
 
 -
 
--> load_begin
+-> begin
 
 
 = load_begin
--> scene_setup -> begin
+/scene Theatre.CunnilingusReady
+/music headmistress-reward-prelude
+/ambient crowd
+/character headmistress
+-> Theater_RaiseCurtains -> begin
 
 
 = begin
@@ -155,10 +160,10 @@ At any time, #39
 you may be required to perform this service. #40
 
 /perform do_shake_finger amused 55
-    To ensure you become proficient, #41
+To ensure you become proficient, #41
 /perform talk_behold skeptical 60
-    I will insist you practice this reward #42
-    on various subjects anon. #43
+I will insist you practice this reward #42
+on various subjects anon. #43
     
 -> Headmistress_Crowd_General ->
     

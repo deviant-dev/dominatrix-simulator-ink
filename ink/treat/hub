@@ -24,8 +24,8 @@
 /ambient treat
 /character treat
 
-+ [move:Exit] -> exit
 + [move:Approach] -> apology_check(-> hello, -> exit)
++ [move:Exit] -> exit
 
 
 = hello

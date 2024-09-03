@@ -37,10 +37,13 @@ INCLUDE furia/hub
 INCLUDE furia/intro
 INCLUDE furia/generic_responses
 INCLUDE furia/generic_minigame
+INCLUDE furia/task_bootlicking
 INCLUDE furia/task_gloryhole_training
 INCLUDE furia/hub_vignette
+INCLUDE furia/punishment_analingus
 INCLUDE furia/punishment_edging
 INCLUDE furia/punishment_placeholder
+INCLUDE furia/reward_blowjob
 INCLUDE furia/reward_pegging
 INCLUDE furia/reward_placeholder
 INCLUDE furia/rewardmega_placeholder

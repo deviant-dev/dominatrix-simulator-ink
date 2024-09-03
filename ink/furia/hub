@@ -11,8 +11,8 @@
 /character furia
 /perform idle_unhappy skeptical 30
 
-+ [move:Exit] -> exit
 + [move:Approach] -> apology_check(-> hello, -> exit)
++ [move:Exit] -> exit
 
 
 = hello
@@ -229,7 +229,7 @@ Would you like that? #53
     }
 - else:
     {shuffle:
-        - -> furia_reward_placeholder
+        - -> furia_reward_pegging
     }
 }
 

@@ -1,0 +1,62 @@
+=== furia_task_bootlicking ===
+
+-> select_gender_check ->
+~ setScene(reward_scene, Furia, "furia_task_bootlicking ", -> furia_task_bootlicking )
+
+/scene FuriasRoom.bootlicking
+
+
+/ambient Furia
+/character Furia
+
+-(break_bootworship)
+//Break 1 Boot Worship
+//Furia pulls away from the player.
+
+/perform do_point_down angry 75
+Enough. 
+On the floor, gusano! 
+Lick every inch of these boots.
+
++ [pose:lick_floor]
+//Player needs to lower head to floor and move around a bit
+
+Yeah, show me what that filthy mouth is good for. 
+Sucking cock and licking boots.
+
+{shuffle: //pick 3-5 lines at random 
+    - Lick it up! 
+    - Boot polish and cum. You like the taste, ay. 
+    - Look at what you have become. 
+    - Don't spit. Swallow like a good prison bitch.
+    - What a magnificent sight. 
+    - Keep that ass in the air while I stroke my cock. 
+    - Does this excite you? How embarrassing. 
+}
+
+//She spits on her boot
+
+Lick it up!
+
+//After a beat
+
+Turn over. On your back!
+
++ [pose:lay_down]
+//Player looks up to see the underside of Furia’s boot and her body stretching high up above them. 
+
+Lick the shit off my boots, puta!
+
+{shuffle: //pick 3-5 lines at random 
+    - Bitches like you don't need a clean mouth. 
+    - Let the muck and the grime fill your senses. 
+    - This is all you are good for, slime. 
+    - I bet your mouth has been in worse places, hasn't it. 
+    - Mmm, meticuloso. Buen. 
+    - Don't forget to swallow, ha! 
+    - You may not like it, but your {hasPenis:prick|pussy} clearly does. 
+}
+
+-
+
+-> exit

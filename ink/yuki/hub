@@ -14,8 +14,8 @@ TODO: add logic for mega-reward
 /character yuki
 /perform idle_pleased happy 65
 
-+ [move:Exit] -> exit
 + [move:Approach]
++ [move:Exit] -> exit
 
 {inTutorial:
     -> go_to_headmistress -> exit

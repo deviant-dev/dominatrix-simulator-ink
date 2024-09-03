@@ -1,0 +1,91 @@
+=== furia_punishment_analingus ===
+
+-> select_gender_check ->
+~ setScene(reward_scene, Furia, "furia_punishment_analingus", -> furia_punishment_analingus)
+
+/scene FuriasRoom.Analingus
+
+/ambient Furia
+/character Furia
+
+//punishment with licking urinal and licking anus 
+//give player option to make the scene more intense and they have to lick the urinal as well as the anus 
+
+
+-(analingus)
+Onto your hands and knees, slut! 
+TODO: posing
+
+//Furia takes a step back, turns around, and bends over
+//Her ass is in front of the player, spread open
+//She turns her head to instruct the player 
+
+It's your lucky day, bitch. 
+Do a good job and you'll get a big, sticky reward. 
+Fuck it up and it's back to your cell, inmate. 
+Now eat my ass!
+
+//Player will have to show head movement similar to cunnilingus movements. 
+//Pick 1 block to shuffle each time 
+
+{shuffle:
+    - That's right, lick it up. 
+    - Stick your tongue in my hole. 
+    - Oh fuck yes, {isBoy: chico|{isGirl: chica|mascota}}. 
+    - By the House! That's good. 
+}
+
+{shuffle:
+    - All around the rim, slut. 
+    - Mmm, so warm and wet. 
+    - Do you like the taste of my ass, {isBoy: ansioso| {isGirl: ansiosa| eager one}}?
+    - The only way you get to fuck *me* is with your tongue. 
+}
+
+-(furia_use)
+//Furia straightens and turns around to face the player 
+Fuck, mi puta. 
+You got Mami all wound up again. 
+
+//She caresses their face, then administers a slap 
+On your back, whore. 
+The finale awaits. 
+
+
+-(break_service)
+//Furia pulls away from the player
+
+Enough, you greedy little pig. On the floor!
+
+//Furia cracks her whip.
+
+Get in the urinal! Let's see if that mouth is good for anything.
+
+//Scene transitions to urinal
+
++[move]
+-
+
+On your hands and knees, slut!
+
++ [pose:kneel]
+
+- Get your nose to the porcelain, worm! 
+Lick the floor clean!
+
++ [pose:lick_ground]
+
+- Lick all the piss and shit off the toilet, you pathetic little cumslut. 
+That's right. Stick your ass in the air. 
+I see what you're doing, greedy little puta. 
+You think you can tempt me with those bruised and bloodied cheeks? 
+
+Be careful what you wish for, prisoner. 
+You might just get it.
+
+//Furia points to the table in the main room.
+
+You're disgusting, licking this floor. 
+It makes me want to lower you even more. 
+
+-> exit

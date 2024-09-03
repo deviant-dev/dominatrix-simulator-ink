@@ -24,8 +24,8 @@ TODO: Modify flow when the conditions for a mega_reward/_punishment are fulfille
 /ambient none
 /character headmistress idle_clasp_hands amused 45
 
-+ [move:Exit] -> exit
 + [move:Approach] -> apology_check(-> hello, -> exit)
++ [move:Exit] -> exit
 
 
 = hello
