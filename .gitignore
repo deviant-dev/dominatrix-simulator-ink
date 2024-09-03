@@ -1,0 +1,9 @@
+# Ignore folder
+Ignore/
+
+# Auto-generated folders
+.vs/
+.vscode/
+
+# Mac Files
+.DS_Store
