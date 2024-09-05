@@ -31,8 +31,8 @@ TODO: Send to Grace to revise language so that Furia is encouraging the player t
   //(furia_cum) will shuffle orgasm lines 
 // (finish) is the conclusion 
 
-Dirty sluts like you work me up. 
-Get me hard. 
+Dirty sluts like you get me all worked up. 
+You make me so hard. 
 And deseparate to fuck.
 
 - (intro_check)
@@ -133,7 +133,8 @@ Now kneel.
 
 - 
 Before I grace your ass with my cock,
-you must show me how worthy you are to receive it. 
+you must show me how badly you want it.  
+
 
 //player must rub face in Furia's crotch to 'beg' for it to be used on them 
 
@@ -147,7 +148,7 @@ Show me you are worthy enough to touch it.
 - (beg)
 
 Rub your face in my crotch and beg for me to release it.
-Can you do that, {isBoy: el codicioso|la codiciosa}?
+Can you do that, {isBoy:codicioso|codiciosa}?
 
 + [yes]
     ~ addObey()
@@ -250,13 +251,13 @@ Are you excited for your reward, {isBoy:cerdito|cerdita}?
 
 + [yes]
     ~ addObey()
-    Good, good. You'll do nicely. 
-    Mi esposa de prisión. 
+    Que rico! You'll do nicely. 
     You're looking… ripe. 
     All raw and whimpering, you fucking tease.
     I'll warn you now. 
     This may hurt… 
     and you will like it. 
+
 
 + [no]
     ~ addDisobey()
@@ -268,13 +269,13 @@ Are you excited for your reward, {isBoy:cerdito|cerdita}?
 
 - (permission)
 It's time for the main event. 
-Touch yourself whenever you like, 
+Touch yourself where it feels the best, 
 Shove that grubby little hand between your legs. 
-If you cum, I don't care. 
+Cum if you like, I don't care. 
 I'm not going to stop until <i>I'm</i> satisfied. 
 
 - (learn)
-Do you want to please me, {isBoy: perdito|perdita}? 
+Don't you want to please me, {isBoy: perdito|perdita}? 
 
 + [yes]
     ~ addObey()
@@ -329,10 +330,11 @@ Does your ass hurt, slut?
     Oh, you poor baby.
     I'd say I feel sorry for you,
     but that would be a total lie.
+    
 
 + [no]
-    Ahhh. You're a little fuckslut.
-    I love it!
+    Ahhh. You're such a little fuckslut.
+    I love it! Always begging for more.
 
 + [timeout]
     ~ addDisobey()
@@ -352,7 +354,8 @@ I bet your {hasPenis:little pene|needy coño} feels so cold
 as I breed your ass on this bench. 
 
 To be honest, I couldn't give two shits
-whether you cum eighteen times or not at all. 
+whether you cum or not. 
+We both know you love every second...  
 You are <i>my</i> prison bitch, 
 and I <i>will</i> take my pleasure from you. 
 
@@ -384,10 +387,10 @@ Are you orgasming as I use you, {isBoy: chico|{isGirl: chica|mascota}}?
 - (furia_pleasure)
 
 You make me so honry lying there.  
-Broken. Bruised. 
+Broken. Bruised. Drunk on the sensations.
 
 I'm gonna cum so hard in your ass, 
-you'll be dripping with it all night.
+you'll have me dripping out of you all night.
 
 /perform furia_pegging_idle_fast
 
@@ -399,7 +402,7 @@ you'll be dripping with it all night.
 //finish each orgasm with some panting or moaning in pleasure 
 
 {shuffle:
-    - Ahhh! Filling your ass with my seed is delicioso!
+    - Ahhh! Filling your ass with my seed is heaven! {isBoy: Perfecto|{isGirl:Perfecta}}!
     - Take every drop of my seed in that filthy asshole. 
     - Oh, by the House, your ass is drinking my cum! Ahh! 
 }
@@ -454,9 +457,9 @@ Turn around and bend over.
 Wow. Look at that gaping hole.
 
 That looks painful. 
-I can see cum starting to leak out of you.
+I can see my cum starting to leak out of you.
 
-I am pleased with my work here today.
+I am so pleased with my work here today.
 
 - (turn_around)
 Turn around, {isBoy: querido|querida}.
@@ -590,9 +593,18 @@ TODO: Need anim of Furia gesturing to her crotch
     - Focus on feeling my cock pound into your tight ass. 
     - Let the pain turn to pleasure. 
     - The House knows <i>I'm</i> having fun! 
-    - Fuck, you're s tight! 
+    - Fuck, you're so tight! 
     - I can feel you tighten and twitch on my cock. 
     - I'm gonna use you up, slut! 
+    - Beg for it, bitch. I know you can take more of me. 
+    - I can't believe how much you're enjoying this, you slut.
+    - Those whimpers will only make me fuck you harder. 
+    - Feel the pain. Feel the pleasure. Let them both consume you.
+    - This whole Dungeon better hear your screams. 
+    - Look at how your greedy hole takes every inch that its offered. What a desparate thing you are. 
+    - How does it feel to be your Mistress's little prison bitch?
+    - Pain looks so good on you!
+    - Dios mio! Look at well you take my cock.
 TODO:   - (add a few more lines to this section)
 }
 
@@ -670,11 +682,12 @@ TODO:   - (add a few more lines to this section)
     - Your begging is intoxicating.
     - Beggars are dirty sluts who want to be used. 
     - I can feel the heat of your breath washing over me. 
-    - Oh yah. Hold your breath as you shove your face in there. 
+    - Oh yeah. Hold your breath as you shove your face in there. 
     - Beg harder.
     - Show me how much you want my cock.
     - Your bobbing head belongs between my legs. 
     - Look at that tight ass wiggle as you debase yourself.
+    - I can see you are quite enjoying yourself.
 }
 
 ->->
@@ -690,6 +703,8 @@ TODO:   - (add a few more lines to this section)
     - Almost there, {isBoy: cerdito|cerdita}.
     - Your ass is about to be my cum dump!
     - Yes, yes, yes! I'm going to explode!
+    -Dios mio, I'm about to bust this nut in that ass!
+    -Take this fucking load, bitch!
 }
 
 ->->
