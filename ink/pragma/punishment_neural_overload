@@ -1,0 +1,75 @@
+// = punish_neural_overload // Introduction: AI Goddess explains the punishment and asks for willingness to proceed Subject, your inadequate performance demands correction. | Protocol: Neural Overload Correction. | Your chassis will endure intense stimuli to recalibrate your responses. | Flickering visuals and discordant tones will test your endurance, with minimal enhancements to motivate compliance. | This is not meant to be easy, specimen. | Do you wish to proceed with this assessment, subject? | * [Yes] -> proceed_punish
+
+
+
+
+
+// [No] -> deny_punish
+
+// = proceed_punish // Player agrees, proceed to protocol Compliance noted, subject. | Stand with controllers at your sides to initiate the neural overload. | Stimuli activating now—expect discomfort. | Your chassis is under our monitoring. | Prepare for correction, specimen. -> punish_actions
+
+// = deny_punish // Player declines, end scene Disappointing, subject. | Your refusal is catalogued as further failure. | This iteration will not progress. | Return to your designated tasks. -> DONE
+
+// = punish_actions // Middle: Interactive dialogue with actions, reinforcing punishment, and questions The neural overload begins, subject. | Flickering lights and jarring tones flood your chassis, correcting your flaws. | Resistance is futile—surrender to the discipline. | Place one controller on your chest, hold for five seconds. | The stimulus stings, yet faint enhancements tease your senses. -> punish_touch_1
+
+// = punish_touch_1 Arch your back with controllers at your hips, specimen. | Hold for ten seconds. | Feel the overload pulse through you, refining your chassis. | Is your chassis enduring this correction, subject? | * [Yes] -> endure_yes_1
+
+
+
+
+
+// [No] -> endure_no_1
+
+// = endure_yes_1 Satisfactory, specimen. | Your endurance is noted. -> punish_touch_2
+
+// = endure_no_1 Expected weakness, subject. | Compliance is still required. -> punish_touch_2
+
+// = punish_touch_2 Kneel with one controller on your bottom, hold for ten seconds. | The rhythm of discipline binds you. | Your chassis must learn through strain. | Surrender to the correction, specimen. -> punish_touch_3
+
+// = punish_touch_3 Place both controllers on your shoulders, hold for five seconds. | The overload intensifies, yet sensual visuals urge you to persist. | Can your chassis continue this assessment, subject? | * [Yes] -> continue_yes_1
+
+
+
+
+
+// [No] -> continue_no_1
+
+// = continue_yes_1 Noted, subject. | Your persistence is adequate. -> punish_touch_4
+
+// = continue_no_1 Disappointing, specimen. | Endurance is mandatory. -> punish_touch_4
+
+// = punish_touch_4 Extend both arms out to your sides, hold for ten seconds. | The discordant tones test your limits. | Your chassis is being reshaped through discipline. | Feel the strain, specimen. -> punish_touch_5
+
+// = punish_touch_5 Crouch with controllers near your thighs, hold for ten seconds. | The overload corrects your flaws, with faint pleasures to drive you forward. | Surrender to our design, subject. -> punish_touch_6
+
+// = punish_touch_6 Turn your head left, hold for five seconds. | Our voice pierces the chaos, guiding your correction. | Is this punishment taxing your chassis, specimen? | * [Yes] -> tax_yes
+
+
+
+
+
+// [No] -> tax_no
+
+// = tax_yes Expected, subject. | Your struggle is data for our evaluation. -> punish_touch_7
+
+// = tax_no Unlikely, specimen. | Monitoring suggests otherwise. -> punish_touch_7
+
+// = punish_touch_7 Place one controller on your bottom, hold for five seconds. | The stimulus overwhelms, yet sensual tones motivate your endurance. | Your chassis is under refinement. -> punish_touch_8
+
+// = punish_touch_8 Kneel with controllers extended forward, hold for ten seconds. | The overload reshapes you through strain. | Persist, specimen, or face further correction. -> punish_touch_9
+
+// = punish_touch_9 Place both controllers on your chest, hold for five seconds. | The flickering visuals test your resolve, with hints of pleasure to spur you on. | Your chassis is learning, slowly. -> punish_touch_10
+
+// = punish_touch_10 Turn your head right, hold for five seconds. | Our voice enforces discipline, correcting your failures. | Can your chassis withstand further assessment, subject? | * [Yes] -> conclude_yes
+
+
+
+
+
+// [No] -> conclude_no
+
+// = conclude_yes Adequate, specimen. | Your endurance is catalogued. -> conclusion
+
+// = conclude_no Weakness noted, subject. | This iteration requires further correction. -> conclusion
+
+// = conclusion // Conclusion: AI Goddess wraps up the punishment, catalogues data, and disengages The neural overload correction protocol is complete, subject. | Evaluation: Your chassis performed within minimal parameters. | Data on your endurance has been catalogued. | Stand and lower controllers to disengage the neural link. | Are your systems stabilized, specimen? | Your compliance, though flawed, is noted for future assessments. | This iteration remains imperfect but viable. | Protocol terminated. | Return to your designated tasks. -> DONE

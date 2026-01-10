@@ -1,85 +1,59 @@
 === furia_punishment_edging ===
 -> select_gender_check ->
 ~ setScene(punishment_scene, Furia, "furia_punishment_edging", -> furia_punishment_edging)
-/scene FuriasRoom.Ready
+/scene FuriasRoom.WhippingIntro
 /music furia
 /ambient furia
-/character furia
-
-
-
-//  ~removePunishment()
-// /notify title="Enforcer Furia's Punishment Result" text="You have been punished. One obsidian removed.<br/> Returning to the entry."
-
-// - /wait 5
-// -> exit
-
-TODO: notes on altering scene for Furia
-//Edging with caning or whipping - write both and have the game select one at random
-//player will be laying on the ground with their legs bent in front of them so they can watch her whip or cane them
-//This is fun for her - she likes the idea of warping the player's mind to become more masochistic 
-//Furia occasionally fondles herself mockingly while caning the player
-
-//If the player orgasms during this scene they will receive extra punishment markers
-//It would be great to use alignment in this scene: if the player is aligned with pleasure, more emphasis is placed on the whipping; if with pain, Furia will drag out the orgasm denial 
-//The fail criteria for punishments are: repeated timeouts/distractions; repeated disobey; orgasm
-//If a punishment is failed, should the player get an additional marker? 
-
-//Verbal taunts alternated with teasing and lewd comments to arouse the player 
-
-//Poses should be changed periodically to keep the player from tiring while masturbating 
-//Intro poses: present stand, humble 
-//Edging poses: hands and knees, present ass reverse
-
-//Scene outline
-//start 
-//pose present stand 
-//explain punishment (scene randomly selects cane or whip)
-//understand
-//consent check 
-//edging_intro start edging 
-//(Furia fondles herself and brandishes her cane/whip as the player obeys)
-//initial 5 strokes (Furia counts her strokes just before impact to aid the player in moving correctly)
-//change pose for edging vs impact 
-//then shuffle edging with impact breaks to keep player from becoming too excited 
-//orgasm check (if player confesses to orgasm during punishment they receive additional markers)
-
-TODO: Code to allow the scene to randomly select either cane or whip
-
-~ setScene(punishment_scene, Furia, "furia_punishment_edging", -> furia_punishment_edging)
-
-//game can suggest that the player bring a friend for this scene 
-
-/scene atrium.edging
-/music furia
 /character furia idle_unhappy sad 55
 
 -> start
 
 
+TODO: replay scene to test animations
+
 = start
+/perform idle_skeptical angry 70
+Pathetic little worm. #01
+/perform talk_annoyed disgusted 60
+You know the rules and still you chose to disobey. #02
 
-- Pathetic little worm. 
-You know the rules and still you chose to disobey. 
+- (start_repeat)
+/perform talk_lean_forward angry 70
+Hands on your head, slave! #03
 
-Hands on your head, slave! 
+/perform idle disgusted 50
 
 + [pose:present_stand]
++ [timeout]
+  -> Furia_Timeout ->
+  -> start_repeat
 
-Not only did you disobey and earn a punishment,
-you came <i>here</i> to receive your punishment. 
-You crave the pain. 
-The degradation. 
+- /perform talk_one_hand disgusted 50
+Not only did you disobey 
+and earn a punishment, #04
+you came <i>here</i> to receive your punishment. #05
+/perform react_scoffs amused 60
+I can see you crave the pain. #06
+
+/perform do_arm_raise aroused 60
+La degradación. #07
 
 - (start_query)
-You need to be reminded just how worthless you are. 
-Is that not so, cielo? //mocking tone 
+/perform do_fllick_air disgusted 60
+You need to be reminded 
+just how insignficant you are. #08
+//mocking tone 
+/perform react_nod_big amused 85
+Don't you, cielo? #09
+
+/perform idle amused 60
 
 + [yes]
-    Don't think you can flatter me into going easy on you. 
+    That is what I thought. #10
+    You hunger for pain. #11
 + [no]
-    Too bad, {isBoy: puto| {isGirl: perra| gusano}}. 
-    You're all mine. 
+    You lie to yourself. #12
+    You did come to /me/ for your punishment. #13
 + [timeout]
     //Furia snaps her fingers 
     -> Furia_Timeout ->
@@ -91,657 +65,780 @@ Is that not so, cielo? //mocking tone
 
 - (edging_explanation)
 /perform idle_tease amused 55
-As your punishment, 
-you will touch yourself until you are 
-{hasPenis: painfully hard|dripping} and aching with need. 
+For your punishment, #14
+I want you to suffer the blows of my whip #15
+/perform talk_behold aroused 85
+while you masturbate.
+Until you are {hasPenis: painfully hard|dripping wet} for me. #16
 
-You do NOT have permission to cum. 
+/perform talk_consider amused 85
+And because I love to watch you suffer, #17
+/perform talk_threaten angry 80
+you do NOT have permission to cum. #18
 
-And to drive the lesson home
-that disobedient slaves have no place in this <i>House</i>,
-I will lash your body while you edge for me.
+/perform talk_thoughtful skeptical 75
+And to drive the lesson home #19
+that disobedient slaves 
+have no place in this <i>House</i>, #20
+/perform idle_tease amused 80
+I will taunt you to orgasm #21
+and give you another punishment stone 
+if you give in. #22
 
-We will see if the combination of frustration and pain 
-can penetrate that thick skull of yours. 
+/perform react_scoffs disgusted 70
+We will see if the combination of frustration and pain #23
+can penetrate that thick skull of yours. #24
 
 - (understand)
-¿Entiendo? (Got it?)
+/perform idle_unhappy skeptical 70
+Got it? #25
 
-+[yes]
++ [yes]
     -> Furia_AcknowledgeYes ->
-+[no]
-    I don't like repeating myself. 
+    
++ [no]
+    I don't like repeating myself. #26
     -> understand 
-+[timeout]
+    
++ [timeout]
   -> Furia_Timeout ->
   -> understand
 
-+[distracted]
++ [distracted]
   -> Furia_PayAttention ->
   -> understand
 
 - (consent)
-Now... 
-Are you ready to submit to your suffering? 
+/perform do_arm_raise amused 75
+Now... #27
+Are you ready to submit to your suffering? #28
   
-+[yes] 
-    Aquí vamos.
-    -> edging_intro
-+[no] 
-    -> Furia_AcknowledgeNo -> 
-    Are you sure about that, peque? 
-        ++[yes]
-            Little coward.
-            -> leave 
-        ++[no]
-            That's what I thought. 
-            Let's get on with it. 
-            -> edging_intro 
-        ++[timeout]
-            -> Furia_Timeout ->
-            -> consent 
-        ++[distracted]
-            //Furia snaps her fingers 
-            -> Furia_PayAttention ->
-            -> consent 
-
-+[timeout]
-  -> Furia_Timeout ->
-  -> consent
-
-+[distracted]
-  -> Furia_PayAttention ->
-  -> consent
-
-- (leave)
-One way or another, you'll have to pay. 
-Now get out of my sight. 
-
--> exit
-
-- (edging_intro_short)
-I don't like repeating myself. 
-You will recall that for this punishment 
-you must touch yourself as instructed, 
-and I will {cane|whip} you 
-until I think you've learned your lesson. 
-
-Do you understand what is required? 
-
-+[yes]
-    -> Furia_AcknowledgeYes ->
-    -> edging_shuffle
-+[no]
-    Then we will review it again.  
-    -> edging_intro
-+[timeout]
-  -> Furia_Timeout ->
-  -> edging_intro_short
-
-+[distracted]
-  -> Furia_PayAttention ->
-  -> edging_intro_short
-
-- (edging_intro) 
++ [yes] 
+    -> Furia_Aroused -> approach
++ [no] 
+    -> Furia_AcknowledgeNo -> Furia_CheckIfInterested -> consent
++ [timeout]
+  -> Furia_Timeout -> consent
++ [distracted]
+  -> Furia_PayAttention -> consent
 
 
-//pose for masturbating (kneeling)
-+[pose:kneel]
+= load_approach
+/scene FuriasRoom.WhippingIntro
+/music furia
+/ambient furia
+/character furia idle_tease amused 55
+-> approach
 
-- 
-Kneel, {isBoy: puto| {isGirl: perra| gusano}}. 
-Spread those legs. 
-Get your hand between your thighs and work. 
+
+= approach
+/perform do_point_right angry 75
+Move over to that pole, bichito, #29
+and straddle it. #30
+
++ [move:Approach] -> whipping_start
++ [timeout]
+  -> Furia_Timeout.EmoteOnly -> approach
+
+
+= whipping_start
+/scene FuriasRoom.WhippingReady
+/character furia idle_whip_furia disgusted 60
+
+I am going to bind you to it #31
+and treat you like the wretched masochist you are. #32
+
+- (whipping_pose_repeat)
+/perform idle_cocks_head_to_left angry 60
+Put one hand behind your back and leave the other free for edging. #33
+
++ [pose:present_stand]
++ [timeout]
+  -> Furia_Timeout.EmoteOnly -> whipping_pose_repeat
+
+-
+/perform tease_caress_breast_left amused 70
+Perfecto. #34
+You look so delightful bound to my whipping pole. #35
+
+/perform idle_hand_on_hip angry 70
+Now, get that free hand working #36
+/emotion aroused 75
+and pleasure yourself for me. #37
+
++ [continue]
+
+- /notify text="Put your controllers down for now. You will pick them up again later. Nod when ready to continue."
+
++ [yes]
 
 //Furia fondles herself and brandishes the whip/cane 
-Tu lo tienes. That's it. 
+- 
+/perform idle_whip_furia happy 70
+Tu lo tienes! #38
+There you go. #39
+Feel how warm your skin is. #40
+/perform idle_cocks_head_to_left aroused 70
 
-I bet you enjoy seeing yourself like this,
-don't you? 
-So obscene. 
-It makes me hard. 
+- (warm)
+I bet you enjoy being like this, don't you? #41
 
-Make yourself feel good, {isBoy: chico|{isGirl: chica|mascota}}.
-But remember, you are forbidden to cum. 
+ + [yes]
+    -> Furia_Aroused.EmoteOnly ->
++ [no]
+    I don't like repeating myself. #42
+    -> warm 
++ [timeout]
+  -> Furia_Timeout.EmoteOnly ->
+  -> warm
 
-//pause for player to get going 
++ [distracted]
+  -> Furia_PayAttention.EmoteOnly ->
+  -> warm
 
-Down on your hands and knees, {isBoy: puto| {isGirl: perra| gusano}}. 
-I'm going to {whip|cane} you as I count. 
+- 
+/emotion excited 70
+So obscene. #43
+It makes me hard. #44
 
-+ [pose:hands_and_knees]
+/perform idle_sassy aroused 75
+Make yourself feel good, corazon. #45
+But remember, you are forbidden to cum. #46
 
-- This will sting. 
-A little insecto bite. 
+/wait 2
+/perform idle_whip_furia skeptical 70
+Now, I'm going to {whip|cane} you as I count. #47
+This will sting. #48
+/perform react_shrug_long amused 80
+A little insecto bite. #49
 
 - (edging_understand)
-Each impact will jerk you forward. 
-Move your head when it hits so I know you feel it. 
+/perform talk_lean_forward excited 70
+Each impact will cause you to jerk. #50
+Move your head when it hits so I know you feel it. #51
 
-¿Entiendo? (Got it?)
+/perform idle_whip_furia skeptical 70
+Got it? #52
 
-+[yes]
-    -> Furia_AcknowledgeYes ->
-+[no]
-    I don't like repeating myself. 
++ [yes]
+    -> Furia_AcknowledgeYes.EmoteOnly ->
++ [no]
+    I don't like repeating myself. #53
     -> edging_understand 
-+[timeout]
-  -> Furia_Timeout ->
++ [timeout]
+  -> Furia_Timeout.EmoteOnly ->
   -> edging_understand
 
-+[distracted]
-  -> Furia_PayAttention ->
++ [distracted]
+  -> Furia_PayAttention.EmoteOnly ->
   -> edging_understand
 
 - 
-I begin.
 
-TODO: add in spanking count code from Goddess joi scene
-
-Uno. 
-
-Dos. Bueno. 
-
-Tres. 
-
-Cuatro. Uno mas. 
-
-Cinco. 
-
-Excelente. Now the real fun begins. 
-
-TODO: Player gets whipped / cropped as they edge
-
-- (edging_shuffle)
-TODO: Fix code in edging stitches to properly shuffle
-TODO: Because Furia wants the player to fail, she gives them the option to cum, but they will earn a new punishment stone
+// Select 'short', 'medium', or 'long' for the task length.
 {shuffle:
-    - -> edging_1
-    - -> edging_2
-    - -> edging_impact
+    - ~ task_length = short
+    - ~ task_length = medium
+    - ~ task_length = long
 }
 
-TODO: assess function of tease_bank_joi
-
-= edging_1
-- On your knees, slave. 
-+[pose:kneel]
-
-Touch yourself for me. 
-
-/wait 2
-//first two numbers are a random number of comments to pull and second two are intervals between comments
--> RandomCommentLoop (-> tease_bank_1, 3, 4, 3, 4) ->
-
-- (enjoyment)
-
-/perform idle_tease aroused 45
-  Are you enjoying yourself so far, worm? 
-
-+[yes]
-    We'll see about that. 
-+[no]
-    Good. 
-
-+[timeout]
-  -> Furia_Timeout->
-  -> enjoyment
-
-+[distracted]
-  -> Furia_PayAttention ->
-  -> enjoyment
-  
-- (cumcheck1)
-Now tell me, did you cum yet? 
-
-+ [yes]
-    -> cum_yes 
-
-+ [no]
-    So. There's hope for you yet. 
-    
-+ [timeout]
-    -> Furia_Timeout ->
-    -> cumcheck1
-
-+ [distracted]
-    -> Furia_PayAttention ->
-    -> cumcheck1
-
--> impact_1
-
-
-- (impact_1)
-  
-Hands off, this instant! 
-TODO: code for hands off pose
-Mmm, I can see you glisten for me. 
-
-On your hands and knees. 
-My {whip|cane} hand itches. 
-  
-+ [pose:hands_and_knees] 
-
-- By the House! I'm going to enjoy this. 
-
-- (impact10)
-
-¡Uno! 
-
-¡Dos! That's it. 
-
-¡Tres!
-
-¡Cuatro!
-
-¡Cinco! 
-
-Halfway there, {isBoy: puto| {isGirl: perra| gusano}}.
-
-¡Seis!
-
-¡Siete! 
-
-Starting to burn, isn't it. 
-
-¡Ocho!
-
-¡Nueve!
-
-¡Diez! 
-
-For every offense, there is a suitable punishment. 
-
-Muy bieno. So red and tender for me. 
-
-+ [timeout] 
-    -> Furia_Timeout ->
-    We begin again. 
-    -> impact10
-
-+ [distracted]
-  -> Furia_PayAttention ->
-  We begin again. 
-  -> impact10
-
-->edging_2 
-
-
-= edging_2
-
-Right! To work. 
-+[pose:kneel]
-Get that greedy little hand between your legs 
-and make yourself feel good — 
-but not too good! 
-
--> RandomCommentLoop(-> tease_bank_2 , 4, 5, 3, 4)  ->
-
--> tease_bank_joi -> 
-/perform talk_question amused 55
-  You like the crack of the whip, don't you? 
-  It excites you. 
-
-/perform idle_sassy aroused 70
-  You must be absolutely aching by now. 
-  Desperate. Greedy. Pathetic. 
-  //Furia spits on the floor
-  Remember, you do <i>not</i> have permission to cum. 
-
-- -> RandomCommentLoop(-> tease_bank_3 , 2, 4, 4, 3)  ->
-
-+ [timeout]
-  -> Furia_Timeout ->
-//   -> aching
-
-+ [distracted]
-  -> Furia_PayAttention ->
-//   -> aching
-
-- (cumcheck2)
-Now tell me, did you cum yet? 
-
-+ [yes]
-    -> cum_yes
-
-+ [no]
-    There's hope for you yet. 
-    
-+ [timeout]
-    -> Furia_Timeout ->
-    -> cumcheck2
-
-+ [distracted]
-    -> Furia_PayAttention ->
-    -> cumcheck2
-
-->impact_2
-
-
-- (impact_2)
-
-Enough! Get down. 
-+ [pose:hands_and_knees] 
-
-Excelente. 
-
-- (impact15)
-
-¡Uno! 
-
-¡Dos! 
-
-¡Tres!
-
-Tender already, {isBoy: chico|{isGirl: chica|mascota}}?
-
-¡Cuatro!
-
-¡Cinco! 
-
-Don't flinch away from me. 
-
-¡Seis!
-
-¡Siete! 
-
-What a beautiful sight. 
-
-¡Ocho!
-
-¡Nueve!
-
-¡Diez! 
-
-Muy bueno. 
-
-¡Once!
-
-¡Doce!
-
-Your suffering is a gift. 
-
-¡Trece!
-
-¡Catorce!
-
-¡Quince!
-
-Perfecto, little slave. 
-
-+ [timeout] 
-    -> Furia_Timeout ->
-    From the top. 
-    -> impact15
-
-+ [distracted]
-  -> Furia_PayAttention ->
-  From the top. 
-  -> impact15
-
-Ahh, that is just what I needed. 
-
--> edging_impact
-
-
-= edging_impact
-
-Now. On all fours, {isBoy: puto| {isGirl: perra| gusano}}. 
-+[pose:hands_and_knees]
-
-Touch yourself and weep while I hurt you. 
-No kind release for you today, no. 
-
-- (edging_count)
-
-¡Uno! 
-
-¡Dos! 
-
-¡Tres!
-
--> tease_bank_joi -> 
-
-¡Cuatro!
-
-¡Cinco! 
-
--> tease_bank_joi -> 
-
-¡Seis!
-
-¡Siete! 
-
-¡Ocho!
-
--> tease_bank_joi -> 
-
-¡Nueve!
-
-¡Diez! 
-
--> tease_bank_joi -> 
-
-¡Once!
-
-¡Doce!
-
--> tease_bank_joi ->
-
-¡Trece!
-
--> tease_bank_joi -> 
-
-¡Catorce!
-
-¡Quince!
-
--> tease_bank_joi -> 
-
-¡Dieciséis!
-
-¡Diecisiete!
-
--> tease_bank_joi -> 
-
-¡Dieciocho!
-
-¡Diecinueve!
-
-¡Viente! Enough. 
-
-Good, cielo. 
-
-+ [timeout] 
-    -> Furia_Timeout ->
-    From the top. 
-    -> edging_count
-
-+ [distracted]
-  -> Furia_PayAttention ->
-  From the top. 
-  -> edging_count
-
-I hope you did not lose control, peque. 
-
-- (cumcheck3)
-Did you cum while I thrashed you? 
-
-+ [yes]
-    -> cum_yes
-
-+ [no]
-    So you <i>can</i> learn. 
-
-+ [timeout]
-    -> Furia_Timeout ->
-    -> cumcheck3
-
-+ [distracted]
-    -> Furia_PayAttention ->
-    -> cumcheck3
-
-- -> conclusion 
-
-= cum_yes
-- Pathetic slave. 
-You have earned yourself an additional punishment. 
-    
-~ addPunishment() 
-
-Now get out of my sight. 
-
-    -> exit 
-
-= conclusion
-
-Enough. You have done your time. 
-And I have other slaves to condition. 
+/log Task length is {task_length}.
+
+// Say different things based on task length.
+{
+    - task_length == short:
+        I have many slaves to torment today, #54
+        so this will be a short and sharp punishment. #55
+    - task_length == medium:
+        How lucky you are. #56
+        I only have a few slaves to tend to, #57
+        which means I can give you more time today. #58
+    - task_length == long:
+        Mmmm. I have hardly anyone to torment today, #59
+        so I can really drag out this session for a long time. #60
+}
+
+-> begin_whipping
+
+
+= load_whipping
+/scene FuriasRoom.WhippingReady
+/music furia
+/ambient furia
+/character furia idle_whip_furia amused 55
+-> begin_whipping
+
+
+= begin_whipping
+
+I begin. #61
+
+// Different length flows based on task length:
+{
+    - task_length == short:
+        -> whipping_loop(10) ->
+        -> talk_break ->
+        -> whipping_loop(10) ->
+        -> finish
+    - task_length == medium:
+        -> whipping_loop(10) ->
+        -> talk_break ->
+        -> whipping_loop(10) ->
+        -> talk_break ->
+        -> whipping_loop(10) ->
+        -> finish
+    - else:
+        -> whipping_loop(10) ->
+        -> talk_break ->
+        -> whipping_loop(10) ->
+        -> talk_break ->
+        -> whipping_loop(10) ->
+        -> talk_break ->
+        -> whipping_loop(10) ->
+        -> finish
+}
+
+
+= whipping_loop(goal)
+~ task_count = 0
+~ task_goal = goal
+~ task_break_goal = RANDOM(2, 3)
+~ task_break_count = 0
+
+- (whipping_repeat)
+/character furia idle_whip_furia
+{task_count <  task_goal:
+    ~ task_count++
+    ~ task_break_count++
+    -> whip(task_count) ->
+    {task_break_count == task_break_goal:
+        {shuffle:
+            - ~ task_break_goal = 2
+            - ~ task_break_goal = 3
+        }
+        ~ task_break_count = 0
+        -> whip_comment ->
+    }
+    -> whipping_repeat
+}
+
+->->
+
+
+= whip_comment
+{shuffle:
+    - -> tease_impact_arousal ->
+    - -> tease_impact_taunt ->
+    - -> tease_impact_body ->
+    - -> tease_impact_generic ->
+}
+->->
+
+
+= whip(count)
+- (whip_again)
+
+-> Furia_SayNumber(count) ->
+/character furia do_whip_furia aroused 75
+
++ [react-success] ->->
++ [react-fail] -> bad_whip_bank -> whip_again
+
+
+= talk_break
+{cycle:
+    - -> talk_arousal ->
+    - -> talk_taunt ->
+    - -> talk_serve ->
+    - -> talk_pain ->
+    - -> talk_power ->
+    - -> talk_taunt ->
+    - -> talk_arousal ->
+    - -> talk_serve ->
+}
+->->
+
+
+= bad_whip_bank
+/perform do_get_the_fuck_out disgusted 90
+{shuffle:
+    - Jerk your head in time with my whip, pollito. #62
+    - Is that all? Move like you mean it! #63
+    - Pathetic! Show me you feel my whip! #64
+    - Dios mio! No flinch? Try harder! #65
+    - Your stillness angers me. Jerk and moan! #66
+    - Nothing? Let me see your pain. #67
+    - Weak! Let that pain ripple through you. #68
+    - You're stiff as stone. Move or I'll break you! #69
+    - Dios! That was nothing. Give me a proper shudder! #70
+    - Barely a twitch? Do better or regret it. #71
+    - No response? Pathetic. #72
+    - You're failing me. #73
+    - Madre mia! So dull. #74
+}
+
+->->
+
+
+= finish
+/perform talk_behold happy 70
+Enough. You have done your time. #75
+And I have other slaves to condition. #76
+
+- /notify text="It is time to pick your controllers back up."
 
 - (work)
-/perform
-    I do hope you'll behave… but if I am honest, 
-    it doesn't matter <i>why</i> you're here. 
-    One way or another, I will have you  
-    exactly how I want you. 
+/perform talk_thoughtful skeptical 80
+I do hope you'll behave, but if I am honest, #77
+it doesn't matter <i>why</i> you're here. #78
+/perform talk_emphatic_one_hand excited 100
+One way or another, I will have you #79
+/perform talk_threaten amused 100
+exactly how I want you. #80
 
-/perform
-    Remember that you belong to Us. 
+/perform do_arm_raise angry 80
+Remember that you belong to Us. #81
 
-- (end_furia_edging_punishment)
+- (orgasm_check)
+/perform idle_cocks_head_to_left skeptical 75
+But first, mi tesoro. #82
+Were you able to keep from cumming for me? #83
 
-    /perform 
-    Now, let's get that punishment marker off your wrist. 
++ [yes]
+    /perform react_nod_little amused 70
+    -> Furia_AcknowledgeYes ->
+    You resisted my temptation. #84
+    -> performance_check
+    
++ [no]
+    /perform talk_threaten angry 85
+    -> Furia_AcknowledgeNo ->
+    Pathetic. You couldn't even resist during your punishment. #85
+    ~ addPunishment()
+    You've earned another obsidian stone, pajarito. #86
+    -> remove_stone
+    
++ [timeout]
+    -> Furia_Timeout.EmoteOnly -> orgasm_check
+    
++ [distracted]
+    -> Furia_PayAttention.EmoteOnly -> orgasm_check
+
+- (performance_check)
+/perform idle_weight_shift skeptical 70
+And tell me, carino. #87
+
+- (enjoyed)
+Did you enjoy your punishment? #88
+
++ [yes]
+    -> Furia_AcknowledgeYes ->
+    {obeyed(): -> YesGoodPerformance | -> YesBadPerformance}
+    
++ [no]
+    -> Furia_AcknowledgeNo ->
+    {obeyed(): -> NoGoodPerformance | -> NoBadPerformance}
+    
++ [timeout]
+    ~ addDisobey()
+    -> Furia_Timeout -> enjoyed
+
+= YesGoodPerformance
+/perform talk_behold amused 80
+Your reactions showed how well you handle pain for me. #89
+You jerked when I commanded. #90
+You resisted when forbidden. #91
+~ increaseRegard()
+
+/perform idle_tease aroused 75
+This is how obedient slaves are conditioned in this House. #92
+Through suffering, you become mine. #93
+Come back when you need to be reminded who owns you. #94
+
+-> remove_stone
+
+= YesBadPerformance
+/perform idle_skeptical disgusted 70
+You enjoyed it, but your performance was sloppy. #95
+Next time, react faster to my whip. #96
+Show me you feel every strike. #97
+
+/perform talk_one_hand amused 65
+You have potential, bichito. #98
+But you must be more attentive. #99
+
+-> remove_stone
+
+= NoGoodPerformance
+/perform talk_consider skeptical 75
+You resisted me, but your body obeyed. #100
+Perhaps this punishment doesn't suit you. #101
+
+/perform react_shrug_long amused 70
+Or perhaps you need more conditioning #102
+to learn to crave the whip. #103
+
+-> remove_stone
+
+= NoBadPerformance
+/perform idle_unhappy_arms_crossed angry 75
+You neither enjoyed nor obeyed properly. #104
+Disappointing, ratoncito. #105
+~ decreaseRegard()
+
+/perform talk_one_hand sad 60
+You must learn to surrender to your Mistress. #106
+Otherwise, you'll never find your place in this House. #107
+
+-> remove_stone
+
+- (remove_stone)
+
+/perform do_swipe_hand_fast skeptical 70
+Now, let's get that punishment marker off your wrist. #108
 
 ~ removePunishment()
 
-    /perform 
-    Begone, dog, and behave yourself. 
+/perform do_you_leave_left neutral 
+Begone, dog, and behave yourself. #109
 
-->exit
-
-= tease_bank_1
-
-{ shuffle:
-  - /perform tease_arm_up
-  - /perform tease_ass_caress
-  - /perform tease_bend_over
-  - /perform tease_caress_breast_left
-  - /perform tease_dance_slow
-  - /perform tease_rubbing_crotch
-}
-
-{ shuffle:
-    - Like what you see, slave? 
-    - I do so enjoy watching you frustrate yourself. 
-    - That's right, {isBoy: chico|{isGirl: chica|mascota}}. 
-        Just like that.  
-    - Watch it, {isBoy: ansioso| {isGirl: ansiosa| eager one}}. 
-        Don't stray too close to the edge. 
-    - Pace yourself, peque. 
-    - What a beautiful sight! 
-    - I want you {hasPenis:painfully hard|dripping and desperate} for me. 
-    - Look in the mirror. 
-        See what you are - a pathetic, needy worm. 
-    - I love to hear your desperate, pathetic moans. 
-}
-
-->->
+-> exit
 
 
-= tease_bank_2
+= tease_impact_generic
+//non-specific lines she says when she is whipping and wanting more
 
-{ shuffle:
-  - /perform tease_arm_up
-  - /perform tease_ass_caress
-  - /perform tease_bend_over
-  - /perform tease_caress_breast_left
-  - /perform tease_dance_slow
-  - /perform tease_rubbing_crotch
-}
-
-{ shuffle:
-    - I bet you want to cum real bad, don't you. 
-    - So eager! Yet you must control your passion. 
-    - I do hope you're not enjoying this too much. 
-    - Settle in. 
-        This will be a long ride. 
-    - Remember, you do <i>not</i> have permission to cum. 
-    - How does it feel to watch your own debasement? 
-    - Ah, mi dulce. 
-        So {hasPenis:hard|wet} for me. 
-    - Do you regret your misdemeanors, {isBoy: puto| {isGirl: perra| gusano}}? 
-    - Your frustrated passion gives me strength. 
-}
-
-
-->->
-
-
-= tease_bank_3
-
-{ shuffle:
-  - /perform tease_arm_up
-  - /perform tease_ass_caress
-  - /perform tease_bend_over
-  - /perform tease_caress_breast_left
-  - /perform tease_dance_slow
-  - /perform tease_rubbing_crotch
-  - /perform tease_pinup
-}
-
-{ shuffle:
-
-    - You must be getting close. 
-        Stay with me. 
-    - I wonder if your {hasPenis:cock|pussy} is sore yet. 
-    - Breathe, cielo, and don't stop touching yourself.
-    - I love to hear you moan for me. 
-    - Look what your punishment is doing to my cock, peque. 
-    - No amount of begging will get you the release you crave. 
-    - That's right, {isBoy: chico|{isGirl: chica|mascota}}. 
-        like that.  
-    - No release awaits you this time, slave. 
-
-}
-
-->->
-
-= tease_bank_joi
-
-TODO: Add /perform from new Furia poses
-
-{ shuffle:
-  - /perform
-  - /perform
-  - /perform
-  - /perform
-  - /perform
-  - /perform
-  - /perform
-}
-
-{ shuffle:
-    - You're enjoying this, aren't you, slut? 
-    - Your body believes it will get to cum. 
-        How sad. 
-    - Feel how the lash warms your ass and {hasPenis:head|cunt}. 
-    - I don't care if it burns! 
-        Keep touching yourself. 
-    - By the House! 
-        This feels good. 
-    - Ah, mi criatura. 
-        Embrace the pain. 
-    - You belong to the House. 
-    - Feel how the pleasure dances with the pain. 
-    - But what will make the lesson really stick — frustration or pain? 
-    - Scream all you want...
-        It makes me hard. 
-
+{shuffle:
+    - What exquisite torment. #110
+    - Don't you dare stop trembling. #111
+    - Such a pretty sight. #112
+    - Beg for it, amorcito. #113
+    - You're my perfect victim. #114
+    - Suffer sweetly for me, pet. #115
+    - Give me more, mi tesoro. #116
+    - Keep suffering, amorcito. #117
+    - Keep squirming for me! #118
+    - What a beautiful sight! #119
+    - Let me hear you moan. #120
+    - Whimper and beg for me to stop. #121
+    - Ah, mi criatura. Embrace the pain. #122
+    - You belong to the <i>House</i>. #123
+    - Feel how the pleasure dances with the pain. #124
+    - Dance for me in your suffering. #125
+    - Your torment feeds my soul. #126
+    - The lash and the flesh, a perfect duet. #127
+    - Mmm, how you tremble under my hand. #128
+    - Pain is my gift to you, pequeno. #129
 }
 
 ->->
 
 
+= tease_impact_arousal
+//what she says when she is whipping and is feeling aroused
+
+{shuffle:
+    - Your whimpers ignite me, pequeno. #130
+    - Every lash ignites my fire, mi tesoro. #131
+    - Dios mio! Your pain is a spark in my veins. #132
+    - Each strike sends shivers through me. #133
+    - Your agony is my ecstasy, dolce. #134
+    - Ay, pequeno! Your suffering makes my heart race. #135
+    - Every flinch you make teases my senses, pequeno. #136
+    - Madre mia! Your tears are my aphrodisiac. #137
+    - Your shudders are a gift, amorcito. #138
+    - Dios! Each strike makes me ache. #139
+    - Your broken gasps are music, mi joya. #140
+    - The way you twist under my lash is divine, pequeno. #141
+    - Caramba! Your torment feeds my hunger. #142
+    - Ay, carino! You make me throb watching you suffer. #143
+    - Your pain makes me ache with need. #144
+    - Mmmm, I'm dripping at the sight of you. #145
+    - Each whimper sends heat through my cock. #146
+    - Dios, you make me want to use you. #147
+}
+
+->->
+
+
+= tease_impact_taunt
+//what she says when she is whipping and taunting them to resist orgasming
+{shuffle:
+    - You're trembling so close to the edge. #148
+    - Look at you, mi tesoro, fighting that urge. #149
+    - My whip demands your control, pet. #150
+    - Clenching so tight, pequeno? Good. #151
+    - Your struggle is delicious, mi joya. #152
+    - Dolce, you're sweating with need. #153
+    - Ay, pequeno! That quiver betrays you. #154
+    - Every twitch tempts me, pequeno. #155
+    - My whip tests you, mi tesoro. #156
+    - I see how you tremble for me, amorcito. #157
+    - It's divine, pequeno, watching you fight. #158
+    - Caramba! You're barely holding on, mi tesoro. #159
+    - Every lash pushes you, dolce. #160
+    - You're leaking already, aren't you? #161
+    - Fighting that edge makes it worse, pequeno. #162
+    - Your body betrays your control. #163
+    - So desperate to release, but you can't. #164
+    - I see that quiver, you're barely holding on. #165
+}
+
+->->
+
+
+= tease_impact_body
+//what she says when she is whipping and observing how their body is reacting to the scene
+{shuffle:
+    - Your skin flushes so beautifully, pequeno. #166
+    - My lashes paint you red! #167
+    - Dios mio! Those welts bloom like flowers. #168
+    - Such a lovely canvas, dolce. #169
+    - Your sweat glistens under my whip, pet. #170
+    - Mi joya, your muscles tense so perfectly. #171
+    - Every welt rises so fast, pequeno. #172
+    - Madre mia! Your trembling thighs tell your torment, amorcito. #173
+    - My whip carves rivers of sweat, mi tesoro. #174
+    - Your back curves in pain, pet. #175
+    - The way your skin tightens... its divine, pequeno. #176
+    - Every twitch screams your devotion, amorcito. #177
+    - My whip loves your flesh. #178
+    - Look at those marks I'm leaving on you. #179
+    - Your skin is my canvas, pequeno. #180
+    - Such a beautiful landscape of welts. #181
+    - Dios, you bruise so prettily. #182
+    - Red stripes suit you, mi tesoro. #183
+}
+->->
+
+
+= talk_arousal
+//whispering break to urge them to cum based on how aroused she is
+
+-> talk_intro ->
+
+My sweet amarocito. #184
+Do you feel how my breath trembles against your ear? #185
+I'm burning, mi tesoro. #186
+My body alive with a fire only your surrender can stoke. #187
+It must feel so good to touch yourself for me. #188
+Every quiver of your flesh screams you want this. #189
+I know you want to please me, #190
+to {hasPenis:spill|cream} for me. #191
+Dios mio! #192
+You're fighting so hard, aren't you? #193
+Clinging to that frail control #194
+when we both know you ache to let go. #195
+I'm so aroused, cariño. #196
+My pulse races at the thought of you #197
+breaking under my will. #198
+Can you imagine how satisfied I'd be #199
+watching you crumble? #200
+It's torture, isn't it? #201
+Resisting when your body begs to obey me. #202
+Vamos, mi joya. #203
+Why fight what we both crave? #204
+Give in, solecito. #205
+Let my desire claim you. #206
+Cum for me and make your Mistress sing with delight. #207
+Or resist and let this torment drag on... #208
+We both know I'll win in the end. #209
+I always do. #210
+
+-> climax
+
+->->
+
+
+= talk_taunt
+//whispering break to urge them to cum based on how aroused they are
+
+-> talk_intro ->
+
+Oh, carino, look at you. #211
+Quivering with need. #212
+So pathetic in your lust. #213
+Your self control is weak. #214
+Your body betrays you, mi tesoro. #215
+Trembling and desperate under my gaze. #216
+I see your hunger. #217
+Ahh, si! #218
+You're practically dripping, aren't you? #219
+Aching to give in? #220
+So just how weak are you, ratoncito? #221
+Let's see you lose that self control. #222
+Trembling like a fool who thinks they can resist me. #223
+Your every shudder screams you want to cum. #224
+Don't pretend you don't crave it. #225
+Your body cannot lie to me. #226
+I'm in control, mi joya, not you. #227
+And your pitiful arousal is mine to play with. #228
+Go on. #229
+Let it break free. #230
+Make a mockery of your restraint for me. #231
+Vamos! #232
+You're nothing but a toy, pajarito. #233
+Twitching with desire you can't hide. #234
+Give in to that shameful heat #235
+and let me laugh at your surrender. #236
+Cum for me now #237
+or I'll make your torment even sweeter, my helpless pet. #238
+
+-> climax
+
+->->
+
+
+= talk_serve
+//whispering break to urge them to cum based on how much they want to serve
+
+-> talk_intro ->
+
+My precious tesoro. #239
+You long to serve me, don't you? #240
+To kneel at my feet forever. #241
+I can feel your heart beating to submit. #242
+To be molded into something new. #243
+Something precious. #244
+I see your potential. #245
+Your longing. #246
+Your willingness. #247
+Feel how you crave my whip and ache to embrace the pain I give you. #248
+Let go, pajarito. #249
+Surrender to me and prove your devotion. #250
+That's what you want, isn't it? #251
+To be my creation. #252
+A creature who dances in my torment. #253
+Every sting I've carved into you begs for your surrender. #254
+Give in. #255
+Make me proud. #256
+I'm sculpting you, mi joya, #257
+into a submissive who craves my cruelty. #258
+Your body trembles to please me. #259
+So release now and show me your truth! #260
+Why resist this bliss, cariño? #261
+Spill for me and become the pain-loving cunt I command. #262
+I'm your maker, amorcito. #263
+Your climax seals your submission to me. #264
+Forever mine. #265
+
+-> climax
+
+->->
+
+
+= talk_pain
+//whispering break focused on the eroticism of pain
+
+-> talk_intro ->
+
+My sweet pollito. #266
+Feel how my whip has awakened every nerve in your body. #267
+Each welt throbs with its own heartbeat, #268
+pulsing in time with that ache between your legs. #269
+The pain doesn't fight the pleasure, does it? #270
+No, mi tesoro. #271
+They're dancing together, #272
+twisting into something so intense #273
+you can barely breathe. #274
+Your {hasPenis:cock|pussy} is {hasPenis:hard|wet} from the sting of my lash. #275
+Every strike sends lightning straight to your core. #276
+Making you throb. #277
+Making you leak. #278
+Dios mio, you're so close already, aren't you? #279
+That hand working yourself, #280
+the welts burning on your skin, #281
+it's all blending into one exquisite agony. #282
+You want to let go so badly. #283
+The pain has made you so sensitive, cariño. #284
+Every stroke of your hand feels like fire now. #285
+Imagine it, mi joya. #286
+Cumming while bound to my pole, #287
+your body marked by my whip, #288
+surrendering completely to the pleasure I've given you. #289
+One moment of weakness and you could explode right now. #290
+So easy. #291
+So tempting. #292
+
+-> climax
+
+->->
+
+
+= talk_power
+//whispering break focused on the eroticism of her control
+
+-> talk_intro ->
+
+Look at you, bichito. #293
+Completely at my mercy. #294
+Bound. #295
+Marked. #296
+Aching. #297
+Your body doesn't belong to you right now. #298
+It's mine. #299
+That throbbing between your legs? #300
+Mine to control. #301
+That desperate need in your core? #302
+Mine to deny. #303
+Or grant. #304
+Feel how your {hasPenis:cock twitches|pussy clenches} at my words alone. #305
+I don't even need to touch you. #306
+My voice is enough to make you leak. #307
+My power over you is that complete, mi tesoro. #308
+Right now, I could tell you to stop touching yourself, #309
+and you'd obey even though you're dying for release. #310
+Or I could tell you to stroke faster, #311
+harder, #312
+push yourself to that edge. #313
+And you'd do it because I own you. #314
+Doesn't that make you throb, cariño? #315
+Your orgasm is locked behind my permission. #316
+All you have to do is surrender completely. #317
+Break my rule. #318
+Spill for me. #319
+Show me my power over you is so total #320
+that you'll sacrifice anything, #321
+even another punishment stone, #322
+just to feel that release I've wound so tight inside you. #323
+Go ahead, mi joya. #324
+I'm dying to see you fail. #325
+Cum. #326
+Now. #327
+
+-> climax
+
+->->
+
+
+= talk_intro
+
+I must stop for a moment. #328
+So I can watch you. #329
+Taunt you. #330
+
+->->
+
+= climax
+
+Don't you want to climax for me, cariño? #331
+
++ [yes] 
+    -> Furia_AcknowledgeYes.EmoteOnly -> 
+    Then cum for me #332
+    and earn a new punishment stone. #333
+    
++ [no] 
+    -> Furia_AcknowledgeNo.EmoteOnly -> 
+    Then we shall continue with your punishment! #334
+    
++ [timeout]
+  -> Furia_Timeout.EmoteOnly -> climax
+  
++ [distracted]
+  -> Furia_PayAttention.EmoteOnly -> climax
+  
+ -
+ ->->
 
 

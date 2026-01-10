@@ -2,10 +2,10 @@
 
 === table_of_contents ===
 
-+ <b>Test: Furia Pegging Reward</b>
++ <b>Test: Furia Edging Punishment</b>
     ~ rewards = 1
     ~ setDeviation(full_game)
-    -> furia_reward_pegging
+    -> furia_punishment_edging
 
 + <b>DomSim: Threshold (with tutorial)</b>
     ~ setDeviation(full_game)

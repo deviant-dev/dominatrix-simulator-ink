@@ -73,10 +73,6 @@
 // ~ just_changed = punishment_removed
 
 //--------------------------------------------------
-// --- Tutorial Completion ---
-~ inTutorial = false
-
-//--------------------------------------------------
 // --- Mistress Regard ---
 // ~ angel_regard = 0
 // ~ caliste_regard = 0
@@ -121,6 +117,9 @@
 // /music treat
 // /music yuki
 // /music ereshkigal
+~ furia_intro_completed = true
+
+// -> entry_hub
 
 //--------------------------------------------------
 // --- Angel Scene Jumps ---
@@ -150,12 +149,13 @@
 
 //--------------------------------------------------
 // --- Furia Scene Jumps ---
+
 // -> furia_hub
 // -> furia_intro
 // -> furia_intro_wip
 // -> furia_punishment_placeholder
-// -> furia_punishment_edging
--> furia_reward_pegging
+-> furia_punishment_edging
+// -> furia_reward_pegging
 // -> furia_reward_placeholder
 // -> furia_rewardmega_placeholder
 // -> furia_task_placeholder
@@ -218,7 +218,7 @@
 // -> pragma_intro
 // -> pragma_intro.intro_temp
 // -> pragma_task_dancing_doll
--> pragma_task_posing_doll
+// -> pragma_task_posing_doll
 // -> pragma_punishment_placeholder
 // -> pragma_reward_placeholder
 // -> pragma_rewardmega_placeholder
@@ -270,7 +270,7 @@
 // -> exit
 // -> entry_hub
 // ~ tutorial_step = at_hm_intro
--> game_intro
+// -> game_intro
 // -> game_intro_again
 // -> game_outro
 // -> skip_to_full_loop

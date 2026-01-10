@@ -1,6 +1,6 @@
 === deviation_unspeakable_toy ===
+// -> select_gender_check ->
 ~ setGender("f")
-~ enableButtplug = true
 
 /scene EntryDark.Instructions
 /character Treat
@@ -32,14 +32,13 @@ Would you like to find out? #06
 /perform react_thankful excited 75
 Fantastic! #07
 
--> toys
--> finish
+-> toys -> finish
 
 = toys
 /perform talk_gesture happy 50
-// This should work with any buttplug.io compatible toy. #08
-This should work with any buttplug.io or 
-Lovense compatible toy.
+This should work with any buttplug.io compatible toy. #08
+// This should work with any buttplug.io or 
+// Lovense compatible toy.
 It will also work with an Xbox controller. #09
 
 /perform react_scoffs amused 50
@@ -53,8 +52,7 @@ It's a work in progress, #12
 so keep your eye out for updates #13
 and share with us your feedback. #14
 
--> connect
--> finish2
+-> connect -> finish2
 
 = connect 
 /perform talk_question happy 50
@@ -64,6 +62,8 @@ connect it to your computer, #16
 and when you're ready, #17
 come back and nod your head. #18
 
+/action open_journal_toys
+
 +  [yes]
 
 ->->
@@ -72,7 +72,7 @@ come back and nod your head. #18
 /perform idle happy 50
 Delicious. #19
 
-Please choose which Mistress you'd like to experience this with: #20
+// Please choose which Mistress you'd like to experience this with: #20
 TODO: UI with character choices
 
 /perform do_arm_raise excited 75

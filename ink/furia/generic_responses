@@ -1,31 +1,38 @@
 //For positive responses to questions
-
-
-
-
 === Furia_AcknowledgeYes ===
 /character furia
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
+
+{not emoteOnly:
+    {shuffle:
+        - /perform react_thankful
+        - /perform talk_consider
+        - /perform do_yank_air 
+    }
+}
+
+{shuffle:
+    - /emotion excited 75
+    - /emotion happy 75
+    - /emotion aroused 75
+}
 
 { shuffle:
-    - /perform react_thankful excited 55
-        Excelente. #01
-    
-    - /perform talk_thoughtful happy 45
-        Excellent. #02
-    
-    -/perform talk_behold amused 70
-        Perfecto. #03
-    
+    - Excelente. #01
+    - Excellent. #02
+    - Perfecto. #03
     - Perfect. #04
-    
     - Bien. #05
-    
     - Good. #06
-    
     - Very good. #07
-    
     - Muy bien. #08
-    
     - I am glad. #09
 }
 
@@ -36,25 +43,40 @@
 
 === Furia_AcknowledgeNo ===
 /character furia
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
+
+{not emoteOnly:
+    {shuffle:
+        - /perform react_shrug_short
+        - /perform react_resigned
+        - /perform idle_unhappy
+    }
+}
+
+{shuffle:
+    - /emotion angry 75
+    - /emotion disgusted 75
+    - /emotion sad 75
+}
 
 { shuffle:
 
     - That displeases me. #01
 
     - Disappointing. #02
-
     - No? #03
-
     - Unfortunate. #04
-
     - Desgraciada. #05
-
     - I see. #06
-
     - Ya veo. #07
-
     - Too bad. #08
-
     - A pity. #09
 }   
 ->->
@@ -64,6 +86,30 @@
 
 === Furia_GoodJob ===
 /character furia
+
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
+
+{not emoteOnly:
+    {shuffle:
+        - /perform talk_lean_forward
+        - /perform do_yank_air
+        - /perform do_inspect
+        
+    }
+}
+
+{shuffle:
+    - /emotion amused 75
+    - /emotion excited 75
+    - /emotion happy 75
+}
 
 { shuffle:
     - You are making progress. #01
@@ -85,6 +131,29 @@
 === Furia_BadJob ===
 /character furia
 
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
+
+{not emoteOnly:
+    {shuffle:
+        - /perform talk_lean_forward
+        - /perform do_shake_finger
+        - /perform react_disappointed
+    }
+}
+
+{shuffle:
+    - /emotion angry 75
+    - /emotion disgusted 75
+    - /emotion skeptical 75
+}
+
 { shuffle:
     - Terrible. #01
     - Terrible (Spanish). #02
@@ -105,6 +174,29 @@
 === Furia_NoAction ===
 /character furia
 
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
+
+{not emoteOnly:
+    {shuffle:
+        - /perform talk_lean_forward
+        - /perform idle_unhappy
+        - /perform talk_annoyed
+    }
+}
+
+{shuffle:
+    - /emotion angry 75
+    - /emotion disgusted 75
+    - /emotion sad 75
+}
+
 /perform react_dumb angry 65
 { shuffle:
     - Obey, {isBoy:boy|{isGirl:girl|slave}}! #01
@@ -123,27 +215,40 @@
 
 
 === Furia_Timeout ===
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
 /character furia
 
+{not emoteOnly:
+    {shuffle:
+        - /perform talk_lean_forward
+        - /perform react_point_at_player_angry
+        - /perform react_disappointed
+        
+    }
+}
+
 {shuffle:
-    -/perform talk_lean_forward angry 75
-        ¡Responde, imbecile! #01
+    - /emotion angry 75
+    - /emotion disgusted 75
+    - /emotion skeptical 75
+}
 
-    -/perform talk_one_finger sad 65
-        I am waiting... #02
-
-    -/perform react_scoffs scared 75
-        ¿Cuál es el problema? #03
-    
+{shuffle:
+    - ¡Responde, imbecile! #01
+    - I am waiting... #02
+    - ¿Cuál es el problema? #03
     - I am not a patient Mistress. #04
-    
     - Where is your mind, slave? #05
-    
     // - Answer me, idiota. #06
-    
     // - Answer me, slave. #07
-    
-    - ¡Ey! Focus. 
+    - ¡Ey! Focus. #08
 }
 ->->
 
@@ -151,6 +256,16 @@
 
 
 === Furia_PayAttention ===
+
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
+
 /perform do_snap_fingers
 { shuffle:
     - Attend to me, {isBoy: puto|{isGirl: puta|animal}}. #01
@@ -178,6 +293,29 @@
 === Furia_Aroused ===
 /character Furia
 
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
+
+{not emoteOnly:
+    {shuffle:
+        - /perform idle_tease
+        - /perform tease_caress_breasts_large
+        - /perform idle_unhappy
+    }
+}
+
+{shuffle:
+    - /emotion aroused 75
+    - /emotion happy 75
+    - /emotion excited 75
+}
+
 {shuffle:
 
     - I grow hard watching you, my slave. #01
@@ -193,6 +331,15 @@
 
 
 === Furia_CheckIfInterested ===
+
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
 
 {checked_if_interested: -> check_terse}
 
@@ -279,21 +426,185 @@ We will continue what we are doing. #24
 
 === Furia_Give_Reward ===
 
+-> DoEmoteOnly(false)
+
+
+= EmoteOnly
+-> DoEmoteOnly(true)
+
+
+= DoEmoteOnly(emoteOnly)
+
 - (give_reward)
 /character furia idle_hand_out neutral
 {shuffle:
-    - Time to turn over your Bloodstone, {isBoy:esclavo|{isGirl:esclava|animal}}.
-    - Give me your Bloodstone, {isBoy:pequeño|{isGirl:pequeña|criatura}}.
-    - Hold out your wrist to spend one of your Bloodstones.
+    - Turn over your Bloodstone, {isBoy:esclavo|{isGirl:esclava|animal}}. #01
+    - Surrender your Bloodstone, {isBoy:pequeño|{isGirl:pequeña|criatura}}. #02
 }
 
+- (wrist)
+
 + [pose:present_wrist_reward] 
-    /perform do_swipe_hand happy 5
-    /wait 2
-    -> Furia_AcknowledgeYes ->->
-+ [no] -> Furia_CheckIfInterested -> give_reward
+    /perform do_swipe_hand_fast happy 5
+    /wait 1
+    {shuffle:
+    - Such a lucky slut you are. #03
+    - I like your commitment. #04
+    - Mmm. Someone knows what they want. #05
+    }
+    ->->
+    
++ [no] -> goodbye
 + [timeout] -> Furia_Timeout -> give_reward
 + [distracted] -> Furia_PayAttention -> give_reward
 
+- (goodbye)
+
+Then you do not belong here. #06
+Leave. #07
+-> END
 
 
+=== Furia_Moans ===
+
+{shuffle:
+    - -> Soft
+    - -> Medium
+    - -> Hard
+}
+
+= Soft
+/character furia
+cc: (moans softly) #1
+->->
+
+= Medium
+/character furia
+cc: (moans) #2
+->->
+
+= Hard
+/character furia
+cc: (moans hard) #3
+->->
+
+= Thrust
+/character furia
+cc: (grunts) #4
+->->
+
+
+
+=== Furia_SayNumber(n) ===
+/character furia
+
+// NOTE: Keep these on separate lines for the subtitle system. -deviant
+{
+    - n == 1:
+        Uno. #01
+    - n == 2:
+        Dos. #02
+    - n == 3:
+        Tres. #03
+    - n == 4:
+        Cuatro! #04
+    - n == 5:
+        Cinco. #05
+    - n == 6:
+        Seis. #06
+    - n == 7:
+        Siete. #07
+    - n == 8:
+        Ocho. #08
+    - n == 9:
+        Nueve. #09
+    - n == 10:
+        Diez. #10
+    - n == 11:
+        Once. #11
+    - n == 12:
+        Doce. #12
+    - n == 13:
+        Trece. #13
+    - n == 14:
+        Catorce. #14
+    - n == 15:
+        Quince. #15
+    - n == 16:
+        Dieciséis. #16
+    - n == 17:
+        Diecisiete. #17
+    - n == 18:
+        Dieciocho. #18
+    - n == 19:
+        Diecinueve. #19
+    - n == 20:
+        Viente. #20
+    - else:
+        /logError Can't say number '{n}'.
+}
+->->
+
+
+
+Nothing? Pequeno, youre disappointing me. Scream for me, now!
+
+
+
+Weak, mi joya! Let me see that pain ripple through you.
+
+
+
+No tears? Bad {isBoy: chico|{isGirl: chica|mascota}}. Earn my lash, Vamos!
+
+
+
+Youre stiff as stone, pet. Move, or Ill break you open!
+
+
+
+Dios! That was nothing, pequeno. Give me a proper shudder!
+
+
+
+Barely a twitch, mi tesoro? Do better, or Ill make you regret it.
+
+
+
+Carino, your silence bores me. Cry out, or face my wrath, Ahora!
+
+
+
+No response? Bad {isBoy: chico|{isGirl: chica|mascota}}. Feel it this time!
+
+
+
+Youre failing me, pequeno. Writhe like my whip demands!
+
+
+
+Madre mia! So dull, mi joya. Show me your pain, or Ill double it.
+
+
+
+That weak flinch insults me, carino. React, or Ill carve it out of you!
+
+
+
+No scream, mascota? Lets try that again, with feeling, Vamos!
+
+
+
+Dios mio! Youre lifeless, pequeno. Make your body sing for me!
+
+
+
+Mi tesoro, your stillness angers me. Jerk and moan, or else!
+
+
+
+Bad {isBoy: chico|{isGirl: chica|mascota}}. No quiver? Try again, Ahora!
+
+
+
+What a pitiful show, carino. Give me pain worth watching! 

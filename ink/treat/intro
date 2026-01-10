@@ -1,7 +1,6 @@
 === treat_intro ===
 ~ setScene(intro_scene, Treat, "treat_intro", -> treat_intro)
 
-TODO: make scene for treat to encounter player in entry, after tutorial
 /scene Entry.TMonitoring
 /music treat-intro
 /ambient treat

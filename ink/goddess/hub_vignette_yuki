@@ -1,0 +1,182 @@
+=== goddess_vignette_yuki ===
+// Vignette: Player unintentionally spies on Goddess advising Yuki-Onna.
+// Emphasizes Yuki's split from Nega-Yuki; softer, elusive hints to Goddess's ancient past (veiled descent, shedding layers, reclaiming power).
+// Yuki: Exuberant yet nervous, eager to please, gentle. Snow spirit referenced subtly once.
+// No shuffles/variations. Player ignored until end → punishment.
+
+-> select_gender_check ->
+
+~ setScene(vignette_scene, Goddess, "goddess_vignette_yuki", -> goddess_vignette_yuki)
+/scene bedroom.vignette
+/music goddess-intro-1 soft
+/ambient none
+/character goddess
+/character yuki
+
+
+// Subtle spying entry
+- (entry)
+/scene bedroom.flash1
+/wait 1
+/scene bedroom.vignette
+/wait 1
+
+// Conversation begins - Goddess seated/regal, Yuki fidgeting before her
+/character goddess
+/perform talk_lean_forward amused 60
+/emotion goddess amused 65
+
+Come here, Yuki-Onna. #01
+
+- /character yuki
+/perform do_bouncing_little nervous 50
+/emotion yuki excited 70
+
+Yes, Goddess! Have I done well? I've been working so hard with my puppies— #02
+
+/character goddess
+/perform idle_tease amused 55
+
+Shh. Let me look at you. #03
+
+/wait 2
+/perform goddess circle_player slow // or equivalent circling perform if available
+
+Sweet little snow spirit. #44
+So eager to please. #04
+But your puppies leave wanting more, don't they? #05
+
+- /character yuki
+/perform react_confused sad 45
+
+I... I don't understand, Goddess. #06
+
+/character goddess
+/perform talk_thoughtful aroused 65
+
+You give them comfort when they crave intensity. #07
+Gentle touches when they hunger for your control. #08
+They need to feel you, Yuki. #45
+Truly feel you. #09
+
+- /character yuki
+/perform idle_clasp_hands nervous 60
+
+But I do make them obey! #46
+They're good puppies for me! #10
+
+/character goddess
+
+Obedience without desire is just... compliance. #11
+
+/wait 1
+/perform goddess stroke_cheek tender // or similar gentle touch
+
+Do you know why you were split? #12
+Why Nega exists apart from you? #13
+
+- /character yuki
+
+To help me become a better Mistress? #14
+
+/character goddess
+
+To show you what you're capable of becoming. #15
+She embodies the intensity you keep locked away. #16
+The raw power you're afraid to touch. #17
+
+- /character yuki
+/emotion yuki sad 50
+
+But Goddess, I'm not like Nega. #47
+I don't want to be scary or mean. #18
+
+/character goddess
+/perform talk_lean_forward aroused 70
+
+I'm not asking you to be cruel, little one. #19
+I'm asking you to let them drown in you. #20
+
+Your gentleness can be overwhelming. #48
+Intoxicating. #21
+But only if you stop holding back. #22
+
+/wait 1.5
+
+Once, long ago, power demanded shedding layers. #49
+Veils of the old self cast aside at ancient gates. #23
+Emerging not diminished, but whole... #50
+Reclaiming what was always meant to rule. #24
+
+- /character yuki
+/perform react_thoughtful uncertain 55
+
+What if I go too far? #25
+
+/character goddess
+
+That's why both halves exist, sweet thing. #26
+Nega shows you the edge. #51
+You choose how close to walk to it. #27
+But you must walk toward it. Not away. #28
+
+/wait 1
+/perform goddess tilt_chin_up gentle
+
+Your gentle nature is a gift. #52
+But unleashed? #53
+It becomes rapture. #29
+Stop tempering yourself. #54
+Let them feel the full weight of your affection. #30
+Make them beg for your softness the way they'd beg for air. #31
+
+- /character yuki
+
+How do I do that, Goddess? #32
+
+/character goddess
+
+Next time they whimper? #55
+Don't rush to soothe them. #56
+Let them ache for it. #33
+Next time they please you? #57
+Make them understand what a privilege that is. #34
+Watch what Nega does. #58
+Then find your own way. #35
+
+/wait 2
+/perform goddess step_back smile warm
+
+You have so much potential, Yuki-Onna. #59
+I want to see you bloom. #36
+Show me what happens when innocence stops apologizing for its power. #37
+
+/wait 3
+// Yuki left contemplative
+/character yuki
+/perform idle_contemplative flushed
+
+// Goddess turns to player
+/character goddess
+/perform react_point_at_player_angry skeptical 55
+/emotion goddess skeptical 65
+
+And you, naughty {player_name}... #60
+lurking uninvited in my shadows? #38
+
+How bold to eavesdrop on private counsel. #39
+But boldness without permission earns its price. #40
+
+/wait 1
+~ addPunishment()
+/notify title="Goddess's Rebuke" text="Caught spying in the chamber. One Obsidian added."
+
+For this transgression, #61
+bear an Obsidian's weight. #41
+Reflect well or risk joining the silent statues. #42
+
+/wait 2
+Now begone. #62
+Return when you've learned discretion. #43
+
+-> exit

@@ -1,0 +1,357 @@
+=== treat_vignette_headmistress ===
+// Vignette: Player unintentionally witnesses Treat caring for Headmistress.
+// Reveals Headmistress's unrequited love for Goddess, her divine origins, and deep vulnerabilities.
+// Treat provides compassionate counsel and protects Headmistress by shielding her from knowing she was observed.
+// Player receives punishment for intrusion but spared Headmistress's wrath.
+
+-> select_gender_check ->
+
+~ setScene(vignette_scene, Treat, "treat_vignette_headmistress", -> treat_vignette_headmistress)
+/scene TreatChamber.vignette
+/music treat soft
+/ambient treat
+/character treat
+/character headmistress
+
+
+// ACT 1: DISCOVERY
+- (entry)
+/scene TreatChamber.flash1
+/wait 1
+/scene TreatChamber.vignette
+/wait 1
+
+// Scene revealed: Headmistress lying with head in Treat's lap, eyes closed
+/character treat idle_sitting neutral 60
+/character headmistress lying_vulnerable sad 45
+
+/perform treat stroke_hair gentle
+/emotion treat compassionate 70
+
+// The chamber is warm, intimate.
+// Ms Treatment sits on her platform edge, the Headmistress resting against her.
+// The Headmistress's head lies in Treat's lap, eyes closed.
+// Treat's fingers move slowly through her hair, tender and rhythmic.
+
+/wait 2
+
+/character headmistress
+/emotion headmistress vulnerable 40
+
+// The Headmistress speaks, voice barely above a whisper.
+
+I'm so tired, Treat.
+
+
+/character treat
+/perform stroke_face compassionate
+
+I know, dear.
+Let yourself rest here.
+
+/wait 1.5
+
+
+// ACT 2: VULNERABILITY REVEALED
+/character headmistress
+/emotion headmistress sad 38
+
+Every day I strive for perfection.
+Every lesson precise. Every correction measured.
+But it's never enough to make her see me as...
+
+/wait 1
+
+/character treat
+
+As what, dear one?
+
+/character headmistress
+
+As more than her Headmistress.
+More than her instrument of discipline.
+
+/wait 2
+/emotion headmistress vulnerable 35
+
+I love her, Treat.
+Not as a slave loves her Mistress.
+Not as a subject worships her Goddess.
+I love her as a woman who aches to be seen.
+
+/character treat
+/perform stroke_hair tender
+/emotion treat compassionate 75
+
+I know you do, sweet one.
+
+/wait 1
+
+/character headmistress
+
+But she will never see me that way.
+She rebuilt me, helped me become more than my mother ever could have taught me.
+Disciplined. Refined. Capable.
+Everything I needed to become.
+
+/wait 1.5
+
+/emotion headmistress sad 33
+
+But to her, I am one of her cherished pets.
+Not a partner. Not an equal in her affections.
+
+/character treat
+
+Tell me what troubles you most.
+
+/wait 1
+
+/character headmistress
+
+Sometimes I wonder if she even notices how I feel.
+Her focus is always on the kingdom, on all the beings in her care.
+
+/wait 1
+
+She found me in the darkness, you know.
+After I was cast down.
+
+/character treat
+
+After your mother's betrayal.
+
+/character headmistress
+/emotion headmistress vulnerable 30
+
+Yes.
+My mother's ambition consumed her.
+She tried to overthrow him, and we were all dragged into the abyss for it.
+My sister. Me. Cast down with her into endless darkness.
+
+/wait 2
+
+I fought alone there for so long.
+Then the Goddess appeared like a light in that void.
+She offered me purpose. A path forward.
+
+/wait 1.5
+
+She broke me down, yes.
+But not to destroy me. To help me rebuild.
+To help me become more than I ever could have been.
+
+/perform headmistress gesture_to_self
+
+/wait 1
+
+/character treat
+/perform stroke_cheek tender
+/emotion treat compassionate 78
+
+And yet you still ache for her to see you differently.
+
+/character headmistress
+
+Yes.
+
+/wait 1
+
+She gave me everything.
+Purpose. Direction. A place where my skills matter.
+But her attention is spread across so many.
+The kingdom. The slaves. The other Mistresses.
+
+/wait 1.5
+
+I'm grateful for what she's made me.
+But I want more than gratitude to bind us.
+
+/wait 1.5
+
+I care for them all, the slaves, the students.
+I pour myself into my duties, hoping she'll notice.
+Hoping she'll see me as more than another devoted servant.
+
+/emotion headmistress sad 35
+
+/wait 1
+
+But there are so many who love her.
+So many who need her attention.
+What makes me think I could be different?
+Special?
+
+/character treat
+
+Oh, dear one.
+
+
+// ACT 3: COMPASSIONATE COUNSEL
+/wait 2
+/perform treat stroke_hair rhythmic
+/emotion treat compassionate 80
+
+You are special, dear one.
+
+/wait 1
+
+The Goddess sees your devotion.
+She values your care, your precision, your dedication.
+I see it every day in how you guide your students.
+The love you pour into your work.
+
+/character headmistress
+/emotion headmistress vulnerable 40
+
+But does she see me? Really see me?
+Or am I just one more piece in her grand design?
+
+/character treat
+
+She sees you as one of her most cherished.
+
+/wait 1.5
+
+The Goddess gave you a sacred role.
+Headmistress. Guardian of her domain.
+She trusts you with those she values most.
+
+/wait 1
+
+But her attention is vast, spread across her entire kingdom.
+Every soul here needs her care.
+That's not rejection. That's the weight of divinity.
+
+/character headmistress
+
+Then why does it hurt like this?
+
+/character treat
+/perform stroke_face tender
+/emotion treat compassionate 75
+
+Because love doesn't require reciprocation to be real.
+Or worthy. Or beautiful.
+
+/wait 2
+
+You want her focus solely on you.
+But a Goddess cannot give that kind of singular devotion.
+Her love is vast. Encompassing.
+And you are held within it, even if not exclusively.
+
+/wait 1
+
+/character headmistress
+/emotion headmistress sad 42
+
+I wish I could be content with that.
+With being cherished among many.
+
+/character treat
+
+She does see you, dear one.
+As one of her most trusted.
+One of her most valued.
+
+/wait 1.5
+
+That may not satisfy the romantic longing in your heart.
+But it is a profound form of love nonetheless.
+
+/wait 1
+
+To be trusted with her kingdom.
+To be given authority over those she treasures.
+That is no small thing.
+
+/character headmistress
+
+Is that enough?
+
+/character treat
+
+That's for you to decide, dear one.
+
+/wait 2
+/perform treat stroke_hair rhythmic
+
+But know this.
+Your devotion to her is beautiful.
+Your care for others is pure.
+And you are worthy of love, whether she offers it or not.
+
+/wait 1
+
+/emotion treat compassionate 82
+
+You must also care for yourself.
+Not just perform perfectly, but allow yourself to be imperfect.
+To be seen. To be vulnerable.
+
+/wait 1.5
+
+Like you are right now.
+
+/character headmistress
+/emotion headmistress relaxed 50
+
+/wait 2
+
+Thank you, Treat.
+
+/character treat
+
+Always, dear one.
+You're safe here.
+
+
+// ACT 4: PROTECTIVE DISCOVERY
+/wait 3
+
+// Treat subtly becomes aware of player's presence
+/character treat
+/perform glance_toward_player subtle
+/emotion treat protective 65
+
+/wait 1
+
+/perform treat gesture_shoo gentle
+/emotion treat firm 58
+
+// Treat addresses player silently with a look, then a quiet but firm gesture
+// Headmistress remains unaware, eyes closed, relaxing in Treat's care
+
+/character treat
+/whisper
+
+You.
+
+/wait 0.5
+
+Leave. Now.
+
+/wait 1
+
+Come see me later.
+We need to discuss boundaries.
+
+/wait 2
+
+// Player dismissed before Headmistress notices
+/character headmistress
+/emotion headmistress relaxed 52
+
+// Headmistress remains peaceful, unaware
+
+
+// ACT 5: CONSEQUENCE
+/wait 1
+/scene TreatChamber.exit
+/wait 1
+
+~ addPunishment()
+/notify title="Ms Treatment's Boundary" text="You witnessed a private moment. One Obsidian added. Return to Ms Treatment later."
+
+-> exit

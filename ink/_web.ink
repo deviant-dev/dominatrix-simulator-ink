@@ -50,6 +50,7 @@ INCLUDE furia/rewardmega_placeholder
 
 INCLUDE goddess/hub
 INCLUDE goddess/hub_vignette
+INCLUDE goddess/hub_vignette_yuki
 INCLUDE goddess/intro
 INCLUDE goddess/lore
 INCLUDE goddess/generic_joi
@@ -109,6 +110,8 @@ INCLUDE pragma/intro
 INCLUDE pragma/task_dancing_doll
 INCLUDE pragma/task_placeholder
 INCLUDE pragma/punishment_placeholder
+INCLUDE pragma/punishment_neural_overload
+INCLUDE pragma/reward_erotic_sync
 INCLUDE pragma/reward_fucking_machine
 INCLUDE pragma/rewardmega_placeholder
 INCLUDE pragma/generic_responses
@@ -166,6 +169,20 @@ INCLUDE yuki/rewardmega_placeholder
 
 
 
+
+
+
+
+
+TODO: Create a task list of all the elements / code that need to be included in each scene to ensure the underlying game design works: obey / disobey, chastity checks / rejection, success / failure for tasks, add / remove stones, consent checks, 
+
+TODO: Review favor system and ensure it is embedded fully in the game 
+
+
+
+
+ 
+
 // EXTERNAL getNegaDie1()
 // EXTERNAL getNegaDie2()
 // EXTERNAL getNegaDie3()
@@ -194,3 +211,4 @@ VAR inVR = false
 
 
 
+ 

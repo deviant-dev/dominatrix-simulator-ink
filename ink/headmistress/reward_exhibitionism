@@ -153,7 +153,7 @@ Do you understand, {isBoy: simpleton|ninny}? #47
     /perform talk_question angry 75
     Is that clear? #53
 
-/perform idle neutral
+    /perform idle neutral
 
     ++ [yes]
         /character crowd cheers_short
@@ -226,7 +226,7 @@ You may {hasPenis: wrap your hand around your rod|slip your fingers between your
     --> question ->
     --> command ->
     --> keep_going ->
-    }
+}
 
 - (cum)
 + [wait 3]
@@ -521,6 +521,7 @@ Does it feel good to be put on display, foible? #109
 = masturbation_comment
 
 TODO: replace Headmistress crowd comment (obsolete) with general
+/character headmistress
 
 {embarrassed:
     { shuffle:
