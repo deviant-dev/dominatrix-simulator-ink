@@ -28,23 +28,30 @@
 
 Come here, Yuki-Onna. #01
 
+TODO: Add in movement for Yuki. Pre-animated?
+
 - /character yuki
 /perform do_bouncing_little nervous 50
 /emotion yuki excited 70
 
-Yes, Goddess! Have I done well? I've been working so hard with my puppies— #02
+Yes, Goddess! 
+
+/perform idle_yuki happy 80
+Have I done well? 
+I've been working so hard with my puppies.
 
 /character goddess
 /perform idle_tease amused 55
 
-Shh. Let me look at you. #03
+Shh. Let me look at you. 
 
 /wait 2
 /perform goddess circle_player slow // or equivalent circling perform if available
 
-Sweet little snow spirit. #44
+Sweet little, snow spirit. #44
 So eager to please. #04
-But your puppies leave wanting more, don't they? #05
+But your puppies always leave wanting more.
+Don't they? #05
 
 - /character yuki
 /perform react_confused sad 45
@@ -66,30 +73,44 @@ But I do make them obey! #46
 They're good puppies for me! #10
 
 /character goddess
+/perform idle_fake_annoyed sad 60
 
-Obedience without desire is just... compliance. #11
+
+Obedience without desire is just... 
+compliance. #11
 
 /wait 1
 /perform goddess stroke_cheek tender // or similar gentle touch
 
 Do you know why you were split? #12
-Why Nega exists apart from you? #13
+Why Nega-Yuki exists apart from you? #13
 
 - /character yuki
+/perform idle_confused skeptical 75
 
+Ummm...
 To help me become a better Mistress? #14
 
 /character goddess
+/perform talk_lean_forward amused 60
 
 To show you what you're capable of becoming. #15
 She embodies the intensity you keep locked away. #16
 The raw power you're afraid to touch. #17
+She is your darkness brought to light.
 
 - /character yuki
-/emotion yuki sad 50
+/perform react_shake_head scared 60
 
 But Goddess, I'm not like Nega. #47
 I don't want to be scary or mean. #18
+
+/perform talk_excited excited 60
+I love my puppies.
+I want them to know how special they are to me.
+
+/perform react_scoffs disgusted 60
+She's always so demanding and rude.
 
 /character goddess
 /perform talk_lean_forward aroused 70
@@ -97,64 +118,106 @@ I don't want to be scary or mean. #18
 I'm not asking you to be cruel, little one. #19
 I'm asking you to let them drown in you. #20
 
+/perform idle aroused 60
 Your gentleness can be overwhelming. #48
 Intoxicating. #21
+
+/perform idle_skeptical skeptical 60
 But only if you stop holding back. #22
 
 /wait 1.5
 
 Once, long ago, power demanded shedding layers. #49
+
+/perform talk_behold aroused 60
 Veils of the old self cast aside at ancient gates. #23
-Emerging not diminished, but whole... #50
-Reclaiming what was always meant to rule. #24
+Emerging not diminished, but whole. #50
+
+/perform react_scoffs happy 60
+Shedding layers is a gift.
+Allowing us to reclaim our true selves. #24
+Raising us up to embody our full light.
 
 - /character yuki
-/perform react_thoughtful uncertain 55
+/perform react_thoughtful skeptical 55
 
 What if I go too far? #25
 
 /character goddess
+/perform idle_tease amused 60
 
 That's why both halves exist, sweet thing. #26
+
+/perform talk_gesture amused 90
 Nega shows you the edge. #51
+
+/perform talk_question skeptical 60
 You choose how close to walk to it. #27
-But you must walk toward it. Not away. #28
+But you must walk toward it. 
+Not away. #28
 
 /wait 1
-/perform goddess tilt_chin_up gentle
+/perform goddess tilt_chin_up happy 60
+
+TODO: add in intimate gesture for Goddess / mistress to show another Mistress
 
 Your gentle nature is a gift. #52
 But unleashed? #53
+
+/perform do_raise_hand excited 60
 It becomes rapture. #29
+
+/perform react_scoffs happy 60
 Stop tempering yourself. #54
+
+/perform talk_behold aroused 80
 Let them feel the full weight of your affection. #30
 Make them beg for your softness the way they'd beg for air. #31
 
+/peform idle amused 70
+
 - /character yuki
+/perform idle_foot scared 60
 
 How do I do that, Goddess? #32
 
 /character goddess
+/perform talk_lean_forward amused 60
 
 Next time they whimper? #55
 Don't rush to soothe them. #56
+
+/perform react_scoffs amused 75
 Let them ache for it. #33
+
+/perform talk_thoughtful skeptical 60
 Next time they please you? #57
+
+/perform idle_tease aroused 90
 Make them understand what a privilege that is. #34
+
+/perform talk_gesture amused 90
 Watch what Nega does. #58
 Then find your own way. #35
 
 /wait 2
-/perform goddess step_back smile warm
+/perform goddess idle happy 60
 
 You have so much potential, Yuki-Onna. #59
 I want to see you bloom. #36
+
+/perform talk_question amused 80
 Show me what happens when innocence stops apologizing for its power. #37
 
-/wait 3
-// Yuki left contemplative
+
 /character yuki
-/perform idle_contemplative flushed
+/perform do_nod scared 70
+
+I understand, Goddess.
+
+/wait 3
+// Yuki leaves
+
 
 // Goddess turns to player
 /character goddess
@@ -162,20 +225,23 @@ Show me what happens when innocence stops apologizing for its power. #37
 /emotion goddess skeptical 65
 
 And you, naughty {player_name}... #60
-lurking uninvited in my shadows? #38
 
+/perform idle_skeptical angry 75
+Lurking uninvited in my shadows? #38
 How bold to eavesdrop on private counsel. #39
-But boldness without permission earns its price. #40
+Boldness without permission earns its price. #40
 
 /wait 1
 ~ addPunishment()
 /notify title="Goddess's Rebuke" text="Caught spying in the chamber. One Obsidian added."
 
+/perform react_swipe_hand skeptical 75
 For this transgression, #61
 bear an Obsidian's weight. #41
 Reflect well or risk joining the silent statues. #42
 
 /wait 2
+/perform do_wave_hand disgusted 60
 Now begone. #62
 Return when you've learned discretion. #43
 
